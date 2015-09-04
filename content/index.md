@@ -5,3 +5,5 @@
 ```foo
 Base
 ```
+
+## x) Register you repository at circleci clicking on [`Add Projects`](https://circleci.com/add-projects) and choosing your repository.

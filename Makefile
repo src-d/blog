@@ -18,7 +18,6 @@ endif
 
 # Environment
 BASE_PATH := $(shell pwd)
-BUILD_PATH := $(BASE_PATH)/.build
 THEMES_PATH := $(BASE_PATH)/themes
 THEME_NAME := $(shell basename $(HUGO_THEME))
 THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
@@ -64,4 +63,5 @@ publish:
 	git subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
 
 clean:
+	rm -rf $(HUGO_PATH)
 	rm -rf $(THEME_PATH)
