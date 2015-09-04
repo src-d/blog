@@ -65,7 +65,7 @@ publish:
 	git config user.name "$(COMMITER_NAME)"
 	git add -A
 	git commit -m "updating site [ci skip]"
-	git subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
+	git subtree push -f --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
 
 clean:
 	rm -rf $(HUGO_PATH)
