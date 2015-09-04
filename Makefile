@@ -54,17 +54,17 @@ dependencies:
 	fi;
 
 build: dependencies
-	$(HUGO)
+	$(HUGO) -t $(THEME_NAME)
 
 server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
 publish:
 	rm .gitignore
-	git config --global user.email "$(COMMITER_EMAIL)"
-	git config --global user.name "$(COMMITER_NAME)"
+	git config user.email "$(COMMITER_EMAIL)"
+	git config user.name "$(COMMITER_NAME)"
 	git add -A
-	git commit -m "updating site"
+	git commit -m "updating site [ci skip]"
 	git subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
 
 clean:
