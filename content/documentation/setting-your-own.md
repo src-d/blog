@@ -1,6 +1,7 @@
 +++
 title = "Creating your own site"
 slug = "creating-your-own-site"
+menu = "main"
 +++
 
 ### Setting the repository
@@ -32,3 +33,5 @@ This is the easiest part, thanks to [Github Pages](https://pages.github.com/) al
  **http://\<username>.github.io/\<repository>**.
 
 Since now every time you make a push to your repository with new content, the HTML will be generated and uploaded to the `gh-pages` thanks to `CircleCI`
+
+> The Markdown files on content as well as the `config.yaml` are examples, feel free to change any you want.

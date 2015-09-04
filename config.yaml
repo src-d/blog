@@ -1,5 +1,12 @@
-Title: autohugo
-BaseUrl: /autohugo/
-Params:
+title: autohugo
+baseUrl: /autohugo/
+params:
     description: auto-deployable static websites using hugo, the Github Pages and cicleci platform.
-    themeColor: "theme-base-08"
+    copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros
+    themeColor: "theme-base-0c"
+
+menu:
+  main:
+      - Name: "Github project"
+        Weight: 110
+        URL: "https://github.com/mcuadros/autohugo"

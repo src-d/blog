@@ -1,6 +1,7 @@
 +++
 title = "Working with autohugo"
 slug = "working-with-autohugo"
+menu = "main"
 +++
 
 **autohugo** is made with [make](https://es.wikipedia.org/wiki/Make) and a couple of environment variables. In this document you can understand how it works.
