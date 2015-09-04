@@ -1,6 +1,6 @@
 # Configuration
 HUGO_VERSION ?= 0.14
-HUGO_THEME ?= https://github.com/mcuadros/hyde
+HUGO_THEME ?= ""
 COMMITER_NAME ?= autohugo
 COMMITER_EMAIL ?= autohugo@autohugo.local
 
@@ -38,7 +38,13 @@ GIT_CLONE = git clone
 # Rules
 all: build
 
-dependencies:
+init:
+	@if [ "$(HUGO_THEME)" == "" ]; then \
+		echo "Please set the env variable 'HUGO_THEME' (http://mcuadros.github.io/autohugo/documentation/working-with-autohugo/)"; \
+	  exit 1; \
+	fi;
+
+dependencies: init
 	@if [[ ! -f $(HUGO) ]]; then \
 		$(MKDIR) $(HUGO_PATH); \
 		cd $(HUGO_PATH); \
@@ -60,7 +66,7 @@ build: dependencies
 server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
-publish:
+publish: init
 	rm .gitignore
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
 	git config user.email "$(COMMITER_EMAIL)"
