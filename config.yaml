@@ -1,0 +1,4 @@
+Title: autohugo
+BaseUrl: /
+Params:
+    description: auto-deployable static websites using hugo, the Github Pages and cicleci platform.
