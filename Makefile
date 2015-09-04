@@ -60,6 +60,7 @@ server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
 publish:
+	rm .gitignore
 	git config --global user.email "$(COMMITER_EMAIL)"
 	git config --global user.name "$(COMMITER_NAME)"
 	git add -A
