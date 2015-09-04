@@ -12,6 +12,9 @@ slug = "working-with-autohugo"
 
 > Is not change the Makefile itself, please us environment variable at the `circle.yml` for change the configuration.
 
+> ProTip: You can pass the environment variables to make without setting is globally:
+```HUGO_THEME=http://github.com/mcuadros/hyde make server```
+
 ## The Makefile
 - `make dependencies`: installs `hugo` on a local folder, by default `.hugo`. Also download the configured theme at the `themes` folder.
 - `make build`: generates the website calling `hugo` command.
