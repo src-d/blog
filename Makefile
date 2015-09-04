@@ -1,6 +1,8 @@
 # Configuration
 HUGO_VERSION ?= 0.14
 HUGO_THEME ?= https://github.com/spf13/hyde
+COMMITER_NAME ?= autohugo
+COMMITER_EMAIL ?= autohugo@autohugo.local
 
 # System
 OS = amd64
@@ -17,6 +19,7 @@ else
 endif
 
 # Environment
+SHELL := /bin/bash
 BASE_PATH := $(shell pwd)
 THEMES_PATH := $(BASE_PATH)/themes
 THEME_NAME := $(shell basename $(HUGO_THEME))
@@ -44,7 +47,6 @@ dependencies:
 		$(CURL) https://$(HUGO_URL)/releases/download/v$(HUGO_VERSION)/$(HUGO_NAME).$${ext} -o $${file}; \
 		if [ "$(ARCH)" == "linux" ]; then tar -xvzf $${file}; else unzip $${file}; fi; \
 	fi;
-
 	@if [[ ! -d $(THEME_PATH) ]]; then \
 		$(MKDIR) $(THEMES_PATH); \
 		cd $(THEMES_PATH); \
@@ -58,6 +60,8 @@ server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
 publish:
+	git config --global user.email "$(COMMITER_EMAIL)"
+	git config --global user.name "$(COMMITER_NAME)"
 	git add -A
 	git commit -m "updating site"
 	git subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
