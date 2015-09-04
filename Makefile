@@ -1,6 +1,6 @@
 # Configuration
 HUGO_VERSION ?= 0.14
-HUGO_THEME ?= https://github.com/spf13/hyde
+HUGO_THEME ?= https://github.com/mcuadros/hyde
 COMMITER_NAME ?= autohugo
 COMMITER_EMAIL ?= autohugo@autohugo.local
 
