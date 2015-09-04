@@ -13,5 +13,5 @@ Simple, every time you push the new content to your repository, the HTML is gene
 - **[CircleCI](https://circleci.com/)**: runs Hugo and upload the new code to `gh-pages` branch.
 
 ### Documentation
-- [Creating your own site](/documentation/creating-your-own-site)
-- [Working with autohugo](/documentation/working-with-autohugo)
+- [Creating your own site](/autohugo/documentation/creating-your-own-site)
+- [Working with autohugo](/autohugo/documentation/working-with-autohugo)

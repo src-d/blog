@@ -1,5 +1,5 @@
 Title: autohugo
-BaseUrl: ./
+BaseUrl: /autohugo/
 Params:
     description: auto-deployable static websites using hugo, the Github Pages and cicleci platform.
     themeColor: "theme-base-08"
