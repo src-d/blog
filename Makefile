@@ -21,6 +21,7 @@ endif
 # Environment
 SHELL := /bin/bash
 BASE_PATH := $(shell pwd)
+PUBLIC_PATH := $(BASE_PATH)/public
 THEMES_PATH := $(BASE_PATH)/themes
 THEME_NAME := $(shell basename $(HUGO_THEME))
 THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
@@ -61,6 +62,7 @@ server: build
 
 publish:
 	rm .gitignore
+	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
 	git config user.email "$(COMMITER_EMAIL)"
 	git config user.name "$(COMMITER_NAME)"
 	git add -A
