@@ -72,11 +72,12 @@ publish: init
 	  exit 1; \
 	fi;
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
-	rm -rf .gitignore
+	rm .gitignore
 	$(GIT) config user.email "$(GIT_COMMITTER_EMAIL)"
 	$(GIT) config user.name "$(GIT_COMMITTER_NAME)"
-	$(GIT) commit -m "updating site [ci skip]"  -a
-	$(GIT) push origin :gh-pages
+	$(GIT) add -A
+	$(GIT) commit -m "updating site [ci skip]"
+	$(GIT) push origin :gh-pages || true
 	$(GIT) subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
 
 clean:
