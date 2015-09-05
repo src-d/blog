@@ -1,8 +1,8 @@
 # Configuration
 HUGO_VERSION ?= 0.14
 HUGO_THEME ?= ""
-COMMITER_NAME ?= autohugo
-COMMITER_EMAIL ?= autohugo@autohugo.local
+GIT_COMMITTER_NAME ?= autohugo
+GIT_COMMITTER_EMAIL ?= autohugo@autohugo.local
 
 # System
 OS = amd64
@@ -33,7 +33,7 @@ HUGO_NAME := hugo_$(HUGO_VERSION)_$(ARCH)_$(OS)
 CURL = curl -L
 HUGO = $(HUGO_PATH)/$(HUGO_NAME)/$(HUGO_NAME)
 MKDIR = mkdir -p
-GIT_CLONE = git clone
+GIT = git
 
 # Rules
 all: build
@@ -57,7 +57,7 @@ dependencies: init
 	@if [[ ! -d $(THEME_PATH) ]]; then \
 		$(MKDIR) $(THEMES_PATH); \
 		cd $(THEMES_PATH); \
-		git clone $(HUGO_THEME) $(THEME_NAME); \
+		$(GIT) clone $(HUGO_THEME) $(THEME_NAME); \
 	fi;
 
 build: dependencies
@@ -67,15 +67,13 @@ server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
 publish: init
-	rm .gitignore
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
-	git config user.email "$(COMMITER_EMAIL)"
-	git config user.name "$(COMMITER_NAME)"
-	git add -A
-	git commit -m "updating site [ci skip]"
-	git push origin :gh-pages
-	git subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
-
+	mv .gitignore .gitignore.inactive
+	$(GIT) commit -m "updating site [ci skip]" --author="$(GIT_COMMITTER_NAME) <$(GIT_COMMITTER_EMAIL)>" -a
+	mv .gitignore.inactive .gitignore
+	$(GIT) push origin :gh-pages
+	$(GIT) subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
+	$(GIT) reset --soft HEAD~1
 clean:
 	rm -rf $(HUGO_PATH)
 	rm -rf $(THEME_PATH)
