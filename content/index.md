@@ -1,6 +1,5 @@
 ##  auto-deployable static websites [![Circle CI](https://circleci.com/gh/mcuadros/autohugo.svg?style=svg)](https://circleci.com/gh/mcuadros/autohugo)
 
-
 **autohugo** is a *tool* for build auto-deployable static websites.
 
 

@@ -9,12 +9,11 @@ menu = "main"
 ## The environment variables
 - `HUGO_VERSION`: defines the **hugo** version to be used.
 - `HUGO_THEME`: URL of the git repository (with the `https://` prefix) of the theme, you can choose one from [`hugoThemes`](https://github.com/spf13/hugoThemes/) or [create](https://gohugo.io/themes/creation/) your one.
-- `COMMITER_NAME` and `COMMITER_EMAIL`: the name and the email to be used in the commit to `gh-pages`.
+- `GIT_COMMITTER_NAME` and `GIT_COMMITTER_EMAIL`: the name and the email to be used in the commit to `gh-pages`.
 
-> Is not change the Makefile itself, please us environment variable at the `circle.yml` for change the configuration.
+> Not edit the Makefile itself, please us environment variable at the `circle.yml` for change the configuration.
 
-> ProTip: You can pass the environment variables to make without setting is globally:
-```HUGO_THEME=http://github.com/mcuadros/hyde make server```
+> ProTip: You can pass the environment variables to make without setting is globally: ```HUGO_THEME=http://github.com/mcuadros/hyde make server```
 
 ## The Makefile
 - `make dependencies`: installs `hugo` on a local folder, by default `.hugo`. Also download the configured theme at the `themes` folder.
