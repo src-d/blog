@@ -40,7 +40,7 @@ all: build
 
 init:
 	@if [ "$(HUGO_THEME)" == "" ]; then \
-		echo "Please set the env variable 'HUGO_THEME' (http://mcuadros.github.io/autohugo/documentation/working-with-autohugo/)"; \
+		echo "ERROR! Please set the env variable 'HUGO_THEME' (http://mcuadros.github.io/autohugo/documentation/working-with-autohugo/)"; \
 	  exit 1; \
 	fi;
 
@@ -67,13 +67,18 @@ server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
 publish: init
+	@if [ "$(CI)" == "" ]; then \
+		echo "ERROR! Publish should be called only on CircleCI"; \
+	  exit 1; \
+	fi;
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
-	mv .gitignore .gitignore.inactive
-	$(GIT) commit -m "updating site [ci skip]" --author="$(GIT_COMMITTER_NAME) <$(GIT_COMMITTER_EMAIL)>" -a
-	mv .gitignore.inactive .gitignore
+	rm -rf .gitignore
+	$(GIT) config user.email "$(GIT_COMMITTER_EMAIL)"
+	$(GIT) config user.name "$(GIT_COMMITTER_NAME)"
+	$(GIT) commit -m "updating site [ci skip]"  -a
 	$(GIT) push origin :gh-pages
 	$(GIT) subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
-	$(GIT) reset --soft HEAD~1
+
 clean:
 	rm -rf $(HUGO_PATH)
 	rm -rf $(THEME_PATH)

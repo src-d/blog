@@ -19,6 +19,6 @@ menu = "main"
 - `make dependencies`: installs `hugo` on a local folder, by default `.hugo`. Also download the configured theme at the `themes` folder.
 - `make build`: generates the website calling `hugo` command.
 - `make server`: runs a web server at the url `http://localhost:1313/`, this command is very useful when you are creating new command, refreshing the site every time a file is changed.
-- `make publish`: this command deletes the branch `gh-pages` from you repository and creates a new one with the content of the `public` folder.
+- `make publish`: this command deletes the branch `gh-pages` from you repository and creates a new one with the content of the `public` folder. *This command only can be called on the CircleCI environment*
 
 > You need `make` installed in order to work with **autohugo**.
