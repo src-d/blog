@@ -1,0 +1,26 @@
+{{ if isset .Params "author" }}
+{{ $author := index .Site.Params.authors .Params.author }}
+<section class="author">
+    <div class="authorimage" style="background: url({{$author.thumbnail}})"></div>
+
+    	{{ with $author.twitter }}<meta name="twitter:creator" content="@{{ $author.twitter }}"/>{{ end }}
+
+    <h4>
+      {{$author.name}}
+      <a href="//github.com/spf13" target="_blank" title="GitHub">
+        <i class="fa fa-2x fa-fw fa-github"></i>
+        <span class="hidden">GitHub</span>
+      </a>
+      <a href="//github.com/spf13" target="_blank" title="Twitter">
+        <i class="fa fa-2x fa-fw fa-twitter"></i>
+        <span class="hidden">Twitter</span>
+      </a>
+    </h4>
+
+    <p class="meta">
+    </p>
+
+    <p class="bio">{{ $author.bio | markdownify }}</p>
+
+</section>
+{{ end }}
