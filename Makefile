@@ -23,6 +23,7 @@ SHELL := /bin/bash
 BASE_PATH := $(shell pwd)
 PUBLIC_PATH := $(BASE_PATH)/public
 THEMES_PATH := $(BASE_PATH)/themes
+STATIC_PATH := $(BASE_PATH)/static
 THEME_NAME := $(shell basename $(HUGO_THEME))
 THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
 HUGO_PATH := $(BASE_PATH)/.hugo
@@ -72,6 +73,7 @@ publish: init
 	  exit 1; \
 	fi;
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
+	cp -rf $(STATIC_PATH)/* $(PUBLIC_PATH)/
 	rm .gitignore
 	$(GIT) config user.email "$(GIT_COMMITTER_EMAIL)"
 	$(GIT) config user.name "$(GIT_COMMITTER_NAME)"
