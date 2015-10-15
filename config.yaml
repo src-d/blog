@@ -1,12 +1,58 @@
-title: autohugo
-baseUrl: /autohugo/
-params:
-    description: auto-deployable static websites using hugo, the Github Pages and cicleci platform.
-    copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros
-    themeColor: "theme-base-0c"
+title: source{d}
+baseUrl: /blog/
 
-menu:
-  main:
-      - Name: "Github project"
-        Weight: 110
-        URL: "https://github.com/mcuadros/autohugo"
+params:
+  description: coding to find awesome engineers
+  copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros
+  themeColor: custom
+
+  title: "source{d}"
+  subtitle: "coding to find awesome engineers"
+  copyright: "Product by Tyba • Crafted with love."
+
+  # You can choose between green, orange, red and blue.
+  # Enable Google Analytics be inserting your tracking code
+  googleAnalytics: ""
+
+  # To provide some metadata for search engines and the about section in the footer
+  # feel free to add a few information about you and your website.
+  name: "source{d}"
+  bio: "I'm just a theme. That's it. If you like my design clone [me](//github.com/digitalcraftsman/hugo-steam-theme) from Github. Thanks."
+  location: "" # optional
+  twitter: "tyba" # optional
+  github: "tyba" # optional
+
+  # Enable a comment system
+  # You can choose between Disqus or Google Plus by setting comments
+  # to disqus or googleplus. For using Disqus you need to enter your
+  # shortname in disqusShortname at the top of the configs.
+  comments: "disqus"
+
+  # Customize or translate the strings
+  keepReadingStr: "Keep reading"
+  backtotopStr: "Back to top"
+  shareStr: "Share"
+  pageNotFoundTitle: "404 - Page not found"
+
+  authors:
+    mcuadros:
+      name: Máximo Cuadros
+      thumbnail: https://avatars1.githubusercontent.com/u/1573114?v=3&s=460
+      bio: "(╯°□°）╯︵ ┻━┻"
+      social:
+        github: mcuadros
+        twitter: mcuadros_
+    dripolles:
+      name: Daniel Ripolles
+      thumbnail: https://avatars1.githubusercontent.com/u/768061?v=3&s=460
+      bio: Thinking Hard Driven Development / Loving Python, learning Haskell
+      social:
+        github: dripolles
+        twitter: leidan
+    ikanor:
+      name: Franky Rodriguez
+      thumbnail: https://avatars2.githubusercontent.com/u/5469238?v=3&s=460
+      bio: Computer scientist. Amateur musician. I like math.
+      social:
+        github: ikanor
+        twitter: minifranky

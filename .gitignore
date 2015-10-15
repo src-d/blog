@@ -1,4 +1,4 @@
 .build
 .hugo
 public
-themes
+.DS_Store

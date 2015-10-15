@@ -1,7 +1,7 @@
 machine:
   environment:
     HUGO_VERSION: 0.14
-    HUGO_THEME: https://github.com/mcuadros/hyde
+    HUGO_THEME: https://github.com/digitalcraftsman/hugo-steam-theme
 
 dependencies:
   override:
