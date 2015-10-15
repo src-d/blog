@@ -3,6 +3,7 @@ HUGO_VERSION ?= 0.14
 HUGO_THEME ?= ""
 GIT_COMMITTER_NAME ?= autohugo
 GIT_COMMITTER_EMAIL ?= autohugo@autohugo.local
+CNAME ?= ""
 
 # System
 OS = amd64
@@ -71,6 +72,9 @@ publish: init
 	@if [ "$(CI)" == "" ]; then \
 		echo "ERROR! Publish should be called only on CircleCI"; \
 	  exit 1; \
+	fi;
+	@if [ "$(CNAME)" != "" ]; then \
+		echo $(CNAME) >> $(PUBLIC_PATH)/CNAME; \
 	fi;
 	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
 	cp -rf $(STATIC_PATH)/* $(PUBLIC_PATH)/

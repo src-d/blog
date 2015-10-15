@@ -2,6 +2,7 @@ machine:
   environment:
     HUGO_VERSION: 0.14
     HUGO_THEME: https://github.com/digitalcraftsman/hugo-steam-theme
+    CNAME: blog.sourced.tech
 
 dependencies:
   override:
