@@ -1,6 +1,6 @@
 ---
 author: ikanor
-date: 2015-10-05
+date: 2015-10-12
 title: Taking Coding to the Mountains
 image: /post/retreat-story/9239.jpg
 description: "The Tyba engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an Open Source Hackaton."
@@ -26,8 +26,6 @@ With full stomachs and renewed strengths, the newly-formed teams exposed the sco
 With the teams formed and the plans explained, it was time to get to work! It was a nice workplace this sunny but rather chilly afternoon –at least until we discovered how to make the heating work!
 
 ![Carlos hard at work.](/post/retreat-story/9149.jpg)
-
-![Miguel and Phil deploying their ideas – with a clear difference in their cold sensitivity.](/post/retreat-story/9152.jpg)
 
 Before dinner we had a Docker talk. Curro initiated us in this awesome technology that we intensively use at Tyba. Since we were a little behind schedule, we only had time for a couple of questions, but the talk was quite revealing anyways!
 
