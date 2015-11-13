@@ -1,7 +1,7 @@
 ---
 author: alcortesm
 date: 2015-11-13
-title: dotGo2015: Undelivered Expectations
+title: "dotGo2015: Undelivered Expectations"
 image: /post/dotGo2015/intro.jpg
 description: "dotGo 2015, an excellent venue, not-so-techy talks."
 ---
