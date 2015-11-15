@@ -49,6 +49,12 @@ params:
       social:
         github: dripolles
         twitter: leidan
+    alcortesm:
+      name: Alberto Cortés
+      thumbnail: https://avatars3.githubusercontent.com/u/9169414?v=3&s=460
+      bio: Learning Go (both of them).
+      social:
+        github: alcortesm
     ikanor:
       name: Franky Rodriguez
       thumbnail: https://avatars2.githubusercontent.com/u/5469238?v=3&s=460
