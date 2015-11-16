@@ -62,3 +62,10 @@ params:
       social:
         github: ikanor
         twitter: minifranky
+    mvader:
+      name: Miguel Molina
+      thumbnail: https://avatars3.githubusercontent.com/u/1312023?v=3&s=460
+      bio: Code writer (mostly JS and Go) and dragon tamer.
+      social:
+        github: mvader
+        twitter: migrrrr
