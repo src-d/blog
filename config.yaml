@@ -62,3 +62,10 @@ params:
       social:
         github: ikanor
         twitter: minifranky
+    scaleyourcode:
+      name: Christophe Limpalair
+      thumbnail: https://avatars3.githubusercontent.com/u/6696921?v=3&s=460
+      bio: "Christophe enjoys sitting down with CTOs and top developers to learn how they work, and sharing that knowledge with the rest of the world. He does this through his podcast called ScaleYourCode."
+      social:
+        github: christophelimpalair
+        twitter: ScaleYourCode
