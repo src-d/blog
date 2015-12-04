@@ -2,7 +2,7 @@
 author: scaleyourcode
 date: 2016-10-12
 title: 4 Traits CTOs Look For When Hiring 
-image: /post/4_traits_CTOs_look_for_when_hiring/gary_blog_pic.jpg
+image: /post/traits_ctos_look_for_when_hiring/gary_blog_pic.jpg
 description: "What do you look for when hiring? is a question I like to ask CTOs. Why? Because I'm curious about their answers, and because I really think the answers can help us become more self aware."
 ---
 
