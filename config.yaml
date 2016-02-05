@@ -19,8 +19,8 @@ params:
   name: "source{d}"
   bio: "I'm just a theme. That's it. If you like my design clone [me](//github.com/digitalcraftsman/hugo-steam-theme) from Github. Thanks."
   location: "" # optional
-  twitter: "tyba" # optional
-  github: "tyba" # optional
+  twitter: "srcd_" # optional
+  github: "srcd" # optional
 
   # Enable a comment system
   # You can choose between Disqus or Google Plus by setting comments
@@ -62,6 +62,13 @@ params:
       social:
         github: ikanor
         twitter: minifranky
+    mvader:
+      name: Miguel Molina
+      thumbnail: https://avatars3.githubusercontent.com/u/1312023?v=3&s=460
+      bio: Code writer (mostly JS and Go) and part-time dragon tamer.
+      social:
+        github: mvader
+        twitter: migrrrr
     scaleyourcode:
       name: Christophe Limpalair
       thumbnail: https://avatars3.githubusercontent.com/u/6696921?v=3&s=460
