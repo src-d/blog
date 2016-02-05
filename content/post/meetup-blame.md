@@ -6,21 +6,19 @@ image: /post/meetup-blame/intro.jpg
 description: "Papers we love Madrid Meetup: Levenshtein distance, LCS, diff and blame."
 ---
 
-There are some interesting [meetup](http://www.meetup.com)s going on in Madrid,
-and as part of the engineering team at **source{d}**, we use to attend and
+There are some interesting [meetups](http://www.meetup.com) going on in Madrid,
+and as part of the engineering team at **source{d}**, we often attend and
 organize some of them; it is a nice way to blow off some steam after work,
 learn some cool new things and meet quite interesting people.
 
 A few weeks ago, at a [Papers we love
 Madrid](http://www.meetup.com/Papers-We-Love-Madrid/) meetup, I had the chance
-to give a talk about how `git blame` works.
+to give a talk about how `git blame` works.*
 
-We would like to thank [ShuttleCloud](https://www.shuttlecloud.com/) for
-hosting and organizing the event (and for the beers!).
 
-Blaming a file in git is an operation that returns who modified each of the
+Blaming a file in git is an operation that identifies who modified each of the
 lines in a file, along with the modification date and other details.  This
-comes in handy to learn which member of your team wrote a particular piece of
+comes in handy when you want to know which member of your team wrote a particular piece of
 code or who is to blame for a bug }:-).
 
 For example, let's blame `src/bufio/bufio.go` from the standard Go Distribution:
@@ -35,17 +33,17 @@ $ git blame src/bufio/bufio.go
 
 According to this `git blame` output, it seems that the declaration of the
 constant `minReadBufferSize` was last modified (or created) by Rob Pike in 2011
-while the last version of `maxConsecutiveEmptyReads` is due to Rui Ueyama in
+while the last version of `maxConsecutiveEmptyReads` is attributed to Rui Ueyama in
 2014.
 
 The current `git blame` implementation is a highly optimized and quite
-powerfull piece of code but its core functionality is easy to understand
-once you know a few concepts:
+powerful piece of code, but its core functionality is easy to understand
+once you grasp a few concepts:
 
 ## 1. Levenshtein Distance
 
 The Levenshtein distance is a popular measure of how (dis)similar two strings
-are.  More precisely, is the minimum number of _edits_ you have to perform on
+are.  More precisely, it is the minimum number of _edits_ you have to perform on
 one of them to turn it into the other, where by edits I mean: adding, removing
 or changing a single character.
 
@@ -72,7 +70,7 @@ Levenshtein(a, d)  // is 1, just change 'i' to 'w'
 ```
 
 When the strings differ in more than one _edit_, calculating the
-Levenshtein distance is no longer trivial, as there are many different
+Levenshtein distance is no longer trivial since there are many different
 combinations of edits that will allow you to turn one string into another,
 and only some of them will have the minimum number of edits:
 
@@ -86,10 +84,10 @@ Levenshtein(e, f)  // is 3, here is one possible
                    //   - remove 's' from e[3]
 ```
 
-Calculating the Levenstein distance of two strings is a fun and interesting
-[programming workout](https://www.youtube.com/watch?v=wXQLil_SGCI).  In case
-you get stuck on it, you will find a recursive solution and a dynamic
-programming one in the [slides from my
+Calculating the Levenshtein distance of two strings is a fun and interesting
+[programming workout](https://www.youtube.com/watch?v=wXQLil_SGCI). In the case
+that you get stuck on it, you will find a recursive solution, as well as a dynamic
+programming one, in the [slides from my
 talk](/post/meetup-blame/pwl-diff-blame.pdf).
 
 ## 2. Longest Common Subsequence Problem
@@ -99,7 +97,7 @@ science problem, consisting in finding the longest subsequence common to all
 sequences in a given set.
 
 For example, the LCS of the strings `"pain"` and `"plans"` is `"pan"`, as it
-has all the character common to both strings, without messing up the character
+has all the characters common to both strings, without messing up the character
 ordering.
 
 Solving this problem for longer strings is not trivial, though:
@@ -121,7 +119,7 @@ The Diff Algorithm is the basis of `git blame` and a venerable piece of
 code that has been laying aorund since 1970.
 
 Given two files, the `diff` command will return the _line edits_ you have to
-perform to one of them to turn it into the other. For example: given the files
+perform to one of them, to turn it into the other. For example: given the files
 `a.txt` and `b.txt`...
 
 ```text
@@ -157,26 +155,28 @@ As you probably already know, this means:
 
 - `2,3c4`: substitute lines 2 and 3 of file `a.txt` with line number 4 of file `b.txt`.
 
-The current version of `diff` is a highly optimized program, but at its core it
-can be easily understood as some hashing, to turn lines into _equivalent
-characters_, and an LCS solver.  You will find more details about this in the
-[talk slides](/post/meetup-blame/pwl-diff-blame.pdf).
+The current version of `diff` is highly optimized, but, at its core, it
+can be easily understood as some hashing (turning lines into _equivalent
+characters_), and an LCS solver.  You will find more details about this in the
+[slides from the talk](/post/meetup-blame/pwl-diff-blame.pdf).
 
 ## 4. Tracking Lines Across File Revisions
 
 At the core of the `git blame` algorithm is the problem of tracking lines
-across file revisions, to know at which revision each particular line
+across file revisions; knowing at which revision each particular line
 was added or modified.
 
-This problem is usually solved by creating a graph were:
+This problem is usually solved by creating a graph where:
 
-- vertexes represent each of the lines of a file, for all revisions of the file
+- vertexes represent each line of a file, for all revisions of the file
 
 - edges represent the same line across diferent revisions of the file
 
-In the [talk slides](/post/meetup-blame/pwl-diff-blame.pdf) there are examples of
+In the [slides from the talk](/post/meetup-blame/pwl-diff-blame.pdf) you can find examples of
 forward and backward versions of a graph traversal algorithm to solve the
 blaming problem, from the 2006 paper [Mining Version Archives for Co-changed
 Lines](https://users.soe.ucsc.edu/~ejw/papers/MSR26s-zimmermann.pdf)
 (Zimmermann et al.).
 
+*We would like to thank [ShuttleCloud](https://www.shuttlecloud.com/) for
+hosting and organizing the event (and for the beers!).
