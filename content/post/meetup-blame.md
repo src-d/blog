@@ -40,6 +40,16 @@ The current `git blame` implementation is a highly optimized and quite
 powerful piece of code, but its core functionality is easy to understand
 once you grasp a few concepts:
 
+1. Levenshtein Distance
+2. Longest Common Subsequence Problem
+3. Diff
+4. Tracking Lines Across File Revisions
+
+The goal of the talk was to understand these concepts and some of their more
+naive implementations.  This blog post is not going to be a full transcription
+of my talk, but allow me to tease you with a brief introduction to these
+interesting topics:
+
 ## 1. Levenshtein Distance
 
 The Levenshtein distance is a popular measure of how (dis)similar two strings
