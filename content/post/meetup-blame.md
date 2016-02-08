@@ -116,7 +116,7 @@ talk](/post/meetup-blame/pwl-diff-blame.pdf).
 ## 3. Diff
 
 The Diff Algorithm is the basis of `git blame` and a venerable piece of
-code that has been laying aorund since 1970.
+code that has been laying around since 1970.
 
 Given two files, the `diff` command will return the _line edits_ you have to
 perform to one of them, to turn it into the other. For example: given the files
