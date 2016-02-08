@@ -88,7 +88,7 @@ Calculating the Levenshtein distance of two strings is a fun and interesting
 [programming workout](https://www.youtube.com/watch?v=wXQLil_SGCI). In the case
 that you get stuck on it, you will find a recursive solution, as well as a dynamic
 programming one, in the [slides from my
-talk](/post/meetup-blame/pwl-diff-blame.pdf).
+talk](https://drive.google.com/file/d/0B05KyBUlYY2TV2N6X2x6ZWhBXzQ/view?usp=sharing).
 
 ## 2. Longest Common Subsequence Problem
 
@@ -111,7 +111,7 @@ LCS(a, b) // is "ACCTGGTTTTGTTC" or "ACCTAGTATTGTTC" ...
 Knowing the LCS of two strings is equivalent to knowing the actual set of
 edits you need to perform to turn one into the other. You will find an
 intuitive explanation of this important equivalence in the [slides from the
-talk](/post/meetup-blame/pwl-diff-blame.pdf).
+talk](https://drive.google.com/file/d/0B05KyBUlYY2TV2N6X2x6ZWhBXzQ/view?usp=sharing).
 
 ## 3. Diff
 
@@ -158,7 +158,7 @@ As you probably already know, this means:
 The current version of `diff` is highly optimized, but, at its core, it
 can be easily understood as some hashing (turning lines into _equivalent
 characters_), and an LCS solver.  You will find more details about this in the
-[slides from the talk](/post/meetup-blame/pwl-diff-blame.pdf).
+[slides from the talk](https://drive.google.com/file/d/0B05KyBUlYY2TV2N6X2x6ZWhBXzQ/view?usp=sharing).
 
 ## 4. Tracking Lines Across File Revisions
 
@@ -172,7 +172,7 @@ This problem is usually solved by creating a graph where:
 
 - edges represent the same line across diferent revisions of the file
 
-In the [slides from the talk](/post/meetup-blame/pwl-diff-blame.pdf) you can find examples of
+In the [slides from the talk](https://drive.google.com/file/d/0B05KyBUlYY2TV2N6X2x6ZWhBXzQ/view?usp=sharing) you can find examples of
 forward and backward versions of a graph traversal algorithm to solve the
 blaming problem, from the 2006 paper [Mining Version Archives for Co-changed
 Lines](https://users.soe.ucsc.edu/~ejw/papers/MSR26s-zimmermann.pdf)
