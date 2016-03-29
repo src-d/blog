@@ -20,7 +20,7 @@ params:
   bio: "I'm just a theme. That's it. If you like my design clone [me](//github.com/digitalcraftsman/hugo-steam-theme) from Github. Thanks."
   location: "" # optional
   twitter: "srcd_" # optional
-  github: "srcd" # optional
+  github: "src-d" # optional
 
   # Enable a comment system
   # You can choose between Disqus or Google Plus by setting comments
