@@ -151,8 +151,8 @@ h1.blog-title {
 h1.blog-subtitle {
   font-size: 26px;
   line-height: 32px;
-  margin-top: -8px;
-  margin-bottom: 85px;
+  margin-top: 0px;
+  margin-bottom: 10px;
   margin-left: 1px;
   padding: 0;
 }
@@ -170,6 +170,36 @@ header.article-header,
 header.page-header {
   margin-bottom: 3em;
 }
+
+#nav a:link,a:visited { 
+  border-radius: 0 0 8px 8px; 
+  padding:0px 15px;
+}
+#nav ul {
+  margin:0;
+  margin-left: 20px; 
+  margin-right: 18%;
+  padding: 0;
+  color: white;
+}
+#nav a {
+  float: right;
+  font-family: "Helvetica Neue", Helvetica, Arial; /* "Merriweather", "Open Sans" */
+  font-weight: normal;
+  font-size: 14px;
+  color: #FFF;
+  margin: 0 5px 0 0; /* Margin between each menu item */
+  background-color: #32526A; /* Default tab color */
+}
+
+#site-head {
+  margin-bottom: 65px;
+}
+
+.blog-sub-link {
+  padding-left: 2px;
+}
+
 /* === Body === */
 section.author,
 section.share {
