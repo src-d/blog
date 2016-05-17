@@ -645,7 +645,7 @@ section.footer-social {
 }
 
 section.post-content {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 section.bloginfo {
@@ -655,6 +655,11 @@ section.bloginfo {
 .tagged {
   margin-top: -10px;
   margin-bottom: -15px;
+}
+
+section.mailchimp {
+  padding-top: 15px;
+  border-top: 1px solid #ecf0f1; 
 }
 
 section.author .meta {

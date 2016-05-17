@@ -8,7 +8,7 @@ params:
 
   title: "source{d}"
   subtitle: "coding to find awesome engineers"
-  copyright: "Product by Tyba • Crafted with love."
+  copyright: "Crafted with love."
 
   # You can choose between green, orange, red and blue.
   # Enable Google Analytics be inserting your tracking code
@@ -76,3 +76,10 @@ params:
       social:
         github: christophelimpalair
         twitter: ScaleYourCode
+    eiso:
+      name: Eiso Kant
+      thumbnail: https://avatars2.githubusercontent.com/u/1247608?v=3&s=460
+      bio: "Passion for neural networks. Python to get things done, learning Haskell for fun."
+      social:
+        github: eiso
+        twitter: eisokant    
