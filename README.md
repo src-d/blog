@@ -1,4 +1,4 @@
-# autohugo  [![Circle CI](https://circleci.com/gh/mcuadros/autohugo.svg?style=svg)](https://circleci.com/gh/mcuadros/autohugo)
+# autohugo  [![Circle CI](https://circleci.com/gh/src-d/blog.svg?style=svg)](https://circleci.com/gh/src-d/blog)
 
 **autohugo** is a *tool* for build auto-deployable static websites.
 
