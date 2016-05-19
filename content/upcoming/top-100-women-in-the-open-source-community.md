@@ -2,7 +2,7 @@
 author: eiso 
 date: 2016-05-19 
 title: "Top 100 Women In The Open-Source Community" 
-draft: true 
+draft: false 
 image: /post/top-100-women-in-the-open-source-community/intro.jpg 
 description: "A spotlight on 100 amazing women in the open-source community based on data analysis" 
 --- 
