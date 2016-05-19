@@ -5,6 +5,7 @@ params:
   description: coding to find awesome engineers
   copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros
   themeColor: custom
+  RSSlink: /index.xml
 
   title: "source{d}"
   subtitle: "coding to find awesome engineers"
