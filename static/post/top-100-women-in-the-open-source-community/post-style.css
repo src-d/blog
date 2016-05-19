@@ -1,0 +1,295 @@
+#user-card {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  border-color: #eee #ddd #bbb;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 3px;
+}
+
+.github-card {
+  border-radius: 5px;
+  padding: 8px 8px 0;
+  background: #fff;
+  color: #555;
+  position: relative;
+}
+
+.github-card a {
+  text-decoration: none;
+  color: #4183c4;
+  outline: 0;
+}
+.github-card a:hover {
+  text-decoration: underline;
+}
+
+.github-card .header {
+  position: relative;
+}
+.github-card .button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px 4px 7px;
+  color: #555;
+  text-shadow: 0 1px 0 #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 14px;
+  background-color: #e6e6e6;
+  background-image: -webkit-linear-gradient(#fafafa, #eaeaea);
+  background-image: -moz-linear-gradient(#fafafa, #eaeaea);
+  background-image: -ms-linear-gradient(#fafafa, #eaeaea);
+  background-image: linear-gradient(#fafafa, #eaeaea);
+}
+.github-card .button:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #3072b3;
+  background-image: -webkit-linear-gradient(#599bdc, #3072b3);
+  background-image: -moz-linear-gradient(#599bdc, #3072b3);
+  background-image: -ms-linear-gradient(#599bdc, #3072b3);
+  background-image: linear-gradient(#599bdc, #3072b3);
+  border-color: #518cc6 #518cc6 #2a65a0;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+/* user card */
+.user-card .header {
+  padding: 3px 0 4px 57px;
+  min-height: 48px;
+}
+.user-card .header a {
+  color: #707070;
+  text-decoration: none;
+}
+
+.user-card .header a:hover strong {
+  text-decoration: none;
+}
+
+.user-card .header .avatar {
+  display: block;
+  width: 50%;
+}
+
+.user-card .location {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.user-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.user-card strong {
+  display: block;
+  color: #292f33;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.user-card ul {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #707070;
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  zoom: 1;
+}
+.user-card ul:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.user-card .status li span, .repo_stats li span {
+  color: #707070;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.user-card .status li, .repo_stats li {
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  float: left;
+  padding: 4px 18px;
+  border-left: 1px solid #eee;
+  margin: 0;
+  line-height: 16px;
+}
+.user-card .status li:first-child, .repo_stats li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+.user-card .footer, .repo_footer {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 0 10px;
+  color: #646464;
+  line-height: 18px;
+  font-weight: normal;
+}
+.user-card .footer a {
+  color: #646464;
+}
+
+.repo_header {
+  font-size: 16px;
+  font-weight: 600;
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.repo_stats li {
+  margin: 0 !important;
+}
+
+.repo_header .language {
+  color: #FFF;
+  font-size: 12px;
+  margin-left: 6px;
+  padding: 2px 4px 2px 4px;
+  /* text-shadow: 0 1px 0 rgba(255, 255, 255, .5);*/
+  font-weight: bold;
+  background-color: #596364;
+  /* border: #CCC solid 1px; */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.repo_header .featured_repo {
+  float: right;
+  color: #989898;
+  font-size: 12px;
+  /*text-transform: uppercase;*/
+  margin-top: 3px;
+  line-height: 16px;
+  padding: 2px 4px 2px 4px;
+  /* text-shadow: 0 1px 0 rgba(255, 255, 255, .5);*/
+  font-weight: normal;
+  background-color: #E0E0E0;
+  /* border: #CCC solid 1px; */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("/post/100-amazing-women-in-open-source/Flaticon.eot");
+  src: url("/post/100-amazing-women-in-open-source/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("/post/100-amazing-women-in-open-source/Flaticon.woff") format("woff"),
+       url("/post/100-amazing-women-in-open-source/Flaticon.ttf") format("truetype"),
+       url("/post/100-amazing-women-in-open-source/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("/post/100-amazing-women-in-open-source/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.flaticon-circle:before { content: "\f100"; }
+
+/* Twitter follow button */
+
+.custom-follow-button {
+  position: absolute;
+  top: 0;
+  right: 85px;
+  line-height: 14px;
+}  
+
+.custom-follow-button a {
+  position: relative;
+  display: inline-block;
+  height: 18px;
+  padding: 2px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  font-weight: bold;
+  background-color: #F8F8F8;
+  background-image: -webkit-gradient(linear,left top,left     bottom,from(#FFF),to(#DEDEDE));
+  background-image: -moz-linear-gradient(top,#FFF,#DEDEDE);
+  background-image: -o-linear-gradient(top,#FFF,#DEDEDE);
+  background-image: -ms-linear-gradient(top,#FFF,#DEDEDE);
+  border: #CCC solid 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.custom-follow-button a:hover  {
+  border-color: #BBB;
+  background-color: #F8F8F8;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#D9D9D9));
+  background-image: -moz-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: -o-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: -ms-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: linear-gradient(top,#F8F8F8,#D9D9D9);
+  text-decoration: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.custom-follow-button a .btn-icon{
+  position: absolute;
+  width: 16px;
+  height: 13px;
+  top: 50%;
+  left: 3px;
+  margin-top: -6px;
+  background: url('https://twitter.com/favicons/favicon.ico') 1px center no-repeat;
+  background-size: 13px;
+}
+
+.custom-follow-button a .btn-text{
+  display: inline-block;
+  padding: 2px 3px 0 20px;
+}
+
+/* Hiding buttons */
+
+.hide {
+  display: none;
+}
+
+
+
+
+
