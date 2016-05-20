@@ -319,41 +319,7 @@ nb & woman.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>8. Laurie Voss</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/seldo" target="_top"><strong>Laurie Voss</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/658525670033612800/ue_Q-oaT_normal.jpg"><span class="location">Based in San Francisco, CA working at NPM</span></span>
-
-      <div class="custom-follow-button ">
-        <a href="https://twitter.com/intent/user?screen_name=seldo" target="_blank" alt="Follow seldo">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/seldo" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>1154</strong><span> Total Commits</span></li>
-      <li><strong>303.9</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer">An immigrant you know and love who's unafraid to step in. Co-founder/CTO of @npmjs, started lgbtq.technology. He/him. Trini to the bone.</div>
-    <div class="repo_header"><a href="https://github.com/npm/npm-expansions">npm-expansions</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>336</strong><span> Commits by @seldo</span></li>
-      <li><strong>405</strong><span> Stars</span></li>
-      <li><strong>25</strong><span> Watchers</span></li>
-      <li><strong>662</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">Send us a pull request by editing expansions.txt</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>9. Rebecca Turner</h2></div>    
+<div style="height: 45px;"><h2>8. Rebecca Turner</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -391,7 +357,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>10. Julie Ralph</h2></div>    
+<div style="height: 45px;"><h2>9. Julie Ralph</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -425,7 +391,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>11. Nicole Thomas</h2></div>    
+<div style="height: 45px;"><h2>10. Nicole Thomas</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -459,7 +425,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>12. Lauren McCarthy</h2></div>    
+<div style="height: 45px;"><h2>11. Lauren McCarthy</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -493,7 +459,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>13. Coraline Ada Ehmke</h2></div>    
+<div style="height: 45px;"><h2>12. Coraline Ada Ehmke</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -527,7 +493,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>14. Julia Lawall</h2></div>    
+<div style="height: 45px;"><h2>13. Julia Lawall</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -561,7 +527,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>15. Gina Trapani</h2></div>    
+<div style="height: 45px;"><h2>14. Gina Trapani</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -595,7 +561,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>16. Sara Golemon</h2></div>    
+<div style="height: 45px;"><h2>15. Sara Golemon</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -629,7 +595,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>17. Camilla Berglund</h2></div>    
+<div style="height: 45px;"><h2>16. Camilla Berglund</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -663,7 +629,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>18. Jo Liss</h2></div>    
+<div style="height: 45px;"><h2>17. Jo Liss</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -697,7 +663,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>19. Jaana Burcu Dogan</h2></div>    
+<div style="height: 45px;"><h2>18. Jaana Burcu Dogan</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -731,7 +697,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>20. Lea Verou</h2></div>    
+<div style="height: 45px;"><h2>19. Lea Verou</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -765,7 +731,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>21. Monica Dinculescu</h2></div>    
+<div style="height: 45px;"><h2>20. Monica Dinculescu</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -799,7 +765,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>22. Audrey Tang</h2></div>    
+<div style="height: 45px;"><h2>21. Audrey Tang</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -835,7 +801,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>23. Jeanine Adkisson</h2></div>    
+<div style="height: 45px;"><h2>22. Jeanine Adkisson</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -869,7 +835,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>24. Ola Sitarska</h2></div>    
+<div style="height: 45px;"><h2>23. Ola Sitarska</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -903,7 +869,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>25. Emily Stark</h2></div>    
+<div style="height: 45px;"><h2>24. Emily Stark</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -937,7 +903,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>26. Elizabeth Mattijsen</h2></div>    
+<div style="height: 45px;"><h2>25. Elizabeth Mattijsen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -971,7 +937,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>27. Lindsey Kuper</h2></div>    
+<div style="height: 45px;"><h2>26. Lindsey Kuper</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1005,7 +971,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>28. Colleen Murphy</h2></div>    
+<div style="height: 45px;"><h2>27. Colleen Murphy</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1039,7 +1005,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>29. Eileen McNaughton</h2></div>    
+<div style="height: 45px;"><h2>28. Eileen McNaughton</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1073,7 +1039,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>30. Heather Miller</h2></div>    
+<div style="height: 45px;"><h2>29. Heather Miller</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1107,7 +1073,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>31. Linda</h2></div>    
+<div style="height: 45px;"><h2>30. Linda</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1141,7 +1107,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>32. Raquel Vélez</h2></div>    
+<div style="height: 45px;"><h2>31. Raquel Vélez</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1175,7 +1141,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>33. Emily Stolfo</h2></div>    
+<div style="height: 45px;"><h2>32. Emily Stolfo</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1209,7 +1175,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>34. Gina Häußge</h2></div>    
+<div style="height: 45px;"><h2>33. Gina Häußge</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1243,7 +1209,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>35. Margaret Leibovic</h2></div>    
+<div style="height: 45px;"><h2>34. Margaret Leibovic</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1277,7 +1243,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>36. Siri Hansen</h2></div>    
+<div style="height: 45px;"><h2>35. Siri Hansen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1311,7 +1277,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>37. Varya Stepanova</h2></div>    
+<div style="height: 45px;"><h2>36. Varya Stepanova</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1345,7 +1311,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>38. Soledad Penadés</h2></div>    
+<div style="height: 45px;"><h2>37. Soledad Penadés</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1379,7 +1345,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>39. Ashley Williams</h2></div>    
+<div style="height: 45px;"><h2>38. Ashley Williams</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1413,7 +1379,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>40. Jennifer Bryan</h2></div>    
+<div style="height: 45px;"><h2>39. Jennifer Bryan</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1447,7 +1413,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>41. Rebecca Murphey</h2></div>    
+<div style="height: 45px;"><h2>40. Rebecca Murphey</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1481,7 +1447,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>42. Delisa Mason</h2></div>    
+<div style="height: 45px;"><h2>41. Delisa Mason</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1517,7 +1483,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>43. Nelle Varoquaux</h2></div>    
+<div style="height: 45px;"><h2>42. Nelle Varoquaux</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1551,7 +1517,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>44. Mikayla Hutchinson</h2></div>    
+<div style="height: 45px;"><h2>43. Mikayla Hutchinson</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1585,7 +1551,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>45. Corinna Vinschen</h2></div>    
+<div style="height: 45px;"><h2>44. Corinna Vinschen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1619,7 +1585,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>46. Sarah Allen</h2></div>    
+<div style="height: 45px;"><h2>45. Sarah Allen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1653,7 +1619,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>47. Marian Beermann</h2></div>    
+<div style="height: 45px;"><h2>46. Marian Beermann</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1687,7 +1653,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>48. Carol Nichols</h2></div>    
+<div style="height: 45px;"><h2>47. Carol Nichols</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1721,7 +1687,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>49. Vanessa Sochat</h2></div>    
+<div style="height: 45px;"><h2>48. Vanessa Sochat</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1743,19 +1709,19 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>42.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">PhD student at Standord in Biomedical Informatics</div>
-    <div class="repo_header"><a href="https://github.com/poldracklab/open_fmri">open_fmri</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/expfactory/expfactory-docker"></a> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>279</strong><span> Commits by @vsoch</span></li>
-      <li><strong>2</strong><span> Stars</span></li>
-      <li><strong>3</strong><span> Watchers</span></li>
-      <li><strong>2</strong><span> Forks</span></li>
+      <li><strong>0</strong><span> Commits by @vsoch</span></li>
+      <li><strong>0</strong><span> Stars</span></li>
+      <li><strong>0</strong><span> Watchers</span></li>
+      <li><strong>0</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Reimplementation of OpenfMRI.org in Django</div>
+    <div class="repo_footer"></div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>50. Kristina Chodorow</h2></div>    
+<div style="height: 45px;"><h2>49. Kristina Chodorow</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1789,7 +1755,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>51. Lisa Passing</h2></div>    
+<div style="height: 45px;"><h2>50. Lisa Passing</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1824,7 +1790,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>52. Alena Prokharchyk</h2></div>    
+<div style="height: 45px;"><h2>51. Alena Prokharchyk</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1858,7 +1824,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>53. Katerina Marchán</h2></div>    
+<div style="height: 45px;"><h2>52. Katerina Marchán</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1892,7 +1858,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>54. Abigail Cabunoc Mayes</h2></div>    
+<div style="height: 45px;"><h2>53. Abigail Cabunoc Mayes</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1926,7 +1892,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>55. Aswini Sridhar</h2></div>    
+<div style="height: 45px;"><h2>54. Aswini Sridhar</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1960,7 +1926,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>56. Karissa McKelvey</h2></div>    
+<div style="height: 45px;"><h2>55. Karissa McKelvey</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1994,7 +1960,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>57. Sharon Rosner</h2></div>    
+<div style="height: 45px;"><h2>56. Sharon Rosner</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2028,7 +1994,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>58. Jessica B. Hamrick</h2></div>    
+<div style="height: 45px;"><h2>57. Jessica B. Hamrick</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2062,7 +2028,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>59. Marina Glancy</h2></div>    
+<div style="height: 45px;"><h2>58. Marina Glancy</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2096,7 +2062,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>60. Alison Gianotto</h2></div>    
+<div style="height: 45px;"><h2>59. Alison Gianotto</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2130,7 +2096,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>61. Evadne Wu</h2></div>    
+<div style="height: 45px;"><h2>60. Evadne Wu</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2164,7 +2130,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>62. Erin Braswell</h2></div>    
+<div style="height: 45px;"><h2>61. Erin Braswell</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2198,7 +2164,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>63. Katharine Berry</h2></div>    
+<div style="height: 45px;"><h2>62. Katharine Berry</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2234,7 +2200,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>64. Joanna Rutkowska</h2></div>    
+<div style="height: 45px;"><h2>63. Joanna Rutkowska</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2268,7 +2234,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>65. Melissa Linkert</h2></div>    
+<div style="height: 45px;"><h2>64. Melissa Linkert</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2302,7 +2268,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>66. Corinne Krych</h2></div>    
+<div style="height: 45px;"><h2>65. Corinne Krych</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2336,7 +2302,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>67. Rebecca Sutton Koeser</h2></div>    
+<div style="height: 45px;"><h2>66. Rebecca Sutton Koeser</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2370,7 +2336,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>68. Melanie Warrick</h2></div>    
+<div style="height: 45px;"><h2>67. Melanie Warrick</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2404,7 +2370,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>69. Louise Crow</h2></div>    
+<div style="height: 45px;"><h2>68. Louise Crow</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2438,7 +2404,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>70. Lilia Markham</h2></div>    
+<div style="height: 45px;"><h2>69. Lilia Markham</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2472,41 +2438,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>71. Lindsay Kay</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/xeolabs" target="_top"><strong>Lindsay Kay</strong></a>
-      <img src="https://pbs.twimg.com/profile_images/722677667925999616/1RKvBJzX_400x400.jpg"><span class="location">Based in Berlin, Germany working at xeoLabs</span></span>
-
-      <div class="custom-follow-button ">
-        <a href="https://twitter.com/intent/user?screen_name=xeographics" target="_blank" alt="Follow xeographics">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/xeolabs" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>2847</strong><span> Total Commits</span></li>
-      <li><strong>23.0</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer">I’m Lindsay Kay, a software engineer based in Berlin who develops Web-based 3D visualisation systems for healthcare and engineering. </div>
-    <div class="repo_header"><a href="https://github.com/xeolabs/scenejs">scenejs</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>1379</strong><span> Commits by @xeolabs</span></li>
-      <li><strong>450</strong><span> Stars</span></li>
-      <li><strong>41</strong><span> Watchers</span></li>
-      <li><strong>105</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">An extensible WebGL-based engine for high-detail 3D visualisation</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>72. Amanda Shih</h2></div>    
+<div style="height: 45px;"><h2>70. Amanda Shih</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2540,7 +2472,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>73. Jana Beck</h2></div>    
+<div style="height: 45px;"><h2>71. Jana Beck</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2574,7 +2506,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>74. Danielle Madeley</h2></div>    
+<div style="height: 45px;"><h2>72. Danielle Madeley</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2608,7 +2540,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>75. Mary Rose Cook</h2></div>    
+<div style="height: 45px;"><h2>73. Mary Rose Cook</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2642,7 +2574,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>76. Alice Zoë Bevan-McGregor</h2></div>    
+<div style="height: 45px;"><h2>74. Alice Zoë Bevan-McGregor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2676,7 +2608,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>77. Isis Agora Lovecruft</h2></div>    
+<div style="height: 45px;"><h2>75. Isis Agora Lovecruft</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2710,7 +2642,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>78. Sarah Bird</h2></div>    
+<div style="height: 45px;"><h2>76. Sarah Bird</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2744,7 +2676,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>79. Maira Bello</h2></div>    
+<div style="height: 45px;"><h2>77. Maira Bello</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2778,7 +2710,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>80. Heather Piwowar</h2></div>    
+<div style="height: 45px;"><h2>78. Heather Piwowar</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2812,7 +2744,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>81. Maria Grazia Alastra</h2></div>    
+<div style="height: 45px;"><h2>79. Maria Grazia Alastra</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2846,7 +2778,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>82. Nada Amin</h2></div>    
+<div style="height: 45px;"><h2>80. Nada Amin</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2880,7 +2812,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>83. Sarah Vessels</h2></div>    
+<div style="height: 45px;"><h2>81. Sarah Vessels</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2914,7 +2846,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>84. Olga Botvinnik</h2></div>    
+<div style="height: 45px;"><h2>82. Olga Botvinnik</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2948,7 +2880,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>85. Remi Taylor</h2></div>    
+<div style="height: 45px;"><h2>83. Remi Taylor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2982,7 +2914,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>86. Flavia Missi</h2></div>    
+<div style="height: 45px;"><h2>84. Flavia Missi</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3016,7 +2948,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>87. Christine Spang</h2></div>    
+<div style="height: 45px;"><h2>85. Christine Spang</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3050,7 +2982,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>88. Lindsay Young</h2></div>    
+<div style="height: 45px;"><h2>86. Lindsay Young</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3084,7 +3016,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>89. Kylie McClain</h2></div>    
+<div style="height: 45px;"><h2>87. Kylie McClain</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3118,7 +3050,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>90. Laura DeCicco</h2></div>    
+<div style="height: 45px;"><h2>88. Laura DeCicco</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3152,7 +3084,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>91. Anne Lyle</h2></div>    
+<div style="height: 45px;"><h2>89. Anne Lyle</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3186,7 +3118,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>92. Kathryn Killebrew</h2></div>    
+<div style="height: 45px;"><h2>90. Kathryn Killebrew</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3220,7 +3152,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>93. Franziska Hinkelmann</h2></div>    
+<div style="height: 45px;"><h2>91. Franziska Hinkelmann</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3254,7 +3186,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>94. Kagami Hiiragi</h2></div>    
+<div style="height: 45px;"><h2>92. Kagami Hiiragi</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3288,7 +3220,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>95. Angie Byron</h2></div>    
+<div style="height: 45px;"><h2>93. Angie Byron</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3322,7 +3254,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>96. Rachel Mandelbaum</h2></div>    
+<div style="height: 45px;"><h2>94. Rachel Mandelbaum</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3356,7 +3288,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>97. Ada Rose Edwards</h2></div>    
+<div style="height: 45px;"><h2>95. Ada Rose Edwards</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3390,7 +3322,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>98. Lisa Ballard</h2></div>    
+<div style="height: 45px;"><h2>96. Lisa Ballard</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3424,7 +3356,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>99. Emma Strubell</h2></div>    
+<div style="height: 45px;"><h2>97. Emma Strubell</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3458,7 +3390,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>100. Lisa Glendenning</h2></div>    
+<div style="height: 45px;"><h2>98. Lisa Glendenning</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
