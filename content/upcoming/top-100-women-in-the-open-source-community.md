@@ -1250,14 +1250,14 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>61.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Firefox for Android engineering manager at Mozilla. I like the web, running, and food.</div>
-    <div class="repo_header"><a href="https://github.com/mozilla/gecko-dev">gecko-dev</a> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mozilla/gecko-dev">gecko-dev</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>297</strong><span> Commits by @leibovic</span></li>
       <li><strong>658</strong><span> Stars</span></li>
       <li><strong>105</strong><span> Watchers</span></li>
       <li><strong>806</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Read-only Git mirror of the Mercurial gecko repositories at https://hg.mozilla.org. Please don't submit PRs, see: https://developer.mozilla.org/en-US/docs/Mercurial_FAQ#I%27m_all_used_to_git.2C_but_how_can_I_provide_Mercurial-ready_patches_.3F</div>
+    <div class="repo_footer">Git mirror of the Mercurial gecko repository</div>
   </div>
 </div>
 <div style="height: 5px"></div>
