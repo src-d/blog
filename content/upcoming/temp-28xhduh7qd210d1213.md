@@ -3152,41 +3152,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>91. Kagami Hiiragi</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/Kagami" target="_top"><strong>Kagami Hiiragi</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/kagami-hiiragi.png"><span class="location"></span></span>
-
-      <div class="custom-follow-button hide">
-        <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/Kagami" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>2439</strong><span> Total Commits</span></li>
-      <li><strong>10.2</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer"></div>
-    <div class="repo_header"><a href="https://github.com/bitchan/bitmessage">bitmessage</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>236</strong><span> Commits by @Kagami</span></li>
-      <li><strong>25</strong><span> Stars</span></li>
-      <li><strong>8</strong><span> Watchers</span></li>
-      <li><strong>7</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">JavaScript Bitmessage library</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>92. Angie Byron</h2></div>    
+<div style="height: 45px;"><h2>91. Angie Byron</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3220,7 +3186,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>93. Rachel Mandelbaum</h2></div>    
+<div style="height: 45px;"><h2>92. Rachel Mandelbaum</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3254,7 +3220,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>94. Ada Rose Edwards</h2></div>    
+<div style="height: 45px;"><h2>93. Ada Rose Edwards</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3288,7 +3254,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>95. Lisa Ballard</h2></div>    
+<div style="height: 45px;"><h2>94. Lisa Ballard</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3322,7 +3288,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>96. Emma Strubell</h2></div>    
+<div style="height: 45px;"><h2>95. Emma Strubell</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3356,7 +3322,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>97. Lisa Glendenning</h2></div>    
+<div style="height: 45px;"><h2>96. Lisa Glendenning</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
