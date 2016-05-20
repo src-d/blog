@@ -32,7 +32,7 @@ Before we post about percentages, country specific differences and trends over
 time, we wanted to take a moment and highlight some of the women who have been
 active in the open-source community. This list in no way is exhaustive, and we 
 have tried our best to keep it as objective as possible. To do this, we decided 
-to order our dataset on two variables.
+to first slice our data set on two variables:
 
 1. Total # of commits  
 2. Our own version of PageRank*
@@ -40,15 +40,30 @@ to order our dataset on two variables.
 _*We look at every developer as a node in a graph and every project they
 contributed to as an edge, we then weight each edge based on the ratio of # of
 bytes contributed to that project. Once we have this graph, we apply the
-PageRank algorithm. Please note that this is a vanity metric._
+PageRank algorithm. Please note that this is a reputation metric and is 
+hence greatly influenced by the co-contributors across repositories._
 
-After we created the top 100, we went and gathered the Twitter accounts for
-each person to be able to give you a Twitter list to follow here.
+We identified every developer whose name we had classified as female, whose total # 
+of commits were above 1,000, and ordered based on PageRank. We then manually reviewed
+over +1000 Github profiles to ensure that the contributions were open-source
+projects. We decided to allow projects from any field (besides computer science 
+you'll find bioinformatics and astrophysics represented here). 
 
-We also wanted to know which companies had hired this top talent. While Google
-is significantly represented in this list, one company in particular
-stood out, with 7 developers out of the Top 100 working there, **NPM**.
+The data set used to get to the commit count, is an analysis of the raw pack files 
+of every public Git repository on Github until 21st April 2016. Often the counts of 
+commits will differ from the Github profiles which seem to use a different method.
 
+We have decided to order on PageRank because it gives an indication of the influence
+of each developer in the open-source community. We understand that there are many ways
+to order this list and are open to any suggestions. 
+
+We have reached out to every person on this list to ask if they had any objection to 
+be included or if they wanted any of their information changed. We are certain that 
+we have missed some incredible people and would love to hear from you if we have.
+
+Any suggestions or improvements can be requested on [Github](https://github.com/src-d/blog/issues).
+
+You can also follow the tweets of this incredible list of developers here: Twitter list 
 
 <div style="height: 45px;"><h2>1. Misty De Meo</h2></div>    
 <div id="user-card">
