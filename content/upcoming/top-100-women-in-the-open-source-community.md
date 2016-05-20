@@ -146,14 +146,14 @@ Avatar by @repoghost!
       <li><strong>438.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">has been called the Keyser Söze of containers, security @mesosphere, the band formerly known as a @docker maintainer</div>
-    <div class="repo_header"><a href="https://github.com/hyperhq/hypercli">hypercli</a> <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/docker/engine-api">engine-api</a> <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>1214</strong><span> Commits by @jfrazelle</span></li>
-      <li><strong>7</strong><span> Stars</span></li>
-      <li><strong>7</strong><span> Watchers</span></li>
-      <li><strong>7</strong><span> Forks</span></li>
+      <li><strong>810</strong><span> Commits by @jfrazelle</span></li>
+      <li><strong>156</strong><span> Stars</span></li>
+      <li><strong>43</strong><span> Watchers</span></li>
+      <li><strong>89</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Hyper_ client for Mac OSx/Linux</div>
+    <div class="repo_footer">Go libraries providing client and server components compatible with the Docker engine</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -704,14 +704,14 @@ work for npm on the cli</div>
       <li><strong>106.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Hacker at Google. Mostly #golang and occasionally hardware hacking. (Please don't DM, I use telegram and email.)</div>
-    <div class="repo_header"><a href="https://github.com/GoogleCloudPlatform/gcloud-node">gcloud-node</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/GoogleCloudPlatform/gcloud-golang">gcloud-golang</a> <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>305</strong><span> Commits by @rakyll</span></li>
-      <li><strong>775</strong><span> Stars</span></li>
-      <li><strong>135</strong><span> Watchers</span></li>
-      <li><strong>160</strong><span> Forks</span></li>
+      <li><strong>150</strong><span> Commits by @rakyll</span></li>
+      <li><strong>305</strong><span> Stars</span></li>
+      <li><strong>137</strong><span> Watchers</span></li>
+      <li><strong>76</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Google Cloud Client Library for Node.js</div>
+    <div class="repo_footer">Google Cloud APIs Go Client Library</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -2275,14 +2275,14 @@ Almost certainly insane.</div>
       <li><strong>24.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Interested in the Open Microscopy Environment</div>
-    <div class="repo_header"><a href="https://github.com/joansmith/bioformats">bioformats</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/openmicroscopy/bioformats">bioformats</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>6759</strong><span> Commits by @melissalinkert</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>101</strong><span> Stars</span></li>
+      <li><strong>13</strong><span> Watchers</span></li>
+      <li><strong>129</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Bio-Formats is a standalone Java library for reading and writing life sciences image file formats. It is capable of parsing both pixels and metadata for a large number of formats, as well as writing to several formats.</div>
+    <div class="repo_footer">Bio-Formats is a Java library for reading and writing data in life sciences image file formats. It is developed by the  Open Microscopy Environment (particularly  UW-Madison LOCI and  Glencoe Software). Bio-Formats is released under the  GNU General Public License (GPL); commercial licenses are available from  Glencoe Software. </div>
   </div>
 </div>
 <div style="height: 5px"></div>
