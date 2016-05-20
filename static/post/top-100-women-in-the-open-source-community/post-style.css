@@ -158,6 +158,11 @@
   padding-bottom: 6px;
 }
 
+.repo_header a, .repo_header a:hover {
+  text-decoration: none;
+  color: #32526A;
+}
+
 .repo_stats li {
   margin: 0 !important;
 }
@@ -176,7 +181,7 @@
   border-radius: 3px;
 }
 
-.repo_header .featured_repo {
+.repo_header .featured_repo{
   float: right;
   color: #989898;
   font-size: 12px;

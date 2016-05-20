@@ -78,14 +78,14 @@ Opinions: mine, &c.
 Follow reqs okay!
 Avatar by @repoghost!
 (see also; @ticky)</div>
-    <div class="repo_header">homebrew-customized-copy <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/Homebrew/homebrew-core">homebrew-core</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>1028</strong><span> Commits by @mistydemeo</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>732</strong><span> Commits by @mistydemeo</span></li>
+      <li><strong>351</strong><span> Stars</span></li>
+      <li><strong>26</strong><span> Watchers</span></li>
+      <li><strong>582</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">:beers: Core formulae for the Homebrew package manager</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -111,8 +111,8 @@ Avatar by @repoghost!
       <li><strong>9137</strong><span> Total Commits</span></li>
       <li><strong>499.6</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">I make http://t.co/xMAQXxnguq.</div>
-    <div class="repo_header">exercism.io <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">I make exercism.io</div>
+    <div class="repo_header"><a href="https://github.com/exercism/exercism.io">exercism.io</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3314</strong><span> Commits by @kytrinyx</span></li>
       <li><strong>2109</strong><span> Stars</span></li>
@@ -146,7 +146,7 @@ Avatar by @repoghost!
       <li><strong>438.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">has been called the Keyser Söze of containers, security @mesosphere, the band formerly known as a @docker maintainer</div>
-    <div class="repo_header">hypercli <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/hyperhq/hypercli">hypercli</a> <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1214</strong><span> Commits by @jfrazelle</span></li>
       <li><strong>7</strong><span> Stars</span></li>
@@ -180,7 +180,7 @@ Avatar by @repoghost!
       <li><strong>369.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Lesbian code gardener. Basically a dryad. Lead designer and developer of @SassCSS, working for @google on @dart_lang. Avatar by @roozuhime.</div>
-    <div class="repo_header">sass <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/sass/sass">sass</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>4340</strong><span> Commits by @nex3</span></li>
       <li><strong>8010</strong><span> Stars</span></li>
@@ -222,7 +222,7 @@ Unschooler. www at npmjs
 ♥︎ node.js
 
 nb & woman</div>
-    <div class="repo_header">html5 <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/aredridel/html5">html5</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>752</strong><span> Commits by @aredridel</span></li>
       <li><strong>524</strong><span> Stars</span></li>
@@ -256,14 +256,14 @@ nb & woman</div>
       <li><strong>318.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Ballerina by day, ninja chemist by night</div>
-    <div class="repo_header">Enhance <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/angular/angular.js">angular.js</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>207</strong><span> Commits by @caitp</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>49373</strong><span> Stars</span></li>
+      <li><strong>4285</strong><span> Watchers</span></li>
+      <li><strong>23743</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">HTML enhanced for web apps</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -292,9 +292,9 @@ nb & woman</div>
     <div class="footer">Rails committer. Ruby committer. amatsuda on GitHub. Creator of Kaminari. Founder of Asakusa.rb. Chief organizer of RubyKaigi 2016. A Ruby Hero in Tokyo. 松田 明
 
 </div>
-    <div class="repo_header">rfd <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/amatsuda/rfd">rfd</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>0</strong><span> Commits by @amatsuda</span></li>
+      <li><strong>594</strong><span> Commits by @amatsuda</span></li>
       <li><strong>102</strong><span> Stars</span></li>
       <li><strong>4</strong><span> Watchers</span></li>
       <li><strong>7</strong><span> Forks</span></li>
@@ -325,8 +325,8 @@ nb & woman</div>
       <li><strong>1154</strong><span> Total Commits</span></li>
       <li><strong>303.9</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">An immigrant you know and love who's unafraid to step in. Co-founder/CTO of @npmjs, started https://t.co/r7YVkmM4mv. He/him. Trini to the bone.</div>
-    <div class="repo_header">npm-expansions <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">An immigrant you know and love who's unafraid to step in. Co-founder/CTO of @npmjs, started lgbtq.technology. He/him. Trini to the bone.</div>
+    <div class="repo_header"><a href="https://github.com/npm/npm-expansions">npm-expansions</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>336</strong><span> Commits by @seldo</span></li>
       <li><strong>405</strong><span> Stars</span></li>
@@ -364,14 +364,14 @@ nb & woman</div>
 Biases: cynically optimistic intersectional feminist pragmatic poly queer trans femininity
 –––
 work for npm on the cli</div>
-    <div class="repo_header">RapidWeb <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/aredridel/html5">html5</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>692</strong><span> Commits by @iarna</span></li>
-      <li><strong>1</strong><span> Stars</span></li>
-      <li><strong>2</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>752</strong><span> Commits by @iarna</span></li>
+      <li><strong>524</strong><span> Stars</span></li>
+      <li><strong>32</strong><span> Watchers</span></li>
+      <li><strong>115</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">Event-driven HTML5 Parser in Javascript</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -398,7 +398,7 @@ work for npm on the cli</div>
       <li><strong>246.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Protractor for AngularJS, works at Google</div>
-    <div class="repo_header">protractor <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/angular/protractor">protractor</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>683</strong><span> Commits by @juliemr</span></li>
       <li><strong>5421</strong><span> Stars</span></li>
@@ -432,12 +432,12 @@ work for npm on the cli</div>
       <li><strong>229.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">salt <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/saltstack/salt">salt</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2792</strong><span> Commits by @rallytime</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>6536</strong><span> Stars</span></li>
+      <li><strong>528</strong><span> Watchers</span></li>
+      <li><strong>2899</strong><span> Forks</span></li>
     </ul>
     <div class="repo_footer">Software to automate the management and configuration of any infrastructure or application at scale. Get access to the Salt Open software package repository here: </div>
   </div>
@@ -466,14 +466,14 @@ work for npm on the cli</div>
       <li><strong>181.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">artist, programmer, person. @ITP_NYU faculty, @BerkmanCenter affiliate, @datasociety affiliate, making @p5xjs</div>
-    <div class="repo_header">p5.js <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/processing/p5.js">p5.js</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1646</strong><span> Commits by @lmccart</span></li>
       <li><strong>3846</strong><span> Stars</span></li>
       <li><strong>286</strong><span> Watchers</span></li>
       <li><strong>514</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">p5.js is a JS client-side library for creating graphic and interactive experiences, based on the core principles of Processing. http://twitter.com/p5xjs —</div>
+    <div class="repo_footer">p5.js is a JS client-side library for creating graphic and interactive experiences, based on the core principles of Processing.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -500,7 +500,7 @@ work for npm on the cli</div>
       <li><strong>169.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Code witch. Ruby Hero. Speaker, writer, mentor, Ruby Rogues panelist. 'Notorious Social Justice Warrior' --Breitbart. https://t.co/w5rw8bPZXX</div>
-    <div class="repo_header">alice <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/CoralineAda/alice">alice</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1512</strong><span> Commits by @CoralineAda</span></li>
       <li><strong>10</strong><span> Stars</span></li>
@@ -534,7 +534,7 @@ work for npm on the cli</div>
       <li><strong>156.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">My current research focuses on the design and implementation of domain-specific languages, mostly targetting problems in operating systems. I have also worked on partial evaluation, optimal reduction of the lambda calculus and continuations.</div>
-    <div class="repo_header">coccinelle <span class="language">OCaml</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/coccinelle/coccinelle">coccinelle</a> <span class="language">OCaml</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2838</strong><span> Commits by @JuliaLawall</span></li>
       <li><strong>127</strong><span> Stars</span></li>
@@ -567,8 +567,8 @@ work for npm on the cli</div>
       <li><strong>2903</strong><span> Total Commits</span></li>
       <li><strong>135.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">I build software at @PostlightAgency. I also made @makerbase @thinkup  @todotxt & https://t.co/TzLW3HLIgR. Once upon a time, I started @Lifehacker. #2Q2BSTR8 ‍‍</div>
-    <div class="repo_header">ThinkUp <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">I build software at @PostlightAgency. I also made @makerbase @thinkup @todotxt & http://narrowthegapp.com. Once upon a time, I started @Lifehacker. #2Q2BSTR8 ‍‍</div>
+    <div class="repo_header"><a href="https://github.com/ThinkUpLLC/ThinkUp">ThinkUp</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1941</strong><span> Commits by @ginatrapani</span></li>
       <li><strong>3388</strong><span> Stars</span></li>
@@ -602,7 +602,7 @@ work for npm on the cli</div>
       <li><strong>131.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">lvl63 Gnomish Compiler Nerd - Working on my dual-runtime specialization.</div>
-    <div class="repo_header">hhvm <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/facebook/hhvm">hhvm</a> <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>713</strong><span> Commits by @sgolemon</span></li>
       <li><strong>13602</strong><span> Stars</span></li>
@@ -614,41 +614,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>17. Jennifer Apacible</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/japacible" target="_top"><strong>Jennifer Apacible</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/485553392891068417/-yGCRREK_normal.jpeg"><span class="location">Based in Seattle, WA working at Google</span></span>
-
-      <div class="custom-follow-button ">
-        <a href="https://twitter.com/intent/user?screen_name=japacible" target="_blank" alt="Follow japacible">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/japacible" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>1295</strong><span> Total Commits</span></li>
-      <li><strong>126.0</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer">software engineer</div>
-    <div class="repo_header">Hackathon-Calendar <span class="language">None</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>392</strong><span> Commits by @japacible</span></li>
-      <li><strong>393</strong><span> Stars</span></li>
-      <li><strong>72</strong><span> Watchers</span></li>
-      <li><strong>171</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">List of upcoming and past hackathons.</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>18. Camilla Berglund</h2></div>    
+<div style="height: 45px;"><h2>17. Camilla Berglund</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -670,7 +636,7 @@ work for npm on the cli</div>
       <li><strong>125.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">GLFW, OpenGL, Vulkan, rendering, 囲碁, ייִדישקייט, copyfight, etc.</div>
-    <div class="repo_header">glfw <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/glfw/glfw">glfw</a> <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2654</strong><span> Commits by @elmindreda</span></li>
       <li><strong>1935</strong><span> Stars</span></li>
@@ -682,12 +648,12 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>19. Jo Liss</h2></div>    
+<div style="height: 45px;"><h2>18. Jo Liss</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/joliss" target="_top"><strong>Jo Liss</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/2400062801/kwvv3onjs6z6bg57i0en_normal.png"><span class="location">Based in Sweden working at GLFW</span></span>
+      <img src="http://pbs.twimg.com/profile_images/2400062801/kwvv3onjs6z6bg57i0en_normal.png"><span class="location"></span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=jo_liss" target="_blank" alt="Follow jo_liss">
@@ -704,7 +670,7 @@ work for npm on the cli</div>
       <li><strong>116.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Serial entrepreneur. Creator of Broccoli and other open source libraries. Feminist.</div>
-    <div class="repo_header">broccoli <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/broccolijs/broccoli">broccoli</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>538</strong><span> Commits by @joliss</span></li>
       <li><strong>2758</strong><span> Stars</span></li>
@@ -716,41 +682,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>20. Limor "Ladyada" Fried</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/ladyada" target="_top"><strong>Limor "Ladyada" Fried</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/459501419813302272/SCEy7D19_normal.png"><span class="location">Based in New York, NY - USA working at Adafruit Industries</span></span>
-
-      <div class="custom-follow-button ">
-        <a href="https://twitter.com/intent/user?screen_name=adafruit" target="_blank" alt="Follow adafruit">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/ladyada" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>1855</strong><span> Total Commits</span></li>
-      <li><strong>116.2</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer">Limor Ladyada Fried - Teaching, sharing, engineering, DIY electronic kits, open source hardware, arduino, raspberry pi, art, hacking...</div>
-    <div class="repo_header">iot_temp <span class="language">Eagle</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>116</strong><span> Commits by @ladyada</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">Arduino online temp and humidity tool</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>21. Jaana Burcu Dogan</h2></div>    
+<div style="height: 45px;"><h2>19. Jaana Burcu Dogan</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -772,7 +704,7 @@ work for npm on the cli</div>
       <li><strong>106.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Hacker at Google. Mostly #golang and occasionally hardware hacking. (Please don't DM, I use telegram and email.)</div>
-    <div class="repo_header">gcloud-node <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/GoogleCloudPlatform/gcloud-node">gcloud-node</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>305</strong><span> Commits by @rakyll</span></li>
       <li><strong>775</strong><span> Stars</span></li>
@@ -784,7 +716,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>22. Lea Verou</h2></div>    
+<div style="height: 45px;"><h2>20. Lea Verou</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -806,7 +738,7 @@ work for npm on the cli</div>
       <li><strong>106.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">HCI researcher @MIT_CSAIL, @CSSWG IE, @CSSSecretsBook author, Ex @W3C staff. Made @prismjs @dabblet @prefixfree. I ♥ standards, code, design, UX, life!</div>
-    <div class="repo_header">prism <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/PrismJS/prism">prism</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>376</strong><span> Commits by @leaverou</span></li>
       <li><strong>3029</strong><span> Stars</span></li>
@@ -818,7 +750,7 @@ work for npm on the cli</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>23. Monica Dinculescu</h2></div>    
+<div style="height: 45px;"><h2>21. Monica Dinculescu</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -840,19 +772,19 @@ work for npm on the cli</div>
       <li><strong>100.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">✨Emojineer✨ on @polymer & @googlechrome. Looks like she will bite; usually doesn't. Unless you're pizza. Taiwan #1</div>
-    <div class="repo_header">notwaldorf.github.com <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/PolymerElements/paper-input">paper-input</a> <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>276</strong><span> Commits by @notwaldorf</span></li>
-      <li><strong>5</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>2</strong><span> Forks</span></li>
+      <li><strong>129</strong><span> Commits by @notwaldorf</span></li>
+      <li><strong>30</strong><span> Stars</span></li>
+      <li><strong>33</strong><span> Watchers</span></li>
+      <li><strong>62</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">:loudspeaker: I lost a bet and now I have a blog. Also this is a fork of https://github.com/holman/left, so you should probably fork that instead :)</div>
+    <div class="repo_footer">A Material Design text field</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>24. Audrey Tang</h2></div>    
+<div style="height: 45px;"><h2>22. Audrey Tang</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -876,7 +808,7 @@ work for npm on the cli</div>
     <div class="footer">Civic hacker @g0vtw. Grew up among Tiananmen exiles. “Conservative Anarchist.”
 Consultant @ Apple, OUP and Socialtext.
 ⛏ #Perl6 #Haskell #EtherCalc #MoeDict</div>
-    <div class="repo_header">moedict-webkit <span class="language">Objective-C</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/audreyt/moedict-webkit">moedict-webkit</a> <span class="language">Objective-C</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1115</strong><span> Commits by @audreyt</span></li>
       <li><strong>172</strong><span> Stars</span></li>
@@ -888,7 +820,7 @@ Consultant @ Apple, OUP and Socialtext.
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>25. Jeanine Adkisson</h2></div>    
+<div style="height: 45px;"><h2>23. Jeanine Adkisson</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -909,10 +841,8 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>3030</strong><span> Total Commits</span></li>
       <li><strong>95.7</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Gayer than you can possibly imagine. I design languages. ask me about my cool new language @tuliplang.  https://t.co/OCjE7dGBIy
-
-https://t.co/e7lyss88cU</div>
-    <div class="repo_header">tulip <span class="language">Lua</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Gayer than you can possibly imagine. I design languages. ask me about my cool new language @tuliplang. </div>
+    <div class="repo_header"><a href="https://github.com/jneen/tulip">tulip</a> <span class="language">Lua</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>141</strong><span> Commits by @jneen</span></li>
       <li><strong>100</strong><span> Stars</span></li>
@@ -924,7 +854,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>26. Ola Sitarska</h2></div>    
+<div style="height: 45px;"><h2>24. Ola Sitarska</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -946,7 +876,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>95.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">miss radiating enthusiasm. ✨ senior developer @potatolondon, co-founder @djangogirls, organizer @djangoconeurope & @djangounderhood</div>
-    <div class="repo_header">djangogirls <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/DjangoGirls/djangogirls">djangogirls</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>451</strong><span> Commits by @olasitarska</span></li>
       <li><strong>105</strong><span> Stars</span></li>
@@ -958,7 +888,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>27. Emily Stark</h2></div>    
+<div style="height: 45px;"><h2>25. Emily Stark</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -980,7 +910,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>93.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Security engineer working on @GoogleChrome and Blink, trying to make the web a less scary place. Formerly @meteorjs.</div>
-    <div class="repo_header">meteor <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/meteor/meteor">meteor</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1254</strong><span> Commits by @estark37</span></li>
       <li><strong>33882</strong><span> Stars</span></li>
@@ -992,7 +922,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>28. Elizabeth Mattijsen</h2></div>    
+<div style="height: 45px;"><h2>26. Elizabeth Mattijsen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1014,7 +944,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>87.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">In the last 4 (and a bit more) years she has been involved in the development of Perl modules and even contributed a bit to the development of Perl itself. She is an active member of the Dutch Perl community and she also is active as a Perl Monk. At the first Dutch Perl Workshop she gave a presentation about Parsing XML/HTML.</div>
-    <div class="repo_header">rakudo <span class="language">Perl6</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/rakudo/rakudo">rakudo</a> <span class="language">Perl6</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3377</strong><span> Commits by @lizmat</span></li>
       <li><strong>769</strong><span> Stars</span></li>
@@ -1026,7 +956,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>29. Lindsey Kuper</h2></div>    
+<div style="height: 45px;"><h2>27. Lindsey Kuper</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1048,7 +978,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>87.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">A little bit “Permit yourself to open a book and start reading from anywhere”; a little bit “I HAVE NO TOOLS BECAUSE I'VE DESTROYED MY TOOLS WITH MY TOOLS”.</div>
-    <div class="repo_header">lvars <span class="language">Haskell</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/iu-parfunc/lvars">lvars</a> <span class="language">Haskell</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>346</strong><span> Commits by @lkuper</span></li>
       <li><strong>52</strong><span> Stars</span></li>
@@ -1060,7 +990,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>30. Colleen Murphy</h2></div>    
+<div style="height: 45px;"><h2>28. Colleen Murphy</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1081,8 +1011,8 @@ https://t.co/e7lyss88cU</div>
       <li><strong>1752</strong><span> Total Commits</span></li>
       <li><strong>85.8</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">modulesync <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Core reviewer on the OpenStack Puppet Modules team, on the puppet modules subteam on the OpenStack Infrastructure team and chief shepherd for the Infra Cloud project.</div>
+    <div class="repo_header"><a href="https://github.com/puppetlabs/modulesync">modulesync</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>125</strong><span> Commits by @cmurphy</span></li>
       <li><strong>48</strong><span> Stars</span></li>
@@ -1094,7 +1024,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>31. Eileen McNaughton</h2></div>    
+<div style="height: 45px;"><h2>29. Eileen McNaughton</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1115,8 +1045,8 @@ https://t.co/e7lyss88cU</div>
       <li><strong>4827</strong><span> Total Commits</span></li>
       <li><strong>80.8</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">civicrm-core <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Key contributor within the CiviCRM community.</div>
+    <div class="repo_header"><a href="https://github.com/civicrm/civicrm-core">civicrm-core</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2614</strong><span> Commits by @eileenmcnaughton</span></li>
       <li><strong>150</strong><span> Stars</span></li>
@@ -1128,7 +1058,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>32. Heather Miller</h2></div>    
+<div style="height: 45px;"><h2>30. Heather Miller</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1150,7 +1080,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>80.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Research Scientist, Executive Director of the Scala Center at EPFL. Past life: artist @ Cooper Union</div>
-    <div class="repo_header">scala-lang <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/scala/scala-lang">scala-lang</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>394</strong><span> Commits by @heathermiller</span></li>
       <li><strong>50</strong><span> Stars</span></li>
@@ -1162,7 +1092,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>33. Linda</h2></div>    
+<div style="height: 45px;"><h2>31. Linda</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1184,7 +1114,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>77.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">ソフトウェアエンジニア (Developer + QA)．趣味で C++，Ruby，TypeScript，Dachs をVimったりする．計算機言語などのプログラミングツールが好き．あと写真も楽しい．犬．</div>
-    <div class="repo_header">Dachs <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/rhysd/Dachs">Dachs</a> <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1419</strong><span> Commits by @rhysd</span></li>
       <li><strong>34</strong><span> Stars</span></li>
@@ -1196,7 +1126,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>34. Raquel Vélez</h2></div>    
+<div style="height: 45px;"><h2>32. Raquel Vélez</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1218,7 +1148,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>76.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">purveyor of flan ∙ web wombat at @npmjs ∙ polyglot ∙ co-host of @reactivepod</div>
-    <div class="repo_header">newww <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/npm/newww">newww</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>927</strong><span> Commits by @rockbot</span></li>
       <li><strong>61</strong><span> Stars</span></li>
@@ -1230,7 +1160,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>35. Emily Stolfo</h2></div>    
+<div style="height: 45px;"><h2>33. Emily Stolfo</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1252,7 +1182,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>74.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">gem install mongo; gem install mongoid</div>
-    <div class="repo_header">mongo-ruby-driver <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mongodb/mongo-ruby-driver">mongo-ruby-driver</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>894</strong><span> Commits by @estolfo</span></li>
       <li><strong>1254</strong><span> Stars</span></li>
@@ -1264,7 +1194,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>36. Gina Häußge</h2></div>    
+<div style="height: 45px;"><h2>34. Gina Häußge</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1286,7 +1216,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>64.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Passionate code monkey, creator of OctoPrint</div>
-    <div class="repo_header">OctoPrint <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/foosel/OctoPrint">OctoPrint</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1754</strong><span> Commits by @foosel</span></li>
       <li><strong>1333</strong><span> Stars</span></li>
@@ -1298,7 +1228,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>37. Margaret Leibovic</h2></div>    
+<div style="height: 45px;"><h2>35. Margaret Leibovic</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1320,19 +1250,19 @@ https://t.co/e7lyss88cU</div>
       <li><strong>61.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Firefox for Android engineering manager at Mozilla. I like the web, running, and food.</div>
-    <div class="repo_header">releases-mozilla-release <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mozilla/gecko-dev">gecko-dev</a> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>297</strong><span> Commits by @leibovic</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>658</strong><span> Stars</span></li>
+      <li><strong>105</strong><span> Watchers</span></li>
+      <li><strong>806</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">EXPERIMENTAL - copy of mozilla-release for forking on github</div>
+    <div class="repo_footer">Read-only Git mirror of the Mercurial gecko repositories at https://hg.mozilla.org. Please don't submit PRs, see: https://developer.mozilla.org/en-US/docs/Mercurial_FAQ#I%27m_all_used_to_git.2C_but_how_can_I_provide_Mercurial-ready_patches_.3F</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>38. Siri Hansen</h2></div>    
+<div style="height: 45px;"><h2>36. Siri Hansen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1354,7 +1284,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>57.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">equic <span class="language">Erlang</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/junhuac/equic">equic</a> <span class="language">Erlang</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>766</strong><span> Commits by @sirihansen</span></li>
       <li><strong>0</strong><span> Stars</span></li>
@@ -1366,7 +1296,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>39. Varya Stepanova</h2></div>    
+<div style="height: 45px;"><h2>37. Varya Stepanova</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1388,7 +1318,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>56.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Frontend dev for SC5 (Helsinki). Before was TMG (Amsterdam) and Yandex (Moscow). Truly BEM #b_ adept and a cat fan. For tweets in Russian follow @toivonens.</div>
-    <div class="repo_header">sc5-styleguide <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/SC5/sc5-styleguide">sc5-styleguide</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>635</strong><span> Commits by @varya</span></li>
       <li><strong>915</strong><span> Stars</span></li>
@@ -1400,7 +1330,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>40. Soledad Penadés</h2></div>    
+<div style="height: 45px;"><h2>38. Soledad Penadés</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1422,7 +1352,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>55.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">DEVANGENEERING AT @MOZILLA, GIF curator, emoji practitioner, likes music & quiet places</div>
-    <div class="repo_header">rtcamera <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/sole/rtcamera">rtcamera</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>266</strong><span> Commits by @sole</span></li>
       <li><strong>26</strong><span> Stars</span></li>
@@ -1434,7 +1364,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>41. Ashley Williams</h2></div>    
+<div style="height: 45px;"><h2>39. Ashley Williams</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1456,7 +1386,7 @@ https://t.co/e7lyss88cU</div>
       <li><strong>52.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">a mess like this is easily five to ten years ahead of its time. human, @npmjs. @nodejs board of directors. founder, @node_together.</div>
-    <div class="repo_header">open-web-fundamentals <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/bocoup/open-web-fundamentals">open-web-fundamentals</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>78</strong><span> Commits by @ashleygwilliams</span></li>
       <li><strong>20</strong><span> Stars</span></li>
@@ -1468,7 +1398,7 @@ https://t.co/e7lyss88cU</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>42. Jennifer Bryan</h2></div>    
+<div style="height: 45px;"><h2>40. Jennifer Bryan</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1490,19 +1420,19 @@ https://t.co/e7lyss88cU</div>
       <li><strong>51.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">prof at UBC, humane #rstats, statistics, genomics, teach @STAT545</div>
-    <div class="repo_header">STAT545-UBC.github.io <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/jennybc/googlesheets">googlesheets</a> <span class="language">R</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>575</strong><span> Commits by @jennybc</span></li>
-      <li><strong>120</strong><span> Stars</span></li>
-      <li><strong>51</strong><span> Watchers</span></li>
-      <li><strong>116</strong><span> Forks</span></li>
+      <li><strong>491</strong><span> Commits by @jennybc</span></li>
+      <li><strong>331</strong><span> Stars</span></li>
+      <li><strong>40</strong><span> Watchers</span></li>
+      <li><strong>65</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Main repository for STAT 545 @ University of British Columbia, a course in data wrangling, exploration, and analysis with R.</div>
+    <div class="repo_footer">Google Spreadsheets R API</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>43. Rebecca Murphey</h2></div>    
+<div style="height: 45px;"><h2>41. Rebecca Murphey</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1523,20 +1453,20 @@ https://t.co/e7lyss88cU</div>
       <li><strong>3250</strong><span> Total Commits</span></li>
       <li><strong>51.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Software engineer @IndeedEng. Tweets are my own, obvi.</div>
-    <div class="repo_header">kyokushindoapp-mulberry <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Software engineer @IndeedEng.</div>
+    <div class="repo_header"><a href="https://github.com/rmurphey/mulberry">mulberry</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1075</strong><span> Commits by @rmurphey</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>8</strong><span> Stars</span></li>
+      <li><strong>8</strong><span> Watchers</span></li>
+      <li><strong>34</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Fork of mulberry for an app</div>
+    <div class="repo_footer">Home of Toura Mulberry, tools and a framework for quickly producing cross-platform mobile applications using Javascript, HTML, CSS, and PhoneGap</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>44. Delisa Mason</h2></div>    
+<div style="height: 45px;"><h2>42. Delisa Mason</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1560,19 +1490,19 @@ https://t.co/e7lyss88cU</div>
     <div class="footer">Hacking back in time  
 
 Lead Open Source Engineer @bugsnag</div>
-    <div class="repo_header"> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/danlucraft/redcar">redcar</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>645</strong><span> Commits by @kattrali</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>0</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>1002</strong><span> Stars</span></li>
+      <li><strong>52</strong><span> Watchers</span></li>
+      <li><strong>160</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">A cross-platform programmer's editor written in Ruby.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>45. Nelle Varoquaux</h2></div>    
+<div style="height: 45px;"><h2>43. Nelle Varoquaux</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1593,8 +1523,8 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>1889</strong><span> Total Commits</span></li>
       <li><strong>49.2</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">Markus <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Currently PHD candidate at MINES ParisTech</div>
+    <div class="repo_header"><a href="https://github.com/MarkUsProject/Markus">Markus</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>432</strong><span> Commits by @NelleV</span></li>
       <li><strong>137</strong><span> Stars</span></li>
@@ -1606,7 +1536,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>46. Mikayla Hutchinson</h2></div>    
+<div style="height: 45px;"><h2>44. Mikayla Hutchinson</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1628,7 +1558,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>47.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Xamarin Technical PM, gamedev, silversmith, baker, ratmom. I make tools to help people create wonderful things.</div>
-    <div class="repo_header">monodevelop <span class="language">C#</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mono/monodevelop">monodevelop</a> <span class="language">C#</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>5075</strong><span> Commits by @mhutch</span></li>
       <li><strong>1620</strong><span> Stars</span></li>
@@ -1640,7 +1570,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>47. Corinna Vinschen</h2></div>    
+<div style="height: 45px;"><h2>45. Corinna Vinschen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1661,8 +1591,8 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>12492</strong><span> Total Commits</span></li>
       <li><strong>44.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">newlib-cygwin <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Lead since mid-2014 on Cygwin at RedHat</div>
+    <div class="repo_header"><a href="https://github.com/mirror/newlib-cygwin">newlib-cygwin</a> <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>5235</strong><span> Commits by @</span></li>
       <li><strong>8</strong><span> Stars</span></li>
@@ -1674,7 +1604,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>48. Sarah Allen</h2></div>    
+<div style="height: 45px;"><h2>46. Sarah Allen</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1696,7 +1626,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>43.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">I write code, connect pixels and speak truth to make change. @bridgefoundry @mightyverse @18F</div>
-    <div class="repo_header">openopps-platform <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/18F/midas">openopps-platform</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>356</strong><span> Commits by @ultrasaurus</span></li>
       <li><strong>198</strong><span> Stars</span></li>
@@ -1708,12 +1638,12 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>49. Marian Beermann</h2></div>    
+<div style="height: 45px;"><h2>47. Marian Beermann</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/enkore" target="_top"><strong>Marian Beermann</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location">Based in San Francisco, CA working at 18F</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -1730,7 +1660,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>43.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">i3pystatus <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/enkore/i3pystatus">i3pystatus</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>765</strong><span> Commits by @enkore</span></li>
       <li><strong>229</strong><span> Stars</span></li>
@@ -1742,7 +1672,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>50. Carol Nichols</h2></div>    
+<div style="height: 45px;"><h2>48. Carol Nichols</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1764,7 +1694,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>43.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Rust developer. Pittsburgh, tech, music, sports, home improvement. I'm a maker, connector, hugger. All my mistakes/they brought me to you.</div>
-    <div class="repo_header">rstat.us <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/hotsh/rstat.us">rstat.us</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>508</strong><span> Commits by @carols10cents</span></li>
       <li><strong>747</strong><span> Stars</span></li>
@@ -1776,7 +1706,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>51. Vanessa Sochat</h2></div>    
+<div style="height: 45px;"><h2>49. Vanessa Sochat</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1797,8 +1727,8 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>3344</strong><span> Total Commits</span></li>
       <li><strong>42.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">open_fmri <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">PhD student at Standord in Biomedical Informatics</div>
+    <div class="repo_header"><a href="https://github.com/poldracklab/open_fmri">open_fmri</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>279</strong><span> Commits by @vsoch</span></li>
       <li><strong>2</strong><span> Stars</span></li>
@@ -1810,7 +1740,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>52. Kristina Chodorow</h2></div>    
+<div style="height: 45px;"><h2>50. Kristina Chodorow</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1832,7 +1762,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>41.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Software engineer at Google working on @bazelbuild, author of several O'Reilly books on MongoDB.</div>
-    <div class="repo_header">mongo <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mongodb/mongo">mongo</a> <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>597</strong><span> Commits by @kchodorow</span></li>
       <li><strong>9300</strong><span> Stars</span></li>
@@ -1844,7 +1774,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>53. Lisa Passing</h2></div>    
+<div style="height: 45px;"><h2>51. Lisa Passing</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1865,8 +1795,9 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>2102</strong><span> Total Commits</span></li>
       <li><strong>39.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">travis-web <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Lisa Passing is working as a frontend developer at Travis CI. She's been heavily stalking diaspora* since 2011, organizing monthly user gatherings in Berlin and making merchandise for the community.
+</div>
+    <div class="repo_header"><a href="https://github.com/travis-ci/travis-web">travis-web</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>964</strong><span> Commits by @lislis</span></li>
       <li><strong>334</strong><span> Stars</span></li>
@@ -1878,7 +1809,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>54. Alena Prokharchyk</h2></div>    
+<div style="height: 45px;"><h2>52. Alena Prokharchyk</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1899,20 +1830,20 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>6425</strong><span> Total Commits</span></li>
       <li><strong>38.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Software Engineer @Rancher_Labs http://t.co/AG83dmxk3o</div>
-    <div class="repo_header">cloudstack <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Software Engineer @Rancher_Labs</div>
+    <div class="repo_header"><a href="https://github.com/apache/cloudstack">cloudstack</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2142</strong><span> Commits by @alena1108</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>374</strong><span> Stars</span></li>
+      <li><strong>87</strong><span> Watchers</span></li>
+      <li><strong>487</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">None</div>
+    <div class="repo_footer">Mirror of Apache Cloudstack</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>55. Katerina Marchán</h2></div>    
+<div style="height: 45px;"><h2>53. Katerina Marchán</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1934,7 +1865,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>37.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Green-haired digital dryad. Boricua. Cook. Game dev. PLT nerd. npm CLI team. Queer/ace/gq.  時々日本語で書ける/hablo español/falo um pouco de BR  https://t.co/ucZRAWkG2S</div>
-    <div class="repo_header">sheeple <span class="language">Common Lisp</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/zkat/sheeple">sheeple</a> <span class="language">Common Lisp</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1227</strong><span> Commits by @zkat</span></li>
       <li><strong>51</strong><span> Stars</span></li>
@@ -1946,7 +1877,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>56. Abigail Cabunoc Mayes</h2></div>    
+<div style="height: 45px;"><h2>54. Abigail Cabunoc Mayes</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -1968,7 +1899,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>36.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Lead developer, Mozilla Science Lab (@MozillaScience) (web + science = ♥) alum:@OICR_news @wormbase @uwaterloo // Fully known & truly loved</div>
-    <div class="repo_header">website <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/WormBase/website">website</a> <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3352</strong><span> Commits by @acabunoc</span></li>
       <li><strong>19</strong><span> Stars</span></li>
@@ -1980,7 +1911,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>57. Aswini Sridhar</h2></div>    
+<div style="height: 45px;"><h2>55. Aswini Sridhar</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2002,7 +1933,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>36.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">A Geek who isn't nerdy but an introvert who is workaholic & rarely, a gamer. Loves to scribble, break & code! Music made her love Signals. Books are her buddies</div>
-    <div class="repo_header">MeowJS <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/Geek-Research-Lab/MeowJS">MeowJS</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1148</strong><span> Commits by @ashumeow</span></li>
       <li><strong>4</strong><span> Stars</span></li>
@@ -2014,7 +1945,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>58. Karissa McKelvey</h2></div>    
+<div style="height: 45px;"><h2>56. Karissa McKelvey</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2036,24 +1967,24 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>36.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Mad science with @dat_project during the day, trumpet at night</div>
-    <div class="repo_header">debtcollective-web <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/maxogden/dat">dat</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>792</strong><span> Commits by @karissa</span></li>
-      <li><strong>10</strong><span> Stars</span></li>
-      <li><strong>6</strong><span> Watchers</span></li>
-      <li><strong>4</strong><span> Forks</span></li>
+      <li><strong>390</strong><span> Commits by @karissa</span></li>
+      <li><strong>4374</strong><span> Stars</span></li>
+      <li><strong>286</strong><span> Watchers</span></li>
+      <li><strong>281</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Website for debtcollective.org</div>
+    <div class="repo_footer">:floppy_disk: open source peer to peer data sharing</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>59. Sharon Rosner</h2></div>    
+<div style="height: 45px;"><h2>57. Sharon Rosner</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/ciconia" target="_top"><strong>Sharon Rosner</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/sharon-rosner.jpeg"><span class="location">Based in Oakland, CA working at US Open Data</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/sharon-rosner.jpeg"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -2070,7 +2001,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>36.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">music <span class="language">LilyPond</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/ciconia/music">music</a> <span class="language">LilyPond</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1253</strong><span> Commits by @ciconia</span></li>
       <li><strong>5</strong><span> Stars</span></li>
@@ -2082,7 +2013,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>60. Jessica B. Hamrick</h2></div>    
+<div style="height: 45px;"><h2>58. Jessica B. Hamrick</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2104,9 +2035,9 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>34.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Bayesian, pythonista, cognitive scientist, feminist. IPython and Jupyter, too.</div>
-    <div class="repo_header">optimal-mental-rotation <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/jhamrick/optimal-mental-rotation">optimal-mental-rotation</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>0</strong><span> Commits by @jhamrick</span></li>
+      <li><strong>1343</strong><span> Commits by @jhamrick</span></li>
       <li><strong>2</strong><span> Stars</span></li>
       <li><strong>2</strong><span> Watchers</span></li>
       <li><strong>0</strong><span> Forks</span></li>
@@ -2116,7 +2047,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>61. Marina Glancy</h2></div>    
+<div style="height: 45px;"><h2>59. Marina Glancy</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2137,8 +2068,8 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>2252</strong><span> Total Commits</span></li>
       <li><strong>32.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">iomad <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Working on the core team at Moodle.</div>
+    <div class="repo_header"><a href="https://github.com/iomad/iomad">iomad</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1404</strong><span> Commits by @marinaglancy</span></li>
       <li><strong>22</strong><span> Stars</span></li>
@@ -2150,7 +2081,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>62. Alison Gianotto</h2></div>    
+<div style="height: 45px;"><h2>60. Alison Gianotto</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2172,7 +2103,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>31.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Hacker, co-founder/CTO @MassMosaic, creator Snipe-IT, CEO of Grokability, open sourcerer, author, speaker, devops, infosec, atheist, chaotic neutral, ENTP, NSFW</div>
-    <div class="repo_header">snipe-it <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/snipe/snipe-it">snipe-it</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2400</strong><span> Commits by @snipe</span></li>
       <li><strong>751</strong><span> Stars</span></li>
@@ -2184,7 +2115,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>63. Evadne Wu</h2></div>    
+<div style="height: 45px;"><h2>61. Evadne Wu</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2206,7 +2137,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>30.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">HCI & Software Architecture / Visa Collector / Open Source Contributor / International Women of Mystery</div>
-    <div class="repo_header">Partio-iOS <span class="language">Objective-C</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/waveface/Partio-iOS">Partio-iOS</a> <span class="language">Objective-C</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>4455</strong><span> Commits by @evadne</span></li>
       <li><strong>0</strong><span> Stars</span></li>
@@ -2218,7 +2149,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>64. Erin Braswell</h2></div>    
+<div style="height: 45px;"><h2>62. Erin Braswell</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2240,7 +2171,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>30.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Lover of all things astronomy, science and computers; professional wrestling enthusiast</div>
-    <div class="repo_header">scrapi <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/fabianvf/scrapi">scrapi</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1926</strong><span> Commits by @erinspace</span></li>
       <li><strong>0</strong><span> Stars</span></li>
@@ -2252,7 +2183,7 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>65. Katharine Berry</h2></div>    
+<div style="height: 45px;"><h2>63. Katharine Berry</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2276,7 +2207,7 @@ Lead Open Source Engineer @bugsnag</div>
     <div class="footer">Developer Tooling Lead and Sparkly Code Princess at @Pebble.
 
 Almost certainly insane.</div>
-    <div class="repo_header">cloudpebble <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/pebble/cloudpebble">cloudpebble</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1097</strong><span> Commits by @Katharine</span></li>
       <li><strong>145</strong><span> Stars</span></li>
@@ -2288,7 +2219,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>66. Joanna Rutkowska</h2></div>    
+<div style="height: 45px;"><h2>64. Joanna Rutkowska</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2310,24 +2241,24 @@ Almost certainly insane.</div>
       <li><strong>24.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Founder of Invisible Things Lab and @QubesOS</div>
-    <div class="repo_header">Qubes-Docs-Clone <span class="language">None</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/QubesOS/qubes-core-admin">qubes-core-admin</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>673</strong><span> Commits by @rootkovska</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>497</strong><span> Commits by @rootkovska</span></li>
+      <li><strong>15</strong><span> Stars</span></li>
+      <li><strong>9</strong><span> Watchers</span></li>
+      <li><strong>22</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Basic How Tos for reference</div>
+    <div class="repo_footer">Qubes component: core-admin</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>67. Melissa Linkert</h2></div>    
+<div style="height: 45px;"><h2>65. Melissa Linkert</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/melissalinkert" target="_top"><strong>Melissa Linkert</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location">Working at Glencoe Software</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/melissa-linkert.jpeg"><span class="location">Working at Glencoe Software</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=melissa_linkert" target="_blank" alt="Follow melissa_linkert">
@@ -2343,20 +2274,20 @@ Almost certainly insane.</div>
       <li><strong>13534</strong><span> Total Commits</span></li>
       <li><strong>24.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">bioformats <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Interested in the Open Microscopy Environment</div>
+    <div class="repo_header"><a href="https://github.com/joansmith/bioformats">bioformats</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>6759</strong><span> Commits by @melissalinkert</span></li>
       <li><strong>0</strong><span> Stars</span></li>
       <li><strong>1</strong><span> Watchers</span></li>
       <li><strong>0</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">None</div>
+    <div class="repo_footer">Bio-Formats is a standalone Java library for reading and writing life sciences image file formats. It is capable of parsing both pixels and metadata for a large number of formats, as well as writing to several formats.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>68. Corinne Krych</h2></div>    
+<div style="height: 45px;"><h2>66. Corinne Krych</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2377,20 +2308,20 @@ Almost certainly insane.</div>
       <li><strong>2743</strong><span> Total Commits</span></li>
       <li><strong>23.5</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Mobile - HTML5 - iOS - AeroGear - RHMAP Client SDK tech lead - Red Hat https://t.co/aOhOXQvPN3</div>
-    <div class="repo_header">aerogear-ios-cookbook <span class="language">Swift</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Mobile - HTML5 - iOS - AeroGear - RHMAP Client SDK tech lead - Red Hat</div>
+    <div class="repo_header"><a href="https://github.com/aerogear/aerogear-ios-cookbook">aerogear-ios-cookbook</a> <span class="language">Swift</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>264</strong><span> Commits by @corinnekrych</span></li>
       <li><strong>14</strong><span> Stars</span></li>
       <li><strong>26</strong><span> Watchers</span></li>
       <li><strong>18</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">The AeroGear iOS cookbook is a list of recipes to quick start your iOS AeroGear experience. Each recipe is a complete iOS app.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>69. Rebecca Sutton Koeser</h2></div>    
+<div style="height: 45px;"><h2>67. Rebecca Sutton Koeser</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2412,7 +2343,7 @@ Almost certainly insane.</div>
       <li><strong>23.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Software Engineer, PhD in English Literature; digital libraries/digital humanities.  Python programmer, reader, gamer, gadget girl, mother.</div>
-    <div class="repo_header">findingaids <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/emory-libraries/findingaids">findingaids</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1227</strong><span> Commits by @rlskoeser</span></li>
       <li><strong>8</strong><span> Stars</span></li>
@@ -2424,7 +2355,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>70. Melanie Warrick</h2></div>    
+<div style="height: 45px;"><h2>68. Melanie Warrick</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2445,20 +2376,20 @@ Almost certainly insane.</div>
       <li><strong>4886</strong><span> Total Commits</span></li>
       <li><strong>23.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Deep Learning Engineer at Skymind. I want to make tech sapient (http://t.co/ufmWv61QOW)</div>
-    <div class="repo_header">Flask_Mega <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Deep Learning Engineer at Skymind. I want to make tech sapient.</div>
+    <div class="repo_header"><a href="https://github.com/deeplearning4j/nd4j">nd4j</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>2886</strong><span> Commits by @nyghtowl</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>58</strong><span> Commits by @nyghtowl</span></li>
+      <li><strong>390</strong><span> Stars</span></li>
+      <li><strong>60</strong><span> Watchers</span></li>
+      <li><strong>189</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Working through the Flask Mega Tutorial.</div>
+    <div class="repo_footer">Fast, Scientific and Numerical Computing for the JVM (NDArrays)</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>71. Louise Crow</h2></div>    
+<div style="height: 45px;"><h2>69. Louise Crow</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2480,7 +2411,7 @@ Almost certainly insane.</div>
       <li><strong>23.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">developer for @mySociety, working on Alaveteli, the FOI software behind @WhatDoTheyKnow. Live in Peckham. Personal account.</div>
-    <div class="repo_header">fixmytransport <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mysociety/fixmytransport">fixmytransport</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3073</strong><span> Commits by @crowbot</span></li>
       <li><strong>39</strong><span> Stars</span></li>
@@ -2492,7 +2423,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>72. Lilia Markham</h2></div>    
+<div style="height: 45px;"><h2>70. Lilia Markham</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2514,7 +2445,7 @@ Almost certainly insane.</div>
       <li><strong>23.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">ləˈlē-ə ˈkaɪ</div>
-    <div class="repo_header">Signal-Desktop <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/WhisperSystems/TextSecure-Browser">Signal-Desktop</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1502</strong><span> Commits by @liliakai</span></li>
       <li><strong>1592</strong><span> Stars</span></li>
@@ -2526,7 +2457,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>73. Lindsay Kay</h2></div>    
+<div style="height: 45px;"><h2>71. Lindsay Kay</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2548,7 +2479,7 @@ Almost certainly insane.</div>
       <li><strong>23.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">I’m Lindsay Kay, a software engineer based in Berlin who develops Web-based 3D visualisation systems for healthcare and engineering. </div>
-    <div class="repo_header">scenejs <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/xeolabs/scenejs">scenejs</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1379</strong><span> Commits by @xeolabs</span></li>
       <li><strong>450</strong><span> Stars</span></li>
@@ -2560,46 +2491,12 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>74. Christine Dodrill</h2></div>    
-<div id="user-card">
-  <div class="github-card user-card">
-    <div class="header">
-      <a class="avatar" href="https://github.com/Xe" target="_top"><strong>Christine Dodrill</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/713464674155560960/jdcgF_Gq_normal.jpg"><span class="location">Based in Mountain View working at IMVU</span></span>
-
-      <div class="custom-follow-button ">
-        <a href="https://twitter.com/intent/user?screen_name=theprincessxena" target="_blank" alt="Follow theprincessxena">
-          <i class="btn-icon"></i>
-          <span class="btn-text">Follow</span>
-        </a>
-      </div>
-      <a class="button " href="https://github.com/Xe" target="_top">
-        <span class="flaticon-circle"></span> Follow
-        </a>
-    </div>
-    <ul class="status">
-      <li><strong>7683</strong><span> Total Commits</span></li>
-      <li><strong>21.5</strong><span> PageRank</span></li>
-    </ul>
-    <div class="footer">Gopher/Nimrod | Cloud Mage | Opinions are my own</div>
-    <div class="repo_header">rockstar <span class="language">C++</span> <span class="featured_repo">Featured Repo</span></div>
-    <ul class="repo_stats">
-      <li><strong>2801</strong><span> Commits by @Xe</span></li>
-      <li><strong>1</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>1</strong><span> Forks</span></li>
-    </ul>
-    <div class="repo_footer">None</div>
-  </div>
-</div>
-<div style="height: 5px"></div>
-
-<div style="height: 45px;"><h2>75. Amanda Shih</h2></div>    
+<div style="height: 45px;"><h2>72. Amanda Shih</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/pandafulmanda" target="_top"><strong>Amanda Shih</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/546906721554145280/6zxoznyM_normal.jpeg"><span class="location">Working at OpenStax</span></span>
+      <img src="http://pbs.twimg.com/profile_images/546906721554145280/6zxoznyM_normal.jpeg"><span class="location">Based in Houstan, Texas working at OpenStax</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=pandafulmanda" target="_blank" alt="Follow pandafulmanda">
@@ -2616,7 +2513,7 @@ Almost certainly insane.</div>
       <li><strong>21.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">tutor-js <span class="language">CoffeeScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/openstax/tutor-js">tutor-js</a> <span class="language">CoffeeScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1097</strong><span> Commits by @pandafulmanda</span></li>
       <li><strong>5</strong><span> Stars</span></li>
@@ -2628,7 +2525,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>76. Jana Beck</h2></div>    
+<div style="height: 45px;"><h2>73. Jana Beck</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2650,19 +2547,19 @@ Almost certainly insane.</div>
       <li><strong>20.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">PWD (type 1). Avid QuantifiedSelfer with interests in data visualization, statistics, gamification. Coffee snob. (Slow) runner. Bike commuter.</div>
-    <div class="repo_header"> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/tidepool-org/tideline">tideline</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1624</strong><span> Commits by @jebeck</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>0</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>25</strong><span> Stars</span></li>
+      <li><strong>29</strong><span> Watchers</span></li>
+      <li><strong>11</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">Library for Tidepool's timeline-style diabetes data visualization(s) used in Blip</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>77. Danielle Madeley</h2></div>    
+<div style="height: 45px;"><h2>74. Danielle Madeley</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2684,7 +2581,7 @@ Almost certainly insane.</div>
       <li><strong>20.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Crosslegged on the front lawn. She's had a bad pill.</div>
-    <div class="repo_header">empathy <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/GNOME/empathy">empathy</a> <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>366</strong><span> Commits by @danni</span></li>
       <li><strong>23</strong><span> Stars</span></li>
@@ -2696,7 +2593,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>78. Mary Rose Cook</h2></div>    
+<div style="height: 45px;"><h2>75. Mary Rose Cook</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2718,7 +2615,7 @@ Almost certainly insane.</div>
       <li><strong>19.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">I’m making Code Lauren (game programming for beginners). I made Gitlet, Isla, Empty Black and Pistol Slut.</div>
-    <div class="repo_header">gitlet <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/maryrosecook/gitlet">gitlet</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>952</strong><span> Commits by @maryrosecook</span></li>
       <li><strong>1325</strong><span> Stars</span></li>
@@ -2730,7 +2627,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>79. Alice Zoë Bevan-McGregor</h2></div>    
+<div style="height: 45px;"><h2>76. Alice Zoë Bevan-McGregor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2752,7 +2649,7 @@ Almost certainly insane.</div>
       <li><strong>19.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Currently leading a small international development team working on a WebCore (Python) job distribution and analytics platform powered by MongoDB.</div>
-    <div class="repo_header">WebCore <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/marrow/WebCore">WebCore</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>328</strong><span> Commits by @amcgregor</span></li>
       <li><strong>52</strong><span> Stars</span></li>
@@ -2764,7 +2661,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>80. Isis Agora Lovecruft</h2></div>    
+<div style="height: 45px;"><h2>77. Isis Agora Lovecruft</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2786,24 +2683,24 @@ Almost certainly insane.</div>
       <li><strong>19.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Anarchist; hacker; physicist. Core developer @torproject: #Tor bridges, #censorship circumvention, sometimes Tor Browser. they/their. !آزادی بیان برای همه</div>
-    <div class="repo_header"> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/isislovecruft/bridgedb">bridgedb</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1834</strong><span> Commits by @isislovecruft</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>0</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>1</strong><span> Stars</span></li>
+      <li><strong>2</strong><span> Watchers</span></li>
+      <li><strong>1</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">Personal development fork of https://git.torproject.org/bridgedb.git. Don't clone this copy of the repo, or I'll happily rebase branches out from under you. Clone https://git.torproject.org/user/isis/bridgedb.git instead.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>81. Sarah Bird</h2></div>    
+<div style="height: 45px;"><h2>78. Sarah Bird</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/birdsarah" target="_top"><strong>Sarah Bird</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/sarah-bird.jpeg"><span class="location">Based in 4096R/A3ADB67A2CDB8B35 working at The Tor Project</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/sarah-bird.jpeg"><span class="location">Based in San Francisco, CA working at Continuum Analytics</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -2819,8 +2716,8 @@ Almost certainly insane.</div>
       <li><strong>2391</strong><span> Total Commits</span></li>
       <li><strong>19.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">bokeh <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Developing Bokeh - an open source data visualization library</div>
+    <div class="repo_header"><a href="https://github.com/bokeh/bokeh">bokeh</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>341</strong><span> Commits by @birdsarah</span></li>
       <li><strong>4190</strong><span> Stars</span></li>
@@ -2832,7 +2729,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>82. Maira Bello</h2></div>    
+<div style="height: 45px;"><h2>79. Maira Bello</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2854,7 +2751,7 @@ Almost certainly insane.</div>
       <li><strong>17.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">metal.js <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/alloyui/core">metal.js</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>451</strong><span> Commits by @mairatma</span></li>
       <li><strong>58</strong><span> Stars</span></li>
@@ -2866,7 +2763,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>83. Heather Piwowar</h2></div>    
+<div style="height: 45px;"><h2>80. Heather Piwowar</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2888,7 +2785,7 @@ Almost certainly insane.</div>
       <li><strong>17.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">cofounder of @impactstory: learn the full impact of your research. Research passion: measuring data sharing and reuse. Adore cookies+cycling+reading+my fam.</div>
-    <div class="repo_header">total-impact-core <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/total-impact/total-impact-core">total-impact-core</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1757</strong><span> Commits by @hpiwowar</span></li>
       <li><strong>54</strong><span> Stars</span></li>
@@ -2900,12 +2797,12 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>84. Maria Grazia Alastra</h2></div>    
+<div style="height: 45px;"><h2>81. Maria Grazia Alastra</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/MariagraziaAlastra" target="_top"><strong>Maria Grazia Alastra</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/maria-grazia-alastra.jpeg"><span class="location">Working at Impactstory</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/maria-grazia-alastra.jpeg"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -2922,7 +2819,7 @@ Almost certainly insane.</div>
       <li><strong>17.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Core contributor to the DuckDuckGo - Community Platform</div>
-    <div class="repo_header">community-platform <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/duckduckgo/community-platform">community-platform</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2067</strong><span> Commits by @MariagraziaAlastra</span></li>
       <li><strong>419</strong><span> Stars</span></li>
@@ -2934,7 +2831,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>85. Nada Amin</h2></div>    
+<div style="height: 45px;"><h2>82. Nada Amin</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2956,7 +2853,7 @@ Almost certainly insane.</div>
       <li><strong>16.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">minidot <span class="language">Coq</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/TiarkRompf/minidot">minidot</a> <span class="language">Coq</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1785</strong><span> Commits by @namin</span></li>
       <li><strong>15</strong><span> Stars</span></li>
@@ -2968,7 +2865,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>86. Sarah Vessels</h2></div>    
+<div style="height: 45px;"><h2>83. Sarah Vessels</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2990,7 +2887,7 @@ Almost certainly insane.</div>
       <li><strong>16.0</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Tea drinker, gamer, developer at GitHub. Find me at https://t.co/KnsiOll0fP</div>
-    <div class="repo_header">blicblock-js <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/moneypenny/blicblock-js">blicblock-js</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>235</strong><span> Commits by @cheshire137</span></li>
       <li><strong>4</strong><span> Stars</span></li>
@@ -3002,7 +2899,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>87. Olga Botvinnik</h2></div>    
+<div style="height: 45px;"><h2>84. Olga Botvinnik</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3024,7 +2921,7 @@ Almost certainly insane.</div>
       <li><strong>15.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">@MIT, @UCSC Alumna. PhD student in Bioinformatics @UCSanDiego. Data dula. Beware of opinions on: Python, open science, dataviz, yoga, fashion, Beyoncé.</div>
-    <div class="repo_header">flotilla <span class="language">Jupyter Notebook</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/YeoLab/flotilla">flotilla</a> <span class="language">Jupyter Notebook</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2010</strong><span> Commits by @olgabot</span></li>
       <li><strong>66</strong><span> Stars</span></li>
@@ -3036,7 +2933,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>88. Remi Taylor</h2></div>    
+<div style="height: 45px;"><h2>85. Remi Taylor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3058,19 +2955,19 @@ Almost certainly insane.</div>
       <li><strong>15.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">gaedockertest <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/remi/clide">clide</a> <span class="language">C#</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>202</strong><span> Commits by @remi</span></li>
+      <li><strong>139</strong><span> Commits by @remi</span></li>
       <li><strong>0</strong><span> Stars</span></li>
       <li><strong>1</strong><span> Watchers</span></li>
       <li><strong>0</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">Manage .NET (VS) project files from the command-line</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>89. Flavia Missi</h2></div>    
+<div style="height: 45px;"><h2>86. Flavia Missi</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3092,7 +2989,7 @@ Almost certainly insane.</div>
       <li><strong>15.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Passionate software developer, always seeking for new challenges. Eternal learner. Pythonist from heart, in love with Golang.</div>
-    <div class="repo_header">tsuru <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/tsuru/tsuru">tsuru</a> <span class="language">Go</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1195</strong><span> Commits by @flaviamissi</span></li>
       <li><strong>1883</strong><span> Stars</span></li>
@@ -3104,7 +3001,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>90. Christine Spang</h2></div>    
+<div style="height: 45px;"><h2>87. Christine Spang</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3126,7 +3023,7 @@ Almost certainly insane.</div>
       <li><strong>13.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">there's gotta be a better way | cofounder & CTO @nylas | spang@nylas.com</div>
-    <div class="repo_header">sync-engine <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/nylas/sync-engine">sync-engine</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>956</strong><span> Commits by @spang</span></li>
       <li><strong>2931</strong><span> Stars</span></li>
@@ -3138,7 +3035,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>91. Lindsay Young</h2></div>    
+<div style="height: 45px;"><h2>88. Lindsay Young</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3160,19 +3057,19 @@ Almost certainly insane.</div>
       <li><strong>12.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Political data nerd in DC. All opinions belong to strangers. Retweets = marriage proposals.</div>
-    <div class="repo_header"> <span class="language"></span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/18F/openFEC">openFEC</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1142</strong><span> Commits by @LindsayYoung</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>0</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>148</strong><span> Stars</span></li>
+      <li><strong>32</strong><span> Watchers</span></li>
+      <li><strong>39</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer"></div>
+    <div class="repo_footer">The first RESTful API for the Federal Election Commission. We're aiming to make campaign finance more accessible for journalists, academics, developers, and other transparency seekers.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>92. Kylie McClain</h2></div>    
+<div style="height: 45px;"><h2>89. Kylie McClain</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3193,20 +3090,20 @@ Almost certainly insane.</div>
       <li><strong>2675</strong><span> Total Commits</span></li>
       <li><strong>12.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header">arbor <span class="language">Groff</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">My name is Kylie McClain, and I am a 17 year old woman. I have been using computers since I was about three years old, and using Linux since age seven.</div>
+    <div class="repo_header"><a href="https://github.com/somasis/arbor">arbor</a> <span class="language">Groff</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1101</strong><span> Commits by @somasis</span></li>
       <li><strong>1</strong><span> Stars</span></li>
       <li><strong>1</strong><span> Watchers</span></li>
       <li><strong>0</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">None</div>
+    <div class="repo_footer">Exherbo fork</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>93. Laura DeCicco</h2></div>    
+<div style="height: 45px;"><h2>90. Laura DeCicco</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3228,7 +3125,7 @@ Almost certainly insane.</div>
       <li><strong>12.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">dataRetrieval <span class="language">R</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/USGS-R/dataRetrieval">dataRetrieval</a> <span class="language">R</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1139</strong><span> Commits by @ldecicco-USGS</span></li>
       <li><strong>37</strong><span> Stars</span></li>
@@ -3240,7 +3137,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>94. Anne Lyle</h2></div>    
+<div style="height: 45px;"><h2>91. Anne Lyle</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3262,7 +3159,7 @@ Almost certainly insane.</div>
       <li><strong>11.7</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">ensembl-webcode <span class="language">Perl</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/Ensembl/ensembl-webcode">ensembl-webcode</a> <span class="language">Perl</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>6708</strong><span> Commits by @ens-ap5</span></li>
       <li><strong>9</strong><span> Stars</span></li>
@@ -3274,7 +3171,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>95. Kathryn Killebrew</h2></div>    
+<div style="height: 45px;"><h2>92. Kathryn Killebrew</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3296,7 +3193,7 @@ Almost certainly insane.</div>
       <li><strong>10.8</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Software developer and data wrangler.</div>
-    <div class="repo_header">open-transit-indicators <span class="language">Scala</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/WorldBank-Transport/open-transit-indicators">open-transit-indicators</a> <span class="language">Scala</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>305</strong><span> Commits by @flibbertigibbet</span></li>
       <li><strong>23</strong><span> Stars</span></li>
@@ -3308,7 +3205,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>96. Franziska Hinkelmann</h2></div>    
+<div style="height: 45px;"><h2>93. Franziska Hinkelmann</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3330,7 +3227,7 @@ Almost certainly insane.</div>
       <li><strong>10.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Mathematician turned software engineer.</div>
-    <div class="repo_header">InteractiveShell <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/fhinkel/InteractiveShell">InteractiveShell</a> <span class="language">HTML</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>1069</strong><span> Commits by @fhinkel</span></li>
       <li><strong>6</strong><span> Stars</span></li>
@@ -3342,12 +3239,12 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>97. Kagami Hiiragi</h2></div>    
+<div style="height: 45px;"><h2>94. Kagami Hiiragi</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/Kagami" target="_top"><strong>Kagami Hiiragi</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/kagami-hiiragi.png"><span class="location">Based in Munich, Germany working at Google</span></span>
+      <img src="/post/top-100-women-in-the-open-source-community/kagami-hiiragi.png"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -3364,19 +3261,19 @@ Almost certainly insane.</div>
       <li><strong>10.2</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header">meow-anon <span class="language">CoffeeScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/bitchan/bitmessage">bitmessage</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>274</strong><span> Commits by @Kagami</span></li>
-      <li><strong>1</strong><span> Stars</span></li>
-      <li><strong>0</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>236</strong><span> Commits by @Kagami</span></li>
+      <li><strong>25</strong><span> Stars</span></li>
+      <li><strong>8</strong><span> Watchers</span></li>
+      <li><strong>7</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Anonymous version of bnw-meow SPA</div>
+    <div class="repo_footer">JavaScript Bitmessage library</div>
   </div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>98. Angie Byron</h2></div>    
+<div style="height: 45px;"><h2>95. Angie Byron</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3398,7 +3295,7 @@ Almost certainly insane.</div>
       <li><strong>10.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Herder of cats. @Drupal core committer. Director of Community Development for @Acquia. @OReillyMedia author. @DrupalAssoc. Mom. Lesbionic Ace. Nerd. Gamer.</div>
-    <div class="repo_header">drupal <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/drupal/drupal">drupal</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3106</strong><span> Commits by @webchick</span></li>
       <li><strong>2233</strong><span> Stars</span></li>
