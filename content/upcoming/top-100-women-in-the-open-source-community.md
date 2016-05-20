@@ -215,13 +215,13 @@ Avatar by @repoghost!
     </ul>
     <div class="footer">Random internet positive commenter & foul weather friend.
 
-Admin https://t.co/36FBEo5MW3
+Admin.
 
-Unschooler. www at npmjs
+Unschooler. www at npmjs.
 
-♥︎ node.js
+♥︎ node.js.
 
-nb & woman</div>
+nb & woman.</div>
     <div class="repo_header"><a href="https://github.com/aredridel/html5">html5</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>752</strong><span> Commits by @aredridel</span></li>
@@ -995,7 +995,7 @@ Consultant @ Apple, OUP and Socialtext.
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/cmurphy" target="_top"><strong>Colleen Murphy</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/472945105641291776/_dJTFflB_normal.jpeg"><span class="location">Based in Portland working at Hewlett-Packard</span></span>
+      <img src="http://pbs.twimg.com/profile_images/472945105641291776/_dJTFflB_normal.jpeg"><span class="location">Based in Portland, Oregon working at Hewlett-Packard</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=pdx_krinkle" target="_blank" alt="Follow pdx_krinkle">
@@ -1097,7 +1097,7 @@ Consultant @ Apple, OUP and Socialtext.
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/rhysd" target="_top"><strong>Linda</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/3626384430/3a64cf406665c1940d68ab737003605c_normal.jpeg"><span class="location">Based in Tokyo ^ Kanagawa, Japan</span></span>
+      <img src="http://pbs.twimg.com/profile_images/3626384430/3a64cf406665c1940d68ab737003605c_normal.jpeg"><span class="location">Based in Tokyo, Japan</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=Linda_pp" target="_blank" alt="Follow Linda_pp">
@@ -3303,6 +3303,176 @@ Almost certainly insane.</div>
       <li><strong>1074</strong><span> Forks</span></li>
     </ul>
     <div class="repo_footer">Verbatim mirror of the git.drupal.org repository for Drupal core. Changes will not be pulled, and merge requests will not be accepted, if you want to contribute, go to Drupal.org: </div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>96. Rachel Mandelbaum</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/rmandelb" target="_top"><strong>Rachel Mandelbaum</strong></a>
+      <img src="/post/top-100-women-in-the-open-source-community/rachel-mandelbaum.png"><span class="location">Based in Pittsburgh, Pennsylvania working at Carnegie Mellon University</span></span>
+
+      <div class="custom-follow-button hide">
+        <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/rmandelb" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>3099</strong><span> Total Commits</span></li>
+      <li><strong>10.0</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">My research interests are predominantly in the areas of observational cosmology and galaxy studies, with the goal of improving our understanding of dark energy, dark matter, and galaxy formation.</div>
+    <div class="repo_header"><a href="https://github.com/GalSim-developers/GalSim">GalSim</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>2075</strong><span> Commits by @rmandelb</span></li>
+      <li><strong>54</strong><span> Stars</span></li>
+      <li><strong>43</strong><span> Watchers</span></li>
+      <li><strong>31</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">The modular galaxy image simulation toolkit</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>97. Ada Rose Edwards</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/AdaRoseEdwards" target="_top"><strong>Ada Rose Edwards</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/592907703615418369/baa1Upgp_400x400.png"><span class="location">Based in London, UK working at FT Labs</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=lady_ada_king" target="_blank" alt="Follow lady_ada_king">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/AdaRoseEdwards" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1753</strong><span> Total Commits</span></li>
+      <li><strong>9.9</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">JS Dev, Photography and Muay Thai. Developer for the Financial Times. Tumbr: http://sonbr.tumblr.com  (nsfw)</div>
+    <div class="repo_header"><a href="https://github.com/AdaRoseEdwards/81">81</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>104</strong><span> Commits by @AdaRoseEdwards</span></li>
+      <li><strong>0</strong><span> Stars</span></li>
+      <li><strong>1</strong><span> Watchers</span></li>
+      <li><strong>0</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">Offline First Progressive WebApp with Push Notifications</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>98. Lisa Ballard</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/basilleaf" target="_top"><strong>Lisa Ballard</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/539202902825259008/FF3oahiv_400x400.jpeg"><span class="location">Based in San Francisco, CA working at NASA PDS Rings Node, SETI Institute</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=basilleaf" target="_blank" alt="Follow basilleaf">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/basilleaf" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1916</strong><span> Total Commits</span></li>
+      <li><strong>9.9</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Web dev, hacker, space geek. Science, nature, wildlife, health, social justice. NASASocial Alum. Learning to scuba dive.</div>
+    <div class="repo_header"><a href="https://github.com/basilleaf/opus">opus</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>715</strong><span> Commits by @basilleaf</span></li>
+      <li><strong>1</strong><span> Stars</span></li>
+      <li><strong>1</strong><span> Watchers</span></li>
+      <li><strong>0</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">Outer Planets Mission Data Search Tool - http://bit.ly/pdsopus</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>99. Emma Strubell</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/strubell" target="_top"><strong>Emma Strubell</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/553022864144601089/oliNrQGv_400x400.jpeg"><span class="location">Based in Amherst, MA working at UMass Amherst</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=strubell" target="_blank" alt="Follow strubell">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/strubell" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1159</strong><span> Total Commits</span></li>
+      <li><strong>9.9</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">I'm a Ph.D. student at UMass Amherst working in the Information Extraction and Synthesis Laboratory with Professor Andrew McCallum.</div>
+    <div class="repo_header"><a href="https://github.com/factorie/factorie">factorie</a> <span class="language">Scala</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>492</strong><span> Commits by @strubell</span></li>
+      <li><strong>409</strong><span> Stars</span></li>
+      <li><strong>72</strong><span> Watchers</span></li>
+      <li><strong>131</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">FACTORIE is a toolkit for deployable probabilistic modeling, implemented as a software library in Scala. It provides its users with a succinct language for creating relational factor graphs, estimating parameters and performing inference.</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>100. Lisa Glendenning</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/lisaglendenning" target="_top"><strong>Lisa Glendenning</strong></a>
+      <img src="/post/top-100-women-in-the-open-source-community/lisa-glendenning.JPG"><span class="location">Based in Seattle, Washington working at University of Washington</span></span>
+
+      <div class="custom-follow-button hide">
+        <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/lisaglendenning" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1686</strong><span> Total Commits</span></li>
+      <li><strong>9.9</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">I am a Ph.D. candidate advised by Thomas Anderson and Arvind Krishnamurthy at the University of Washington. My research focuses on building blocks for fault-tolerant distributed systems.</div>
+    <div class="repo_header"><a href="https://github.com/lisaglendenning/zookeeper-lite">zookeeper-lite</a> <span class="language">Java</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>508</strong><span> Commits by @lisaglendenning</span></li>
+      <li><strong>5</strong><span> Stars</span></li>
+      <li><strong>3</strong><span> Watchers</span></li>
+      <li><strong>0</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">A "lite" implementation of both the server and client ZooKeeper protocol.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
