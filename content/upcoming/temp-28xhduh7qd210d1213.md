@@ -2594,7 +2594,7 @@ Almost certainly insane.</div>
       <li><strong>19.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Developing Bokeh - an open source data visualization library</div>
-    <div class="repo_header"><a href="https://github.com/moneypenny/blicblock-js">blicblock-js</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/moneypenny/blicblock-js">blicblock-js</a> <span class="language">Javascript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>235</strong><span> Commits by @birdsarah</span></li>
       <li><strong>4</strong><span> Stars</span></li>
