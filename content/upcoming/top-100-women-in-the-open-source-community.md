@@ -1284,14 +1284,14 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>57.4</strong><span> PageRank</span></li>
     </ul>
     <div class="footer"></div>
-    <div class="repo_header"><a href="https://github.com/junhuac/equic">equic</a> <span class="language">Erlang</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/erlang/otp">otp</a> <span class="language">Erlang</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>766</strong><span> Commits by @sirihansen</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>4546</strong><span> Stars</span></li>
+      <li><strong>481</strong><span> Watchers</span></li>
+      <li><strong>1312</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Erlang with Quick UDP Internet Connection</div>
+    <div class="repo_footer">Erlang/OTP</div>
   </div>
 </div>
 <div style="height: 5px"></div>
