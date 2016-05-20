@@ -1364,7 +1364,7 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>3143</strong><span> Total Commits</span></li>
       <li><strong>51.7</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">prof at UBC, humane #rstats, statistics, genomics, teach @STAT545</div>
+    <div class="footer">prof at UBC, humane #rstats, statistics, teach @STAT545, @ropensci</div>
     <div class="repo_header"><a href="https://github.com/jennybc/googlesheets">googlesheets</a> <span class="language">R</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>491</strong><span> Commits by @jennybc</span></li>
