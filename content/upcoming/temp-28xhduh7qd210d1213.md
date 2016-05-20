@@ -16,13 +16,13 @@ developers.
 There have been a lot of posts about gender in the development community, we
 realised  that we were in a great position to contribute with data. It started
 with the question,  how will we determine gender across 6 million developers. We
-took the approach of classifying names based on their statistically likelyhood
+took the approach of classifying names based on their statistically likelihood
 to be either male or female. We started with cleaning up the names used in
 commits: separating first names, last names and usernames. Secondly, we went to
 look for data sources for name genderization. Which led us to several census
 database (UK & USA) and several API's. After a lot of cleaning, we had compiled
 a database of over 144,000 names with their: gender, # of occurences and our
-statistical likelyhood of being correct.
+statistical likelihood of being correct.
 
 From the 6 million developers who've publicly contributed to Github we were able to
 accurately genderize aprox. 2 million. In the coming month, we'll be releasing
