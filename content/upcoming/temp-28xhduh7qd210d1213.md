@@ -4,7 +4,7 @@ date: 2016-05-19
 title: "Top 100 Women In The Open-Source Community" 
 draft: false 
 image: /post/top-100-women-in-the-open-source-community/intro.jpg 
-description: "A spotlight on 100 amazing women in the open-source community based on data analysis" 
+description: "Top 100 Women In The Open-Source Community" 
 --- 
 <link rel="stylesheet" type="text/css" href="/post/top-100-women-in-the-open-source-community/post-style.css">
 
@@ -2368,7 +2368,41 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>68. Amanda Shih</h2></div>    
+<div style="height: 45px;"><h2>68. C J Silverio</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/ceejbot" target="_top"><strong>C J Silverio</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/631253658743603200/XeO_3PC7_400x400.jpg"><span class="location">Based in Menlo Park, CA working at NPM</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=ceejbot" target="_blank" alt="Follow ceejbot">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/ceejbot" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>2698</strong><span> Total Commits</span></li>
+      <li><strong>22.3</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Ceej aka ceejbot. THE NPM SIEGE BOT. Innovative thought admiral-ship in cat-related tweeting.</div>
+    <div class="repo_header"><a href="https://github.com/ceejbot/polyclay">polyclay</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>171</strong><span> Commits by @ceejbot</span></li>
+      <li><strong>7</strong><span> Stars</span></li>
+      <li><strong>4</strong><span> Watchers</span></li>
+      <li><strong>1</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">a schema-enforcing model class for node.js, with optional key-value store persistence</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>69. Amanda Shih</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2402,7 +2436,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>69. Jana Beck</h2></div>    
+<div style="height: 45px;"><h2>70. Jana Beck</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2436,7 +2470,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>70. Danielle Madeley</h2></div>    
+<div style="height: 45px;"><h2>71. Danielle Madeley</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2470,7 +2504,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>71. Mary Rose Cook</h2></div>    
+<div style="height: 45px;"><h2>72. Mary Rose Cook</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2504,7 +2538,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>72. Alice Zoë Bevan-McGregor</h2></div>    
+<div style="height: 45px;"><h2>73. Alice Zoë Bevan-McGregor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2538,7 +2572,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>73. Isis Agora Lovecruft</h2></div>    
+<div style="height: 45px;"><h2>74. Isis Agora Lovecruft</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2572,7 +2606,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>74. Sarah Bird</h2></div>    
+<div style="height: 45px;"><h2>75. Sarah Bird</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2606,7 +2640,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>75. Maira Bello</h2></div>    
+<div style="height: 45px;"><h2>76. Maira Bello</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2640,7 +2674,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>76. Heather Piwowar</h2></div>    
+<div style="height: 45px;"><h2>77. Heather Piwowar</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2674,7 +2708,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>77. Maria Grazia Alastra</h2></div>    
+<div style="height: 45px;"><h2>78. Maria Grazia Alastra</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2708,7 +2742,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>78. Nada Amin</h2></div>    
+<div style="height: 45px;"><h2>79. Nada Amin</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2742,7 +2776,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>79. Sarah Vessels</h2></div>    
+<div style="height: 45px;"><h2>80. Sarah Vessels</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2776,7 +2810,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>80. Olga Botvinnik</h2></div>    
+<div style="height: 45px;"><h2>81. Olga Botvinnik</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2810,7 +2844,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>81. Remi Taylor</h2></div>    
+<div style="height: 45px;"><h2>82. Remi Taylor</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2844,7 +2878,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>82. Flavia Missi</h2></div>    
+<div style="height: 45px;"><h2>83. Flavia Missi</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2878,7 +2912,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>83. Christine Spang</h2></div>    
+<div style="height: 45px;"><h2>84. Christine Spang</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2912,7 +2946,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>84. Lindsay Young</h2></div>    
+<div style="height: 45px;"><h2>85. Lindsay Young</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2946,7 +2980,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>85. Kylie McClain</h2></div>    
+<div style="height: 45px;"><h2>86. Kylie McClain</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -2980,7 +3014,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>86. Laura DeCicco</h2></div>    
+<div style="height: 45px;"><h2>87. Laura DeCicco</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3014,7 +3048,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>87. Anne Lyle</h2></div>    
+<div style="height: 45px;"><h2>88. Anne Lyle</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3048,7 +3082,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>88. Kathryn Killebrew</h2></div>    
+<div style="height: 45px;"><h2>89. Kathryn Killebrew</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3082,7 +3116,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>89. Franziska Hinkelmann</h2></div>    
+<div style="height: 45px;"><h2>90. Franziska Hinkelmann</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3116,7 +3150,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>90. Angie Byron</h2></div>    
+<div style="height: 45px;"><h2>91. Angie Byron</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3150,7 +3184,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>91. Rachel Mandelbaum</h2></div>    
+<div style="height: 45px;"><h2>92. Rachel Mandelbaum</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3184,7 +3218,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>92. Ada Rose Edwards</h2></div>    
+<div style="height: 45px;"><h2>93. Ada Rose Edwards</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3218,7 +3252,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>93. Lisa Ballard</h2></div>    
+<div style="height: 45px;"><h2>94. Lisa Ballard</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3252,7 +3286,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>94. Emma Strubell</h2></div>    
+<div style="height: 45px;"><h2>95. Emma Strubell</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3286,7 +3320,7 @@ Almost certainly insane.</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>95. Lisa Glendenning</h2></div>    
+<div style="height: 45px;"><h2>96. Lisa Glendenning</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
@@ -3316,6 +3350,142 @@ Almost certainly insane.</div>
       <li><strong>0</strong><span> Forks</span></li>
     </ul>
     <div class="repo_footer">A "lite" implementation of both the server and client ZooKeeper protocol.</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>97. Jessica Ker</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/jessitron" target="_top"><strong>Jessica Ker</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/728251919467057152/Z2uk49Ww_400x400.jpg"><span class="location">Based in St. Louis, MO working at Stripe</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=jessitron" target="_blank" alt="Follow jessitron">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/jessitron" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1143</strong><span> Total Commits</span></li>
+      <li><strong>9.8</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Functional developer, speaker, mother, crazy nut. Stripe. Learning and growing. </div>
+    <div class="repo_header"><a href="https://github.com/jessitron/bison">bison</a> <span class="language">Scala</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>76</strong><span> Commits by @jessitron</span></li>
+      <li><strong>12</strong><span> Stars</span></li>
+      <li><strong>3</strong><span> Watchers</span></li>
+      <li><strong>1</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">When Code Reacts to Data: demonstrating a dataflow programming style with scalaz-streams</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>98. Irene Knapp</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/IreneKnapp" target="_top"><strong>Irene Knapp</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/514221735755792384/ZSDOK8FZ_400x400.jpeg"><span class="location">Based in California working at Google</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=ireneista" target="_blank" alt="Follow ireneista">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/IreneKnapp" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>2110</strong><span> Total Commits</span></li>
+      <li><strong>9.8</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Smart, funny, occasionally sarcastic.</div>
+    <div class="repo_header"><a href="https://github.com/IreneKnapp/modern-data">modern-data</a> <span class="language">C</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>350</strong><span> Commits by @IreneKnapp</span></li>
+      <li><strong>12</strong><span> Stars</span></li>
+      <li><strong>2</strong><span> Watchers</span></li>
+      <li><strong>0</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">A self-describing binary data format for dependently-typed object graphs.</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>99. Anna Schneider</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/aschn" target="_top"><strong>Anna Schneider</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/3441319763/8dc012f166c7626ab9354abdd13fc14b_400x400.jpeg"><span class="location">Based in Bay Area, CA working at WattTime</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=windupanna" target="_blank" alt="Follow windupanna">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/aschn" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1830</strong><span> Total Commits</span></li>
+      <li><strong>9.7</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Co-founder + CTO @wattTime, Climate Fellow @echoinggreen, Berkeley PhD, #ForbesUnder30. Thinking about Python, clean tech, inclusive STEM, tech for good.</div>
+    <div class="repo_header"><a href="https://github.com/WattTime/pyiso">pyiso</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>291</strong><span> Commits by @aschn</span></li>
+      <li><strong>19</strong><span> Stars</span></li>
+      <li><strong>13</strong><span> Watchers</span></li>
+      <li><strong>23</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">Python client libraries for ISO and other power grid data sources.</div>
+  </div>
+</div>
+<div style="height: 5px"></div>
+
+<div style="height: 45px;"><h2>100. Tara L Andrews</h2></div>    
+<div id="user-card">
+  <div class="github-card user-card">
+    <div class="header">
+      <a class="avatar" href="https://github.com/tla" target="_top"><strong>Tara L Andrews</strong></a>
+      <img src="https://pbs.twimg.com/profile_images/182707767/me_maarssen_400x400.jpg"><span class="location">Based in Zürich, Switzerland working at University of Bern</span></span>
+
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=tla" target="_blank" alt="Follow tla">
+          <i class="btn-icon"></i>
+          <span class="btn-text">Follow</span>
+        </a>
+      </div>
+      <a class="button " href="https://github.com/tla" target="_top">
+        <span class="flaticon-circle"></span> Follow
+        </a>
+    </div>
+    <ul class="status">
+      <li><strong>1444</strong><span> Total Commits</span></li>
+      <li><strong>9.6</strong><span> PageRank</span></li>
+    </ul>
+    <div class="footer">Byzantine historian, computer geek. Asst Prof of Digital Humanities, University of Bern. Long-distance cyclist and runner catching the triathlon bug.</div>
+    <div class="repo_header"><a href="https://github.com/tla/stemmatology">stemmatology</a> <span class="language">PLpgSQL</span> <span class="featured_repo">Featured Repo</span></div>
+    <ul class="repo_stats">
+      <li><strong>666</strong><span> Commits by @tla</span></li>
+      <li><strong>5</strong><span> Stars</span></li>
+      <li><strong>6</strong><span> Watchers</span></li>
+      <li><strong>3</strong><span> Forks</span></li>
+    </ul>
+    <div class="repo_footer">A Perl library for modelling textual variation</div>
   </div>
 </div>
 <div style="height: 5px"></div>
