@@ -3485,7 +3485,7 @@ Almost certainly insane.</div>
       <li><strong>6</strong><span> Watchers</span></li>
       <li><strong>3</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">A Perl library for modelling textual variation</div>
+    <div class="repo_footer">A Perl library for modelling textual variation.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
