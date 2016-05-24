@@ -1,7 +1,7 @@
 --- 
 author: eiso 
 date: 2016-05-19 
-title: "Top 100 Women In The Open-Source Community" 
+title: "Top 100 Women On Github In The Open-Source Community" 
 draft: false 
 image: /post/top-100-women-in-the-open-source-community/intro.jpg 
 description: "Top 100 Women In The Open-Source Community" 
