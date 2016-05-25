@@ -73,7 +73,7 @@ small sample of incredible developers.
 
 Any suggestions or improvements for posts can be requested on [Github](https://github.com/src-d/blog/issues).
 
-We would like the discussion for this post to happen at [YC HN](https://news.ycombinator.com) because we 
+We would like the discussion for this post to happen at [YC HN](https://news.ycombinator.com/item?id=11771235) because we 
 believe the community is great at self-moderating (I've personally been a user since 2008).
 
 You can also follow the tweets of this incredible list of developers here: [Twitter list](https://twitter.com/srcd_/lists/awesome-women-in-oss).
