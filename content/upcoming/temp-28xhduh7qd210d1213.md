@@ -1,31 +1,35 @@
 --- 
 author: eiso 
 date: 2016-05-19 
-title: "Top 100 Women On Github In The Open-Source Community" 
+title: "100 Awesome Women In The Open-Source Community You Should Know" 
 draft: false 
-image: /post/top-100-women-in-the-open-source-community/intro.jpg 
-description: "Top 100 Women In The Open-Source Community" 
+image: /post/100-awesome-women-in-the-open-source-community-you-should-know/intro.jpg 
+description: "100 Awesome Women On GitHub You Should Know" 
 --- 
-<link rel="stylesheet" type="text/css" href="/post/top-100-women-in-the-open-source-community/post-style.css">
+<link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">
+
 
 To give you a bit of background, at source{d} we analyse every Github repository
-and run our own version of `git diff` ([go-git](http://github.com/src-d/go-git)) across  900 million
+and run our own version of `git diff` ([go-git](http://github.com/src-d/go-git)) across 900 million
 commits. This gives us unique insight into the code published by over 6 million
-developers. 
+developers. It's important to note that this post is only based on Github repositories, 
+ over time we hope to expand to all Git projects hosted on the web.
 
 There have been a lot of posts about gender in the development community, we
 realised  that we were in a great position to contribute with data. It started
-with the question,  how will we determine gender across 6 million developers. We
+with the question, how will we determine gender across 6 million developers. We
 took the approach of classifying names based on their statistically likelihood
 to be either male or female. We started with cleaning up the names used in
 commits: separating first names, last names and usernames. Secondly, we went to
 look for data sources for name genderization. Which led us to several census
-database (UK & USA) and several API's. After a lot of cleaning, we had compiled
-a database of over 144,000 names with their: gender, # of occurences and our
-statistical likelihood of being correct.
+database (UK & USA) and several API's (primarily to cover non-latin names). 
+After a lot of cleaning, we had compiled a database of over 144,000 names with their: 
+gender, # of occurrences and our statistical likelihood of being correct. We are still 
+improving and adding on different methods to determine gender to make our study 
+more accurate before we release it.
 
-From the 6 million developers who've publicly contributed to Github we were able to
-accurately genderize aprox. 2 million. In the coming month, we'll be releasing
+From the 6 million developers who have publicly contributed to Github we were able to
+determine gender based on name for approx. 2 million. In the coming month, we'll be releasing
 different posts and analysis on this data set.
 
 Before we post about percentages, country specific differences and trends over
@@ -44,26 +48,35 @@ PageRank algorithm. Please note that this is a reputation metric and is
 hence greatly influenced by the co-contributors across repositories._
 
 We identified every developer whose name we had classified as female, whose total # 
-of commits were above 1,000, and ordered based on PageRank. We then manually reviewed
+of commits was above 1,000, and ordered based on PageRank. We then manually reviewed
 over +1000 Github profiles to ensure that the contributions were open-source
 projects. We decided to allow projects from any field (besides computer science 
-you'll find bioinformatics and astrophysics represented here). 
+you'll find bioinformatics and astrophysics represented here) and if there was no license but it 
+was clearly open-source we allowed it (it's debatable if we should be more strict here). 
 
 The data set used to get to the commit count, is an analysis of the raw pack files 
 of every public Git repository on Github until 21st April 2016. Often the counts of 
 commits will differ from the Github profiles which seem to use a different method.
 
-We have decided to order on PageRank because it gives an indication of the influence
-of each developer in the open-source community. We understand that there are many ways
-to order this list and are open to any suggestions. 
+We would like to make it very clear that metrics such as PageRank, stars and followers 
+on Github are pure vanity metrics. We used PageRank because we like that it shows the 
+community aspect of whom you've worked with and on what projects but over time we'll 
+be releasing better metrics that focus on quality & impact. As a developer today you should 
+not be coding to get stars on GitHub. 
 
-We have reached out to every person on this list to ask if they had any objection to 
-be included or if they wanted any of their information changed. We are certain that 
-we have missed some incredible people and would love to hear from you if we have.
+We have tried to reached out to every person on this list to ask if they had any objection to 
+being included or if they wanted any of their information changed (we've heard back from 72/100 
+and unfortunately had some emails bounce). If you'd still like to be excluded or have your 
+information updated, please contact me (<mailto:eiso@sourced.tech>). We are certain that we 
+have missed some amazing developers and hope that it's clear that this list is to highlight just a 
+small sample of incredible developers. 
 
-Any suggestions or improvements can be requested on [Github](https://github.com/src-d/blog/issues).
+Any suggestions or improvements for posts can be requested on [Github](https://github.com/src-d/blog/issues).
 
-You can also follow the tweets of this incredible list of developers here: Twitter list 
+We would like the discussion for this post to happen at YC HN because we 
+believe the community is great at self-moderating (I've personally been a user since 2008).
+
+You can also follow the tweets of this incredible list of developers here: Twitter list.
 
 <div style="height: 45px;"><h2>1. Misty De Meo</h2></div>    
 <div id="user-card">
@@ -110,7 +123,7 @@ Avatar by @repoghost!
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/kytrinyx" target="_top"><strong>Katrina Owen</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/651150543927185408/xq5Dy6Z5_normal.jpg"><span class="location">Working at Exercism.io</span></span>
+      <img src="http://pbs.twimg.com/profile_images/651150543927185408/xq5Dy6Z5_normal.jpg"><span class="location"></span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=kytrinyx" target="_blank" alt="Follow kytrinyx">
@@ -127,7 +140,7 @@ Avatar by @repoghost!
       <li><strong>499.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">I make exercism.io</div>
-    <div class="repo_header"><a href="https://github.com/exercism/exercism.io">exercism.io</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/exercism/exercism.io">exercism.io</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3314</strong><span> Commits by @kytrinyx</span></li>
       <li><strong>2109</strong><span> Stars</span></li>
@@ -445,14 +458,14 @@ work for npm on the cli</div>
       <li><strong>169.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Code witch. Ruby Hero. Speaker, writer, mentor, Ruby Rogues panelist. 'Notorious Social Justice Warrior' --Breitbart. https://t.co/w5rw8bPZXX</div>
-    <div class="repo_header"><a href="https://github.com/CoralineAda/alice">alice</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/coralineada/society">society</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>1512</strong><span> Commits by @CoralineAda</span></li>
-      <li><strong>10</strong><span> Stars</span></li>
-      <li><strong>3</strong><span> Watchers</span></li>
-      <li><strong>7</strong><span> Forks</span></li>
+      <li><strong>195</strong><span> Commits by @CoralineAda</span></li>
+      <li><strong>36</strong><span> Stars</span></li>
+      <li><strong>5</strong><span> Watchers</span></li>
+      <li><strong>10</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">A spirited and game-loving IRC bot.</div>
+    <div class="repo_footer">A social graph for Ruby objects.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -462,7 +475,7 @@ work for npm on the cli</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/JuliaLawall" target="_top"><strong>Julia Lawall</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location">Based in France</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/no-avatar.png"><span class="location">Based in France</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -872,7 +885,7 @@ Consultant @ Apple, OUP and Socialtext.
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/lizmat" target="_top"><strong>Elizabeth Mattijsen</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/elizabeth-mattijsen.png"><span class="location">Based in The Netherlands working at Dijkmat</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/elizabeth-mattijsen.png"><span class="location">Based in The Netherlands</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -888,7 +901,7 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>5867</strong><span> Total Commits</span></li>
       <li><strong>87.9</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">In the last 4 (and a bit more) years she has been involved in the development of Perl modules and even contributed a bit to the development of Perl itself. She is an active member of the Dutch Perl community and she also is active as a Perl Monk. At the first Dutch Perl Workshop she gave a presentation about Parsing XML/HTML.</div>
+    <div class="footer">Since her retirement, she has been busy supporting the world-wide Perl community in general, and the development of Rakudo Perl 6 in particular.  You may have seen her at events like FOSDEM, OSCON and many more Perl oriented events like the YAPC’s (Yet Another Perl Conference) in the US, in Europe and in Japan.  She also writes the Perl 6 Weekly blog.</div>
     <div class="repo_header"><a href="https://github.com/rakudo/rakudo">rakudo</a> <span class="language">Perl6</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>3377</strong><span> Commits by @lizmat</span></li>
@@ -974,7 +987,7 @@ Consultant @ Apple, OUP and Socialtext.
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/eileenmcnaughton" target="_top"><strong>Eileen McNaughton</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/517423307243524096/O3D_Y3hd_normal.jpeg"><span class="location">Working at Fuzion</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/eileen-mcnaughton.png"><span class="location">Working at Fuzion</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=eileentnaughton" target="_blank" alt="Follow eileentnaughton">
@@ -1025,14 +1038,14 @@ Consultant @ Apple, OUP and Socialtext.
       <li><strong>80.5</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Research Scientist, Executive Director of the Scala Center at EPFL. Past life: artist @ Cooper Union</div>
-    <div class="repo_header"><a href="https://github.com/scala/scala-lang">scala-lang</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/scala/scala">scala</a> <span class="language">Scala</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>394</strong><span> Commits by @heathermiller</span></li>
-      <li><strong>50</strong><span> Stars</span></li>
-      <li><strong>28</strong><span> Watchers</span></li>
-      <li><strong>96</strong><span> Forks</span></li>
+      <li><strong>86</strong><span> Commits by @heathermiller</span></li>
+      <li><strong>6195</strong><span> Stars</span></li>
+      <li><strong>649</strong><span> Watchers</span></li>
+      <li><strong>1564</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">The Scala Website</div>
+    <div class="repo_footer">The Scala programming language</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -1212,7 +1225,7 @@ Consultant @ Apple, OUP and Socialtext.
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/sirihansen" target="_top"><strong>Siri Hansen</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location">Based in Stockholm, Sweden working at Ericsson</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/no-avatar.png"><span class="location">Based in Stockholm, Sweden working at Ericsson</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -1520,7 +1533,7 @@ Lead Open Source Engineer @bugsnag</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="" target="_top"><strong>Corinna Vinschen</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/corinna-vinschen.jpeg"><span class="location">Working at RedHat</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/corinna-vinschen.jpeg"><span class="location">Working at RedHat</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -1588,7 +1601,7 @@ Lead Open Source Engineer @bugsnag</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/enkore" target="_top"><strong>Marian Beermann</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location"></span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/no-avatar.png"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -1617,12 +1630,12 @@ Lead Open Source Engineer @bugsnag</div>
 </div>
 <div style="height: 5px"></div>
 
-<div style="height: 45px;"><h2>46. Carol Nichols</h2></div>    
+<div style="height: 45px;"><h2>46. Carol (Nichols || Goulding)</h2></div>    
 <div id="user-card">
   <div class="github-card user-card">
     <div class="header">
-      <a class="avatar" href="https://github.com/carols10cents" target="_top"><strong>Carol Nichols</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/446291681252364288/_okxMUY1_normal.jpeg"><span class="location">Based in Pittsburgh working at Think Through Learning</span></span>
+      <a class="avatar" href="https://github.com/carols10cents" target="_top"><strong>Carol (Nichols || Goulding)</strong></a>
+      <img src="http://pbs.twimg.com/profile_images/446291681252364288/_okxMUY1_normal.jpeg"><span class="location">Based in Pittsburgh working at Integer 32</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=Carols10cents" target="_blank" alt="Follow Carols10cents">
@@ -1724,7 +1737,7 @@ Lead Open Source Engineer @bugsnag</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/lislis" target="_top"><strong>Lisa Passing</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/lisa-passing.png"><span class="location">Based in Berlin, Germany working at Travis CI</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/lisa-passing.png"><span class="location">Based in Berlin, Germany working at Travis CI</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -1740,8 +1753,7 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>2102</strong><span> Total Commits</span></li>
       <li><strong>39.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Lisa Passing is working as a frontend developer at Travis CI. She's been heavily stalking diaspora* since 2011, organizing monthly user gatherings in Berlin and making merchandise for the community.
-</div>
+    <div class="footer">Open source and video game enthusiast, RailsGirls and ClojureBridge supporter. I actually do love CSS.</div>
     <div class="repo_header"><a href="https://github.com/travis-ci/travis-web">travis-web</a> <span class="language">CSS</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>964</strong><span> Commits by @lislis</span></li>
@@ -1963,7 +1975,7 @@ Lead Open Source Engineer @bugsnag</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/marinaglancy" target="_top"><strong>Marina Glancy</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/461503093855637504/PT9t9q-F_normal.jpeg"><span class="location">Working at Moodle</span></span>
+      <img src="http://pbs.twimg.com/profile_images/461503093855637504/PT9t9q-F_normal.jpeg"><span class="location">Based in Perth, Australia working at Moodle</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=marinaglancy" target="_blank" alt="Follow marinaglancy">
@@ -1979,15 +1991,15 @@ Lead Open Source Engineer @bugsnag</div>
       <li><strong>2252</strong><span> Total Commits</span></li>
       <li><strong>32.1</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">Working on the core team at Moodle.</div>
-    <div class="repo_header"><a href="https://github.com/iomad/iomad">iomad</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Development Process Manager at Moodle</div>
+    <div class="repo_header"><a href="https://github.com/moodle/moodle">moodle</a> <span class="language">PHP</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>1404</strong><span> Commits by @marinaglancy</span></li>
-      <li><strong>22</strong><span> Stars</span></li>
-      <li><strong>23</strong><span> Watchers</span></li>
-      <li><strong>20</strong><span> Forks</span></li>
+      <li><strong>1014</strong><span> Commits by @marinaglancy</span></li>
+      <li><strong>1418</strong><span> Stars</span></li>
+      <li><strong>264</strong><span> Watchers</span></li>
+      <li><strong>2335</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Iomad</div>
+    <div class="repo_footer">Moodle - the world's open source learning platform</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -2169,7 +2181,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/melissalinkert" target="_top"><strong>Melissa Linkert</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/melissa-linkert.jpeg"><span class="location">Working at Glencoe Software</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/melissa-linkert.jpeg"><span class="location">Working at Glencoe Software</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=melissa_linkert" target="_blank" alt="Follow melissa_linkert">
@@ -2509,7 +2521,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/maryrosecook" target="_top"><strong>Mary Rose Cook</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/513365278135025664/dQ8Zo9FG_normal.jpeg"><span class="location">Based in London, England working at Code Lauren </span></span>
+      <img src="http://pbs.twimg.com/profile_images/513365278135025664/dQ8Zo9FG_normal.jpeg"><span class="location">Based in London, England</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=maryrosecook" target="_blank" alt="Follow maryrosecook">
@@ -2543,7 +2555,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/amcgregor" target="_top"><strong>Alice Zoë Bevan-McGregor</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/alice-zoe-bevan-mcgregor.jpeg"><span class="location">Based in Montreal, Canada working at Illico Hodes</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/alice-zoe-bevan-mcgregor.jpeg"><span class="location">Based in Montreal, Canada working at Illico Hodes</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=GothAlice" target="_blank" alt="Follow GothAlice">
@@ -2611,7 +2623,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/birdsarah" target="_top"><strong>Sarah Bird</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/sarah-bird.jpeg"><span class="location">Based in Oakland, CA working at Continuum Analytics</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/sarah-bird.jpeg"><span class="location">Based in Oakland, CA working at Continuum Analytics</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -2628,7 +2640,7 @@ Almost certainly insane.</div>
       <li><strong>19.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Developing Bokeh - an open source data visualization library</div>
-    <div class="repo_header"><a href="https://github.com/moneypenny/blicblock-js">blicblock-js</a> <span class="language">Javascript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/cheshire137/blicblock-js">blicblock-js</a> <span class="language">Javascript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>235</strong><span> Commits by @birdsarah</span></li>
       <li><strong>4</strong><span> Stars</span></li>
@@ -2713,7 +2725,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/MariagraziaAlastra" target="_top"><strong>Maria Grazia Alastra</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/maria-grazia-alastra.jpeg"><span class="location"></span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/maria-grazia-alastra.jpeg"><span class="location"></span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -2849,10 +2861,10 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/remi" target="_top"><strong>Remi Taylor</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/remi-taylor.jpg"><span class="location">Working at Google</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/remi-taylor.jpg"><span class="location">Based in Seattle working at Google</span></span>
 
-      <div class="custom-follow-button hide">
-        <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
+      <div class="custom-follow-button ">
+        <a href="https://twitter.com/intent/user?screen_name=remilytaylor" target="_blank" alt="Follow remilytaylor">
           <i class="btn-icon"></i>
           <span class="btn-text">Follow</span>
         </a>
@@ -2865,15 +2877,15 @@ Almost certainly insane.</div>
       <li><strong>2780</strong><span> Total Commits</span></li>
       <li><strong>15.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer"></div>
-    <div class="repo_header"><a href="https://github.com/remi/clide">clide</a> <span class="language">C#</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="footer">Developer Relations @ Google Cloud Rubyist, C#, open source hacker {opinions are my own}</div>
+    <div class="repo_header"><a href="https://github.com/GoogleCloudPlatform/getting-started-ruby">getting-started-ruby</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>139</strong><span> Commits by @remi</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
-      <li><strong>1</strong><span> Watchers</span></li>
-      <li><strong>0</strong><span> Forks</span></li>
+      <li><strong>47</strong><span> Commits by @remi</span></li>
+      <li><strong>27</strong><span> Stars</span></li>
+      <li><strong>24</strong><span> Watchers</span></li>
+      <li><strong>13</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Manage .NET (VS) project files from the command-line</div>
+    <div class="repo_footer">A tutorial for creating a complete application using Ruby on Google Cloud Platform</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -2883,7 +2895,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/flaviamissi" target="_top"><strong>Flavia Missi</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/584492581012295681/EMEq3obC_normal.jpg"><span class="location">Based in Stockholm, Sweden working at FundedByMe</span></span>
+      <img src="http://pbs.twimg.com/profile_images/584492581012295681/EMEq3obC_normal.jpg"><span class="location">Based in Malmö, Sweden working at FundedByMe</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=flaviamissi" target="_blank" alt="Follow flaviamissi">
@@ -2985,7 +2997,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/somasis" target="_top"><strong>Kylie McClain</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/kylie-mcclain.png"><span class="location">Based in North Carolina, USA</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/kylie-mcclain.png"><span class="location">Based in North Carolina, USA</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -3053,7 +3065,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/ens-ap5" target="_top"><strong>Anne Lyle</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/no-avatar.png"><span class="location">Working at Ensembl.org</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/anne-lyle.png"><span class="location">Working at Ensembl.org</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -3189,7 +3201,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/rmandelb" target="_top"><strong>Rachel Mandelbaum</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/rachel-mandelbaum.png"><span class="location">Based in Pittsburgh, Pennsylvania working at Carnegie Mellon University</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/rachel-mandelbaum.png"><span class="location">Based in Pittsburgh, Pennsylvania working at Carnegie Mellon University</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
@@ -3240,14 +3252,14 @@ Almost certainly insane.</div>
       <li><strong>9.9</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">JS Dev, Photography and Muay Thai. Developer for the Financial Times. Tumbr: http://sonbr.tumblr.com  (nsfw)</div>
-    <div class="repo_header"><a href="https://github.com/AdaRoseEdwards/81">81</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/AdaRoseEdwards/contrast-widget">contrast-widget</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>104</strong><span> Commits by @AdaRoseEdwards</span></li>
-      <li><strong>0</strong><span> Stars</span></li>
+      <li><strong>32</strong><span> Commits by @AdaRoseEdwards</span></li>
+      <li><strong>6</strong><span> Stars</span></li>
       <li><strong>1</strong><span> Watchers</span></li>
       <li><strong>0</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">Offline First Progressive WebApp with Push Notifications</div>
+    <div class="repo_footer">Bookmarklet to analyse the contrast of test elements in a document</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -3325,7 +3337,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/lisaglendenning" target="_top"><strong>Lisa Glendenning</strong></a>
-      <img src="/post/top-100-women-in-the-open-source-community/lisa-glendenning.JPG"><span class="location">Based in Seattle, Washington working at University of Washington</span></span>
+      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/lisa-glendenning.JPG"><span class="location">Based in Seattle, Washington working at University of Washington</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
