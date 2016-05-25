@@ -2266,7 +2266,7 @@ Almost certainly insane.</div>
       <li><strong>23.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Software Engineer, PhD in English Literature; digital libraries/digital humanities.  Python programmer, reader, gamer, gadget girl, mother.</div>
-    <div class="repo_header"><a href="https://github.com/emory-libraries/readux">readux</a> <span class="language">JavaScript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/emory-libraries/readux">readux</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>792</strong><span> Commits by @rlskoeser</span></li>
       <li><strong>5</strong><span> Stars</span></li>
@@ -3490,7 +3490,7 @@ Almost certainly insane.</div>
       <li><strong>9.6</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Byzantine historian, computer geek. Asst Prof of Digital Humanities, University of Bern. Long-distance cyclist and runner catching the triathlon bug.</div>
-    <div class="repo_header"><a href="https://github.com/tla/stemmatology">stemmatology</a> <span class="language">PLpgSQL</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/tla/stemmatology">stemmatology</a> <span class="language">Perl</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>666</strong><span> Commits by @tla</span></li>
       <li><strong>5</strong><span> Stars</span></li>
