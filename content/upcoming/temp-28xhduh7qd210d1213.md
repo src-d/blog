@@ -4,7 +4,7 @@ date: 2016-05-19
 title: "100 Awesome Women In The Open-Source Community You Should Know" 
 draft: false 
 image: /post/100-awesome-women-in-the-open-source-community-you-should-know/intro.jpg 
-description: "100 Awesome Women On GitHub You Should Know" 
+description: "100 Awesome Women In The Open-Source Community You Should Know" 
 --- 
 <link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">
 
@@ -65,7 +65,7 @@ be releasing better metrics that focus on quality & impact. As a developer today
 not be coding to get stars on GitHub. 
 
 We have tried to reached out to every person on this list to ask if they had any objection to 
-being included or if they wanted any of their information changed (we've heard back from 72/100 
+being included or if they wanted any of their information changed (we've heard back from 72 
 and unfortunately had some emails bounce). If you'd still like to be excluded or have your 
 information updated, please contact me (<mailto:eiso@sourced.tech>). We are certain that we 
 have missed some amazing developers and hope that it's clear that this list is to highlight just a 
@@ -73,10 +73,10 @@ small sample of incredible developers.
 
 Any suggestions or improvements for posts can be requested on [Github](https://github.com/src-d/blog/issues).
 
-We would like the discussion for this post to happen at YC HN because we 
+We would like the discussion for this post to happen at [YC HN](https://news.ycombinator.com) because we 
 believe the community is great at self-moderating (I've personally been a user since 2008).
 
-You can also follow the tweets of this incredible list of developers here: Twitter list.
+You can also follow the tweets of this incredible list of developers here: [Twitter list](https://twitter.com/srcd_/lists/awesome-women-in-oss).
 
 <div style="height: 45px;"><h2>1. Misty De Meo</h2></div>    
 <div id="user-card">
