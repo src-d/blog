@@ -441,7 +441,7 @@ work for npm on the cli</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/CoralineAda" target="_top"><strong>Coraline Ada Ehmke</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/729718993058189315/InraL-v9_normal.jpg"><span class="location">Based in Chicago working at Github</span></span>
+      <img src="https://pbs.twimg.com/profile_images/734228526946213888/DPUXM2e4_200x200.jpg"><span class="location">Based in Chicago working at Github</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=CoralineAda" target="_blank" alt="Follow CoralineAda">
