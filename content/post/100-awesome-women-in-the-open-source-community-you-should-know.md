@@ -9,10 +9,10 @@ description: "100 Awesome Women In The Open-Source Community You Should Know"
 <link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">
 
 
-To give you a bit of background, at source{d} we analyse every Github repository
+To give you a bit of background, at source{d} we analyse every GitHub repository
 and run our own version of `git diff` ([go-git](http://github.com/src-d/go-git)) across 900 million
 commits. This gives us unique insight into the code published by over 6 million
-developers. It's important to note that this post is only based on Github repositories, 
+developers. It's important to note that this post is only based on GitHub repositories, 
  over time we hope to expand to all Git projects hosted on the web.
 
 There have been a lot of posts about gender in the development community, we
@@ -28,7 +28,7 @@ gender, # of occurrences and our statistical likelihood of being correct. We are
 improving and adding on different methods to determine gender to make our study 
 more accurate before we release it.
 
-From the 6 million developers who have publicly contributed to Github we were able to
+From the 6 million developers who have publicly contributed to GitHub we were able to
 determine gender based on name for approx. 2 million. In the coming month, we'll be releasing
 different posts and analysis on this data set.
 
@@ -49,17 +49,17 @@ hence greatly influenced by the co-contributors across repositories._
 
 We identified every developer whose name we had classified as female, whose total # 
 of commits was above 1,000, and ordered based on PageRank. We then manually reviewed
-over +1000 Github profiles to ensure that the contributions were open-source
+over +1000 GitHub profiles to ensure that the contributions were open-source
 projects. We decided to allow projects from any field (besides computer science 
 you'll find bioinformatics and astrophysics represented here) and if there was no license but it 
 was clearly open-source we allowed it (it's debatable if we should be more strict here). 
 
 The data set used to get to the commit count, is an analysis of the raw pack files 
-of every public Git repository on Github until 21st April 2016. Often the counts of 
-commits will differ from the Github profiles which seem to use a different method.
+of every public Git repository on GitHub until 21st April 2016. Often the counts of 
+commits will differ from the GitHub profiles which seem to use a different method.
 
 We would like to make it very clear that metrics such as PageRank, stars and followers 
-on Github are pure vanity metrics. We used PageRank because we like that it shows the 
+on GitHub are pure vanity metrics. We used PageRank because we like that it shows the 
 community aspect of whom you've worked with and on what projects but over time we'll 
 be releasing better metrics that focus on quality & impact. As a developer today you should 
 not be coding to get stars on GitHub. 
@@ -71,7 +71,7 @@ information updated, please contact me (<mailto:eiso@sourced.tech>). We are cert
 have missed some amazing developers and hope that it's clear that this list is to highlight just a 
 small sample of incredible developers. 
 
-Any suggestions or improvements for posts can be requested on [Github](https://github.com/src-d/blog/issues).
+Any suggestions or improvements for posts can be requested on [GitHub](https://github.com/src-d/blog/issues).
 
 We would like the discussion for this post to happen at [YC HN](https://news.ycombinator.com/item?id=11771235) because we 
 believe the community is great at self-moderating (I've personally been a user since 2008).
@@ -83,7 +83,7 @@ You can also follow the tweets of this incredible list of developers here: [Twit
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/mistydemeo" target="_top"><strong>Misty De Meo</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/695096215927521280/Gyl1TuMi_normal.jpg"><span class="location">Based in Vancouver  working at Github</span></span>
+      <img src="http://pbs.twimg.com/profile_images/695096215927521280/Gyl1TuMi_normal.jpg"><span class="location">Based in Vancouver  working at GitHub</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=mistydemeo" target="_blank" alt="Follow mistydemeo">
@@ -441,7 +441,7 @@ work for npm on the cli</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/CoralineAda" target="_top"><strong>Coraline Ada Ehmke</strong></a>
-      <img src="https://pbs.twimg.com/profile_images/734228526946213888/DPUXM2e4_200x200.jpg"><span class="location">Based in Chicago working at Github</span></span>
+      <img src="https://pbs.twimg.com/profile_images/734228526946213888/DPUXM2e4_200x200.jpg"><span class="location">Based in Chicago working at GitHub</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=CoralineAda" target="_blank" alt="Follow CoralineAda">
@@ -2793,7 +2793,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/cheshire137" target="_top"><strong>Sarah Vessels</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/716116943913267200/fi6YRHKU_normal.jpg"><span class="location">Based in Nashville, TN working at Github</span></span>
+      <img src="http://pbs.twimg.com/profile_images/716116943913267200/fi6YRHKU_normal.jpg"><span class="location">Based in Nashville, TN working at GitHub</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=cheshire137" target="_blank" alt="Follow cheshire137">
