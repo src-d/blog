@@ -10,7 +10,7 @@ description: "100 Awesome Women In The Open-Source Community You Should Know"
 
 
 To give you a bit of background, at source{d} we analyse every Github repository
-and run our own version of `git diff` ([go-git](http://github.com/src-d/go-git)) across 900 million
+and run our own version of `git blame` ([go-git](http://github.com/src-d/go-git)) across 900 million
 commits. This gives us unique insight into the code published by over 6 million
 developers. It's important to note that this post is only based on Github repositories, 
  over time we hope to expand to all Git projects hosted on the web.
