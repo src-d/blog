@@ -2895,7 +2895,7 @@ Almost certainly insane.</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="https://github.com/flaviamissi" target="_top"><strong>Flavia Missi</strong></a>
-      <img src="http://pbs.twimg.com/profile_images/584492581012295681/EMEq3obC_normal.jpg"><span class="location">Based in Malmö, Sweden working at FundedByMe</span></span>
+      <img src="http://pbs.twimg.com/profile_images/584492581012295681/EMEq3obC_normal.jpg"><span class="location">Based in Malmö, Sweden working at Min Doktor</span></span>
 
       <div class="custom-follow-button ">
         <a href="https://twitter.com/intent/user?screen_name=flaviamissi" target="_blank" alt="Follow flaviamissi">
