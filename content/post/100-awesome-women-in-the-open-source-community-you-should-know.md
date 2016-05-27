@@ -2334,14 +2334,14 @@ Almost certainly insane.</div>
       <li><strong>23.1</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">developer for @mySociety, working on Alaveteli, the FOI software behind @WhatDoTheyKnow. Live in Peckham. Personal account.</div>
-    <div class="repo_header"><a href="https://github.com/mysociety/fixmytransport">fixmytransport</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/mysociety/alaveteli">alaveteli</a> <span class="language">Ruby</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>3073</strong><span> Commits by @crowbot</span></li>
-      <li><strong>39</strong><span> Stars</span></li>
-      <li><strong>16</strong><span> Watchers</span></li>
-      <li><strong>13</strong><span> Forks</span></li>
+      <li><strong>2625</strong><span> Commits by @crowbot</span></li>
+      <li><strong>170</strong><span> Stars</span></li>
+      <li><strong>34</strong><span> Watchers</span></li>
+      <li><strong>110</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">A site focussed on connecting and empowering people who share transport problems of different kinds.</div>
+    <div class="repo_footer">Provide a Freedom of Information request system for your jurisdiction</div>
   </div>
 </div>
 <div style="height: 5px"></div>
@@ -2640,14 +2640,14 @@ Almost certainly insane.</div>
       <li><strong>19.3</strong><span> PageRank</span></li>
     </ul>
     <div class="footer">Developing Bokeh - an open source data visualization library</div>
-    <div class="repo_header"><a href="https://github.com/cheshire137/blicblock-js">blicblock-js</a> <span class="language">Javascript</span> <span class="featured_repo">Featured Repo</span></div>
+    <div class="repo_header"><a href="https://github.com/bokeh/bokeh">bokeh</a> <span class="language">Python</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
-      <li><strong>235</strong><span> Commits by @birdsarah</span></li>
-      <li><strong>4</strong><span> Stars</span></li>
-      <li><strong>2</strong><span> Watchers</span></li>
-      <li><strong>2</strong><span> Forks</span></li>
+      <li><strong>341</strong><span> Commits by @birdsarah</span></li>
+      <li><strong>4223</strong><span> Stars</span></li>
+      <li><strong>276</strong><span> Watchers</span></li>
+      <li><strong>878</strong><span> Forks</span></li>
     </ul>
-    <div class="repo_footer">A JavaScript implementation of the Blicblock game from The Sims 4.</div>
+    <div class="repo_footer">Interactive Web Plotting for Python</div>
   </div>
 </div>
 <div style="height: 5px"></div>
