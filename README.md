@@ -1,8 +1,6 @@
-# autohugo  [![Circle CI](https://circleci.com/gh/src-d/blog.svg?style=svg)](https://circleci.com/gh/src-d/blog)
+# source{d} blog  [![Circle CI](https://circleci.com/gh/src-d/blog.svg?style=svg)](https://circleci.com/gh/src-d/blog)
 
-**autohugo** is a *tool* for build auto-deployable static websites.
-
-### How works?
+### How does it work?
 Simple, every time you push the new content to your repository, the HTML is generated and deployed.
 
 ### Components
