@@ -1533,7 +1533,7 @@ Lead Open Source Engineer @bugsnag</div>
   <div class="github-card user-card">
     <div class="header">
       <a class="avatar" href="" target="_top"><strong>Corinna Vinschen</strong></a>
-      <img src="/post/100-awesome-women-in-the-open-source-community-you-should-know/corinna-vinschen.jpeg"><span class="location">Working at RedHat</span></span>
+      <img src="https://avatars2.githubusercontent.com/u/7604664?v=3&s=460"><span class="location">Working at RedHat</span></span>
 
       <div class="custom-follow-button hide">
         <a href="https://twitter.com/intent/user?screen_name=" target="_blank" alt="Follow ">
