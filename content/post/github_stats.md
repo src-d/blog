@@ -7,7 +7,7 @@ image: /post/github_stats/go.png
 description: "Lots of histograms plotted for GitHub data collected by source{d}." 
 ---
 
-It's always fun to play with a dataset few people has ever played with.
+It's always fun to play with a dataset few people have ever played with.
 source{d} knows much about each GitHub developer, including the number of
 bytes written in each programming language, all commits metadata, etc.
 So a trivial takeoff will be to use this information to have a better
@@ -91,3 +91,7 @@ amount of code written, otherwise we would get a log-normal distribution.
 While all this analysis is fun, it's even more fun to repeat it after
 some time, e.g. in a year. Watching how the state evolves will allow to
 predict trends in software development and open source community.
+
+The data for this post was obtained in April, 2016. We used
+[src-d/go-git](https://github.com/src-d/go-git) to fetch all GitHub
+repositories.
