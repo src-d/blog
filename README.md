@@ -3,7 +3,7 @@
 ### How does it work?
 Simple, every time you push the new content to your repository, the HTML is generated and deployed.
 
-You can check the deployment on: *CircleCI source{d} blog*[Hugo](https://circleci.com/gh/src-d/blog)**
+You can check the deployment on: **[CircleCI source{d} blog](https://circleci.com/gh/src-d/blog)**
 
 ### Components
 - **[Hugo](https://gohugo.io/)**: creates beautiful web sites from Markdown files.
