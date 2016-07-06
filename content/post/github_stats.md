@@ -1,9 +1,9 @@
 --- 
 author: vadim
-date: 2016-07-03
+date: 2016-07-06
 title: "Fun with GitHub repositories statistics." 
 draft: false 
-image: /post/github_stats/intro.png
+image: /post/github_stats/go.png
 description: "Lots of histograms plotted for GitHub data collected by source{d}." 
 ---
 
