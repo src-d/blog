@@ -9,18 +9,19 @@ description: "Lots of histograms plotted for GitHub data collected by source{d}.
 
 It's always fun to play with a dataset few people has ever played with.
 source{d} knows much about each GitHub developer, including the number of
-bytes written in each programming language. So a trivial takeoff will be to
-use this information to have a better understanding of the industry.
+bytes written in each programming language, all commits metadata, etc.
+So a trivial takeoff will be to use this information to have a better
+understanding of the industry.
 
-First of all, all software developers are humans (yet), and some of them
+First of all, software developers are humans (yet), and some of them
 make open source contributions, which is a natural process. Therefore one
 may expect the distribution of the overall number of bytes written by
 each GitHub user to be [log-normal](https://en.wikipedia.org/wiki/Log-normal_distribution).
-Well, it's not:
+Well it's not:
 
 ![overall](/post/github_stats/overall.png)
 
-There are much more developers that wrote less code than average than
+There are much more developers who wrote less code than average than
 those who wrote more code than average. 
 Yet if we look at each language individually, the picture becomes log-normal:
 
@@ -30,7 +31,7 @@ Yet if we look at each language individually, the picture becomes log-normal:
 
 ![Python](/post/github_stats/python.png)
 
-The more code is written in a language, apparently the more the peak
+The more code is written in the language, apparently the more the peak
 shifts to the right. For example, Go's peak is 9.22 while C's is 9.81.
 
 ![Go](/post/github_stats/go.png)
@@ -49,7 +50,7 @@ Interestingly, some common languages are irregular:
 ![Ruby](/post/github_stats/ruby.png)
 
 It turns out that Javascript developer density stays the same in a broad interval
-400 - 400000 bytes. The gap between numbers of casual and productive
+400 - 400000 bytes. The gap between the numbers of casual and productive
 rubyists is as high as 2x.
 
 If we look at repository sizes, they are log-normal too:
@@ -73,8 +74,9 @@ repositories number:
 
 Thus, most of the code is written in repositories with 2 contributors.
 
-Finally, let's look at commit stats. The distribution is not log-normal,
-the number of commits falls by a polynomial law. Here are the first 10:
+Finally, let's look at commit stats. The distribution of the number of commits
+made by each developer is not log-normal, it decreases polynomially.
+Here are the first 10:
 
 ![Commits - 10](/post/github_stats/commits_10.png)
 
@@ -82,7 +84,7 @@ And the rest in the log scale:
 
 ![Commits - log](/post/github_stats/commits_log.png)
 
-So there is no such thing as a most common commits number, apart from 0 and 1.
+So there is no such thing as the most common commits number, apart from 0 and 1.
 Besides, it appears that the number of commits poorly correlates with the
 amount of code written, otherwise we would get a log-normal distribution.
 
