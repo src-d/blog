@@ -46,7 +46,7 @@ Interestingly, some common languages are irregular:
 
 ![Javascript](/post/github_stats/js.png)
 
-![Ruby](/post/github_stats/js.png)
+![Ruby](/post/github_stats/ruby.png)
 
 It turns out that Javascript developer density stays the same in a broad interval
 400 - 400000 bytes. The gap between numbers of casual and productive
