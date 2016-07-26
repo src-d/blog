@@ -14,7 +14,7 @@ The motivation is simple: we need to cluster a big number of entities
 in high-dimensional space into many clusters as an attempt to simplify
 the data and prepare it for other, more sophisticaed clustering algorithms
 such as [t-SNE](https://lvdmaaten.github.io/tsne/). We named this project kmcuda,
-it offers C and Python3 APIs. kmcuda was successfullyb applied to problems
+it offers C and Python3 APIs. kmcuda was successfully applied to problems
 with 4M samples, 40k clusters and 480 dimensions.
 
 Theory
@@ -108,7 +108,7 @@ Practice
 --------
 
 NVIDIA CUDA is an architecture sometimes called SIMT: it involves
-a huge number of cincurrently executing hardware threads (say, 3000),
+a huge number of concurrently executing hardware threads (say, 3000),
 but with the important constraint: each group of threads (say, 32) must
 execute the same instruction at the same time. In other words, it's
 like running multiple threads each executing SIMD operations. Of course,
@@ -210,7 +210,9 @@ given that the loop is long enough.
 The optimization from above is very easy to apply in CUDA code: we just have to
 write `#pragma unroll(xxx)` above the cycle and the magic happens during the
 compilation. It is cool because we don't have to write the ugly code ourselves!
-Now the run time drops to 17 minutes.
+The tricky part is to pick up the best "xxx". Too small values do not impact that much
+and too big values increase [register pressure](https://en.wikipedia.org/wiki/Instruction_set#REGISTER-PRESSURE).
+In our case, 4 appeared to be optimal. Now the run time drops to 17 minutes.
 
 We can do better! The thing is that there are different memory access patterns
 supported by NVIDIA GPU. If we optimize the memory access for readonly,
@@ -241,17 +243,30 @@ What's good is that multiplication and addition is compiled to a single
 Finally, we finish in 12 minutes. Not 7 as one might expect because our
 bottleneck is the memory throughput.
 
+We still can do better! There is one last powerful optimization: tuning the
+block sizes, that is, the topology of the calculations. The maximum block
+size is 1024 and it is optimal in case of zero shared memory usage and
+no internal thread synchronization. All the previous run times were given with
+that block size. But our most time consuming kernels
+(that is, functions which run on GPU in CUDA terminology) use shared memory
+and thus need to synchronize. Setting smaller block size for them allows
+for better hardware load balancing: while some threads wait on the synchronization
+barrier in one warp, they may do useful work in the other.
+The best block size is normally found by experiment and equals to either
+256 or 512. This brings dramatic performance improvement: down to
+7 minutes and 16 seconds.
+
 Can we do better?.. Yes we can, but not with vanilla Lloyd at this time.
 Yinyang code uses much of Lloyd tweaks we suggested before, and finally
-we reach the run time of 7:45. The difference between
-the promised 10x improvement in the paper and the observed <1.5x has to be explained.
+we reach the run time of 4:38. The difference between
+the promised 10x improvement in the paper and the observed 1.5x has to be explained.
 Because of the SIMT nature, if different threads in the same group (warp)
 go by different code paths after a conditional clause, the overall run time
 of the warp will be the sum of the run times of each different path.
 Thus, the extensive branching inside Yinyang does not result in much
-performance boost. The other reason is that we still have to run Lloyd
+performance boost. The other reason is that we still have to run Lloyd-like
 iterations from time to time in order to make Yinyang iterations perform well
-and they are slow because of many memory writes.
+and the former are slow because of extensive memory writes.
 
 There is a way to further speed up Lloyd a little though, if we properly
 align the lanes in our samples and centroids arrays. It is best to make
@@ -295,11 +310,12 @@ OS: Ubuntu 16.04 x86-64.
 
 |name             |time   |memory|
 |:----------------|------:|-----:|
-|[sklearn KMeans](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)|>3h|4GB|
+|[sklearn KMeans](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)|>3h<sup>*</sup>|4GB|
 |[KMeansRex](https://github.com/michaelchughes/KMeansRex)|31m|25GB|
-|kmcuda Lloyd|12m|1GB|
-|kmcuda Yinyang|7m45s|6GB|
+|kmcuda Lloyd|7m16s|1GB|
+|kmcuda Yinyang|4m38s|6GB|
 
+<sup>*</sup>We didn't wait more and stopped.
 Points of improvement
 ---------------------
 
