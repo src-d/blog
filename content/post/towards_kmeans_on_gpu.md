@@ -78,8 +78,8 @@ chance.
 An other way to pick initial centroids is [K-means++](https://en.wikipedia.org/wiki/K-means%2B%2B).
 The idea is to still randomly choose samples, but with the probability which is not uniform:
 it is proportional to the distance from each sample to the nearest centroid.
-Thus, in our previous case, the probability if picking (1, 1) becomes
-1/100 + 99/100 * √<span style="text-decoration: overline;">2</span>) / (√<span style="text-decoration: overline;">2</span> + N*ε), where ε is
+Thus, in our previous case, the probability of picking (1, 1) becomes
+1/100 + 99/100 * √<span style="text-decoration: overline;">2</span> / (√<span style="text-decoration: overline;">2</span> + N*ε), where ε is
 the average distance from the other 99 points to (0, 0). We see that
 if ε is very small, the second summand becomes close to 1 and
 we almost always get the right initial centroids. From the theoretical side,
@@ -116,6 +116,7 @@ this is a simplification but it should give the general idea.
 
 The power exposed by GPU hardware is impressive: the performance is 10
 times higher compared to CPU and the memory bandwidth is 5 times thicker.
+These are the graphs taken from [CUDA C Programming Guide](http://docs.nvidia.com/cuda/cuda-c-programming-guide).
 
 ![flops](/post/towards_kmeans_on_gpu/flops.png)
 
