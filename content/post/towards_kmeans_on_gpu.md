@@ -72,14 +72,14 @@ work well in practice. For example, imagine that we have to put 100 points into 
 of course, clusters with centers (0, 0) and (1, 1), but Lloyd's algorithm
 will never converge to it if we choose initial centroids in the cloud
 of points near (0, 0). The probability of randomly choosing the point (1, 1)
-as the initial cluster center is 1/100 + 99/100 * 1 / 99 ~ 1 / 50, a pretty low
+as the initial cluster center is 1/100 + 99/100 * 1/99 ~ 1/50, a pretty low
 chance.
 
 An other way to pick initial centroids is [K-means++](https://en.wikipedia.org/wiki/K-means%2B%2B).
 The idea is to still randomly choose samples, but with the probability which is not uniform:
 it is proportional to the distance from each sample to the nearest centroid.
 Thus, in our previous case, the probability if picking (1, 1) becomes
-1/100 + 99/100 * sqrt(2) / (sqrt(2) + N*ε), where ε is
+1/100 + 99/100 * √<span style="text-decoration: overline;">2</span>) / (√<span style="text-decoration: overline;">2</span> + N*ε), where ε is
 the average distance from the other 99 points to (0, 0). We see that
 if ε is very small, the second summand becomes close to 1 and
 we almost always get the right initial centroids. From the theoretical side,
@@ -118,6 +118,7 @@ The power exposed by GPU hardware is impressive: the performance is 10
 times higher compared to CPU and the memory bandwidth is 5 times thicker.
 
 ![flops](/post/towards_kmeans_on_gpu/flops.png)
+
 ![memory](/post/towards_kmeans_on_gpu/mem.png)
 
 A typical engineering problem is to be able to cleverly ride that beast
@@ -225,7 +226,7 @@ which is normally used by GPU textures. And now we finish in 13 minutes.
 
 We can do better! Though the following should be logically done before loop unrolling,
 historically it was done later. The idea is to decompose the L2 distance
-calculation: ||a - b||<sub>2</sub> = √<span style="text-decoration: overline;">a</span><sup>2</sup><span style="text-decoration: overline;"> + b</span><sup>2</sup><span style="text-decoration: overline;"> - 2ab</span>.
+calculation: ∥a - b∥<sub>2</sub> = √<span style="text-decoration: overline;">a</span><sup>2</sup><span style="text-decoration: overline;"> + b</span><sup>2</sup><span style="text-decoration: overline;"> - 2ab</span>.
 We can calculate the scalar product between sample and itself and between
 centroid and itself beforehand, thus leaving only one operation in the loop
 instead of two.
@@ -304,8 +305,11 @@ into the project. One of the test images is shown in this article's header.
 Comparison
 ----------
 CPU: Intel Xeon E5-1650 v3 (supports AVX2, 6+6 threads).
+
 GPU: NVIDIA Titan X (12GB, 3000 cores).
+
 MEM: Samsung M393A2G40DB0-CPB (DDR4, 128GB).
+
 OS: Ubuntu 16.04 x86-64.
 
 |name             |time   |memory|
