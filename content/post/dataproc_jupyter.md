@@ -109,6 +109,8 @@ Dataproc currently runs on Debian 8.4, which is similar to Ubuntu 16.04 (well,
 actually we should say the opposite). We have `apt-get` to install system packages
 and we have `systemd` to manage system services.
 
+### Workers
+
 Setting up workers is easy: we install Python 3 and the related packages,
 then upgrade pip to the latest version available and install [sklearn](http://scikit-learn.org/stable/),
 [pandas](http://pandas.pydata.org/) and friends. One can install them from system
@@ -116,7 +118,19 @@ packages, but they develop rapidly and the latest version is usually the greates
 Additionally, we install [gcloud-python](https://github.com/GoogleCloudPlatform/gcloud-python) -
 Google Cloud API high level (there also exists a low level) wrapper for Python.
 
-A master requires quite a few additional steps. First, we must configure Spark
+Either master or workers must be prepared for Python 3. We add needed environment
+variables into various Spark configuration files:
+```
+echo "export PYSPARK_PYTHON=python3" | tee -a  /etc/profile.d/spark_config.sh  /etc/*bashrc /usr/lib/spark/conf/spark-env.sh
+echo "export PYTHONHASHSEED=0" | tee -a /etc/profile.d/spark_config.sh /etc/*bashrc /usr/lib/spark/conf/spark-env.sh
+echo "spark.executorEnv.PYTHONHASHSEED=0" >> /etc/spark/conf/spark-defaults.conf
+```
+Those mostly do with Python 3's [hash randomization](https://docs.python.org/3.3/using/cmdline.html#cmdoption-R),
+which is good for security but bad for computation repeatability and stability.
+
+### Master
+
+Master node requires quite a few extra steps. First, we must configure Spark
 to use `python3` instead of the default `python` executable which is 2.7.
 There exists a GitHub [gist](https://gist.github.com/cerisier/118c06d1a0147d1fb898218b57ba82a3/)
 which does all the work for us. Looks like it closes the discussion at
