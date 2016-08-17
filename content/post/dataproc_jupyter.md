@@ -147,7 +147,6 @@ import sys
 spark_home = "/usr/lib/spark/"
 os.environ["SPARK_HOME"] = spark_home
 os.environ["PYSPARK_PYTHON"] = "python3"
-os.environ["PYTHONHASHSEED"] = "0"
 sys.path.insert(0, os.path.join(spark_home, "python"))
 with open(os.path.join(spark_home, "python/pyspark/shell.py")) as src:
     exec(src.read())
@@ -170,6 +169,7 @@ We create `/usr/local/share/jupyter/kernels/pyspark/kernel.json` with
 {
  "display_name": "PySpark 3",
  "language": "python3",
+ "env": {"PYTHONHASHSEED": "0"},
  "argv": [
   "/usr/bin/python3",
   "-m",
@@ -181,6 +181,7 @@ We create `/usr/local/share/jupyter/kernels/pyspark/kernel.json` with
 }
 ```
 IPython profile is changed from "default" to "pyspark" for that kernel type.
+PYTHONHASHSEED is set to 0 to disable [hash randomization](https://docs.python.org/3.3/using/cmdline.html#cmdoption-R).
 
 The last step we seem to miss is running Jupyter as a system service. We create
 [systemd](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
