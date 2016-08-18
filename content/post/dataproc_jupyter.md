@@ -256,17 +256,24 @@ chromium-browser "http://<your Dataproc cluster name>-m:8123" --proxy-server="so
 (replace chromium-browser with chrome, etc.)
 If you are using Firefox you can set the proxy address and profile in any of
 it's proxy management extensions, e.g. [FoxyProxy](https://getfoxyproxy.org/).
-
 When the author of this article tried to setup Chromium with any proxy
 management extension, he hit several issues. The first is that Chromium
 prefetches DNS lookups off the proxy so one has to disable this optimization
 
 ![chromium](/post/dataproc_jupyter/chromium.png)
 
-The second is [the problem with AdBlock](https://github.com/jupyter/notebook/issues/297).
-Disabling AdBlock selectively on <your Dataproc cluster name>-m does not help,
+The second is [the problem with uBlock](https://github.com/jupyter/notebook/issues/297).
+Disabling uBlock selectively on <your Dataproc cluster name>-m does not help,
 you have to disable it completely. Thus in the snippet above we launch the browser
-in incognito mode so that extensions are ignored.
+in incognito mode so that extensions are ignored by default. Similar extensions
+like AdBlock work fine.
+
+The third is that the proxy management extension's auto-switch rule must include
+either http or ws ([WebSocket](https://en.wikipedia.org/wiki/WebSocket)) templates.
+The resulting rule was `(http|ws)://<your Dataproc cluster name>-m.*`
+
+If these problems are fixed, Jupyter can be used in the normal Chromium/Chrome
+session, without the need to run a separate window.
 
 Persistent notebooks
 --------------------
