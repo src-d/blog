@@ -31,7 +31,7 @@ It's way more reliable than simply using file extensions. E.g. .cs files can be 
 Numbers
 -------
 The raw numbers are stored in JSON on [GitHub](https://github.com/src-d/tab-vs-spaces/blob/master/tabs_spaces.json).
-The total number of languages processed is **397**. The following table reflects the statistics for some randomly picked ones:
+The total number of languages processed is 397. The following table reflects the statistics for some randomly picked ones:
 
  language |      bytes      |   files   |     lines    |    mixed    |    spaces    |    tabs   
 ----------|----------------:|----------:|-------------:|------------:|-------------:|------------:
@@ -47,6 +47,8 @@ Python    |  241,652,506,974| 34,234,808| 6,140,843,703|    5,944,925| 4,126,542
 C#        |  137,087,817,127| 29,716,758| 3,675,796,371|   15,045,917| 2,248,783,332|  665,551,412
 Ruby      |   98,419,205,848| 49,498,725| 2,965,826,058|    6,419,455| 2,141,818,861|   77,159,434
 Go        |   21,482,146,437|  2,871,323|   642,060,512|      703,820|    12,221,314|  434,530,437
+
+<style>th { text-align: center; }</style>
 
 How-to
 ------
