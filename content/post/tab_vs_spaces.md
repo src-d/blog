@@ -8,7 +8,7 @@ description: "Comprehensive study of spaces and tabs usage in source code in Git
 ---
 Tabs or spaces. We are going to parse every file among all programming languages known by GitHub to decide which one is on top.
 
-![image](/post/tab_vs_spaces/intro.png)
+<a href="http://content.blog.sourced.tech/tabs_spaces/index.html">![image](/post/tab_vs_spaces/intro.png)</a>
 
 This was inspired by Felipe Hoffa's analysis of 400k repositories and 14 programming languages ([here](https://medium.com/@hoffa/400-000-github-repositories-1-billion-files-14-terabytes-of-code-spaces-or-tabs-7cfe0b5dd7fd)).
 
@@ -129,12 +129,13 @@ I'd like to notice that the sum of lines indented with spaces, tabs and mix of t
 less than the overall number of lines since there are empty and unindented lines
 as well.
 
-As for the [interactive demo app](...), I used good ol' [matplotlib](http://matplotlib.org/)
-to draw the initial SVG and the awesome [d3.js](https://d3js.org/) for the rest.
-I applied [t-SNE](https://lvdmaaten.github.io/tsne/) clustering to the language vectors so that
-similar ones appear near each other. The radius of each pie chart is proportional to the square root
+As for the [interactive demo app](http://content.blog.sourced.tech/tabs_spaces/index.html),
+I used good ol' [matplotlib](http://matplotlib.org/) to draw the initial SVG and the awesome
+[d3.js](https://d3js.org/) for the rest. I applied [t-SNE](https://lvdmaaten.github.io/tsne/)
+clustering to the language vectors so that similar ones appear near each other.
+The radius of each pie chart is proportional to the square root
 of the number of lines written in the corresponding language.
-Special thanks go to [Miguel](https://github.com/mvader) for turning my pathetic HTML into an eye-candy.
+Special thanks goes to [Miguel](https://github.com/mvader) for turning my pathetic HTML into an eye-candy.
 
 Which one is on top?
 --------------------
