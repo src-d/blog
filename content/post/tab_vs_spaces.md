@@ -145,4 +145,4 @@ Makefile, Mathematica and JSP.
 
 More?
 -----
-Want more stories? How about writing them yourself? [Join us.](mailto://talent@sourced.tech)
+Want more stories? How about writing them yourself? [Join us.](mailto:talent@sourced.tech)
