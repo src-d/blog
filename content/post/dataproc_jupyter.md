@@ -263,7 +263,7 @@ prefetches DNS lookups off the proxy so one has to disable this optimization
 ![chromium](/post/dataproc_jupyter/chromium.png)
 
 The second is [the problem with uBlock](https://github.com/jupyter/notebook/issues/297).
-Disabling uBlock selectively on <your Dataproc cluster name>-m does not help,
+Disabling uBlock selectively on \<your Dataproc cluster name\>-m does not help,
 you have to disable it completely. Thus in the snippet above we launch the browser
 in incognito mode so that extensions are ignored by default. Similar extensions
 like AdBlock work fine.
