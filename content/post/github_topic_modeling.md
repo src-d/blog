@@ -18,13 +18,15 @@ Dr. Vorontsov managed to generalize all possible bag-of-words-based topic models
 into [Additive Regularization of Topic Models methodology](http://link.springer.com/article/10.1007/s10994-014-5476-6) (ARTM).
 Thus LDA becomes a subset of possible ARTMs. The really cool thing about ARTM is
 that Dr. Vorontsov's PHd students developed the proof-of-concept software and it
-is open source: [bigartm/bigartm](https://github.com/bigartm/bigartm).
+is open source: [bigartm/bigartm](https://github.com/bigartm/bigartm)
+[[1](https://s3-eu-west-1.amazonaws.com/artm/Voron15aist.pdf),
+[2](https://s3-eu-west-1.amazonaws.com/artm/Voron15cikm-tm.pdf)].
 
 Normally, topic modeling is applied to ordinary text documents. We at source{d}
 struggle with huge amount of data originated from GitHub repositories (an soon
   we'll handle every open source repository in the world). A natural idea is
-to treat every repository as a bag-of-words and apply the powerful engine of
-topic modeling of Dr. Vorontsov. For example, we could extract names from the
+to treat every repository as a bag-of-words and apply Dr. Vorontsov's powerful engine for
+topic modeling. For example, we could extract names from the
 source code and consider them "words". This article elaborates in this direction,
 presents the results and explains how to repeat them.
 
@@ -66,7 +68,7 @@ Thus our problem is the stochastic matrix decomposition which is not correctly s
 $$
 \\frac{n\_ {dw}}{n\_ d} ≈ \\Phi \\cdot \\Theta = (\\Phi S)(S^{-1}\\Theta) = \\Phi' \\cdot \\Theta'
 $$
-It is said that [regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics))
+It is said that [regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)
 is desirable for stating machine learning problems; in our case,
 this is *obligatory*. In other words, if we don't add any additional constraints,
 we are going to end up bad.
