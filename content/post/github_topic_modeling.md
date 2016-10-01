@@ -244,7 +244,9 @@ two, the one being the umbrella under numerous student homeworks and pet project
 Cocos2D seems popular too and has 2 topics as well. Finally, I got 3 OpenGL topics + WebGL.
 I guess that the difference is in the way API is used and in the satellite libraries.
 
-I was surprised to see the dual topic about WinAPI and Pokemons. I think this is
+It's no surprise that [Chef](https://github.com/chef/chef) configuration management tool
+appeared in the "cooking" topic with it's recipes, kitchen, etc.
+However, I was surprised to see the dual topic about WinAPI and Pokemons. I think this is
 because stemming made the typical names from WinAPI look like Pokemon names...
 
 ### Games
