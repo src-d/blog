@@ -197,7 +197,7 @@ what happens:
 # before
 for i in range(0, 100500):
   do_work(i)
-  
+
 # after
 for i in range(0, 100500, 4):
   do_work(i)
@@ -326,7 +326,7 @@ Points of improvement
 
 1. Further Yinyang optimization (e.g., clever sorting).
 2. fp16.
-3. Multi-GPU.
+3. <s>Multi-GPU</s> - done.
 
 Conclusion
 ----------
