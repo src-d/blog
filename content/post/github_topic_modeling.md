@@ -23,7 +23,7 @@ is open source: [bigartm/bigartm](https://github.com/bigartm/bigartm)
 [2](https://s3-eu-west-1.amazonaws.com/artm/Voron15cikm-tm.pdf)].
 
 Normally, topic modeling is applied to ordinary text documents. We at source{d}
-struggle with huge amount of data originated from GitHub repositories (an soon
+struggle with huge amount of data originated from GitHub repositories (and soon
   we'll handle every open source repository in the world). A natural idea is
 to treat every repository as a bag-of-words and apply Dr. Vorontsov's powerful engine for
 topic modeling. For example, we could extract names from the

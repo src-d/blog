@@ -325,7 +325,7 @@ Points of improvement
 ---------------------
 
 1. Further Yinyang optimization (e.g., clever sorting).
-2. fp16.
+2. fp16 - in progress.
 3. <s>Multi-GPU</s> - done.
 
 Conclusion
