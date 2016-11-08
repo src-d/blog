@@ -44,6 +44,8 @@ docker run srcd/github_topics apache/spark
 
 [Trained model](https://storage.googleapis.com/github-repositories-topic-modeling/repo_topic_modeling.pickle.gz) - 40M, gzipped pickle for Python 3.4+, Pandas 1.18+.
 
+[Dataset on data.world](https://data.world/vmarkovtsev/github-source-code-names).
+
 Theory
 ------
 Suppose that we have a topic probabilistic model of the collection of documents
