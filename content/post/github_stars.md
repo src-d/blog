@@ -6,25 +6,25 @@ draft: false
 image: /post/github_stars/star.png
 description: "Playing with most popular repositories' metadata." 
 ---
-Recently I've got the task to collect all the available metadata (name,
+Recently I started to collect all the available metadata (name,
 number of stars, forks, watchers, etc.) from the most popular GitHub repositories.
-I chose "number of stargazers" as the measure of popularity. This metric
-is by no means perfect, but at least should have strong positive correlation.
+I chose the "number of stargazers" as a measure of popularity. This metric
+is by no means perfect, but at least should have a strong positive correlation.
 <details>
 <summary>How I quickly grabbed all repositories with ≥50 stars (over 120k) using a <span style="text-decoration: line-through;">shitty</span> script.</summary>
 
-Seems easy, but GitHub API limits make it nontrivial. Let me remind them:
+Seems easy, but the GitHub API limits makes it nontrivial. Let me remind you:
 
 1. Registered users may not issue more than 30 API requests per minute,
-5000 per hour. This is unpleasant but we can live with those: only the
+5,000 per hour. This is unpleasant but we can live with this, since only the
 retrieval speed is reduced.
 2. Search API is limited to 1000 results. This is much worse than (1), because
-it bounds the volume of data we can fetch even we have infinite time.
+it limits the volume of data we can fetch even we have infinite time.
 
-If we go to the GitHub web search page and set the query to
+If we go to the GitHub web search and set the query to
 [stars:>=50](https://github.com/search?utf8=%E2%9C%93&q=stars%3A%3E%3D50&ref=simplesearch),
 we will get more than 124,000 results. Apparently, we cannot fetch
-all of them in a single step and have to hack. I've always loved to hack,
+all of them in a single step and have to hack this. I've always loved to hack,
 so I created [vmarkovtsev/GitHubStars](https://github.com/vmarkovtsev/GitHubStars).
 It is a quick and dirty Python script which fetches Search API results
 in batches. It works in two stages:
@@ -33,14 +33,14 @@ in batches. It works in two stages:
 2. Fetch those intervals one by one.
 
 For example, we probe the number of repositories returned from the query
-`stars:50..60` and get 17,870 results. Too much (we've got 1k limit, remember).
+`stars:50..60` and get 17,870 results. Too much (we've have a 1k limit, remember).
 OK, then we probe `stars:50..55` and get 10,566. Still too much. We continue
 to bisect the interval until we eventually converge to `stars:50..50`
 with 1,885. That number is bigger than 1000; does it mean we are unable
 to fetch all repositories rated with 50 stars? The answer is no, if we
-apply the trick which I call "updated dual-order".
+apply a trick which I call "updated dual-order".
 
-The idea is to sort the response by the date repository had last update
+The idea is to sort the response by the last updated date of the repository 
 (Search API allows setting different sort keys). We make 2 requests,
 the first with ascending order and the second with descending. We take
 1000 from the first and the last 885 from the second. Thus we extend the
@@ -49,7 +49,7 @@ maximum number of query results to 2k.
 The outcome of the first stage is the list of the star intervals we are
 able to consume as a whole, each yielding less than 2000 items.
 Probes are made with the page size equal to 1 and are very fast. The second
-stage alters the page size to 100 (the maximum allowed) and sucks the data.
+stage alters the page size to 100 (the maximum allowed) and extracts the data.
 Here is how to launch the script:
 
 ```
@@ -100,7 +100,7 @@ We see that the fit is good. It's parameters are: μ=-15.31, σ=5.23.
 We crop the observed interval by 1000,
 it contains 93% of all the analysed repositories and does not include very high rated
 noisy samples (as seen on the histogram or from on full PDF).
-Let's compare log-normal hypothesis with
+Let's compare the log-normal hypothesis with the
 [power-law](https://en.wikipedia.org/wiki/Power_law#Power-law_probability_distributions)
 and [exponential](https://en.wikipedia.org/wiki/Exponential_distribution) ones.
 
@@ -111,8 +111,8 @@ and [exponential](https://en.wikipedia.org/wiki/Exponential_distribution) ones.
 (1.8897939959930001, 0.058785516870108641)
 ```
 
-That is, with 100% confidence log-normal fit is better than exponential
-and with 94% confidence better than power-law.
+That is, with a 100% confidence the log-normal fit is better than exponential
+and with 94% confidence better than the power-law.
 
 All right, what about the number of forks? The distribution seems quite different:
 
