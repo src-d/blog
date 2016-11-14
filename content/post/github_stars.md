@@ -1,10 +1,10 @@
---- 
+---
 author: vadim
 date: 2016-11-14
-title: "Hands on the most starred GitHub repositories." 
-draft: false 
+title: "Hands on the most starred GitHub repositories."
+draft: false
 image: /post/github_stars/star.png
-description: "Playing with most popular repositories' metadata." 
+description: "Playing with most popular repositories' metadata."
 ---
 Recently I started to collect all the available metadata (name,
 number of stars, forks, watchers, etc.) from the most popular GitHub repositories.
@@ -13,7 +13,7 @@ is by no means perfect, but at least should have a strong positive correlation.
 <details>
 <summary>How I quickly grabbed all repositories with ≥50 stars (over 120k) using a <span style="text-decoration: line-through;">shitty</span> script.</summary>
 
-Seems easy, but the GitHub API limits makes it nontrivial. Let me remind you:
+Seems easy, but the GitHub API limits make it nontrivial. Let me remind you:
 
 1. Registered users may not issue more than 30 API requests per minute,
 5,000 per hour. This is unpleasant but we can live with this, since only the
@@ -40,7 +40,7 @@ with 1,885. That number is bigger than 1000; does it mean we are unable
 to fetch all repositories rated with 50 stars? The answer is no, if we
 apply a trick which I call "updated dual-order".
 
-The idea is to sort the response by the last updated date of the repository 
+The idea is to sort the response by the last updated date of the repository
 (Search API allows setting different sort keys). We make 2 requests,
 the first with ascending order and the second with descending. We take
 1000 from the first and the last 885 from the second. Thus we extend the
@@ -114,11 +114,14 @@ and [exponential](https://en.wikipedia.org/wiki/Exponential_distribution) ones.
 That is, with a 100% confidence the log-normal fit is better than exponential
 and with 94% confidence better than the power-law.
 
-All right, what about the number of forks? The distribution seems quite different:
+All right, what about the number of forks? Every registered GitHub user can fork
+a repository to his or her personal account, incrementing the corresponding counter of the origin,
+and GitHub API reports those counters' values.
+Their distribution appears quite different:
 
 ![forks_hist](/post/github_stars/forks_hist.png)
 
-However, tt fits well to log-normal within the interval \[30, 5000\] forks:
+However, it fits well to log-normal within the interval \[30, 5000\] forks:
 
 ![forks_fit](/post/github_stars/forks_fit.png)
 
