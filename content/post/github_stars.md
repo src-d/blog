@@ -1,3 +1,4 @@
+---
 author: vadim
 date: 2016-11-14
 title: "Hands on with the most starred GitHub repositories."
@@ -158,6 +159,33 @@ axes = pandas.tools.plotting.scatter_matrix(df, alpha=0.2)
 
 ![scatter](/post/github_stars/scatter.png)
 
-So the answer is yes, all three are correlated.
+So the answer is yes, all three are positively correlated. To be precise, here is
+the correlation matrix:
+
+|      |      |      |
+|------|------|------|
+| 1.00 | 0.72 | 0.45 |
+| 0.72 | 1.00 | 0.50 |
+| 0.45 | 0.50 | 1.00 |
+
+Bonus
+-----
+It appeared that some highly rated repositories became ghosts, that is, are empty.
+
+|                                                             |                                                                     |
+|-------------------------------------------------------------|---------------------------------------------------------------------|
+|[openrasta/openrasta](https://github.com/openrasta/openrasta)|[Habraruby/Ruby-Problems](https://github.com/Habraruby/Ruby-Problems)|
+|[flyth/ts3soundbot](https://github.com/flyth/ts3soundbot)|[StephanSchmidt/SimpleKanban](https://github.com/StephanSchmidt/SimpleKanban)|
+|[blend2d/b2d](https://github.com/blend2d/b2d)|[core/wsgicore](https://github.com/core/wsgicore)|
+|[mlpoll/machinematch](https://github.com/mlpoll/machinematch)|[paulirish/devtools-addons](https://github.com/paulirish/devtools-addons)|
+|[lukelove/AppceleratorRecord](https://github.com/lukelove/AppceleratorRecord)|[TheKnightsWhoSayNi/info](https://github.com/TheKnightsWhoSayNi/info)|
+|[MozOpenHard/CHIRIMEN](https://github.com/MozOpenHard/CHIRIMEN)|[go-gitea/gitea_old](https://github.com/go-gitea/gitea_old)|
+|[realworldocaml/book](https://github.com/realworldocaml/book)|[core/httpcore](https://github.com/core/httpcore)|
+|[DNS-P2P/DNS-P2P](https://github.com/DNS-P2P/DNS-P2P)|[leoluk/thinkpad-stuff](https://github.com/leoluk/thinkpad-stuff)|
+|[lipeiwei-szu/ONE-API](https://github.com/lipeiwei-szu/ONE-API)|[Tencent/behaviac](https://github.com/Tencent/behaviac)|
+
+And there are at least two repositories which are empty by design, either serving
+as a wiki or as an issue tracker: [koush/support-wiki](https://github.com/koush/support-wiki)
+and [WarEmu/WarBugs](https://github.com/WarEmu/WarBugs).
 
 <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
