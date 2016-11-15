@@ -1,7 +1,6 @@
----
 author: vadim
 date: 2016-11-14
-title: "Hands on the most starred GitHub repositories."
+title: "Hands on with the most starred GitHub repositories."
 draft: false
 image: /post/github_stars/star.png
 description: "Playing with most popular repositories' metadata."
@@ -11,7 +10,7 @@ number of stars, forks, watchers, etc.) from the most popular GitHub repositorie
 I chose the "number of stargazers" as a measure of popularity. This metric
 is by no means perfect, but at least should have a strong positive correlation.
 <details>
-<summary>How I quickly grabbed all repositories with ≥50 stars (over 120k) using a <span style="text-decoration: line-through;">shitty</span> script.</summary>
+<summary style="cursor: pointer;">How I quickly grabbed all repositories with ≥50 stars (over 120k) using a <span style="text-decoration: line-through;">crappy</span> script.</summary>
 
 Seems easy, but the GitHub API limits make it nontrivial. Let me remind you:
 
@@ -99,7 +98,8 @@ fit.power_law.plot_pdf(linestyle="--")
 We see that the fit is good. It's parameters are: μ=-15.31, σ=5.23.
 We crop the observed interval by 1000,
 it contains 93% of all the analysed repositories and does not include very high rated
-noisy samples (as seen on the histogram or from on full PDF).
+noisy samples (as seen on the histogram or on full PDF). Those noisy samples
+are unstably, randomly distributed and are not fittable.
 Let's compare the log-normal hypothesis with the
 [power-law](https://en.wikipedia.org/wiki/Power_law#Power-law_probability_distributions)
 and [exponential](https://en.wikipedia.org/wiki/Exponential_distribution) ones.
@@ -111,7 +111,9 @@ and [exponential](https://en.wikipedia.org/wiki/Exponential_distribution) ones.
 (1.8897939959930001, 0.058785516870108641)
 ```
 
-That is, with a 100% confidence the log-normal fit is better than exponential
+These are the handy loglikelihood trials built into powerlaw,
+[link to the documentation](http://pythonhosted.org/powerlaw/index.html?highlight=distribution_compare#powerlaw.Fit.distribution_compare).
+It can be seen that with a 100% confidence the log-normal fit is better than exponential
 and with 94% confidence better than the power-law.
 
 All right, what about the number of forks? Every registered GitHub user can fork
