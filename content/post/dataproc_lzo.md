@@ -15,8 +15,8 @@ in GitHub repositories, reducing the amount of data by a factor of 2.
 
 Spark does not support LZO codec out of the box because its implementation
 is GPL licensed and conflicts with Apache. Google's [Dataproc](https://cloud.google.com/dataproc/),
-being the managed Spark cluster cloud solution, obviously neither supports LZO out of the box.
-However, Twitter has developed
+being the managed Spark cluster cloud solution, <span style="text-decoration: line-through;">obviously neither supports LZO out of the box</span>
+see the update, finally it does. However, Twitter has developed
 [hadoop-lzo](https://github.com/twitter/hadoop-lzo), the pluggable LZO support
 for the Hadoop and Spark ecosystems, and it can be very easily added to Dataproc thanks
 to [custom initialization scripts](https://cloud.google.com/dataproc/docs/concepts/init-actions).
@@ -49,3 +49,9 @@ And that's it! Existing LZO files in Google Cloud Storage can be indexed with
 ```
 hadoop jar /usr/lib/hadoop/lib/hadoop-lzo-0.4.20.jar com.hadoop.compression.lzo.LzoIndexer gs://bucket/subpath_or_file
 ```
+
+Update
+------
+Dataproc actually added the support for LZO on [01.09.2016](https://cloud.google.com/dataproc/docs/release-notes/service#september_1_2016).
+It ships hadoop-lzo 0.4.19 in /usr/lib/hadoop/lib/, but *there is still the need to edit the
+configuration file*.
