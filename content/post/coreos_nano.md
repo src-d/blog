@@ -6,20 +6,20 @@ draft: false
 image: /post/coreos_nano/nano_intro.png
 description: "CoreOS ships with Vim as the only text editor by default. The following is how to compile GNU nano text editor for CoreOS as a first-class citizen."
 ---
-Sometimes, you want to edit text files inside CoreOS. Either you have to use Vim
-editor which is shipped by default or use a container, e.g. Toolbox. I don't like
-Vim much and feel that using a container to launch a text editor for temporal edits
-is an overkill. I am used to [GNU nano](https://www.nano-editor.org/) and I want
+Sometimes, you want to edit text files inside CoreOS. Either you have to use the Vim
+editor which is shipped by default or use a container, e.g. Toolbox. I am not a fan
+Vim and feel that using a container to launch a text editor for temporal edits
+is overkill. I am used to [GNU nano](https://www.nano-editor.org/) and I would like
 to use it instead of Vim. Since there is no package manager in CoreOS (and it
-shouldn't of course), one has to either copy `nano` binary from a donor container
-or to compile it from scratch. The binary is linked dynamically in all Linux distributions,
+shouldn't have one of course), one has to either copy the `nano` binary from a donor container
+or compile it from scratch. The binary is linked dynamically in all Linux distributions,
 so launching it in CoreOS fails with "library not found" errors. Let's face it:
 `nano` must be compiled in order to work with all the features.
 
 ![nano](/post/coreos_nano/nano.png)
 
-I am used to Ubuntu, so will cook `nano` in it's environment. The following supposes
-that you've got the CoreOS command line prompt.
+I am used to Ubuntu, so I will cook `nano` in it's environment. The following supposes
+that you have access to the CoreOS command line prompt.
 
 #### Prepare the system
 ```
@@ -40,7 +40,7 @@ enables `nano` to select the syntax highlight scheme based on the edited file's
 contents (by the way, `file` command in Linux is based on the same library) and
 libgpm is one of the opaque dependencies of [libncurses](https://www.gnu.org/software/ncurses/).
 libncurses in turn is the library to create console user interfaces. Basically, every program
-which has a console UI uses it: `vim`, `mc`, `less` and `more` and even web browsers like `w3m`. 
+which has a console UI uses it: `vim`, `mc`, `less` and `more` and even web browsers like `w3m`.
 Usually it is accompanied with [libreadline](https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html),
 an essential abstraction layer to work with the terminal prompt, it is used by
 Bash, Vim, Python REPL, etc. By the way, every time you press Ctrl-R in the terminal, you use libreadline.
@@ -53,15 +53,16 @@ mkdir build && cd build
 make -j$(getconf _NPROCESSORS_ONLN)
 mkdir install && make install DESTDIR=$(pwd)/install
 ```
+
 The point is, we **must** compile `nano` statically linked, because CoreOS's `/etc/ldconfig`
-contains only readonly library paths (e.g., /opt/lib could be a
+library paths are all readonly (e.g., /opt/lib could be a
 good candidate but is not listed). `nano`'s dependency libraries are indeed not
 present in CoreOS and there is no way to add them nicely (LD_LIBRARY_PATH,
 LD_PRELOAD are hacks which should be avoided). If `nano` was written in Go,
-there would be no problem since Go compiler always links programs statically.
+there would be no problem since the Go compiler always links programs statically.
 Unfortunately, we have to deal with C.
 
-`nano` is a traditional GNU software which is built using
+`nano` is traditional GNU software which is built using
 [autotools](https://en.wikipedia.org/wiki/GNU_Build_System) and
 [make](https://en.wikipedia.org/wiki/Make_(software)). The build is performed
 in three steps:
@@ -69,13 +70,12 @@ in three steps:
 0. Generate the `configure` script. Usually, maintainers ship it inside the source tarball.
 1. Run `configure` script to create the makefiles, check the environment, etc.
 2. Run `make` - compile everything.
-3. Run `make install` to put the built files into the desired location. Sometimes,
-libraries get relinked to match the destination directory.
+3. Run `make install` to put the built files into the desired location. Sometimes, libraries get relinked to match the destination directory.
 
-GCC offers `-static` flag which we can inject via LDFLAGS during the configuration step.
+GCC offers a `-static` flag which we can inject via LDFLAGS during the configuration step.
 However, it will fail then. The problem is in dependencies: for example,
-ncurses depends on libtinfo and it is not linked with automatically. The described
-situation is a complete hell in case of large programs with plenty of dependencies.
+ncurses depends on libtinfo and it is not linked automatically. The described
+situation is total hell in case of large programs with plenty of dependencies.
 We are lucky that we've got the tiny `nano`!
 ```
 ldd $(which nano)
@@ -89,7 +89,7 @@ ldd $(which nano)
     /lib64/ld-linux-x86-64.so.2 (0x00005597ae3f0000)
 ```
 The dependencies can be added manually and this is what I did with setting LIBS.
-libc and libdl are not needed to append - they are the system stuff.
+libc and libdl are not needed to append - they are system stuff.
 
 Finally, CFLAGS activates [link time optimization](https://en.wikipedia.org/wiki/Interprocedural_optimization)
 which is a must-have if you link statically, sets optimization level and allows
@@ -103,7 +103,7 @@ cp -r install/opt/share/nano /media/root/opt/share
 echo "include /opt/share/nano/*.nanorc" > /media/root/opt/etc/nanorc
 ```
 Here we are using the fact that CoreOS lists /opt/bin in PATH and effectively
-allows adding your custom binaries. Additionally, we write nanorc configuration
+allows adding your custom binaries. Additionally, we write the nanorc configuration
 to activate syntax highlight rules.
 
 That's it!
@@ -119,6 +119,6 @@ nano --version
 
 #### Now seriously
 As we saw, it is possible to statically link C/C++ programs in pretty much the
-same way Go does it. In Go, you execute `got get` and you are done. In C, you
+same way Go does it. In Go, you execute `go get` and you are done. In C, you
 have to be a good system programmer and to spend an hour struggling with the compiler.
 My next text editor will be written in Go for sure :-)
