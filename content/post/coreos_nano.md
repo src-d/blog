@@ -39,9 +39,11 @@ two extra libraries must be installed: [libmagic](https://github.com/file/file)
 enables `nano` to select the syntax highlight scheme based on the edited file's
 contents (by the way, `file` command in Linux is based on the same library) and
 libgpm is one of the opaque dependencies of [libncurses](https://www.gnu.org/software/ncurses/).
-libncurses in turn is the essential library to work with the terminal used by
-Bash, Vim, Python REPL, etc. Every time you press Ctrl-R in the terminal,
-you use that library.
+libncurses in turn is the library to create console user interfaces. Basically, every program
+which has a console UI uses it: `vim`, `mc`, `less` and `more` and even web browsers like `w3m`. 
+Usually it is accompanied with [libreadline](https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html),
+an essential abstraction layer to work with the terminal prompt, it is used by
+Bash, Vim, Python REPL, etc. By the way, every time you press Ctrl-R in the terminal, you use libreadline.
 
 #### Building
 ```
