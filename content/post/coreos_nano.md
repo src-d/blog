@@ -23,7 +23,7 @@ that you have access to the CoreOS command line prompt.
 
 #### Prepare the system
 ```
-# Override toolbox from Fedore to Ubuntu
+# Override toolbox from Fedora to Ubuntu
 echo "TOOLBOX_DOCKER_IMAGE=ubuntu" > ~/.toolboxrc
 toolbox
 
@@ -34,7 +34,7 @@ wget https://www.nano-editor.org/dist/v2.7/nano-2.7.1.tar.gz
 tar -xf nano-2.7.1.tar.gz
 cd nano-2.7.1
 ```
-"build-dep" should install the C compiler and all the build dependencies, however,
+`build-dep` should install the C compiler and all the build dependencies, however,
 two extra libraries must be installed: [libmagic](https://github.com/file/file)
 enables `nano` to select the syntax highlight scheme based on the edited file's
 contents (by the way, `file` command in Linux is based on the same library) and
@@ -57,8 +57,8 @@ mkdir install && make install DESTDIR=$(pwd)/install
 The point is, we **must** compile `nano` statically linked, because CoreOS's `/etc/ldconfig`
 library paths are all readonly (e.g., /opt/lib could be a
 good candidate but is not listed). `nano`'s dependency libraries are indeed not
-present in CoreOS and there is no way to add them nicely (LD_LIBRARY_PATH,
-LD_PRELOAD are hacks which should be avoided). If `nano` was written in Go,
+present in CoreOS and there is no way to add them nicely (`LD_LIBRARY_PATH`,
+`LD_PRELOAD` are hacks which should be avoided). If `nano` was written in Go,
 there would be no problem since the Go compiler always links programs statically.
 Unfortunately, we have to deal with C.
 
@@ -102,7 +102,7 @@ cp install/opt/bin/nano /media/root/opt/bin
 cp -r install/opt/share/nano /media/root/opt/share
 echo "include /opt/share/nano/*.nanorc" > /media/root/opt/etc/nanorc
 ```
-Here we are using the fact that CoreOS lists /opt/bin in PATH and effectively
+Here we are using the fact that CoreOS lists `/opt/bin` in `PATH` and effectively
 allows adding your custom binaries. Additionally, we write the nanorc configuration
 to activate syntax highlight rules.
 
@@ -121,4 +121,4 @@ nano --version
 As we saw, it is possible to statically link C/C++ programs in pretty much the
 same way Go does it. In Go, you execute `go get` and you are done. In C, you
 have to be a good system programmer and to spend an hour struggling with the compiler.
-My next text editor will be written in Go for sure :-)
+My next text editor will be written in Go for sure... or Vim.
