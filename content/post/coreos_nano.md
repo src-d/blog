@@ -52,7 +52,7 @@ make -j$(getconf _NPROCESSORS_ONLN)
 mkdir install && make install DESTDIR=$(pwd)/install
 ```
 The point is, we **must** compile `nano` statically linked, because CoreOS's `/etc/ldconfig`
-does not contain library paths which are **not** readonly (e.g., /opt/lib could be a
+contains only readonly library paths (e.g., /opt/lib could be a
 good candidate but is not listed). `nano`'s dependency libraries are indeed not
 present in CoreOS and there is no way to add them nicely (LD_LIBRARY_PATH,
 LD_PRELOAD are hacks which should be avoided). If `nano` was written in Go,
