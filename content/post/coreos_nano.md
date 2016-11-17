@@ -9,7 +9,7 @@ description: "CoreOS ships with Vim as the only text editor by default. The foll
 Sometimes, you want to edit text files inside CoreOS. Either you have to use the Vim
 editor which is shipped by default or use a container, e.g. Toolbox. I am not a fan
 Vim and feel that using a container to launch a text editor for temporal edits
-is overkill. I am used to [GNU nano](https://www.nano-editor.org/) and I would like 
+is overkill. I am used to [GNU nano](https://www.nano-editor.org/) and I would like
 to use it instead of Vim. Since there is no package manager in CoreOS (and it
 shouldn't have one of course), one has to either copy the `nano` binary from a donor container
 or compile it from scratch. The binary is linked dynamically in all Linux distributions,
@@ -39,9 +39,11 @@ two extra libraries must be installed: [libmagic](https://github.com/file/file)
 enables `nano` to select the syntax highlight scheme based on the edited file's
 contents (by the way, `file` command in Linux is based on the same library) and
 libgpm is one of the opaque dependencies of [libncurses](https://www.gnu.org/software/ncurses/).
-libncurses in turn is the essential library to work with the terminal used by
-Bash, Vim, Python REPL, etc. Every time you press Ctrl-R in the terminal,
-you use that library.
+libncurses in turn is the library to create console user interfaces. Basically, every program
+which has a console UI uses it: `vim`, `mc`, `less` and `more` and even web browsers like `w3m`.
+Usually it is accompanied with [libreadline](https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html),
+an essential abstraction layer to work with the terminal prompt, it is used by
+Bash, Vim, Python REPL, etc. By the way, every time you press Ctrl-R in the terminal, you use libreadline.
 
 #### Building
 ```
@@ -51,7 +53,8 @@ mkdir build && cd build
 make -j$(getconf _NPROCESSORS_ONLN)
 mkdir install && make install DESTDIR=$(pwd)/install
 ```
-The point is, we **must** compile `nano` statically linked, because CoreOS's `/etc/ldconfig` 
+
+The point is, we **must** compile `nano` statically linked, because CoreOS's `/etc/ldconfig`
 library paths are all readonly (e.g., /opt/lib could be a
 good candidate but is not listed). `nano`'s dependency libraries are indeed not
 present in CoreOS and there is no way to add them nicely (LD_LIBRARY_PATH,
