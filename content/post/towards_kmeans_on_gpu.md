@@ -325,8 +325,9 @@ Points of improvement
 ---------------------
 
 1. Further Yinyang optimization (e.g., clever sorting).
-2. fp16 - in progress.
+2. <s>fp16</s> - done.
 3. <s>Multi-GPU</s> - done.
+4. <s>Angular distance metric (aka Spherical K-Means)</s> - done.
 
 Conclusion
 ----------
