@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2016-11-21
+date: 2016-11-23
 title: "kmcuda (K-Means on GPU) version 4 is released"
 draft: false
 image: /post/kmcuda4/nvprof.png
@@ -172,7 +172,7 @@ However, I don't see any other ways to stay DRY. Perhaps I should have been WET 
 
 ### fp16
 
-NVIDIA's [Pascal]() architecture allows calculations with the half2
+NVIDIA's [Pascal](https://en.wikipedia.org/wiki/Pascal_(microarchitecture)) architecture allows calculations with the half2
 data type - two 16-bit floats packed into a 32-bit struct.
 
 ![half and half2](https://devblogs.nvidia.com/wp-content/uploads/2015/07/fp16_format-624x146.png)
@@ -334,7 +334,7 @@ iterations. To deal with that problem, where possible I decided to use
 Kahan summation with both 32- and 16-bit floats. While it may have slightly degraded
 the performance, the results became more stable and mathematically correct.
 
-Kahan summation is well descibed on 
+Kahan summation is well described on 
 [Wikipedia](https://en.wikipedia.org/wiki/Kahan_summation_algorithm). It
 is awesome because it requires only \\(O(1)\\) space, particularly,
 one additional variable to store the current error correction value.
