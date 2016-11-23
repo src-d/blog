@@ -7,9 +7,9 @@ image: /post/kmcuda4/nvprof.png
 description: "Our kmcuda v4 is released, featuring multi-gpu, float16, Spherical K-Means and improved precision."
 ---
 
-Some time ago, I wrote the article about [src-d/kmcuda](https://github.com/src-d/kmcuda)
+Some time ago, I wrote an article about [src-d/kmcuda](https://github.com/src-d/kmcuda)
 named [Towards Yinyang K-means on GPU](http://blog.sourced.tech/post/towards_kmeans_on_gpu/).
-This weekend, we released version 4 of that library. Here is the brief list of
+Last weekend we released version 4 of that library. Here is the brief list of
 changes:
 
 1. K-Means iterations can run in parallel on several GPU cards, so
@@ -36,30 +36,30 @@ Clustering on several GPUs at the same time is not straightforward,
 because you cannot simply split the samples into equal parts and
 feed them in parallel. The calculation of the centroids requires having
 all the data in the same place. While there can be workarounds for
-storing the whole dataset in the memory, I chose a quicker to implement
+storing the whole dataset in memory, I chose a quicker to implement
 and more performant solution.
 
-Let me remind how Lloyd algorithm works:
+Let me recap how the Lloyd's algorithm works:
 
 1. We calculate the distances between the samples and the centroids,
 pick the centroid with the minimum distance for every sample (assignment stage).
 2. We update the centroids by averaging all the samples assigned to each
 (centroids stage).
 
-The current multi-gpu scheme is as follows.
+The current multi-gpu scheme is as follows:
 
 1. We cut the samples into as many intervals as GPUs are available.
 Each GPU works with one interval, calculates the distances and
 writes the local assignments.
 2. GPUs transfer the assignments to each other in an all to all manner.
 3. We cut the centroids into the same number of intervals as the number of
-GPUs. Each GPU works with one interval, updates the local centroids.
+GPUs. Each GPU works with one interval and updates the local centroids.
 4. GPUs transfer the centroids to each other in an all to all manner.
 
 Steps 2 and 4 require efficient peer to peer communication, and indeed
 I am using `cudaMemcpyPeer()`. This approach works well with 2 or 4 GPUs,
-but it may produce too much comunication traffic with a bigger amount.
-In the future (when I access 8-GPU installments I guess) I will use NVIDIA's
+but it may produce too much comunication traffic with a bigger number.
+In the future (when I start using 8-GPU installments ;)) I will use NVIDIA's
 awesome [nccl](https://github.com/NVIDIA/nccl) library.
 
 Conceptually, nothing changes, and the same parallelization pattern is
@@ -75,7 +75,7 @@ You have to call `cudaSetDevice()` before any other CUDA API call or you
 may end up with the wrong device. This is not cool at all and I think
 the weakest part of the whole CUDA runtime API. Setting the device number for
 every API function would be much better, and it would cure all the
-thread safety issues which are currently ugly solved by the thread local
+thread safety issues which are currently solved in an ugly manner by the thread local
 context.
 
 You shouldn't mix kernel calls with peer to peer memory exchanges,
@@ -172,8 +172,8 @@ However, I don't see any other ways to stay DRY. Perhaps I should have been WET 
 
 ### fp16
 
-NVIDIA's [Pascal]() architecture allows calculations with half2
-data type - two 16-bit floats packed into the 32-bit struct.
+NVIDIA's [Pascal]() architecture allows calculations with the half2
+data type - two 16-bit floats packed into a 32-bit struct.
 
 ![half and half2](https://devblogs.nvidia.com/wp-content/uploads/2015/07/fp16_format-624x146.png)
 
@@ -211,8 +211,8 @@ data types, whereas all the fast math is applied properly and there is
 no need for `--use-fast-math` flag for `nvcc`. I mean, for example,
 taking the square root from a 32-bit float is performed using
 `__fsqrt_rn` intrinsic and not the normal `sqrt` function. The latter
-is translated to the former only if the [fast math](http://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-steering-gpu-code-generation)
-is enabled, but the precision may degrade. Fast math switch activates some other
+is translated to the former only if [fast math](http://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-steering-gpu-code-generation)
+is enabled, but the precision may degrade. The fast math switch activates some other
 trade-off optimizations which are not desirable to have in our code.
 
 Although the functions are inlined, they still increased the
@@ -230,7 +230,7 @@ Yinyang local filter is eating 40 registers whatever I try to alter.
 
 ![sphere](/post/kmcuda4/sphere.png)
 
-Sometimes, L2 distance metric is not the best one in which to do the
+Sometimes, the L2 distance metric is not the best one in which to do
 clustering. L2, or simply Euclidean, is the square root of the sum of squares:
 $$
 \Delta_ 2(\\vec{x}, \\vec{y}) = \\sqrt{\\sum_ i\\limits x_ i^2}
@@ -258,7 +258,7 @@ conventional Lloyd algorithm:
 2. Centroids must be renormed to 1 after each iteration (hence "spherical").
 
 Both of these modification do not contradict with Yinyang refinement since
-it bases solely on the triangle inequality.
+it is based solely on the triangle inequality.
 
 The implementation of the angular distance leveraged templates support in
 CUDA code again. I added the second template parameter (well, actually
@@ -276,7 +276,7 @@ of 10 is \\(256 * 10^2 = 25600 < 2^{16}\\). Yet still I would recommend
 to norm the dataset by subtracting the mean and dividing by the dispersion
 when clustering with fp16 and L2.
 
-The kernel invocation code becomes a pure
+The kernel invocation code becomes pure
 hell because I had to give birth to this dreaded template switch:
 
 ```c++
@@ -310,8 +310,8 @@ KERNEL_SWITCH(kmeans_assign_lloyd, <<<sgrid, sblock, shmem_size>>>(
     (*assignments)[devi].get() + offset));
 ```
 
-From a user's perspective, C API adds `metric` enumerated parameter
-and Python API adds `metric` string parameter.
+From a user's perspective, the C API adds `metric` enumerated parameters
+and the Python API adds `metric` string parameters.
 
 ### Kahan summation
 
@@ -326,15 +326,15 @@ floating point precision in the addition operation: if you try
 to sum 32-bit float \\(2^{20}\\) with \\(2^{-20}\\), the result will be still
 \\(2^{10}\\) since the
 [mantissa](https://en.wikipedia.org/wiki/Floating_point#Internal_representation)
-is saturated. It wasn't much expressed with 32-bit floats at the time
-I started the project, but became obvious when I added 16-bit floats.
+is saturated. At the time I started the project it wasn't much of an issue 
+with 32-bit floats, but became obvious when I added 16-bit floats.
 
 Practically, the loss of precision leads to worse clustering and more
-iterations. I decided to use Kahan summation with both 32- and 16-bit floats
-where possible to deal with that problem. While it may have slightly degraded
+iterations. To deal with that problem, where possible I decided to use 
+Kahan summation with both 32- and 16-bit floats. While it may have slightly degraded
 the performance, the results became more stable and mathematically correct.
 
-Kahan summation is greatly descibed on the
+Kahan summation is well descibed on 
 [Wikipedia](https://en.wikipedia.org/wiki/Kahan_summation_algorithm). It
 is awesome because it requires only \\(O(1)\\) space, particularly,
 one additional variable to store the current error correction value.
@@ -349,23 +349,23 @@ resulting centroids and cluster are supposed to be allocated on the same GPU
 and written using CUDA memcpy. This feature is activated by `device_ptrs`
 parameter in C API. If it is negative (the default), the usual behavior
 is retained. Otherwise, it specifies the device number on which samples
-array is allocated. I had a special fun debugging `device_ptrs` thing
+array is allocated. I had a special kind of fun debugging `device_ptrs`
 with multiple GPUs, but everything should work fine now.
 
-In the case of Python API, you can pass a tuple with the CUDA pointer,
+In the case of the Python API, you can pass a tuple with the CUDA pointer,
 the device number and the shape instead of the normal numpy array to
 `samples` argument. Optionally, that tuple may be extended with
 preallocated centroids and assignments pointers. Normally, Python users
-do not work with CUDA API directly, see how the tests extract raw pointers
-from pyCUDA or cuda4py arrays.
+do not work with the CUDA API directly (see how the tests extract raw pointers
+from pyCUDA or cuda4py arrays).
 
 ### Build
 
 ![travis](/post/kmcuda4/travis.png)
 
-Some time ago, the library was compiled for the only hardcoded CUDA device
+Some time ago, the library was compiled for only the hardcoded CUDA device
 architecture 5.2 (Titan X, Maxwell). However, 16-bit float pairs / half2 type are
-not supported by 5.2, they first appear in 6.0. So I had to add the
+not supported by 5.2, they first appeared in 6.0. So I had to add the
 ability to choose the target architecture by defining `CUDA_ARCH`:
 
 ```
@@ -386,7 +386,7 @@ Thanks to NVIDIA's [contribution to cmake](https://github.com/Kitware/CMake/comm
 it's been repaired since then. I had to apply some workaround for older cmake-s
 because TravisCI features outdated Ubuntu 14.04 LTS with an ancient cmake.
 
-Speaking about Travis, yes, I added the continuous integration which checks
+Speaking about Travis, yes, I added continuous integration which checks
 whether the library is successfully built. There is no possibility to
 run tests because they require a CUDA device.
 
@@ -397,7 +397,7 @@ very sensitive to the environment. Thankfully, there is a nice
 project [auditwheel](https://github.com/pypa/auditwheel) which can patch
 the binaries to be less demanding, it works great and produces "manylinux"
 wheels. Those patched wheels may be successfully uploaded using
-[twine](https://pypi.python.org/pypi/twine). BTW, I opened the
+[twine](https://pypi.python.org/pypi/twine). btw. I opened an
 [issue in Tensorflow](https://github.com/tensorflow/tensorflow/issues/5033)
 with a similar improvement suggestion.
 
@@ -405,22 +405,22 @@ with a similar improvement suggestion.
 
 ![tests](/post/kmcuda4/tests.png)
 
-Since the very beginning, kmcuda has the Python3 wrapper. The tests
-were written in Python, which gives several advantages:
+Since the very beginning, kmcuda has had the Python3 wrapper. The tests
+have been written in Python, which gives several advantages:
 
 1. Python wrapper code is automatically tested, too.
 2. No need to compile tests during the build.
 3. Tests development is much more flexible and easier.
 
 There are 18 tests at the moment. 5 of them are devoted to fp16 and thus
-are skipped if the library is compiled for the arch 5.2 or older. This is
+are skipped if the library is compiled for the 5.2 architecture or older. This is
 provided by the addition of `libKMCUDA.supports_fp16` Bool variable.
 
-Sometimes, tiny changes in the source code lead to slight divergence
+Sometimes tiny changes in the source code lead to a slight divergence
 in the clustering results, which is not always good. The divergence may
 occur on, say, 10-th iteration and lead to 16 iterations instead of 15 overall.
 There must be a reliable way to validate the clustering process. Since
-C API or Python API does not provide any introspection into it, the only
+the C API or Python API do not provide any introspection into it, the only
 solution is to record logs, that is, standard output on the biggest
 verbosity level, and parse them.
 
@@ -474,7 +474,7 @@ Internally, it makes the classic dup/dup2 redirection:
 6. Read the contents of the temporary file and close it.
 
 The second cause of the divergence in test results is the random generator.
-That was foreseen from the very beginning, too, so I always set the random
+That was foreseen from the very beginning, so I always set the random
 generator's seed before running every test to achieve 100% reproducibility.
 
 ### Summary
