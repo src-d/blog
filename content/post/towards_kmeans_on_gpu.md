@@ -8,6 +8,8 @@ description: "K-means is a nice and simple clustering algorithm. It can be effec
 
 The codez: [GitHub](https://github.com/src-d/kmcuda).
 
+[Next article about kmcuda v4.](http://blog.sourced.tech/post/kmcuda4/)
+
 We developed an efficient K-means implementation using [NVIDIA CUDA](...)
 technology and this article is devoted to the internals of that project.
 The motivation is simple: we need to cluster a big number of entities
