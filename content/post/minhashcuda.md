@@ -229,6 +229,10 @@ imbalance.
 The overall complexity is thus \\(O(R(\\log R + \\log T) + T\\log T) = O(R \\log R)\\)
 since \\(T ∼ R\\).
 
+I hit the problems with the low [kernel occupancy](http://developer.download.nvidia.com/compute/cuda/CUDA_Occupancy_calculator.xls).
+The used number of registers was too high. I managed to dramatically reduce the register pressure applying
+[the volatile trick](http://blog.icare3d.org/2010/04/cuda-volatile-trick.html).
+
 ### Battle tested
 
 We successfully applied [MinHashCuda](https://github.com/src-d/minhashcuda) to find duplicate repositories on GitHub.
