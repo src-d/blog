@@ -18,18 +18,18 @@ Particularly, we should throw away "extreme forks", the Large Unidentified
 Codebases. The typical example of such LUCPCs are web site engines, e.g.
 many people copy Wordpress into their repository and build their open-source blogs.
 Numerous github.io sites are the same copy-pasted examples. Folks
-like to learn web programming from books or online manuals using copy-paste of the
+like to learn web programming from books or online manuals copy-pasting the
 sample boilerplates. We are not saying it is wrong; sometimes it is even inevitable,
 sometimes [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 seem a bigger evil in spite of all GitHub's efforts to support them. Such duplicates
 are bad for specifically topic modeling since a lot of "garbage" bags are introduced.
 
 We are working with repositories using the bag-of-names model, which treats
-each codebase as the sparse vector. The number of dimensions equals to the number
+each codebase as a sparse vector. The number of dimensions equals to the number
 of unique names occurring in all the source code we've got, the values are equal
 to the corresponding [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)-s
 (the derivatives from frequencies). Names are extracted using the source highlight
-library, and additionally refined with several tricky heuristics. For example,
+library [pygments](http://pygments.org/), and additionally refined with several tricky heuristics. For example,
 consider the following Python snippet:
 
 ```python
@@ -46,9 +46,9 @@ It is transformed into
 
 Then we apply frequency filtering, TF-IDF, stemming, etc.
 
-Apparently, the resulting sparse vectors for duplicate repositories shall be
+We expect the resulting sparse vectors for duplicate repositories to be
 nearly the same. Of course, some files may contain minor edits and we cannot seek
-the exact coincidence; we have to make up something smarter. The problem which
+for the exact same bag-of-names; we have to make up something smarter. The problem which
 we've just stated is by no means unique: many Natural Language Processing
 tasks involve the same challenges. Let's revise the common approach: thresholding
 by [Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index).
@@ -65,8 +65,8 @@ That is, the power of the set intersection divided by the power of set union. Th
 is to calculate pairwise \\(J\\) matrix for all our samples, treat it as a
 mutual similarity graph's [incidence matrix](https://en.wikipedia.org/wiki/Incidence_matrix)
 and then pick the [cliques](https://en.wikipedia.org/wiki/Clique) which have each
-edge's weight above the fixed threshold. There is the problem: we've got too much
-samples, more than 10 million and we cannot calculate 10Mx10M matrix in any
+edges weight above the fixed threshold. There is the problem: we've got too many
+samples, more than 10 million and we cannot calculate a 10Mx10M matrix in any
 observable future. Luckily for us there is a nice solution to that problem: [MinHash
 algorithm](https://en.wikipedia.org/wiki/MinHash).
 
@@ -78,7 +78,7 @@ We call \\(h\\) "MinHash", it is indeed a hash function, but unlike other hashes
 [consistent](https://en.wikipedia.org/wiki/Consistent_hashing): similar
 items tend to yield near hash values. The difference between two MinHash values
 can be proved to approximate the Jaccard Similarity. There is a good blog post
-which explains how to apply MinHash algorithm to find duplicates:
+which explains how to apply the MinHash algorithm to find duplicates:
 [On removing duplicates from a set of documents](http://stevehanov.ca/blog/index.php?id=144).
 Basically, we sort all the hash values and scan them using the window of the size
 which is specially tailored for the tolerated level of false-positives.
@@ -124,19 +124,19 @@ Briefly, we define several hash tables, each for it's own subhash, depending on
 the target level of false positives. Same elements will appear in the same bucket;
 union of the bucket sets across all the hash tables for a specific sample
 yields all the similar samples. If we'd like to determine the sets of mutually
-similar samples aka [cliques](https://en.wikipedia.org/wiki/Clique), we should
+similar samples a.k.a. [cliques](https://en.wikipedia.org/wiki/Clique), we should
 consider the set intersection instead.
 
 ### MinHashCuda
 
 The LSH algorithm is actually pretty fast by design, does not require much memory
-and perfectly works even implemented in Python ([datasketch](https://github.com/ekzhu/datasketch)),
+and works perfectly, even when implemented in Python ([datasketch](https://github.com/ekzhu/datasketch)),
 whereas calculation of the hashes themselves is resource consuming. We've
 developed an efficient Weighted MinHash calculation library [MinHashCuda](https://github.com/src-d/minhashcuda).
 It allows to offload the heavy-lifting to the GPU(s).
 
 MinHashCuda has two interfaces, C and Python, much like [kmcuda](https://github.com/src-d/kmcuda),
-and actually borrowed much boilerplate code from kmcuda. I will use Python API
+and actually borrowed quite a lot of boilerplate code from kmcuda. I will use the Python API
 throughout this section. Suppose that we've got out dataset in the
 [compressed sparse row](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_.28CSR.2C_CRS_or_Yale_format.29)
 format, particularly [`scipy.sparse.csr_matrix`](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.sparse.csr_matrix.html).
@@ -153,7 +153,7 @@ Internally, it will leverage [cuRAND](http://docs.nvidia.com/cuda/curand/#axzz4Q
 NVIDIA's stock random generation library, to generate \\(r\\), \\(c\\) and \\(\\beta\\).
 If the precious GPU memory fits those arrays, then you may move along to the hash
 calculation, otherwise some dimensionality reduction is needed. For example,
-Titan X 2016 has 12GB GDDR5X, so the theoretical limit is \\(\\frac{12*10^9}{3\\cdot sizeof(float)} = 10^9\\)
+the Titan X 2016 has 12GB GDDR5X, so the theoretical limit is \\(\\frac{12*10^9}{3\\cdot sizeof(float)} = 10^9\\)
 dimensions. Of course, there must be some room for the samples, so practically
 the maximum dimensionality is about 500 million.
 
@@ -183,7 +183,7 @@ libMHCUDA.minhash_cuda_fini(hasher)
 ### Performance
 
 As usual, CUDA kernel performance dramatically varies depending on the chosen
-parallelization scheme, occupancy and the benevolence of the evil overlord.
+parallelization scheme, occupancy and the benevolence of the evil overlords.
 I had to rewrite it several times until I reached a satisfying result.
 
 The naive method of parallelization would be to assign rows to threads on
@@ -200,7 +200,7 @@ roughly the same number of *elements*, not *rows*. (2) is solved by
 caching the partial minimum \\(a_ k\\) and \\((k^\*, t_ {k^\*})\\) into the
 shared memory, so that the row's elements are read only once. There is no
 ability to accurately cache the random values as well because different rows refer to
-arbitrary different column indices. Apart from solving (1) and (2), I had a special
+arbitrary different column indices. Apart from solving (1) and (2), I had the special
 pleasure to implement multiple GPUs support.
 
 (1) appeared to be harder than it seems. The point is, (2) sets the limit on the
@@ -229,17 +229,17 @@ imbalance.
 The overall complexity is thus \\(O(R(\\log R + \\log T) + T\\log T) = O(R \\log R)\\)
 since \\(T ∼ R\\).
 
-### Battle test
+### Battle tested
 
-We successfully applied [MinHashCuda](https://github.com/src-d/minhashcuda) to find the duplicate repositories on GitHub.
-The size of our dataset was initially 13.6 million, later was filtered down to 9.6 million.
+We successfully applied [MinHashCuda](https://github.com/src-d/minhashcuda) to find duplicate repositories on GitHub.
+The size of our dataset was initially 13.6 million but later was filtered down to 9.6 million.
 To be precise, the matrix was 9624276 x 2422260 with the sparsity 0.00014, which
 is roughly equivalent to 9624276 x 340. We ran the hash calculation on two Titan Xs
 (Maxwell), it took 40 minutes. According to my estimation, the achieved speed is
 600 times faster than the implementation in `datasketch` using 12 CPU
 cores with [Intel's MKL](https://en.wikipedia.org/wiki/Math_Kernel_Library).
 
-The result after LSH with threshold 0.9 was about 467,000 duplicate groups with 1.66 million repositories.
+The result after LSH with a similarity threshold of 0.9 was about 467,000 duplicate groups with 1.66 million repositories.
 110,000 repositories appeared to be \*.github.io. Here are the examples:
 
 ```
