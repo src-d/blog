@@ -33,22 +33,22 @@ Numbers
 The raw numbers are stored in JSON on [GitHub](https://github.com/src-d/tab-vs-spaces/blob/master/tabs_spaces.json).
 The total number of languages processed is 397. The following table reflects the statistics for some randomly picked ones:
 
- language |  bytes  |  files  |  lines  |  mixed | spaces  |  tabs   
-----------|--------:|--------:|--------:|-------:|--------:|--------:
-JavaScript|  2,341GB|  253.62M|  58,906M|  1,174M|  37,690M|  7,595M
-XML       |  2,479GB|   56.93M|  41,546M|    158M|  35,423M|  2,794M
-PHP       |  1,069GB|  163.01M|  31,515M|  1,464M|  15,795M|  7,712M
-HTML      |  1,309GB|   81.07M|  21,698M|    256M|   7,122M|  3,545M
-JSON      |  1,125GB|   51.94M|  14,421M|     15M|  12,115M|    998M
-C         |    505GB|   38.99M|  14,118M|    331M|   5,632M|  2,279M
-Java      |    352GB|   72.36M|  10,285M|    390M|   5,483M|  2,251M
-C++       |    326GB|   34.62M|   9,440M|     89M|   4,397M|  1,553M
-Python    |    241GB|   34.23M|   6,140M|      5M|   4,126M|    178M
-C#        |    137GB|   29.71M|   3,675M|     15M|   2,248M|    665M
-Ruby      |     98GB|   49.49M|   2,965M|      6M|   2,141M|     77M
-Go        |     21GB|    2.87M|     642M|    700k|      12M|    434M
+language  |bytes,GB|files,M|lines,M|mixed,M|spaces,M|tabs,M
+:---------|-------:|------:|------:|------:|-------:|-----:
+JavaScript|   2,341| 253.62| 58,906|  1,174|  37,690| 7,595
+XML       |   2,479|  56.93| 41,546|    158|  35,423| 2,794
+PHP       |   1,069| 163.01| 31,515|  1,464|  15,795| 7,712
+HTML      |   1,309|  81.07| 21,698|    256|   7,122| 3,545
+JSON      |   1,125|  51.94| 14,421|     15|  12,115|   998
+C         |     505|  38.99| 14,118|    331|   5,632| 2,279
+Java      |     352|  72.36| 10,285|    390|   5,483| 2,251
+C++       |     326|  34.62|  9,440|     89|   4,397| 1,553
+Python    |     241|  34.23|  6,140|      5|   4,126|   178
+C#        |     137|  29.71|  3,675|     15|   2,248|   665
+Ruby      |      98|  49.49|  2,965|      6|   2,141|    77
+Go        |      21|   2.87|    642|    0.7|      12|   434
 
-<style>th { text-align: center; }</style>
+<style>th { padding-left: 0.5em; padding-right: 0.5em; }</style>
 
 How-to
 ------
