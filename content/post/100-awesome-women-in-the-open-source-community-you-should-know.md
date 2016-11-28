@@ -5,7 +5,7 @@ title: "100 Awesome Women In The Open-Source Community You Should Know"
 draft: false 
 image: /post/100-awesome-women-in-the-open-source-community-you-should-know/intro.jpg 
 description: "100 Awesome Women In The Open-Source Community You Should Know" 
-categories: ["business"] 
+categories: ["culture"] 
 ---
 <link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">
 
