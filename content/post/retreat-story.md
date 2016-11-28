@@ -4,6 +4,7 @@ date: 2015-10-12
 title: Taking Coding to the Mountains
 image: /post/retreat-story/9239.jpg
 description: "The Tyba engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an Open Source Hackaton."
+categories: ["business"] 
 ---
 
 The Tyba engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an **Open Source Hackaton**. The venue, a beautiful villa located in [Guadalix de la Sierra](https://www.google.es/maps/place/28794+Guadalix+de+la+Sierra,+Madrid/@40.7834355,-3.6965663,15z/data=!3m1!4b1!4m2!3m1!1s0xd43d9017d147909:0x1a4e541fa536a900?hl=en)– promised both a nice place to work, as well as lots of fun in the spare time.

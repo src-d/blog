@@ -4,6 +4,7 @@ date: 2016-02-15
 title: "Levenshtein distance, LCS, diff and blame"
 image: /post/meetup-blame/intro.jpg
 description: "Papers we love Madrid Meetup: Levenshtein distance, LCS, diff and blame."
+categories: ["technical"]
 ---
 
 There are some interesting [meetups](http://www.meetup.com) going on in Madrid,

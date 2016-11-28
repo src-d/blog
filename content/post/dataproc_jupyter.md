@@ -5,6 +5,7 @@ title: "Setting up Google Cloud Dataproc with Jupyter and Python 3 stack"
 draft: false
 image: /post/dataproc_jupyter/intro.png
 description: "How-to article devoted to setting up Dataproc, Jupyter and Python 3 data science stack"
+categories: ["science", "technical"]
 ---
 Modern big data world is hard to imagine without [Hadoop](http://hadoop.apache.org/).
 It made a small revolution in how analysts deal with large amount of emerging data

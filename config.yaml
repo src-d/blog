@@ -1,6 +1,9 @@
 title: source{d} blog
 baseUrl: /
 
+taxonomies:
+  category: "categories"
+
 params:
   description: coding to find awesome engineers
   copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros

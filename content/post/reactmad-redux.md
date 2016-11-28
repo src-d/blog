@@ -4,6 +4,7 @@ date: 2016-02-05
 title: "First ReactMad meetup: Time travelling with React and Redux"
 image: /post/reactmad-redux/back.jpg
 description: "An introduction to Redux and its time traveling capabilities for debugging."
+categories: ["technical"]
 ---
 ![View from the back of the room](/post/reactmad-redux/back.jpg)
 

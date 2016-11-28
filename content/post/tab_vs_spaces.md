@@ -5,6 +5,7 @@ title: "397 Languages, 18,000,000 GitHub repositories, 1.2 billion files, 20 ter
 draft: false
 image: /post/tab_vs_spaces/intro.png
 description: "Comprehensive study of spaces and tabs usage in source code in GitHub repositories"
+categories: ["science", "technical"]
 ---
 Tabs or spaces. We are going to parse every file among all programming languages known by GitHub to decide which one is on top.
 
