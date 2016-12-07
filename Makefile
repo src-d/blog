@@ -43,7 +43,7 @@ HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
 # CI
 TAG := master
 ifneq ($(origin TRAVIS_TAG), undefined)
-ifneq ($(TRAVIS_TAG), "")
+ifneq ($(TRAVIS_TAG),)
 	TAG := $(TRAVIS_TAG)
 endif
 endif
