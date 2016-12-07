@@ -4,6 +4,7 @@ date: 2016-07-26
 title: Towards Yinyang K-means on GPU
 image: /post/towards_kmeans_on_gpu/intro.png
 description: "K-means is a nice and simple clustering algorithm. It can be effectively implemented using NVIDIA CUDA technology and we elaborate on how."
+categories: ["science", "technical"]
 ---
 
 The codez: [GitHub](https://github.com/src-d/kmcuda).

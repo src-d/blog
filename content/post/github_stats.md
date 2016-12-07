@@ -5,6 +5,7 @@ title: "Fun with GitHub repositories statistics."
 draft: false 
 image: /post/github_stats/go.png
 description: "Lots of histograms plotted for GitHub data collected by source{d}." 
+categories: ["science", "technical"]
 ---
 
 It's always fun to play with a dataset few people have ever played with.

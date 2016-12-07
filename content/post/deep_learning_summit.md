@@ -4,6 +4,7 @@ date: 2015-10-19
 title: Notes on the Deep Learning Summit London 2015
 image: /post/deep_learning_summit/intro.png
 description: "Finding the most appropriate developers for a job offer is a very tough task, as proven by the plethora of tech recruiters that seem to be constantly shooting in the dark or outright lost."
+categories: ["science", "technical"]
 ---
 
 ![Logo](/post/deep_learning_summit/intro.png)

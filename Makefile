@@ -1,21 +1,25 @@
 # Configuration
-HUGO_VERSION ?= 0.14
+HUGO_VERSION ?= 0.17
 HUGO_THEME ?= ""
 GIT_COMMITTER_NAME ?= autohugo
 GIT_COMMITTER_EMAIL ?= autohugo@autohugo.local
 CNAME ?= ""
 
 # System
+URL_OS = 64bit
 OS = amd64
 ifeq ($(OS),Windows_NT)
     ARCH = windows
+    URL_ARCH = Windows
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
 			ARCH = linux
+			URL_ARCH = Linux
     endif
     ifeq ($(UNAME_S),Darwin)
 			ARCH = darwin
+			URL_ARCH = MacOS
     endif
 endif
 
@@ -30,6 +34,7 @@ THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
 HUGO_PATH := $(BASE_PATH)/.hugo
 HUGO_URL = github.com/spf13/hugo
 HUGO_NAME := hugo_$(HUGO_VERSION)_$(ARCH)_$(OS)
+HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
 
 # Tools
 CURL = curl -L
@@ -53,7 +58,7 @@ dependencies: init
 		ext="zip"; \
 		if [ "$(ARCH)" == "linux" ]; then ext="tar.gz"; fi; \
 		file="hugo.$${ext}"; \
-		$(CURL) https://$(HUGO_URL)/releases/download/v$(HUGO_VERSION)/$(HUGO_NAME).$${ext} -o $${file}; \
+		$(CURL) https://$(HUGO_URL)/releases/download/v$(HUGO_VERSION)/$(HUGO_URL_NAME).$${ext} -o $${file}; \
 		if [ "$(ARCH)" == "linux" ]; then tar -xvzf $${file}; else unzip $${file}; fi; \
 	fi;
 	@if [[ ! -d $(THEME_PATH) ]]; then \

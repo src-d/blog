@@ -5,6 +5,7 @@ title: "Never mess with LD_LIBRARY_PATH to run your CUDA app again"
 draft: false 
 image: /post/cuda_ldconfig/intro.png
 description: "Simple and easy way to install CUDA and CUDNN system-wide." 
+categories: ["science", "technical"]
 --- 
 
 If you are using [CUDA](https://en.wikipedia.org/wiki/CUDA) on Linux then

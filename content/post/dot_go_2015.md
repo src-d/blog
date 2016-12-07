@@ -4,6 +4,7 @@ date: 2015-11-13
 title: "dotGo2015: Undelivered Expectations"
 image: /post/dot_go_2015/intro.jpg
 description: "dotGo 2015, an excellent venue, not-so-techy talks."
+categories: ["culture"]
 ---
 
 I would like to introduce you to my new mates, the **source{d}** dev team...

@@ -1,6 +1,6 @@
 machine:
   environment:
-    HUGO_VERSION: 0.15
+    HUGO_VERSION: 0.17
     HUGO_THEME: https://github.com/digitalcraftsman/hugo-steam-theme
     CNAME: blog.sourced.tech
 
