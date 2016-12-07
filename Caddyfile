@@ -1,0 +1,12 @@
+blog.sourced.tech {
+	tls hello@sourced.tech
+	root /var/www/public
+	log stdout
+	gzip
+
+	ext .html
+	errors {
+		log stderr
+		404 404.html
+	}
+}

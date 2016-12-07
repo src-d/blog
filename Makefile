@@ -1,9 +1,13 @@
 # Configuration
+PROJECT ?= blog
+
 HUGO_VERSION ?= 0.17
-HUGO_THEME ?= ""
-GIT_COMMITTER_NAME ?= autohugo
-GIT_COMMITTER_EMAIL ?= autohugo@autohugo.local
-CNAME ?= ""
+HUGO_THEME ?= https://github.com/digitalcraftsman/hugo-steam-theme
+DOCKER_ORG ?= quay.io/srcd
+
+DOCKER_REGISTRY ?= quay.io
+DOCKER_USERNAME ?=
+DOCKER_PASSWORD ?=
 
 # System
 URL_OS = 64bit
@@ -36,11 +40,20 @@ HUGO_URL = github.com/spf13/hugo
 HUGO_NAME := hugo_$(HUGO_VERSION)_$(ARCH)_$(OS)
 HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
 
+# CI
+TAG := master
+ifneq ($(origin TRAVIS_TAG), undefined)
+ifneq ($(TRAVIS_TAG), "")
+	TAG := $(TRAVIS_TAG)
+endif
+endif
+
 # Tools
 CURL = curl -L
 HUGO = $(HUGO_PATH)/$(HUGO_NAME)/$(HUGO_NAME)
 MKDIR = mkdir -p
 GIT = git
+DOCKER = sudo docker
 
 # Rules
 all: build
@@ -73,23 +86,11 @@ build: dependencies
 server: build
 	$(HUGO) server -t $(THEME_NAME) -D -w
 
-publish: init
-	@if [ "$(CI)" == "" ]; then \
-		echo "ERROR! Publish should be called only on CircleCI"; \
-	  exit 1; \
-	fi;
-	@if [ "$(CNAME)" != "" ]; then \
-		echo $(CNAME) >> $(PUBLIC_PATH)/CNAME; \
-	fi;
-	cp -rf $(THEME_PATH)/static/* $(PUBLIC_PATH)/
-	cp -rf $(STATIC_PATH)/* $(PUBLIC_PATH)/
-	rm .gitignore
-	$(GIT) config user.email "$(GIT_COMMITTER_EMAIL)"
-	$(GIT) config user.name "$(GIT_COMMITTER_NAME)"
-	$(GIT) add -A
-	$(GIT) commit -m "updating site [ci skip]"
-	$(GIT) push origin :gh-pages || true
-	$(GIT) subtree push --prefix=public git@github.com:$(CIRCLE_PROJECT_USERNAME)/$(CIRCLE_PROJECT_REPONAME).git gh-pages
+docker-push: build
+	$(DOCKER) login -u "$(DOCKER_USERNAME)" -p "$(DOCKER_PASSWORD)" $(DOCKER_REGISTRY)
+	$(DOCKER) build -q -t $(DOCKER_ORG)/${PROJECT} -f $(BASE_PATH)/Dockerfile .
+	$(DOCKER) tag $(DOCKER_ORG)/${PROJECT} $(DOCKER_ORG)/${PROJECT}:$(TAG)
+	$(DOCKER) push $(DOCKER_ORG)/${PROJECT}:$(TAG)
 
 clean:
 	rm -rf $(HUGO_PATH)
