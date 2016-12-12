@@ -5,14 +5,14 @@ taxonomies:
   category: "categories"
 
 params:
-  description: coding to find awesome engineers
-  copyright: The MIT License. - Copyright (c) 2015 Máximo Cuadros
+  description: Building the first AI that understands code
+  copyright: The MIT License. - Copyright (c) 2016 source{d}
   themeColor: custom
   RSSlink: /index.xml
 
   title: "source{d}"
-  subtitle: "coding to find awesome engineers"
-  copyright: "Crafted with love."
+  subtitle: "Building the first AI that understands code"
+  copyright: "For developers, By developers"
 
   # You can choose between green, orange, red and blue.
   # Enable Google Analytics be inserting your tracking code
@@ -21,7 +21,7 @@ params:
   # To provide some metadata for search engines and the about section in the footer
   # feel free to add a few information about you and your website.
   name: "source{d}"
-  bio: "I'm just a theme. That's it. If you like my design clone [me](//github.com/digitalcraftsman/hugo-steam-theme) from Github. Thanks."
+  bio: "Building the first AI that understands code"
   location: "" # optional
   twitter: "srcd_" # optional
   github: "src-d" # optional

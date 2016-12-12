@@ -1,11 +1,11 @@
 ---
 author: eiso
 date: 2016-12-12
-title: "Looking To The Future"
+title: "Our Master Plan"
 draft: false
 image: 
-description: "Since early on in the history of neural networks this has raised the question, if systems can be 
-self-learning, can they also be self-adapting. Can they program themselves? "
+description: "Since early on in the history of neural networks this has raised the question, if 
+systems can be self-learning, can they also be self-adapting. Can they program themselves?"
 categories: ["culture"] 
 ---
 The starting point of source{d} has always been analyzing source code, from day 1 we believed
