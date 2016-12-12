@@ -3,11 +3,11 @@ author: ikanor
 date: 2015-10-12
 title: Taking Coding to the Mountains
 image: /post/retreat-story/9239.jpg
-description: "The Tyba engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an Open Source Hackaton."
+description: "The source{d} engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an Open Source Hackaton."
 categories: ["culture"] 
 ---
 
-The Tyba engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an **Open Source Hackaton**. The venue, a beautiful villa located in [Guadalix de la Sierra](https://www.google.es/maps/place/28794+Guadalix+de+la+Sierra,+Madrid/@40.7834355,-3.6965663,15z/data=!3m1!4b1!4m2!3m1!1s0xd43d9017d147909:0x1a4e541fa536a900?hl=en)– promised both a nice place to work, as well as lots of fun in the spare time.
+The source{d} engineers enjoyed a wonderful experience these last days of summer: spending two days in a country house, far away from the madding crowds, to participate in an **Open Source Hackaton**. The venue, a beautiful villa located in [Guadalix de la Sierra](https://www.google.es/maps/place/28794+Guadalix+de+la+Sierra,+Madrid/@40.7834355,-3.6965663,15z/data=!3m1!4b1!4m2!3m1!1s0xd43d9017d147909:0x1a4e541fa536a900?hl=en)– promised both a nice place to work, as well as lots of fun in the spare time.
 ## Day One: Arrival and Kickstart
 
 [Curro](https://github.com/curratore) and [Carlos](https://github.com/toqueteos) were our early birds. They were the first ones to arrive there, and kindly arranged everything with the housekeepers. [Máximo](https://github.com/mcuadros), [Marge](http://margaridagarcialopes.com) and myself arrived some minutes later with the food. [Phil](https://github.com/filiptc), [Dani](https://github.com/dripolles), [Miguel](https://github.com/mvader), [Vasco](https://github.com/vasco2ramos) and [Rachel](https://github.com/rachelguerin) made their appearance shortly afterwards. We were only missing [Guillermo](https://github.com/gsc) –whose GPS didn't seem to like Guadalix very much, and made him drive around the town twice.
@@ -16,7 +16,7 @@ The Tyba engineers enjoyed a wonderful experience these last days of summer: spe
 
 The first surprise of the day was confirming that we were indeed far away from the big city: the Internet connection had the capacity of a 56kbps modem! After spending some minutes trying to figure out the problem, we resigned ourselves to using our phone connections –which luckily had good signal!
 
-After Máximo's (Tyba's CTO) introduction, the brainstorming round started with everyone contributing their ideas. Prior to lunch, we chose the most suitable ideas for the Hackathon and formed the teams.
+After Máximo's (source{d}'s CTO) introduction, the brainstorming round started with everyone contributing their ideas. Prior to lunch, we chose the most suitable ideas for the Hackathon and formed the teams.
 
 ![Dani (aka Mr. Developer) discussing his ideas for the Hackaton.](/post/retreat-story/9091.jpg)
 
@@ -28,7 +28,7 @@ With the teams formed and the plans explained, it was time to get to work! It wa
 
 ![Carlos hard at work.](/post/retreat-story/9149.jpg)
 
-Before dinner we had a Docker talk. Curro initiated us in this awesome technology that we intensively use at Tyba. Since we were a little behind schedule, we only had time for a couple of questions, but the talk was quite revealing anyways!
+Before dinner we had a Docker talk. Curro initiated us in this awesome technology that we intensively use at source{d}. Since we were a little behind schedule, we only had time for a couple of questions, but the talk was quite revealing anyways!
 
 ![Curro explaining some interesting Docker-related concepts.](/post/retreat-story/9160.jpg)
 
@@ -64,4 +64,4 @@ After the teams demoed the results, it was clear that most of what was planned h
 
 Sadly, some of us had to leave briefly after the closing session, but I'm most certain that the stronghold of party-lovers had lots of fun throughout the second night!
 
-We can only hope that the next retreat is not so far away! We developed great ideas, and had lots of fun. It is clear that Tyba has amazing people, which shows not only within the walls of the office, but also... anywhere in the world!**
+We can only hope that the next retreat is not so far away! We developed great ideas, and had lots of fun. It is clear that source{d} has amazing people, which shows not only within the walls of the office, but also... anywhere in the world!**
