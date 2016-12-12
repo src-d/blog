@@ -9,7 +9,7 @@ categories: ["culture"]
 ---
 This post is part of a series of posts on the past and [future](../sourced_future/) of source{d}. 
 
-Since we started in March 2015 we’ve been working with ~250 CTOs & engineering leads 
+Since we started in March 2015 we’ve been working with ~200 CTOs & engineering leads 
 to help them find the right developers for their teams. We started with a mission to 
 "fix developer recruitment" and decided to do things differently than others:
 
@@ -32,7 +32,9 @@ they were obviously not a fit, or we reached a developer with a position that
 would have been great for them 3 years ago but not anymore today (I would like to 
 give a big thank you to everyone who gave us invaluable feedback when we messed up, 
 this is how we continued to improve and learn). However over the course of time, 
-we kept on getting better and receiving more positive feedback from developers.
+we kept on getting better and receiving more positive feedback from developers. 
+We built a revenue generating business that was helping developers get hired and 
+engineering teams find their next team members.
 
 But there was one thing that started bothering us about our approach, we were 
 sending automatic emails to people who didn’t opt-in. Even though we aimed to be 
@@ -42,8 +44,7 @@ replying to our emails and considered us, “yet another automated email” in t
 inbox. This was a controversial topic for us, on one hand we were helping developers 
 find great teams to join, and we did this with a lot of care, always putting the 
 individual developer first (from day one in our company we had a saying “developers 
-first, customers second”) but on the other hand it just didn’t feel right, so we 
-decided to stop.
+first, customers second”) but on the other hand it just didn’t feel right.
 
 There are a lot of companies and startups that are trying to tackle the problem of “tech recruitment” 
 and almost every company in this space treats the problem as one-directional. They are trying to 
@@ -54,8 +55,7 @@ hire is someone who helps deliver the maximum utility for their goals in relatio
 While for the developer it’s usually about maximising a combination of their own personal learning, 
 the enjoyment in their work and compensation. 
 
-In the coming months we’ll be working on helping every developer who is in a process with our 
-clients to go through it but we are stopping to take on new clients and won’t be reaching out 
-to new developers anymore. While we’ve had success, we believe to be really making a difference 
-in the lives of developers around the world, we should be focusing on the core-technology of 
-understanding their source code. Read more about this [here](../sourced_future/).s
+As we grew our vision continued to evolve ([read more](../sourced_future)) and so we are now 
+changing our approach to building an opt-in platform where we want to encourage every 
+developer and team to connect their code bases to find the right match of project & team to work on.
+Read more about this [here](../sourced_future/).

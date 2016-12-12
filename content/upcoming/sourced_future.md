@@ -7,9 +7,9 @@ image:
 description: "Since early on in the history of neural networks this has raised the question, if 
 systems can be self-learning, can they also be self-adapting. Can they program themselves?"
 categories: ["culture"] 
----
+--- 
 The starting point of source{d} has always been analyzing source code, from day 1 we believed
-that by understanding what a developer is coding, we could understand the developer. 
+that by understanding what a developer is coding, we could build a representation of the developer. 
 The further we went down the rabbit hole ([wikipedia definition](https://en.wikipedia.org/wiki/Down_the_Rabbit_Hole)) 
 we learned that building an understanding of source code has bigger implications...
 
@@ -35,18 +35,18 @@ Currently there are an estimated 50 million people in the world who know a progr
 understands and one day, writes source code, we want to build technology that is useful for developers 
 and whose accuracy can be judged by developers. 
 
-We've formulated this as several challenges we believe need to be sequentially conquered:
+We've formulated this as several steps we believe need to be sequentially conquered:
 
-### Challenge #1: Cluster the world's source code, developers and projects based on their similarity 
+### Step #1: Build representations of source code, developers and projects.
 By building representations for source code, developers and projects we aim to capture style, semantics, 
-syntax and other sets of features that allow us to understand how we as humans program. 
+syntax and other sets of features that allow us to cluster on similarity. 
 
-As a byproduct of achieving this we believe this will allow developers to find projects & 
-teams to work with based on code. We believe it's important to build the platform that allows this 
+This will allow developers to find projects & teams to work with based on code. 
+We believe it's important to build the platform that allows this 
 (read our [manifesto](http://sourced.tech/manifesto/)) and should provide a feedback 
 loop to our technology.
 
-### Challenge #2: Build Artificial Intelligence that does real-time assisted programming
+### Step #2: Build Artificial Intelligence that does real-time assisted programming
 Training a neural network to emulate the work of human developers means you have to have build an 
 understanding of the different ways a piece of code can be written. 
 
@@ -66,4 +66,4 @@ important to tackle Challenge #1 before #2.
 The practical application is technology that can suggest you code, rewrite your code, change your 
 codes style, optimize code and applications we haven't yet thought off. 
 
-### Challenge #3: Achieve AI that is self-programming and adapting to its environment
+### Steps #3: Achieve AI that is self-programming and adapting to its environment
