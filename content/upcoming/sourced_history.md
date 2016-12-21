@@ -9,53 +9,19 @@ categories: ["culture"]
 ---
 This post is part of a series of posts on the past and [future](../sourced_future/) of source{d}. 
 
-Since we started in March 2015 we’ve been working with ~200 CTOs & engineering leads 
-to help them find the right developers for their teams. We started with a mission to 
-"fix developer recruitment" and decided to do things differently than others:
+Since we started in March 2015 we have worked with more than 200 CTOs and engineering leads to help them find the right developers for their teams. We started with the mission to “fix developer recruitment”, and decided to do things differently than others:
 
-1. We focused on building an understanding of developers based on their open-source 
-& publicly available code.
-2. We built an incredible team of former software engineers and computer science 
-graduates to interview developers and work with our clients. Along the way we held 
-back and forth email conversations with over 60,000 developers and spoke to thousands 
-via Skype about what could be their next project & team to join.
-3. When automatically reaching out to developers we focused on writing the best 
-possible emails (often quite long ones) that explained the company, the team and 
-the technical challenges they were facing, and with a handful of exceptions, always 
-mentioning the name of the company and the salary (one of our frustrations with the 
-status quo is that many people don’t do this).
+1. **Understanding source code**
 
-In the beginning our analysis of developers wasn’t very good yet, we mismatched 
-identities of developers (a tricky problem since people change the email address 
-they use in git over time), we reached out to developers with positions to which 
-they were obviously not a fit, or we reached a developer with a position that 
-would have been great for them 3 years ago but not anymore today (I would like to 
-give a big thank you to everyone who gave us invaluable feedback when we messed up, 
-this is how we continued to improve and learn). However over the course of time, 
-we kept on getting better and receiving more positive feedback from developers. 
-We built a revenue generating business that was helping developers get hired and 
-engineering teams find their next team members.
+    We focused on building an understanding of developers based on their open-source and publicly available code.
+2. **For developers, by developers**
 
-But there was one thing that started bothering us about our approach, we were 
-sending automatic emails to people who didn’t opt-in. Even though we aimed to be 
-highly relevant, sent small sets of emails and received overwhelmingly positive 
-responses (and also the occasional negative ones), there were people who weren’t 
-replying to our emails and considered us, “yet another automated email” in their 
-inbox. This was a controversial topic for us, on one hand we were helping developers 
-find great teams to join, and we did this with a lot of care, always putting the 
-individual developer first (from day one in our company we had a saying “developers 
-first, customers second”) but on the other hand it just didn’t feel right.
+    We built an incredible team of former software engineers and computer science graduates to interview developers and work with our clients. Along the way, we held back and forth email conversations with over 60,000 developers and spoke to thousands live on video about what could be their next project and team to join.
+3. **Honest and technical content**
 
-There are a lot of companies and startups that are trying to tackle the problem of “tech recruitment” 
-and almost every company in this space treats the problem as one-directional. They are trying to 
-optimize a utility function for the company and not for the developer themselves. And while 
-“to find the best developer for a company” and “to find the best company for a developer” might 
-sound symmetrical, in many cases they are not. For most companies, the best possible developer to 
-hire is someone who helps deliver the maximum utility for their goals in relation to cost. 
-While for the developer it’s usually about maximising a combination of their own personal learning, 
-the enjoyment in their work and compensation. 
+    When automatically reaching out to developers we focused on writing the best possible emails—often quite long ones—that explained the company, the team and the technical challenges they were facing; with a handful of exceptions, always mentioning the name of the company and the salary—one of our biggest frustrations with the status quo is that most people are not this transparent.
 
-As we grew our vision continued to evolve ([read more](../sourced_future)) and so we are now 
-changing our approach to building an opt-in platform where we want to encourage every 
-developer and team to connect their code bases to find the right match of project & team to work on.
-Read more about this [here](../sourced_future/).
+However, sending automatic emails to developers who did not opt-in did not feel right to us. Even though we always aimed to be highly relevant and have received overwhelmingly positive responses—as well as the occasional criticism—there were people who were not replying to our emails and considered us “yet another automated email” in their inbox. We are sorry if we unwantedly reached your inbox and take our word that we will not do so anymore.
+
+Over the course of time, our analysis of code kept on getting better and we built a revenue-generating business that was helping developers to get hired and engineering teams to find their next team members. However, we believe that finding the right team and project for a developer is a search problem that can be solved in a much better way.
+We have therefore decided to focus on the future and no longer take on any customers with our previous approach. We thank everyone that took part on this previous jorney and now look to move forward. To read more about where we are going, read ([our master plan](../sourced_future)).
