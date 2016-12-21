@@ -1,6 +1,6 @@
 ---
 author: eiso
-date: 2016-12-12
+date: 2016-12-21
 title: "Our Master Plan"
 draft: false
 image: 
