@@ -1,7 +1,7 @@
 ---
 author: eiso
 date: 2016-12-21
-title: "How We Got Started"
+title: "Where We Came From"
 draft: false
 image: 
 description: "This post is part of a series of posts on the past and future of source{d}."
@@ -24,4 +24,4 @@ Since we started in March 2015 we have worked with more than 200 CTOs and engine
 However, sending automatic emails to developers who did not opt-in did not feel right to us. Even though we always aimed to be highly relevant and have received overwhelmingly positive responses—as well as the occasional criticism—there were people who were not replying to our emails and considered us “yet another automated email” in their inbox. We are sorry if we unwantedly reached your inbox and take our word that we will not do so anymore.
 
 Over the course of time, our analysis of code kept on getting better and we built a revenue-generating business that was helping developers to get hired and engineering teams to find their next team members. However, we believe that finding the right team and project for a developer is a search problem that can be solved in a much better way.
-We have therefore decided to focus on the future and no longer take on any customers with our previous approach. We thank everyone that took part on this previous jorney and now look to move forward. To read more about where we are going, read ([our master plan](../sourced_future)).
+We have therefore decided to focus on the future and no longer take on any customers with our previous approach. We thank everyone that took part on this previous jorney and now look to move forward. To read more about where we are going, read [our master plan](../sourced_future).
