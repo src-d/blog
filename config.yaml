@@ -10,7 +10,7 @@ params:
   themeColor: custom
   RSSlink: /index.xml
 
-  title: "source{d}"
+  title: "source{d} blog"
   subtitle: "Building the first AI that understands code"
   copyright: "For developers, By developers"
 
