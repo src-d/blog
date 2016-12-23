@@ -3,7 +3,7 @@ author: eiso
 date: 2016-12-22
 title: "Our Master Plan"
 draft: false
-image: 
+image: /post/our-master-plan/back-1.jpg
 description: "Since early on in the history of neural networks this has raised the question, if 
 systems can be self-learning, can they also be self-adapting. Can they program themselves?"
 categories: ["culture"] 
