@@ -42,9 +42,9 @@ HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
 
 # CI
 TAG := master
-ifneq ($(origin TRAVIS_TAG), undefined)
-ifneq ($(TRAVIS_TAG),)
-	TAG := $(TRAVIS_TAG)
+ifneq ($(origin TRAVIS_COMMIT), undefined)
+ifneq ($(TRAVIS_COMMIT),)
+	TAG := $(shell echo $(TRAVIS_COMMIT) | cut -c -7)
 endif
 endif
 
@@ -80,6 +80,9 @@ dependencies: init
 		$(GIT) clone $(HUGO_THEME) $(THEME_NAME); \
 	fi;
 
+foo:
+	echo $(TAG)
+ 
 build: dependencies
 	$(HUGO) -t $(THEME_NAME)
 
