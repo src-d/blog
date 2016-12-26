@@ -1,0 +1,50 @@
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 290)       })
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 291) 
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 292)       if err != nil {
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 293)               return err
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 294)       }
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 295) 
+501a9727 (Máximo Cuadros   2016-08-19 17:42:13 +0200 296)       return r.createReferences(head)
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 297) }
+86a411c1 (Máximo Cuadros   2016-08-15 21:43:33 +0200 298) 
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 299) // Commit return the commit with the given hash
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 300) func (r *Repository) Commit(h plumbing.Hash) (*Commit, error) {
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 301)       commit, err := r.Object(plumbing.CommitObject, h)
+c4a05c0a (Joshua Sjoding   2016-02-16 03:28:21 -0800 302)       if err != nil {
+c4a05c0a (Joshua Sjoding   2016-02-16 03:28:21 -0800 303)               return nil, err
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 304)       }
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 305) 
+0d670160 (Máximo Cuadros   2016-09-12 02:22:08 +0200 306)       return commit.(*Commit), nil
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 307) }
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 308) 
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 309) // Commits decode the objects into commits
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 310) func (r *Repository) Commits() (*CommitIter, error) {
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 311)       iter, err := r.s.IterObjects(plumbing.CommitObject)
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 312)       if err != nil {
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 313)               return nil, err
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 314)       }
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 315) 
+635c77e0 (Alberto Cortés   2016-07-04 17:09:22 +0200 316)       return NewCommitIter(r, iter), nil
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 317) }
+2d94e011 (Máximo Cuadros   2015-10-27 01:49:58 +0100 318) 
+9ec9b0db (Joshua Sjoding   2016-02-19 15:42:00 -0800 319) // Tree return the tree with the given hash
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 320) func (r *Repository) Tree(h plumbing.Hash) (*Tree, error) {
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 321)       tree, err := r.Object(plumbing.TreeObject, h)
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 322)       if err != nil {
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 323)               return nil, err
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 324)       }
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 325) 
+0d670160 (Máximo Cuadros   2016-09-12 02:22:08 +0200 326)       return tree.(*Tree), nil
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 327) }
+aa78803b (Joshua Sjoding   2016-02-18 23:28:06 -0800 328) 
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 329) // Trees decodes the objects into trees
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 330) func (r *Repository) Trees() (*TreeIter, error) {
+f49096ea (Máximo Cuadros   2016-11-08 23:46:38 +0100 331)       iter, err := r.s.IterObjects(plumbing.TreeObject)
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 332)       if err != nil {
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 333)               return nil, err
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 334)       }
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 335) 
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 336)       return NewTreeIter(r, iter), nil
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 337) }
+d025b0e1 (Santiago M. Mola 2016-11-04 16:12:01 +0100 338) 
+
