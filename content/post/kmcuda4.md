@@ -32,6 +32,7 @@ I will go into details about each of the points.
 ### Multi-GPU
 
 ![nvprof](/post/kmcuda4/nvprof.png)
+<p align="center">nvprof on kmcuda4.</p>
 
 Clustering on several GPUs at the same time is not straightforward,
 because you cannot simply split the samples into equal parts and
@@ -177,6 +178,7 @@ NVIDIA's [Pascal](https://en.wikipedia.org/wiki/Pascal_(microarchitecture)) arch
 data type - two 16-bit floats packed into a 32-bit struct.
 
 ![half and half2](https://devblogs.nvidia.com/wp-content/uploads/2015/07/fp16_format-624x146.png)
+<p align="center">half and half2 floating point binary formats.</p>
 
 All the operations on half and half2 types exist in the form of
 [compiler intrinsics](https://en.wikipedia.org/wiki/Intrinsic_function).
@@ -363,6 +365,7 @@ from pyCUDA or cuda4py arrays).
 ### Build
 
 ![travis](/post/kmcuda4/travis.png)
+<p align="center">Part of a TravisCI log.</p>
 
 Some time ago, the library was compiled for only the hardcoded CUDA device
 architecture 5.2 (Titan X, Maxwell). However, 16-bit float pairs / half2 type are
@@ -405,6 +408,7 @@ with a similar improvement suggestion.
 ### Tests
 
 ![tests](/post/kmcuda4/tests.png)
+<p align="center">Running kmcuda4 tests.</p>
 
 Since the very beginning, kmcuda has had the Python3 wrapper. The tests
 have been written in Python, which gives several advantages:

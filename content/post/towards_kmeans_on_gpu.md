@@ -60,6 +60,7 @@ typical dependency of reassignments ratio from passed iterations number looks
 like this:
 
 ![kmeans iterations](/post/towards_kmeans_on_gpu/kmeans.png)
+<p align="center">K-Means convergence plot.</p>
 
 It would take a looong time to wait until the algorithm converges to 0
 and such flawless clustering is usually not needed in real life. The
@@ -90,6 +91,7 @@ K-means++ refinement is proven to make Lloyd's process to reach the solution
 not worse than O(log k).
 
 ![kmeans++](/post/towards_kmeans_on_gpu/pp.png)
+<p align="center">We need a good K-Means seeding here.</p>
 
 The problem with Lloyd's algorithm, however, is that when the reassignments
 ratio drops, we start to do a lot of redundant work recalculating distances
@@ -122,8 +124,10 @@ times higher compared to CPU and the memory bandwidth is 5 times thicker.
 These are the graphs taken from [CUDA C Programming Guide](http://docs.nvidia.com/cuda/cuda-c-programming-guide).
 
 ![flops](/post/towards_kmeans_on_gpu/flops.png)
+<p align="center">Performance over time, 2014.</p>
 
 ![memory](/post/towards_kmeans_on_gpu/mem.png)
+<p align="center">RAM speed/bandwidth over time, 2014.</p>
 
 A typical engineering problem is to be able to cleverly ride that beast
 and allow it to show it's incredible glory. SIMT is not suited for many

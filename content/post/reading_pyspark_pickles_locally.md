@@ -62,6 +62,7 @@ SequenceFile+pickle format
 Here is what it looks inside:
 
 ![bin](/post/reading_pyspark_pickles_locally/bin.png)
+<p align="center">PySpark serialized RDD (SequenceFile with pickle-s).</p>
 
 The left column is the offsets for the rows. The actual pickle data always starts
 from offset 158. The whole file is divided into "records", each record has a header.

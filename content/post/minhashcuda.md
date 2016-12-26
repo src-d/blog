@@ -106,9 +106,9 @@ resulting hash length.
   2. Compute
   $$
   \\begin{align}
-  t_ k &= \\lfloor \\frac{\\ln S_ k}{r_ k} + \\beta_ k\\rfloor \\\\
-  y_ k &= e^{r_ k(t_ k - \\beta_ k)} \\\\
-  z_ k &= y_ k e^{r_ k} \\\\
+  t_ k &= \\lfloor \\frac{\\ln S_ k}{r_ k} + \\beta_ k\\rfloor \\\\\\\\
+  y_ k &= e^{r_ k(t_ k - \\beta_ k)} \\\\\\\\
+  z_ k &= y_ k e^{r_ k} \\\\\\\\
   a_ k &= \\frac{c_ k}{z_ k}
   \\end{align}
   $$
@@ -212,6 +212,7 @@ but instead of minimizing the number of bins, it focuses on the overall equal
 load and grouping the bins by CUDA blocks. Here is my solution:
 
 ![bins](/post/minhashcuda/bins.png)
+<p align="center">Balancing the GPU load.</p>
 
 1. Obtain a rough estimate of the number of elements per block, knowing the
 shared memory limit and thriving to distribute some fixed number of elements per thread.
