@@ -94,3 +94,10 @@ params:
       social:
         github: vmarkovtsev
         twitter: tmarkhor
+    smola:
+      name: "Santiago M. Mola"
+      thumbnail: https://avatars1.githubusercontent.com/u/23248?v=3&s=460
+      bio: "Developing data stuff."
+      social:
+        github: smola
+        twitter: mola_io
