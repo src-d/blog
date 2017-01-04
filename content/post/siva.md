@@ -20,7 +20,8 @@ but for our purposes, there are only a few relevant pieces:
 
  * `config` file with repository-specific git configuration.
  * `objects/pack` directory containing, at least, one [packfile](https://git-scm.com/book/en/v2/Git-Internals-Packfiles)
- and its index file.
+   and its index file. This is where most data is. Note that packfiles are
+   immutable.
  * `HEAD` file with the HEAD reference.
  * (optional) `refs` directory containing [references](https://git-scm.com/book/en/v2/Git-Internals-Git-References).
  * (optional) `packed-refs` file with [packed references](https://git-scm.com/docs/git-pack-refs).
@@ -29,11 +30,11 @@ For each repository, we store, at least, 5 files (config, 1 packfile,
 1 packfile index, HEAD reference and a master reference). This grows, at least,
 by two (1 incremental packfile and its index) every time with update a repository.
 
-For a fresh fetch of our current ~16M repository, that adds up to 80M files and
-32M more for each update. That is without considering the high monthly growth of
-repository number itself.
+For a fresh fetch of our current ~16M repositories, that adds up to 80M files and
+32M more for each update. That is without considering new repositories being
+created every month.
 
-We store all of this in a distributed file system. Currently Google Cloud
+We store everything in a distributed file system. Currently Google Cloud
 Storage and we are evaluating HDFS for our bare metal migration. Either way,
 whenever we need to update or analyze a repository, we need to read most of the
 repository files. Neither GCS or HDFS are low-latency systems, so the latency of
@@ -46,8 +47,8 @@ distributed file system.
 
 ## Our Ideal Archive Format
 
-So we started evaluating different archiving formats to use. That should be easy!
-There are the features we are looking for:
+We started evaluating different archiving formats to use. That should be easy!
+These are the features we are looking for:
 
 1. **No compression.** Most data is contained in packfiles, which are already
   compressed.
@@ -59,7 +60,8 @@ There are the features we are looking for:
   without completely rewriting it.
 5. **Concatenable.** Ideally, it should be possible to add new files to the archive
   with a single append operation. We could use [GCS compose](https://cloud.google.com/storage/docs/composite-objects)
-  or HDFS append.
+  or HDFS append. Since most of the data in a repository is in immutable files,
+  we do not need to clean up older files.
 
 Here is a table with a comparison of different archive formats with respect our
 requirements.
@@ -84,8 +86,8 @@ Let's have a look at the tar file structure, in a simplified way:
 ![tar file structure](/post/siva/tar.png)
 
 A tar archive is essentially a sequence of files. Each file contains a header, padding
-(files are stored in blocks of 512 bytes) and file content. The end of file is
- marked with, at least, two zeroed blocks.
+(files are stored in blocks of 512 bytes) and file content. The end of the tar
+file is marked with, at least, two zeroed blocks.
 
 It is possible to concatenate multiple tar archives. We just need to ignore the
 zeroed blocks that are used as EOF markers:
@@ -114,20 +116,21 @@ like this:
 ![tar file structure](/post/siva/tar_concat_index.png)
 
 Our conclusion is that we could use the tar format with some tricks to fulfill
-all our needs, and still be compatible with GNU tar or FreeBSD tar. It would
+all our needs, and still be compatible with GNU tar or FreeBSD tar. But it would
 have the following drawbacks:
 
 1. Adding indexing and concatenation support would mean writing a custom tar
-   implementation is needed for every language that we use.
-2. It is not space efficient: metadata is duplicated both in the index and headers,
-   plus the useless padding. This is not a big issue for us, but if we are going
-   to write our own tar implementations, we would rather avoid cruft and legacy.
+   implementation for every language we use.
+2. It would not be space efficient: metadata is duplicated both in the index and
+   headers, plus the useless padding. This is not a big issue for us, but if we
+   are going to write our own tar implementations, we would rather avoid cruft
+   and legacy.
 
 ## zip
 
 Zip seems to come pretty close to our requirements. Let's see its structure:
 
-![tar file structure](/post/siva/zip.png)
+![zip file structure](/post/siva/zip.png)
 
 In principle, this is close to our tar+index format. However, concatenation is
 not possible at all without modifying the format in a completely incompatible
@@ -154,7 +157,7 @@ implementations in multiple languages anyway.
 
 ## Enter śiva
 
-Here it is! The format that has all the features we wanted: [śiva](https://github.com/src-d/go-siva)
+Here it is! The format that has all the features we want: [śiva](https://github.com/src-d/go-siva)
 (**s**eekable **i**ndexed **b**lock **a**rchiver). It fulfills all our
 requirements in an efficient way with minimal storage overhead.
 
