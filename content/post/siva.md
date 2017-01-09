@@ -67,7 +67,7 @@ Here is a table with a comparison of different archive formats with respect our
 requirements.
  
 | Format | No compression | Seekable | Indexed | Cheap Add | Concatenable |
-| ------ | -------------- | -------- | ------- | --------- | ------------ |
+| ------ | :------------: | :------: | :-----: | :-------: | :----------: |
 | [zip](https://en.wikipedia.org/wiki/Zip_(file_format)) | ✔ | ✔[^zipseek] | ✔ | ✔ | ✘ |
 | [tar](https://www.freebsd.org/cgi/man.cgi?query=tar&sektion=5) | ✔ | ✔ | ✘ | ✔ | ✔[^tarconcat] | 
 | [cpio](https://www.freebsd.org/cgi/man.cgi?query=cpio&sektion=5) | ✔ | ✔ | ✘ | ✔ | ✘[^cpioconcat] |
