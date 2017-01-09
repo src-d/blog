@@ -2,7 +2,7 @@
 author: smola
 date: 2017-01-03
 title: "śiva: Why We Created Yet Another Archive Format"
-draft: true
+draft: false
 image: /post/siva/cat_box_cropped.gif
 description: "When analyzing all the source code from all VCS repositories, storage becomes a major problem. śiva, our archive format, is part of the solution."
 categories: ["go", "git", "technical"]
