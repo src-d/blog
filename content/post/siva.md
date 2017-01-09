@@ -1,6 +1,6 @@
 ---
 author: smola
-date: 2017-01-03
+date: 2017-01-09
 title: "śiva: Why We Created Yet Another Archive Format"
 draft: false
 image: /post/siva/cat_box_cropped.gif
