@@ -143,11 +143,24 @@ p.readmore a {
 }
 
 /* === Header === */
+.blog-title span {
+  font-weight: 100 !important;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top:10px;
+}
+
+.blog-title span:last-child {
+  margin-top: 2px;
+}
 #blog-logo {
-  display: block;
-  max-width: 100px;
-  margin: 50px auto 0;
-  text-align: center;
+  display: inline-block;
+  width: 220px;
+  height: 48px;
+
+
+  background: url("http://sourced.tech/img/logos/logo-blue.svg") no-repeat ;
+  background-size: contain;
 }
 #blog-logo div.bloglogo {
   width: 100px;
@@ -163,9 +176,10 @@ h2.blog-description {
   text-align: left;
 }
 h1.blog-title {
+  font-weight: 100;
   font-size: 50px;
   line-height: 52px;
-  margin-top: 80px;
+  margin-top: 65px;
   margin-bottom: 5px;
   padding: 0;
 }
@@ -217,7 +231,8 @@ header.page-header {
   margin-bottom: 65px;
 }
 
-.blog-sub-link {
+.blog-sub-link a{
+  color: #677680 !important;
   padding-left: 2px;
 }
 

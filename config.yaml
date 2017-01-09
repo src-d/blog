@@ -11,7 +11,7 @@ params:
   RSSlink: /index.xml
 
   title: "source{d} blog"
-  subtitle: "Building the first AI that understands code"
+  subtitle: "Building the first <b>AI</b> that <b>understands code</b>"
   copyright: "For developers, By developers"
 
   # You can choose between green, orange, red and blue.

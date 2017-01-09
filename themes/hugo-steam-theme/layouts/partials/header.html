@@ -1,13 +1,6 @@
-<div id="nav">
-  <ul class="nav-list">
-    <li class="nav-list-item"><a href="http://sourced.tech">sourced.tech</a></li>
-  </ul>
-</div>
-
-
 <header id="site-head">
 	{{ with .Site.Params.title }}
-	<h1 class="blog-title"><a href="{{ $.Site.BaseURL }}">{{ . | markdownify }}</a></h1>
+	<h1 class="blog-title"><a href="{{ $.Site.BaseURL }}"><span id="blog-logo"></span><span> | blog</span></a></h1>
 	{{ end }}
 	{{ with .Site.Params.subtitle }}
 	<h1 class="blog-subtitle">{{ . | markdownify }}</h1>
