@@ -1,6 +1,10 @@
 <header id="site-head">
 	{{ with .Site.Params.title }}
-	<h1 class="blog-title"><a href="{{ $.Site.BaseURL }}"><span id="blog-logo"></span><span> | blog</span></a></h1>
+	<h1 class="blog-title">
+		<a href="{{ $.Site.BaseURL }}">
+			<img class="logoImage" src="/image/logo/sourced_blog_logo.svg" alt="source{d} | blog" title="source{d} | blog" />
+		</a>
+	</h1>
 	{{ end }}
 	{{ with .Site.Params.subtitle }}
 	<h1 class="blog-subtitle">{{ . | markdownify }}</h1>

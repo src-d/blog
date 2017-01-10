@@ -143,33 +143,9 @@ p.readmore a {
 }
 
 /* === Header === */
-.blog-title span {
-  font-weight: 100 !important;
-  display: inline-block;
-  vertical-align: middle;
-  margin-top:10px;
-}
-
-.blog-title span:last-child {
-  margin-top: 2px;
-}
-#blog-logo {
-  display: inline-block;
-  width: 220px;
-  height: 48px;
-
-
-  background: url("http://sourced.tech/img/logos/logo-blue.svg") no-repeat ;
-  background-size: contain;
-}
-#blog-logo div.bloglogo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -webkit-background-size: cover !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-color: #ffffff;
+.logoImage {
+  width: 360px;
+  max-width: 100%;
 }
 h1.blog-title,
 h2.blog-description {
