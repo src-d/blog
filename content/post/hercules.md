@@ -152,7 +152,7 @@ Bottlenecks
 -----------
 
 Our blame algorithm requires to have the diff on each of the changed files.
-The funny thing is that extracting diffs at git "procelain" level of
+The funny thing is that extracting diffs at git "porcelain" level of
 abstraction is literally impossible. Git stores each commit as a snapshot
 of the repository, not a difference between adjacent revisions (refer to
 [the book](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)). Thus
