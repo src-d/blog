@@ -153,16 +153,13 @@ Bottlenecks
 
 Our blame algorithm requires to have the diff on each of the changed files.
 The funny thing is that extracting diffs at git "porcelain" level of
-abstraction is literally impossible. Git stores each commit as a snapshot
+abstraction is impossible. Git exposes each commit as a snapshot
 of the repository, not a difference between adjacent revisions (refer to
 [the book](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)). Thus
-the only way to obtain a commit's diff is by fair diff-ing files, and this is 
-what Hercules does currently.
-
-Internally, git does store commits as "deltas" if it *considers worth it*.
-`git blame` reuses those deltas as much as it can. "Leaky abstraction" diff
-is yet to appear in go-git, there are certain plans to have it in the near
-future, and it should dramatically speed up Hercules.
+the only way to obtain a commit's diff is by fair diff-ing the corresponding files,
+and this is what `git blame` does repetitively. Internally, git may store deltas
+between blobs to optimize the space, but it is hard to use them and has several
+limitations.
 
 Diff-ing the file trees is another problem. Suppose that you've got two
 snapshots of a deep directory with millions of files each. How to you decide
