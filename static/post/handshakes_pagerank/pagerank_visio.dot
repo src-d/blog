@@ -1,0 +1,20 @@
+digraph RobPike {
+  graph [
+    size = "4,2.5",
+    splines=true,
+    overlap=false,
+    ratio=fill,
+    dpi = 300
+  ];
+  3138060[label="Rob Pike\nx<SUB>RP</SUB>",fillcolor=red,style=filled,fontcolor=white]
+  0[label="golang/go\nx<SUB>0</SUB>"]
+  3138060 -> 0 [label="w<SUB>0→RP</SUB>"]
+  1[label="cmars/tools\nx<SUB>1</SUB>"]
+  3138060 -> 1 [label="w<SUB>1→</SUB>"]
+  2[label="cmars/oo\nx<SUB>2</SUB>"]
+  3138060 -> 2 [label="w<SUB>2→RP</SUB>"]
+  3[label="onef9day/gowiki\nx<SUB>3</SUB>"]
+  3138060 -> 3 [label="w<SUB>3→RP</SUB>"]
+  4[label=">50 other\nx<SUB>4</SUB>"]
+  3138060 -> 4 [label="w<SUB>4→RP</SUB>"]
+}
