@@ -10,19 +10,23 @@ categories: ["science", "technical"]
 source{d} has recently published the dataset with 462,000,000 commits metadata:
 [data.world](https://data.world/vmarkovtsev/452-m-commits-on-github). It allows
 you to build the contributions graph. For example, these are the neighbors
-around [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike):
+around [Armin Ronacher](https://github.com/mitsuhiko):
 
-![Rob Pike children](/post/handshakes_pagerank/children_rob_pike.png)
-<p align="center">Neighbors around Rob Pike, first generation
-(direct siblings) - repositories he contributed to. The edge labels
-are the numbers of commits.</p>
+![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_2.png)
+<p align="center">Neighbors around Armin Ronacher, 2 generations -
+the repositories he contributed to and their contributors. Armin is somewhere
+in the center. 8k nodes, 11k edges. The graph was produced with [Gephi](https://gephi.org/).</p>
 
-![Rob Pike neighbors](/post/handshakes_pagerank/neighbors_rob_pike.png)
-<p align="center">Neighbors around Rob Pike.
-Left: 3 generations (60k nodes). Right: 4 generations (400k nodes).
-Graphs were produced using [Gephi](https://gephi.org/).</p>
+The fans on the above image are communities around some popular open source projects,
+e.g. [rust-lang/rust](https://github.com/rust-lang/rust) on the bottom.
 
-![Rob Pike neighbors zoomed](/post/handshakes_pagerank/neighbors_rob_pike_zoom.png)
+![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_3.png)
+<p align="center">Neighbors around Armin Ronacher, 3 generations.
+Armin is still somewhere in the center.</p>
+
+These are the neighbors around [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike):
+
+![Rob Pike's neighbors zoomed](/post/handshakes_pagerank/neighbors_rob_pike_zoom.png)
 <p align="center">Neighbors around Rob Pike, 3 generations, zoomed center region.
 Nodes are highlighted with the heatmap tool to reflect the distance from Rob. Hubs:
 upper-left: [golang/go](https://github.com/golang/go)<sup>*</sup>,
@@ -30,6 +34,15 @@ upper-right: [onef9day/gowiki](https://gtihub.com/onef9day/gowiki),
 lower-left: [cmars/oo](https://github.com/cmars/oo),
 lower-right: [cmars/tools](https://github.com/cmars/tools).
 </p>
+
+![Rob Pike's children](/post/handshakes_pagerank/children_rob_pike.png)
+<p align="center">Schematic abstraction of the previous graph. Edge weights
+are the number of commits.</p>
+
+Actually, Rob Pike never contributed to [cmars/oo](https://github.com/cmars/oo) and
+[cmars/tools](https://github.com/cmars/tools). The owner of those repos must have used
+`git filter-branch` or something similar to forge the history. This is why
+it is so hard to discover the real contributions in Git world!
 
 The contributions graph is [bipartite](https://en.wikipedia.org/wiki/Bipartite_graph)
 and is represented by an extremely sparse adjacency matrix:
@@ -236,7 +249,7 @@ def path_length(first, second):
     pending_second_set = {second}
     pmax = graph.shape[0]
     path = pmax
-    
+
     # Breadth-first search single step
     def step(visited_set, visited_paths, pending, pending_set):
         v, p = pending.pop(0)
@@ -248,7 +261,7 @@ def path_length(first, second):
             if nv not in visited_set and nv not in pending_set:
                 pending.append((nv, p + 1))
                 pending_set.add(nv)
-    
+
     while (path == pmax) and (pending_first or pending_second):
         if pending_first:
             step(visited_first_set, visited_first_paths, pending_first, pending_first_set)
@@ -259,7 +272,7 @@ def path_length(first, second):
             p = visited_first_paths[v] + visited_second_paths[v]
             path = min(path, p)
     return path / 2
-    
+
 from multiprocessing import Pool
 with Pool() as p:
     paths = p.starmap(path_length, samples)
@@ -370,7 +383,7 @@ The idea of the power iteration method is dead simple: if we want to find
 the vector \\(\\vec{x}\\) such that \\(G\\cdot \\vec{x} = \\vec{x}\\) then
 we repeat the same matrix multiplication until the convergence:
 $$
-x_ {i+1} = G\\cdot x_ i 
+x_ {i+1} = G\\cdot x_ i
 $$
 Provided that the matrix is well-conditioned, the convergence is guaranteed.
 Here is the code which calculates \\(\\vec{x}\\).
@@ -387,7 +400,7 @@ def page_rank(m, beta=0.85, niter=80):
         if i % 10 == 0:
             print(x)
     return x
-    
+
 page_rank(graph_normed)
 ```
 `# ***` every edge has the opposite one, so there are no "dead ends". Otherwise,
