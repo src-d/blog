@@ -3,7 +3,7 @@ author: vadim
 date: 2017-01-30
 title: "Fun with GitHub contributions graph: 6 handshakes and PageRank."
 draft: false
-image: /post/handshakes_pagerank/intro.png
+image: /post/handshakes_pagerank/armin_ronacher_2.png
 description: "Contributions to open source projects form a graph. We prove the theory of 6 handshakes and calculate PageRank centrality measure for every node. The data is open, you can reproduce the results yourself!"
 categories: ["science", "technical"]
 ---
@@ -14,7 +14,7 @@ around [Armin Ronacher](https://github.com/mitsuhiko):
 
 ![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_2.png)
 <p align="center">Neighbors around Armin Ronacher, 2 generations -
-the repositories he contributed to and their contributors. Armin is somewhere
+the repositories he contributed to and their contributors. Armin is
 in the center. 8k nodes, 11k edges. The graph was produced with [Gephi](https://gephi.org/).</p>
 
 The fans on the above image are communities around some popular open source projects,
@@ -22,7 +22,7 @@ e.g. [rust-lang/rust](https://github.com/rust-lang/rust) on the bottom.
 
 ![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_3.png)
 <p align="center">Neighbors around Armin Ronacher, 3 generations.
-Armin is still somewhere in the center.</p>
+Armin is again somewhere in the center. 200k nodes, 300k edges.</p>
 
 These are the neighbors around [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike):
 
@@ -42,7 +42,9 @@ are the number of commits.</p>
 Actually, Rob Pike never contributed to [cmars/oo](https://github.com/cmars/oo) and
 [cmars/tools](https://github.com/cmars/tools). The owner of those repos must have used
 `git filter-branch` or something similar to forge the history. This is why
-it is so hard to discover the real contributions in Git world!
+it is so hard to distinguish the real contributions in Git world!
+
+#### Adjacency Matrix
 
 The contributions graph is [bipartite](https://en.wikipedia.org/wiki/Bipartite_graph)
 and is represented by an extremely sparse adjacency matrix:
@@ -660,8 +662,8 @@ each under a different, obviously fake, author. How were we supposed to realize 
 without using GitHub API? The same failure happened with [bmorganatlas/fusiontest5](https://github.com/bmorganatlas/fusiontest5)
 (besides, it has 10,000+ branches!). Other repositories seem to be legit
 and typically have thousands of contributors, hence high PageRank.
-We are currently building out a large data pipeline that will increase the 
-quality of our data and expand it beyond GitHub to almost all git repositories 
+We are currently building out a large data pipeline that will increase the
+quality of our data and expand it beyond GitHub to almost all git repositories
 on the web.
 
 Summary
