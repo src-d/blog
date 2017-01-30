@@ -39,7 +39,7 @@ lower-right: [cmars/tools](https://github.com/cmars/tools).
 <p align="center">Schematic abstraction of the previous graph. Edge weights
 are the number of commits.</p>
 
-Actually, Rob Pike never contributed to [cmars/oo](https://github.com/cmars/oo) and
+Actually, Rob Pike has never contributed to [cmars/oo](https://github.com/cmars/oo) and
 [cmars/tools](https://github.com/cmars/tools). The owner of those repos must have used
 `git filter-branch` or something similar to forge the history. This is why
 it is so hard to distinguish the real contributions in Git world!
@@ -296,7 +296,6 @@ in 2011. ∎
 GitHub PageRank
 ---------------
 ![Google](/post/handshakes_pagerank/Google.png)
-
 As soon as we have the contributions graph, we want to find out whose GitHub is
 bigger. The natural way of doing this is to calculate some
 [centrality measure](https://en.wikipedia.org/wiki/Centrality). We decided to
@@ -351,17 +350,26 @@ graph_normed = H = graph.dot(diags(norms, format="csc"))
 ```
 Here is what happens:
 $$
-norms_ i = \\frac{1}{\\sum\\limits_ j C_ {ij}} \\\\\\
+norms_ i = \\frac{1}{\\sum\\limits_ j C_ {ij}}
+$$
+ \\
+$$
 diags = \\left( \\begin{array}{cccc}
 norms_ 0 & 0 & ... & 0 \\\\\\
 0 & norms_ 1 & ... & 0 \\\\\\
 ... & ... & \\ddots & ... \\\\\\
 0 & 0 & ... & norms_ {N-1} \\end{array} \\right) \\\\\\
+$$
+ \\
+$$
 H=\\left( \\begin{array}{cccc}
 C_ {0,0} & C_ {0,1} & ... & C_ {0,N-1} \\\\\\
 C_ {1,0} & C_ {1,1} & ... & C_ {1,N-1} \\\\\\
 ... & ... & \\ddots & ... \\\\\\
-C_ {N-1,0} & C_ {N-1,1} & ... & C_ {N-1,N-1} \\end{array} \\right)\\times diags=\\left( \\begin{array}{cccc}
+C_ {N-1,0} & C_ {N-1,1} & ... & C_ {N-1,N-1} \\end{array} \\right)\\times diags=
+$$
+$$
+=\\left( \\begin{array}{cccc}
 \\frac{C_ {0,0}}{norms_ 0} & \\frac{C_ {0,1}}{norms_ 1} & ... & \\frac{C_ {0,N-1}}{norms_ {N-1}} \\\\\\
 \\frac{C_ {1,0}}{norms_ 0} & \\frac{C_ {1,1}}{norms_ 1} & ... & \\frac{C_ {1,N-1}}{norms_ {N-1}} \\\\\\
 ... & ... & \\ddots & ... \\\\\\
@@ -412,7 +420,7 @@ we would have to replace `beta` with `x_next.sum()`.
 
 #### Who is the most important on GitHub?
 
-[Ryan Baumann aka ryanfb](https://github.com/ryanfb)! He is actually a good
+[Ryan Baumann aka ryanfb](https://github.com/ryanfb)! He is eventually a good
 example how to study how GitHub's cache works (spoiler: it invalidates
 after some time).
 
