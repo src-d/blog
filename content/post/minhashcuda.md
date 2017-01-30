@@ -106,9 +106,9 @@ resulting hash length.
   2. Compute
   $$
   \\begin{align}
-  t_ k &= \\lfloor \\frac{\\ln S_ k}{r_ k} + \\beta_ k\\rfloor \\\\\\\\
-  y_ k &= e^{r_ k(t_ k - \\beta_ k)} \\\\\\\\
-  z_ k &= y_ k e^{r_ k} \\\\\\\\
+  t_ k &= \\lfloor \\frac{\\ln S_ k}{r_ k} + \\beta_ k\\rfloor \\\\\\
+  y_ k &= e^{r_ k(t_ k - \\beta_ k)} \\\\\\
+  z_ k &= y_ k e^{r_ k} \\\\\\
   a_ k &= \\frac{c_ k}{z_ k}
   \\end{align}
   $$
