@@ -304,10 +304,10 @@ study eigenvector centralities which make nodes important if they are referenced
 by other important nodes.
 
 ![PageRank graph](pagerank_visio_optimized.svg)
-<p align="center">Neighbors around Rob Pike, PageRank version.</p>
+<p align="center">Armin Ronacher's contributions, simplified PageRank version.</p>
 
 $$
-x_ {RP} = \frac{w_ 1 x_ 1 + w_ 2 x_ 2 + w_ 3 x_ 3 + ...}{\\lambda} = \\frac{1}{\\lambda} \\sum w_ i x_ i
+x_ {AR} = \frac{w_ 1 x_ 1 + w_ 2 x_ 2 + w_ 3 x_ 3 + ...}{\\lambda} = \\frac{1}{\\lambda} \\sum w_ i x_ i
 $$
 
 \\(w_ i\\) depend on the impact to the project or to the ratio of the developer's
@@ -347,7 +347,7 @@ The following code performs the L1 normalization.
 ```python
 norms = 1 / numpy.asarray(graph.sum(axis=1)).ravel()
 from scipy.sparse import diags
-graph_normed = graph.dot(diags(norms, format="csc"))
+graph_normed = H = graph.dot(diags(norms, format="csc"))
 ```
 Here is what happens:
 $$
@@ -357,7 +357,7 @@ norms_ 0 & 0 & ... & 0 \\\\\\
 0 & norms_ 1 & ... & 0 \\\\\\
 ... & ... & \\ddots & ... \\\\\\
 0 & 0 & ... & norms_ {N-1} \\end{array} \\right) \\\\\\
-\\left( \\begin{array}{cccc}
+H=\\left( \\begin{array}{cccc}
 C_ {0,0} & C_ {0,1} & ... & C_ {0,N-1} \\\\\\
 C_ {1,0} & C_ {1,1} & ... & C_ {1,N-1} \\\\\\
 ... & ... & \\ddots & ... \\\\\\
@@ -365,7 +365,7 @@ C_ {N-1,0} & C_ {N-1,1} & ... & C_ {N-1,N-1} \\end{array} \\right)\\times diags=
 \\frac{C_ {0,0}}{norms_ 0} & \\frac{C_ {0,1}}{norms_ 1} & ... & \\frac{C_ {0,N-1}}{norms_ {N-1}} \\\\\\
 \\frac{C_ {1,0}}{norms_ 0} & \\frac{C_ {1,1}}{norms_ 1} & ... & \\frac{C_ {1,N-1}}{norms_ {N-1}} \\\\\\
 ... & ... & \\ddots & ... \\\\\\
-\\frac{C_ {N-1,0}}{norms_ 0} & \\frac{C_ {N-1,1}}{norms_ 1} & ... & \\frac{C_ {N-1,N-1}}{norms_ {N-1}} \\end{array} \\right)=H
+\\frac{C_ {N-1,0}}{norms_ 0} & \\frac{C_ {N-1,1}}{norms_ 1} & ... & \\frac{C_ {N-1,N-1}}{norms_ {N-1}} \\end{array} \\right)
 $$
 `scipy.sparse` API makes the diagonal matrix multiplication the only way to normalize the columns.
 
@@ -433,7 +433,7 @@ rated him the highest.
 The essential move would be to ignore repositories with a single contributor,
 and that definitely helps, though other fun effects still reflect the light.
 After all, only the ratio of PageRank-s makes sense. For example, after the
-mono repository filtering, Rob Pike has 4.5e-6, our CTO
+mono repository filtering, Armin Ronacher has 8.0e-6, our CTO
 [Maximo Cuadros](https://github.com/mcuadros) has 2.6e-6 and I have 1.6e-6.
 
 #### What is the most important on GitHub?
