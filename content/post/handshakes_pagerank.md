@@ -43,7 +43,7 @@ I continue mining the October 2016 snapshot, at that time the matrix was about
 23 million by 23 million and contained 48 million non-zero elements. Of course,
 these numbers are approximate - we depend on our identity matching here. The identity
 matching is the way to merge several email addresses into a single personality
-and it is not an easy task because we don't have the access to GitHub's own database.
+and it is not an easy task because we have to make assumptions.
 The public dataset has hashes instead of email addresses so it is impossible
 to perform the identity matching on that data. You can download the graph
 [here](https://drive.google.com/file/d/0B-w8jGUJto0ibVI3QUVBdXJnN1E).
@@ -78,12 +78,11 @@ Please note the following:
 about 20% of the most highly rated ones. That is, unfortunately, there is no data for
 `git/git`, `torvalds/linux`, `rails/rails`, etc.
 2. Some secondary repositories were confused with the main ones. E.g. there is no
-`golang/go` but rather some random `4ad/go`. That was a bug yet to be fixed back
-in October.
+`golang/go` but rather some random `4ad/go`. That was a bug we're now fixing.
 3. Initially we had 18M repos, but filtered 1.5M duplicates not marked as forks;
 read [this blog post](https://blog.sourced.tech/post/minhashcuda/) how.
 
-Let's conduct two funny experiments with our graph.
+Let's conduct two funny experiments with our graph:
 
 The Handshake Theory
 --------------------
@@ -115,7 +114,7 @@ We've got 23M dots, remember.
 
 #### Connected components
 While our graph is directed, every edge has the corresponding backward edge of
-the same weight, so the weak connectivity automatically means the strong connectivity.
+the same weight, so the weak connectivity automatically means strong connectivity.
 In other words, we do not need to apply complex algorithms designed to find
 the strongly connected components, but rather conduct the series of
 [graph traversals](https://en.wikipedia.org/wiki/Graph_traversal).
@@ -175,7 +174,7 @@ That is, the "contributional active" GitHub users are 2.2M or 33% or ⅓ of the
 whole users we analysed, here we analysed about 73% of all the users
 who made at least 1 commit, and the official number of users
 [is reported](https://www.quora.com/How-many-users-does-GitHub-have/answer/Mahmoud-Zalt)
-to be 20M. Thus the final ratio is **11%**.
+to be 20M (including users without any commits). Thus the final ratio is **11%**.
 
 #### Representative sample
 We need to determine how many distances between random nodes in the core must
@@ -191,7 +190,7 @@ Number of possible pairs: 2318907106461
 ```
 
 Now we should use the special calculator to find out the size of the
-representative sample from 2.3T. For example,
+representative sample from 2.3 trillion. For example,
 [checkmarket.com](https://www.checkmarket.com/sample-size-calculator/). We set
 the population size to 2318907106461, the margin of error to 1% and the confidence level
 to 95% and see roughly 10,000. Not bad! This is how to sample 10k random
@@ -222,7 +221,7 @@ algorithm ends up with inspecting almost all the nodes every time.
 spreads simultaneous waves from the both nodes and suits our task best since
 this algorithm is less sensitive to the "generational explosion".
 
-Here is the code I used. It leverages `multiprocessing` package to calculate
+Here is the code I used. It leverages the `multiprocessing` package to calculate
 many shortest paths in parallel.
 
 ```python
@@ -306,8 +305,8 @@ eigenvector can be found by various efficient methods such as
 [power iteration](https://en.wikipedia.org/wiki/Power_iteration) or
 [Arnoldi iteration](https://en.wikipedia.org/wiki/Arnoldi_iteration).
 
-Unfortunately, this is not applicable to our case: we've got the sparse
-matrix with many zeros. Practically speaking, the greatest eigenvalue corresponds
+Unfortunately, this is not applicable to our case: we've got a sparse
+matrix with a lot of zeros. Practically speaking, the greatest eigenvalue corresponds
 to an eigenvector with negative elements. We need to do something. Luckily,
 we are not the only ones who hit this problem. So did Larry and Sergey back in
 1998. They studied the similar adjacency matrix of WWW pages. Each element
@@ -364,7 +363,7 @@ G = \\beta H + \\frac{1-\\beta}{N}\\left( \\begin{array}{cccc}
 1 & 1 & ... & 1 \\end{array} \\right)
 $$
 We are not going to ever calculate it explicitly because that would involve storing
-N × N elements! Instead, we will create the custom power iteration algorithm.
+N × N elements! Instead, we will create a custom power iteration algorithm.
 
 #### Power iteration
 The idea of the power iteration method is dead simple: if we want to find
@@ -406,7 +405,7 @@ after some time).
 <p align="center">github.com/ryanfb takes several seconds to be generated.</p>
 
 ![ryanfb's contributions](/post/handshakes_pagerank/ryanfb.png)
-<p align="center">Ryan knows what means to be productive.</p>
+<p align="center">Ryan knows what it means to be productive.</p>
 
 I am joking, of course. Although he is on the top, he is actually the living
 illustration of the weaknesses PageRank algorithm has. There used to be days
@@ -420,7 +419,7 @@ The essential move would be to ignore repositories with a single contributor,
 and that definitely helps, though other fun effects still reflect the light.
 After all, only the ratio of PageRank-s makes sense. For example, after the
 mono repository filtering, Rob Pike has 4.5e-6, our CTO
-[Maximo Cuadros](https://github.com/mcuadros) has 2.6e-6 and myself has 1.6e-6.
+[Maximo Cuadros](https://github.com/mcuadros) has 2.6e-6 and I have 1.6e-6.
 
 #### What is the most important on GitHub?
 
@@ -648,6 +647,9 @@ each under a different, obviously fake, author. How were we supposed to realize 
 without using GitHub API? The same failure happened with [bmorganatlas/fusiontest5](https://github.com/bmorganatlas/fusiontest5)
 (besides, it has 10,000+ branches!). Other repositories seem to be legit
 and typically have thousands of contributors, hence high PageRank.
+We are currently building out a large data pipeline that will increase the 
+quality of our data and expand it beyond GitHub to almost all git repositories 
+on the web.
 
 Summary
 -------
