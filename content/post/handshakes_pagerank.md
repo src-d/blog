@@ -1,7 +1,7 @@
 ---
 author: vadim
 date: 2017-01-30
-title: "GitHub contributions graph: 6 handshakes theory and PageRank"
+title: "GitHub Contributions Graph: Analyzing PageRank & Proving The 6 Handshakes Theory"
 draft: false
 image: /post/handshakes_pagerank/armin_ronacher_2.png
 description: "Contributions to open source projects form a graph. We prove the theory of 6 handshakes and calculate PageRank centrality measure for every node. The data is open, you can reproduce the results yourself!"
