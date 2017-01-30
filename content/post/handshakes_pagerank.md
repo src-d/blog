@@ -7,7 +7,7 @@ image: /post/handshakes_pagerank/armin_ronacher_2.png
 description: "Contributions to open source projects form a graph. We prove the theory of 6 handshakes and calculate PageRank centrality measure for every node. The data is open, you can reproduce the results yourself!"
 categories: ["science", "technical"]
 ---
-source{d} has recently published the dataset with 462,000,000 commits metadata:
+source{d} has recently published a dataset with metadata on 462,000,000 commits:
 [data.world](https://data.world/vmarkovtsev/452-m-commits-on-github). It allows
 you to build the contributions graph. For example, these are the neighbors
 around [Armin Ronacher](https://github.com/mitsuhiko):
