@@ -1,10 +1,10 @@
 --- 
 author: vadim
 date: 2016-07-06
-title: "Fun with GitHub repositories statistics." 
+title: "GitHub repositories' statistics"
 draft: false 
 image: /post/github_stats/go.png
-description: "Lots of histograms plotted for GitHub data collected by source{d}." 
+description: "Lots of histograms plotted on GitHub data collected by source{d}." 
 categories: ["science", "technical"]
 ---
 
@@ -81,7 +81,7 @@ Here are the first 10:
 
 ![Commits - 10](/post/github_stats/commits_10.png)
 
-And the rest in the log scale:
+And the rest on the log scale:
 
 ![Commits - log](/post/github_stats/commits_log.png)
 
