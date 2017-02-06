@@ -119,7 +119,7 @@ with size \\(8K\\) bytes. [\\(Gamma(2, 1)\\) distribution](https://en.wikipedia.
 can be efficiently calculated as \\(r = −\\ln(u_ 1 u_ 2)\\) where \\(u_ 1, u_ 2 ∼ Uniform(0, 1)\\).
 
 Having calculated all the hashes in the dataset, we can then conduct
-[local sensitive hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing),
+[locality sensitive hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing),
 an algorithm from [Chapter 3, Mining of Massive Datasets](http://infolab.stanford.edu/~ullman/mmds/ch3.pdf).
 Briefly, we define several hash tables, each for it's own subhash, depending on
 the target level of false positives. Same elements will appear in the same bucket;
