@@ -4,6 +4,8 @@ blog.sourced.tech {
 	log stdout
 	gzip
 
+        redir /post/our-master-plan/ /post/our-roadmap/
+
 	ext .html
 	errors {
 		log stderr
