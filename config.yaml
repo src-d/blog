@@ -1,5 +1,6 @@
 title: source{d} blog
 baseUrl: /
+theme: hugo-steam-theme
 
 taxonomies:
   category: "categories"
@@ -69,10 +70,9 @@ params:
     mvader:
       name: Miguel Molina
       thumbnail: https://avatars3.githubusercontent.com/u/1312023?v=3&s=460
-      bio: Code writer (mostly JS and Go) and part-time dragon tamer.
+      bio: "I write code."
       social:
-        github: mvader
-        twitter: migrrrr
+        github: erizocosmico
     scaleyourcode:
       name: Christophe Limpalair
       thumbnail: https://avatars3.githubusercontent.com/u/6696921?v=3&s=460
