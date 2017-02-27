@@ -177,5 +177,6 @@ Yes, it introduces two steps instead of just one. But it has several advantages.
 ## Conclusion
 
 We are trying to keep Go as the source of truth.
+
 * We want to use our code ourselves, totally abstracted from protobuf.
 * We don't want to write by ourselves the gRPC server that satisfies the generated interface.
