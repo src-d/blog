@@ -9,7 +9,7 @@ categories: ["ast", "clojure", "technical"]
 
 ## A little bit of context
 
-At source{d} we are starting a new ambitious project, called [bblfsh](https://github.com/bblfsh), a service to be able to parse and extract ASTs from any programming language. As a part of that project, we were developing the `clojure-driver`, which is in charge of parsing and extracting an AST from Clojure source code files.
+At source{d} we are starting a new ambitious project, called [babelfish](https://github.com/bblfsh), a service to parse and extract ASTs from any programming language. As a part of that project, we were developing the `clojure-driver`, which is in charge of parsing and extracting an AST from Clojure source code files.
 
 ## A little bit of research
 
@@ -42,7 +42,7 @@ There is a very important thing to notice here. We passed `1` as an argument to 
 That's the first rock in our road, we need to actually pass forms to `analyze`, which means we have to actually read a source file and convert it to a form.
 It's ok, Clojure provides functions to do exactly that.
 
-Our first attempt at do this was very naive, just using `read-string`. Unfortunately, a Clojure program can have more than one form in it and `read-string` only reads one form from the string.
+Our first attempt at doing this was very naive, just using `read-string`. Unfortunately, a Clojure program can have more than one form in it and `read-string` only reads one form from the string.
 That is ok too, we can resort to `read` and a reader.
 
 ```clojure
@@ -154,7 +154,7 @@ What can we do now? Roll our own parse function with our own `recur` parser that
 
 Now, if we glue it all toghether, we will get our AST for all the forms analyzed in isolation. Then, the AST of the program would be the list of the ASTs of all its forms.     
 
-You can take a look at the complete implementation of the bblfsh clojure driver [here](https://github.com/erizocosmico/clojure-driver/tree/feature/clj-parser).
+You can take a look at the complete implementation of the babelfish clojure driver [here](https://github.com/bblfsh/clojure-driver).
 
 ## Conclusion
 
