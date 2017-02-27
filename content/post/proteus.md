@@ -25,9 +25,9 @@ Because of the aforementioned reason, we started working on [proteus](https://gi
 * Scans all structs that have the comment `//proteus:generate` and generates them as protobuf messages.
 * Scans all the type definitions with the comment `//proteus:generate` and their constant values and transforms them into proper protobuf enumerations.
 * Resolves the types and ignores those which it can't.
-* Converts it to protobuf structures and writes the `.proto` files.
+* Converts them to protobuf structures and writes the `.proto` files.
 
-So, imagine you have the following code:
+So, imagine you've got the following code:
 
 ```go
 package models
@@ -58,7 +58,7 @@ const (
 )
 ```
 
-That code will become the following protobuf file:
+This code corresponds to the following protobuf file:
 
 ```proto
 syntax = "proto3";
@@ -86,17 +86,17 @@ enum Status {
 }
 ```
 
-You can check for a more detailed example in the [examples folder](https://github.com/src-d/proteus/tree/master/example).
+You can check for more detailed examples in the [examples folder](https://github.com/src-d/proteus/tree/master/example).
 
 ## gRPC service generation
 
-Methods and functions with the comment `//proteus:generate` will be exported as a gRPC service. Those methods and functions will be `rpc`s in the service. Proteus also generates the implementation of the server that satisfies the interface defined by protobuf for that service.
+Methods and functions with the comment `//proteus:generate` will be exported as the gRPC service. Those methods and functions will be `rpc`s in the service. Proteus also generates the implementation of the server that satisfies the interface defined by protobuf for that service.
 
-To put you in context, the complete generation process of proteus consists of three steps:
+For the reference, the complete proteus' generation pipeline consists of three steps:
 
-* Generate a `.proto` file from your Go source code.
+* Generate the `.proto` file from your Go source code.
 * Use `protoc` and `gogo/protobuf` to generate the missing protobuf-related bits for your Go source code (marshal, unmarshal, etc) as well as defining a client and a server interface for your RPC services. Note that `gogo/protobuf` and `protoc` **do not** generate an implementation for the RPC service server.
-* Generate the implementation of the RPC service server using some conventions to make this actually possible.
+* Generate the implementation of the RPC service server using some conventions to actually make this possible.
 
 Imagine the following code:
 
@@ -109,7 +109,7 @@ func (s *UserStore) GetByID(id uint64) (*User, error) {
 }
 ```
 
-This would generate the following protobuf source:
+It would generate the following protobuf source:
 
 ```proto
 service UserService {
@@ -134,7 +134,7 @@ func (s *userServiceServer) UserStore_GetByID(ctx context.Context, in *UserStore
 }
 ```
 
-The above code does not work, obviously. But it's impossible for proteus to know how to find the instance of `UserStore` to invoke the method `GetByID`, that's why the convention is to look for a field in the `userServiceServer` struct with the same name as the receiver type of the method. proteus can only generate a default implementation of that, but if the implementation is provided by you, it will use yours instead.
+The above code obviously does not work. But it's impossible for proteus to know how to find the instance of `UserStore` to invoke the method `GetByID`, that's why the convention is to look for a field in the `userServiceServer` struct with the same name as the receiver type of the method. proteus is only capable of generating the stubs, but if you provide the implementation, our tool will use it instead.
 
 ```go
 type userServiceServer struct {
@@ -146,11 +146,11 @@ func NewUserServiceServer() *userServiceServer {
 }
 ```
 
-If we implement the type ourselves, the generated code will be just the method, and `UserStore_GetByID` would work, making everything function as we expect.
+If we implement the type ourselves, the generated code will be just the method, and `UserStore_GetByID` would work, making everything function as expected.
 
 ## Integration with `gogo/protobuf`
 
-Because the whole generation process consists of three steps, as explained in the previous section, proteus has a shorthand for running all three of them in one single command directly built into the proteus binary.
+Because the whole generation process consists of three steps, as explained in the previous section, proteus has a shorthand to run all in one single command directly built into the proteus binary.
 
 ```
 proteus -p my/go/package 
@@ -159,20 +159,20 @@ proteus -p my/go/package
         --verbose
 ```
 
-This command generates your protos from your Go source code, the marshal/unmarshal for your structs and the implementation of your RPC services without you having to take a look at any protobuffer code.
+This command generates the protos from your Go source code, the marshaling/unmarshaling for your structs and the implementation of your RPC services without the need to look at any protobuf code.
 
-For this command to work we need two dependencies installed:
+We need two dependencies installed for this command to work:
 
 * [`protoc`](https://github.com/google/protobuf) command
 * `go get github.com/gogo/protobuf/...`
 
 ## Why not drop the need for `gogo/protobuf`?
 
-`gogo/protobuf` works in another completely different domain. While `gogo/protobuf` works from `Proto -> Go`, proteus works in the opposite direction.
+`gogo/protobuf` works in the other, completely different domain. While `gogo/protobuf` proceeds through `Proto -> Go`, proteus works in the opposite direction.
 
-The only thing we are implementing in proteus is what we think is missing: keeping Go as a source of truth for messages, enumerations and services.
+The only thing we are adding with proteus is what we think is missing: keeping Go as the source of truth for messages, enumerations and services.
 
-Yes, it introduces two steps instead of just one. But it has several advantages.
+Indeed, it introduces two steps instead of just one. But it brings several advantages.
 
 ## Conclusion
 
