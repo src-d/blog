@@ -146,7 +146,7 @@ func NewUserServiceServer() *userServiceServer {
 }
 ```
 
-If we implement the type ourselves, the generated code will be just the method, and `UserStore_GetByID` would work, making everything function as expected.
+If we implement the type ourselves, the generated code will be just the method, and `UserStore_GetByID` would be able to get the instance of `UserStore` to call the method on, making everything work as expected.
 
 ## Integration with `gogo/protobuf`
 
