@@ -42,6 +42,8 @@ There is a very important thing to notice here. We passed `1` as an argument to 
 That's the first rock in our road, we need to actually pass forms to `analyze`, which means we have to actually read a source file and convert it to a form.
 It's ok, Clojure provides functions to do exactly that.
 
+### Reading the forms
+
 Our first attempt at doing this was very naive, just using `read-string`. Unfortunately, a Clojure program can have more than one form in it and `read-string` only reads one form from the string.
 That is ok too, we can resort to `read` and a reader.
 
@@ -59,6 +61,8 @@ That is ok too, we can resort to `read` and a reader.
 A funny thing you might not think is that `read` does not only read a form. It evaluates it, which is a very interesting thing to do when you are reading untrusted sources. Lucky for us, we can set `*read-eval*` to `false` and avoid executing the form as it reads it.
 
 We have our vector of forms now, it's just a matter of analyzing them, right?
+
+### Analyze the forms
 
 ```clojure
 (mapv ana.jvm/analyze forms)
@@ -89,22 +93,24 @@ I actually got that idea by looking at [the package tests](https://github.com/cl
 (defn parse-ast
   [form]
   (binding [ana/macroexpand-1 ana.jvm/macroexpand-1
-            ana/create-var   (fn [sym env]
-                               (doto (intern (:ns env) sym)
-                                 (reset-meta! (meta sym))))
-            ana/parse        ana.jvm/parse
-            ana/var?         var?]
+            ana/create-var    ana.jvm/create-var
+            ana/parse         ana.jvm/parse
+            ana/var?          var?]
     (with-env env
       (ana/analyze form empty-env))))
 ```
 
 So we call `analyze` with our custom parameters but use the functions for macro expansion and parsing from `clojure.tools.analyzer.jvm`. Easy, right?
 
+### Macro (no) expansion
+
 Well, we are not there yet. If your code uses macros you'll find them, obviously, expanded. But that's not a very nice AST representation. At least, it was not a very good one for us. So, instead of using the `macroexpand-1` function from the jvm analyzer, we use our own that doesn't actually do anything.
 
 ```clojure
 (defn macroexpand-noexpand [form env] form)
 ```
+
+### Parsing `recur`
 
 Ok, now we're done, right? No we are not. If the code you're testing this with contains a `recur` form you will get an error because you can only `recur` from a tail position. What happens here is that macros are not expanded and, obviously, `loop` is a macro.
 
@@ -152,7 +158,34 @@ What can we do now? Roll our own parse function with our own `recur` parser that
    form env))
 ```
 
-Now, if we glue it all toghether, we will get our AST for all the forms analyzed in isolation. Then, the AST of the program would be the list of the ASTs of all its forms.     
+### Include positional info
+
+You may have noticed that no node contains the line or the column where they appear; that is because the `LispReader.java` from Clojure does not attach that information.
+
+To include positional info in our AST we can use `clojure.tools.reader` instead of using just `read` from the standard library, specifically `indexing-push-back-reader` from `clojure.tools.reader.reader-types`.
+
+We only have to add a few requirements and change one line in the function that read all forms in a string of source code.
+
+```clojure
+(ns my.fancy.ns
+  (:refer-clojure :exclude [macroexpand-1 read])
+  (:require [clojure.tools.reader :refer [read]]
+            [clojure.tools.reader.reader-types :refer [indexing-push-back-reader]]
+            ...))
+
+(defn read-forms
+  [src]
+  (with-open [r (indexing-push-back-reader src))]
+    (binding [*read-eval* false]
+      (loop [form (read r false :end)
+             forms []]
+        (if (= :end form)
+            forms
+            (recur (read r false :end)
+                   (concat forms [form])))))))
+```
+
+Now, if we glue it all toghether, we will get our AST for all the forms analyzed in isolation. Then, the AST of the program would be the list of the ASTs of all its forms and the nodes that can have it will have `:column`, `:line`, `:end-line`and `:end-column` in its `:meta`. Note that positional info is attached only to lists, vectors, maps and symbols, when it's possible to do so as stated in [`clojure.tools.reader`'s README](https://github.com/clojure/tools.reader#rationale).
 
 You can take a look at the complete implementation of the babelfish clojure driver [here](https://github.com/bblfsh/clojure-driver).
 
