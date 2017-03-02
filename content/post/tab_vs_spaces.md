@@ -136,7 +136,7 @@ I used good ol' [matplotlib](http://matplotlib.org/) to draw the initial SVG and
 clustering to the language vectors so that similar ones appear near each other.
 The radius of each pie chart is proportional to the square root
 of the number of lines written in the corresponding language.
-Special thanks goes to [Miguel](https://github.com/mvader) for turning my pathetic HTML into an eye-candy.
+Special thanks goes to [Miguel](https://github.com/erizocosmico) for turning my pathetic HTML into an eye-candy.
 
 Which one is on top?
 --------------------

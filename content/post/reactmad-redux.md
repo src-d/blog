@@ -1,5 +1,5 @@
 ---
-author: mvader
+author: erizocosmico
 date: 2016-02-05
 title: "First ReactMad meetup: Time travelling with React and Redux"
 image: /post/reactmad-redux/back.jpg
@@ -58,7 +58,7 @@ With just a few additions **we can integrate the redux-devtools and add a panel 
 Though there weren't a lot of assistants, they said they found the topic very interesting and a lot of very good questions were asked in the Q&A part.
 We hope everyone that assisted to the talk found it interesting and they can use the knowledge shared in it to build awesome apps.
 
-[You can find the slides as well as the source code of the example here](https://github.com/mvader/reactmad-redux-example).
+[You can find the slides as well as the source code of the example here](https://github.com/erizocosmico/reactmad-redux-example).
 
 ![The audience](/post/reactmad-redux/audience.jpeg)
 
