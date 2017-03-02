@@ -123,7 +123,7 @@ func (q *UserQuery) FindByUsernameLike(pattern string) *UserQuery {
 
 ## Dealing with relationships
 
-Consider the following models. We have a people, which can have many pets and a pet has an inverse relationships with its owner.
+Consider the following models. We have people, which can have many pets and a pet has an inverse relationship with its owner.
 ```go
 type Person struct {
         kallax.Model `table:"people"`
@@ -162,9 +162,9 @@ q := NewPersonQuery().
 person, err := store.FindOne(q)
 ```
 
-Kallax generated methods in your query to automatically preload your relationships. Just use `With{FieldName}`.
+Kallax generated methods on your query type to preload your the relationships of the model with the form `With{RelationshipFieldName}`.
 Note that relationships are **not** preloaded by default, they must be explicitly preloaded using such methods.
-**WARNING:** preloading retrieves **all** the models of the relationship matching the giving condition, or just all of them if none was given. If the N side of your 1:N relationship is really big you may want to be doing the query from the other side.
+**WARNING:** preloading retrieves **all** the records of the relationship matching the giving condition, or just all of them if none was given. If the N side of your 1:N relationship is really big you may want to query from the other side.
 
 ### The N+1 problem
 
@@ -174,7 +174,7 @@ All 1:1 relationships are retrieved **in the same query** used to retrieve the m
 
 One to many relationships are more complicated. The basic solution would be to retrieve a single model and then doing another query to retrieve all its relationships. But that is N+1, we needed something better than that.
 
-We solved that by doing **batching**. So we retrieve the main model in batches of N rows, then find the relationships of all these rows, merge them, and keep batching. For example, if the batches have a size of 50 (the default batch size, you can set it in the query with the `BatchSize` method) and we are retrieving 200 people. Instead of doing 201 queries, we only have to make 8. 4 for the 4 batches of people and 4 for retrieving the pets of all these batches. You might think this might be expensive, but the result is more than an order of magnitude faster than the other solution.
+We solved that by doing **batching**. So we retrieve the main model in batches of N rows, then find the relationships of all these rows, merge them, and keep batching. For example, if the batches have a size of 50 (the default batch size, you can change it in the query with the `BatchSize` method) and we are retrieving 200 people. Instead of doing 201 queries, we only have to make 8. 4 for the 4 batches of people and 4 for retrieving the pets of all these batches. You might think this might be expensive, but the result is more than an order of magnitude faster than the other solution.
 
 ## Let's talk performance
 
