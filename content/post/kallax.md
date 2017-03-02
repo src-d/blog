@@ -162,7 +162,7 @@ q := NewPersonQuery().
 person, err := store.FindOne(q)
 ```
 
-Kallax generated methods on your query type to preload your the relationships of the model with the form `With{RelationshipFieldName}`.
+Kallax generated methods on the query type to preload the relationships of the model with the form `With{RelationshipFieldName}`.
 Note that relationships are **not** preloaded by default, they must be explicitly preloaded using such methods.
 **WARNING:** preloading retrieves **all** the records of the relationship matching the giving condition, or just all of them if none was given. If the N side of your 1:N relationship is really big you may want to query from the other side.
 
@@ -170,7 +170,7 @@ Note that relationships are **not** preloaded by default, they must be explicitl
 
 One of our goals was for kallax to be **as fast as possible**. Because of this, the naive `N+1` solution for retrieving relationships did not work for us.
 
-All 1:1 relationships are retrieved **in the same query** used to retrieve the main model, using JOINs. So, retrieving pets with their owners would result in **no extra queries** (just a more expensive one, but still faster as a result).
+All 1:1 relationships are retrieved **in the same query** used to get the main models, using JOINs. So, retrieving pets with their owners would result in **no extra queries** (just a more expensive one, but still faster as a result).
 
 One to many relationships are more complicated. The basic solution would be to retrieve a single model and then doing another query to retrieve all its relationships. But that is N+1, we needed something better than that.
 
@@ -213,6 +213,7 @@ There's still a long road ahead of us. Lots of performance improvements we can m
 ## Conclusion
 
 We've had quite the journey developing kallax. We had clear goals and we feel like they've been successfully achieved. Reinvent the wheel is not good most of the time, but this time we were covering a need that was there. This is not just another ORM, this is an ORM that cares care of some specific needs.
+
 We are pretty happy with the result and the first benchmark we've run, and we will definitely keep improving it in the future, since we are starting to use it in production, which guarantees bugs will get fixed and more features will get added.
 
 You can read more about how to use kallax, it's limitations, conventions, etc in the [README](https://github.com/src-d/go-kallax). If you find like some part of the documentation is missing, feel free to open an issue and we'll add some docs about it!
