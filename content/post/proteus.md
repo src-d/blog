@@ -2,6 +2,7 @@
 author: erizocosmico
 date: 2017-02-27
 title: "Proteus, keeping Go as the source of truth"
+image: /post/proteus/chameleon.jpg
 description: "We are releasing proteus, a tool to generate protobuf files taking Go as the source of truth instead of the other way around."
 categories: ["technical"]
 ---
