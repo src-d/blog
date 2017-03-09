@@ -6,7 +6,7 @@ draft: false
 image: /post/difftree/intro.jpg
 description: "If you use Git, you probably compare commits on a daily basis.
 This blog post explains the data structures and algorithms involved in such
-task, at an intuitively level.  After reading this blog post you will have
+task, in an intuitive way.  After reading this blog post you will have
 a nice understanding of how to use prefix trees and Merkle trees and a good
 intuition of how to solve similar problems whenever they come up."
 categories: ["git", "technical"]
@@ -19,7 +19,7 @@ categories: ["git", "technical"]
 Do you know how Git identifies what files has changed between two commits?
 
 It is a fairly common operation you probably use every day when you review
-a pull requests, when checking your staged files... it involves prefix trees and
+pull requests, when checking your staged files... it involves prefix trees and
 Merkle trees and lots of comparisons.
 
 In this blog post I will walk you through every step in the process in an
@@ -61,7 +61,7 @@ The practical implications of this are:
 
 - The path of a node is the list of its ancestors, starting from the root and
   ending in the node itself, for example the path to `lib/lib.go` will be
-  a slice of nodes containing the root node, `lib` and finally `lib.go`
+  a list of nodes containing the root node, `lib` and finally `lib.go`
   itself.
 
 - The children of each node can be lexicographically sorted by their name:
@@ -96,8 +96,8 @@ get a more detailed view of the tree:
 nodes."](../../static/post/difftree/hashes.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes, the first bytes of their hashes are shown in blue.")
 
 This means Git trees are [Merkle
-trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications of
-us are:
+trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications
+for us are:
 
 - *Files with different contents have different hashes*.  This means it is
   pretty fast to know if a file has changed between two commits, as you only
@@ -159,7 +159,7 @@ func (p Path) Children() []Noder { return p.last().Children() }
 
 # Representing changes in Git trees
 
-Let A and B be two Git trees from consecurive commits.  If we compare one with
+Let A and B be two Git trees from consecutive commits.  If we compare one with
 the other there is going to be quite a few kind of changes we will have to deal
 with, let us see a minimal set (changes depicted in red):
 
@@ -186,7 +186,7 @@ with, let us see a minimal set (changes depicted in red):
   parent directory of the file will have a missing entry in B and the hash of
   all its ancestors will change.
 
-!["The index contents before an after lib/lib.go has been deleted](../../static/post/difftree/deleted.png" Deleted file.")
+!["The index contents before an after lib/lib.go has been deleted](../../static/post/difftree/deleted.png "Deleted file.")
 
 In general when comparing two Git trees we will face several occurrences of the
 cases above, and maybe even some composite cases, like moving a file to another
@@ -199,11 +199,11 @@ action and the involved paths.  In Go we can represent them as follows:
 ```go
 type Action int
 
-const {
+const (
   Insert Action = iota
   Delete
   Modify
-}
+)
 
 type Change struct {
   Action Action
@@ -290,7 +290,7 @@ func DiffTree(a, b Noder) []Change
 ```
 
 This is, the `DiffTree` function will take two trees (by their roots), compare
-them and returns the colleciton of changes needed to turn one into the other.
+them and return the collection of changes needed to turn one into the other.
 
 
 # An intuitive overview of the difftree algorithm 
@@ -321,7 +321,7 @@ To know what path comes first when using such a sorting policy I recommend to
 add a `Compare` method to the `Path` type that returns whether a path comes
 first than another with this particular sorting policy.
 
-This path comparison deserve some careful planning thought, as simply comparing
+This path comparison deserves some careful planning, as simply comparing
 the string representation of both paths will return wrong results in some corner
 cases.  For instance `a/z.go` should come before `a.go` but the former is
 greater than the later when they are compared as simple strings.  The proper way
@@ -360,9 +360,9 @@ func (p Path) Compare(o Path) int {
 }
 ```
 
-# The recipie so far
+# The recipe so far
 
-The algorithm described above can be sumarized as:
+The algorithm described above can be summarized as:
 
 1. Start traversing both trees at the same time.
 
@@ -403,12 +403,10 @@ interesting details:
 Taking these into account, the iterator type will look something like this:
 
 ```go
-type Iterator struct { ... }
-
-func NewIterator(root Noder) *Iterator { ... }
-
-func (i *Iterator) Next() Path { ... } // skips directory contents
-func (i *Iterator) Step() Path { ... } // descends into directories
+type Iterator interface {
+        Next() Path // skips directory contents
+        Step() Path // descends into directories
+}
 ```
 
 Both `Next` and `Step` methods return the path of the next node in the tree,
