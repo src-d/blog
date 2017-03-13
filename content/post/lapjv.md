@@ -1,8 +1,8 @@
 ---
 author: vadim
-date: 2017-03-07
+date: 2017-03-13
 title: "Jonker-Volgenant Algorithm + t-SNE = Super Powers"
-draft: false
+draft: true
 image: /post/lapjv/mapping.png
 description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the \"cloud of points\" into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
 categories: ["science", "technical"]
@@ -533,7 +533,7 @@ scatter plot. While it is perfectly suitable for dataset exploration tasks,
 sometimes we need to map every sample in the original scatter plot to a node
 in the regular grid. E.g. source{d} needs this mapping to... you will see why soon.
 
-<img src="/post/lapjv/grid.png" style="width: 400px;"> 
+<img src="/post/lapjv/grid.png" style="width: 400px;">
 <p align="center">The Regular Grid.</p>
 
 We can draw MNIST digits instead of dots after t-SNE, this is how it looks like:
