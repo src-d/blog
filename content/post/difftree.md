@@ -80,7 +80,7 @@ The practical implications of this are:
 
 ### Git trees as Merkle trees
 
-In a Git tree every node has a SHA-1 hash:
+Every node has a SHA-1 hash in a Git tree:
 
 - The hash of a file is calculated from its size and contents.
 
@@ -88,7 +88,7 @@ In a Git tree every node has a SHA-1 hash:
   [mode](https://en.wikipedia.org/wiki/Modes_(Unix)), name and hash of its
   children, in lexicographic order.
 
-If we add the hash information of each node, in blue, to the previous figure, we
+If we add the hash information belonging to each node, in blue, to the previous figure, we
 get a more detailed view of the tree:
 
 !["An example of a tree with some names and hashes in their
@@ -99,28 +99,28 @@ trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications
 for us are:
 
 - *Files with different contents have different hashes*.  This means it is
-  pretty fast to know if a file has changed between two commits, as you only
+  pretty fast to find out if a file has changed between two commits, as you only
   need to compare their hashes, not their contents.
 
-- *Two files with the same contents will have the same hash*, no matter if they
+- *Two files with the same content have the same hash*, no matter if they
   have different names and/or permissions.  If you index contents by hash, you
-  only need to store those contents once, no matter how many files hold those
-  contents in the history of the repository.
+  only need to store it once, no matter how many times it appear
+  in the history of the repository.
 
 - *If two directories have the same hash, then they have the same children*:
-  same files and directories, with the same names, modes and
-  contents, recursively.
+  same files and directories with recursively the same names, modes and
+  contents.
 
-  This is a huge time saver when comparing directories between commits, because
-  if their hashes match, then you know they have not been modified; there is no
+  This is a huge time saver for comparing directories between commits, because
+  if their hashes match, you know they have not been modified; there is no
   need to check their children individually.
 
-  Thanks to this, the worst case algorithmic complexity of checking two
+  Consequently, the worst case algorithmic complexity of checking two
   directories for equality is reduced from O(n) to O(1) (with n being the
   number of descendants of the directory with less descendants).
 
-- If some change has been introduced in a commit, no matter how small, all the
-  ancestor directories of the modified file will see their hashes modified.
+- If some change has been introduced in a commit, no matter how small it is, all the
+  ancestor directories of the modified file will have their hashes modified.
 
 Let us assume, for the sake of this blog post, that hash collisions are
 impossible, even though they are quite popular
@@ -142,10 +142,10 @@ type Noder interface {
 The path to a node in a tree will look something like this:
 
 ```go
-type Path []Noder // beginning at the root and ending with the node itself
+type Path []Noder // beginning from the root and ending with the node itself
 ```
 
-I recommend `Path` implements `Noder` so you can treat paths as
+I recommend `Path` to implement `Noder` so that you can treat paths as
 nodes when needed:
 
 ```go
@@ -159,41 +159,40 @@ func (p Path) Children() []Noder { return p.last().Children() }
 # Representing changes in Git trees
 
 Let A and B be two Git trees from consecutive commits.  If we compare one with
-the other there is going to be quite a few kind of changes we will have to deal
+the other there are going to be quite a few changes we have to deal
 with, let us see a minimal set (changes depicted in red):
 
-- **Modified file**: Both trees will have the same topology, but the hash of the
-  file will change from A to B, along with the hash of all its ancestors, as
+- **Modified file**: Both trees have the same topology, but the hash of the
+  file is different from A to B, along with the hash of all its ancestors, as
   illustrated in the figure below:
 
-!["The index contents before an after lib/lib.go was modified](/post/difftree/modified.png "The index before and after lib/lib.go was modified, changed hashes are shown in red.")
+!["The index contents before and after lib/lib.go is modified](/post/difftree/modified.png "The index before and after lib/lib.go is modified, changed hashes are shown in red.")
 
 - **Renamed file** (the name of the file has changed, but it has not been moved
-  to a different directory): Both trees will have the same topology and the hash
-  of the file will be the same, but the hash of its ancestors will change, as
-  its name is now different.
+  to a different directory): Both trees have the same topology and the hash
+  of the file is the same in A and B, but the hash of its ancestors is different in each tree.
 
-!["The index contents before an after lib/lib.go has been renamed to lib/foo.go](/post/difftree/renamed.png "Renamed file.")
+!["The index contents before and after lib/lib.go is renamed to lib/foo.go](/post/difftree/renamed.png "Renamed file.")
 
-- **Inserted file**: The topology of A and B will be different, the
-  parent directory of the file will have a new entry in B and the hash of all
-  its ancestors will change.
+- **Inserted file**: The topology of A and B is different, the
+  parent directory of the file has a new entry in B and the hash of all
+  its ancestors changes.
 
-!["The index contents before an after lib/foo.go has been inserted](/post/difftree/inserted.png "Inserted file.")
+!["The index contents before and after lib/foo.go is inserted](/post/difftree/inserted.png "Inserted file.")
 
-- **Deleted file**: The topology of A and B will be different, the
-  parent directory of the file will have a missing entry in B and the hash of
-  all its ancestors will change.
+- **Deleted file**: The topology of A and B is different, the
+  parent directory of the file has a missing entry in B and the hash of
+  all its ancestors changes.
 
-!["The index contents before an after lib/lib.go has been deleted](/post/difftree/deleted.png "Deleted file.")
+!["The index contents before and after lib/lib.go has been deleted](/post/difftree/deleted.png "Deleted file.")
 
-In general when comparing two Git trees we will face several occurrences of the
+In general, if we compare two Git trees we are likely to face several occurrences of the
 cases above, and maybe even some composite cases, like moving a file to another
-directory or replacing a file with an empty directory of the same name.
+directory or replacing a file with an empty directory with the same name.
 
 The output of our tree comparator will be a list of changes, that applied to the
 A tree will turn it into the B tree.  A change in this context is defined as an
-action and the involved paths.  In Go we can represent them as follows:
+action and the involved paths.  We can represent them as follows in Go:
 
 ```go
 type Action int
