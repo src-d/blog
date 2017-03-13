@@ -1,0 +1,220 @@
+<style>
+
+.tsne-group {
+  overflow: visible;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+
+@media(min-width: 640px) {
+  .tsne-group {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.tsne-group .original,
+.tsne-group .runner {
+  box-sizing: border-box;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.tsne-group .original {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 12px;
+}
+
+@media(min-width: 640px) {
+  .tsne-group .original,
+  .tsne-group .runner {
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .tsne-group .original {
+    margin-left: 0;
+    padding-right: 12px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .tsne-group .runner {
+    margin-left: 12px;
+  }
+}
+
+.tsne-group .runner.no-click {
+  cursor: default;
+}
+
+.runner.clickable {
+  cursor: pointer;
+}
+
+.runner.clickable:hover .image {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.runner:hover i {
+  opacity: 1;
+}
+
+.runner.selected i {
+  opacity: 1;
+}
+
+.runner i {
+  font-size: 30px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: hsla(207, 44%, 79%, 0.8);
+  color: steelblue;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  line-height: 0;
+  width: 150px;
+  padding: 75px 0;
+  text-align: center;
+}
+
+@media(min-width: 640px) {
+  .runner i {
+    width: 100%;
+    padding: 50% 0;
+  }
+}
+
+.runner.selected .image::after {
+  content: "";
+  border: 2px solid rgba(70, 130, 180, 1);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.tsne-group .image {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  width: 150px;
+  padding-top: 150px;
+  background: white;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin-right: 12px;
+}
+
+@media(min-width: 640px) {
+  .tsne-group .image {
+    width: 100%;
+    padding-top: 100%;
+    margin-right: 0;
+  }
+}
+
+.tsne-group .original .image {
+  box-shadow: none;
+}
+
+.tsne-group .image img {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+}
+
+.tsne-group h3.caption {
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+.tsne-group .caption {
+  font-size: 12px;
+  line-height: 1.6em;
+  margin-top: 12px;
+  width: 100px;
+}
+
+@media(min-width: 640px) {
+  .tsne-group .caption,
+  .tsne-group h3.caption {
+    margin-top: 8px;
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+(function() {
+  var format = d3.format(",");
+  d3.selectAll(".tsne-group").data(figures, function(d) {
+    if(!d) return this.dataset.id;
+    return d.id
+  })
+  .each(generateFigure)
+
+  function generateFigure(figure) {
+
+    var FIGURE = figure.id
+    var dis = d3.select(this)
+    var original = dis.append("div").classed("original", true)
+    original.append("div")
+        .classed("image", true)
+      .append("img")
+        .classed("tsne-plot", true)
+        .attr("src", "assets/figure_" + FIGURE + "_" + "original.png");
+    original.append("h3").classed("caption", true).text("Original")
+
+    // examples
+    var runners = dis.selectAll(".runner").data(figure.examples)
+      .enter().append("div").classed("runner", true)
+    if(!figure.noclick) {
+      runners
+        .classed("clickable", true)
+        .on("click", function(d) {
+          d3.selectAll(".runner").classed("selected", false)
+          updateStateFromFigure(figure, d, this);
+          d3.select(this).classed("selected", true)
+        });
+    } else {
+      runners.classed("no-click", true)
+    }
+
+    runners.append("div")
+        .classed("image", true)
+      .append("img")
+        .attr("src", function(d,i) {
+          return "assets/figure_" + FIGURE + "_" + d.id + ".png"
+        });
+
+    if(!figure.noclick) {
+      runners.append("i")
+        .classed("material-icons", true)
+        .text("open_in_browser")
+    }
+
+    var caption = runners.append("div").classed("caption", true);
+
+    caption.append("div").text(function(d) { return "Perplexity: " + format(d.perplexity); })
+
+    caption.append("div").text(function(d) { return "Step: " + format(d.step); })
+  }
+})()
+</script>
