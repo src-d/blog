@@ -12,64 +12,63 @@ intuition of how to solve similar problems whenever they come up."
 categories: ["git", "technical"]
 ---
 
-![Front image](../../static/post/difftree/intro.jpg "Similar trees next to each other.")
+![Front image](/post/difftree/intro.jpg "Similar trees next to each other.")
 
 ## Introduction
 
-Do you know how Git identifies what files has changed between two commits?
+Do you know how Git identifies what files have changed between two commits?
 
-It is a fairly common operation you probably use every day when you review
-pull requests, when checking your staged files... it involves prefix trees and
-Merkle trees and lots of comparisons.
+It is a fairly common operation you probably do every day when you review
+pull requests, when you check staged files... It involves prefix trees and
+Merkle trees and many comparisons.
 
 In this blog post I will walk you through every step in the process in an
 intuitive way; I will skip some of the hairy details so I can focus on the main
 problems and solutions, and present them in a clear and understandable way.
 
-This blog post has been inspired by my own implementation of the difftree
-algorithm as part of my work in [go-git](http://github.com/src-d/go-git), which
-in turn has been inspired by [Git](https://git-scm.com/) itself and
-[libgit2](https://libgit2.github.com/).
+This blog post was inspired by my work on
+[go-git](http://github.com/src-d/go-git), which in turn was inspired by
+[Git](https://git-scm.com/) itself and [libgit2](https://libgit2.github.com/).
 
-I will use snipets of Go code here and there to illustrate some concepts, they
-are all simplified versions of the real Go code we use in go-git.
+I will use snippets of Go code here and there to illustrate some concepts, they
+all are simplified versions of the real Go code we use in go-git.
 
 ## Git trees
 
-Whenever you make a Git commit, you are saving a snapshot of your project into
-your repository, this is, Git is remembering the state of all the files you have
-staged and is storing all that information in a tree structure inside the
+Whenever you make a Git commit, you save a snapshot of your project into
+your repository, that is, Git remembers the state of all the files you have
+staged and stores all that information in a tree structure inside the
 commit.
 
 This tree structure is composed of nodes that represent your files and
-directories.  I call this kind of tree a `MerkleTrie`, as it has properties from
-both prefix trees or tries and Merkle trees, let us get into the details!
+directories.  I call this kind of tree a `MerkleTrie`, as it has properties of
+both prefix trees (tries) and Merkle trees, let us get into the details!
 
 ### Git trees as tries
 
 In a Git tree every node has a **name**, which is the filename portion of the
 path to the file or directory it represents, as in the figure below:
 
-!["An example of a tree with some names in their nodes."](../../static/post/difftree/names.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes.")
+!["An example of a tree with some names in their nodes."](/post/difftree/names.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes.")
 
 The practical implications of this are:
 
 - The root has the empty string as its name.
 
-- Then name of a node is not its full path, and does not provide enough
-  information to know where in the tree the node is located.
+- Then name of a node is not it's full path, and does not provide enough
+  information to know where the node is located in the tree.
 
 - The path of a node is the list of its ancestors, starting from the root and
-  ending in the node itself, for example the path to `lib/lib.go` will be
-  a list of nodes containing the root node, `lib` and finally `lib.go`
+  ending with the node itself. For example, the path to `lib/lib.go` will be
+  the list of nodes containing the root node, `lib` and finally `lib.go`
   itself.
 
 - The children of each node can be lexicographically sorted by their name:
-  `LICENSE` will come before `lib`, that will come before
-  `main.go`.  Similarly, `lib.go` will always come before `lib_test.go`.
+  `LICENSE` comes before `lib`, `lib` comes before
+  `main.go`.  Similarly, `lib.go` always comes before `lib_test.go`.
 
-- A tree depth-first traversal that visit nodes in the same directory in
-  lexicographic order will traverse the tree as the `tree` command line tool:
+- The depth-first traversal of a tree which visit nodes in the same directory in
+  lexicographic order enumerates them the same way as the `tree` command line tool:
 
   ```
   LICENSE
@@ -93,7 +92,7 @@ If we add the hash information of each node, in blue, to the previous figure, we
 get a more detailed view of the tree:
 
 !["An example of a tree with some names and hashes in their
-nodes."](../../static/post/difftree/hashes.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes, the first bytes of their hashes are shown in blue.")
+nodes."](/post/difftree/hashes.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes, the first bytes of their hashes are shown in blue.")
 
 This means Git trees are [Merkle
 trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications
@@ -129,7 +128,7 @@ impossible, even though they are quite popular
 
 # Representing Git trees programmatically
 
-In line with what we have exaplined so far, this is a sensible representation of
+In line with what we have explained so far, this is a sensible representation of
 Git trees in Go:
 
 ```go
@@ -167,26 +166,26 @@ with, let us see a minimal set (changes depicted in red):
   file will change from A to B, along with the hash of all its ancestors, as
   illustrated in the figure below:
 
-!["The index contents before an after lib/lib.go was modified](../../static/post/difftree/modified.png "The index before and after lib/lib.go was modified, changed hashes are shown in red.")
+!["The index contents before an after lib/lib.go was modified](/post/difftree/modified.png "The index before and after lib/lib.go was modified, changed hashes are shown in red.")
 
 - **Renamed file** (the name of the file has changed, but it has not been moved
   to a different directory): Both trees will have the same topology and the hash
   of the file will be the same, but the hash of its ancestors will change, as
   its name is now different.
 
-!["The index contents before an after lib/lib.go has been renamed to lib/foo.go](../../static/post/difftree/renamed.png "Renamed file.")
+!["The index contents before an after lib/lib.go has been renamed to lib/foo.go](/post/difftree/renamed.png "Renamed file.")
 
 - **Inserted file**: The topology of A and B will be different, the
   parent directory of the file will have a new entry in B and the hash of all
   its ancestors will change.
 
-!["The index contents before an after lib/foo.go has been inserted](../../static/post/difftree/inserted.png "Inserted file.")
+!["The index contents before an after lib/foo.go has been inserted](/post/difftree/inserted.png "Inserted file.")
 
 - **Deleted file**: The topology of A and B will be different, the
   parent directory of the file will have a missing entry in B and the hash of
   all its ancestors will change.
 
-!["The index contents before an after lib/lib.go has been deleted](../../static/post/difftree/deleted.png "Deleted file.")
+!["The index contents before an after lib/lib.go has been deleted](/post/difftree/deleted.png "Deleted file.")
 
 In general when comparing two Git trees we will face several occurrences of the
 cases above, and maybe even some composite cases, like moving a file to another
@@ -282,7 +281,7 @@ between two trees:
   will be pretty simple to detect renames (and copies) in a later step simply by
   processing the original output.
 
-Now that we know how to represent changes betwee two trees, we can already
+Now that we know how to represent changes between two trees, we can already
 write down the signature of our difftree function:
 
 ```go
@@ -305,7 +304,7 @@ convert -size 238x98 -background white -antialias -density 192 -delay 250 -loop
 0 -dispose previous walk1-*.svg walk1.gif
 -->
 
-![Simultaneously walking both trees](../../static/post/difftree/walk1.gif "Simultaneously walking both trees, looking for insertions or deletions.")
+![Simultaneously walking both trees](/post/difftree/walk1.gif "Simultaneously walking both trees, looking for insertions or deletions.")
 
 If both walkers are on the same path, then the element was neither inserted nor
 deleted and we can advance both walkers to their respective next nodes.  We
@@ -431,7 +430,7 @@ Here is how I recommend to implement such an iterator:
 - This means the current node is the top node of the top frame.
 
 - `Next` drops the current node and sets its next sibling as the new current
-  node by poping the top frame.  If the top frame ends up empty, just repeat the
+  node by popping the top frame.  If the top frame ends up empty, just repeat the
   same operation recursively to remove all empty frames as we climb the tree
   towards its root.
 
@@ -442,13 +441,13 @@ The following animation shows a series of `Next` and `Step` method calls over
 a tree, along with the state of the main stack and its frames.
 
 <!-- convert -size 294x240 -antialias -density 192 -delay 250 -loop 0 -dispose previous iter-0[1-4].svg iter-06.svg iter-08.svg iter-09.svg iter-10.svg -delay 400 iter-11.svg iter-12.svg -delay 300 iter-1[3-9].svg iter.gif -->
-![Iteration demostration](../../static/post/difftree/iter.gif "Iterator demostration")
+![Iteration demonstration](/post/difftree/iter.gif "Iterator demostration")
 
 
 
 # The path comparator
 
-![An unmodified file.](../../static/post/difftree/walk1-02.png "Both paths point to the same unmodified file.")
+![An unmodified file.](/post/difftree/walk1-02.png "Both paths point to the same unmodified file.")
 
 In the figure above the path in both trees have the same name and hash, as
 they represent the same unchanged file.  No change has to be issued and we
@@ -457,7 +456,7 @@ can proceed to advance both iterators for the next comparison.
 If they were directories instead of files, we would still want to advance both
 iterators, but skipping their contents to save some time.
 
-![An inserted file.](../../static/post/difftree/walk1-05.png "A's path is "bigger" than B's path.")
+![An inserted file.](/post/difftree/walk1-05.png "A's path is "bigger" than B's path.")
 
 In the case of an inserted file, like the one in the figure above, the name of
 the paths will be different.  The path of the A tree iterator will be pointing
