@@ -2,7 +2,7 @@
 author: alcortesm
 date: 2017-03-09
 title: "Comparing Git trees in Go"
-draft: true
+draft: false
 image: /post/difftree/intro.jpg
 description: "If you use Git, you probably compare commits on a daily basis.
 This blog post explains the data structures and algorithms involved in such
