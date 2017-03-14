@@ -21,19 +21,19 @@ Intrigued? Then... first things first!
 
 [t-SNE](https://lvdmaaten.github.io/tsne/) is the very popular algorithm to extremely
 reduce the dimensionality of your data in order to visually present it. It is
-capable of mapping hundreds of dimensions to just 2 while preserving the important
+capable of mapping hundreds of dimensions to just 2 while preserving important
 data relationships, that is, when closer samples in the original space are closer
 in the reduced space. t-SNE works quite well for small and moderately sized
-real-world datasets and does not require much tuning of the hyperparameters.
+real-world datasets and does not require much tuning of its hyperparameters.
 In other words, if you've got less than 100,000 points, you will apply that magic
 black box thing and get a beautiful scatter plot in return.
 
 Here is a classic example from computer vision. There is a well known dataset
 named ["MNIST"](http://yann.lecun.com/exdb/mnist/) by Yann LeCun (the inventor
-of [Backpropagation](https://en.wikipedia.org/wiki/Backpropagation) method of
-training neural networks - the core of the modern deep learning) et.al. It is often
+of the [Backpropagation](https://en.wikipedia.org/wiki/Backpropagation) method of
+training neural networks - the core of modern deep learning) et. al. It is often
 used as the default dataset for evaluating machine learning ideas and is widely
-employed in the academia. MNIST is the 70,000 greyscale images of size 28x28.
+employed in academia. MNIST is 70,000 greyscale images of size 28x28.
 Each is the scan of a handwritten digit \\(\\in[0, 9]\\). There is a way to obtain an
 ["infinite"](http://leon.bottou.org/projects/infimnist) MNIST dataset but I shouldn't
 diverge.
@@ -62,17 +62,17 @@ not distributed uniformly in it.
 does not exist. We can rather solve a different problem which has a guaranteed
 precise solution which approximates what we would like to see. This resembles how
 JPEG compression works: we never get the pixel-to-pixel identical result, but
-the image looks *very* similar to the origin.
+the image looks *very* similar to its origin.
 
 The question is, what is the best approximate problem in (2). Unfortunately,
-there is no "best". The quality is of the dimensionality reduction is
-subjective and depends on our ultimate goal. The root of the confusion is the
+there is no "best". The quality of dimensionality reduction is
+subjective and depends on your ultimate goal. The root of the confusion is the
 same as in determining the perfect clustering: it depends.
 
 ![Clustering algorithms](/post/lapjv/sklearn.png)
 <p align="center">Different clustering algorithms from <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a></p>
 
-t-SNE is one of the possible dimensionality reduction algorithms which are
+t-SNE is one of a series of possible dimensionality reduction algorithms which are
 called embedding algorithms. The core idea is to preserve the similarity relations
 as much as possible. Play with it yourself:
 
@@ -441,8 +441,8 @@ A \\cdot \\vec{x} \\leq \\vec{b}
 \\vec{x} \\geq 0
 \\end{equation}
 We minimize the scalar product of \\(\\vec{c}\\) and \\(\\vec{x}\\) given the set
-of linear inequations depending of \\(\\vec{x}\\) and the requirement that all
-it's coordinates are not negative. LP is a well-studied topic in convex optimization
+of linear equations depending of \\(\\vec{x}\\) and the requirement that all
+its coordinates are not negative. LP is a well-studied topic in convex optimization
 theory, it is known to have [weakly-polynomial](https://en.wikipedia.org/wiki/Time_complexity#Strongly_and_weakly_polynomial_time)
 solutions which typically run in \\(O(n^3)\\) time where \\(n\\) is the number of variables
 (problem's dimensionality). There often are approximate algorithms which run in linear time.
@@ -455,8 +455,8 @@ Amazingly many problems can be tracked down to LP. For example, let's take the
 <img src="/post/lapjv/transportation_problem.svg" style="width: 300px;">
 <p align="center">Transportation Problem: supplies and demands.</p>
 
-There is a number of different supplies and demands, which may be no equal.
-Every demand needs fixed amount of supplies. Every supply is limited and is connected
+There is a number of different supplies and demands, which may be not equal.
+Every demand needs a fixed amount of supplies. Every supply is limited and is connected
 with some of the demands. The core of the problem is that every edge \\(S_ i D_ j\\)
 has it's own "cost" \\(c_ {ij}\\) so we need to find the supply scheme which minimizes the
 sum of those costs. Formally,
@@ -497,7 +497,7 @@ It is better than naive L2 because it captures the spatial difference additional
 to the magnitudal one.
 
 ![EMD](/post/lapjv/histogram.png)
-<p align="center">Earth Mover's Distance is better than euclidean for histogram comparison.</p>
+<p align="center">Earth Mover's Distance is better than Euclidean distance for histogram comparison.</p>
 
 If we replace "supplies" and "demands" with "words", we get
 [Word Mover's Distance](http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf),
@@ -550,14 +550,14 @@ problem. But how? No algorithms were presented so far.
 
 It turns out that there are tons of general-purpose linear optimization
 algorithms, starting from the [simplex method](https://en.wikipedia.org/wiki/Simplex_algorithm)
-and ending with very sophisticated solvers. Algorithm which are specialized
+and ending with very sophisticated solvers. Algorithms which are specialized
 for the specific conditions usually converge remarkably faster, though they
 may have some limitations.
 
 [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm) is one
 of those specialized solvers invented in 1950-s. It's complexity is \\(O(n^3)\\).
 It is rather simple to understand and to implement, thus the popular choice
-in the software. For example, it has recently become the part of
+in a lot of projects. For example, it has recently become the part of
 [scipy](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html).
 Unfortunately, it performs slow on bigger problem sizes; scipy's variant
 is particularly **very** slow. I waited an hour for it to finish on 2500 MNIST
@@ -569,12 +569,12 @@ augmenting path traversal and it's complexity is still cubic, but it uses some
 smart heuristics and tricks to dramatically reduce the computational load.
 The performance of many other LAP algorithms including JV was extensively
 studied in [2000's Discrete Applied Mathematics paper](http://www.sciencedirect.com/science/article/pii/S0166218X99001729).
-The conclusion was that
+The conclusion was that:
 
 >JV has a good and stable average performance for all the (problem - Vadim) classes,
 and it is the best algorithm for the uniform random ... and for the single-depot class.
 
-There is a caveat with JV algorithm though. It is loosely tolerant
+There is a caveat with the JV algorithm though. It is loosely tolerant
 to the difference between any pair of cost elements in the cost matrix. That is,
 if there are two very close costs appearing in the same graph where we search
 for the shortest path using Dijkstra's algorithm, it can potentially loop
@@ -596,17 +596,17 @@ Besides from being abandonware, pyLAPJV has a minor problem with the output whic
 I resolved in [PR #2](https://github.com/hrldcpr/pyLAPJV/pull/2).
 The C code is reliable, but it does not leverage any threads or SIMD instructions.
 Of course, we saw that JV is sequential in it's nature and cannot be easily
-parallelized, however, I managed to speed it two times after optimizing the
+parallelized, however, I managed to speed it up 2x after optimizing the
 hottest block - augmenting row reduction - with [AVX2](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions).
 The result is the new Python 3 package [src-d/lapjv](https://github.com/src-d/lapjv)
 which we open sourced under MIT license.
 
-Augmenting row reduction phase at it's core is finding the minimum
+Augmenting row reduction phase at its core is finding the minimum
 and the second minimum array elements. Sounds easy as it is, the unoptimized
 C version takes about 20 lines of code.
 AVX version is 4 times bigger: we record minimums in each lane of the
 SIMD vector, perform [blending](https://software.intel.com/en-us/node/524074) and
-cast other dark SIMD magic spells I learnt while I was writing Samsung's
+cast other dark SIMD magic spells I learned while I was writing Samsung's
 [libSoundFeatureExtraction](https://github.com/Samsung/veles.sound_feature_extraction/blob/master/TRANSFORMS.md).
 
 ```C++
