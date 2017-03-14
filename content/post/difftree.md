@@ -495,3 +495,10 @@ conveniently simple pieces.
 Even if you don't plan to implement your own version of Git, I hope that
 understanding the challenges and the proposed solutions at a conceptual level
 will help you solve other problems in the future.
+
+P.S. The trees in the photo are oaks at Dixie Plantation, South
+Carolina, USA.  I don't know who took the photo.
+
+P.P.S. Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
+suggestions, proper English and clean code; the broken English and the
+convoluted code is all mine.
