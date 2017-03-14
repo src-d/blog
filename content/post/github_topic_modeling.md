@@ -71,7 +71,7 @@ Thus our problem is the stochastic matrix decomposition which is not correctly s
 $$
 \\frac{n\_ {dw}}{n\_ d} ≈ \\Phi \\cdot \\Theta = (\\Phi S)(S^{-1}\\Theta) = \\Phi' \\cdot \\Theta'
 $$
-It is said that [regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics)
+It is said that [regularization](https://en.wikipedia.org/wiki/Regularization_(mathematics))
 is desirable for stating machine learning problems; in our case,
 this is *obligatory*. In other words, if we don't add any additional constraints,
 we are going to end up bad.
