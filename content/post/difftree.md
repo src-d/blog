@@ -1,8 +1,8 @@
 ---
 author: alcortesm
-date: 2017-03-09
+date: 2017-03-21
 title: "Comparing Git trees in Go"
-draft: true
+draft: false
 image: /post/difftree/intro.jpg
 description: "If you use Git, you probably compare commits on a daily basis.
 This blog post explains the data structures and algorithms involved in such
@@ -142,7 +142,8 @@ type Noder interface {
 The path to a node in a tree will look something like this:
 
 ```go
-type Path []Noder // beginning from the root and ending with the node itself
+type Path []Noder // beginning from the root
+                  // and ending with the node itself
 ```
 
 I recommend `Path` to implement `Noder` so that you can treat paths as
@@ -192,7 +193,7 @@ directory or replacing a file with an empty directory with the same name.
 
 The output of our tree comparator will be a list of changes, that applied to the
 A tree will turn it into the B tree.  A change in this context is defined as an
-action and the involved paths.  We can represent them as follows in Go:
+action and the involved paths. We can represent them as follows in Go:
 
 ```go
 type Action int
@@ -210,16 +211,16 @@ type Change struct {
 }
 ```
 
-Here are some examples on how to represent a few popular kind of changes
+Here are some examples of how to represent a few popular kinds of changes
 between two trees:
 
 - Inserting a `lib/foo.go` file will be represented as a single insertion
   action, from `nil` to the path of the new file:
 
   ```go
-  fooDotGo := ...  // the noder for the 'foo.go' file
-  lib := ...       // the noder for B's 'lib' directory (contains the new fooDotGo)
-  root := ...      // the root noder (contains lib)
+  fooDotGo := ...  // the node for the 'foo.go' file
+  lib := ...       // the node for B's 'lib' directory (contains the new fooDotGo)
+  root := ...      // the root node (contains lib)
   
   insertion := Change{
           Action: Insert,
@@ -229,17 +230,17 @@ between two trees:
   changes := []Change{insertion}
   ```
 
-- A modification of the contents of `lib/lib.go` is represented also as
-  a single change, from A's `lib/lib.go` to B's `lib/lib.go`:
+- A modification of the contents of `lib/lib.go` is represented as
+  the single change too, from A's `lib/lib.go` to B's `lib/lib.go`:
 
   ```go
   libDotGoA := ...  // A's 'lib.go' file
   libA := ...       // A's 'lib' directory
-  rootA := ...      // A's root noder
+  rootA := ...      // A's root node
   
   libDotGoB := ...  // B's 'lib.go' file (different hash than libDotGoA)
   libB := ...       // B's 'lib' directory (different hash than libA)
-  rootB := ...      // B's root noder (different hash than rootA)
+  rootB := ...      // B's root node (different hash than rootA)
   
   modification := Change{
           Action: Modify,
@@ -256,11 +257,11 @@ between two trees:
   ```go
   libDotGo := ... // A's 'lib.go' file
   libA := ...     // A's 'lib' directory
-  rootA := ...    // A's root noder
+  rootA := ...    // A's root node
   
   fooDotGo := ... // B's 'foo.go' file
   libB := ...     // B's 'lib' directory (different hash and children than libA)
-  rootB := ...    // B's root noder (different hash than rootA)
+  rootB := ...    // B's root node (different hash than rootA)
   
   deletion := Change{
           Action: Delete,
@@ -275,9 +276,9 @@ between two trees:
   ```
 
   Alternatively, you can also have your own `Rename Action` and report this as
-  a single change from the old path to the new path, but this complicates the
-  tree comparison algorithm (described in the next section).  In any case, it
-  will be pretty simple to detect renames (and copies) in a later step simply by
+  the single change from the old path to the new path, but that complicates the
+  tree comparison algorithm (described in the next section). In any case, it
+  must be pretty easy to detect renames and copies in a later step simply by
   processing the original output.
 
 Now that we know how to represent changes between two trees, we can already
@@ -287,15 +288,15 @@ write down the signature of our difftree function:
 func DiffTree(a, b Noder) []Change
 ```
 
-This is, the `DiffTree` function will take two trees (by their roots), compare
-them and return the collection of changes needed to turn one into the other.
+That is, the `DiffTree` function takes two trees indicated by their roots, compares
+them and returns the collection of changes needed to turn one into the other.
 
 
 # An intuitive overview of the difftree algorithm 
 
-Detecting insertions and deletions can be easily done by simultaneously walking
-both trees using a lexicographic depth-first traversal and comparing the paths
-of the returned nodes. The algorithm can be nicely summarized by the following
+Detecting insertions and deletions can be implemented by simultaneously walking
+both trees using the lexicographic depth-first traversal and comparing the paths
+of the returned nodes. The algorithm can be nicely summarized with the following
 animation that shows how to detect the insertion of `lib/foo.go`.
 
 <!--
@@ -305,25 +306,25 @@ convert -size 238x98 -background white -antialias -density 192 -delay 250 -loop
 
 ![Simultaneously walking both trees](/post/difftree/walk1.gif "Simultaneously walking both trees, looking for insertions or deletions.")
 
-If both walkers are on the same path, then the element was neither inserted nor
-deleted and we can advance both walkers to their respective next nodes.  We
-still need to compare the hashes of both paths, though, just in case its
-contents have changed; if the hashes differ, a modification change is issued,
-from the old path to the new one.
+If both walkers are on the same path, the element is neither inserted nor
+deleted and we can advance both walkers to their respective next nodes. We
+still need to compare the hashes of both paths though, just in case the
+contents have changed; if the hashes differ, the modification change
+from the old path to the new one is issued.
 
-If the walkers are pointing to different paths, then either the old path was
-deleted or the new one has been inserted, depending on which one comes first in
-a lexicographic depth-first sorting.
+If the walkers are pointing to different paths then either the old path was
+deleted or the new one inserted, depending on which one comes first in
+the lexicographic depth-first sorting.
 
-To know what path comes first when using such a sorting policy I recommend to
-add a `Compare` method to the `Path` type that returns whether a path comes
-first than another with this particular sorting policy.
+I suggest adding the `Compare` method to the `Path` type
+to find out which path comes first. That method returns whether the path comes
+before or after another under the particular sorting policy.
 
-This path comparison deserves some careful planning, as simply comparing
-the string representation of both paths will return wrong results in some corner
-cases.  For instance `a/z.go` should come before `a.go` but the former is
-greater than the later when they are compared as simple strings.  The proper way
-to compare paths is to compare ancestor names between them, going one step at
+This path comparison deserves some careful planning since the naive comparison
+of string representations of both paths would return wrong results in some corner
+cases. For instance `a/z.go` should come before `a.go` but the former is
+greater than the latter when they are compared as simple strings.  The proper way
+to compare paths is to compare ancestor names between them, making one step at
 a time:
 
 ```go
@@ -364,41 +365,41 @@ The algorithm described above can be summarized as:
 
 1. Start traversing both trees at the same time.
 
-2. While there are nodes left to traverse in both trees:
+2. While there are nodes left to visit in both trees:
 
-  Compare the names and/or hashes of the elements pointed by both paths and
+  Compare the names and/or hashes of the elements pointed to by both paths and
   decide:
 
-  - What changes have to be issued, if any.
+  - What changes must be issued, if any.
 
-  - How to advance the walkers: one, the other or both.
+  - How to advance the walkers: the first, the second or both.
 
 3. Issue changes to delete the remaining nodes from A or to insert the
    remaining nodes from B.
 
-Implementing this algorithm will involve writing:
+Implementing this algorithm involves writing:
 
 - A tree iterator that traverses trees in lexicographic depth-first order,
   returning the path to the nodes.
 
 - A comparator that takes the name and hash of the current paths of two tree
-  iterators and tells us what changes should we issue and how to advance the
+  iterators and tells us what changes we should issue and how to advance the
   iterators further.
 
 Let us see how to implement each of them.
 
 # The tree iterator
 
-This will be a regular depth-first tree iterator if it were not for some
+This would be a regular depth-first tree iterator if it were not for some
 interesting details: 
 
 - siblings are to be iterated in lexicographic order by name.
 
-- it has to be possible to skip whole directories, instead of getting deeper
-  into them.  This is important for efficiency reasons, when the hash of two
-  directories are the same, we want to be able to skip all their contents.
+- it must be possible to skip whole directories instead of penetrating deeper
+  into them.  This is important for efficiency reasons, when the hashes of two
+  directories are the same, we would like to skip all their contents.
 
-Taking these into account, the iterator type will look something like this:
+Taking those into account, the iterator type will look something like this:
 
 ```go
 type Iterator interface {
@@ -408,39 +409,40 @@ type Iterator interface {
 ```
 
 Both `Next` and `Step` methods return the path of the next node in the tree,
-but each of them will traverse the tree using a different policy:
+but each of them traverses the tree using a different policy:
 
-- `Next` returns the next path without getting any deeper into the tree, this is,
-  if the current node is a directory, its contents will be skipped.
+- `Next` returns the next path without getting any deeper into the tree, that is,
+  if the current node is a directory, its contents are skipped.
 
 - `Step` returns the path to the next node, getting into directories if needed.
 
 I have chosen the names for `Next` and `Step` in honour of the
-[gdb](https://www.gnu.org/software/gdb/) commands of the same name.
+[gdb](https://www.gnu.org/software/gdb/) commands.
 
 Here is how I recommend to implement such an iterator:
 
-- The path to the current node will be represented by a stack of frames, with
-  the root frame at the bottom and the frame with the current node at the top.
+- The path to the current node should be represented by the stack of frames,
+  the root frame being at the bottom and the frame with the current node being
+  at the top.
 
-- Each frame is a stack of siblings, with the nodes sorted in reverse
-  lexicographic order by name, this is the "smallest" node at the top.
+- Each frame is a stack of siblings sorted in the reverse
+  lexicographic order by name so that the "smallest" node is at the top.
 
 - This means the current node is the top node of the top frame.
 
-- `Next` drops the current node and sets its next sibling as the new current
-  node by popping the top frame.  If the top frame ends up empty, just repeat the
+- `Next` drops the current node and sets its next sibling to the new current
+  node by popping the top frame. If the top frame ends up empty, just repeat the
   same operation recursively to remove all empty frames as we climb the tree
   towards its root.
 
 - `Step` behaves just like `Next` for files, but for directories is quite different:
-  it push a new frame with the children of the directory.
+  it pushes a new frame with the children of the directory.
 
-The following animation shows a series of `Next` and `Step` method calls over
-a tree, along with the state of the main stack and its frames.
+The following animation shows the series of `Next` and `Step` method calls over
+a tree along with the states of the main stack and its frames.
 
 <!-- convert -size 294x240 -antialias -density 192 -delay 250 -loop 0 -dispose previous iter-0[1-4].svg iter-06.svg iter-08.svg iter-09.svg iter-10.svg -delay 400 iter-11.svg iter-12.svg -delay 300 iter-1[3-9].svg iter.gif -->
-![Iteration demonstration](/post/difftree/iter.gif "Iterator demostration")
+![Iteration demonstration](/post/difftree/iter.gif "Iterator demonstration")
 
 
 
@@ -448,24 +450,24 @@ a tree, along with the state of the main stack and its frames.
 
 ![An unmodified file.](/post/difftree/walk1-02.png "Both paths point to the same unmodified file.")
 
-In the figure above the path in both trees have the same name and hash, as
-they represent the same unchanged file.  No change has to be issued and we
-can proceed to advance both iterators for the next comparison.
+The path in both trees have the same name and hash in the figure above, because
+they represent the same unchanged file. No change has to be issued and we
+can proceed with both iterators to the next comparison.
 
 If they were directories instead of files, we would still want to advance both
-iterators, but skipping their contents to save some time.
+iterators but skip their contents to save some time.
 
 ![An inserted file.](/post/difftree/walk1-05.png "A's path is "bigger" than B's path.")
 
-In the case of an inserted file, like the one in the figure above, the name of
-the paths will be different.  The path of the A tree iterator will be pointing
-to `lib/lib.go` and B's iterator will be pointing to `lib/foo.go`.
+In the case of an inserted file like the one in the figure above, the name of
+the paths will be different. The path of the A tree iterator points
+to `lib/lib.go` and B's iterator points to `lib/foo.go`.
 
-As A's path is "bigger" than B's path (come later in a lexicographic
-depth-first sort), we know that B's path has been inserted, otherwise A's
-iterator would have already reached a similar file.  This means we have to issue a insertion
-and tell the B's iterator to advance, keeping A's iterator where it is right
-now, as the fate of `lib/lib.go` has not yet been decided.
+As A's path is "bigger" than B's path (comes later in the lexicographic
+depth-first sort), we know that B's path was inserted, otherwise A's
+iterator would have already reached a similar file. This means we need to issue
+the insertion and advance the B's iterator while keeping A's iterator intact,
+since the fate of `lib/lib.go` has not been decided yet.
 
 If we keep doing this for all the possible cases we end up having the following
 table, with `a` and `b` being the current paths of the iterators and `iterA` and
@@ -482,23 +484,23 @@ table, with `a` and `b` being the current paths of the iterators and `iterA` and
 | deleted all contents <br> form a dir | same name <br> && <br> different hash <br> && <br> both are dirs <br> && <br> b is empty | delete a recursively   | iterA.Next() <br> iterB.Next() |
 | changed the children <br> of a dir   | same name <br> && <br> different hash <br> && <br> both are dirs<br>&&<br>none is empty  | nothing                | iterA.Step() <br> iterB.Step() |
 
-I build this table by writting down all the possible combinations of nodes and
-situations you will find when comparing paths and carefully arranging the
-combinations with similar outcomes in groups so they can be easily detected
-with simple checks in your code.
+Here I wrote down all the possible combinations of nodes and
+situations you may encounter in paths comparisons and carefully arranged the
+combinations with similar outcomes in groups so they can be straightforwardly
+detected with simple checks in your code.
 
 # Conclusion
 
-Comparing Git trees becomes an easy task once you split it into some
-conveniently simple pieces.
+Comparing Git trees becomes an easy task once you split it into the
+comfortably small pieces.
 
 Even if you don't plan to implement your own version of Git, I hope that
 understanding the challenges and the proposed solutions at a conceptual level
-will help you solve other problems in the future.
+will help you solve similar problems in the future.
 
-P.S. The trees in the photo are oaks at Dixie Plantation, South
+**P.S.** The trees in the photo are oaks at Dixie Plantation, South
 Carolina, USA.  I don't know who took the photo.
 
-P.P.S. Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
+**P.P.S.** Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
 suggestions, proper English and clean code; the broken English and the
 convoluted code is all mine.
