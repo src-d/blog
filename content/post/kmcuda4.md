@@ -7,6 +7,12 @@ image: /post/kmcuda4/nvprof.png
 description: "Our kmcuda v4 is released, featuring multi-gpu, float16, Spherical K-Means and improved precision."
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
 
 Some time ago, I wrote an article about [src-d/kmcuda](https://github.com/src-d/kmcuda)
 named [Towards Yinyang K-means on GPU](http://blog.sourced.tech/post/towards_kmeans_on_gpu/).
@@ -32,7 +38,7 @@ I will go into details about each of the points.
 ### Multi-GPU
 
 ![nvprof](/post/kmcuda4/nvprof.png)
-<p align="center">nvprof on kmcuda4.</p>
+<p align="center" class="caption">nvprof on kmcuda4.</p>
 
 Clustering on several GPUs at the same time is not straightforward,
 because you cannot simply split the samples into equal parts and
@@ -178,7 +184,7 @@ NVIDIA's [Pascal](https://en.wikipedia.org/wiki/Pascal_(microarchitecture)) arch
 data type - two 16-bit floats packed into a 32-bit struct.
 
 ![half and half2](https://devblogs.nvidia.com/wp-content/uploads/2015/07/fp16_format-624x146.png)
-<p align="center">half and half2 floating point binary formats.</p>
+<p align="center" class="caption">half and half2 floating point binary formats.</p>
 
 All the operations on half and half2 types exist in the form of
 [compiler intrinsics](https://en.wikipedia.org/wiki/Intrinsic_function).
@@ -329,15 +335,15 @@ floating point precision in the addition operation: if you try
 to sum 32-bit float \\(2^{20}\\) with \\(2^{-20}\\), the result will be still
 \\(2^{10}\\) since the
 [mantissa](https://en.wikipedia.org/wiki/Floating_point#Internal_representation)
-is saturated. At the time I started the project it wasn't much of an issue 
+is saturated. At the time I started the project it wasn't much of an issue
 with 32-bit floats, but became obvious when I added 16-bit floats.
 
 Practically, the loss of precision leads to worse clustering and more
-iterations. To deal with that problem, where possible I decided to use 
+iterations. To deal with that problem, where possible I decided to use
 Kahan summation with both 32- and 16-bit floats. While it may have slightly degraded
 the performance, the results became more stable and mathematically correct.
 
-Kahan summation is well described on 
+Kahan summation is well described on
 [Wikipedia](https://en.wikipedia.org/wiki/Kahan_summation_algorithm). It
 is awesome because it requires only \\(O(1)\\) space, particularly,
 one additional variable to store the current error correction value.
@@ -365,7 +371,7 @@ from pyCUDA or cuda4py arrays).
 ### Build
 
 ![travis](/post/kmcuda4/travis.png)
-<p align="center">Part of a TravisCI log.</p>
+<p align="center" class="caption">Part of a TravisCI log.</p>
 
 Some time ago, the library was compiled for only the hardcoded CUDA device
 architecture 5.2 (Titan X, Maxwell). However, 16-bit float pairs / half2 type are
@@ -408,7 +414,7 @@ with a similar improvement suggestion.
 ### Tests
 
 ![tests](/post/kmcuda4/tests.png)
-<p align="center">Running kmcuda4 tests.</p>
+<p align="center" class="caption">Running kmcuda4 tests.</p>
 
 Since the very beginning, kmcuda has had the Python3 wrapper. The tests
 have been written in Python, which gives several advantages:

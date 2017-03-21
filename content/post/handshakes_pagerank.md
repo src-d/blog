@@ -7,13 +7,20 @@ image: /post/handshakes_pagerank/armin_ronacher_2.png
 description: "Contributions to open source projects form a graph. We prove the theory of 6 handshakes and calculate PageRank centrality measure for every node. The data is open, you can reproduce the results yourself!"
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 source{d} has recently published a dataset with metadata on 462,000,000 commits:
 [data.world](https://data.world/vmarkovtsev/452-m-commits-on-github). It allows
 you to build the contributions graph. For example, these are the neighbors
 around [Armin Ronacher](https://github.com/mitsuhiko):
 
 ![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_2.png)
-<p align="center">Neighbors around Armin Ronacher, 2 generations -
+<p align="center" class="caption">Neighbors around Armin Ronacher, 2 generations -
 the repositories he contributed to and their contributors. Armin is
 in the center. 8k nodes, 11k edges. The graph was produced with [Gephi](https://gephi.org/).</p>
 
@@ -21,13 +28,13 @@ The fans on the above image are communities around some popular open source proj
 e.g. [rust-lang/rust](https://github.com/rust-lang/rust) on the bottom.
 
 ![Armin Ronacher's neighbors](/post/handshakes_pagerank/armin_ronacher_3.png)
-<p align="center">Neighbors around Armin Ronacher, 3 generations.
+<p align="center" class="caption">Neighbors around Armin Ronacher, 3 generations.
 Armin is again somewhere in the center. 200k nodes, 300k edges.</p>
 
 These are the neighbors around [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike):
 
 ![Rob Pike's neighbors zoomed](/post/handshakes_pagerank/neighbors_rob_pike_zoom.png)
-<p align="center">Neighbors around Rob Pike, 3 generations, zoomed center region.
+<p align="center" class="caption">Neighbors around Rob Pike, 3 generations, zoomed center region.
 Nodes are highlighted with the heatmap tool to reflect the distance from Rob. Hubs:
 upper-left: [golang/go](https://github.com/golang/go)<sup>*</sup>,
 upper-right: [onef9day/gowiki](https://gtihub.com/onef9day/gowiki),
@@ -36,7 +43,7 @@ lower-right: [cmars/tools](https://github.com/cmars/tools).
 </p>
 
 ![Rob Pike's children](/post/handshakes_pagerank/children_rob_pike.png)
-<p align="center">Schematic abstraction of the previous graph. Edge weights
+<p align="center" class="caption">Schematic abstraction of the previous graph. Edge weights
 are the number of commits.</p>
 
 Actually, Rob Pike has never contributed to [cmars/oo](https://github.com/cmars/oo) and
@@ -50,7 +57,7 @@ The contributions graph is [bipartite](https://en.wikipedia.org/wiki/Bipartite_g
 and is represented by an extremely sparse adjacency matrix:
 
 ![Adjacency matrix](/post/handshakes_pagerank/adj_matrix_optimized.svg)
-<p align="center">The square adjacency matrix of the contributions graph.
+<p align="center" class="caption">The square adjacency matrix of the contributions graph.
 C<sub>ij</sub> is the number of commits done by developer i to repository j;
 C<sub>ij</sub> = C<sub>ji</sub>.</p>
 
@@ -102,6 +109,7 @@ Let's conduct two funny experiments with our graph:
 The Handshake Theory
 --------------------
 ![Big Bang Handshake](/post/handshakes_pagerank/bbth.jpg)
+
 The six handshakes theory, or [Six degrees of separation](https://en.wikipedia.org/wiki/Six_degrees_of_separation),
 states that everybody in the world can reach out everybody else using the chain
 of sequentially familiar people of the size smaller than or equal to 6.
@@ -303,7 +311,7 @@ study eigenvector centralities which make nodes important if they are referenced
 by other important nodes.
 
 ![PageRank graph](pagerank_visio_optimized.svg)
-<p align="center">Armin Ronacher's contributions, simplified PageRank version.</p>
+<p align="center" class="caption">Armin Ronacher's contributions, simplified PageRank version.</p>
 
 $$
 x_ {AR} = \frac{w_ 1 x_ 1 + w_ 2 x_ 2 + w_ 3 x_ 3 + ...}{\\lambda} = \\frac{1}{\\lambda} \\sum w_ i x_ i
@@ -425,10 +433,10 @@ example how to study how GitHub's cache works (spoiler: it invalidates
 after some time).
 
 ![Unicorn](/post/handshakes_pagerank/unicorn.png)
-<p align="center">github.com/ryanfb takes several seconds to be generated.</p>
+<p align="center" class="caption">github.com/ryanfb takes several seconds to be generated.</p>
 
 ![ryanfb's contributions](/post/handshakes_pagerank/ryanfb.png)
-<p align="center">Ryan knows what it means to be productive.</p>
+<p align="center" class="caption">Ryan knows what it means to be productive.</p>
 
 I am joking, of course. Although he is on the top, he is actually the living
 illustration of the weaknesses PageRank algorithm has. There used to be days

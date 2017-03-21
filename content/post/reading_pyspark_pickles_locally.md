@@ -7,6 +7,13 @@ image: /post/reading_pyspark_pickles_locally/intro.jpg
 description: "How to load Hadoop SequenceFile-s with Python serialized objects without having to install Spark - using src-d/sparkpickle"
 categories: ["technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 I've recently had a task to merge all the output from Spark in the Pickle format,
 that is, obtained via `spark.rdd.RDD.saveAsPickleFile()`, in my personal environment
 and conduct some work with it. Surprisingly, no tools exist to read those files,
@@ -62,7 +69,7 @@ SequenceFile+pickle format
 Here is what it looks inside:
 
 ![bin](/post/reading_pyspark_pickles_locally/bin.png)
-<p align="center">PySpark serialized RDD (SequenceFile with pickle-s).</p>
+<p align="center" class="caption">PySpark serialized RDD (SequenceFile with pickle-s).</p>
 
 The left column is the offsets for the rows. The actual pickle data always starts
 from offset 158. The whole file is divided into "records", each record has a header.

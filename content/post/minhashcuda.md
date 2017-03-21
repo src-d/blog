@@ -7,6 +7,13 @@ image: /post/minhashcuda/benders.jpg
 description: "We describe how we filtered very similar GitHub repositories using our new open source project MinHashCuda."
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 The codez: [GitHub](https://github.com/src-d/minhashcuda).
 
 ![benders](/post/minhashcuda/benders.jpg)
@@ -212,7 +219,7 @@ but instead of minimizing the number of bins, it focuses on the overall equal
 load and grouping the bins by CUDA blocks. Here is my solution:
 
 ![bins](/post/minhashcuda/bins.png)
-<p align="center">Balancing the GPU load.</p>
+<p align="center" class="caption">Balancing the GPU load.</p>
 
 1. Obtain a rough estimate of the number of elements per block, knowing the
 shared memory limit and thriving to distribute some fixed number of elements per thread.

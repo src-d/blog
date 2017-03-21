@@ -7,6 +7,13 @@ image: /post/dataproc_jupyter/intro.png
 description: "How-to article devoted to setting up Dataproc, Jupyter and Python 3 data science stack"
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 Modern big data world is hard to imagine without [Hadoop](http://hadoop.apache.org/).
 It made a small revolution in how analysts deal with large amount of emerging data
 (before Hadoop, it used to be a torture). [Spark](https://spark.apache.org/) is
@@ -83,13 +90,13 @@ the workers during cluster creation. To supply it, click "Preemptible workers,
 bucket, network, version, initialization, & access options":
 
 ![Dataproc1](/post/dataproc_jupyter/dataproc1.png)
-<p align="center">Showing the initialization scripts list.</p>
+<p align="center" class="caption">Showing the initialization scripts list.</p>
 
 and then enter the path to the initialization script in Google Cloud Storage
 (yes, it must be uploaded to GCS, to web links):
 
 ![Dataproc2](/post/dataproc_jupyter/dataproc2.png)
-<p align="center">Adding a new initialization script.</p>
+<p align="center" class="caption">Adding a new initialization script.</p>
 
 If you'd like to deploy Jupyter and Python 3 stack (numpy, sklearn, etc.) use
 source{d}'s own script which is publicly available as gs://srcd-dataproc/jupyter.sh
@@ -144,7 +151,7 @@ fast. IPython 5 for example adds autocompletion with dropdown lists to command
 line Python sessions as well as dynamic coloring:
 
 ![IPython](/post/dataproc_jupyter/ipython.png)
-<p align="center">IPython 5 console autocompletion.</p>
+<p align="center" class="caption">IPython 5 console autocompletion.</p>
 
 Technically, Jupyter is an umbrella package which depends on `notebook` and many
 others. Some common packages are shared between IPython and Jupyter. It uses
@@ -179,7 +186,7 @@ be in different languages, environments, etc. When you launch a new kernel,
 you choose the desired kernel type from the list:
 
 ![new kernel](/post/dataproc_jupyter/new_kernel.png)
-<p align="center">Picking PySpark 3 kernel in Jupyter.</p>
+<p align="center" class="caption">Picking PySpark 3 kernel in Jupyter.</p>
 
 The list can be printed in terminal using `jupyter nbextension list`.
 Kernel types are registered with JSON files in special kernelspec format.
@@ -266,7 +273,7 @@ management extension, he hit several issues. The first is that Chromium
 prefetches DNS lookups off the proxy so one has to disable this optimization:
 
 ![chromium](/post/dataproc_jupyter/chromium.png)
-<p align="center">Disabling DNS provision to access the proxy.</p>
+<p align="center" class="caption">Disabling DNS provision to access the proxy.</p>
 
 The second is [the problem with uBlock](https://github.com/jupyter/notebook/issues/297).
 Disabling uBlock selectively on \<your Dataproc cluster name\>-m does not help,
@@ -311,7 +318,7 @@ write our own test suite because tests for ContentsManager implicitly
 expect FileContentsManager. The result is [src-d/jgscm](https://github.com/src-d/jgscm).
 
 ![jupyter](/post/dataproc_jupyter/jupyter.png)
-<p align="center">List of GCS buckets in Jupyter.</p>
+<p align="center" class="caption">List of GCS buckets in Jupyter.</p>
 
 JGSCM is already included in `jupyter.sh` The tricky part is to fake the timestamp
 at `~/.jupyter/migrated` before Jupyter's first run so that it does not completely

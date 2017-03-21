@@ -7,6 +7,13 @@ image: /post/hercules/rbtree.png
 description: "src-d/hercules - incremental git blame on top of go-git - helps to analyse repositories. Is it hard for him?"
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 When I was drowning in the sea of new information at [NIPS 2016](https://nips.cc/),
 colleagues pointed me at the excellent blog post by Erik Bernhardsson:
 [The half-life of code & the ship of Theseus](https://erikbern.com/2016/12/05/the-half-life-of-code.html).
@@ -92,10 +99,10 @@ height variance is lower than 2x. Let's store our changed line intervals in
 an RB tree with line numbers as keys:
 
 ![blame](/post/hercules/blame.png)
-<p align="center">Random go-git blame...</p>
+<p align="center" class="caption">Random go-git blame...</p>
 
 ![rbtree](/post/hercules/rbtree.png)
-<p align="center">...and the corresponding interval tree</p>
+<p align="center" class="caption">...and the corresponding interval tree</p>
 
 As can be seen, each line interval corresponding to the same commit is encoded by two
 nodes, the beginning and the end, and the end node is in turn the beginning of
@@ -117,7 +124,7 @@ Suppose that we insert 2 new lines at position 314 which is in the middle of
    Rebalancing the tree again.
 3. For all the nodes greater than B, we add the same delta +2 to the key.
    *No need to rebalance the tree.* The complexity is O(N).
-   
+
 #### Deletion
 
 Suppose that we delete 2 lines at position 314. For all the nodes greater than
@@ -128,7 +135,7 @@ Thus we've got the linear complexity for both operations. Still, let's look
 at a typical commit on GitHub:
 
 ![commit](/post/hercules/commit.png)
-<p align="center">[apache/spark@7026ee23](https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499)</p>
+<p align="center" class="caption">[apache/spark@7026ee23](https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499)</p>
 
 Insertions and deletions are often coupled, and often their lengths are equal,
 thus deltas neutralize and we do not have to update the subsequent keys at all,
@@ -138,7 +145,7 @@ An alternative implementation would be using single-linked lists, where
 each node carries the corresponding line interval length:
 
 ![list](/post/hercules/list.png)
-<p align="center">Single-linked list, folded into a circle to fit</p>
+<p align="center" class="caption">Single-linked list, folded into a circle to fit</p>
 
 That structure makes insertions and deletions constant time but seeking for
 the right line number is always linear. In other words, disregarding our luck,

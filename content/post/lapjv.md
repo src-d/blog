@@ -7,6 +7,13 @@ image: /post/lapjv/mapping.png
 description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the \"cloud of points\" into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
 categories: ["science", "technical"]
 ---
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
+
 #### Before
 
 ![MNIST t-SNE before](/post/lapjv/mnist_before.png)
@@ -51,7 +58,7 @@ This is where [Dirichlet's principle](https://en.wikipedia.org/wiki/Dirichlet's_
 works: you are doomed to have collisions, whatever mapping algorithm you choose.
 
 ![Shadowmatic](/post/lapjv/shadowmatic.jpg)
-<p align="center">3D -> 2D projection illusion in <a href="http://www.shadowmatic.com/">Shadowmatic</a></p>
+<p align="center" class="caption">3D -> 2D projection illusion in <a href="http://www.shadowmatic.com/">Shadowmatic</a></p>
 
 Luckily, the following two assumptions stand:
 
@@ -70,7 +77,7 @@ subjective and depends on your ultimate goal. The root of the confusion is the
 same as in determining the perfect clustering: it depends.
 
 ![Clustering algorithms](/post/lapjv/sklearn.png)
-<p align="center">Different clustering algorithms from <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a></p>
+<p align="center" class="caption">Different clustering algorithms from <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a></p>
 
 t-SNE is one of a series of possible dimensionality reduction algorithms which are
 called embedding algorithms. The core idea is to preserve the similarity relations
@@ -417,13 +424,13 @@ as much as possible. Play with it yourself:
 <script src="/post/lapjv/assets/visualize.js"></script>
 <script src="/post/lapjv/assets/figures.js"></script>
 <script src="/post/lapjv/assets/playground.js"></script>
-<p align="center">Adapted from <a href="http://distill.pub/2016/misread-tsne">How to Use t-SNE Effectively</a></p>
+<p align="center" class="caption">Adapted from <a href="http://distill.pub/2016/misread-tsne">How to Use t-SNE Effectively</a></p>
 
 Those are artificial examples - cool but not enough. The majority of real-world
 datasets resemble a cloud with local clusters. For example, MNIST looks like this:
 
 ![mnist_tsne](/post/lapjv/mnist_tsne.png)
-<p align="center">MNIST after applying t-SNE</p>
+<p align="center" class="caption">MNIST after applying t-SNE</p>
 
 We can clearly see how similar digits tend to attract each other.
 
@@ -453,7 +460,7 @@ Amazingly many problems can be tracked down to LP. For example, let's take the
 [transportation problem](http://www.me.utexas.edu/~jensen/models/network/net8.html).
 
 <img src="/post/lapjv/transportation_problem.svg" style="width: 300px;">
-<p align="center">Transportation Problem: supplies and demands.</p>
+<p align="center" class="caption">Transportation Problem: supplies and demands.</p>
 
 There is a number of different supplies and demands, which may be not equal.
 Every demand needs a fixed amount of supplies. Every supply is limited and is connected
@@ -488,7 +495,7 @@ the minimal volume of work required to carry dirt from one pile distribution to
 another. Next time you dig holes in the ground, you know what to do...
 
 <img src="/post/lapjv/emd.png" style="width: 300px;">
-<p align="center">Earth Mover's Distance</p>
+<p align="center" class="caption">Earth Mover's Distance</p>
 
 If we replace "supplies" and "demands" with "histograms", we get the most popular
 way to compare images in pre-deep learning era
@@ -497,7 +504,7 @@ It is better than naive L2 because it captures the spatial difference additional
 to the magnitudal one.
 
 ![EMD](/post/lapjv/histogram.png)
-<p align="center">Earth Mover's Distance is better than Euclidean distance for histogram comparison.</p>
+<p align="center" class="caption">Earth Mover's Distance is better than Euclidean distance for histogram comparison.</p>
 
 If we replace "supplies" and "demands" with "words", we get
 [Word Mover's Distance](http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf),
@@ -505,7 +512,7 @@ a good way of comparing meanings of two sentences given word embeddings from
 [word2vec](https://en.wikipedia.org/wiki/Word2vec).
 
 <img src="/post/lapjv/wmd.png" style="width: 300px;">
-<p align="center">Word Mover's Distance.</p>
+<p align="center" class="caption">Word Mover's Distance.</p>
 
 If we relax the conditions \\ref{non-negative}-\\ref{emd} by throwing away \\ref{emd},
 set \\(w_ {S_ i} = w_ {D_ i} = 1\\) and turn inequalities \\ref{sum1} and \\ref{sum2}
@@ -534,12 +541,12 @@ sometimes we need to map every sample in the original scatter plot to a node
 in the regular grid. E.g. source{d} needs this mapping to... you will see why soon.
 
 <img src="/post/lapjv/grid.png" style="width: 400px;">
-<p align="center">The Regular Grid.</p>
+<p align="center" class="caption">The Regular Grid.</p>
 
 We can draw MNIST digits instead of dots after t-SNE, this is how it looks like:
 
 ![MNIST t-SNE before](/post/lapjv/mnist_before.png)
-<p align="center">MNIST digits after t-SNE.</p>
+<p align="center" class="caption">MNIST digits after t-SNE.</p>
 
 Not very clear. This where LAP arises: we could define the cost matrix as the
 pairwise euclidean distances between t-SNE samples and grid nodes, set the
@@ -635,7 +642,7 @@ std::tuple<cost, cost, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-<p align="center">Finding two consecutive minimums, plain C++.</p>
+<p align="center" class="caption">Finding two consecutive minimums, plain C++.</p>
 
 ```C++
 template <typename idx>
@@ -712,7 +719,7 @@ std::tuple<float, float, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-<p align="center">Finding two consecutive minimums, optimized code with AVX2 intrinsics.</p>
+<p align="center" class="caption">Finding two consecutive minimums, optimized code with AVX2 intrinsics.</p>
 
 <style>
 code {
@@ -725,7 +732,7 @@ lapjv maps 2500 MNIST samples in 5 seconds on my laptop and finally we see the
 precious result:
 
 ![mapping](/post/lapjv/mapping.png)
-<p align="center">Linear Assignment Problem solution for MNIST after t-SNE.</p>
+<p align="center" class="caption">Linear Assignment Problem solution for MNIST after t-SNE.</p>
 
 #### Notebook
 
