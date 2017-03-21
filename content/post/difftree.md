@@ -19,7 +19,7 @@ p.dt {
 }
 </style>
 
-![Front image](/post/difftree/intro.jpg "Similar trees next to each other.")
+![Front image](/post/difftree/intro.jpg "Old Trees, copyright (c) 2015 by Moises Levy, http://www.moiseslevy.com/Old%20Trees")
 
 ## Introduction
 
@@ -63,7 +63,7 @@ The practical implications of this are:
 
 - The root has the empty string as its name.
 
-- Then name of a node is not it's full path, and does not provide enough
+- The name of a node is not its full path, and does not provide enough
   information to know where the node is located in the tree.
 
 - The path of a node is the list of its ancestors, starting from the root and
@@ -511,8 +511,9 @@ Even if you don't plan to implement your own version of Git, I hope that
 understanding the challenges and the proposed solutions at a conceptual level
 will help you solve similar problems in the future.
 
-**P.S.** The trees in the photo are oaks at Dixie Plantation, South
-Carolina, USA.  I don't know who took the photo.
+**P.S.** The trees in the photo are oaks at Dixie Plantation, South Carolina,
+USA.  The photo is called "[Old Trees](http://www.moiseslevy.com/Old%20Trees)"
+copyright (c) 2015 by Moises Levy.
 
 **P.P.S.** Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
 suggestions, proper English and clean code; the broken English and the
