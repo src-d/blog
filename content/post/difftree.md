@@ -449,8 +449,8 @@ Here is how I recommend to implement such an iterator:
 -   `Step` behaves just like `Next` for files, but for directories is quite
     different: it pushes a new frame with the children of the directory.
 
-The following animation shows the series of `Next` and `Step` method calls over
-a tree along with the states of the main stack and its frames.
+The following animation shows a series of `Next` and `Step` method calls over
+a tree along with the states of the main stack and its frames:
 
 <!-- convert -size 294x240 -antialias -density 192 -delay 250 -loop 0 -dispose previous iter-0[1-4].svg iter-06.svg iter-08.svg iter-09.svg iter-10.svg -delay 400 iter-11.svg iter-12.svg -delay 300 iter-1[3-9].svg iter.gif -->
 ![Iteration demonstration](/post/difftree/iter.gif "Iteration demostration")
