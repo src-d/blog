@@ -63,7 +63,7 @@ The practical implications of this are:
 
 - The root has the empty string as its name.
 
-- Then name of a node is not it's full path, and does not provide enough
+- The name of a node is not its full path, and does not provide enough
   information to know where the node is located in the tree.
 
 - The path of a node is the list of its ancestors, starting from the root and
