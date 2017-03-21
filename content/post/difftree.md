@@ -432,7 +432,7 @@ I have chosen the names for `Next` and `Step` in honour of the
 
 Here is how I recommend to implement such an iterator:
 
--   The path to the current node should be represented by the stack of frames,
+-   The path to the current node should be represented by a stack of *frames*,
     the root frame being at the bottom and the frame with the current node being
     at the top.
 
