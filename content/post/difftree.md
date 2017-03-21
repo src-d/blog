@@ -61,40 +61,41 @@ path to the file or directory it represents, as in the figure below:
 
 The practical implications of this are:
 
-- The root has the empty string as its name.
+-   The root has the empty string as its name.
 
-- The name of a node is not its full path, and does not provide enough
-  information to know where the node is located in the tree.
+-   The name of a node is not its full path, and does not provide enough
+    information to know where the node is located in the tree.
 
-- The path of a node is the list of its ancestors, starting from the root and
-  ending with the node itself. For example, the path to `lib/lib.go` will be
-  the list of nodes containing the root node, `lib` and finally `lib.go`
-  itself.
+-   The path of a node is the list of its ancestors, starting from the root and
+    ending with the node itself. For example, the path to `lib/lib.go` will be
+    the list of nodes containing the root node, `lib` and finally `lib.go`
+    itself.
 
-- The children of each node can be lexicographically sorted by their name:
-  `LICENSE` comes before `lib`, `lib` comes before
-  `main.go`.  Similarly, `lib.go` always comes before `lib_test.go`.
+-   The children of each node can be lexicographically sorted by their name:
+    `LICENSE` comes before `lib`, `lib` comes before `main.go`.  Similarly,
+    `lib.go` always comes before `lib_test.go`.
 
-- The depth-first traversal of a tree which visit nodes in the same directory in
-  lexicographic order enumerates them the same way as the `tree` command line tool:
+-   The depth-first traversal of a tree which visit nodes in the same directory
+    in lexicographic order enumerates them the same way as the `tree` command
+    line tool:
 
-  ```
-  LICENSE
-  lib
-  lib/lib.go
-  lib/lib_test.go
-  main.go
-  ```
+    ```text
+    LICENSE
+    lib
+    lib/lib.go
+    lib/lib_test.go
+    main.go
+    ```
 
 ### Git trees as Merkle trees
 
 Every node has a SHA-1 hash in a Git tree:
 
-- The hash of a file is calculated from its size and contents.
+-   The hash of a file is calculated from its size and contents.
 
-- The hash of a directory is calculated from the
-  [mode](https://en.wikipedia.org/wiki/Modes_(Unix)), name and hash of its
-  children, in lexicographic order.
+-   The hash of a directory is calculated from the
+    [mode](https://en.wikipedia.org/wiki/Modes_(Unix)), name and hash of its
+    children, in lexicographic order.
 
 If we add the hash information belonging to each node, in blue, to the previous figure, we
 get a more detailed view of the tree:
@@ -108,29 +109,30 @@ This means Git trees are [Merkle
 trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications
 for us are:
 
-- *Files with different contents have different hashes*.  This means it is
-  pretty fast to find out if a file has changed between two commits, as you only
-  need to compare their hashes, not their contents.
+-   *Files with different contents have different hashes*.  This means it is
+    pretty fast to find out if a file has changed between two commits, as you
+    only need to compare their hashes, not their contents.
 
-- *Two files with the same content have the same hash*, no matter if they
-  have different names and/or permissions.  If you index contents by hash, you
-  only need to store it once, no matter how many times it appear
-  in the history of the repository.
+-   *Two files with the same content have the same hash*, no matter if they have
+    different names and/or permissions.  If you index contents by hash, you only
+    need to store it once, no matter how many times it appear in the history of
+    the repository.
 
-- *If two directories have the same hash, then they have the same children*:
-  same files and directories with recursively the same names, modes and
-  contents.
+-   *If two directories have the same hash, then they have the same children*:
+    same files and directories with recursively the same names, modes and
+    contents.
 
-  This is a huge time saver for comparing directories between commits, because
-  if their hashes match, you know they have not been modified; there is no
-  need to check their children individually.
+    This is a huge time saver for comparing directories between commits, because
+    if their hashes match, you know they have not been modified; there is no
+    need to check their children individually.
 
-  Consequently, the worst case algorithmic complexity of checking two
-  directories for equality is reduced from O(n) to O(1) (with n being the
-  number of descendants of the directory with less descendants).
+    Consequently, the worst case algorithmic complexity of checking two
+    directories for equality is reduced from O(n) to O(1) (with n being the
+    number of descendants of the directory with less descendants).
 
-- If some change has been introduced in a commit, no matter how small it is, all the
-  ancestor directories of the modified file will have their hashes modified.
+-   If some change has been introduced in a commit, no matter how small it is,
+    all the ancestor directories of the modified file will have their hashes
+    modified.
 
 Let us assume, for the sake of this blog post, that hash collisions are
 impossible, even though they are quite popular
@@ -173,29 +175,30 @@ Let A and B be two Git trees from consecutive commits.  If we compare one with
 the other there are going to be quite a few changes we have to deal
 with, let us see a minimal set (changes depicted in red):
 
-- **Modified file**: Both trees have the same topology, but the hash of the
-  file is different from A to B, along with the hash of all its ancestors, as
-  illustrated in the figure below:
+-   **Modified file**: Both trees have the same topology, but the hash of the
+    file is different from A to B, along with the hash of all its ancestors, as
+    illustrated in the figure below:
 
-!["The index contents before and after lib/lib.go is modified](/post/difftree/modified.png "The index before and after lib/lib.go is modified, changed hashes are shown in red.")
+    !["The index contents before and after lib/lib.go is modified](/post/difftree/modified.png "The index before and after lib/lib.go is modified, changed hashes are shown in red.")
 
-- **Renamed file** (the name of the file has changed, but it has not been moved
-  to a different directory): Both trees have the same topology and the hash
-  of the file is the same in A and B, but the hash of its ancestors is different in each tree.
+-   **Renamed file** (the name of the file has changed, but it has not been
+    moved to a different directory): Both trees have the same topology and the
+    hash of the file is the same in A and B, but the hash of its ancestors is
+    different in each tree.
 
-!["The index contents before and after lib/lib.go is renamed to lib/foo.go](/post/difftree/renamed.png "Renamed file.")
+    !["The index contents before and after lib/lib.go is renamed to lib/foo.go](/post/difftree/renamed.png "Renamed file.")
 
-- **Inserted file**: The topology of A and B is different, the
-  parent directory of the file has a new entry in B and the hash of all
-  its ancestors changes.
+-   **Inserted file**: The topology of A and B is different, the parent
+    directory of the file has a new entry in B and the hash of all its ancestors
+    changes.
 
-!["The index contents before and after lib/foo.go is inserted](/post/difftree/inserted.png "Inserted file.")
+    !["The index contents before and after lib/foo.go is inserted](/post/difftree/inserted.png "Inserted file.")
 
-- **Deleted file**: The topology of A and B is different, the
-  parent directory of the file has a missing entry in B and the hash of
-  all its ancestors changes.
+-   **Deleted file**: The topology of A and B is different, the parent directory
+    of the file has a missing entry in B and the hash of all its ancestors
+    changes.
 
-!["The index contents before and after lib/lib.go has been deleted](/post/difftree/deleted.png "Deleted file.")
+    !["The index contents before and after lib/lib.go has been deleted](/post/difftree/deleted.png "Deleted file.")
 
 In general, if we compare two Git trees we are likely to face several occurrences of the
 cases above, and maybe even some composite cases, like moving a file to another
@@ -224,72 +227,72 @@ type Change struct {
 Here are some examples of how to represent a few popular kinds of changes
 between two trees:
 
-- Inserting a `lib/foo.go` file will be represented as a single insertion
-  action, from `nil` to the path of the new file:
+-   Inserting a `lib/foo.go` file will be represented as a single insertion
+    action, from `nil` to the path of the new file:
 
-  ```go
-  fooDotGo := ...  // the node for the 'foo.go' file
-  lib := ...       // the node for B's 'lib' directory (contains the new fooDotGo)
-  root := ...      // the root node (contains lib)
-  
-  insertion := Change{
-          Action: Insert,
-          To:   Path{root, lib, fooDotGo}
-  }
-  
-  changes := []Change{insertion}
-  ```
+    ```go
+    fooDotGo := ...  // the node for the 'foo.go' file
+    lib := ...       // the node for B's 'lib' directory (contains the new fooDotGo)
+    root := ...      // the root node (contains lib)
+     
+    insertion := Change{
+              Action: Insert,
+              To:   Path{root, lib, fooDotGo}
+    }
+     
+    changes := []Change{insertion}
+    ```
 
-- A modification of the contents of `lib/lib.go` is represented as
-  the single change too, from A's `lib/lib.go` to B's `lib/lib.go`:
+-   A modification of the contents of `lib/lib.go` is represented as the single
+    change too, from A's `lib/lib.go` to B's `lib/lib.go`:
 
-  ```go
-  libDotGoA := ...  // A's 'lib.go' file
-  libA := ...       // A's 'lib' directory
-  rootA := ...      // A's root node
-  
-  libDotGoB := ...  // B's 'lib.go' file (different hash than libDotGoA)
-  libB := ...       // B's 'lib' directory (different hash than libA)
-  rootB := ...      // B's root node (different hash than rootA)
-  
-  modification := Change{
-          Action: Modify,
-          From: Path{rootA, libA, libDotGoA}
-          To:   Path{rootB, libB, libDotGoB}
-  }
-  
-  changes := []Change{modification}
-  ```
+    ```go
+    libDotGoA := ...  // A's 'lib.go' file
+    libA := ...       // A's 'lib' directory
+    rootA := ...      // A's root node
+    
+    libDotGoB := ...  // B's 'lib.go' file (different hash than libDotGoA)
+    libB := ...       // B's 'lib' directory (different hash than libA)
+    rootB := ...      // B's root node (different hash than rootA)
+    
+    modification := Change{
+            Action: Modify,
+            From: Path{rootA, libA, libDotGoA}
+            To:   Path{rootB, libB, libDotGoB}
+    }
+    
+    changes := []Change{modification}
+    ```
 
-- Renaming `lib/lib.go` to `lib/foo.go` needs two changes:
-  deleting A's `lib/lib.go` and inserting B's `lib/foo.go`.
+-   Renaming `lib/lib.go` to `lib/foo.go` needs two changes: deleting A's
+    `lib/lib.go` and inserting B's `lib/foo.go`.
 
-  ```go
-  libDotGo := ... // A's 'lib.go' file
-  libA := ...     // A's 'lib' directory
-  rootA := ...    // A's root node
-  
-  fooDotGo := ... // B's 'foo.go' file
-  libB := ...     // B's 'lib' directory (different hash and children than libA)
-  rootB := ...    // B's root node (different hash than rootA)
-  
-  deletion := Change{
-          Action: Delete,
-          From: Path{rootA, libA, libDotGo},
-  }
-  insertion := Change{
-          Action: Insert,
-          To: Path{rootB, libB, fooDotGo}
-  }
-  
-  changes := []Change{deletion, insertion} // in any order
-  ```
+    ```go
+    libDotGo := ... // A's 'lib.go' file
+    libA := ...     // A's 'lib' directory
+    rootA := ...    // A's root node
+    
+    fooDotGo := ... // B's 'foo.go' file
+    libB := ...     // B's 'lib' directory (different hash and children than libA)
+    rootB := ...    // B's root node (different hash than rootA)
+    
+    deletion := Change{
+            Action: Delete,
+            From: Path{rootA, libA, libDotGo},
+    }
+    insertion := Change{
+            Action: Insert,
+            To: Path{rootB, libB, fooDotGo}
+    }
+    
+    changes := []Change{deletion, insertion} // in any order
+    ```
 
-  Alternatively, you can also have your own `Rename Action` and report this as
-  the single change from the old path to the new path, but that complicates the
-  tree comparison algorithm (described in the next section). In any case, it
-  must be pretty easy to detect renames and copies in a later step simply by
-  processing the original output.
+    Alternatively, you can also have your own `Rename Action` and report this as
+    the single change from the old path to the new path, but that complicates
+    the tree comparison algorithm (described in the next section). In any case,
+    it must be pretty easy to detect renames and copies in a later step simply
+    by processing the original output.
 
 Now that we know how to represent changes between two trees, we can already
 write down the signature of our difftree function:
@@ -309,10 +312,7 @@ both trees using the lexicographic depth-first traversal and comparing the paths
 of the returned nodes. The algorithm can be nicely summarized with the following
 animation that shows how to detect the insertion of `lib/foo.go`.
 
-<!--
-convert -size 238x98 -background white -antialias -density 192 -delay 250 -loop
-0 -dispose previous walk1-*.svg walk1.gif
--->
+<!-- convert -size 238x98 -background white -antialias -density 192 -delay 250 -loop 0 -dispose previous walk1-*.svg walk1.gif -->
 
 ![Simultaneously walking both trees.](/post/difftree/walk1.gif "Simultaneously walking both trees, looking for insertions or deletions.")
 <p align="center" class="dt">Simultaneously walking both trees.</p>
@@ -339,7 +339,6 @@ to compare paths is to compare ancestor names between them, making one step at
 a time:
 
 ```go
-
 // Compare returns -1, 0 or 1 if the path p comes before, at the same time or
 // after the path o, in lexicographic depth-first order; for example:
 //
@@ -374,28 +373,28 @@ func (p Path) Compare(o Path) int {
 
 The algorithm described above can be summarized as:
 
-1. Start traversing both trees at the same time.
+1.  Start traversing both trees at the same time.
 
-2. While there are nodes left to visit in both trees:
+2.  While there are nodes left to visit in both trees:
 
-  Compare the names and/or hashes of the elements pointed to by both paths and
-  decide:
+    Compare the names and/or hashes of the elements pointed to by both paths and
+    decide:
 
-  - What changes must be issued, if any.
+    -   What changes must be issued, if any.
 
-  - How to advance the walkers: the first, the second or both.
+    -   How to advance the walkers: the first, the second or both.
 
-3. Issue changes to delete the remaining nodes from A or to insert the
-   remaining nodes from B.
+3.  Issue changes to delete the remaining nodes from A or to insert the
+    remaining nodes from B.
 
 Implementing this algorithm involves writing:
 
-- A tree iterator that traverses trees in lexicographic depth-first order,
-  returning the path to the nodes.
+-   A tree iterator that traverses trees in lexicographic depth-first order,
+    returning the path to the nodes.
 
-- A comparator that takes the name and hash of the current paths of two tree
-  iterators and tells us what changes we should issue and how to advance the
-  iterators further.
+-   A comparator that takes the name and hash of the current paths of two tree
+    iterators and tells us what changes we should issue and how to advance the
+    iterators further.
 
 Let us see how to implement each of them.
 
@@ -404,11 +403,11 @@ Let us see how to implement each of them.
 This would be a regular depth-first tree iterator if it were not for some
 interesting details: 
 
-- siblings are to be iterated in lexicographic order by name.
+-   Siblings are to be iterated in lexicographic order by name.
 
-- it must be possible to skip whole directories instead of penetrating deeper
-  into them.  This is important for efficiency reasons, when the hashes of two
-  directories are the same, we would like to skip all their contents.
+-   It must be possible to skip whole directories instead of penetrating deeper
+    into them.  This is important for efficiency reasons, when the hashes of two
+    directories are the same, we would like to skip all their contents.
 
 Taking those into account, the iterator type will look something like this:
 
@@ -422,32 +421,33 @@ type Iterator interface {
 Both `Next` and `Step` methods return the path of the next node in the tree,
 but each of them traverses the tree using a different policy:
 
-- `Next` returns the next path without getting any deeper into the tree, that is,
-  if the current node is a directory, its contents are skipped.
+-   `Next` returns the next path without getting any deeper into the tree, that
+    is, if the current node is a directory, its contents are skipped.
 
-- `Step` returns the path to the next node, getting into directories if needed.
+-   `Step` returns the path to the next node, getting into directories if
+    needed.
 
 I have chosen the names for `Next` and `Step` in honour of the
 [gdb](https://www.gnu.org/software/gdb/) commands.
 
 Here is how I recommend to implement such an iterator:
 
-- The path to the current node should be represented by the stack of frames,
-  the root frame being at the bottom and the frame with the current node being
-  at the top.
+-   The path to the current node should be represented by the stack of frames,
+    the root frame being at the bottom and the frame with the current node being
+    at the top.
 
-- Each frame is a stack of siblings sorted in the reverse
-  lexicographic order by name so that the "smallest" node is at the top.
+-   Each frame is a stack of siblings sorted in the reverse lexicographic order
+    by name so that the "smallest" node is at the top.
 
-- This means the current node is the top node of the top frame.
+-   This means the current node is the top node of the top frame.
 
-- `Next` drops the current node and sets its next sibling to the new current
-  node by popping the top frame. If the top frame ends up empty, just repeat the
-  same operation recursively to remove all empty frames as we climb the tree
-  towards its root.
+-   `Next` drops the current node and sets its next sibling to the new current
+    node by popping the top frame. If the top frame ends up empty, just repeat
+    the same operation recursively to remove all empty frames as we climb the
+    tree towards its root.
 
-- `Step` behaves just like `Next` for files, but for directories is quite different:
-  it pushes a new frame with the children of the directory.
+-   `Step` behaves just like `Next` for files, but for directories is quite
+    different: it pushes a new frame with the children of the directory.
 
 The following animation shows the series of `Next` and `Step` method calls over
 a tree along with the states of the main stack and its frames.
