@@ -136,7 +136,7 @@ for us are:
 
 Let us assume, for the sake of this blog post, that hash collisions are
 impossible, even though they are quite popular
-[nowadays](https://shattered.io/static/shattered.pdf)).
+[nowadays](https://shattered.io/static/shattered.pdf).
 
 # Representing Git trees programmatically
 
