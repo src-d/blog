@@ -136,14 +136,14 @@ for us are:
 
 Let us assume, for the sake of this blog post, that hash collisions are
 impossible, even though they are quite popular
-[nowadays](https://shattered.io/static/shattered.pdf)).
+[nowadays](https://shattered.io/static/shattered.pdf).
 
 # Representing Git trees programmatically
 
 In line with what we have explained so far, this is a sensible representation of
 Git trees in Go:
 
-```go
+```text
 type Noder interface {
         Name()     string
         Hash()     []byte
@@ -153,7 +153,7 @@ type Noder interface {
 
 The path to a node in a tree will look something like this:
 
-```go
+```text
 type Path []Noder // beginning from the root
                   // and ending with the node itself
 ```
@@ -161,7 +161,7 @@ type Path []Noder // beginning from the root
 I recommend `Path` to implement `Noder` so that you can treat paths as
 nodes when needed:
 
-```go
+```text
 // assuming the receiver is not the empty slice…
 func (p Path) last() Noder       { return p[len(p)-1] }
 func (p Path) Name() string      { return p.last().Name() }
@@ -208,7 +208,7 @@ The output of our tree comparator will be a list of changes, that applied to the
 A tree will turn it into the B tree.  A change in this context is defined as an
 action and the involved paths. We can represent them as follows in Go:
 
-```go
+```text
 type Action int
 
 const (
@@ -230,7 +230,7 @@ between two trees:
 -   Inserting a `lib/foo.go` file will be represented as a single insertion
     action, from `nil` to the path of the new file:
 
-    ```go
+    ```text
     fooDotGo := ...  // the node for the 'foo.go' file
     lib := ...       // the node for B's 'lib' directory (contains the new fooDotGo)
     root := ...      // the root node (contains lib)
@@ -246,7 +246,7 @@ between two trees:
 -   A modification of the contents of `lib/lib.go` is represented as the single
     change too, from A's `lib/lib.go` to B's `lib/lib.go`:
 
-    ```go
+    ```text
     libDotGoA := ...  // A's 'lib.go' file
     libA := ...       // A's 'lib' directory
     rootA := ...      // A's root node
@@ -267,7 +267,7 @@ between two trees:
 -   Renaming `lib/lib.go` to `lib/foo.go` needs two changes: deleting A's
     `lib/lib.go` and inserting B's `lib/foo.go`.
 
-    ```go
+    ```text
     libDotGo := ... // A's 'lib.go' file
     libA := ...     // A's 'lib' directory
     rootA := ...    // A's root node
@@ -297,7 +297,7 @@ between two trees:
 Now that we know how to represent changes between two trees, we can already
 write down the signature of our difftree function:
 
-```go
+```text
 func DiffTree(a, b Noder) []Change
 ```
 
@@ -338,7 +338,7 @@ greater than the latter when they are compared as simple strings.  The proper wa
 to compare paths is to compare ancestor names between them, making one step at
 a time:
 
-```go
+```text
 // Compare returns -1, 0 or 1 if the path p comes before, at the same time or
 // after the path o, in lexicographic depth-first order; for example:
 //
@@ -411,7 +411,7 @@ interesting details:
 
 Taking those into account, the iterator type will look something like this:
 
-```go
+```text
 type Iterator interface {
         Next() Path // skips directory contents
         Step() Path // descends into directories
@@ -432,7 +432,7 @@ I have chosen the names for `Next` and `Step` in honour of the
 
 Here is how I recommend to implement such an iterator:
 
--   The path to the current node should be represented by the stack of frames,
+-   The path to the current node should be represented by a stack of *frames*,
     the root frame being at the bottom and the frame with the current node being
     at the top.
 
@@ -449,8 +449,8 @@ Here is how I recommend to implement such an iterator:
 -   `Step` behaves just like `Next` for files, but for directories is quite
     different: it pushes a new frame with the children of the directory.
 
-The following animation shows the series of `Next` and `Step` method calls over
-a tree along with the states of the main stack and its frames.
+The following animation shows a series of `Next` and `Step` method calls over
+a tree along with the states of the main stack and its frames:
 
 <!-- convert -size 294x240 -antialias -density 192 -delay 250 -loop 0 -dispose previous iter-0[1-4].svg iter-06.svg iter-08.svg iter-09.svg iter-10.svg -delay 400 iter-11.svg iter-12.svg -delay 300 iter-1[3-9].svg iter.gif -->
 ![Iteration demonstration](/post/difftree/iter.gif "Iteration demostration")
