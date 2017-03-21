@@ -19,7 +19,7 @@ p.dt {
 }
 </style>
 
-![Front image](/post/difftree/intro.jpg "Old Trees, copyright (c) 2015 by Moises Levy, http://www.moiseslevy.com/Old%20Trees")
+![Front image](/post/difftree/intro.jpg "Old Trees, copyright 2015 by Moises Levy, http://www.moiseslevy.com/Old%20Trees")
 
 ## Introduction
 
