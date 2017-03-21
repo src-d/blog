@@ -78,7 +78,7 @@ The practical implications of this are:
 - The depth-first traversal of a tree which visit nodes in the same directory in
   lexicographic order enumerates them the same way as the `tree` command line tool:
 
-  ```
+  ```text
   LICENSE
   lib
   lib/lib.go
