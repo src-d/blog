@@ -36,8 +36,8 @@ In other words, if you've got less than 100,000 points, you will apply that magi
 black box thing and get a beautiful scatter plot in return.
 
 Here is a classic example from computer vision. There is a well known dataset
-named ["MNIST"](http://yann.lecun.com/exdb/mnist/) by Yann LeCun (the inventor
-of the [Backpropagation](https://en.wikipedia.org/wiki/Backpropagation) method of
+named ["MNIST"](http://yann.lecun.com/exdb/mnist/) by Yann LeCun (one of the inventors
+of [Backpropagation](https://en.wikipedia.org/wiki/Backpropagation) method of
 training neural networks - the core of modern deep learning) et. al. It is often
 used as the default dataset for evaluating machine learning ideas and is widely
 employed in academia. MNIST is 70,000 greyscale images of size 28x28.
@@ -582,7 +582,7 @@ The conclusion was that:
 and it is the best algorithm for the uniform random ... and for the single-depot class.
 
 There is a caveat with the JV algorithm though. It is loosely tolerant
-to the difference between any pair of cost elements in the cost matrix. That is,
+to the difference between any pair of cost elements in the cost matrix. For example,
 if there are two very close costs appearing in the same graph where we search
 for the shortest path using Dijkstra's algorithm, it can potentially loop
 forever. If you take a closer look at Dijkstra's algorithm, you will eventually
