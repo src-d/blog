@@ -3,7 +3,7 @@ author: vadim
 date: 2017-03-31
 title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
-image: /post/ml_in_containers/intro.png
+image: /post/docker_coreos_gpu_deep_learning/intro.png
 description: "This is the transcript of a lightning which I am yet to give. A GPGPU computing environment can be set up nicely inside a Docker container in CoreOS. Our way to organize deep learning on premise is efficient and brings benefits to devops and data scientists."
 ---
 
@@ -21,7 +21,7 @@ We decided to share some of our learnings and configuration files.
 
 ### R&D in containers
 
-![What do we want](/post/ml_in_containers/what_do_we_want.png)
+![What do we want](/post/docker_coreos_gpu_deep_learning/what_do_we_want.png)
 
 Typically, deep learning researchers run their stuff using [Ubuntu](https://ubuntu.com) 
 as the host OS. If you want to scale or reproduce your work with the standard Ubuntu setup, you are left with these three options:
@@ -295,9 +295,9 @@ There is a number of gotchas for the users without any prior experience with
 CoreOS + containers. I am putting the actual slides from the presentation to
 illustrate.
 
-![wasted1](/post/ml_in_containers/wasted1.png)
+![wasted1](/post/docker_coreos_gpu_deep_learning/wasted1.png)
 
-![wasted2](/post/ml_in_containers/wasted2.png)
+![wasted2](/post/docker_coreos_gpu_deep_learning/wasted2.png)
 
 ### Cloud or on-premise?
 
