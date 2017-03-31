@@ -4,7 +4,7 @@ date: 2017-03-31
 title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
 image: /post/docker_coreos_gpu_deep_learning/intro.png
-description: "This is the transcript of a lightning which I am yet to give. A GPGPU computing environment can be set up nicely inside a Docker container in CoreOS. Our way to organize deep learning on premise is efficient and brings benefits to devops and data scientists."
+description: "A GPGPU computing environment can be set up nicely inside a Docker container using CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
 ---
 
 Having confidence in your research and development environment is essential if you want to
