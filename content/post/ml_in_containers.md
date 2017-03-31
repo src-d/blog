@@ -1,37 +1,37 @@
 ---
 author: vadim
 date: 2017-03-31
-title: "Machine Learning Infrastructure at source{d}"
+title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
 image: /post/ml_in_containers/intro.png
-description: "This is the transcript of the lightning which I didn't manage to give on <a href='http://talks.sourced.tech/'>source{d} tech talks</a> in March 2017.<br>GPGPU computing environment can be set up nicely inside a Docker container in CoreOS. Our way to organize deep learning on premises is efficient and brings benefits to devops and data scientists."
+description: "This is the transcript of a lightning which I am yet to give. A GPGPU computing environment can be set up nicely inside a Docker container in CoreOS. Our way to organize deep learning on premise is efficient and brings benefits to devops and data scientists."
 ---
 
-Machine Learning team at source{d} solves various problems in the standard environment.
-This includes running constant experiments with Python scripts, Jupyter notebooks
-which employ CUDA / NVIDIA GPUs extensively. E.g., training a deep neural network
-to write the source code with Keras/Tensorflow or applying
-[minhashcuda](https://github.com/src-d/minhashcuda) to a large
-[bag-of-words dataset](https://data.world/vmarkovtsev/github-duplicate-repositories)
-or clustering all developers in the world with [kmcuda](https://github.com/src-d/kmcuda).
-Having confidence in the research and development environment is essential if one wants to
+Having confidence in your research and development environment is essential if you want to
 solve challenging problems. This post shows how to setup containers for deep learning,
-have `numpy` accelerated and finally speculates about the cloud vs. on premises.
+have `numpy` accelerated and finally speculates about hosting in the cloud vs. on-premise.
+
+To give you a bit of background, at source{d}, the ML team is running constant experiments with Python scripts and Jupyter notebooks which extensively use CUDA + NVIDIA GPUs. For example: 
+
+- Training a deep neural network to write source code with Keras/Tensorflow
+- Applying [minhashcuda](https://github.com/src-d/minhashcuda) to a large [bag-of-words dataset](https://data.world/vmarkovtsev/github-duplicate-repositories)
+- Clustering all developers in the world with [kmcuda](https://github.com/src-d/kmcuda).
+
+We decided to share some of our learnings and configuration files. 
 
 ### R&D in containers
 
 ![What do we want](/post/ml_in_containers/what_do_we_want.png)
 
-Typically, deep learning researchers run their stuff in [Ubuntu](https://ubuntu.com)
-installed as the host OS. This automatically disables an easy reproduction of the
-environment. If you want to scale it, you are left with these three options:
+Typically, deep learning researchers run their stuff using [Ubuntu](https://ubuntu.com) 
+as the host OS. If you want to scale or reproduce your work with the standard Ubuntu setup, you are left with these three options:
 
 1. Clone the disks, grab exactly the same hardware configuration, deploy the copy.
 This is how people did it in 1990-ies. Complete hell if your environment evolves
 every day (it does).
 2. Use some configuration management system and pay a considerable amount
 of human resources to maintain the configs. This is how people did it in 2000-s.
-Complete hell if you've got complex setup of new machines.
+Complete hell if you have a complex setup of new machines.
 3. Fix the global environment, restrict to change it and become drawn in
 `virtualenv`-s. This leads to environmental anarchy which I personally witnessed
 in large companies. Complete hell if the team is larger than a single engineer
@@ -42,7 +42,7 @@ containers, Luke. We can run something Spartan like [CoreOS](https://coreos.com/
 as the host OS and give researchers access to containers with their beloved
 Ubuntu. The containers are not persistent, and there is no need in messing with
 `virtualenv` at all - instead, everybody can safely torture the OS in the container
-any way he or she wants. All the instances of the container are the same initially,
+any way they want. All the instances of the container are the same initially,
 contain the same proper compiled and configured libraries, same tools and same
 access to the persistent disk storage. As a bonus, it becomes super easy to
 deploy the developed machine learning models using the same containers they were
@@ -51,24 +51,24 @@ created in.
 ### NVIDIA CUDA in containers
 
 However, one needs to solve some technical issues to follow this path. The first
-and the most important is passing CUDA devices inside the container.
+step and most important one is passing CUDA devices inside the container.
 There is a solution from NVIDIA: [nvidia-docker](https://github.com/NVIDIA/nvidia-docker).
-In our (mine and Maximo's) opinion it is not a proper one. The drawbacks are:
+In our opinion it is not the right approach. The drawbacks are:
 
 1. Having to use `nvidia-docker` instead of the standard `docker`. We claim that
-everything can be set up properly without introducing the separate tool and running
-the additional service.
-2. It requires NVIDIA driver installation in the host OS. CoreOS does not allow
-you to do that. It does not have a compiler, kernel headers, etc. as well as a
+everything can be set up properly without introducing a separate tool and running
+an additional service.
+2. It requires a NVIDIA driver installation in the host OS. CoreOS does not allow
+you to do that. Remember, CoreOS does not have a compiler, kernel headers, etc. or a 
 package manager. CoreOS is basically just a systemd with bash, coreutils and
-docker. It's intended usage is doing everything in the containers.
+Docker. Its intended usage is doing everything in the containers (and we love this!).
 
 Our solution is different. We take an intermediate container, compile and
 install the DKMS driver there, `modprobe` it. Shut down the container. Since
 the kernel is shared, the devices remain alive. We launch the
 payload containers with the needed userspace and mapped NVIDIA devices afterwards.
 
-This is the `Dockerfile` for the intermediate container:
+This is the `Dockerfile` for the intermediate container named `src-d/nvidia-driver`:
 
 ```
 FROM ubuntu:16.04
@@ -130,17 +130,16 @@ ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local
 
 We are using the [ONBUILD](https://docs.docker.com/engine/reference/builder/#onbuild)
 trigger here to lazily update the child containers. As you see, some versions
-are hardcoded which is bad; we cannot open source the complete infrastructure
-repository for the evident reasons so we are not ashamed much. This is the
-payload `Dockerfile` aka `srcd/science`:
+are hardcoded which is unfortunate. This is the payload `Dockerfile` aka `src-d/science` 
+for one of our R&D machines (full file later in the post):
 
 ```
-FROM srcd/nvidia-driver
+FROM src-d/nvidia-driver
 ...
 ```
 
 Our hardware setup has two GPUs which were inserted in the proper slots to enable peer to
-peer memory exchange. We hit the nasty bug with [Intel IOMMU](https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt).
+peer memory exchange. We initially hit a nasty bug with [Intel IOMMU](https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt).
 Particularly, when we invoked `cudaMemcpyPeer()`, it hanged and `dmesg` showed
 
 ```
@@ -153,13 +152,13 @@ Particularly, when we invoked `cudaMemcpyPeer()`, it hanged and `dmesg` showed
 The container ran with `--privileged --security-opt seccomp=unconfined` so the problem
 was not with the permissions. We applied the workaround described in the
 [bug report](https://bugzilla.kernel.org/show_bug.cgi?id=188271): add
-`intel_iommu=igfx_off` to kernel boot arguments. It helped and peer to peer
+`intel_iommu=igfx_off` to the kernel boot arguments. It solved the problem and peer-to-peer
 GPU memory access started to work.
 
 Finally, this is how we run the container:
 
 ```
-docker run --rm -it -v/data:/data --device /dev/nvidiactl --device /dev/nvidia0 --device /dev/nvidia1 --device /dev/nvidia-uvm --privileged srcd/science bash
+docker run --rm -it -v/data:/data --device /dev/nvidiactl --device /dev/nvidia0 --device /dev/nvidia1 --device /dev/nvidia-uvm --privileged src-d/science bash
 ```
 
 ### numpy with MKL and cuBLAS
@@ -173,7 +172,7 @@ implementation in [Intel Math Kernel Library](https://software.intel.com/en-us/i
 nvBLAS is not a complete BLAS implementation so we have to fallback to MKL.
 
 ```
-FROM srcd/nvidia-driver
+FROM src-d/nvidia-driver
 MAINTAINER source{d}
 
 RUN echo "deb http://ppa.launchpad.net/maarten-fonville/ppa/ubuntu yakkety main" > /etc/apt/sources.list.d/maarten-fonville-ubuntu-ppa-xenial.list \
@@ -283,28 +282,28 @@ W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn'
 [minhashcuda](https://github.com/src-d/minhashcuda), [lapjv](https://github.com/src-d/lapjv). You may
 read about them in our blog.
 * We are running Jupyter as the systemd service and disable the token security since
-the machine is not exposed to the internet.
+this machine is not exposed to the internet.
 
 The `Dockerfile` from above is the result of incremental improvements in
-`srcd/science` container over the last 6 months. It builds in less than
-15 minutes and gives a machine learning engineer <s>an unlimited power</s> perfect control
+`src-d/science` container over the last 6 months. It builds in less than
+15 minutes and gives a machine learning engineer <s>an unlimited power</s> and perfect control
 of the environment.
 
 ### Gotchas
 
 There is a number of gotchas for the users without any prior experience with
-CoreOS+containers. I am putting the actual slides from the presentation to
+CoreOS + containers. I am putting the actual slides from the presentation to
 illustrate.
 
 ![wasted1](/post/ml_in_containers/wasted1.png)
 
 ![wasted2](/post/ml_in_containers/wasted2.png)
 
-### Cloud or on premises?
+### Cloud or on-premise?
 
 The answer to this question depends on the use case and may change from time
-to time depending on the cloud prices. Every option has it's own pros and cons.
-Clouds simplify devops, are easier to monitor and more flexible. Your own hardware
+to time depending also on cloud prices. Every option has it's pros and cons:
+Cloud based hosting simplifies devops, is easier to monitor and more flexible. Your own hardware
 with GPU cards is more expensive at the beginning, but quickly pays off -
 according to our calculations, within one year. Anyway, here are two excellent
 links which can help you to make the decision:
@@ -312,10 +311,10 @@ links which can help you to make the decision:
 * [Which GPU(s) to Get for Deep Learning: My Experience and Advice for Using GPUs in Deep Learning](http://timdettmers.com/2017/03/19/which-gpu-for-deep-learning/)
 * [Computer Build for Deep Learning Applciations](http://www.slideshare.net/PetteriTeikariPhD/deep-learning-workstation)
 
-Our choice was to install custom hardware and we haven't regret it since October 2016.
+Back in October 2016 our choice was to install custom hardware and we haven't regreted it yet.
 
 ### Acknowledgements
 
-NVIDIA dockerization was bravely performed by our CTO Maximo Cuadros. I learnt
-a lot from him about the containers. Next time you see Maximo on our
+NVIDIA dockerization was bravely performed by our VP of Engineering, Maximo Cuadros. I learned
+a lot from him about containers. Next time you see Maximo on our
 [tech talks](http://talks.sourced.tech/), ask for some wisdom!
