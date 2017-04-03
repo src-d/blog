@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2017-03-31
+date: 2017-04-03
 title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
 image: /post/docker_coreos_gpu_deep_learning/intro.png
