@@ -74,7 +74,8 @@ install the DKMS driver there, `modprobe` it. Shut down the container. Since
 the kernel is shared, the devices remain alive. We launch the
 payload containers with the needed userspace and mapped NVIDIA devices afterwards.
 
-This is the `Dockerfile` for the intermediate container named `src-d/nvidia-driver`:
+This is the `Dockerfile` for the intermediate container named `src-d/nvidia-driver`.
+It is inspired by [Mike Orzel and Luke Benson](http://www.emergingstack.com/2016/01/10/Nvidia-GPU-plus-CoreOS-plus-Docker-plus-TensorFlow.html).
 
 ```
 FROM ubuntu:16.04
