@@ -27,15 +27,14 @@ Typically, deep learning researchers run their stuff using [Ubuntu](https://ubun
 as the host OS. If you want to scale or reproduce your work with the standard Ubuntu setup, you are left with these three options:
 
 1. Clone the disks, grab exactly the same hardware configuration, deploy the copy.
-This is how people did it in 1990-ies. Complete hell if your environment evolves
-every day (it does).
+Complete hell if your environment evolves every day (it does).
 2. Use some configuration management system and pay a considerable amount
-of human resources to maintain the configs. This is how people did it in 2000-s.
-Complete hell if you have a complex setup of new machines.
+of human resources to maintain the configs. Complete hell if you have a complex
+setup of new machines (latest CUDA? Of course.).
 3. Fix the global environment, restrict to change it and become drawn in
 `virtualenv`-s. This leads to environmental anarchy which I personally witnessed
-in large companies. Complete hell if the team is larger than a single engineer
-and it uses native extensions (it does).
+in large companies. Complete hell if the system administrator's latency is greater
+than 0 (it always is) and the team uses native extensions (it does).
 
 There is a modern, reliable way to solve the reproducibility problem: use
 containers, Luke. We can run something Spartan like [CoreOS](https://coreos.com/)
