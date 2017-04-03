@@ -6,6 +6,12 @@ draft: false
 image: /post/docker_coreos_gpu_deep_learning/intro.png
 description: "A GPGPU computing environment can be set up nicely inside a Docker container using CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
 ---
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
 
 Having confidence in your research and development environment is essential if you want to
 solve challenging problems. This post shows how to setup containers for deep learning,
@@ -22,6 +28,7 @@ We decided to share some of our learnings and configuration files.
 ### R&D in containers
 
 ![What do we want](/post/docker_coreos_gpu_deep_learning/what_do_we_want.png)
+<p align="center" class="dt">People want reproducible data science environment.</p>
 
 Typically, deep learning researchers run their stuff using [Ubuntu](https://ubuntu.com) 
 as the host OS. If you want to scale or reproduce your work with the standard Ubuntu setup, you are left with these three options:
@@ -212,7 +219,7 @@ RUN pip3 install https://storage.googleapis.com/tensorflow_sourced/tensorflow-1.
     && mkdir /root/.jupyter/ && echo 'c.NotebookApp.token = ""' > /root/.jupyter/jupyter_notebook_config.py
     
 # setup nvBLAS
-ADD etc/nvblas.conf /             
+ADD etc/nvblas.conf /
 ENV NVBLAS_CONFIG_FILE /nvblas.conf
 ENV LD_PRELOAD /usr/local/cuda-8.0/targets/x86_64-linux/lib/libnvblas.so
  
@@ -308,9 +315,12 @@ according to our calculations, within one year. Anyway, here are two excellent
 links which can help you to make the decision:
 
 * [Which GPU(s) to Get for Deep Learning: My Experience and Advice for Using GPUs in Deep Learning](http://timdettmers.com/2017/03/19/which-gpu-for-deep-learning/)
-* [Computer Build for Deep Learning Applciations](http://www.slideshare.net/PetteriTeikariPhD/deep-learning-workstation)
+* [Computer Build for Deep Learning Applications](http://www.slideshare.net/PetteriTeikariPhD/deep-learning-workstation)
 
-Back in October 2016 our choice was to install custom hardware and we haven't regreted it yet.
+Back in October 2016 our choice was to install custom hardware and we haven't regretted it yet.
+
+[!["science-3" GPU tower](/post/docker_coreos_gpu_deep_learning/science-3-1920.jpg)](/post/docker_coreos_gpu_deep_learning/science-3.jpg)
+<p align="center" class="dt">"science-3" GPU tower at source{d}. We use it for deep learning and other experiments.</p>
 
 ### Acknowledgements
 
