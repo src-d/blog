@@ -4,7 +4,7 @@ date: 2017-04-03
 title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
 image: /post/docker_coreos_gpu_deep_learning/intro.png
-description: "A GPGPU computing environment can be set up nicely inside a Docker container using CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
+description: "A GPGPU computing environment can be set up nicely inside a Docker container using Container Linux by CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
 ---
 <style>
 p.dt {
@@ -44,7 +44,7 @@ in large companies. Complete hell if the system administrator's latency is great
 than 0 (it always is) and the team uses native extensions (it does).
 
 There is a modern, reliable way to solve the reproducibility problem: use
-containers, Luke. We can run something Spartan like [CoreOS](https://coreos.com/)
+containers, Luke. We can run something Spartan like [Container Linux by CoreOS](https://coreos.com/)
 as the host OS and give researchers access to containers with their beloved
 Ubuntu. The containers are not persistent, and there is no need in messing with
 `virtualenv` at all - instead, everybody can safely torture the OS in the container
@@ -64,9 +64,9 @@ In our opinion it is not the right approach. The drawbacks are:
 1. Having to use `nvidia-docker` instead of the standard `docker`. We claim that
 everything can be set up properly without introducing a separate tool and running
 an additional service.
-2. It requires a NVIDIA driver installation in the host OS. CoreOS does not allow
-you to do that. Remember, CoreOS does not have a compiler, kernel headers, etc. or a 
-package manager. CoreOS is basically just a systemd with bash, coreutils and
+2. It requires a NVIDIA driver installation in the host OS. Container Linux does not allow
+you to do that. Remember, Container Linux does not have a compiler, kernel headers, etc. or a
+package manager. Container Linux is basically just a systemd with bash, coreutils and
 Docker. Its intended usage is doing everything in the containers (and we love this!).
 
 Our solution is different. We take an intermediate container, compile and
@@ -299,7 +299,7 @@ of the environment.
 ### Gotchas
 
 There is a number of gotchas for the users without any prior experience with
-CoreOS + containers. I am putting the actual slides from the presentation to
+Container Linux. I am putting the actual slides from the presentation to
 illustrate.
 
 ![wasted1](/post/docker_coreos_gpu_deep_learning/wasted1.png)
