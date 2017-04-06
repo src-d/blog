@@ -5,6 +5,7 @@ title: "Using Docker & CoreOS For GPU Based Deep Learning"
 draft: false
 image: /post/docker_coreos_gpu_deep_learning/intro.png
 description: "A GPGPU computing environment can be set up nicely inside a Docker container using Container Linux by CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
+categories: ["technical"]
 ---
 <style>
 p.dt {
