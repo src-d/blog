@@ -10,9 +10,9 @@ categories: ["technical", "go", "orm"]
 
 [Kallax](https://github.com/src-d/go-kallax) is a PostgreSQL typesafe[^typesafe] ORM for the Go language.
 
-It aims to provide a way of programmatically write queries and interact with a PostgreSQL database without having to write a single line of SQL, use strings to refer to columns or use values of wrong types in queries.
+Its aim is to provide a way of programmatically writing queries and interacting with a PostgreSQL database without having to write a single line of SQL, using strings to refer to columns or using values of wrong types in queries.
 
-For that reason, **the first priority of kallax is to provide type safety to the data access layer**. Another of the goals of kallax is make sure all models are, first and foremost, Go structs without having to use database-specific types such as, for example, sql.NullInt64. Support for arrays and slices of all basic Go types and all JSON and arrays operators is provided as well.
+For that reason, **the first priority of kallax is to provide type safety to the data access layer**. Another goal of kallax is to make sure all models are, first and foremost, Go structs without having to use database-specific types such as, for example, sql.NullInt64. Support for arrays and slices of all basic Go types and all JSON and arrays operators is provided as well.
 
 [^typesafe]: By typesafe we mean as typesafe as possible. There might be cases where the ORM is not 100% typesafe.
 
@@ -29,8 +29,8 @@ Go is a strongly typed language. Thus, it was strange to lose all that safety in
 * **Not needing special types for nullable types** (e.g. `sql.NullInt64`), which introduces specific types in your models only because the database layer needs them.
 * **Fast queries**, even with one to one and one to many relationships.
 
-Just the first of our needs almost rules out any other ORM for Go out there, as they typically access fields or where conditions using strings. 
-Last one also rules out most of them, because if we wanted speed, we would have to use a lighter library and that conflicted even more with the first of the points.
+The first of our needs alone almost rules out any other ORM for Go out there, as they typically access fields or where conditions using strings. 
+The last one also rules out most of them, because if we wanted speed, we would have to use a lighter library and that would conflict even more with the first point.
 Finally, no other ORM we've found saves you from using things like `sql.NullInt64`, which in the end ruled them all out.
 
 So, after researching what was being used, we decided to build our own ORM. It may not be perfect, it may not suit everyone's needs, but it definitely suits ours. And that's why we're open sourcing it, in case someone else has these needs that, as far as we know, are not being covered yet.
@@ -39,9 +39,9 @@ So, after researching what was being used, we decided to build our own ORM. It m
 
 The answer is, sadly, with **code generation**. Code generation can be hard to maintain, and we know it, but we think the benefits of this tool overcome the pain of using and maintaining generated code.
 
-Because we use code generation we can **avoid using reflection and being very fast**, compared to other ORMs that do use it. Of course, it will never be as fast as writing your plain SQL and scanning your models by hand, but it gives you all the benefits of an ORM without sacrificing a lot of performance.
+Since we use code generation, we can **avoid using reflection and being very fast**, compared to other ORMs that do use it. Of course, it will never be as fast as writing your plain SQL and scanning your models by hand, but it gives you all the benefits of an ORM without sacrificing performance too much.
 
-Also because of it, we can avoid the need of using types like `sql.NullInt64` by just wrapping the basic Go types when they need to be nullable. For kallax, every pointer type can be nullable. So, instead of `sql.NullInt64` you'd use `*int64` and that would work automagically.
+Also because of that, we can avoid the need of using types like `sql.NullInt64` by just wrapping the basic Go types when they need to be nullable. For kallax, every pointer type can be nullable. So, instead of `sql.NullInt64` you'd use `*int64` and that would work automagically.
 
 ## Using kallax
 
@@ -89,7 +89,7 @@ q := NewUserQuery().
 user, err := store.FindOne(q)
 ```
 
-As you can see, **we already have a method in our query type to find by any of the struct fields**. Fields with types whose common operation is equality accept just the value (matching the type of your struct field! yay for safety!), others accept an operator as well. For example, look at the `FindByCreatedAt`, we gave it the operator we wanted to use and the value, which, as well, must match the type of the field.
+As you can see, **we already have a method in our query type to find by any of the struct fields**. Fields with types whose common operation is equality, accept just the value (matching the type of your struct field! yay for safety!), others, accept an operator as well. For example, look at the `FindByCreatedAt`, we gave it the operator we wanted to use and, the value that must match the type of the field as well.
 
 Of course, we can make our own conditions by hand.
 
@@ -101,7 +101,7 @@ q := NewUserQuery().
 
 Instead of using `"username"` to specify the column name we use the `Schema`, which is also generated.
 
-The way to access a field in the schema is just like you'd access a field in a struct.
+The way to access a field in the schema is the same as accessing a field in a struct.
 
 ```
 Schema.$ModelName.$FieldName.$AnotherField.$YetAnotherField...
@@ -109,7 +109,7 @@ Schema.$ModelName.$FieldName.$AnotherField.$YetAnotherField...
 
 If a field is a struct, you can access its properties from the field as well. That's used for querying JSON.
 
-The right way to use the `Schema` and the operators is that you should be adding your custom `FindBy`s and then call them when using your queries. That way, all the conditions are in one place.
+The right way to use the `Schema` and the operators is to add your custom `FindBy`s and then call them when using your queries. That way, all the conditions are in one place.
 
 We can add our method directly in the same file where our model was defined.
 
@@ -123,7 +123,7 @@ func (q *UserQuery) FindByUsernameLike(pattern string) *UserQuery {
 
 ## Dealing with relationships
 
-Consider the following models. We have people, which can have many pets and a pet has an inverse relationship with its owner.
+Consider the following models. We have people who can have many pets, and a pet has an inverse relationship with its owner.
 ```go
 type Person struct {
         kallax.Model `table:"people"`
@@ -149,7 +149,7 @@ const (
 )
 ```
 
-On a sidenote, see the `PetKind` type? You'd think if you were using any other ORM or plain SQL you'd be able to use it. Truth is, you can't because it does not implement neither `sql.Scanner` nor `driver.Valuer`. Seems like a very silly thing, but it's a very common Go idiom to have such enum types. Because kallax generates code, it can wrap it and treat it as `byte` directly. So it's possible to use such types in kallax.
+On a sidenote, see the `PetKind` type? You'd think if you were using any other ORM, or plain SQL, you'd be able to use it. Truth is, you can't because it does not implement neither `sql.Scanner` nor `driver.Valuer`. Seems like a very silly thing, but it's a very common Go idiom to have such enum types. Since kallax generates code, it can wrap it and treat it as `byte` directly. So it's possible to use such types in kallax.
 
 So, let's find some people and their pets.
 
@@ -164,15 +164,15 @@ person, err := store.FindOne(q)
 
 Kallax generated methods on the query type to preload the relationships of the model with the form `With{RelationshipFieldName}`.
 Note that relationships are **not** preloaded by default, they must be explicitly preloaded using such methods.
-**WARNING:** preloading retrieves **all** the records of the relationship matching the giving condition, or just all of them if none was given. If the N side of your 1:N relationship is really big you may want to query from the other side.
+**WARNING:** preloading retrieves **all** the records of the relationship matching the giving condition, or just all of them if none was given. If the N side of your 1:N relationship is really large you may want to query from the other side.
 
 ### The N+1 problem
 
-One of our goals was for kallax to be **as fast as possible**. Because of this, the naive `N+1` solution for retrieving relationships did not work for us.
+One of our goals was for kallax to be **as fast as possible** which is why the naive `N+1` solution for retrieving relationships did not work for us.
 
 All 1:1 relationships are retrieved **in the same query** used to get the main models, using JOINs. So, retrieving pets with their owners would result in **no extra queries** (just a more expensive one, but still faster as a result).
 
-One to many relationships are more complicated. The basic solution would be to retrieve a single model and then doing another query to retrieve all its relationships. But that is N+1, we needed something better than that.
+One to many relationships are more complicated. The basic solution would be to retrieve a single model and then doing another query to retrieve all its relationships. But that is N+1 and we needed something better than that.
 
 We solved that by doing **batching**. So we retrieve the main model in batches of N rows, then find the relationships of all these rows, merge them, and keep batching. For example, if the batches have a size of 50 (the default batch size, you can change it in the query with the `BatchSize` method) and we are retrieving 200 people. Instead of doing 201 queries, we only have to make 8. 4 for the 4 batches of people and 4 for retrieving the pets of all these batches. You might think this might be expensive, but the result is more than an order of magnitude faster than the other solution.
 
@@ -198,7 +198,7 @@ BenchmarkRawSQLQuery/query-4                    5000        368947 ns/op       3
 BenchmarkGORMQuery/query-4                      2000       1311137 ns/op      427308 B/op       7065 allocs/op
 ```
 
-The results were surprising, the difference compared to `database/sql` was not as big as we expected, but the difference compared to GORM was huge querying and slightly better inserting. **The difference in memory usage, though, is really big**. Being this the first stable release of kallax, which has not been carefully optimized yet, we can say the results are very promising.
+The results were surprising, the difference compared to `database/sql` was not as large as we expected, but the difference compared to GORM was huge querying and slightly better inserting. **The difference in memory usage, though, is really big**. Being this the first stable release of kallax, which has not been carefully optimized yet, we can say the results are very promising.
 
 Of course, the benchmark is not really fair because kallax uses generated code, but in the end one of the things you care about your ORM is how fast it is and how many memory it uses, no matter what it does underneath.
 
@@ -212,7 +212,7 @@ There's still a long road ahead of us. Lots of performance improvements we can m
 
 ## Conclusion
 
-We've had quite the journey developing kallax. We had clear goals and we feel like they've been successfully achieved. Reinvent the wheel is not good most of the time, but this time we were covering a need that was there. This is not just another ORM, this is an ORM that cares care of some specific needs.
+We've had quite the journey developing kallax. We had clear goals and we feel like they've been successfully achieved. Reinventing the wheel is, most of the time, not a good solution but in this case, we were covering a need that was there. This is not just another ORM, this is an ORM that cares for some specific needs.
 
 We are pretty happy with the result and the first benchmark we've run, and we will definitely keep improving it in the future, since we are starting to use it in production, which guarantees bugs will get fixed and more features will get added.
 
