@@ -54,7 +54,7 @@ visual information only in 3D, 2D or 1D. We may implicitly add another dimension
 time, but usually nobody says that a computer display is 3D just because it changes
 the picture with 100Hz frequency. Thus it would be nice to have a way to *map*
 samples in 784 dimensions to 2. Sounds impossible? It is, in the general case.
-This is where [Dirichlet's principle](https://en.wikipedia.org/wiki/Dirichlet's_principle)
+This is where [Dirichlet's box principle](https://en.wikipedia.org/wiki/Pigeonhole_principle)
 works: you are doomed to have collisions, whatever mapping algorithm you choose.
 
 ![Shadowmatic](/post/lapjv/shadowmatic.jpg)
