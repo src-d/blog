@@ -1,6 +1,7 @@
 ---
 author: erizocosmico
-date: 2017-03-15
+date: 2017-04-19
+draft: false
 title: "Kallax: Why we built yet another ORM for Go"
 description: "We are releasing the first stable version of Kallax, our typesafe, fast PostgreSQL ORM with support for JSON operators, arrays and slices."
 categories: ["technical", "go", "orm"]
