@@ -8,6 +8,8 @@ image: /post/kallax/kallax.png
 categories: ["technical", "go", "orm"]
 ---
 
+![Kallax logo](/post/kallax/kallax.png)
+
 ## What is kallax
 
 [Kallax](https://github.com/src-d/go-kallax) is a PostgreSQL typesafe[^typesafe] ORM for the Go language.
