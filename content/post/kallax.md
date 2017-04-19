@@ -220,4 +220,4 @@ We've had quite the journey developing kallax. We had clear goals and we feel li
 
 We are pretty happy with the result and the first benchmark we've run, and we will definitely keep improving it in the future, since we are starting to use it in production, which guarantees bugs will get fixed and more features will get added.
 
-You can read more about how to use kallax, it's limitations, conventions, etc in the [README](https://github.com/src-d/go-kallax). If you find like some part of the documentation is missing, feel free to open an issue and we'll add some docs about it!
+You can read more about how to use kallax, its limitations, conventions, etc in the [README](https://github.com/src-d/go-kallax). If you find like some part of the documentation is missing, feel free to open an issue and we'll add some docs about it!
