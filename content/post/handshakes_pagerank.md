@@ -691,4 +691,17 @@ and can be used to build it, however, it can be downloaded fully baked from our
 had fun with proving the theory of 6 handshakes between GitHub core developers
 and measuring the community members' importance by applying PageRank algorithm.
 
+Update
+------
+
+This is what you get if you visualize the Google matrix with [LargeVis](https://github.com/elbamos/largeVis):
+
+[![LargeVis GitHub](/post/handshakes_pagerank/graph_2048.jpg)](/post/handshakes_pagerank/graph_2048.png)
+
+I used `hexbin` from matplotlib:
+```python
+hexbin(graph[:, 0], graph[:, 1],
+       gridsize=2048, bins="log", cmap="inferno")
+```
+
 <script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
