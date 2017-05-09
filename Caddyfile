@@ -7,8 +7,7 @@ blog.sourced.tech {
         redir /post/our-master-plan/ /post/our-roadmap/
 
 	ext .html
-	errors {
-		log stderr
+	errors stderr {
 		404 404.html
 	}
 }
