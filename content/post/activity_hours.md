@@ -22,21 +22,21 @@ p.dt {
 }
 </style>
 
-I've recently stumbled upon an interesting and straightforward data exploration made by StackOverflow employee David Robinson - [What programming languages are used late at night?](https://stackoverflow.blog/2017/04/19/programming-languages-used-late-night/). Among other fun facts about the programming crowd, he discovered that Haskell is pretty much different from the mainstream languages: the questions' frequency grows in the evenings. It is intriguing to compare those observations with how people actually code on GitHub, and besides, our CEO [Eiso Kant](https://twitter.com/eisokant) is fond of Haskell enough to let me check, he-he. Speaking seriously, I used my [Open Source Friday](https://github.com/src-d/guide/blob/master/open-source/open_source_fridays.md) to work on that.
+I recently stumbled upon an interesting and straightforward data exploration made by David Robinson from StackOverflow: [What programming languages are used late at night?](https://stackoverflow.blog/2017/04/19/programming-languages-used-late-night/). Among other fun facts about the programming crowd, he discovered that Haskell is different from mainstream language, the SO questions' frequency grows much stronger in the evenings compared to other languages. It is intriguing to compare these observations with how people actually code on GitHub, and besides, our CEO [Eiso Kant](https://twitter.com/eisokant) is fond of Haskell enough to let me check, he-he. So I decided to use my [Open Source Friday](https://github.com/src-d/guide/blob/master/open-source/open_source_fridays.md) to work on this post.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Languages hourly popularity on <a href="https://twitter.com/StackOverflow">@StackOverflow</a> <a href="https://t.co/ZwIqk9dhur">https://t.co/ZwIqk9dhur</a><br>Probably will research on GitHub this <a href="https://twitter.com/hashtag/OpenSourceFriday?src=hash">#OpenSourceFriday</a></p>&mdash; Markovtsev Vadim (@tmarkhor) <a href="https://twitter.com/tmarkhor/status/855317847299334144">April 21, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### What we will use
 
-source{d} opens as much code and data as we can. In this particular case, we are going to use two public datasets on data.world originating from our prev-gen data retrieval pipeline:
+source{d} opens as much code and data as we can. In this particular case, we are going to use two public datasets that we published on data.world originating from our prev-gen data retrieval pipeline:
 
 * [452M commits on GitHub](https://data.world/vmarkovtsev/452-m-commits-on-github)
 * [GitHub repositories - languages distribution](https://data.world/source-d/github-repositories-languages-distribution)
 
 They are not feature complete, especially the second one, but should be sufficient for our purposes.
 
-Besides, we need the computing resources to digest the datasets. I am using Google Cloud and will show how to apply [Dataproc](https://cloud.google.com/dataproc/).
+Besides the data sets, we need the computing resources to digest the datasets. I am using Google Cloud and will show how to apply [Dataproc](https://cloud.google.com/dataproc/).
 
 ### Loading the data in Dataproc
 
@@ -49,20 +49,20 @@ The first thing we shall do is to launch the smallest Dataproc cluster. I have a
 <p align="center" class="dt">Custom initialization script.</p>
 
 We specify `gs://srcd-dataproc/minimal.sh` as the initialization script here. It should be accessible by everybody.
-It normally takes less than 5 minutes to get the cluster running and fully operational. The master and worker nodes will be prepared to our issues. Particularly, the master node will have:
+It normally takes less than 5 minutes to get the cluster running and fully operational. The master and worker nodes will be prepared to our requirements. Particularly, the master node will have:
 
 * Unofficial [Google Drive CLI](https://github.com/odeke-em/drive) to fetch the datasets.
 * `pandas`, `dateutil`, `pytz`, `matplotlib` to work and with them and plot the visuals.
 * Jupyter Notebook integrated with Spark.
 
-The next step is to download the datasets. data.world has the size limit which prevents from uploading files bigger than 50MB, so we had to upload ours to Google Drive.
+The next step is to download the datasets. data.world has a size limit which prevents from uploading files bigger than 50MB, so we decided to upload ours to Google Drive for ease of use.
 
 <pre class="verbatim">
 $ sudo su
-# cd
-# drive init
-# drive pull -id 0B-w8jGUJto0iMUk4dDRFOUtrV28
-# drive pull -id 0B-w8jGUJto0iS1pZR1NGSlNZcDQ
+$ cd
+$ drive init
+$ drive pull -id 0B-w8jGUJto0iMUk4dDRFOUtrV28
+$ drive pull -id 0B-w8jGUJto0iS1pZR1NGSlNZcDQ
 </pre>
 
 `0B-w8jGUJto0iMUk4dDRFOUtrV28` and `0B-w8jGUJto0iS1pZR1NGSlNZcDQ` are Google Drive identifiers of the datasets, [452M commits on GitHub](https://drive.google.com/drive/folders/0B-w8jGUJto0iMUk4dDRFOUtrV28) and [GitHub repositories - languages distribution](https://drive.google.com/drive/folders/0B-w8jGUJto0iS1pZR1NGSlNZcDQ). It takes about 8 minutes to pull them (35 gigs).
@@ -70,13 +70,13 @@ $ sudo su
 ![gdrive](/post/activity_hours/gdrive.png)
 <p align="center" class="dt"><a href="https://github.com/odeke-em/drive">odeke-em/drive</a> at work.</p>
 
-Now we need to upload the files to either HDFS or Google Cloud Storage. I prefer the latter because it is persistent whereas HDFS disappears when the cluster is deleted. refer to the [documentation](https://cloud.google.com/dataproc/docs/resources/faq#data_access_availability) for other reasons.
+Now we need to upload the files to either HDFS or Google Cloud Storage. I prefer the latter because it is persistent whereas HDFS disappears when the cluster is deleted ([GCP documentation](https://cloud.google.com/dataproc/docs/resources/faq#data_access_availability))
 
 <pre class="verbatim">
-# gsutil -m cp -r GitHubCommits gs://my-gcs-bucket
+$ gsutil -m cp -r GitHubCommits gs://my-gcs-bucket
 </pre>
 
-We are using `-m` switch here for concurrent upload streams - they speed up the process dramatically. More information about [gsutil](https://cloud.google.com/storage/docs/gsutil).
+We are using the `-m` switch here for concurrent upload streams - they speed up the process dramatically. More information about [gsutil](https://cloud.google.com/storage/docs/gsutil).
 
 When this command finishes, we are ready for executing a PySpark job to analyze the data.
 
@@ -98,7 +98,7 @@ Open `http://data-science-m:8123/` (again, read [the previous post](https://blog
 }
 ```
 
-It is beautified, actually it is the single line. We would like to aggregate commits by repository, then by weekday and finally by hour. For example,
+The above is prettified json but in the file it is a single line. We would like to aggregate commits by repository, then by weekday and finally by hour. For example,
 
 <div id="pre-spark"></div>
 
@@ -284,12 +284,12 @@ The tricky part is, of course, dealing with time. People commit with invalid tim
 2015-02-14 23:37:53 -0800 -0800
 </pre>
 
-I am sure you can do better, but I decided to cut the corners and take the [PST](https://en.wikipedia.org/wiki/UTC%E2%88%9208:00). You know, Silicon Valley and friends.
+I am sure you can do better, but I decided to cut corners and analyze on the [PST](https://en.wikipedia.org/wiki/UTC%E2%88%9208:00) timezone; Silicon Valley and friends ;).
 
 ![timezones](/post/activity_hours/timezones.png)
 <p align="center" class="dt">World's timezones taken from <a href="https://en.wikipedia.org/wiki/Time_zone">Wikipedia</a>.</p>
 
-I still have a difficulty though: PST turns into PDT and back, and we need to keep track of the time offset in each part of the year. Anyway, here is the complete code:
+There is still an issue I need to deal with though: PST turns into PDT and back, and we need to keep track of the time offset in each part of the year. Anyway, here is the complete code:
 
 ```python
 import json
@@ -330,17 +330,17 @@ Before running it, you would probably like to dynamically resize your Dataproc c
 ![resizing Dataproc](/post/activity_hours/resize.png)
 <p align="center" class="dt">My favourite Dataproc feature - dynamic cluster resizing using the cheap preemptible nodes.</p>
 
-The job normally takes about 20 minutes on a 32-node 4-core configuration. When it finishes, we must copy the results locally to work with them:
+The job normally takes about 20 minutes on a 32-node 4-core configuration. When it finishes, we must copy results locally to work with them:
 
 <pre class="verbatim">
 # gsutil cp gs://my-gcs-bucket/pst_stats/part-00000 pst_stats.txt
 </pre>
 
-For those who are lazy or don't have the resources, I uploaded that file to [Google Drive](https://drive.google.com/file/d/0B-w8jGUJto0iRl9UWHpiOXQ3LWc).
+For those of you who are lazy or don't want to spend on the computational resources, I uploaded that file to [Google Drive](https://drive.google.com/file/d/0B-w8jGUJto0iRl9UWHpiOXQ3LWc).
 
 ### Combining the two datasets
 
-Of course, the best way to deal with the languages distribution in commits is to inspect diff-s individually, however, source{d}'s pipeline is not ready yet. Instead, we will consider all commits to the same repository equal and carrying the constant language proportions belonging to that repository. Let's load the second dataset:
+Of course, the best way to deal with the languages distribution in commits is to inspect diff-s individually, however, source{d}'s next generation pipeline is in the process of being built. Instead, we will consider all commits to the same repository equal and carry the constant language proportions belonging to that repository. Let's load the second dataset:
 
 ```python
 import pandas
@@ -350,9 +350,9 @@ repos = pandas.read_csv(
     memory_map=True)
 ```
 
-This operation takes a while, around 6 minutes. If you've inflated the cluster in the previous section, you can safely shrink it to the minimal volume now - we are not using Spark anymore.
+This operation takes a while, around 6 minutes. If you've inflated the cluster in the previous section, you can now safely shrink it to the minimal volume - we are no longer using Spark.
 
-The following code parses `pst_stats.txt` file which was generated before and calculates the resulting commit frequency distribution for every language:
+The following code parses the `pst_stats.txt` file which was generated before and calculates the resulting commit frequency distribution for every language:
 
 ```python
 result = numpy.zeros((7, 24, len(repos.columns)))
@@ -371,11 +371,11 @@ with open("pst_stats.txt") as fin:
         result[weekday, hour] += count * langs
 ```
 
-We could simply `eval(line)` in the snippet above but it is always much slower compared to the manual parsing. `result` variable stores the commit frequencies we desire. They are aggregated by weekday and then by hour. E.g. `result[0, 12]` is the vector which shows how much commits were made in each language on Monday between 12am and 1pm (European locale everywhere).
+We could simply `eval(line)` in the snippet above but it is always much slower compared to manual parsing. The `result` variable stores the commit frequencies we desire. They are aggregated by weekday and then by hour. E.g. `result[0, 12]` is the vector which shows how many commits were made in each language on Monday between 12am and 1pm (European locale everywhere).
 
 ### Plotting
 
-And now the boss. We will plot `result` in the form of a circular histogram to reflect the daily cycle.
+And now the fun part. We will plot `result` in the form of a circular histogram to reflect the daily cycle.
 
 ```python
 # works best with %pylab inline
@@ -411,7 +411,7 @@ def hplot_polar(lang, size=150, normalize=False):
          ha="center", va="center", size=20)
 ```
 
-I do several tricks here.
+There are several tricks here that I apply:
 
 * Splitting the plot into two separate histograms, for workdays and weekends: `[:5]` and `[5:]`.
 * Using [polar axes in matplotlib](https://matplotlib.org/2.0.0/examples/pylab_examples/polar_demo.html), with θ offset and inverted direction to emulate a "clockface".
@@ -492,11 +492,16 @@ I do several tricks here.
 
 ### Conclusions
 
-We see that the programming languages can be divided into two highly distinguishable groups. The first is "weekend languages" (on the left), in which we see new, emerging species as well as die-hards like Haskell. That group has nearly the same contribution activity throughout the whole week and no "lunch time" productivity fall. The more `(weekends - weekdays)` difference, the less popular the language, e.g. Elm and D. The second group is mainstream, well established languages (on the right). We see the clear pitfall at lunch time, between 12 am and 2 pm, which is the evidence that those languages are used for work and not as a hobby. Besides, the weekend activity of those languages has very similar gaussian distribution as in the first group. Poor PHP programmers seem to code **a lot** in the night, I feel sorry for them... Sharp deadlines or a big involvement?
+We see that the programming languages can be divided into two highly distinguishable groups. 
+
+The first is "weekend languages" (on the left), in which we see new, emerging species as well as die-hards like Haskell. That group has nearly the same contribution activity throughout the whole week and no "lunch time" productivity fall. The larger the `(weekends - weekdays)` difference, the more emerging is the language, e.g. Elm and D. 
+
+So why do Haskell programmers ask relatively more questions on StackOverflow in the evening? We can see from the coding habit that Haskelistas become very active after 8 pm, almost the same level as on the general "productivity peak" at 3 pm.
+
+The second group is mainstream, well established languages (on the right). We see the clear pitfall at lunch time, between 12 am and 2 pm, which is the evidence that those languages are used for work and not as a hobby. Besides, the weekend activity of those languages has very similar gaussian distribution as in the first group. One interesting observataion is that PHP programmers seem to code **a lot** in the night, sharp deadlines or a big involvement?
 
 There is a productivity peak between 2 pm and 5 pm for all the languages, when the commit frequency is the highest. This is the industry's golden time. Managers should never distract coders during this interval.
 
-So why do Haskell programmers ask many questions on StackOverflow in the evening? We see that Haskelistas become very active after 8 pm, almost the same as on the "productivity peak" at 3 pm.
 
 ### Acknowledgements
 
