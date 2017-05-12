@@ -282,4 +282,4 @@ we could extract general topics about humans, nature, sciences and even design p
 
 The next step would be to mine the readme files and other textual data contained in the repositories.
 They are expected to enrich "Concepts" group.
-<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>

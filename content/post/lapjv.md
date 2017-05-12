@@ -749,7 +749,7 @@ It is based on solving the Linear Assignment problem using Jonker-Volgenant
 algorithm implemented in [src-d/lapjv](https://github.com/src-d/lapjv). This
 algorithm scales up to 10,000 samples.
 
-<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
 <script async type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }

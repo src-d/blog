@@ -189,4 +189,4 @@ And there are at least two repositories which are empty by design, either servin
 as a wiki or as an issue tracker: [koush/support-wiki](https://github.com/koush/support-wiki)
 and [WarEmu/WarBugs](https://github.com/WarEmu/WarBugs).
 
-<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>

@@ -704,4 +704,4 @@ hexbin(graph[:, 0], graph[:, 1],
        gridsize=2048, bins="log", cmap="inferno")
 ```
 
-<script async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
