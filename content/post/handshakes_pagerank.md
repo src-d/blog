@@ -162,7 +162,7 @@ unvisited = set(range(graph.shape[0]))
 components = []
 while unvisited:
     v = unvisited.pop()
-    c = DFS(v)
+    c = RFS(v)
     components.append(c)
     if len(components) % 100000 == 0:
         print(len(components))
