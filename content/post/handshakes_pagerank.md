@@ -73,7 +73,7 @@ It is a pickled `scipy.sparse.csr_matrix`, the following Python code loads it:
 
 ```python
 import pickle
-with open("graph.pickle", "rb") as fin:
+with open("graph_blog_post.pickle", "rb") as fin:
     graph, repos = pickle.load(fin)
 ndevs = graph.shape[0] - len(repos)
 print(repr(graph))
