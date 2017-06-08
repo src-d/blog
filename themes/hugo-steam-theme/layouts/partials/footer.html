@@ -7,9 +7,8 @@
 		    {{ with .Site.Params.github }}
 		    <a href="//github.com/{{ . }}" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp;
 		    {{ end }}
-		    <!--<a href="{{ .Site.BaseURL }}index.xml" target="_blank" title="RSS"><i class="fa fa-2x fa-fw fa-rss"></i> <span class="hidden">RSS</span></a>-->
 		</section>
 
-		<section class="copyright">&copy; {{.Now.Format "2006"}} <a href="{{ .Site.BaseURL }}">{{ .Site.Params.name }}</a>. {{ .Site.Params.copyright | markdownify }}</section>
+		<section class="copyright">&copy; {{.Now.Format "2006"}} <a href="{{ relURL "/" }}">{{ .Site.Params.name }}</a>. {{ .Site.Params.copyright | markdownify }}</section>
 	</div>
 </footer>
