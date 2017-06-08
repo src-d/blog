@@ -10,12 +10,12 @@ categories: ["technical"]
 ---
 
 At source{d} we believe there's a possibility for programs to write their own
-code and we are exploring that possibility. Our
+code and for new forms of automatic programming to emerge. Our
 [Roadmap](https://blog.sourced.tech/post/our-roadmap/) states the first step in this
 direction as: *Build representations of source code, developers and projects.*
 
-Today we are announcing Babelfish, the project we are developing to build this
-representations of source code.
+Today we are announcing [Babelfish](https://doc.bblf.sh/), the project we are
+developing to build this representations of source code.
 
 ## What's Babelfish?
 
@@ -23,24 +23,27 @@ Babelfish is a universal code parser. It can parse any file, in any language,
 extract an abstract syntax tree (AST) from it, and convert it to a Universal
 Abstract Syntax Tree [(UAST)](https://doc.bblf.sh/uast/specification.html)
 
-Well, that's our objective, we are not there just yet. We have designed an
-architecture we're currently working on to achieve that.
+Well, that's our objective, we are not there just yet, but we have designed an
+architecture to achieve exactly that, and we're currently working it.
 
 ## The architecture of Babelfish
 
 **TODO: Architecture image**
 
-As shown in the figure, Babelfish is a client/server application. A client is a
-language analysis tool that wants to perform some analysis on a source code. It
-connects to the server handle source code parsing by using the needed language
-driver containers.
+As shown in the figure, Babelfish is a client/server system. Clients are source
+code analysis tools that rely on the server for actual source code parsing,
+written in different programming languages.
 
-Language drivers are divided in two parts, in order to minimise the work of
-developing a new driver:
+The server itself uses language drivers to perform the parsing, which are
+divided in two parts, in order to minimise the work of developing a new driver:
 
 - A language code parser, which builds a native AST. This parser can be built
   directly from target language's compiler tools or libraries.
 - An AST normalizer written in Go, that gives the UAST as a result.
+
+The server uses containers to run these drivers through libcontainer. This
+frees the user from having to handle dozens of different language ecosystems,
+since the server just handles driver using Docker images.
 
 You can look at the [documentation](https://doc.bblf.sh/architecture.html) for
 further architecture details.
@@ -54,8 +57,9 @@ We have a working [server](https://github.com/bblfsh/server/), which can accept 
 launch the corresponding language driver and return a response with the parsed
 file.
 
-We have a dozen language drivers in various stages of development, with a quite
-advanced [python driver](https://github.com/bblfsh/python-driver) and a usable
+We have a [dozen language drivers](https://doc.bblf.sh/languages.html) in
+various stages of development, with a quite advanced
+[python driver](https://github.com/bblfsh/python-driver) and a usable
 [java driver](https://github.com/bblfsh/java-driver).
 
 We have a set of [tools](https://github.com/bblfsh/tools) that showcase how
