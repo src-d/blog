@@ -5,6 +5,8 @@ HUGO_VERSION ?= 0.17
 HUGO_THEME ?= https://github.com/digitalcraftsman/hugo-steam-theme
 DOCKER_ORG ?= quay.io/srcd
 
+BASE_URL ?= "//localhost:1313/"
+
 DOCKER_REGISTRY ?= quay.io
 DOCKER_USERNAME ?=
 DOCKER_PASSWORD ?=
@@ -82,12 +84,12 @@ dependencies: init
 
 foo:
 	echo $(TAG)
- 
+
 build: dependencies
-	$(HUGO) -t $(THEME_NAME)
+	$(HUGO) -t $(THEME_NAME) --baseURL $(BASE_URL)
 
 server: build
-	$(HUGO) server -t $(THEME_NAME) -D -w
+	$(HUGO) server -t $(THEME_NAME) -D -w --baseURL $(BASE_URL)
 
 docker-push: build
 	$(DOCKER) login -u "$(DOCKER_USERNAME)" -p "$(DOCKER_PASSWORD)" $(DOCKER_REGISTRY)

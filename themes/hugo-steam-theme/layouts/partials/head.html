@@ -16,12 +16,12 @@
       <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
-    <link rel="shortcut icon" href="{{ .Site.BaseURL }}img/favicon.ico">
+    <link rel="shortcut icon" href="{{ relURL "/img/favicon.ico" }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.2/normalize.min.css">
 
     {{ "<!-- Stylesheets -->" | safeHTML }}
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/screen.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/github.css">
+    <link rel="stylesheet" href="{{ relURL "/css/screen.css" }}">
+    <link rel="stylesheet" href="{{ relURL "/css/github.css" }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/default.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700" rel="stylesheet">
