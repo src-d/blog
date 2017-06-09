@@ -2,6 +2,8 @@
 {"Posts": [
   {{ range $k, $post := (sort $pages.Pages "Date" "desc") }}
     {{if $k}},{{end}}
-    {{ dict "title" $post.LinkTitle "description" $post.Description "link" $post.Permalink "date" ($post.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML) | jsonify }}
+
+    {{ $author := index .Site.Params.authors .Params.author }}
+    {{ dict "author" $author.name "author_avatar" (absURL $author.thumbnail) "title" $post.LinkTitle "description" $post.Description "featured_image" (absURL $post.Params.image) "link" $post.Permalink "date" ($post.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML) | jsonify }}
   {{ end }}
 ]}
