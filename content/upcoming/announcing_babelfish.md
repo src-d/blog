@@ -9,8 +9,8 @@ representations of source code."
 categories: ["technical"]
 ---
 
-At source{d} we believe there's a possibility for programs to write their own
-code and for new forms of automatic programming to emerge. Our
+At source{d} we believe there's a possibility for programs to write code and for
+new forms of automatic programming to emerge. Our
 [Roadmap](https://blog.sourced.tech/post/our-roadmap/) states the first step in this
 direction as: *Build representations of source code, developers and projects.*
 
