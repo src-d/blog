@@ -24,7 +24,7 @@ extract an abstract syntax tree (AST) from it, and convert it to a Universal
 Abstract Syntax Tree [(UAST)](https://doc.bblf.sh/uast/specification.html)
 
 Well, that's our objective, we are not there just yet, but we have designed an
-architecture to achieve exactly that, and we're currently working it.
+architecture to achieve exactly that, and we're currently working on it.
 
 ## The architecture of Babelfish
 
@@ -38,14 +38,14 @@ The server itself uses language drivers to perform the parsing, which are
 divided in two parts, in order to minimise the work of developing a new driver:
 
 - A language code parser, which builds a native AST. This parser can be built
-  directly from target language's compiler tools or libraries.
+  directly from the target language's compiler tools or libraries.
 - An AST normalizer written in Go, that gives the UAST as a result.
 
 The server uses containers to run these drivers through libcontainer. This
 frees the user from having to handle dozens of different language ecosystems,
 since the server just handles driver using Docker images.
 
-You can look at the [documentation](https://doc.bblf.sh/architecture.html) for
+Have a look at the [documentation](https://doc.bblf.sh/architecture.html) for
 further architecture details.
 
 ## What can I do with Babelfish today?
