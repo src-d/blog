@@ -1,9 +1,9 @@
 ---
 author: waren
 date: 2017-06-07
-title: "About our tech talks in Moscow"
+title: "source{d} tech talks, Moscow 2017"
 image: /post/ml_talks_moscow/back_audience.jpg
-description: "On June, 3-2017, we dedicated our regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow. For this conference, we invited speakers from Russia and abroad and gathered about 80 neural network aficionados in an former industrial area of the city. Let's make now a brief follow-up of this day."
+description: "On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited speakers from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city. Let's make now a brief follow-up of this day."
 categories: ["technical"]
 ---
 
@@ -12,152 +12,96 @@ p.dt {
   margin-top: -16px;
   font-style: italic;
 }
-.twitter-tweet {
-  margin-left: auto;
-  margin-right: auto;
-}
 .verbatim {
   font-size: 0.85em;
 }
+img.photo {
+  width: 600px;
+  height: 300px;
+  object-fit: contain;
+}
 </style>
 
-![picture of the audience during Egor's speech](/post/ml_talks_moscow/audience.jpg)
 
-On June, 3-2017, we dedicated our regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow. For this conference, we invited speakers from Russia and abroad and gathered about 80 neural network aficionados in an former industrial area of the city.
+On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city.
+
+<img src="/post/ml_talks_moscow/audience.jpg" class="photo" alt="picture of the audience during Egor's speech">
 
 # Day's programme
 
-To begin with, everybody joined together around a hearty welcome breakfast inside [KL10CH](https://www.linkedin.com/company/kl10ch) spaces in th city center.
+To begin with, everybody joined together around a hearty welcome breakfast inside [KL10CH](http://kl10.ch/) spaces in the city center.
 
-<img src="/post/ml_talks_moscow/breakfast.jpg" id="b2" alt="Photo during the welcome breakfast">
-<style>
-#b2 {
-  width: 600px;
-  height: 300px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/breakfast.jpg" class="photo" alt="Photo during the welcome breakfast">
 
-Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https://twitter.com/eisokant), to launch the main talks series. These lasted 45min each with time for Q&A. Furthermore, 2 lightning talks of 15min occurred between the main ones to address more specific topics.
+Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https://twitter.com/eisokant), to launch the main talks series. These lasted 45min each, with time for Q&A. Furthermore, 2 lightning talks of 15min occurred between the main ones, to address more specific topics.
 
 # Main talks
 
-### Statistical Analysis of Computer Program Text, _Charles Sutton_
+## Statistical Analysis of Computer Program Text, _Charles Sutton_
 
-**_"Source code is a means of human communication"_**, with this first formula, the professor at University of Edinburgh, Charles Sutton, couldn't better start the day. He next laid out his statistical approach to analyze source code texts. In order to extract from scripts what he called, _implicit knowledge_, he introduced three innovative software engineering tools inspired from machine learning and natural language processing (NLP) techniques :
+**_"Source code is a means of human communication"_**, with this first formula, the professor at University of Edinburgh, [Charles Sutton](https://twitter.com/randomlywalking), couldn't better start the day. He next laid out his statistical approach to analyze source code texts. In order to extract from scripts what he called, _implicit knowledge_, he introduced three innovative software engineering tools inspired from machine learning and natural language processing (NLP) techniques :
 
-* **Naturalize**, a probabilistic language model for source code which learns local coding conventions. It suggests renaming or reformatting changes so that your code would become more consistent.
-* **HAGGIS, Mining idioms for code** a system that learns local recurring syntactic patterns, which we call idioms, using a nonparametric Bayesian tree substitution grammar (TSG).
-* **Probabilistic API Miner (PAM)**, a near parameter-free probabilistic algorithm for mining the most interesting API patterns from a list of API call sequences. It resolves fundamental statistical pathologies like the formation of redundant or spurious sequences.
-</br>
-</br>
+* [Naturalize](http://groups.inf.ed.ac.uk/naturalize/), a probabilistic language model for source code which learns local coding conventions. It suggests renaming or reformatting changes so that your code would become more consistent.
+* [HAGGIS, Mining idioms for code](https://github.com/mast-group/itemset-mining) a system that learns local recurring syntactic patterns, which we call idioms, using a nonparametric Bayesian tree substitution grammar (TSG).
+* [Probabilistic API Miner (PAM)](https://github.com/mast-group/api-mining), a near parameter-free probabilistic algorithm for mining the most interesting API patterns from a list of API call sequences. It resolves fundamental statistical pathologies like the formation of redundant or spurious sequences.
 
-<img src="/post/ml_talks_moscow/charles.jpeg" id="cs" alt="Photo of talking Charles Sutton">
-<style>
-#cs {
-  width: 600px;
-  height: 300px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/charles.jpg" class="photo" alt="Photo of talking Charles Sutton">
 
+## Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
 
-### Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
+<img src="/post/ml_talks_moscow/vadim.jpg" class="photo" alt="Photo of talking Vadim Markovstev">
 
-<img src="/post/ml_talks_moscow/vadim.jpg" id="vm" alt="Photo of talking Vadim Markovstev">
-<style>
-#vm {
-  width: 500px;
-  height: 250px;
-  object-fit: contain;
-}
-</style>
+## Probabilistic Programming for Mere Mortals, _Vitaly Khudobakhshov_
 
-### Probabilistic Programming for Mere Mortals, _Vitaly Khudobakhshov_
+In his talk, [Vitaly](https://twitter.com/khudobakhshov) presented a review of an emerging topic at the juncture between cognitive sciences and [Artificial General Intelligence (AGI)](https://en.wikipedia.org/wiki/Artificial_general_intelligence). That's the huge controversy about what language is the most efficient to solve a particular problem that raised Vitaly's interest in [Probabilistic Programming (PP)](http://probabilistic-programming.org/wiki/Home). To make it simple, a [Probabilistic Programming Language (PPL)](https://en.wikipedia.org/wiki/Probabilistic_programming_language) is an ordinary programming language considered as a set of tools to help us understand the program's statistical behavior. This field of research has been particularly useful in designing programs like cognitive architectures, which use a wide range of programming techniques, or in minor issues like pattern matching and knowledge representation. Vitaly believed that PP with partial evaluation might be effectively applied to AGI problems.
 
-In his talk, Vitaly presented an review of an emerging topic which is probabilistic programming. He described programming languages problems where this field of research could offer some solutions.
+<img src="/post/ml_talks_moscow/vitaly.jpg" class="photo" alt="Photo of talking Vitaly Khudobakhshov">
 
-Then, he started a discussion about how we could implement probabilistic programming language and how we could embed probabilistic programming capabilities into a general purpose programming language.
+Although PPL programs are close to ordinary software implementations, whose goal is to run the program and get some kind of output, the one of PP is analysis rather than execution. The main obstacle in using PP in large problems is the efficient implementation of inference. Some techniques like [genetic programming](https://en.wikipedia.org/wiki/Genetic_programming) and [simulated annealing](https://en.wikipedia.org/wiki/Simulated_annealing) techniques have yielded good results.
 
-<img src="/post/ml_talks_moscow/vitaly.jpg" id="vk" alt="Photo of talking Vitaly Khudobakhshov">
-<style>
-#vk {
-  width: 500px;
-  height: 250px;
-  object-fit: contain;
-}
-</style>
+Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://projects.csail.mit.edu/church/wiki/Church)  which is a derivative of the programming language [Scheme](http://groups.csail.mit.edu/mac/projects/scheme/) with probabilistic semantics programming language, and whose syntax is simple and extendable.
 
-### Sequence Learning and modern RNNs, _Grigory Sapunov_
+## Sequence Learning and modern RNNs, _Grigory Sapunov_
 
-Grigory started his talk with a tiny intro into RNN, LSTM and GRU
+[Grigory](https://www.researchgate.net/profile/Grigory_Sapunov) started his talk with a tiny, but not superfluous intro into RNN, [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and GRU, along with their bidirectional and n-directional generalizations. Next, Grigory presented two interesting LSTM generalization : [tree-LSTM](https://arxiv.org/abs/1507.01526) and [Grid LSTM](https://arxiv.org/abs/1507.01526). The fist tree-structure outperforms the previous systems on predicting the semantic relatedness of two sentences and sentiment classification when the second network of LSTM provides a unified way of using LSTM for both deep and sequential computation.
 
-<img src="/post/ml_talks_moscow/grigory.jpg" id="gs" alt="Photo of talking Grigory Sapunov">
-<style>
-#gs {
-  width: 500px;
-  height: 250px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/grigory.jpg" class="photo" alt="Photo of talking Grigory Sapunov">
 
-### Neural Complete project, _Pascal Van Kooten
+Relying on these preliminary notions, he tackled issues about representation learning. The first idea was to find a model that pays attention to the word ordering unlike [word2vec](https://code.google.com/archive/p/word2vec/) based on the "bag of words" model. Secondly, he showed us how to match different modalities simultaneously thanks to [multi-modal learning](http://arxiv.org/abs/1411.2539) with striking examples as :
+
+* [Text generation by image](http://arxiv.org/abs/1411.4555)
+* [Image generation by text](https://arxiv.org/abs/1612.03242)
+* [Code generation by image](https://arxiv.org/abs/1705.07962)
+
+In a last paragraph, Grigory approached the [Connectionist Temporal Classification (CTC)](https://github.com/baidu-research/warp-ctc) technique, as well as the [Encoder-Decoder](https://github.com/farizrahman4u/seq2seq) architecture to train sequence-to-sequence neural network models.
+
+## Neural Complete project, _Pascal Van Kooten_
 
 [Pascal](https://github.com/kootenpv) ended our "AI on code" day with the perspective of auto-complete. He shared with us his project, called [Neural Complete](https://github.com/kootenpv/neural_complete) which aims at completing our source code through not only word but whole line suggestions.
 
  This tool based on a generative LSTM neural network is trained by python code on python code. Thus, the main result is a neural network trained to help writing neural network code. Finally, after giving us a demonstration of how it worked, he invited people to train the model on their own code so that it would be more relevant.
 
-<img src="/post/ml_talks_moscow/pascal.jpg" id="cs" alt="Photo of talking Charles Sutton">
-<style>
-#cs {
-  width: 500px;
-  height: 250px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/pascal.jpg" class="photo" alt="Photo of talking Pascal Van Kooten">
 
 # Lightning talks
 
-### Embedding the GithHub contribution graph, _Egor Bulychev_
+## Embedding the GithHub contribution graph, _Egor Bulychev_
 
-<img src="/post/ml_talks_moscow/egor.jpg" id="eb" alt="Photo of talking Egor Bulychev">
-<style>
-#eb {
-  width: 500px;
-  height: 250px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/egor.jpg" class="photo" alt="Photo of talking Egor Bulychev">
 
-### Hercules and His Labours, _Vadim Markovstev_
+## Hercules and His Labours, _Vadim Markovstev_
 
-</br>
 
-</br>
 
 # Time of sharing
 
 At the end of the talks, we spent pleasant time eating and drinking beers together. It was time to share our feelings about the day. The speakers were also available to develop their talks and answer more questions.
 
-<img src="/post/ml_talks_moscow/speakers.jpeg" id="sp" alt="Photo of all speakers of the day">
-<style>
-#sp {
-  width: 800px;
-  height: 400px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/speakers.jpg" class="photo" alt="Photo of all speakers of the day">
 
 # Acknowledgements
 
-We would like to thank the speakers and the attendees for sharing our passion for Machine Learning on Code.
-And on my side, I want to sincerely express my gratitude to all people at [Source{d}](http://sourced.tech/) who made a contribution of any kind in this event in such a beautiful city.
+Source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi).
+And more personally, I want to sincerely express my gratitude to all people at [source{d}](http://sourced.tech/) who made a contribution of any kind in the success of this event in such a beautiful city.
 
-<img src="/post/ml_talks_moscow/basilic.jpeg" id="b" alt="Photo Russian basilic">
-<style>
-#b {
-  width: 800px;
-  height: 400px;
-  object-fit: contain;
-}
-</style>
+<img src="/post/ml_talks_moscow/basilic.jpg" class="photo" alt="Photo of Russian basilic">
