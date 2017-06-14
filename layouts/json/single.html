@@ -1,9 +1,24 @@
 {{ $pages := index .Site.Taxonomies.categories .Title }}
 {"Posts": [
-  {{ range $k, $post := (sort $pages.Pages "Date" "desc") }}
-    {{if $k}},{{end}}
+    {{ range $k, $post := sort $pages.Pages "Date" "desc" }}
+        {{if $k}},{{end}}
 
-    {{ $author := index .Site.Params.authors .Params.author }}
-    {{ dict "author" $author.name "author_avatar" (absURL $author.thumbnail) "title" $post.LinkTitle "description" $post.Description "featured_image" (absURL $post.Params.image) "link" $post.Permalink "date" ($post.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML) | jsonify }}
-  {{ end }}
+        {{ if default false $post.Params.image }}
+            {{ $.Scratch.Set "image" (absURL $post.Params.image) }}
+        {{else}}
+            {{ $.Scratch.Set "image" "" }}
+        {{ end }}
+
+        {{ $author := index .Site.Params.authors .Params.author }}
+
+        {{ $authorName := $author.name }}
+        {{ $authorAvatar := absURL $author.thumbnail }}
+        {{ $title := $post.LinkTitle }}
+        {{ $description := $post.Description }}
+        {{ $image := $.Scratch.Get "image" }}
+        {{ $link := $post.Permalink }}
+        {{ $createdAt := $post.Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
+
+        {{ dict "author" $authorName "author_avatar" $authorAvatar "title" $title "description" $description "featured_image" $image "link" $link "date" $createdAt | jsonify }}
+    {{ end }}
 ]}
