@@ -20,8 +20,12 @@ img.photo {
   height: 300px;
   object-fit: contain;
 }
+iframe.video {
+  width: 600px;
+  height: 350px;
+  frameborder="0";
+}
 </style>
-
 
 On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city.
 
@@ -45,11 +49,11 @@ Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https
 * [HAGGIS, Mining idioms for code](https://github.com/mast-group/itemset-mining) a system that learns local recurring syntactic patterns, which we call idioms, using a nonparametric Bayesian tree substitution grammar (TSG).
 * [Probabilistic API Miner (PAM)](https://github.com/mast-group/api-mining), a near parameter-free probabilistic algorithm for mining the most interesting API patterns from a list of API call sequences. It resolves fundamental statistical pathologies like the formation of redundant or spurious sequences.
 
-<img src="/post/ml_talks_moscow/charles.jpg" class="photo" alt="Photo of talking Charles Sutton">
+<iframe  src="https://www.youtube.com/embed/BU_Zr29nwWI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Charles Sutton's talk" allowfullscreen></iframe>
 
 ## Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
 
-<img src="/post/ml_talks_moscow/vadim.jpg" class="photo" alt="Photo of talking Vadim Markovstev">
+<iframe  src="https://www.youtube.com/embed/v8Jy3xbpCqw?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's talk" allowfullscreen></iframe>
 
 ## Probabilistic Programming for Mere Mortals, _Vitaly Khudobakhshov_
 
@@ -65,8 +69,6 @@ Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://project
 
 [Grigory](https://www.researchgate.net/profile/Grigory_Sapunov) started his talk with a tiny, but not superfluous intro into RNN, [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and GRU, along with their bidirectional and n-directional generalizations. Next, Grigory presented two interesting LSTM generalization : [tree-LSTM](https://arxiv.org/abs/1507.01526) and [Grid LSTM](https://arxiv.org/abs/1507.01526). The fist tree-structure outperforms the previous systems on predicting the semantic relatedness of two sentences and sentiment classification when the second network of LSTM provides a unified way of using LSTM for both deep and sequential computation.
 
-<img src="/post/ml_talks_moscow/grigory.jpg" class="photo" alt="Photo of talking Grigory Sapunov">
-
 Relying on these preliminary notions, he tackled issues about representation learning. The first idea was to find a model that pays attention to the word ordering unlike [word2vec](https://code.google.com/archive/p/word2vec/) based on the "bag of words" model. Secondly, he showed us how to match different modalities simultaneously thanks to [multi-modal learning](http://arxiv.org/abs/1411.2539) with striking examples as :
 
 * [Text generation by image](http://arxiv.org/abs/1411.4555)
@@ -75,23 +77,25 @@ Relying on these preliminary notions, he tackled issues about representation lea
 
 In a last paragraph, Grigory approached the [Connectionist Temporal Classification (CTC)](https://github.com/baidu-research/warp-ctc) technique, as well as the [Encoder-Decoder](https://github.com/farizrahman4u/seq2seq) architecture to train sequence-to-sequence neural network models.
 
+<iframe  src="https://www.youtube.com/embed/ExtbPH2f3K4?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Grigory Sapunov's talk" allowfullscreen></iframe>
+
 ## Neural Complete project, _Pascal Van Kooten_
 
 [Pascal](https://github.com/kootenpv) ended our "AI on code" day with the perspective of auto-complete. He shared with us his project, called [Neural Complete](https://github.com/kootenpv/neural_complete) which aims at completing our source code through not only word but whole line suggestions.
 
  This tool based on a generative LSTM neural network is trained by python code on python code. Thus, the main result is a neural network trained to help writing neural network code. Finally, after giving us a demonstration of how it worked, he invited people to train the model on their own code so that it would be more relevant.
 
-<img src="/post/ml_talks_moscow/pascal.jpg" class="photo" alt="Photo of talking Pascal Van Kooten">
+<iframe  src="https://www.youtube.com/embed/YF20zzovlVA?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Pascal van Kooten's talk" allowfullscreen></iframe>
 
 # Lightning talks
 
 ## Embedding the GithHub contribution graph, _Egor Bulychev_
 
-<img src="/post/ml_talks_moscow/egor.jpg" class="photo" alt="Photo of talking Egor Bulychev">
+<iframe  src="https://www.youtube.com/embed/mYYkngb0TR4?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Egor Bulychev's talk" allowfullscreen></iframe>
 
 ## Hercules and His Labours, _Vadim Markovstev_
 
-
+<iframe  src="https://www.youtube.com/embed/2_oBJCnOFSI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's second talk" allowfullscreen></iframe>
 
 # Time of sharing
 
@@ -99,9 +103,12 @@ At the end of the talks, we spent pleasant time eating and drinking beers togeth
 
 <img src="/post/ml_talks_moscow/speakers.jpg" class="photo" alt="Photo of all speakers of the day">
 
+The [Moscow source{d} tech talks](http://talks.sourced.tech/machine-learning-2017/) ended here. Now the team is already preparing our next [Frontend talks](http://talks.sourced.tech/front-2017/) in Madrid on the 24th of June 2017. You can get your free tickets on [Eventbrite](https://www.eventbrite.com/e/sourced-tech-talks-frontend-registration-33889725080?utm_content=buffer5e852&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).
+
 # Acknowledgements
 
-Source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi).
-And more personally, I want to sincerely express my gratitude to all people at [source{d}](http://sourced.tech/) who made a contribution of any kind in the success of this event in such a beautiful city.
+Source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi). If you feel interested in any of our projects, do not hesitate to join our [source{d} community slack](https://sourced-community.slack.com/messages/C5CQY9486/). You can also take a look at our [job opportunities](http://sourced.tech/careers/) ; source{d} is always looking for new talents.
+
+To conclude on a more personal side, I want to sincerely express my gratitude to all people at [source{d}](http://sourced.tech/) who made a contribution of any kind in the success of this event in such a beautiful city.
 
 <img src="/post/ml_talks_moscow/basilic.jpg" class="photo" alt="Photo of Russian basilic">
