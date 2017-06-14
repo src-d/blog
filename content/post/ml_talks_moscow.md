@@ -97,7 +97,7 @@ In a last paragraph, Grigory approached the [Connectionist Temporal Classificati
 
 <iframe  src="https://www.youtube.com/embed/2_oBJCnOFSI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's second talk" allowfullscreen></iframe>
 
-# Time of sharing
+# After-work-drinks
 
 At the end of the talks, we spent pleasant time eating and drinking beers together. It was time to share our feelings about the day. The speakers were also available to develop their talks and answer more questions.
 
