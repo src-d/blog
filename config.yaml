@@ -107,3 +107,10 @@ params:
       social:
         github: warenlg
         twitter: warenlg
+    abeaumont:
+      name: Alfredo Beaumont
+      thumbnail: https://avatars3.githubusercontent.com/u/80059?v=3&s=400
+      bio: Trying to build a comprehensive yet tractable universal AST for programming languages
+      social:
+        github: abeaumont
+        twitter: abeaumont
