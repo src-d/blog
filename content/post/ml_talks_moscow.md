@@ -15,14 +15,15 @@ p.dt {
 .verbatim {
   font-size: 0.85em;
 }
-img.photo {
-  width: 600px;
-  height: 300px;
-  object-fit: contain;
-}
-iframe.video {
+img.photo, iframe.video {
   width: 600px;
   height: 350px;
+}
+
+img.photo {
+  object-fit: cover;
+}
+iframe.video {
   frameborder="0";
 }
 </style>
@@ -37,13 +38,13 @@ To begin with, everybody joined together around a hearty welcome breakfast insid
 
 <img src="/post/ml_talks_moscow/breakfast.jpg" class="photo" alt="Photo during the welcome breakfast">
 
-Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https://twitter.com/eisokant), to launch the main talks series. These lasted 45min each, with time for Q&A. Furthermore, 2 lightning talks of 15min occurred between the main ones, to address more specific topics.
+Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https://twitter.com/eisokant), to launch the main talks series. These lasted 45min each, with time for Q&A. Furthermore, 2 lightning talks of 15min occurred between the main ones, to address more specific and smaller topics.
 
 # Main talks
 
 ## Statistical Analysis of Computer Program Text, _Charles Sutton_
 
-**_"Source code is a means of human communication"_**, with this first formula, the professor at University of Edinburgh, [Charles Sutton](https://twitter.com/randomlywalking), couldn't better start the day. He next laid out his statistical approach to analyze source code texts. In order to extract from scripts what he called, _implicit knowledge_, he introduced three innovative software engineering tools inspired from machine learning and natural language processing (NLP) techniques :
+**_"Source code is a means of human communication"_**, with this first formula, the professor at University of Edinburgh, [Charles Sutton](https://twitter.com/randomlywalking), couldn't better start the day. He next laid out his statistical approach to analyze source code texts. In order to extract from scripts what he called, _implicit knowledge_, he introduced three innovative software engineering tools inspired from machine learning and natural language processing (NLP) techniques:
 
 * [Naturalize](http://groups.inf.ed.ac.uk/naturalize/), a probabilistic language model for source code which learns local coding conventions. It suggests renaming or reformatting changes so that your code would become more consistent.
 * [HAGGIS, Mining idioms for code](https://github.com/mast-group/itemset-mining) a system that learns local recurring syntactic patterns, which we call idioms, using a nonparametric Bayesian tree substitution grammar (TSG).
@@ -52,6 +53,8 @@ Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https
 <iframe  src="https://www.youtube.com/embed/BU_Zr29nwWI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Charles Sutton's talk" allowfullscreen></iframe>
 
 ## Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
+
+Vadim, our lead of machine learning, went *va banque* and disclosed all the recent work he has done. The talk was a teaser for the upcoming source{d}'s ML Python stack: he presented all the technical details how it is possible to find similar GitHub repositories by their contents. Particularly, Vadim found the way to embed source code identifiers (previously used in topic modeling, see the [paper](https://arxiv.org/abs/1704.00135)) very similar to word2vec. Those embeddings can be trained at scale using [Swivel](https://github.com/vmarkovtsev/models/tree/master/swivel), a better alternative to [GloVe](https://nlp.stanford.edu/projects/glove/), and [src-d/swivel-spark-prep](https://github.com/src-d/swivel-spark-prep). Finally, similar repositories are searched using [src-d/wmd-relax](https://github.com/src-d/wmd-relax) - an optimized calculator of [Word Mover's Distance](http://www.cs.cornell.edu/~kilian/papers/wmd_metric.pdf).
 
 <iframe  src="https://www.youtube.com/embed/v8Jy3xbpCqw?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's talk" allowfullscreen></iframe>
 
@@ -67,9 +70,9 @@ Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://project
 
 ## Sequence Learning and modern RNNs, _Grigory Sapunov_
 
-[Grigory](https://www.researchgate.net/profile/Grigory_Sapunov) started his talk with a tiny, but not superfluous intro into RNN, [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and GRU, along with their bidirectional and n-directional generalizations. Next, Grigory presented two interesting LSTM generalization : [tree-LSTM](https://arxiv.org/abs/1507.01526) and [Grid LSTM](https://arxiv.org/abs/1507.01526). The fist tree-structure outperforms the previous systems on predicting the semantic relatedness of two sentences and sentiment classification when the second network of LSTM provides a unified way of using LSTM for both deep and sequential computation.
+[Grigory](https://www.researchgate.net/profile/Grigory_Sapunov) started his talk with a tiny, but not superfluous intro into RNN, [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and GRU, along with their bidirectional and n-directional generalizations. Next, Grigory presented two interesting LSTM generalization : [tree-LSTM](https://arxiv.org/abs/1507.01526) and [Grid LSTM](https://arxiv.org/abs/1507.01526). The fist tree-structure outperforms the previous systems on predicting the semantic relatedness of two sentences and sentiment classification while the second network of LSTM provides a unified way of using LSTM for both deep and sequential computation.
 
-Relying on these preliminary notions, he tackled issues about representation learning. The first idea was to find a model that pays attention to the word ordering unlike [word2vec](https://code.google.com/archive/p/word2vec/) based on the "bag of words" model. Secondly, he showed us how to match different modalities simultaneously thanks to [multi-modal learning](http://arxiv.org/abs/1411.2539) with striking examples as :
+Relying on these preliminary notions, he tackled issues about representation learning. The first idea was to find a model that pays attention to the word ordering unlike [word2vec](https://code.google.com/archive/p/word2vec/) based on the "bag of words" model. Secondly, he showed us how to match different modalities simultaneously thanks to [multi-modal learning](http://arxiv.org/abs/1411.2539) with striking examples like:
 
 * [Text generation by image](http://arxiv.org/abs/1411.4555)
 * [Image generation by text](https://arxiv.org/abs/1612.03242)
@@ -91,9 +94,13 @@ In a last paragraph, Grigory approached the [Connectionist Temporal Classificati
 
 ## Embedding the GithHub contribution graph, _Egor Bulychev_
 
+Egor is a senior ML engineer at source{d}. He disclosed an unusual approach to embedding GitHub social graph nodes, compared it to [node2vec](https://github.com/aditya-grover/node2vec) and applied it to finding similar GitHub repositories. Since the nature of the similarity is completely different from Vadim's content analysis, the examples showed alternative results. One of the funniest Egor's findings was the proof that system administrators like to drink beer more than coders and they [tend to contribute to repositories related to beer](https://egorbu.github.io/techtalks-2017-moscow/#23).
+
 <iframe  src="https://www.youtube.com/embed/mYYkngb0TR4?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Egor Bulychev's talk" allowfullscreen></iframe>
 
 ## Hercules and His Labours, _Vadim Markovstev_
+
+Vadim went on stage for the second time and demonstrated the supremacy of [src-d/hercules](https://github.com/src-d/hercules), a super fast command line tool to mine the development history of Git repositories. Hercules uses [src-d/go-git](https://github.com/src-d/go-git), our advanced and nearly feature complete Git client and server implementation in pure Go. Provided by the whole repository is stored in-memory and the original incremental blame algorithm, Hercules processed the whole Linux kernel repository in just two hours. We encourage everybody to try Hercules on their own projects!
 
 <iframe  src="https://www.youtube.com/embed/2_oBJCnOFSI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's second talk" allowfullscreen></iframe>
 
