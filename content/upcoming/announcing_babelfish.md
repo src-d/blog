@@ -15,7 +15,7 @@ new forms of automatic programming to emerge. Our
 direction as: *Build representations of source code, developers and projects.*
 
 Today we are announcing [Babelfish](https://doc.bblf.sh/), the project we are
-developing to build this representations of source code.
+developing to build these representations of source code.
 
 ## What's Babelfish?
 
@@ -43,7 +43,7 @@ divided in two parts, in order to minimise the work of developing a new driver:
 
 The server uses containers to run these drivers through libcontainer. This
 frees the user from having to handle dozens of different language ecosystems,
-since the server just handles driver using Docker images.
+since the server just handles drivers using Docker images.
 
 Have a look at the [documentation](https://doc.bblf.sh/architecture.html) for
 further architecture details.
@@ -62,24 +62,24 @@ various stages of development, with a quite advanced
 [python driver](https://github.com/bblfsh/python-driver) and a usable
 [java driver](https://github.com/bblfsh/java-driver).
 
-We have a set of [tools](https://github.com/bblfsh/tools) that showcase how
+We have a set of [tools](https://github.com/bblfsh/tools) that showcases how
 babelfish works and how it can be used to build your own code analysis tools on
 top of it.
 
 ## How can I contribute
 
 Babelfish is being openly developed. The code is available at
-[bblfsh project Github](https://github.com/bblfsh/), discussions are held at
+[bblfsh project Github](https://github.com/bblfsh/) and discussions are held at
 [source{d} community Slack](https://join.slack.com/sourced-community/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ)
 (#babelfish channel).
 
 If you're interested in the project, you can look further at the
-[documentation](https://doc.bblf.sh/), give it a try, report back any issue you
-have.
+[documentation](https://doc.bblf.sh/), give it a try and report back any issue
+you have.
 
-If you find it useful you're more than welcome to contribute code any of its
-components, or even write a driver to your favourite language! Drop by the slack
-channel and tell us about it :)
+If you find it useful, you are more than welcome to contribute code to any of
+its components, or even write a driver for your favourite language! Drop by the
+slack channel and tell us about it :)
 
 P.S. [Santiago](https://github.com/smola) will give a talk about Babelfish at
 [Curry On](http://curry-on.org/2017/sessions/babelfish-universal-code-parsing-server.html). Don't
