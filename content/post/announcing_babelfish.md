@@ -15,7 +15,7 @@ p.dt {
 }
 </style>
 
-At source{d} we believe there's a possibility for programs to write code and for
+At source{d} we believe there's a possibility for programs to write code, and for
 new forms of automatic programming to emerge. Our
 [Roadmap](https://blog.sourced.tech/post/our-roadmap/) states the first step in this
 direction as: *Build representations of source code, developers and projects.*
@@ -61,27 +61,27 @@ Babelfish project is still in an early development stage, but we already have
 some components of its architecture working.
 
 We have a working [server](https://github.com/bblfsh/server/), which can accept parsing requests,
-launch the corresponding language driver and return a response with the parsed
+launch the corresponding language driver, and return a response with the parsed
 file.
 
 We have a [dozen language drivers](https://doc.bblf.sh/languages.html) in
 various stages of development, with a quite advanced
-[python driver](https://github.com/bblfsh/python-driver) and a usable
+[python driver](https://github.com/bblfsh/python-driver), and a usable
 [java driver](https://github.com/bblfsh/java-driver).
 
-We have a set of [tools](https://github.com/bblfsh/tools) that showcases how
-babelfish works and how it can be used to build your own code analysis tools on
+We have a set of [tools](https://github.com/bblfsh/tools) that showcase how
+babelfish works, and how it can be used to build your own code analysis tools on
 top of it.
 
-## How can I contribute
+## How can I contribute?
 
 Babelfish is being openly developed. The code is available at
-[bblfsh project Github](https://github.com/bblfsh/) and discussions are held at
+[bblfsh project Github](https://github.com/bblfsh/), and discussions are held at
 [source{d} community Slack](https://join.slack.com/sourced-community/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ)
 (#babelfish channel).
 
 If you're interested in the project, you can look further at the
-[documentation](https://doc.bblf.sh/), give it a try and report back any issue
+[documentation](https://doc.bblf.sh/), give it a try, and report back any issue
 you have.
 
 If you find it useful, you are more than welcome to contribute code to any of
