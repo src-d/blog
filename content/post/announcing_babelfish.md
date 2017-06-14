@@ -1,13 +1,19 @@
 ---
 author: abeaumont
-date: 2017-06-06
+date: 2017-06-15
 title: "Announcing Babelfish"
-draft: true
-image: **TODO: Babelfish image (/post/announcing-babelfish/babelfish.jpg)**
+image: /post/announcing_babelfish/babelfish.png
 description: "Announcing Babelfish, the project we are developing to build
 representations of source code."
 categories: ["technical"]
 ---
+
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
 
 At source{d} we believe there's a possibility for programs to write code and for
 new forms of automatic programming to emerge. Our
@@ -28,11 +34,12 @@ architecture to achieve exactly that, and we're currently working on it.
 
 ## The architecture of Babelfish
 
-**TODO: Architecture image**
-
 As shown in the figure, Babelfish is a client/server system. Clients are source
 code analysis tools that rely on the server for actual source code parsing,
 written in different programming languages.
+
+![architecture-overview](/post/announcing_babelfish/architecture-overview.png)
+<p align="center" class="dt">Architecture overview.</p>
 
 The server itself uses language drivers to perform the parsing, which are
 divided in two parts, in order to minimise the work of developing a new driver:
