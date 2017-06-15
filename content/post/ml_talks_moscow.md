@@ -32,7 +32,7 @@ On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://t
 
 <img src="/post/ml_talks_moscow/audience.jpg" class="photo" alt="picture of the audience during Egor's speech">
 
-# Day's programme
+## Day's programme
 
 To begin with, everybody joined together around a hearty welcome breakfast inside [KL10CH](http://kl10.ch/) spaces in the city center.
 
@@ -40,9 +40,9 @@ To begin with, everybody joined together around a hearty welcome breakfast insid
 
 Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https://twitter.com/eisokant), to launch the main talks series. These lasted 45min each, with time for Q&A. Furthermore, 2 lightning talks of 15min occurred between the main ones, to address more specific and smaller topics.
 
-# Main talks
+## Main talks
 
-## Statistical Analysis of Computer Program Text, _Charles Sutton_
+### Statistical Analysis of Computer Program Text, _Charles Sutton_
 
 **_"Source code is a means of human communication"_**, with this first formula, the professor at University of Edinburgh, [Charles Sutton](https://twitter.com/randomlywalking), couldn't better start the day. He next laid out his statistical approach to analyze source code texts. In order to extract from scripts what he called, _implicit knowledge_, he introduced three innovative software engineering tools inspired from machine learning and natural language processing (NLP) techniques:
 
@@ -52,13 +52,13 @@ Then, after everybody woke up slowly, it was time for our CEO, [Eiso Kant](https
 
 <iframe  src="https://www.youtube.com/embed/BU_Zr29nwWI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Charles Sutton's talk" allowfullscreen></iframe>
 
-## Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
+### Similarity of GitHub repositories by source code identifiers, _Vadim Markovstev_
 
 Vadim, our lead of machine learning, went *va banque* and disclosed all the recent work he has done. The talk was a teaser for the upcoming source{d}'s ML Python stack: he presented all the technical details how it is possible to find similar GitHub repositories by their contents. Particularly, Vadim found the way to embed source code identifiers (previously used in topic modeling, see the [paper](https://arxiv.org/abs/1704.00135)) very similar to word2vec. Those embeddings can be trained at scale using [Swivel](https://github.com/vmarkovtsev/models/tree/master/swivel), a better alternative to [GloVe](https://nlp.stanford.edu/projects/glove/), and [src-d/swivel-spark-prep](https://github.com/src-d/swivel-spark-prep). Finally, similar repositories are searched using [src-d/wmd-relax](https://github.com/src-d/wmd-relax) - an optimized calculator of [Word Mover's Distance](http://www.cs.cornell.edu/~kilian/papers/wmd_metric.pdf).
 
 <iframe  src="https://www.youtube.com/embed/v8Jy3xbpCqw?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's talk" allowfullscreen></iframe>
 
-## Probabilistic Programming for Mere Mortals, _Vitaly Khudobakhshov_
+### Probabilistic Programming for Mere Mortals, _Vitaly Khudobakhshov_
 
 In his talk, [Vitaly](https://twitter.com/khudobakhshov) presented a review of an emerging topic at the juncture between cognitive sciences and [Artificial General Intelligence (AGI)](https://en.wikipedia.org/wiki/Artificial_general_intelligence). That's the huge controversy about what language is the most efficient to solve a particular problem that raised Vitaly's interest in [Probabilistic Programming (PP)](http://probabilistic-programming.org/wiki/Home). To make it simple, a [Probabilistic Programming Language (PPL)](https://en.wikipedia.org/wiki/Probabilistic_programming_language) is an ordinary programming language considered as a set of tools to help us understand the program's statistical behavior. This field of research has been particularly useful in designing programs like cognitive architectures, which use a wide range of programming techniques, or in minor issues like pattern matching and knowledge representation. Vitaly believed that PP with partial evaluation might be effectively applied to AGI problems.
 
@@ -68,7 +68,7 @@ Although PPL programs are close to ordinary software implementations, whose goal
 
 Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://projects.csail.mit.edu/church/wiki/Church)  which is a derivative of the programming language [Scheme](http://groups.csail.mit.edu/mac/projects/scheme/) with probabilistic semantics programming language, and whose syntax is simple and extendable.
 
-## Sequence Learning and modern RNNs, _Grigory Sapunov_
+### Sequence Learning and modern RNNs, _Grigory Sapunov_
 
 [Grigory](https://www.researchgate.net/profile/Grigory_Sapunov) started his talk with a tiny, but not superfluous intro into RNN, [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and GRU, along with their bidirectional and n-directional generalizations. Next, Grigory presented two interesting LSTM generalization : [tree-LSTM](https://arxiv.org/abs/1507.01526) and [Grid LSTM](https://arxiv.org/abs/1507.01526). The fist tree-structure outperforms the previous systems on predicting the semantic relatedness of two sentences and sentiment classification while the second network of LSTM provides a unified way of using LSTM for both deep and sequential computation.
 
@@ -82,7 +82,7 @@ In a last paragraph, Grigory approached the [Connectionist Temporal Classificati
 
 <iframe  src="https://www.youtube.com/embed/ExtbPH2f3K4?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Grigory Sapunov's talk" allowfullscreen></iframe>
 
-## Neural Complete project, _Pascal Van Kooten_
+### Neural Complete project, _Pascal Van Kooten_
 
 [Pascal](https://github.com/kootenpv) ended our "AI on code" day with the perspective of auto-complete. He shared with us his project, called [Neural Complete](https://github.com/kootenpv/neural_complete) which aims at completing our source code through not only word but whole line suggestions.
 
@@ -90,21 +90,21 @@ In a last paragraph, Grigory approached the [Connectionist Temporal Classificati
 
 <iframe  src="https://www.youtube.com/embed/YF20zzovlVA?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Pascal van Kooten's talk" allowfullscreen></iframe>
 
-# Lightning talks
+## Lightning talks
 
-## Embedding the GithHub contribution graph, _Egor Bulychev_
+### Embedding the GithHub contribution graph, _Egor Bulychev_
 
 Egor is a senior ML engineer at source{d}. He disclosed an unusual approach to embedding GitHub social graph nodes, compared it to [node2vec](https://github.com/aditya-grover/node2vec) and applied it to finding similar GitHub repositories. Since the nature of the similarity is completely different from Vadim's content analysis, the examples showed alternative results. One of the funniest Egor's findings was the proof that system administrators like to drink beer more than coders and they [tend to contribute to repositories related to beer](https://egorbu.github.io/techtalks-2017-moscow/#23).
 
 <iframe  src="https://www.youtube.com/embed/mYYkngb0TR4?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Egor Bulychev's talk" allowfullscreen></iframe>
 
-## Hercules and His Labours, _Vadim Markovstev_
+### Hercules and His Labours, _Vadim Markovstev_
 
 Vadim went on stage for the second time and demonstrated the supremacy of [src-d/hercules](https://github.com/src-d/hercules), a super fast command line tool to mine the development history of Git repositories. Hercules uses [src-d/go-git](https://github.com/src-d/go-git), our advanced and nearly feature complete Git client and server implementation in pure Go. Provided by the whole repository is stored in-memory and the original incremental blame algorithm, Hercules processed the whole Linux kernel repository in just two hours. We encourage everybody to try Hercules on their own projects!
 
 <iframe  src="https://www.youtube.com/embed/2_oBJCnOFSI?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy" class="video" alt="Video of Vadim Markovstev's second talk" allowfullscreen></iframe>
 
-# After-work-drinks
+## After-work-drinks
 
 At the end of the talks, we spent pleasant time eating and drinking beers together. It was time to share our feelings about the day. The speakers were also available to develop their talks and answer more questions.
 
@@ -112,7 +112,7 @@ At the end of the talks, we spent pleasant time eating and drinking beers togeth
 
 The [Moscow source{d} tech talks](http://talks.sourced.tech/machine-learning-2017/) ended here. Now the team is already preparing our next [Frontend talks](http://talks.sourced.tech/front-2017/) in Madrid on the 24th of June 2017. You can get your free tickets on [Eventbrite](https://www.eventbrite.com/e/sourced-tech-talks-frontend-registration-33889725080?utm_content=buffer5e852&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).
 
-# Acknowledgements
+## Acknowledgements
 
 Source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi). If you feel interested in any of our projects, do not hesitate to join our [source{d} community slack](https://sourced-community.slack.com/messages/C5CQY9486/). You can also take a look at our [job opportunities](http://sourced.tech/careers/) ; source{d} is always looking for new talents.
 
