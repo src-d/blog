@@ -100,3 +100,10 @@ params:
       social:
         github: smola
         twitter: mola_io
+    waren:
+      name: "Waren Long"
+      thumbnail: https://avatars2.githubusercontent.com/u/24694845?v=3&s=460
+      bio: "Machine learning intern"
+      social:
+        github: warenlg
+        twitter: warenlg
