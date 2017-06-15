@@ -23,6 +23,8 @@ direction as: *Build representations of source code, developers and projects.*
 Today we are announcing [Babelfish](https://doc.bblf.sh/), the project we are
 developing to build these representations of source code.
 
+![Babelfish logo](/post/announcing_babelfish/babelfish.png)
+
 ## What's Babelfish?
 
 Babelfish is a universal code parser. It can parse any file, in any language,
@@ -50,7 +52,7 @@ divided in two parts, in order to minimise the work of developing a new driver:
 
 The server uses containers to run these drivers through libcontainer. This
 frees the user from having to handle dozens of different language ecosystems,
-since the server just handles drivers using Docker images.
+since the server executes drivers using Docker images.
 
 Have a look at the [documentation](https://doc.bblf.sh/architecture.html) for
 further architecture details.
@@ -75,19 +77,22 @@ top of it.
 
 ## How can I contribute?
 
-Babelfish is being openly developed. The code is available at
+Babelfish's development is open
+and is based on [BIPs](https://doc.bblf.sh/proposals/README.md).
+The code is available at
 [bblfsh project Github](https://github.com/bblfsh/), and discussions are held at
 [source{d} community Slack](https://join.slack.com/sourced-community/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ)
 (#babelfish channel).
 
 If you're interested in the project, you can look further at the
-[documentation](https://doc.bblf.sh/), give it a try, and report back any issue
+[documentation](https://doc.bblf.sh/), give it a try, and report back any issues
 you have.
 
 If you find it useful, you are more than welcome to contribute code to any of
-its components, or even write a driver for your favourite language! Drop by the
+its components, or even to write a driver for your favourite language! Drop by the
 slack channel and tell us about it :)
 
-P.S. [Santiago](https://github.com/smola) will give a talk about Babelfish at
-[Curry On](http://curry-on.org/2017/sessions/babelfish-universal-code-parsing-server.html). Don't
-miss it if you have the chance to be there!
+P.S. [Santiago](https://github.com/smola) is giving a talk about Babelfish both at
+[Curry On](http://curry-on.org/2017/sessions/babelfish-universal-code-parsing-server.html)
+and [Docker meetup](https://www.meetup.com/Docker-meetups/events/240565310/).
+Don't miss it if you have the chance to be there!
