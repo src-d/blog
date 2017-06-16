@@ -75,6 +75,54 @@ We have a set of [tools](https://github.com/bblfsh/tools) that showcase how
 babelfish works, and how it can be used to build your own code analysis tools on
 top of it.
 
+If you can try it yourself, you can do so with a small set of commands.
+First, make sure you have [Go](https://golang.org/doc/install) installed
+and `GOPATH` properly set.
+
+We can then install the tools with the following commands:
+
+```
+mkdir -p ${GOPATH}/src/github.com/bblfsh/
+cd ${GOPATH}/src/github.com/bblfsh/
+git clone https://github.com/bblfsh/tools.git
+cd tools
+make dependencies
+go build
+```
+
+This will build the our showcase tools and install them in `${GOPATH}/bin`.
+
+We can get the server running just using docker:
+
+```
+docker run --privileged -p 9432:9432 --name bblfsh bblfsh/server
+```
+
+And verify that everything is working properly:
+
+```
+> ${GOPATH}/bin/bblfsh-tools dummy /usr/lib/python2.7/base64.py
+DEBU[0000] executing command
+DEBU[0000] reading file /usr/lib/python2.7/base64.py
+DEBU[0000] dialing request at localhost:9432
+It works! You can now proceed with another tool :)
+DEBU[0087] exiting without error
+```
+
+Note that this command may take a while,
+since the server will have to get the python driver the first time it runs.
+
+Now we can try for example, the cyclomatic complexity sample tool:
+
+```
+> ${GOPATH}/bin/bblfsh-tools cyclomatic /usr/lib/python2.7/base64.py
+DEBU[0000] executing command
+DEBU[0000] reading file /usr/lib/python2.7/base64.py
+DEBU[0000] dialing request at localhost:9432
+Cyclomatic Complexity =  47
+DEBU[0000] exiting without error
+```
+
 ## How can I contribute?
 
 Babelfish's development is open
