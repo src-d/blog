@@ -1,6 +1,6 @@
 ---
 author: abeaumont
-date: 2017-06-15
+date: 2017-06-19
 title: "Announcing Babelfish"
 image: /post/announcing_babelfish/babelfish.png
 description: "Announcing Babelfish, the project we are developing to build
