@@ -126,7 +126,7 @@ DEBU[0000] exiting without error
 ## How can I contribute?
 
 Babelfish's development is open
-and is based on [BIPs](https://doc.bblf.sh/proposals/README.md).
+and is based on [BIPs](https://doc.bblf.sh/proposals/).
 The code is available at
 [bblfsh project Github](https://github.com/bblfsh/), and discussions are held at
 [source{d} community Slack](https://join.slack.com/sourced-community/shared_invite/MTkwNTM0ODEyODIzLTE0OTYxMzc5NTMtODRhMDYyNzAyYQ)
