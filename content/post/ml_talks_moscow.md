@@ -66,7 +66,7 @@ In his talk, [Vitaly](https://twitter.com/khudobakhshov) presented a review of a
 
 Although PPL programs are close to ordinary software implementations, whose goal is to run the program and get some kind of output, the one of PP is analysis rather than execution. The main obstacle in using PP in large problems is the efficient implementation of inference. Some techniques like [genetic programming](https://en.wikipedia.org/wiki/Genetic_programming) and [simulated annealing](https://en.wikipedia.org/wiki/Simulated_annealing) techniques have yielded good results.
 
-Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://projects.csail.mit.edu/church/wiki/Church)  which is a derivative of the programming language [Scheme](http://groups.csail.mit.edu/mac/projects/scheme/) with probabilistic semantics programming language, and whose syntax is simple and extendable.
+Finally, as a satisfying PPL, Vitaly gave us insights of [Church](http://projects.csail.mit.edu/church/wiki/Church)  which is a derivative of the programming language [Scheme](http://groups.csail.mit.edu/mac/projects/scheme/) with probabilistic semantics programming language, and whose syntax is simple and extensible.
 
 ### Sequence Learning and modern RNNs, _Grigory Sapunov_
 
