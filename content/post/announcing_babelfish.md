@@ -27,7 +27,7 @@ developing to build these representations of source code.
 
 ## What's Babelfish?
 
-Babelfish is a universal code parser. It can parse any file, in any language,
+Babelfish is a universal code parser. It aims to parse any file, in any language,
 extract an abstract syntax tree (AST) from it, and convert it to a Universal
 Abstract Syntax Tree [(UAST)](https://doc.bblf.sh/uast/specification.html)
 
