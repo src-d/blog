@@ -11,7 +11,7 @@ params:
   RSSlink: /index.xml
 
   title: "source{d} blog"
-  subtitle: "Building the first <b>AI</b> that <b>understands code</b>"
+  subtitle: "Building the technology stack for AI on code"
   copyright: "For developers, By developers"
 
   # You can choose between green, orange, red and blue.
@@ -21,7 +21,7 @@ params:
   # To provide some metadata for search engines and the about section in the footer
   # feel free to add a few information about you and your website.
   name: "source{d}"
-  bio: "Building the first AI that understands code"
+  bio: "Building the technology stack for AI on code"
   location: "" # optional
   twitter: "srcd_" # optional
   github: "src-d" # optional
