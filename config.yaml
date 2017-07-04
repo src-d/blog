@@ -114,3 +114,10 @@ params:
       social:
         github: abeaumont
         twitter: abeaumont
+    mcarmonaa:
+      name: Manuel Carmona
+      thumbnail: https://avatars1.githubusercontent.com/u/16907441?v=3
+      bio: "Almost a Software Engineer ---> Go!"
+      social:
+        github: mcarmonaa
+        twitter: cmanu_
