@@ -124,6 +124,8 @@ linguist processed files: 1839
 ```
 As you can see, *enry* was able to detect 67% of files in a time between 1us and 10us, while the majority of the files *linguist* processed are shifted to greater time intervals.
 
+Calculating the mean spent time to process a file for both tools,  on average *enry*  is 211% faster than *linguist*.
+
 ## enry CLI
 *enry* can be used as a command too
 ```
