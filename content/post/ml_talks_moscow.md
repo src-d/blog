@@ -3,7 +3,7 @@ author: waren
 date: 2017-06-07
 title: "source{d} tech talks, Moscow 2017"
 image: /post/ml_talks_moscow/back_audience.jpg
-description: "On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited speakers from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city. Let's make now a brief follow-up of this day."
+description: "On June, 3-2017, source{d} dedicated their regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited speakers from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city. Let's make now a brief follow-up of this day."
 categories: ["technical"]
 ---
 
@@ -28,7 +28,7 @@ iframe.video {
 }
 </style>
 
-On June, 3-2017, source{d} dedicated his regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city.
+On June, 3-2017, source{d} dedicated their regular [source{d} tech talks](http://talks.sourced.tech/) to Machine Learning and we chose to host the event in Moscow, Russia. For this conference, we invited [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) from Russia and abroad and gathered about 80 neural network aficionados in a former industrial area of the city.
 
 <img src="/post/ml_talks_moscow/audience.jpg" class="photo" alt="picture of the audience during Egor's speech">
 
