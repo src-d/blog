@@ -24,6 +24,9 @@ img.fig {
 .grid2x pre {
   text-align: center;
 }
+.grid2x-cell {
+  width: 50%;
+}
 @media (max-width: 1000px) {
   .grid2x {
     width: 100%;
@@ -152,13 +155,13 @@ def get_transition_matrix_emd(user, year):
 Finally, after summing the flow matrices over users - and over the last 16 years (we will consider the latter assumption below), we obtain the resulting transition matrix. Let's now compare it to the contingency table Erik compiled from Google queries. The following figures were plotted using [Erik's script](https://github.com/erikbern/eigenstuff/blob/master/analyze.py).
 
 <div class="grid2x">
-<div>
+<div class="grid2x-cell">
 <div>
 <img src="/post/language_migrations/sum_matrix_wdiag_22lang.svg">
 <p align="center" class="dt"><pre><code class="hljs python">source{d}'s flow transition matrix</code></pre></p>
 </div>
 </div>
-<div>
+<div  class="grid2x-cell">
 <div>
 <img src="/post/language_migrations/erik_red.png">
 <p align="center" class="dt"><pre><code class="hljs python">Erik's contingency table</code></pre></p>
@@ -426,13 +429,13 @@ In the rest of the post, we will consider our first representation of the domina
 What if we sort our transition matrix so that the most popular languages appear at the bottom, and compare it to Erik's.
 
 <div class="grid2x">
-<div>
+<div class="grid2x-cell">
 <div>
 <img src="/post/language_migrations/sum_matrix_22lang_eig.svg">
 <p align="center" class="dt"><pre><code class="hljs python">source{d}'s sorted transition matrix</code></pre></p>
 </div>
 </div>
-<div>
+<div class="grid2x-cell">
 <div>
 <img src="/post/language_migrations/erik_green.png">
 <p align="center" class="dt"><pre><code class="hljs python">Erik's sorted transition matrix</code></pre></p>
