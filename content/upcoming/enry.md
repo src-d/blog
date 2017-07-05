@@ -16,30 +16,30 @@ p.dt {
 </style>
 
 ## enry (⊙.☉)?
-If you don't know yet what is *enry* looking at the so descriptive name of "enry", maybe it's because you aren't the kind of guy keen on films. Don't worry about it and keep reading.
+If you don't know yet what is *enry* looking at the so descriptive name of "enry", maybe it's because you aren't the kind of person keen on films. Don't worry about it and keep reading.
 
-*[enry](https://github.com/src-d/enry)* is a tool written in Go to perform file language detection, being a port of github's project *[linguist](https://github.com/github/linguist)*.
+*[enry](https://github.com/src-d/enry)* is a tool written in Go to perform file language detection. It started as a port of github's project *[linguist](https://github.com/github/linguist)*.
 
-With *enry* you can know what language a source file is written in based on its name and content, and get known over other features such as if a file is using a configuration language, it's a file used for project documentation or a vendored file, it's a dotfile or even if a file's data is a binary value.
+With all the tools that *enry*  provides,  you can know what is the language a file was written, whether this file is used as documentation for a project, is a vendor file or even if it is a binary file.
 
 ## Why develop a port?
-Some time ago at source{d}, we needed to detect language for every file in every repository to perform analyzing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but not addressed all our requirement thought.
+Some time ago at source{d}, we needed to detect language for every file in every repository to perform analyzing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but not addressed all our requirements thought.
 
-So it raised  the need of implement an approach to fit in a mostly developed environment in Go, give a good performance and keep compatibility with its mother project. That's the reason why *enry* was born.
+So it raised the need to implement an approach to fit in an environment mostly developed in Go, give a good performance and keep compatibility with its mother project. That's the reason why *enry* was born.
 
-At the beginning, *enry* was only a few bunch of the  functionalities *linguist* had, enough to cover those detection cases which were precised in that moment.
+At the beginning, *enry* had only a bunch of the  functionalities *linguist* had, enough to cover those detection cases which were precised in that moment.
 
-As the time passed, *enry* showed it was a  valuable tool that could be used in other projects (e.g.,[babelfish](https://github.com/bblfsh)) and it started to incorporate the almost whole functionality that *linguist* exposes.
+As the time passed, *enry* showed it was a  valuable tool that could be used in other projects (e.g.[babelfish](https://github.com/bblfsh)) and it started to incorporate almost all the features *linguist* has.
 
-## How enry works?
-To acquire the goal of detecting language from a file is the propose of the functions:
+## How does enry works?
+The goal of detecting language from a file is achieved by the functions:
 ```
 func GetLanguage(filename string, content []byte) (language string)
 func GetLanguages(filename string, content []byte) []string
 ```
-After call `GetLanguages`, maybe exists more than one possible languages that could be the language for the file, so `GetLanguages` returns all of them, and `GetLanguage` return one of them (in fact the most likely one thanks to the classifier, so let classifier's explanation for later).
+After calling `GetLanguages`, there could be more than one possible language detected for the file, so `GetLanguages` returns all of them, and `GetLanguage` returns one of them (in fact, the most likely one thanks to the classifier, we'll cover the classifier later).
 
-The detection process must be split in several steps that form a chain or sequence of strategies. This strategies need the file's name and content and a list of candidates(a list of possible languages for the file). Strategies are typed functions with the next signature:
+The detection process must be split in several steps that form a chain or sequence of strategies. This strategies need the file name, content and a list of candidates (a list of possible languages for the file). Strategies are typed functions with the next signature:
 ```
 type Strategy func(filename string, content []byte, candidates []string) (languages []string)
 ```
@@ -55,16 +55,16 @@ var DefaultStrategies = []Strategy{
 	GetLanguagesByClassifier,
 }
 ```
-You can see how the strategies look for Modeline, Filename, Shebang... characteristics of a file that can be representative of the language it uses. Some strategies needs to parse the content and perhaps apply heuristics while others, however,  do its job only with the filename.
+You can see how the strategies look for Modeline, Filename, Shebang... characteristics of a file that can be representative of the language it uses. Some strategies needs to parse the content and perhaps apply heuristics while others, however,  do their job only with the filename.
 
-The way the strategies chain works is at follows:
-* A strategy try to get the language from a file.
-* It can result in: no language detected, one language detected, more than one language detected.
-* If there's no language, call to the next strategy.
-* If there are more than one languages, they are appended to a list of candidates and it is given to the next strategy.
+The way the strategy chain works is as follows:
+* A strategy tries to get the language from a file.
+* It can result in zero or more languages detected.
+* If there's no language, call the next strategy.
+* If there is more than one languages, they are appended to a list of candidates and they are given to the next strategy.
 * If there is exactly one language, it is returned as the detected language and the process stops.
 
-When the detection process is falling through the strategies without get a only one language as a outcome, the last strategy `GetLanguagesByClassifier` is obviously reached . This strategy deserves take a look at it.
+ When the detection process falls through all the strategies without getting only one language as an outcome, it reaches the last step: `GetLanguagesByClassifier`. This strategy deserves taking a look at it.
 
 `GetLanguagesByClassifier` internally uses an object of the type:
 ```
@@ -73,17 +73,17 @@ type Classifier interface {
 }
 ```
 
-This interface allow you to implement your own classifier and use it throw the functions:
+This interface allows you to implement your own classifier and use it in the following functions:
 ```
 func GetLanguageBySpecificClassifier(content []byte, candidates []string, classifier Classifier) (language string, safe bool)
 func GetLanguagesBySpecificClassifier(content []byte, candidates []string, classifier Classifier) (languages []string)
 ```
 
-*enry*'s default classifier implementation is a bayesian classifier which follows the same implementation *linguist* uses. It assigns scores to the candidates regarding to its probability, with the highest score assigned to the most likely candidate.
+*enry*'s default classifier implementation is a bayesian classifier which is like the one *linguist* uses. It assigns scores to the candidates regarding to its probability, with the highest score assigned to the most likely candidate.
 
 By the way, strategies have a `GetLanguage-` version too that returns only a language, and boolean to indicate the sureness of this result. You can use this functions independently for whatever you want.
 
-If you want to custom *enry*'s default strategies and classifier to use your own implemented strategies and classifiers, you can do it assign them to the variables:
+If you want to customize *enry*'s default strategies and classifier to use your own strategies and classifiers, you can do so by assigning them to the following variables:
 ```
 enry.DefaultStrategies = myStrategies
 enry.DefaultClassifier = myClassifier
@@ -101,10 +101,10 @@ Specifically, *enry* uses the following files from *linguist*:
 
 This files are parsed to retrieve the necessary information. Then the source files in *enry*  that offer this information to the rest of the project are generated and encapsulated as an internal subpackage [data](https://github.com/src-d/enry/tree/master/data).
 
-Whole process is automatic and you only need to run `go generate` from the project's root directory to launch it. It allows *enry* get updated without complex modifications when *linguist* adds new information.
+The whole process is automated and you only need to run `go generate` from the project's root directory to launch it. It allows *enry* to get updated without complex modifications when *linguist* adds new information.
 
-## Does enry actually improve performance?
-*enry*'s' language detection has been compared with *linguist*.  In order to do that, linguist's project directory [linguist/samples](https://github.com/github/linguist/tree/master/samples) was used as a set of files to run benchmarks against.
+## Does enry actually have better performance?
+*enry*'s language detection has been compared with *linguist*.  In order to do that, linguist's project directory [linguist/samples](https://github.com/github/linguist/tree/master/samples) was used as a set of files to run benchmarks against.
 
 The number of language detections for each file in samples directory and per each time interval in a logarithmic scale has been measured for both tools, getting the following results:
 ```
@@ -117,14 +117,15 @@ enry processed files: 1839
 
 linguist processed files: 1839
 	 1us-10us 0.000000%
-	 10us-100us 4.023926%
+	 10us-100us 4.023926%r
+
 	 100us-1ms 50.027189%
 	 1ms-10ms 42.849375%
 	 10ms-100ms 3.099511%
 ```
 As you can see, *enry* was able to detect 67% of files in a time between 1us and 10us, while the majority of the files *linguist* processed are shifted to greater time intervals.
 
-Calculating the mean spent time to process a file for both tools,  on average *enry*  is 211% faster than *linguist*.
+Calculating the mean spent time to process a file for both tools, on average *enry* is 211% faster than *linguist*.
 
 ## enry CLI
 *enry* can be used as a command too
@@ -143,7 +144,7 @@ $ enry
 55.56%	Shell
 11.11%	Go
 ```
-The command has flags to get a disaggregated output by file,
+The command has flags to get the results broken down by file,
 ```
 $ enry --breakdown
 11.11%	Gnuplot
