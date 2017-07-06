@@ -4,28 +4,21 @@ date: 2017-07-03
 draft: true
 title: "enry: detecting your accent"
 image: ""
-description: "Announcing enry, a faster implementation in Go of github/linguist"
-categories: ["technical", "Go"]
+description: "Announcing enry, a faster implementation of github/linguist in Go for programming language detection"
+categories: ["technical"]
 ---
 
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
-
 ## enry (⊙.☉)?
-If you don't know yet what is *enry* looking at the so descriptive name of "enry", maybe it's because you aren't the kind of person keen on films. Don't worry about it and keep reading.
+If you don't know yet what *enry* is looking at the so descriptive name of "enry", maybe it's because you aren't the kind of person keen on films. Don't worry about it and keep reading.
 
-*[enry](https://github.com/src-d/enry)* is a tool written in Go to perform file language detection. It started as a port of github's project *[linguist](https://github.com/github/linguist)*.
+*[enry](https://github.com/src-d/enry)* is a tool written in Go to perform file language detection. It started as a port of *[github's project linguist](https://github.com/github/linguist)*.
 
-With all the tools that *enry*  provides,  you can know what is the language a file was written, whether this file is used as documentation for a project, is a vendor file or even if it is a binary file.
+With all the tools that *enry*  provides,  you can know what language a file was written in, whether this file is used as documentation for a project, is a vendor file or even if it is a binary file.
 
 ## Why develop a port?
-Some time ago at source{d}, we needed to detect language for every file in every repository to perform analysing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but not addressed all our requirements thought.
+Some time ago at source{d}, we needed to detect the language of every file in every repository to perform analysing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but not addressed all our requirements though.
 
-So it raised the need to implement an approach to fit in an environment mostly developed in Go, give a good performance and keep compatibility with its mother project. That's the reason why *enry* was born.
+So at this point, there was a need arising to implement an approach to fit in an environment mostly developed in Go, give a good performance and keep compatibility with its mother project. That's the reason why *enry* was born.
 
 At the beginning, *enry* had only a sub-set of the *linguist* functionality, enough to cover basic needs of the analysis pipeline that we had back then.
 
@@ -33,19 +26,19 @@ As the time passed, *enry* showed it was a  valuable tool that could be used in 
 
 ## How does enry work?
 The goal of detecting language from a file is achieved by the functions:
-```
+```go
 func GetLanguage(filename string, content []byte) (language string)
 func GetLanguages(filename string, content []byte) []string
 ```
 After calling `GetLanguages`, there could be more than one possible language detected for the file, so `GetLanguages` returns all of them, and `GetLanguage` returns one of them (in fact, the most likely one thanks to the classifier, we'll cover the classifier later).
 
-The detection process must be split into several steps that form a chain or sequence of strategies. These strategies need the file name, content and a list of candidates (a list of possible languages for the file). Strategies are typed functions with the next signature:
-```
+The detection process must be split into several steps that form a chain or sequence of strategies. These strategies need the file name, its content and a list of candidates (a list of possible languages for the file). Strategies are typed functions with the next signature:
+```go
 type Strategy func(filename string, content []byte, candidates []string) (languages []string)
 ```
 
 Strategies try to guess the language of the file based on these arguments and a specific characteristic. For example, the default strategies enry uses are:
-```
+```go
 var DefaultStrategies = []Strategy{
     GetLanguagesByModeline,
     GetLanguagesByFilename,
@@ -55,9 +48,9 @@ var DefaultStrategies = []Strategy{
     GetLanguagesByClassifier,
 }
 ```
-You can see how the strategies look for Modeline, Filename, Shebang... characteristics of a file that can be representative of the language it uses. Some strategies need to parse the content and perhaps apply heuristics while others, however,  do their job only with the filename.
+You can see how the strategies look for Modeline, Filename, Shebang... characteristics of a file that can be representative of the language it uses. Some strategies need to parse the content and perhaps apply heuristics while others do their job only with the filename.
 
-The way the strategy chain works is as follows:
+The strategy chain works as follows:
 * A strategy tries to get the language from a file.
 * It can result in zero or more languages detected.
 * If there's no language, call the next strategy.
@@ -67,24 +60,26 @@ The way the strategy chain works is as follows:
  When the detection process falls through all the strategies without getting only one language as an outcome, it reaches the last step: `GetLanguagesByClassifier`. This strategy deserves taking a look at it.
 
 `GetLanguagesByClassifier` internally uses an object of the type:
-```
+```go
 type Classifier interface {
     Classify(content []byte, candidates map[string]float64) (languages []string)
 }
 ```
 
 This interface allows you to implement your own classifier and use it in the following functions:
-```
+```go
 func GetLanguageBySpecificClassifier(content []byte, candidates []string, classifier Classifier) (language string, safe bool)
 func GetLanguagesBySpecificClassifier(content []byte, candidates []string, classifier Classifier) (languages []string)
 ```
 
 *enry*'s default classifier implementation is a [bayesian classifier](https://en.wikipedia.org/wiki/Bayes_classifier) which is like the one *linguist* uses. It assigns scores to the candidates regarding its probability, with the highest score assigned to the most likely candidate.
 
-By the way, strategies have a `GetLanguage-` version too that returns only a language, and boolean to indicate the sureness of this result. You can use this functions independently for whatever you want.
+By the way, strategies have a `GetLanguage-` version too that returns only a language and a boolean to indicate the sureness of this result. The returned boolean value is set either to true if there is only one possible language detected or to false otherwise.
+
+You can use this functions independently for whatever you want.
 
 If you want to customise *enry*'s default strategies and classifier to use your own strategies and classifiers, you can do so by assigning them to the following variables:
-```
+```go
 enry.DefaultStrategies = myStrategies
 enry.DefaultClassifier = myClassifier
 ```
@@ -117,27 +112,28 @@ enry processed files: 1839
 
 linguist processed files: 1839
      1us-10us 0.000000%
-     10us-100us 4.023926%r
-
+     10us-100us 4.023926%
      100us-1ms 50.027189%
      1ms-10ms 42.849375%
      10ms-100ms 3.099511%
 ```
-As you can see, *enry* was able to detect 67% of files in a time between 1us and 10us, while the majority of the files *linguist* processed are shifted to greater time intervals.
+As you can see, *enry* was able to detect 72% of files in a time between 1us and 100us, while the majority of the files *linguist* processed are shifted to greater time intervals.
 
 Calculating the mean spent time to process a file for both tools, on average *enry* is 211% faster than *linguist*.
 
+Considering that *enry* follows the same algorithms that *linguist* uses, it looks like the performance improvement is given by the chosen language to develop them.
+
 ## enry CLI
 *enry* can be used as a command too
-```
+```bash
 $ enry --help
 enry, A simple (and faster) implementation of github/linguist
 usage: enry <path>
-       enry [-json] [-breakdown] <path>
-       enry [-json] [-breakdown]
+              enry <path> [--json] [--breakdown]
+              enry [--json] [--breakdown]
 ```
-, and it's programmed to return a similar output to *linguist*'s output.
-```
+, and it's programmed to return an output similar to *linguist*'s output.
+```bash
 $ enry
 11.11%    Gnuplot
 22.22%    Ruby
@@ -145,7 +141,7 @@ $ enry
 11.11%    Go
 ```
 The command has flags to get the results broken down by file,
-```
+```bash
 $ enry --breakdown
 11.11%    Gnuplot
 22.22%    Ruby
@@ -170,14 +166,14 @@ Go
 parser/main.go
 ```
 and to show it in JSON format,
-```
+```bash
 $ enry --json
 {"Gnuplot":["plot-histogram.gp"],"Go":["parser/main.go"],"Ruby":["linguist-samples.rb","linguist-total.rb"],"Shell":["parse.sh","plot-histogram.sh","run-benchmark.sh","run-slow-benchmark.sh","run.sh"]}
 ```
 
-The main difference with linguist's command is that enry doesn't need a git repository in the directory to analyse!
+The main difference with linguist's command is that enry doesn't need a git repository in the directory to analyse it!
 
 ## Wait a moment! What I really want to know is why "enry"?
 In the movie [My Fair Lady](https://en.wikipedia.org/wiki/My_Fair_Lady), [Professor Henry Higgins](http://www.imdb.com/character/ch0011719/?ref_=tt_cl_t2) is one of the main characters. Henry is a linguist and at the very beginning of the movie enjoys guessing the nationality of people based on their accent.
 
-`Enry Iggins` is how [Eliza Doolittle](http://www.imdb.com/character/ch0011720/?ref_=tt_cl_t1), [pronounces](https://www.youtube.com/watch?v=pwNKyTktDIE) the name of the Professor during the first half of the movie.
+`Enry Iggins` is how [Eliza Doolittle](http://www.imdb.com/character/ch0011720/?ref_=tt_cl_t1), [pronounces the name of the Professor during the first half of the movie](https://www.youtube.com/watch?v=pwNKyTktDIE).
