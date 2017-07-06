@@ -123,6 +123,8 @@ Calculating the mean spent time to process a file for both tools, on average *en
 
 Considering that *enry* follows the same algorithms that *linguist* uses, it looks like the performance improvement is given by the chosen language to develop them.
 
+However, it should be noted that in a few cases enry could turn slower than linguist due to Golang regexp while Ruby uses [oniguruma](https://github.com/kkos/oniguruma) as a regular expression engine (a regular expression library written in C).
+
 ## enry CLI
 *enry* can be used as a command too
 ```bash
