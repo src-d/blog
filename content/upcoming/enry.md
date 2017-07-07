@@ -2,7 +2,7 @@
 author: mcarmonaa
 date: 2017-07-03
 draft: true
-title: "enry: detecting your accent"
+title: "enry: detecting languages"
 image: ""
 description: "Announcing enry, a faster implementation of github/linguist in Go for programming language detection"
 categories: ["technical"]
@@ -13,24 +13,24 @@ If you don't know yet what *enry* is looking at the so descriptive name of "enry
 
 *[enry](https://github.com/src-d/enry)* is a tool written in Go to perform file language detection. It started as a port of *[github's project linguist](https://github.com/github/linguist)*.
 
-With all the tools that *enry*  provides,  you can know what language a file was written in, whether this file is used as documentation for a project, is a vendor file or even if it is a binary file.
+With the tools that *enry*  provides, you can know what language a file was written in, whether this file is used as documentation for a project, is a vendor file or even if it is a binary file.
 
 ## Why develop a port?
-Some time ago at source{d}, we needed to detect the language of every file in every repository to perform analysing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but not addressed all our requirements though.
+Some time ago, at source{d}, we needed to detect the language of every file in every repository to perform analysing job in our previous pipeline. To face this task, we looked at [github's linguist project](https://github.com/github/linguist), a Ruby library that offered what we needed, but didn't address all our requirements though.
 
-So at this point, there was a need arising to implement an approach to fit in an environment mostly developed in Go, give a good performance and keep compatibility with its mother project. That's the reason why *enry* was born.
+So at this point, we realised we needed to implement an approach that fit in an environment mostly developed in Go with a strong performance and that kept its compatibility with the mother project. Which is why *enry* was born.
 
 At the beginning, *enry* had only a sub-set of the *linguist* functionality, enough to cover basic needs of the analysis pipeline that we had back then.
 
-As the time passed, *enry* showed it was a  valuable tool that could be used in other projects (e.g.[babelfish](https://github.com/bblfsh)) and it started to incorporate almost all the features *linguist* has.
+As time passed, *enry* showed it was a  valuable tool that could be used in other projects (e.g.[babelfish](https://github.com/bblfsh)) and it started to incorporate almost all the features *linguist* has.
 
 ## How does enry work?
-The goal of detecting language from a file is achieved by the functions:
+Detecting a file language is done by the functions:
 ```go
 func GetLanguage(filename string, content []byte) (language string)
 func GetLanguages(filename string, content []byte) []string
 ```
-After calling `GetLanguages`, there could be more than one possible language detected for the file, so `GetLanguages` returns all of them, and `GetLanguage` returns one of them (in fact, the most likely one thanks to the classifier, we'll cover the classifier later).
+After calling `GetLanguages`, there could be more than one possible language detected for the file, so it returns all of them, and `GetLanguage` returns one of them (in fact, the most likely one thanks to the classifier - which we'll cover later).
 
 The detection process must be split into several steps that form a chain or sequence of strategies. These strategies need the file name, its content and a list of candidates (a list of possible languages for the file). Strategies are typed functions with the next signature:
 ```go
@@ -74,7 +74,7 @@ func GetLanguagesBySpecificClassifier(content []byte, candidates []string, class
 
 *enry*'s default classifier implementation is a [bayesian classifier](https://en.wikipedia.org/wiki/Bayes_classifier) which is like the one *linguist* uses. It assigns scores to the candidates regarding its probability, with the highest score assigned to the most likely candidate.
 
-By the way, strategies have a `GetLanguage-` version too that returns only a language and a boolean to indicate the sureness of this result. The returned boolean value is set either to true if there is only one possible language detected or to false otherwise.
+By the way, strategies have a `GetLanguage-` version too that returns only a language and a boolean to indicate the sureness of this result. The returned boolean value is set either to true, if there is only one possible language detected or, to false otherwise.
 
 You can use this functions independently for whatever you want.
 
@@ -94,7 +94,7 @@ Specifically, *enry* uses the following files from *linguist*:
 * [vendor.yml](https://github.com/github/linguist/blob/master/lib/linguist/vendor.yml)
 * [documentation.yml](https://github.com/github/linguist/blob/master/lib/linguist/documentation.yml)
 
-These files are parsed to retrieve the necessary information. Then the source files in *enry*  that offer this information to the rest of the project are generated and encapsulated as an internal subpackage [data](https://github.com/src-d/enry/tree/master/data).
+These files are parsed to retrieve the necessary information. Then the source files in *enry* that offer this information to the rest of the project are generated and encapsulated as an internal subpackage [data](https://github.com/src-d/enry/tree/master/data).
 
 The whole process is automated and you only need to run `go generate` from the project's root directory to launch it. It allows *enry* to get updated without complex modifications when *linguist* adds new information.
 
@@ -121,9 +121,9 @@ As you can see, *enry* was able to detect 72% of files in a time between 1us and
 
 Calculating the mean spent time to process a file for both tools, on average *enry* is 211% faster than *linguist*.
 
-Considering that *enry* follows the same algorithms that *linguist* uses, it looks like the performance improvement is given by the chosen language to develop them.
+Considering that *enry* follows the same algorithms that *linguist* does, it looks like the performance improvement is given by the chosen language to develop them.
 
-However, it should be noted that in a few cases enry could turn slower than linguist due to Golang regexp while Ruby uses [oniguruma](https://github.com/kkos/oniguruma) as a regular expression engine (a regular expression library written in C).
+However, it should be noted that in a few cases *enry* could turn slower than linguist due to Golang regexp while Ruby uses [oniguruma](https://github.com/kkos/oniguruma) as a regular expression engine (a regular expression library written in C).
 
 ## enry CLI
 *enry* can be used as a command too
@@ -173,9 +173,9 @@ $ enry --json
 {"Gnuplot":["plot-histogram.gp"],"Go":["parser/main.go"],"Ruby":["linguist-samples.rb","linguist-total.rb"],"Shell":["parse.sh","plot-histogram.sh","run-benchmark.sh","run-slow-benchmark.sh","run.sh"]}
 ```
 
-The main difference with linguist's command is that enry doesn't need a git repository in the directory to analyse it!
+The main difference with linguist's command is that *enry* doesn't need a git repository in the directory to analyse it!
 
-## Wait a moment! What I really want to know is why "enry"?
+## What I really want to know is where "enry" comes from!
 In the movie [My Fair Lady](https://en.wikipedia.org/wiki/My_Fair_Lady), [Professor Henry Higgins](http://www.imdb.com/character/ch0011719/?ref_=tt_cl_t2) is one of the main characters. Henry is a linguist and at the very beginning of the movie enjoys guessing the nationality of people based on their accent.
 
 `Enry Iggins` is how [Eliza Doolittle](http://www.imdb.com/character/ch0011720/?ref_=tt_cl_t1), [pronounces the name of the Professor during the first half of the movie](https://www.youtube.com/watch?v=pwNKyTktDIE).
