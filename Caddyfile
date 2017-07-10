@@ -1,10 +1,13 @@
 :80 {
-	tls hello@sourced.tech
 	root /var/www/public
 	log stdout
 	gzip
 
         redir /post/our-master-plan/ /post/our-roadmap/
+        redir 301 {
+              if {>X-Forwarded-Proto} is http
+              /  https://{host}{uri}
+        }
 
 	ext .html
 	errors stderr {
