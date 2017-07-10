@@ -1,4 +1,4 @@
-blog.sourced.tech {
+:80 {
 	tls hello@sourced.tech
 	root /var/www/public
 	log stdout
