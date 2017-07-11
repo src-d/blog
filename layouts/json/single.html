@@ -1,8 +1,13 @@
 {{ $pages := index .Site.Taxonomies.categories .Title }}
+{{ $.Scratch.Set "first" true }}
 {"Posts": [
     {{ range $k, $post := sort $pages.Pages "Date" "desc" }}
         {{if eq $post.Type "post"}}
-            {{if $k}},{{end}}
+            {{if $.Scratch.Get "first"}}
+                {{ $.Scratch.Set "first" false }}
+            {{ else }}
+                ,
+            {{end}}
 
             {{ if default false $post.Params.image }}
                 {{ $.Scratch.Set "image" (absURL $post.Params.image) }}
