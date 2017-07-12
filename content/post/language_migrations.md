@@ -60,11 +60,11 @@ To have a better understanding of what's going on, I find it nice to visualize d
 
 Note that the colors represent proportions of source code in each language. We can already deduce several things from this diagram:
 
-* The user's favorite language is **Scala** and he is stuck to it.
+* The user's favorite language is **Scala** and they are stuck to it.
 
-* He tried **Go**, but did not really get along with it.
+* They tried **Go**, but did not really get along with it.
 
-* He ran an important project in **Java** but he'd rather code in Scala. Using Java might have been a constraint to complete a single project.
+* They ran an important project in **Java** but they'd rather code in Scala. Using Java might have been a constraint to complete a single project.
 
 Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 22 main programming languages throughout the rest of the post.
 
