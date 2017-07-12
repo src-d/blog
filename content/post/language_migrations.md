@@ -161,7 +161,7 @@ Finally, after summing the flow matrices over users and over the last 16 years (
 <div class="grid2x">
 <div class="grid2x-cell">
 <div>
-<img src="/post/language_migrations/sum_matrix_wdiag_22lang.svg">
+<img src="/post/language_migrations/sum_matrix_25lang.svg">
 <p align="center" class="dt"><pre><code class="hljs python">source{d}'s flow transition matrix</code></pre></p>
 </div>
 </div>
