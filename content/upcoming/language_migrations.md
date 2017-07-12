@@ -41,49 +41,49 @@ img.fig {
 }
 </style>
 
-Never have you been struggling with an nth obscure project, thinking : "_I could do the job with this language but why not switch to another one which would be more enjoyable to work with_" ? In his awesome blog post : [The eigenvector of "Why we moved from language X to language Y"](https://erikbern.com/2017/03/15/the-eigenvector-of-why-we-moved-from-language-x-to-language-y.html), [Erik Bernhardsson](https://github.com/erikbern/eigenstuff) generated an N*N contingency table of all Google queries questioning about changing languages. However, when I read it, I can't help wondering what the proportion of people who effectively switched is. Thus, it becomes engaging to deepen this idea and see how the popularity of languages moves among GitHub users.
+Have you ever been struggling with an nth obscure project, thinking : "_I could do the job with this language but why not switch to another one which would be more enjoyable to work with_" ? In his awesome blog post : [The eigenvector of "Why we moved from language X to language Y"](https://erikbern.com/2017/03/15/the-eigenvector-of-why-we-moved-from-language-x-to-language-y.html), [Erik Bernhardsson](https://github.com/erikbern/eigenstuff) generated an N*N contingency table of all Google queries related to changing languages. However, when I read it, I couldn't help wondering what the proportion of people who effectively switched is. Thus, it has become engaging to deepen this idea and see how the popularity of languages changes among GitHub users.
 
 ## Dataset available
 
-Thanks to our data retrieval pipeline, source{d} opened the dataset that contains the yearly number of bytes coded by each GitHub user in each programming language. In a few figures, it is:
+Thanks to our data retrieval pipeline, source{d} opened the dataset that contains the yearly numbers of bytes coded by each GitHub user in each programming language. In a few figures, it is:
 
 * 4.5 Million GitHub users
 * 393 different languages
-* 10 TB of source code all in all
+* 10 TB of source code in total
 
-I invite you to take a look at [Vadim Markovtsev](https://github.com/vmarkovtsev?tab=repositories)'s blog post : [Spaces or Tabs](https://blog.sourced.tech/post/tab_vs_spaces/), if you want details about which repositories and languages were considered,
+I invite you to take a look at [Vadim Markovtsev](https://github.com/vmarkovtsev?tab=repositories)'s blog post : [Spaces or Tabs](https://blog.sourced.tech/post/tab_vs_spaces/), if you want details about which repositories and languages were considered.
 
-To have a better insight into what's going on, I find it nice to visualize developer's history of languages using a kind of [Gantt diagram](https://en.wikipedia.org/wiki/Gantt_chart).
+To have a better understanding of what's going on, I find it nice to visualize developer's language usage history with a kind of [Gantt diagram](https://en.wikipedia.org/wiki/Gantt_chart).
 
 <img src="/post/language_migrations/3710313.png" class="fig">
-<p align="center" class="caption">Language history of GitHub user n°X</p>
+<p align="center" class="caption">Language usage history of GitHub user n°X</p>
 
-First of all, note that the colorbar on the right stands for the proportion of source code in each language. We can already deduce several things from this diagram:
+Note that the colors represent proportions of source code in each language. We can already deduce several things from this diagram:
 
 * The user's favorite language is **Scala** and he is stuck to it.
 
-* He tried **Go**, but did not really get along with.
+* He tried **Go**, but did not really get along with it.
 
 * He ran an important project in **Java** but he'd rather code in Scala. Using Java might have been a constraint to complete a single project.
 
-Of course, it would be nonsense to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, as it is absurd to betray a programming language in favor of a markup one, we want to avoid any comparison between two languages that don't have the same purpose. That's why, throughout the rest of the post, we focus on the sample of 22 main programming languages.
+Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 22 main programming languages throughout the rest of the post.
 
 ## Quantization
 
-You will surely agree that **"Hello world"** GitHub repositories do not really count in switching to another language. So, we decide to quantize the contributions of our dataset in order to reduce the noise. For this reason, we represent the distribution of GitHub contributions per size in the following bar plot.
+You will surely agree that **"Hello world"** GitHub repositories do not really count as switching to another language. So, we decide to quantize the contributions in our dataset in order to reduce the noise. For this reason, we represent the distribution of GitHub contributions per byte size in the following bar plot.
 
 <img src="/post/language_migrations/contributions.png" class="fig">
 <p align="center" class="caption">Distribution of GitHub contributions by size</p>
 
-As we can see, it has a very long tail and most of the contributions are tiny ones. Then to approximate the distribution, we apply the [kernel density estimation](http://scikit-learn.org/stable/auto_examples/neighbors/plot_kde_1d.html#sphx-glr-auto-examples-neighbors-plot-kde-1d-py), which is the orange curve in the last figure. Finally, we get the quantization by dividing the area under the curve into 10 equal parts. The first group is set to 0 and the others follow linearly.
+As we can see, it has a very long tail and most of the contributions are tiny ones. To approximate the distribution, we apply [kernel density estimation](http://scikit-learn.org/stable/auto_examples/neighbors/plot_kde_1d.html#sphx-glr-auto-examples-neighbors-plot-kde-1d-py), which is the orange curve in the last figure. Finally, we get the quantization by dividing the area under the curve into 10 equal parts. The groups are numbered starting with 0.
 
 Now after filtering and quantizing our dataset, we can proceed with building our own transition matrix.
 
 ## Minimum-cost flow problem
 
-For every GitHub user, we aggregate annual vectors ; we will call them reactors where each of the 393 elements stands for the amount of bytes coded in the corresponding language and year. After the normalization, these reactors resemble histograms which we need to compare with each other.
+For every GitHub user, we aggregate annual vectors ; we will call them reactors where each of the 393 elements stands for the number of bytes coded in the corresponding language that year. After normalization these reactors resemble histograms which we need to compare with each other.
 
-An elegant approach which is effective both in coding and computational time, is to use [`PyEMD`](https://pypi.python.org/pypi/pyemd) : a Python wrapper for the [Earth Mover's Distance](https://en.wikipedia.org/wiki/Earth_mover's_distance) which is Numpy friendly. This measure -- better than the euclidean distance for histogram comparison -- is particularly beneficial because it is based on [Linear Programming](https://en.wikipedia.org/wiki/Linear_programming) (LP). Indeed, it can be seen as the solution of the following [transportation problem](http://www.me.utexas.edu/~jensen/models/network/net8.html), where \\(~\\sum_ {i=1}^N s_ i = \\sum_ {j=1}^N d_ j = 1\\)
+An elegant approach to this problem, which is effective both in coding and computational time, is offered in [`PyEMD`](https://pypi.python.org/pypi/pyemd): a Python wrapper for the [Earth Mover's Distance](https://en.wikipedia.org/wiki/Earth_mover's_distance) which is Numpy friendly. This distance measure -- better than the euclidean distance for histogram comparison -- is particularly interesting because it is based on [Linear Programming](https://en.wikipedia.org/wiki/Linear_programming) (LP). Indeed, it can be seen as the solution of the following [transportation problem](http://www.me.utexas.edu/~jensen/models/network/net8.html), where \\(~\\sum_ {i=1}^N s_ i = \\sum_ {j=1}^N d_ j = 1\\)
 
 <img src="/post/language_migrations/emd.png" class="fig">
 <p align="center" class="caption">Transportation Problem with supplies and demands</p>
@@ -107,11 +107,11 @@ x_ {ij} \\geq 0,
 \\sum_ {i=1}^N \\sum_ {j=1}^N x_ {ij} = 1
 \\end{equation}
 
-Let's go a little aside here. First, "costs" of the edges are set equal to 1 in order for us to be unbiased. Second, to reduce our problem to the classical [flow minimization formulation](https://en.wikipedia.org/wiki/Minimum-cost_flow_problem), we have to add an artificial source and sink on both sides of our [bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph) to ensure flow conservation. However, this is not a critical point; the last slides [Stanford's CS97SI](https://web.stanford.edu/class/cs97si/08-network-flow-problems.pdf) describe that transformation.
+Let's go a little aside here. First, "costs" of the edges are set equal to 1 in order for us to be unbiased. Second, to reduce our problem to the classical [flow minimization formulation](https://en.wikipedia.org/wiki/Minimum-cost_flow_problem), we have to add an artificial source and sink on both sides of our [bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph) to ensure flow conservation. This is not a critical point; the last slides [Stanford's CS97SI](https://web.stanford.edu/class/cs97si/08-network-flow-problems.pdf) describe that transformation.
 
 ## Transition Matrix
 
-Here is the core code to compute the transition matrix of a specific GitHub user and between two corresponding consecutive years. The main function we use is [`emd_with_flow`](https://pypi.python.org/pypi/pyemd) which is provided by the [`PyEMD`](https://pypi.python.org/pypi/pyemd) package.
+Here is the core code to compute the transition matrix between two consecutive years for a specific GitHub user. The main function we use is [`emd_with_flow`](https://pypi.python.org/pypi/pyemd) which is provided by the [`PyEMD`](https://pypi.python.org/pypi/pyemd) package.
 
 ```Python
 def get_transition_matrix_emd(user, year):
@@ -152,7 +152,7 @@ def get_transition_matrix_emd(user, year):
 ```
 <p align="center" class="caption">Function to compute a transition matrix in Python</p>
 
-Finally, after summing the flow matrices over users - and over the last 16 years (we will consider the latter assumption below), we obtain the resulting transition matrix. Let's now compare it to the contingency table Erik compiled from Google queries. The following figures were plotted using [Erik's script](https://github.com/erikbern/eigenstuff/blob/master/analyze.py).
+Finally, after summing the flow matrices over users and over the last 16 years (we will consider yearly transitions below), we obtain the resulting transition matrix. Let's now compare it to the contingency table compiled by Erik from Google queries. The following figures were plotted using [Erik's script](https://github.com/erikbern/eigenstuff/blob/master/analyze.py).
 
 <div class="grid2x">
 <div class="grid2x-cell">
@@ -169,19 +169,19 @@ Finally, after summing the flow matrices over users - and over the last 16 years
 </div>
 </div>
 
-Comparing to Erik's table we've got the elements on the main diagonal of the transition matrix. We will see later how to take an advantage of it. However, although the dataset we used is different, we notice many relevant similarities and perceive the same kind of language profile.
+Compared to Erik's table we've got some elements on the main diagonal of our transition matrix. We will see later how to take an advantage of it. However, although the dataset we used is different, we notice many relevant similarities and perceive the same kind of language profile.
 
 ## GitHub "LanguageRank"
 
-Since we have our flow matrix, we want to know which languages are the most and the least popular. It is possible to calculate [centrality measures](https://en.wikipedia.org/wiki/Centrality) on the represented graph, e.g. the eigenvector centrality. Indeed these measures convey the relative popularity of languages in the sense that people coding in a language would more or less likely switch to another one. We will take this approach - calculate the eigenvector centrality. If you need further explanations, I invite you to read Vadim's PageRank analysis in his blog post about the [GitHub Contributions Graph](https://blog.sourced.tech/post/handshakes_pagerank/).
+Since we have our flow matrix, we want to know which languages are the most and the least popular. It is possible to calculate [centrality measures](https://en.wikipedia.org/wiki/Centrality) on the represented graph, e.g. the eigenvector centrality. Indeed, these measures convey the relative popularity of languages in the sense of how likely people coding in one language would switch to another. We will take the approach of calculating the eigenvector centrality. If you need further explanations, I invite you to read Vadim's PageRank analysis in his blog post about the [GitHub Contributions Graph](https://blog.sourced.tech/post/handshakes_pagerank/).
 
-1. Our flow matrix contains strictly positive elements, which is the sufficient condition to make it [irreducible](https://en.wikipedia.org/wiki/Irreducibility_(mathematics)) ; there is always a way to reach all other languages from any given one. Thus, according to [Perron–Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem), we are looking for the greatest eigenvalue and the corresponding eigenvector.
+1. Our flow matrix contains strictly positive elements, which is a sufficient condition to make it [irreducible](https://en.wikipedia.org/wiki/Irreducibility_(mathematics)) ; there is always a way to reach all other languages from any given one. Thus, according to [Perron–Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem), we are looking for the greatest eigenvalue and its corresponding eigenvector.
 
-2. To find that dominant eigenvector, we can use the [Power Iteration](https://en.wikipedia.org/wiki/Power_iteration) algorithm. Nevertheless, in addition to be irreducible, the matrix needs to be stochastic and aperiodic.
+2. We can use the [Power Iteration](https://en.wikipedia.org/wiki/Power_iteration) algorithm to find the dominant eigenvector. Nevertheless, in addition to be irreducible, the matrix needs to be stochastic and aperiodic.
 
 3. Our flow matrix becomes [stochastic](https://en.wikipedia.org/wiki/Stochastic_matrix) when removing the main diagonal and normalizing the rows. The greatest eigenvalue is now equal to 1.
 
-4. Finally, to make our matrix [aperiodic](https://en.wikipedia.org/wiki/Markov_chain) and well conditioned, there is a famous trick introduced by Larry and Sergey in 1998. It is well explained in [Stanford’s CS246](http://snap.stanford.edu/class/cs246-2013/slides/09-pagerank.pdf) but to make it short, it mainly consists of updating our flow matrix with the following formula:
+4. Finally, to make our matrix [aperiodic](https://en.wikipedia.org/wiki/Markov_chain) and well conditioned, there is a famous trick introduced by Larry and Sergey in 1998. It is well explained in [Stanford’s CS246](http://snap.stanford.edu/class/cs246-2013/slides/09-pagerank.pdf) but to make it short, it mainly consists of updating our flow matrix using the following formula:
 
 $$
 P = \\beta P + \\frac{1-\\beta}{N}\\left( \\begin{array}{cccc}
@@ -193,17 +193,17 @@ $$
 
 where,
 
-* \\(\\beta~\\) is called random walk factor and set to 0.85
+* \\(\\beta~\\) is called random walk factor and is set to 0.85
 * N   is the number of languages
 
 ### Power Iteration
 
-This way, our well conditioned flow matrix contains an approximation of the probabilities of switching between languages, and we are now entitled to proceed with the power iteration. This algorithm consists of the following matrix multiplication until convergence to the dominant eigenvector:
+After these steps our well conditioned flow matrix contains an approximation of the probabilities of switching between languages, and we can proceed with the power iteration. This algorithm consists of the following matrix multiplication until convergence to the dominant eigenvector:
 $$
 x_ {i+1} = P\\cdot x_ i
 $$
 
-Below, we will find the code that returns the wanted dominant eigenvector.
+Below, you will find the code that returns the wanted dominant eigenvector.
 
 ```Python
 def power_iteration(A, nb_iterations=100, beta=0.85):
@@ -225,7 +225,7 @@ def power_iteration(A, nb_iterations=100, beta=0.85):
 
 ### Most popular languages on GitHub
 
-At last! Here is the reward : the stationary distribution of our [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). This probability distribution is independent of the initial distribution. It gives information about the stability of the process of random languages switching. Thus, no matter how popular languages are at the present time, the hypothetical future stationary state stays the same. Here is the popularity ranking of our 22 languages used on GitHub:
+At last! Here is the reward: the stationary distribution of our [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). This probability distribution is independent of the initial distribution. It gives information about the stability of the process of random switching between languages. Thus, no matter how popular the languages are at the present time, the hypothetical future stationary state stays the same. Here is the popularity ranking of our 22 languages used on GitHub:
 
 <style>
 table {
@@ -408,21 +408,21 @@ tr:nth-child(even) {
 <p align="center" class="caption">Popularity of languages according to
 <a href="https://en.wikipedia.org/wiki/Centrality">centrality measure</a> on GitHub</p>
 
-**Python** (16.1 %) appears to be the most attractive language, followed closely by **Java** (15.3 %). However, it's especially interesting since only 11.3 % of all source code written on GitHub, among these 22 languages is **Python**.
+**Python** (16.1 %) appears to be the most attractive language, followed closely by **Java** (15.3 %). It's especially interesting since only 11.3 % of all source code on GitHub is written in **Python**.
 
-In Erik's ranking, **Go** was the big winner with 16.4 %. Since Erik based his approach on Google queries, it seems that the buzz around Go which makes people wonder explicitly in blogs if they should move to this language, takes a bit of time to become apparent in terms of projects effectively written in **Go** on GitHub.
+In Erik's ranking, **Go** was the big winner with 16.4 %. Since Erik based his approach on Google queries, it seems that the buzz around Go, which makes people wonder explicitly in blogs if they should move to this language, takes a bit of time to produce projects effectively written in **Go** on GitHub.
 
-Furthermore **C** (9.2 %) is doing well like in Erik's grading with 14.3 %, though it is due to the amount of projects coded in **C** on GitHub.
+Furthermore, **C** (9.2 %) is doing well in accoradance with Erik's grading of 14.3 %, though it is due to the amount of projects coded in **C** on GitHub.
 
-Although there are ten times more lines of code on GitHub in **PHP** than in **Ruby**, we have the same probability to switch for those two.
+Although there are ten times more lines of code on GitHub in **PHP** than in **Ruby**, they have the same stationary distribution.
 
-**Go** (3.2 %) appears on the 9th position which is largely honorable given the small proportion (0.9 %) of **Go** projects which are written on GitHub. The same proportion of projects are in **Perl** for example, but this language doesn't really awake passion (2 % popularity).
+**Go** (3.2 %) appears on the 9th position which is largely honorable given the small proportion (0.9 %) of **Go** projects which are hosted on GitHub. For example the same proportion of projects are written in **Perl**, but this language doesn't really stir up passion (2 % popularity).
 
 ### What about sticking to a language ?
 
-If we keep the main diagonal of our transition matrix before applying the power iteration, we obtain slightly different results. It mainly decreases top languages popularity while raising the smaller ones'. Indeed, it seems logical to believe that developers who invest their time in mastering a language on the fringe of the others tend to stick to them unlike the popular ones.
+If we keep the main diagonal of our transition matrix before applying the power iteration, we obtain slightly different results. It mainly decreases top languages popularity while raising the smaller ones'. Indeed, it seems reasonable to believe that developers who invest their time in mastering languages on the fringe of the others tend to stick to them unlike with the popular ones.
 
-In the rest of the post, we will consider our first representation of the dominant eigenvector.
+In the rest of the post we will consider our first representation of the dominant eigenvector.
 
 ### Back to the transition matrix
 
@@ -443,21 +443,21 @@ What if we sort our transition matrix so that the most popular languages appear 
 </div>
 </div>
 
-* Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 22% chance on the average.
+* Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 22% chance on average.
 
-* Besides, according to Erik's matrix, we switch from **Ojective-C** to **Swift** and back with a greater probability - 24% and 19% accordingly.
+* Besides, according to Erik's matrix, people switch from **Ojective-C** to **Swift** and back with greater probabilities - 24% and 19% accordingly.
 
-* Similarly, a **Visual Basic** developer has more chance (24%) to move to **C#** while Erik's is almost confident in that transition with 92%.
+* Similarly, a **Visual Basic** developer has more chance (24%) to move to **C#** while Erik's is almost sure in this transition with 92% chance.
 
 * Users of **Clojure**, **C#** and, above all, **Scala** would rather switch to **Java** with respectively 22, 29 and 40% chance.
 
 * People using numerical and statistical environments such as **Fortran** (36 %), **Matlab** (33 %) or **R** (40 %) are most likely to switch to **Python** in contrast to Erik's matrix which predicts **C** as their future language.
 
-* One common point I found with Erik's results about **Go** is that it belongs to people who gave up studying **Rust**.
+* One common point I found with Erik's results about **Go** is that it attracts people who gave up studying **Rust**.
 
 ## Over the last 16 years
 
-As we mentioned earlier before summing the transition matrices over time, we now consider specific years and determine how these yearly matrices look like. Do they express the same find of language profile ? How has it been evolving since the early 2000's ? Here is a sample of 4 matrices from various timeline intervals:
+As we mentioned earlier, before summing the transition matrices over time, we now consider specific years and examine how these yearly matrices look like. Do they express the same language profiles? How has it been evolving since the early 2000's? Here is a sample of 4 matrices from various timeline intervals:
 
 <div class="grid2x">
 <div>
@@ -493,7 +493,7 @@ The thickness of each band corresponds to the value in the dominant eigenvector.
 
 * The first two languages, **Python** and **Java** have the same profile. They have been taking the place of **C** for 15 years. Indeed, the aggregation of these first 3 layers gives a straight one.
 
-* The attractiveness of **C++** dropped prominently in 2008 in favor of languages like **Ruby**. Nevertheless, it has been sustaining its popularity ever since this period.
+* The attractiveness of **C++** dropped prominently in 2008 in favor of the languages like **Ruby**. Nevertheless, it has been sustaining its popularity ever since that year.
 
 * I definitely support Erik's conclusion that **Perl** is dying.
 
@@ -511,7 +511,7 @@ I used the following [Jupyter](http://jupyter.org/) notebook to prepare the post
 
 ## Conclusion
 
-It would be more relevant to see Erik's contingency table as a kind of the second derivative of the language distribution problem while our flow transitions are like the first derivative. That is, first you google, then you try to write an OSS project, and finally the languages distribution changes.
+It would be more appropriate to see Erik's contingency table as a kind of the second derivative of the languages distribution problem while our flow transitions are like the first derivative. That is, first you google, then you try to write an OSS project, and finally the languages distribution changes.
 
 ## Acknowledgements
 
