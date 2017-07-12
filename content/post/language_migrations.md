@@ -66,7 +66,11 @@ Note that the colors represent proportions of source code in each language. We c
 
 * They ran an important project in **Java** but they'd rather code in Scala. Using Java might have been a constraint to complete a single project.
 
-Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 22 main programming languages throughout the rest of the post.
+Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 25 main programming languages throughout the rest of the post. Actually, 22, as we have no data about Lisp, Kotlin and Cobol.
+
+## We did not include Javascript because ...
+
+The first reason is that 40% of Github users we analyzed had JS in their profiles, and the proposed transition model becomes useless. The second is, citing Erik, "(a) if you are doing it on the frontend, you are kind of stuck with it anyway, so there’s no moving involved (except if you do crazy stuff like transpiling, but that’s really not super common) (b) everyone refers to Javascript on the backend as 'Node'". Our data retrieval pipeline could not distinguish regular JS from Node and thus we had to exclude it completely.
 
 ## Quantization
 
@@ -426,13 +430,13 @@ In the rest of the post we will consider our first representation of the dominan
 
 ### Back to the transition matrix
 
-What if we sort our transition matrix so that the most popular languages appear at the bottom, and compare it to Erik's.
+Erik's transition matrix is sorted so that the most popular languages appear at the bottom. We sort ours in the same order to compare them:
 
 <div class="grid2x">
 <div class="grid2x-cell">
 <div>
-<img src="/post/language_migrations/sum_matrix_22lang_eig.svg">
-<p align="center" class="dt"><pre><code class="hljs python">source{d}'s sorted transition matrix</code></pre></p>
+<img src="/post/language_migrations/sum_matrix_wdiag_25lang_eig.svg">
+<p align="center" class="dt"><pre><code class="hljs python">source{d}'s sorted transition matrix, Erik's order</code></pre></p>
 </div>
 </div>
 <div class="grid2x-cell">
@@ -442,6 +446,11 @@ What if we sort our transition matrix so that the most popular languages appear 
 </div>
 </div>
 </div>
+
+This is our matrix independently sorted:
+
+<img src="/post/language_migrations/sum_matrix_22lang_eig.svg" class="fig">
+<p align="center" class="caption">source{d}'s sorted transition matrix, original order</p>
 
 * Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 22% chance on average.
 
