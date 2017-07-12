@@ -1,6 +1,6 @@
 ---
 author: waren
-date: 2017-07-03
+date: 2017-07-12
 title: "Analyzing GitHub, how developers change programming languages over time"
 draft: false
 image: /post/language_migrations/background.png
@@ -493,7 +493,7 @@ The thickness of each band corresponds to the value in the dominant eigenvector.
 
 * The first two languages, **Python** and **Java** have the same profile. They have been taking the place of **C** for 15 years. Indeed, the aggregation of these first 3 layers gives a straight one.
 
-* The attractiveness of **C++** dropped prominently in 2008 in favor of the languages like **Ruby**. Nevertheless, it has been sustaining its popularity ever since that year.
+* The attractiveness of **C++** dropped prominently in 2008 when languages like **Java** or **Ruby** started growing rapidly. Nevertheless, it has been sustaining its popularity ever since this period.
 
 * I definitely support Erik's conclusion that **Perl** is dying.
 
