@@ -512,6 +512,158 @@ The thickness of each band corresponds to the value in the dominant eigenvector.
 
 * Regarding **Go**, the popularity stays relatively low. However, the dynamics is clearly positive.
 
+## Update
+
+I read some concerns about the language verbosity bias after publishing the post. They are fair: the global quantization scheme may give an advantage to verbose languages like **Java** in difference to condensed ones like **Haskell**. I quantized each of the languages independently and re-run the rest of the analysis. As you can see in the table below, nothing really changed; **Ruby** and **C++** exchanged the position, but their ranks are really close to each other. The final history plot looks exactly the same.
+
+<div class="wrap">
+    <table class="head">
+      <table>
+    <tr>
+      <th>Rank</th>
+      <th>Language</th>
+      <th>Popularity, %</th>
+      <th>Moves</th>
+    </tr>
+    </table>
+    <div class="inner_table">
+    <table>
+    <tr>
+      <td>1.</td>
+      <td>Python</td>
+      <td>16.3</td>
+      <td>+ 0.2</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Java</td>
+      <td>14.6</td>
+      <td>- 0.7</td>
+    </tr>
+  <tr>
+    <td>3.</td>
+    <td>C</td>
+    <td>9.8</td>
+    <td>+ 0.6</td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>Ruby</td>
+    <td>8.7</td>
+    <td>+ 0.4</td>
+  </tr>
+  <tr>
+    <td>5.</td>
+    <td>PHP</td>
+    <td>8.6</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>6.</td>
+    <td>C++</td>
+    <td>8.5</td>
+    <td>- 0.6</td>
+  </tr>
+  <tr>
+    <td>7.</td>
+    <td>C#</td>
+    <td>5.6</td>
+    <td>- 0.5</td>
+  </tr>
+  <tr>
+    <td>8.</td>
+    <td>Objective-C</td>
+    <td>3.7</td>
+    <td>- 0.3</td>
+  </tr>
+  <tr>
+    <td>9.</td>
+    <td>Go</td>
+    <td>3.4</td>
+    <td>+ 0.2</td>
+  </tr>
+  <tr>
+    <td>10.</td>
+    <td>Swift</td>
+    <td>2.6</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>11.</td>
+    <td>Scala</td>
+    <td>2.3</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>12.</td>
+    <td>Perl</td>
+    <td>2.2</td>
+    <td>+ 0.2</td>
+  </tr>
+  <tr>
+    <td>13.</td>
+    <td>Haskell</td>
+    <td>1.9</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>14.</td>
+    <td>R</td>
+    <td>1.8</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>15.</td>
+    <td>Lua</td>
+    <td>1.8</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>16.</td>
+    <td>Matlab</td>
+    <td>1.6</td>
+    <td>- 0.1</td>
+  </tr>
+  <tr>
+    <td>17.</td>
+    <td>Clojure</td>
+    <td>1.6</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>18.</td>
+    <td>Rust</td>
+    <td>1.2</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>19.</td>
+    <td>Erlang</td>
+    <td>1.1</td>
+    <td>+ 0.1</td>
+  </tr>
+  <tr>
+    <td>20.</td>
+    <td>Visual Basic</td>
+    <td>1.0</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>21.</td>
+    <td>Fortran</td>
+    <td>0.8</td>
+    <td>- 0.1</td>
+  </tr>
+  <tr>
+    <td>22.</td>
+    <td>Pascal</td>
+    <td>0.8</td>
+    <td> - </td>
+  </tr>
+</table>
+</div>
+</div>
+
 ## Notebook
 
 I used the following [Jupyter](http://jupyter.org/) notebook to prepare the post:
