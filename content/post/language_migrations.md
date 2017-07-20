@@ -66,7 +66,7 @@ Note that the colors represent proportions of source code in each language. We c
 
 * They ran an important project in **Java** but they'd rather code in Scala. Using Java might have been a constraint to complete a single project.
 
-Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 25 main programming languages throughout the rest of the post. Actually, 22, as we have no data about Lisp, Kotlin and Cobol.
+Of course, it would be wrong to conclude from this diagram that the guy moved from **Java** to **Markdown**, in 2014. More generally, since it is absurd to give up a programming language in favor of a markup one, we want to avoid any comparison between the languages that don't have the same purpose. That's why we focus on the sample of 25 main programming languages throughout the rest of the post.
 
 ## We did not include Javascript because ...
 
@@ -120,7 +120,7 @@ Here is the core code to compute the transition matrix between two consecutive y
 ```Python
 def get_transition_matrix_emd(user, year):
 
-    # lang2keep is the list of the 22 programming languages we kept
+    # lang2keep is the list of the 25 programming languages we kept
     # stairvalue() is the step function that comes from quantization
 
     # Build user's reactors for year and year+1
@@ -229,7 +229,7 @@ def power_iteration(A, nb_iterations=100, beta=0.85):
 
 ### Most popular languages on GitHub
 
-At last! Here is the reward: the stationary distribution of our [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). This probability distribution is independent of the initial distribution. It gives information about the stability of the process of random switching between languages. Thus, no matter how popular the languages are at the present time, the hypothetical future stationary state stays the same. Here is the popularity ranking of our 22 languages used on GitHub:
+At last! Here is the reward: the stationary distribution of our [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). This probability distribution is independent of the initial distribution. It gives information about the stability of the process of random switching between languages. Thus, no matter how popular the languages are at the present time, the hypothetical future stationary state stays the same. Here is the popularity ranking of our 25 languages used on GitHub:
 
 <style>
 table {
@@ -276,8 +276,8 @@ tr:nth-child(even) {
     <tr>
       <td>1.</td>
       <td>Python</td>
-      <td>16.1</td>
-      <td>11.3</td>
+      <td>16</td>
+      <td>11.2</td>
     </tr>
     <tr>
       <td>2.</td>
@@ -288,85 +288,85 @@ tr:nth-child(even) {
   <tr>
     <td>3.</td>
     <td>C</td>
-    <td>9.2</td>
-    <td>17.2</td>
+    <td>9.1</td>
+    <td>17.1</td>
   </tr>
   <tr>
     <td>4.</td>
     <td>C++</td>
-    <td>9.1</td>
+    <td>9</td>
     <td>12.6</td>
   </tr>
   <tr>
     <td>5.</td>
     <td>PHP</td>
-    <td>8.5</td>
-    <td>24.4</td>
+    <td>8.3</td>
+    <td>24.3</td>
   </tr>
   <tr>
     <td>6.</td>
     <td>Ruby</td>
-    <td>8.3</td>
+    <td>8.1</td>
     <td>2.6</td>
   </tr>
   <tr>
     <td>7.</td>
     <td>C#</td>
-    <td>6.1</td>
+    <td>6</td>
     <td>6.5</td>
   </tr>
   <tr>
     <td>8.</td>
     <td>Objective-C</td>
-    <td>4.0</td>
-    <td>3.3</td>
+    <td>3.9</td>
+    <td>3.2</td>
   </tr>
   <tr>
     <td>9.</td>
     <td>Go</td>
-    <td>3.2</td>
+    <td>3.1</td>
     <td>0.7</td>
   </tr>
   <tr>
     <td>10.</td>
     <td>Swift</td>
-    <td>2.6</td>
-    <td>0.3</td>
+    <td>2.5</td>
+    <td>0.4</td>
   </tr>
   <tr>
     <td>11.</td>
     <td>Scala</td>
     <td>2.2</td>
-    <td>0.3</td>
+    <td>0.4</td>
   </tr>
   <tr>
     <td>12.</td>
     <td>Perl</td>
-    <td>2.0</td>
+    <td>1.9</td>
     <td>0.9</td>
   </tr>
   <tr>
     <td>13.</td>
-    <td>R</td>
-    <td>1.8</td>
-    <td>0.3</td>
+    <td>Haskell</td>
+    <td>1.7</td>
+    <td>0.2</td>
   </tr>
   <tr>
     <td>14.</td>
-    <td>Haskell</td>
-    <td>1.8</td>
-    <td>0.2</td>
+    <td>R</td>
+    <td>1.7</td>
+    <td>0.4</td>
   </tr>
   <tr>
     <td>15.</td>
     <td>Lua</td>
-    <td>1.7</td>
+    <td>1.6</td>
     <td>0.7</td>
   </tr>
   <tr>
     <td>16.</td>
     <td>Matlab</td>
-    <td>1.7</td>
+    <td>1.6</td>
     <td>0.5</td>
   </tr>
   <tr>
@@ -390,20 +390,38 @@ tr:nth-child(even) {
   <tr>
     <td>20.</td>
     <td>Visual Basic</td>
-    <td>1.0</td>
-    <td>0.3</td>
+    <td>0.9</td>
+    <td>0.4</td>
   </tr>
   <tr>
     <td>21.</td>
-    <td>Fortran</td>
-    <td>0.9</td>
-    <td>0.3</td>
+    <td>Common Lisp</td>
+    <td>0.8</td>
+    <td>0.2</td>
   </tr>
   <tr>
     <td>22.</td>
-    <td>Pascal</td>
+    <td>Fortran</td>
     <td>0.8</td>
+    <td>0.3</td>
+  </tr>
+  <tr>
+    <td>23.</td>
+    <td>Kotlin</td>
+    <td>0.8</td>
+    <td>0.02</td>
+  </tr>
+  <tr>
+    <td>24.</td>
+    <td>Pascal</td>
+    <td>0.7</td>
+    <td>0.5</td>
+  </tr>
+  <tr>
+    <td>25.</td>
+    <td>Cobol</td>
     <td>0.6</td>
+    <td>0.01</td>
   </tr>
 </table>
 </div>
@@ -412,15 +430,15 @@ tr:nth-child(even) {
 <p align="center" class="caption">Popularity of languages according to
 <a href="https://en.wikipedia.org/wiki/Centrality">centrality measure</a> on GitHub</p>
 
-**Python** (16.1 %) appears to be the most attractive language, followed closely by **Java** (15.3 %). It's especially interesting since only 11.3 % of all source code on GitHub is written in **Python**.
+**Python** (16 %) appears to be the most attractive language, followed closely by **Java** (15.3 %). It's especially interesting since only 11.2 % of all source code on GitHub is written in **Python**.
 
 In Erik's ranking, **Go** was the big winner with 16.4 %. Since Erik based his approach on Google queries, it seems that the buzz around Go, which makes people wonder explicitly in blogs if they should move to this language, takes a bit of time to produce projects effectively written in **Go** on GitHub.
 
-Furthermore, **C** (9.2 %) is doing well in accoradance with Erik's grading of 14.3 %, though it is due to the amount of projects coded in **C** on GitHub.
+Furthermore, **C** (9.1 %) is doing well according to Erik's grading of 14.3 %, though it is due to the amount of projects coded in **C** on GitHub.
 
 Although there are ten times more lines of code on GitHub in **PHP** than in **Ruby**, they have the same stationary distribution.
 
-**Go** (3.2 %) appears on the 9th position which is largely honorable given the small proportion (0.9 %) of **Go** projects which are hosted on GitHub. For example the same proportion of projects are written in **Perl**, but this language doesn't really stir up passion (2 % popularity).
+**Go** (3.1 %) appears on the 9th position which is largely honorable given the small proportion (0.7 %) of **Go** projects which are hosted on GitHub. For example the same proportion of projects are written in **Perl**, but this language doesn't really stir up passion (1.9 % popularity).
 
 ### What about sticking to a language ?
 
@@ -452,13 +470,13 @@ This is our matrix independently sorted:
 <img src="/post/language_migrations/sum_matrix_22lang_eig.svg" class="fig">
 <p align="center" class="caption">source{d}'s sorted transition matrix, original order</p>
 
-* Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 22% chance on average.
+* Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 24% chance on average.
 
 * Besides, according to Erik's matrix, people switch from **Ojective-C** to **Swift** and back with greater probabilities - 24% and 19% accordingly.
 
 * Similarly, a **Visual Basic** developer has more chance (24%) to move to **C#** while Erik's is almost sure in this transition with 92% chance.
 
-* Users of **Clojure**, **C#** and, above all, **Scala** would rather switch to **Java** with respectively 22, 29 and 40% chance.
+* Users of **Clojure**, **C#** and, above all, **Scala** would rather switch to **Java** with respectively 21, 29 and 39% chance.
 
 * People using numerical and statistical environments such as **Fortran** (36 %), **Matlab** (33 %) or **R** (40 %) are most likely to switch to **Python** in contrast to Erik's matrix which predicts **C** as their future language.
 
@@ -512,7 +530,7 @@ The thickness of each band corresponds to the value in the dominant eigenvector.
 
 * Regarding **Go**, the popularity stays relatively low. However, the dynamics is clearly positive.
 
-## Update
+## Update 1
 
 I read some concerns about the language verbosity bias after publishing the post. They are fair: the global quantization scheme may give an advantage to verbose languages like **Java** in difference to condensed ones like **Haskell**. I quantized each of the languages independently and re-run the rest of the analysis. As you can see in the table below, nothing really changed; **Ruby** and **C++** exchanged the position, but their ranks are really close to each other. The final history plot looks exactly the same.
 
@@ -531,7 +549,7 @@ I read some concerns about the language verbosity bias after publishing the post
     <tr>
       <td>1.</td>
       <td>Python</td>
-      <td>16.3</td>
+      <td>16.2</td>
       <td>+ 0.2</td>
     </tr>
     <tr>
@@ -543,49 +561,49 @@ I read some concerns about the language verbosity bias after publishing the post
   <tr>
     <td>3.</td>
     <td>C</td>
-    <td>9.8</td>
+    <td>9.7</td>
     <td>+ 0.6</td>
   </tr>
   <tr>
     <td>4.</td>
     <td>Ruby</td>
-    <td>8.7</td>
+    <td>8.5</td>
     <td>+ 0.4</td>
   </tr>
   <tr>
     <td>5.</td>
     <td>PHP</td>
-    <td>8.6</td>
+    <td>8.4</td>
     <td>+ 0.1</td>
   </tr>
   <tr>
     <td>6.</td>
     <td>C++</td>
-    <td>8.5</td>
+    <td>8.4</td>
     <td>- 0.6</td>
   </tr>
   <tr>
     <td>7.</td>
     <td>C#</td>
-    <td>5.6</td>
+    <td>5.5</td>
     <td>- 0.5</td>
   </tr>
   <tr>
     <td>8.</td>
     <td>Objective-C</td>
-    <td>3.7</td>
+    <td>3.6</td>
     <td>- 0.3</td>
   </tr>
   <tr>
     <td>9.</td>
     <td>Go</td>
-    <td>3.4</td>
+    <td>3.3</td>
     <td>+ 0.2</td>
   </tr>
   <tr>
     <td>10.</td>
     <td>Swift</td>
-    <td>2.6</td>
+    <td>2.5</td>
     <td> - </td>
   </tr>
   <tr>
@@ -597,31 +615,31 @@ I read some concerns about the language verbosity bias after publishing the post
   <tr>
     <td>12.</td>
     <td>Perl</td>
-    <td>2.2</td>
+    <td>2.1</td>
     <td>+ 0.2</td>
   </tr>
   <tr>
     <td>13.</td>
     <td>Haskell</td>
-    <td>1.9</td>
+    <td>1.8</td>
     <td>+ 0.1</td>
   </tr>
   <tr>
     <td>14.</td>
     <td>R</td>
-    <td>1.8</td>
+    <td>1.7</td>
     <td> - </td>
   </tr>
   <tr>
     <td>15.</td>
     <td>Lua</td>
-    <td>1.8</td>
+    <td>1.7</td>
     <td>+ 0.1</td>
   </tr>
   <tr>
     <td>16.</td>
     <td>Matlab</td>
-    <td>1.6</td>
+    <td>1.5</td>
     <td>- 0.1</td>
   </tr>
   <tr>
@@ -645,24 +663,46 @@ I read some concerns about the language verbosity bias after publishing the post
   <tr>
     <td>20.</td>
     <td>Visual Basic</td>
-    <td>1.0</td>
+    <td>0.9</td>
     <td> - </td>
   </tr>
   <tr>
     <td>21.</td>
-    <td>Fortran</td>
+    <td>Common Lisp</td>
     <td>0.8</td>
-    <td>- 0.1</td>
+    <td> - </td>
   </tr>
   <tr>
     <td>22.</td>
-    <td>Pascal</td>
+    <td>Fortran</td>
+    <td>0.7</td>
+    <td>- 0.1</td>
+  </tr>
+  <tr>
+    <td>23.</td>
+    <td>Kotlin</td>
     <td>0.8</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>24.</td>
+    <td>Pascal</td>
+    <td>0.7</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>25.</td>
+    <td>Cobol</td>
+    <td>0.6</td>
     <td> - </td>
   </tr>
 </table>
 </div>
-</div>
+</div
+
+## Update 2
+
+I have added the missing three languages : **Cobol**, **Kotlin**, and **Common Lisp**.
 
 ## Notebook
 
