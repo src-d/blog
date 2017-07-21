@@ -52,7 +52,7 @@ This is where [Dirichlet's box principle](https://en.wikipedia.org/wiki/Pigeonho
 works: you are doomed to have collisions, whatever mapping algorithm you choose.
 
 {{% caption title="Shadowmatic" src="/post/lapjv/shadowmatic.jpg" %}}
-[Shadowmatic](http://www.shadowmatic.com)
+3D -> 2D projection illusion in [Shadowmatic](http://www.shadowmatic.com)
 {{% /caption %}}
 
 Luckily, the following two assumptions stand:
@@ -746,7 +746,7 @@ I used the following [Jupyter](http://jupyter.org/) notebook
 ([link](https://gist.github.com/vmarkovtsev/74e3a973b19113047fdb6b252d741b42))
 to prepare this post:
 
-<script src="https://gist.github.com/vmarkovtsev/74e3a973b19113047fdb6b252d741b42.js"></script>
+{{% gist vmarkovtsev "74e3a973b19113047fdb6b252d741b42" %}}
 
 ## Conclusion
 
