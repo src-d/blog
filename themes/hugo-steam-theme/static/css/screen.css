@@ -182,13 +182,13 @@ header.page-header {
   margin-bottom: 3em;
 }
 
-#nav a:link,a:visited { 
-  border-radius: 0 0 8px 8px; 
+#nav a:link,a:visited {
+  border-radius: 0 0 8px 8px;
   padding:0px 15px;
 }
 #nav ul {
   margin:0;
-  margin-left: 20px; 
+  margin-left: 20px;
   margin-right: 18%;
   padding: 0;
   color: white;
@@ -687,7 +687,7 @@ section.bloginfo {
 
 section.mailchimp {
   padding-top: 15px;
-  border-top: 1px solid #ecf0f1; 
+  border-top: 1px solid #ecf0f1;
 }
 
 section.author .meta {
@@ -710,4 +710,37 @@ h1.posts-tagged {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 16px;
+}
+
+/**
+ * Shortcodes styles
+ */
+
+.centered {
+  text-align: center;
+}
+
+figure > figcaption {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.scroll-code {
+  margin-bottom: 20px;
+}
+
+.scroll-code pre {
+  height: 100%;
+  position: relative;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.scroll-code code {
+  position: absolute;
+  overflow-y: auto;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
 }
