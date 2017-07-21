@@ -712,6 +712,10 @@ h1.posts-tagged {
   font-size: 16px;
 }
 
+iframe.video {
+  frameborder: 0;
+}
+
 /**
  * Shortcodes styles
  */

@@ -37,3 +37,11 @@ Renders an image with caption
 caption of the image, html and md allowed
 {{% /caption %}}
 ```
+
+### YouTube video
+
+Display a YouTube video
+
+```
+{{% youtube VIDEO_ID %}}
+```
