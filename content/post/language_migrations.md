@@ -130,13 +130,19 @@ Function to compute a transition matrix in Python
 
 Finally, after summing the flow matrices over users and over the last 16 years (we will consider yearly transitions below), we obtain the resulting transition matrix. Let's now compare it to the contingency table compiled by Erik from Google queries. The following figures were plotted using [Erik's script](https://github.com/erikbern/eigenstuff/blob/master/analyze.py).
 
+{{% grid %}}
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/sum_matrix_25lang.svg" %}}
 source{d}'s flow transition matrix
 {{% /caption %}}
+{{% /grid-cell %}}
 
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/erik_red.png" %}}
 Erik's contingency table
 {{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 Compared to Erik's table we've got some elements on the main diagonal of our transition matrix. We will see later how to take an advantage of it. However, although the dataset we used is different, we notice many relevant similarities and perceive the same kind of language profile.
 
@@ -386,13 +392,19 @@ In the rest of the post we will consider our first representation of the dominan
 
 Erik's transition matrix is sorted so that the most popular languages appear at the bottom. We sort ours in the same order to compare them:
 
+{{% grid %}}
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/sum_matrix_wdiag_25lang_eig.svg" %}}
 source{d}'s sorted transition matrix, Erik's order
 {{% /caption %}}
+{{% /grid-cell %}}
 
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/erik_green.png" %}}
 Erik's sorted transition matrix
 {{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 This is our matrix independently sorted:
 
@@ -416,21 +428,33 @@ source{d}'s sorted transition matrix, original order
 
 As we mentioned earlier, before summing the transition matrices over time, we now consider specific years and examine how these yearly matrices look like. Do they express the same language profiles? How has it been evolving since the early 2000's? Here is a sample of 4 matrices from various timeline intervals:
 
+{{% grid %}}
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/P_2005.svg" %}}
 2005 - 2006
 {{% /caption %}}
+{{% /grid-cell %}}
 
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/P_2011.svg" %}}
 2011 - 2012
 {{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
+{{% grid %}}
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/P_2008.svg" %}}
 2008 - 2009
 {{% /caption %}}
+{{% /grid-cell %}}
 
+{{% grid-cell %}}
 {{% caption src="/post/language_migrations/P_2015.svg" %}}
 2015 - 2016
 {{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 {{% center %}}
 Temporal evolution of transition matrices

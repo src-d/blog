@@ -45,3 +45,25 @@ Display a YouTube video
 ```
 {{% youtube VIDEO_ID %}}
 ```
+
+### Gist
+
+Display a Gist (even an IPython Notebook)
+
+```
+{{% gist username gist_id %}}
+```
+
+### Grid of 2 elements
+
+```
+{{% grid %}}
+{{% grid-cell %}}
+SOMETHING LEFT
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+SOMETHING RIGHT
+{{% /grid-cell %}}
+{{% /grid %}}
+```
