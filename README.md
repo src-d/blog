@@ -67,3 +67,21 @@ SOMETHING RIGHT
 {{% /grid-cell %}}
 {{% /grid %}}
 ```
+
+### Tweet
+
+Renders a tweet
+
+```
+{{% tweet TWEET_ID %}}
+```
+
+### Anchor
+
+Anchor you can link to with `[foo](#anchor)`:
+
+```
+{{% anchor "anchor" %}}
+```
+
+```
