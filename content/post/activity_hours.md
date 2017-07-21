@@ -8,24 +8,9 @@ description: "This post was inspired by <a href=\"https://stackoverflow.blog/201
 categories: ["science", "technical"]
 ---
 
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-.twitter-tweet {
-  margin-left: auto;
-  margin-right: auto;
-}
-.verbatim {
-  font-size: 0.85em;
-}
-</style>
-
 I recently stumbled upon an interesting and straightforward data exploration made by David Robinson from StackOverflow: [What programming languages are used late at night?](https://stackoverflow.blog/2017/04/19/programming-languages-used-late-night/). Among other fun facts about the programming crowd, he discovered that Haskell is different from mainstream language, the SO questions' frequency grows much stronger in the evenings compared to other languages. It is intriguing to compare these observations with how people actually code on GitHub, and besides, our CEO [Eiso Kant](https://twitter.com/eisokant) is fond of Haskell enough to let me check, he-he. So I decided to use my [Open Source Friday](https://github.com/src-d/guide/blob/master/open-source/open_source_fridays.md) to work on this post.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Languages hourly popularity on <a href="https://twitter.com/StackOverflow">@StackOverflow</a> <a href="https://t.co/ZwIqk9dhur">https://t.co/ZwIqk9dhur</a><br>Probably will research on GitHub this <a href="https://twitter.com/hashtag/OpenSourceFriday?src=hash">#OpenSourceFriday</a></p>&mdash; Markovtsev Vadim (@tmarkhor) <a href="https://twitter.com/tmarkhor/status/855317847299334144">April 21, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{% tweet 855317847299334144 %}}
 
 ### What we will use
 
@@ -42,11 +27,14 @@ Besides the data sets, we need the computing resources to digest the datasets. I
 
 The first thing we shall do is to launch the smallest Dataproc cluster. I have a post about [how to setup a working PySpark in Jupyter](https://blog.sourced.tech/post/dataproc_jupyter/), it covers the basic stuff. The initialization script [evolved](https://storage.googleapis.com/srcd-dataproc/minimal.sh) since then.
 
-![dataproc1](/post/activity_hours/dataproc1.png)
-<p align="center" class="dt">We create a 2-node, 8-core Dataproc cluster.</p>
+{{% caption src="/post/activity_hours/dataproc1.png" %}}
+We create a 2-node, 8-core Dataproc cluster.
+{{% /caption %}}
 
-![dataproc2](/post/activity_hours/dataproc2.png)
-<p align="center" class="dt">Custom initialization script.</p>
+
+{{% caption src="/post/activity_hours/dataproc2.png" %}}
+Custom initialization script.
+{{% /caption %}}
 
 We specify `gs://srcd-dataproc/minimal.sh` as the initialization script here. It should be accessible by everybody.
 It normally takes less than 5 minutes to get the cluster running and fully operational. The master and worker nodes will be prepared to our requirements. Particularly, the master node will have:
@@ -57,24 +45,25 @@ It normally takes less than 5 minutes to get the cluster running and fully opera
 
 The next step is to download the datasets. data.world has a size limit which prevents from uploading files bigger than 50MB, so we decided to upload ours to Google Drive for ease of use.
 
-<pre class="verbatim">
+```
 $ sudo su
 $ cd
 $ drive init
 $ drive pull -id 0B-w8jGUJto0iMUk4dDRFOUtrV28
 $ drive pull -id 0B-w8jGUJto0iS1pZR1NGSlNZcDQ
-</pre>
+```
 
 `0B-w8jGUJto0iMUk4dDRFOUtrV28` and `0B-w8jGUJto0iS1pZR1NGSlNZcDQ` are Google Drive identifiers of the datasets, [452M commits on GitHub](https://drive.google.com/drive/folders/0B-w8jGUJto0iMUk4dDRFOUtrV28) and [GitHub repositories - languages distribution](https://drive.google.com/drive/folders/0B-w8jGUJto0iS1pZR1NGSlNZcDQ). It takes about 8 minutes to pull them (35 gigs).
 
-![gdrive](/post/activity_hours/gdrive.png)
-<p align="center" class="dt"><a href="https://github.com/odeke-em/drive">odeke-em/drive</a> at work.</p>
+{{% caption src="/post/activity_hours/gdrive.png" %}}
+[odeke-em/drive](https://github.com/odeke-em/drive) at work.
+{{% /caption %}}
 
 Now we need to upload the files to either HDFS or Google Cloud Storage. I prefer the latter because it is persistent whereas HDFS disappears when the cluster is deleted ([GCP documentation](https://cloud.google.com/dataproc/docs/resources/faq#data_access_availability))
 
-<pre class="verbatim">
+```
 $ gsutil -m cp -r GitHubCommits gs://my-gcs-bucket
-</pre>
+```
 
 We are using the `-m` switch here for concurrent upload streams - they speed up the process dramatically. More information about [gsutil](https://cloud.google.com/storage/docs/gsutil).
 
@@ -100,8 +89,7 @@ Open `http://data-science-m:8123/` (again, read [the previous post](https://blog
 
 The above is prettified json but in the file it is a single line. We would like to aggregate commits by repository, then by weekday and finally by hour. For example,
 
-<div id="pre-spark"></div>
-
+{{% codescroll height="400" %}}
 ```python
 (('apache/spark', 0, 0), 68)
 (('apache/spark', 0, 1), 22)
@@ -270,24 +258,19 @@ The above is prettified json but in the file it is a single line. We would like 
 (('apache/spark', 6, 8), 13)
 (('apache/spark', 6, 9), 39)
 ```
-
-<style>
-#pre-spark + pre {
-  max-height: 400px;
-  overflow-y: auto;
-}
-</style>
+{{% /codescroll %}}
 
 The tricky part is, of course, dealing with time. People commit with invalid timezones quite often. Besides, we do not want to mix users living in different countries... and we've only got "t"-s like
 
-<pre class="verbatim">
+```
 2015-02-14 23:37:53 -0800 -0800
-</pre>
+```
 
 I am sure you can do better, but I decided to cut corners and analyze on the [PST](https://en.wikipedia.org/wiki/UTC%E2%88%9208:00) timezone; Silicon Valley and friends ;).
 
-![timezones](/post/activity_hours/timezones.png)
-<p align="center" class="dt">World's timezones taken from <a href="https://en.wikipedia.org/wiki/Time_zone">Wikipedia</a>.</p>
+{{% caption src="/post/activity_hours/timezones.png" %}}
+World's timezones taken from [Wikipedia](https://en.wikipedia.org/wiki/Time_zone).
+{{% /caption %}}
 
 There is still an issue I need to deal with though: PST turns into PDT and back, and we need to keep track of the time offset in each part of the year. Anyway, here is the complete code:
 
@@ -327,14 +310,15 @@ sc.textFile("gs://my-gcs-bucket/*.lzo", minPartitions=1000) \
 
 Before running it, you would probably like to dynamically resize your Dataproc cluster.
 
-![resizing Dataproc](/post/activity_hours/resize.png)
-<p align="center" class="dt">My favourite Dataproc feature - dynamic cluster resizing using the cheap preemptible nodes.</p>
+{{% caption src="/post/activity_hours/resize.png" %}}
+My favourite Dataproc feature - dynamic cluster resizing using the cheap preemptible nodes.
+{{% /caption %}}
 
 The job normally takes about 20 minutes on a 32-node 4-core configuration. When it finishes, we must copy results locally to work with them:
 
-<pre class="verbatim">
+```
 # gsutil cp gs://my-gcs-bucket/pst_stats/part-00000 pst_stats.txt
-</pre>
+```
 
 For those of you who are lazy or don't want to spend on the computational resources, I uploaded that file to [Google Drive](https://drive.google.com/file/d/0B-w8jGUJto0iRl9UWHpiOXQ3LWc).
 
@@ -419,82 +403,101 @@ There are several tricks here that I apply:
 * `Circle` artist hides the axes in the inner circle so that the text is drawn clear.
 * We can additionally specify `normalize=True` to see the relative difference in frequency distributions.
 
-<div class="grid2x">
-<div>
-<div>
-<img src="/post/activity_hours/go.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Go")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/haskell.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Haskell")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/d.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("D")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/elm.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Elm")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/rust.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Rust")</code></pre></p>
-</div>
-</div>
-<div>
-<div>
-<img src="/post/activity_hours/go_norm.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Go", normalize=True)</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/java.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Java")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/python.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("Python")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/js.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("JavaScript")</code></pre></p>
-</div>
-<div>
-<img src="/post/activity_hours/php.png">
-<p align="center" class="dt"><pre><code class="hljs python">hplot_polar("PHP")</code></pre></p>
-</div>
-</div>
-</div>
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/go.png" %}}
+```python
+hplot_polar("Go")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
 
-<style>
-.grid2x {
-  display: flex;
-  width: 1000px;
-  overflow: visible;
-  margin-left: -200px;
-}
-.grid2x pre {
-  text-align: center;
-}
-@media (max-width: 1000px) {
-  .grid2x {
-    width: 100%;
-    margin-left: 0;
-  }
-  .grid2x > div {
-    width: 50%;
-  }
-  .grid2x pre {
-    font-size: 0.75em;
-  }
-}
-</style>
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/haskell.png" %}}
+```python
+hplot_polar("Haskell")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/d.png" %}}
+```python
+hplot_polar("D")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/elm.png" %}}
+```python
+hplot_polar("Elm")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/rust.png" %}}
+```python
+hplot_polar("Rust")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/go_norm.png" %}}
+```python
+hplot_polar("Go", normalize=True)
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/java.png" %}}
+```python
+hplot_polar("Java")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/python.png" %}}
+```python
+hplot_polar("Python")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/js.png" %}}
+```python
+hplot_polar("JavaScript")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/activity_hours/php.png" %}}
+```python
+hplot_polar("PHP")
+```
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 ### Conclusions
 
-We see that the programming languages can be divided into two highly distinguishable groups. 
+We see that the programming languages can be divided into two highly distinguishable groups.
 
-The first is "weekend languages" (on the left), in which we see new, emerging species as well as die-hards like Haskell. That group has nearly the same contribution activity throughout the whole week and no "lunch time" productivity fall. The larger the `(weekends - weekdays)` difference, the more emerging is the language, e.g. Elm and D. 
+The first is "weekend languages" (on the left), in which we see new, emerging species as well as die-hards like Haskell. That group has nearly the same contribution activity throughout the whole week and no "lunch time" productivity fall. The larger the `(weekends - weekdays)` difference, the more emerging is the language, e.g. Elm and D.
 
 So why do Haskell programmers ask relatively more questions on StackOverflow in the evening? We can see from the coding habit that Haskelistas become very active after 8 pm, almost the same level as on the general "productivity peak" at 3 pm.
 
