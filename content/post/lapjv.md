@@ -737,8 +737,9 @@ Finding two consecutive minimums, optimized code with AVX2 intrinsics.
 lapjv maps 2500 MNIST samples in 5 seconds on my laptop and finally we see the
 precious result:
 
-![mapping](/post/lapjv/mapping.png)
-<p align="center" class="caption">Linear Assignment Problem solution for MNIST after t-SNE.</p>
+{{% caption src="/post/lapjv/mapping.png" title="mapping" %}}
+Linear Assignment Problem solution for MNIST after t-SNE.
+{{% /caption %}}
 
 #### Notebook
 
