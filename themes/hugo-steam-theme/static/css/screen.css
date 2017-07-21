@@ -748,3 +748,25 @@ figure > figcaption {
   right: 15px;
   bottom: 15px;
 }
+
+.grid2x {
+  display: flex;
+  width: 1000px;
+  overflow: visible;
+  margin-left: -200px;
+}
+
+.grid2x-cell {
+  width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .grid2x {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .grid2x > div {
+    width: 50%;
+  }
+}
