@@ -1,8 +1,7 @@
 {{ if isset .Params "author" }}
 {{ $author := index .Site.Params.authors .Params.author }}
-    <div class="authorimage" style="background: url({{$author.thumbnail}})"></div>
     <p>
-      by <b>{{$author.name}}</b>
+      <b>By {{$author.name}}</b>
       <time datetime="{{ .Date.Format "02 January 2006" }}">{{ .Date.Format "02 January 2006" }}</time></div>
     </p>
 {{ end }}
