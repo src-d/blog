@@ -665,9 +665,3 @@ It would be more appropriate to see Erik's contingency table as a kind of the se
 
 I want to thank my tutor at source{d}, [Vadim Markovtsev](https://twitter.com/tmarkhor), for his guidance all along this study, as well as people working with us for their patience in giving me valuable insights.
 
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-<script async type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>

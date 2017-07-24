@@ -78,10 +78,10 @@ Renders a tweet
 
 ### Anchor
 
-Anchor you can link to with `[foo](#anchor)`:
+Anchor you can link to with `[foo](#anchor-ID)`:
 
 ```
-{{% anchor "anchor" %}}
+{{% anchor "ID" %}}
 ```
 
 ```
