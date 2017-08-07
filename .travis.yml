@@ -12,4 +12,4 @@ script:
   - make build
 
 after_success:
-  - make docker-push
+  - make docker-push-ci
