@@ -11,6 +11,8 @@ DOCKER_REGISTRY ?= quay.io
 DOCKER_USERNAME ?=
 DOCKER_PASSWORD ?=
 
+SOURCE_BRANCH := master
+
 # System
 URL_OS = 64bit
 OS = amd64
@@ -63,7 +65,7 @@ all: build
 init:
 	@if [ "$(HUGO_THEME)" == "" ]; then \
 		echo "ERROR! Please set the env variable 'HUGO_THEME' (http://mcuadros.github.io/autohugo/documentation/working-with-autohugo/)"; \
-	  exit 1; \
+		exit 1; \
 	fi;
 
 dependencies: init
@@ -96,6 +98,11 @@ docker-push: build
 	$(DOCKER) build -q -t $(DOCKER_ORG)/${PROJECT} -f $(BASE_PATH)/Dockerfile .
 	$(DOCKER) tag $(DOCKER_ORG)/${PROJECT} $(DOCKER_ORG)/${PROJECT}:$(TAG)
 	$(DOCKER) push $(DOCKER_ORG)/${PROJECT}:$(TAG)
+
+docker-push-ci:
+	if [[ "$(TRAVIS_PULL_REQUEST)" = "false" && "$(TRAVIS_BRANCH)" = "$(SOURCE_BRANCH)" ]]; then \
+		make docker-push; \
+	fi
 
 clean:
 	rm -rf $(HUGO_PATH)
