@@ -33,7 +33,7 @@ All main talks lasted 45 minutes, 30 for the talk and 15 for the questions and a
 
 In the first morning talk, [Ramón Guijarro](https://twitter.com/soyguijarro), a frontend developer at Tuenti, talked about how to develop multi-threaded applications in the web using workers.
 
-Ramón started his talk mentioning how the release of the iPhone and afterwards the App Store started a change in user expectations. So we've had to move from web pages to web apps to meet those user expectations on the web.
+Ramón started his talk by mentioning how the release of the iPhone and App Store motivated a change in user expectations. So we've had to move from web pages to web apps to meet those user expectations on the web.
 
 Users expect their apps to have smooth animations and have a fast response, which can be achieved by optimizing the JavaScript code to run at 60fps through either splitting big time consuming tasks into chunks or moving them to another thread to stop blocking the UI.
 
