@@ -7,39 +7,6 @@ image: /post/language_migrations/background.png
 description: "This post is inspired by ''The eigenvector of why we moved from language X to language Y'', by Erik Bernhardsson. Based on GitHub repositories, we build our own transition matrix after solving the flow optimization problem. The results are reflecting the history of programming language competition in the open source world."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-img.fig {
-  width: 600px;
-}
-.grid2x {
-  display: flex;
-  width: 1000px;
-  overflow: visible;
-  margin-left: -200px;
-}
-.grid2x pre {
-  text-align: center;
-}
-.grid2x-cell {
-  width: 50%;
-}
-@media (max-width: 1000px) {
-  .grid2x {
-    width: 100%;
-    margin-left: 0;
-  }
-  .grid2x > div {
-    width: 50%;
-  }
-  .grid2x pre {
-    font-size: 0.75em;
-  }
-}
-</style>
 
 Have you ever been struggling with an nth obscure project, thinking : "_I could do the job with this language but why not switch to another one which would be more enjoyable to work with_" ? In his awesome blog post : [The eigenvector of "Why we moved from language X to language Y"](https://erikbern.com/2017/03/15/the-eigenvector-of-why-we-moved-from-language-x-to-language-y.html), [Erik Bernhardsson](https://github.com/erikbern/eigenstuff) generated an N*N contingency table of all Google queries related to changing languages. However, when I read it, I couldn't help wondering what the proportion of people who effectively switched is. Thus, it has become engaging to deepen this idea and see how the popularity of languages changes among GitHub users.
 
@@ -55,8 +22,9 @@ I invite you to take a look at [Vadim Markovtsev](https://github.com/vmarkovtsev
 
 To have a better understanding of what's going on, I find it nice to visualize developer's language usage history with a kind of [Gantt diagram](https://en.wikipedia.org/wiki/Gantt_chart).
 
-<img src="/post/language_migrations/3710313.png" class="fig">
-<p align="center" class="caption">Language usage history of GitHub user n°X</p>
+{{% caption src="/post/language_migrations/3710313.png" title="Language usage historu of GitHub user #x" %}}
+Language usage history of GitHub user n°X
+{{% /caption %}}
 
 Note that the colors represent proportions of source code in each language. We can already deduce several things from this diagram:
 
@@ -76,8 +44,9 @@ The first reason is that 40% of Github users we analyzed had JS in their profile
 
 You will surely agree that **"Hello world"** GitHub repositories do not really count as switching to another language. So, we decide to quantize the contributions in our dataset in order to reduce the noise. For this reason, we represent the distribution of GitHub contributions per byte size in the following bar plot.
 
-<img src="/post/language_migrations/contributions.png" class="fig">
-<p align="center" class="caption">Distribution of GitHub contributions by size</p>
+{{% caption src="/post/language_migrations/contributions.png" title="Distribution of GitHub contributions by size" %}}
+Distribution of GitHub contributions by size
+{{% /caption %}}
 
 As we can see, it has a very long tail and most of the contributions are tiny ones. To approximate the distribution, we apply [kernel density estimation](http://scikit-learn.org/stable/auto_examples/neighbors/plot_kde_1d.html#sphx-glr-auto-examples-neighbors-plot-kde-1d-py), which is the orange curve in the last figure. Finally, we get the quantization by dividing the area under the curve into 10 equal parts. The groups are numbered starting with 0.
 
@@ -89,8 +58,9 @@ For every GitHub user, we aggregate annual vectors ; we will call them reactors 
 
 An elegant approach to this problem, which is effective both in coding and computational time, is offered in [`PyEMD`](https://pypi.python.org/pypi/pyemd): a Python wrapper for the [Earth Mover's Distance](https://en.wikipedia.org/wiki/Earth_mover's_distance) which is Numpy friendly. This distance measure -- better than the euclidean distance for histogram comparison -- is particularly interesting because it is based on [Linear Programming](https://en.wikipedia.org/wiki/Linear_programming) (LP). Indeed, it can be seen as the solution of the following [transportation problem](http://www.me.utexas.edu/~jensen/models/network/net8.html), where \\(~\\sum_ {i=1}^N s_ i = \\sum_ {j=1}^N d_ j = 1\\)
 
-<img src="/post/language_migrations/emd.png" class="fig">
-<p align="center" class="caption">Transportation Problem with supplies and demands</p>
+{{% caption src="/post/language_migrations/emd.png" title="Transportation Problem with supplies and demands" %}}
+Transportation Problem with supplies and demands
+{{% /caption %}}
 
 We can see that for every pair of years, the numbers of bytes are either considered as "supplies" or "demands". Besides, since \\(~\\sum_ {i=1}^N s_ i = \\sum_ {j=1}^N d_ j = 1\\),
 it becomes a [cost-minimization flow problem](https://en.wikipedia.org/wiki/Minimum-cost_flow_problem). It's formulated below.
@@ -154,24 +124,25 @@ def get_transition_matrix_emd(user, year):
 
     return P
 ```
-<p align="center" class="caption">Function to compute a transition matrix in Python</p>
+{{% center %}}
+Function to compute a transition matrix in Python
+{{% /center %}}
 
 Finally, after summing the flow matrices over users and over the last 16 years (we will consider yearly transitions below), we obtain the resulting transition matrix. Let's now compare it to the contingency table compiled by Erik from Google queries. The following figures were plotted using [Erik's script](https://github.com/erikbern/eigenstuff/blob/master/analyze.py).
 
-<div class="grid2x">
-<div class="grid2x-cell">
-<div>
-<img src="/post/language_migrations/sum_matrix_25lang.svg">
-<p align="center" class="dt"><pre><code class="hljs python">source{d}'s flow transition matrix</code></pre></p>
-</div>
-</div>
-<div  class="grid2x-cell">
-<div>
-<img src="/post/language_migrations/erik_red.png">
-<p align="center" class="dt"><pre><code class="hljs python">Erik's contingency table</code></pre></p>
-</div>
-</div>
-</div>
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/sum_matrix_25lang.svg" %}}
+source{d}'s flow transition matrix
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/erik_red.png" %}}
+Erik's contingency table
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 Compared to Erik's table we've got some elements on the main diagonal of our transition matrix. We will see later how to take an advantage of it. However, although the dataset we used is different, we notice many relevant similarities and perceive the same kind of language profile.
 
@@ -224,55 +195,25 @@ def power_iteration(A, nb_iterations=100, beta=0.85):
 
  power_iteration(transition_matrix)
 ```
-<p align="center" class="caption">Power Iteration algorithm, Python.</p>
+{{% center %}}
+Power Iteration algorithm, Python.
+{{% /center %}}
 
 
 ### Most popular languages on GitHub
 
 At last! Here is the reward: the stationary distribution of our [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). This probability distribution is independent of the initial distribution. It gives information about the stability of the process of random switching between languages. Thus, no matter how popular the languages are at the present time, the hypothetical future stationary state stays the same. Here is the popularity ranking of our 25 languages used on GitHub:
 
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-}
-td, th {
-    text-align: left;
-    padding: 8px;
-    word-wrap: break-word;
-}
-th {
-    background: #eee;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-.wrap {
-    margin-top:-30px;
-}
-.wrap table {
-    table-layout: fixed;
-}
-.inner_table {
-    margin-top:-48px;
-    height: 400px;
-    overflow-y: auto;
-    margin-bottom:30px;
-}
-</style>
-
-<div class="wrap">
-    <table class="head">
-      <table>
+<table>
+<thead>
     <tr>
       <th>Rank</th>
       <th>Language</th>
       <th>Popularity, %</th>
       <th>Source code, %</th>
     </tr>
-    </table>
-    <div class="inner_table">
-    <table>
+    </thead>
+    <tbody>
     <tr>
       <td>1.</td>
       <td>Python</td>
@@ -423,12 +364,13 @@ tr:nth-child(even) {
     <td>0.6</td>
     <td>0.01</td>
   </tr>
+  </tbody>
 </table>
-</div>
-</div>
 
-<p align="center" class="caption">Popularity of languages according to
-<a href="https://en.wikipedia.org/wiki/Centrality">centrality measure</a> on GitHub</p>
+{{% center %}}
+Popularity of languages according to
+<a href="https://en.wikipedia.org/wiki/Centrality">centrality measure</a> on GitHub
+{{% /center %}}
 
 **Python** (16 %) appears to be the most attractive language, followed closely by **Java** (15.3 %). It's especially interesting since only 11.2 % of all source code on GitHub is written in **Python**.
 
@@ -450,25 +392,25 @@ In the rest of the post we will consider our first representation of the dominan
 
 Erik's transition matrix is sorted so that the most popular languages appear at the bottom. We sort ours in the same order to compare them:
 
-<div class="grid2x">
-<div class="grid2x-cell">
-<div>
-<img src="/post/language_migrations/sum_matrix_wdiag_25lang_eig.svg">
-<p align="center" class="dt"><pre><code class="hljs python">source{d}'s sorted transition matrix, Erik's order</code></pre></p>
-</div>
-</div>
-<div class="grid2x-cell">
-<div>
-<img src="/post/language_migrations/erik_green.png">
-<p align="center" class="dt"><pre><code class="hljs python">Erik's sorted transition matrix</code></pre></p>
-</div>
-</div>
-</div>
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/sum_matrix_wdiag_25lang_eig.svg" %}}
+source{d}'s sorted transition matrix, Erik's order
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/erik_green.png" %}}
+Erik's sorted transition matrix
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
 
 This is our matrix independently sorted:
 
-<img src="/post/language_migrations/sum_matrix_22lang_eig.svg" class="fig">
-<p align="center" class="caption">source{d}'s sorted transition matrix, original order</p>
+{{% caption src="/post/language_migrations/sum_matrix_22lang_eig.svg" %}}
+source{d}'s sorted transition matrix, original order
+{{% /caption %}}
 
 * Developers coding in one of the 5 most popular languages (**Java**, **C**, **C++**, **PHP**, **Ruby**) are most likely to switch to **Python** with approx. 24% chance on average.
 
@@ -486,35 +428,43 @@ This is our matrix independently sorted:
 
 As we mentioned earlier, before summing the transition matrices over time, we now consider specific years and examine how these yearly matrices look like. Do they express the same language profiles? How has it been evolving since the early 2000's? Here is a sample of 4 matrices from various timeline intervals:
 
-<div class="grid2x">
-<div>
-<div>
-<img src="/post/language_migrations/P_2005.svg">
-<p align="center" class="dt"><pre><code class="hljs python">2005 - 2006</code></pre></p>
-</div>
-<div>
-<img src="/post/language_migrations/P_2011.svg">
-<p align="center" class="dt"><pre><code class="hljs python">2011 - 2012</code></pre></p>
-</div>
-</div>
-<div>
-<div>
-<img src="/post/language_migrations/P_2008.svg">
-<p align="center" class="dt"><pre><code class="hljs python">2008 - 2009</code></pre></p>
-</div>
-<div>
-<img src="/post/language_migrations/P_2015.svg">
-<p align="center" class="dt"><pre><code class="hljs python">2015 - 2016</code></pre></p>
-</div>
-</div>
-</div>
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/P_2005.svg" %}}
+2005 - 2006
+{{% /caption %}}
+{{% /grid-cell %}}
 
-<p align="center" class="caption">Temporal evolution of transition matrices</p>
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/P_2011.svg" %}}
+2011 - 2012
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/P_2008.svg" %}}
+2008 - 2009
+{{% /caption %}}
+{{% /grid-cell %}}
+
+{{% grid-cell %}}
+{{% caption src="/post/language_migrations/P_2015.svg" %}}
+2015 - 2016
+{{% /caption %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% center %}}
+Temporal evolution of transition matrices
+{{% /center %}}
 
 In the end, the evolution of these matrices over time seems to be affine, and we observe the same language profile every year. Thus, to highlight the time-line of this language profile, we apply the power iteration to each matrix. Earlier, we averaged the stationary distribution over the last 16 years but now we look at its chronological sequence. The resulting series of the dominant eigenvectors is presented below on the stack area plot.
 
-<img src="/post/language_migrations/eigenvect_stack_22lang.png" class="fig">
-<p align="center" class="caption">Stationary distribution of languages over the last 16 years</p>
+{{% caption src="/post/language_migrations/eigenvect_stack_22lang.png" %}}
+Stationary distribution of languages over the last 16 years
+{{% /caption %}}
 
 The thickness of each band corresponds to the value in the dominant eigenvector. The bands are sorted by the averaged popularity which we calculated before.
 
@@ -534,18 +484,16 @@ The thickness of each band corresponds to the value in the dominant eigenvector.
 
 I read some concerns about the language verbosity bias after publishing the post. They are fair: the global quantization scheme may give an advantage to verbose languages like **Java** in difference to condensed ones like **Haskell**. I quantized each of the languages independently and re-run the rest of the analysis. As you can see in the table below, nothing really changed; **Ruby** and **C++** exchanged the position, but their ranks are really close to each other. The final history plot looks exactly the same.
 
-<div class="wrap">
-    <table class="head">
-      <table>
+<table>
+      <thead>
     <tr>
       <th>Rank</th>
       <th>Language</th>
       <th>Popularity, %</th>
       <th>Moves</th>
     </tr>
-    </table>
-    <div class="inner_table">
-    <table>
+    </thead>
+    <tbody>
     <tr>
       <td>1.</td>
       <td>Python</td>
@@ -696,9 +644,8 @@ I read some concerns about the language verbosity bias after publishing the post
     <td>0.6</td>
     <td> - </td>
   </tr>
+</tbody>
 </table>
-</div>
-</div
 
 ## Update 2
 
@@ -708,7 +655,7 @@ I have added the missing three languages : **Cobol**, **Kotlin**, and **Common L
 
 I used the following [Jupyter](http://jupyter.org/) notebook to prepare the post:
 
-<script src="https://gist.github.com/warenlg/fc906334857bf66941165edfe8f76b4c.js"></script>
+{{% gist warenlg "fc906334857bf66941165edfe8f76b4c" %}}
 
 ## Conclusion
 
