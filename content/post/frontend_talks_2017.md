@@ -1,6 +1,6 @@
 ---
 author: erizocosmico
-date: 2017-07-10
+date: 2017-08-08
 title: "source{d} tech talks, frontend series"
 image: /post/frontend-talks/header-pic.jpg
 description: "Once every few months, source{d} organizes small conferences around very specific topics. On June 24th, the topic was frontend and the talks were hosted in our Madrid office. Almost 50 people joined us for a day full of things to learn about frontend technologies."
