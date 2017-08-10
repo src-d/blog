@@ -1,0 +1,13 @@
+.hljs-keyword {
+  color: #C3D31B;
+}
+
+.hljs-built_in,
+.hljs-params {
+  color: #e66cd7;
+}
+
+.hljs-string,
+.hljs-number {
+  color: #3EB1D0;
+}
