@@ -79,7 +79,7 @@ foo:
 build: dependencies
 	$(HUGO) -t $(THEME_NAME) --baseURL $(BASE_URL)
 
-server: build
+server: dependencies
 	$(HUGO) server -t $(THEME_NAME) -D -w --baseURL $(BASE_URL)
 
 docker-push: build

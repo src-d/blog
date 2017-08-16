@@ -4,19 +4,19 @@
 	<div class="inner">
 		<section class="footer-social">
 			{{ with .Site.Params.twitter }}
-		    <a href="//twitter.com/{{ . }}" target="_blank" title="Twitter"><i class="fa fa-2x fa-fw fa-twitter"></i> <span class="sr-only">Twitter</span></a>&nbsp;
+		    <a href="//twitter.com/{{ . }}" target="_blank" title="Twitter" data-tracked><i class="fa fa-2x fa-fw fa-twitter"></i> <span class="sr-only">Twitter</span></a>&nbsp;
 		    {{ end }}
 		    {{ with .Site.Params.github }}
-		    <a href="//github.com/{{ . }}" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="sr-only">GitHub</span></a>&nbsp;
+		    <a href="//github.com/{{ . }}" target="_blank" title="GitHub" data-tracked><i class="fa fa-2x fa-fw fa-github"></i> <span class="sr-only">GitHub</span></a>&nbsp;
 		    {{ end }}
 		    {{ with .Site.Params.medium }}
-		    <a href="//medium.com/{{ . }}" target="_blank" title="Medium"><i class="fa fa-2x fa-fw fa-medium"></i> <span class="sr-only">Medium</span></a>&nbsp;
+		    <a href="//medium.com/{{ . }}" target="_blank" title="Medium" data-tracked><i class="fa fa-2x fa-fw fa-medium"></i> <span class="sr-only">Medium</span></a>&nbsp;
 		    {{ end }}
 		    {{ with .Site.Params.angellist }}
-		    <a href="//angel.co/{{ . }}" target="_blank" title="Angel List"><i class="fa fa-2x fa-fw fa-angellist"></i> <span class="sr-only">AngelList</span></a>&nbsp;
+		    <a href="//angel.co/{{ . }}" target="_blank" title="Angel List" data-tracked><i class="fa fa-2x fa-fw fa-angellist"></i> <span class="sr-only">AngelList</span></a>&nbsp;
 		    {{ end }}
 		    {{ with .Site.Params.linkedin }}
-		    <a href="//linkedin.com/company-beta/{{ . }}" target="_blank" title="LinkedIn"><i class="fa fa-2x fa-fw fa-linkedin"></i> <span class="sr-only">LinkedIn</span></a>&nbsp;
+		    <a href="//linkedin.com/company-beta/{{ . }}" target="_blank" title="LinkedIn" data-tracked><i class="fa fa-2x fa-fw fa-linkedin"></i> <span class="sr-only">LinkedIn</span></a>&nbsp;
 		    {{ end }}
 		</section>
 

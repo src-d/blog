@@ -5,13 +5,13 @@
     <div class="author-details">
       {{$author.name}}
       {{ with $author.social.github }}
-      <a href="//github.com/{{ $author.social.github }}" target="_blank" title="GitHub">
+      <a href="//github.com/{{ $author.social.github }}" target="_blank" title="GitHub" data-tracked>
         <i class="fa fa-2x fa-fw fa-github"></i>
         <span class="hidden">GitHub</span>
       </a>
       {{ end }}
       {{ with $author.social.twitter }}
-      <a href="//twitter.com/@{{ $author.social.twitter }}" target="_blank" title="Twitter">
+      <a href="//twitter.com/@{{ $author.social.twitter }}" target="_blank" title="Twitter" data-tracked>
         <i class="fa fa-2x fa-fw fa-twitter"></i>
         <span class="hidden">Twitter</span>
       </a>
