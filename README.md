@@ -84,4 +84,18 @@ Anchor you can link to with `[foo](#anchor)`:
 {{% anchor "anchor" %}}
 ```
 
+### codepen
+
+An embedded codepen. Whenever possible, use the sourced account.
+
 ```
+{{% codepen slug="aaaaaa" title="My post example" %}}
+```
+
+Available options are:
+
+- `height` (_optional_, defaults to 573) height of the codepen.
+- `slug` (_required_) the slug of the pen. Usually the last part of its URL
+  (for a sourced pen, the url looks like codepen.io/sourced/pen/slug).
+- `user` (_optional_, defaults to sourced) the user in codepen.
+- `title`(_optional_, defaults to sourced) a title for the codepen.
