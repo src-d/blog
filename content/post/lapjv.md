@@ -79,7 +79,7 @@ t-SNE is one of a series of possible dimensionality reduction algorithms which a
 called embedding algorithms. The core idea is to preserve the similarity relations
 as much as possible. Play with it yourself:
 
-{{% codepen slug="LjRVRJ" title="lapjv" %}}
+{{% codepen slug="ayEKKj" title="lapjv" %}}
 
 {{% center %}}
 Adapted from [How to Use t-SNE Effectively](http://distill.pub/2016/misread-tsne)
