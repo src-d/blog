@@ -1,5 +1,6 @@
 /* eslint-env browser */
-/* global $ */
+import $ from 'jquery';
+
 const SEND_COMMAND = 'send';
 const EVENT_HIT_TYPE = 'event';
 const EVENT_FIELDS = ['eventCategory', 'eventAction', 'eventLabel', 'eventValue', 'transport', 'hitCallback'];
@@ -75,9 +76,12 @@ function commandArguments(link) {
   return [SEND_COMMAND, EVENT_HIT_TYPE, getData(link)];
 }
 
+// If ga is not installed, we have a fallback that both stores and logs the
+// call.
 const gaInternal = [];
 const ga = window.ga || function (...args) {
   gaInternal.push(args);
+  // eslint-disable-next-line no-console
   console.log(...args);
 
   const last = args.pop();
@@ -114,10 +118,10 @@ export function gaPromise(...args) {
   });
 }
 
-function isScrollableLink(link) {
+export function isScrollableLink(link) {
   const [url, id] = link.href.split('#');
 
-  return window.location.href.indexOf(url) > 0 && id;
+  return window.location.href.indexOf(url) >= 0 && id;
 }
 
 /**
@@ -125,7 +129,7 @@ function isScrollableLink(link) {
  *
  * @param {HTMLAnchorElement} link
  */
-function scrollTo(link) {
+export function scrollTo(link) {
   const [, id] = link.href.split('#');
   $('body, html').animate(
     {
@@ -136,13 +140,25 @@ function scrollTo(link) {
 }
 
 /**
+ * Same as window.setTimeout, but as a promise.
+ *
+ * @param {Number} ms
+ */
+function setTimeoutPromise(ms) {
+  return new Promise(resolve => window.setTimeout(resolve, ms));
+}
+
+/**
  * Sends to Google Analytics the details from the link
  *
  * @param {HTMLAnchorElement} link anchor clicked
  * @return {Promise} a promise resolved whenever hitCallback is called.
  */
-export function sendLinkDetails(link) {
-  return gaPromise(...commandArguments(link));
+export function sendLinkDetails(link, ms = 500) {
+  return Promise.race([
+    setTimeoutPromise(ms),
+    gaPromise(...commandArguments(link)),
+  ]);
 }
 
 /**
@@ -158,6 +174,10 @@ export function goToLink(link) {
   }
 }
 
+function trackableLink({ dataset, href }) {
+  return 'tracked' in dataset && href;
+}
+
 /**
  * Sets up the tracking of links, inbound and outbound.
  *
@@ -165,11 +185,13 @@ export function goToLink(link) {
  *
  * 1. Have a `data-tracked` attribute.
  * 2. Have a non-empty `href` attribute.
+ *
+ * Or satisfy the acceptableCondition predicate.
  */
-export default function setupLinkTracking(acceptableCondition=() => {}) {
+export default function setupLinkTracking(acceptableCondition = () => false) {
   document.addEventListener('click', (evt) => {
     const { target } = evt;
-    if ((!('tracked' in target.dataset) || !target.href) && !acceptableCondition(target)) {
+    if (!(trackableLink(target) || acceptableCondition(target))) {
       return;
     }
 
@@ -178,6 +200,7 @@ export default function setupLinkTracking(acceptableCondition=() => {}) {
     if (isScrollableLink(target)) {
       sendLinkDetails(target);
       scrollTo(target);
+      return;
     }
 
     sendLinkDetails(target)
