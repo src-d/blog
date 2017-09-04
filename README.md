@@ -1,4 +1,6 @@
-# source{d} blog  [![Build Status](https://travis-ci.org/src-d/blog.svg?branch=master)](https://travis-ci.org/src-d/blog)
+# source{d} blog
+[![Build Status](https://drone.srcd.host/api/badges/src-d/landing/status.svg)](https://drone.srcd.host/src-d/landing)
+[![Docker Repository on Quay](https://quay.io/repository/srcd/blog/status "Docker Repository on Quay")](https://quay.io/repository/srcd/blog)
 
 This is our [blog](https://blog.sourced.tech) source. It uses fancy technologies, such as:
 - [Hugo](http://gohugo.io/)
