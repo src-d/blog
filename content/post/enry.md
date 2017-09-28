@@ -3,7 +3,7 @@ author: mcarmonaa
 date: 2017-09-28
 draft: false
 title: "enry: detecting languages"
-image: ""
+image: "/post/enry/henry.png"
 description: "Announcing enry, a faster implementation of github/linguist in Go for programming language detection"
 categories: ["technical"]
 ---
@@ -158,7 +158,7 @@ linguist processed files: 1839
      10ms-100ms 3.099511%
 ```
 
-![histogram](https://raw.githubusercontent.com/src-d/enry/master/benchmarks/histogram/distribution.png)
+![histogram](/post/enry/distribution.png)
 
 As you can see, *enry* was able to detect 72% of files in a time between 1us and 100us, while the majority of the files *linguist* processed are shifted to greater time intervals.
 
