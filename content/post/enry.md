@@ -110,7 +110,7 @@ func GetLanguagesBySpecificClassifier(content []byte, candidates []string, class
 
 By the way, strategies have the `GetLanguage-` version too that returns only the language and the boolean to indicate the confidence in the result. The returned boolean value is set either to true, if there is only one possible language detected or to false otherwise.
 
-You can use this functions independently for whatever you want.
+You can use these functions independently for whatever you want.
 
 If you want to customise *enry*'s default strategies and classifier to use your own strategies and classifiers, you can do so by assigning them to the following variables:
 
