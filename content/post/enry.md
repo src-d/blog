@@ -162,7 +162,7 @@ linguist processed files: 1839
 
 As you can see, *enry* was able to detect 72% of files in a time between 1us and 100us, while the majority of the files *linguist* processed are shifted to greater time intervals.
 
-Calculating the mean spent time to process a file with both tools, on average *enry* is 211% faster than *linguist*.
+Calculating the mean spent time to process a file with both tools, on average *enry* is 211% faster than *linguist*. This is a rather pessimistic estimation; for example, the analysis time on [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow) is 5x shorter, and goes down to 20x for small-sized projects since launching the Ruby interpreter and loading the gems introduce a considerable delay.
 
 Considering that *enry* follows the same algorithms that *linguist* does, it looks like the performance improvement is provided by the chosen language to develop them.
 
