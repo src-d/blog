@@ -1,6 +1,6 @@
 ---
 author: mcarmonaa
-date: 2017-09-20
+date: 2017-09-28
 draft: false
 title: "enry: detecting languages"
 image: ""
@@ -253,6 +253,6 @@ The main difference with linguist's command is that *enry* doesn't need a git re
 
 ## What I really want to know is where "enry" comes from!
 
-In the movie [My Fair Lady](https://en.wikipedia.org/wiki/My_Fair_Lady), [Professor Henry Higgins](http://www.imdb.com/character/ch0011719/?ref_=tt_cl_t2) is one of the main characters in the movie. Henry is a linguist and enjoys guessing the street where people live based on their accent in the very beginning of the movie.
+In the movie [My Fair Lady](https://en.wikipedia.org/wiki/My_Fair_Lady), [Professor Henry Higgins](http://www.imdb.com/character/ch0011719/?ref_=tt_cl_t2) is one of the main characters in the movie. Henry is a linguist and enjoys guessing the neighborhood where people live based on their accent in the very beginning of the movie.
 
 `Enry Iggins` is how [Eliza Doolittle](http://www.imdb.com/character/ch0011720/?ref_=tt_cl_t1), [pronounces the name of the Professor during the first half of the movie](https://www.youtube.com/watch?v=pwNKyTktDIE).
