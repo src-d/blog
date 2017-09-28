@@ -82,6 +82,7 @@ var DefaultStrategies = []Strategy{
 You can see how the strategies look for `Modeline`, `Filename`, `Shebang`... characteristics of a file that can be representative of the language. Some strategies need to parse the content and perhaps apply heuristics while others do their job only with the filename.
 
 The strategy chain works as follows:
+
 * A strategy tries to get the language from a file.
 * It can result in zero or more languages detected.
 * If there's no language, call the next strategy.
@@ -125,6 +126,7 @@ From that point on, `GetLanguage` and `GetLanguages` will use your custom implem
 *enry* uses the information about languages (filenames, interpreters, extensions... associated with each language) that *linguist* keeps in the code base.
 
 Specifically, *enry* uses the following files from *linguist*:
+
 * [languages.yml](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 * [heuristics.rb](https://github.com/github/linguist/blob/master/lib/linguist/heuristics.rb)
 * [vendor.yml](https://github.com/github/linguist/blob/master/lib/linguist/vendor.yml)
