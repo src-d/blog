@@ -570,10 +570,29 @@ one can imagine is magically reflected in the embeddings.
 
 ## Reproduce
 We are in the process of cloning all Git repositories in the world and building the [API](https://github.com/src-d/spark-api) to access and analyse them. We've built [ast2vec](https://github.com/src-d/ast2vec) and many other libraries and packages to do MLoSC on top.
-Meanwhile, it is possible to grab the obsolete embeddings and play with them. They are the same as we use in [vecino-reference](https://github.com/src-d/vecino/blob/master/reference/nearest_repos.ipynb), the proof of concept notebook which finds similar GitHub repositories.
+Meanwhile, it is possible to grab the obsolete embeddings and play with them. They are the same as
+we use in [vecino-reference](https://github.com/src-d/vecino/blob/master/reference/nearest_repos.ipynb),
+the proof of concept notebook which finds similar GitHub repositories. They were built without
+the AST co-occurrence scheme, the sequential sliding window was used instead. The vocabulary
+size is 500,000. The sourse is nearly 140,000 most starred repositories on GitHub cloned
+in October 2016 - that is, one year ago.
 
 <script src="https://gist.github.com/vmarkovtsev/cc50b5c2de17e574f59dfe706a39a290.js"></script>
 
-If you really wish to train your own identifier embeddings right here, right now, contact us and we will figure out how to give you terabytes of data. Otherwise it is best to wait a few months until we launch our datasets initiative.
+If you really wish to train your own identifier embeddings right here, right now, contact us and we
+will figure out how to give you terabytes of data. Otherwise it is best to wait a few months
+until we launch our datasets initiative.
+
+#### Related research
+
+[Exploring API Embedding for API Usages and Applications](http://home.eng.iastate.edu/~trong/projects/jv2cs/)
+
+## Conclusion
+
+It is possible to construct embeddings of identifiers in source code at scale, efficiently.
+The input co-occurene matrix can be generated with the proposed algorithm based on AST traversal.
+They capture funny relations specific to software engineering as well as some general associations.
+The legacy model built with the previous generation processing pipeline on more than 100,000 most
+starred repositories cloned in October 2016 is available to download and evaluate.
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
