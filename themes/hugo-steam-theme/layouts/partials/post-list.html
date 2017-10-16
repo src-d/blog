@@ -3,7 +3,7 @@
 <article class="preview">
     <header>
         <h1 class="post-title">
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <a href="{{ .Permalink }}" data-tracked>{{ .Title }}</a>
         </h1>
         <div class="post-meta">
           {{ partial "post_meta" . }}
@@ -14,10 +14,10 @@
           <div class="image"
             style="background-image:url({{.Params.image}})" /></div>
         {{end}}
-        <a class="excerptlink" href="{{ .Permalink }}">
+        <a class="excerptlink" href="{{ .Permalink }}" data-tracked>
           <p>{{ .Description | markdownify }}</p>
         </a>
-        <p class="readmore"><a href="{{ .Permalink }}">{{ .Site.Params.keepReadingStr }} <i class="fa fa-angle-double-right" style="padding-left: 5px;"></i></a></p>
+        <p class="readmore"><a href="{{ .Permalink }}" data-tracked>{{ .Site.Params.keepReadingStr }} <i class="fa fa-angle-double-right" style="padding-left: 5px;"></i></a></p>
     </section>
 </article>
 {{ end }}

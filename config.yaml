@@ -22,9 +22,13 @@ params:
   # feel free to add a few information about you and your website.
   name: "source{d}"
   bio: "Building the technology stack for AI on code"
-  location: "" # optional
-  twitter: "srcd_" # optional
-  github: "src-d" # optional
+  location: ""
+  twitter: "srcd_"
+  github: "src-d"
+  medium: source-d
+  angellist: source-d
+  linkedin: 10284920
+  slack_url: http://sourced.tech/api/invite
 
   # Enable a comment system
   # You can choose between Disqus or Google Plus by setting comments

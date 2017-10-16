@@ -7,12 +7,6 @@ image: /post/lapjv/mapping.png
 description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the \"cloud of points\" into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 #### Before
 
@@ -57,8 +51,9 @@ samples in 784 dimensions to 2. Sounds impossible? It is, in the general case.
 This is where [Dirichlet's box principle](https://en.wikipedia.org/wiki/Pigeonhole_principle)
 works: you are doomed to have collisions, whatever mapping algorithm you choose.
 
-![Shadowmatic](/post/lapjv/shadowmatic.jpg)
-<p align="center" class="caption">3D -> 2D projection illusion in <a href="http://www.shadowmatic.com/">Shadowmatic</a></p>
+{{% caption title="Shadowmatic" src="/post/lapjv/shadowmatic.jpg" %}}
+3D -> 2D projection illusion in [Shadowmatic](http://www.shadowmatic.com)
+{{% /caption %}}
 
 Luckily, the following two assumptions stand:
 
@@ -76,361 +71,26 @@ there is no "best". The quality of dimensionality reduction is
 subjective and depends on your ultimate goal. The root of the confusion is the
 same as in determining the perfect clustering: it depends.
 
-![Clustering algorithms](/post/lapjv/sklearn.png)
-<p align="center" class="caption">Different clustering algorithms from <a href="http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html">sklearn</a></p>
+{{% caption src="/post/lapjv/sklearn.png" title="Clustering algorithms" %}}
+Different clustering algorithms from [sklearn](http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html)
+{{% /caption %}}
 
 t-SNE is one of a series of possible dimensionality reduction algorithms which are
 called embedding algorithms. The core idea is to preserve the similarity relations
 as much as possible. Play with it yourself:
 
-<div>
-<link href="/post/lapjv/assets/material-icons.css" rel="stylesheet">
-<style>
-  #playground {
-    overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: 18px;
-    padding: 18px 0 0 0;
-    z-index: 1000;
-    display: flex;
-  }
-  #playground * {
-    box-sizing: border-box;
-  }
-  #playground.modal {
-    position: fixed;
-    left: 10px;
-    right: 10px;
-    top: 50px;
-  }
-  #playground-canvas {
-    width: 60%;
-  }
-  #playground-canvas canvas {
-    width: 100%;
-  }
-  #playground-sidebar {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-  }
-  #data-menu {
-    overflow: hidden;
-    margin-bottom: 9px;
-  }
-  #data-menu .demo-data {
-    cursor: pointer;
-    position: relative;
-    font-size: 10px;
-    line-height: 1.2em;
-    box-sizing: border-box;
-    margin: 2px;
-    padding: 4px;
-    width: calc(33% - 4px);
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    display: inline-block;
-  }
-  @media(min-width: 480px) {
-    #data-menu .demo-data {
-      width: calc(25% - 8px);
-      padding: 8px;
-      margin: 4px;
-    }
-  }
-  @media(min-width: 768px) {
-    #data-menu .demo-data {
-      width: calc(16.5% - 8px);
-      padding: 8px;
-      margin: 4px;
-    }
-  }
-  #data-menu .demo-data:hover {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  #data-menu .demo-data.selected::after {
-    content: "";
-    border: 2px solid rgba(70, 130, 180, 0.8);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    border-radius: 4px;
-  }
-  #data-menu .demo-data span {
-    display: none;
-  }
-  #data-menu .demo-data:hover canvas {
-    opacity: 1;
-  }
-  #data-menu .demo-data canvas {
-    width: 100%;
-    opacity: 0.3;
-  }
-  #data-menu .demo-data.selected canvas {
-    opacity: 1;
-  }
-  #data-details {
-    position: relative;
-    margin-left: 4px;
-  }
-  #data-details #data-controls {
-    position: relative;
-    overflow: hidden;
-    font-size: 13px;    
-  }
-  #data-details #play-controls {
-    margin-bottom: 18px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  #data-details #play-controls button {
-    cursor: pointer;
-    outline: none;
-    border-radius: 50%;
-    background: steelblue;
-    color: white;
-    width: 16%;
-    margin-right: 5%;
-    padding-top: 16%;
-    padding-bottom: 0;
-    border: none;
-    position: relative;
-  }
-  #play-controls i {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 36px;
-    font-size: 24px;
-    line-height: 0;
-  }
-  @media(min-width: 768px) {
-    #play-controls i {
-      font-size: 30px;
-    }
-  }
-  #play-controls #play-pause i {
-    display: none;
-    position: absolute;
-  }
-  #play-controls #play-pause.paused i:nth-child(1) {
-    display: block;
-  }
-  #play-controls #play-pause.playing i:nth-child(2) {
-    display: block;
-  }
-  #steps-display {
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.6em;
-  }
-  #data-description {
-    font-size: 14px;
-    line-height: 1.6em;
-    margin-bottom: 9px;
-  }
-  #options {
-    font-size: 12px;
-    line-height: 1.3em;
-  }
-  #data-details input {
-    display: block;
-    width: 100%;
-    margin: 8px 0 16px 0;
-  }
-  #options #data-options {
-    width: 48%;
-    margin-right: 2%;
-  }
-  #options #tsne-options {
-    width: 48%;
-    margin-left: 2%;
-  }
-  #data-details #share {
-    margin-top: 8px;
-    display: block;
-    color: rgba(0, 0, 0, 0.4);
-    text-decoration: none;
-    font-size: 12px;
-  }
-  #data-details #share:hover {
-    text-decoration: underline;
-  }
-  #data-details #share i {
-    line-height: 0px;
-    position: relative;
-    top: 7px;
-  }
-  #options {
-    display: flex;
-  }
-</style>
-<div id="playground">
-  <div id="playground-canvas">
-    <canvas id="output" width="600" height="600"></canvas>
-  </div>
-  <div id="playground-sidebar">
-    <div id="data-menu"></div>
-    <div id="data-details">
-      <div id="data-description">
-        <span></span>
-      </div>
-      <div id="data-controls">
-        <div id="play-controls">
-          <button id="play-pause" class="playing"><i class="material-icons">play_arrow</i><i class="material-icons">pause</i></button>
-          <button id="restart"><i class="material-icons">refresh</i></button>
-          <div id="steps-display">Step <span id="step"></span></div>
-        </div>
-        <div id="options">
-          <div id="data-options"></div>
-          <div id="tsne-options"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<style>
-  .byline {
-    font-size: 12px;
-    line-height: 18px;
-    display: block;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.5);
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .centered .byline {
-    text-align: center;
-  }
-  .byline a {
-    text-decoration: none;
-    border-bottom: none;
-  }
-  .byline a:hover {
-    text-decoration: underline;
-    border-bottom: none;
-  }
-  .byline .authors {
-    text-align: left;
-  }
-  .byline .name {
-    display: inline;
-    text-transform: uppercase;
-  }
-  .byline .affiliation {
-    display: inline;
-  }
-  .byline .date {
-    display: block;
-    text-align: left;
-  }
-  .byline .year, .byline .month {
-    display: inline;
-  }
-  .byline .citation {
-    display: block;
-    text-align: left;
-  }
-  .byline .citation div {
-    display: inline;
-  }
-  @media(min-width: 768px) {
-    .byline {
-    }
-  }
-  @media(min-width: 1080px) {
-    .byline {
-      border-bottom: none;
-    }
-    .byline a:hover {
-      color: rgba(0, 0, 0, 0.9);
-    }
-    .byline .authors {
-      display: inline-block;
-    }
-    .byline .author {
-      display: inline-block;
-      margin-right: 12px;
-    }
-    .byline .affiliation {
-      display: block;
-    }
-    .byline .author:last-child {
-      margin-right: 0;
-    }
-    .byline .name {
-      display: block;
-    }
-    .byline .date {
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      padding-left: 15px;
-      margin-left: 15px;
-      display: inline-block;
-    }
-    .byline .year, .byline .month {
-      display: block;
-    }
-    .byline .citation {
-      border-left: 1px solid rgba(0, 0, 0, 0.15);
-      padding-left: 15px;
-      margin-left: 15px;
-      display: inline-block;
-    }
-    .byline .citation div {
-      display: block;
-    }
-  }
-</style>
-<div class="byline">
-  <div class="authors">
-    <div class="author">
-        <a class="name" href="http://hint.fm/">Martin Wattenberg</a>
-          <a class="affiliation" href="http://g.co/brain">Google Brain</a>
-    </div>
-    <div class="author">
-        <a class="name" href="http://hint.fm/">Fernanda Viégas</a>
-          <a class="affiliation" href="http://g.co/brain">Google Brain</a>
-    </div>
-    <div class="author">
-        <a class="name" href="http://enjalot.github.io/">Ian Johnson</a>
-          <a class="affiliation" href="http://cloud.google.com">Google Cloud</a>
-    </div>
-  </div>
-  <div class="date">
-    <div class="month">Oct. 13</div>
-    <div class="year">2016</div>
-  </div>
-  <a class="citation" href="#citation">
-    <div>Citation:</div>
-    <div>Wattenberg, et al., 2016</div>
-  </a>
-</div>
-</div>
-<script src="/post/lapjv/assets/d3.min.js"></script>
-<script src="/post/lapjv/assets/tsne.js"></script>
-<script src="/post/lapjv/assets/demo-configs.js"></script>
-<script src="/post/lapjv/assets/figure-configs.js"></script>
-<script src="/post/lapjv/assets/visualize.js"></script>
-<script src="/post/lapjv/assets/figures.js"></script>
-<script src="/post/lapjv/assets/playground.js"></script>
-<p align="center" class="caption">Adapted from <a href="http://distill.pub/2016/misread-tsne">How to Use t-SNE Effectively</a></p>
+{{% codepen slug="ayEKKj" title="lapjv" %}}
+
+{{% center %}}
+Adapted from [How to Use t-SNE Effectively](http://distill.pub/2016/misread-tsne)
+{{% /center %}}
 
 Those are artificial examples - cool but not enough. The majority of real-world
 datasets resemble a cloud with local clusters. For example, MNIST looks like this:
 
-![mnist_tsne](/post/lapjv/mnist_tsne.png)
-<p align="center" class="caption">MNIST after applying t-SNE</p>
+{{% caption src="/post/lapjv/mnist_tsne.png" title="mnist_tsne" %}}
+MNIST after applying t-SNE
+{{% /caption %}}
 
 We can clearly see how similar digits tend to attract each other.
 
@@ -459,8 +119,9 @@ A programmer's heaven!
 Amazingly many problems can be tracked down to LP. For example, let's take the
 [transportation problem](http://www.me.utexas.edu/~jensen/models/network/net8.html).
 
-<img src="/post/lapjv/transportation_problem.svg" style="width: 300px;">
-<p align="center" class="caption">Transportation Problem: supplies and demands.</p>
+{{% caption src="/post/lapjv/transportation_problem.svg" title="Transportation problem" %}}
+Transportation Problem: supplies and demands.
+{{% /caption %}}
 
 There is a number of different supplies and demands, which may be not equal.
 Every demand needs a fixed amount of supplies. Every supply is limited and is connected
@@ -494,8 +155,9 @@ Now if we replace "supplies" and "demands" with "dirt",
 the minimal volume of work required to carry dirt from one pile distribution to
 another. Next time you dig holes in the ground, you know what to do...
 
-<img src="/post/lapjv/emd.png" style="width: 300px;">
-<p align="center" class="caption">Earth Mover's Distance</p>
+{{% caption src="/post/lapjv/emd.png" title="Earth Mover's Distance" %}}
+Earth Mover's Distance
+{{% /caption %}}
 
 If we replace "supplies" and "demands" with "histograms", we get the most popular
 way to compare images in pre-deep learning era
@@ -503,16 +165,18 @@ way to compare images in pre-deep learning era
 It is better than naive L2 because it captures the spatial difference additionally
 to the magnitudal one.
 
-![EMD](/post/lapjv/histogram.png)
-<p align="center" class="caption">Earth Mover's Distance is better than Euclidean distance for histogram comparison.</p>
+{{% caption title="EMD" src="/post/lapjv/histogram.png" %}}
+Earth Mover's Distance is better than Euclidean distance for histogram comparison.
+{{% /caption %}}
 
 If we replace "supplies" and "demands" with "words", we get
 [Word Mover's Distance](http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf),
 a good way of comparing meanings of two sentences given word embeddings from
 [word2vec](https://en.wikipedia.org/wiki/Word2vec).
 
-<img src="/post/lapjv/wmd.png" style="width: 300px;">
-<p align="center" class="caption">Word Mover's Distance.</p>
+{{% caption src="/post/lapjv/wmd.png" title="Word Mover's Distance" %}}
+Word Mover's Distance
+{{% /caption %}}
 
 If we relax the conditions \\ref{non-negative}-\\ref{emd} by throwing away \\ref{emd},
 set \\(w_ {S_ i} = w_ {D_ i} = 1\\) and turn inequalities \\ref{sum1} and \\ref{sum2}
@@ -540,13 +204,15 @@ scatter plot. While it is perfectly suitable for dataset exploration tasks,
 sometimes we need to map every sample in the original scatter plot to a node
 in the regular grid. E.g. source{d} needs this mapping to... you will see why soon.
 
-<img src="/post/lapjv/grid.png" style="width: 400px;">
-<p align="center" class="caption">The Regular Grid.</p>
+{{% caption src="/post/lapjv/grid.png" title="Regular grid" %}}
+The Regular Grid
+{{% /caption %}}
 
 We can draw MNIST digits instead of dots after t-SNE, this is how it looks like:
 
-![MNIST t-SNE before](/post/lapjv/mnist_before.png)
-<p align="center" class="caption">MNIST digits after t-SNE.</p>
+{{% caption title="MNIST t-SNE before" src="/post/lapjv/mnist_before.png" %}}
+MNIST digits after t-SNE.
+{{% /caption %}}
 
 Not very clear. This where LAP arises: we could define the cost matrix as the
 pairwise euclidean distances between t-SNE samples and grid nodes, set the
@@ -642,8 +308,11 @@ std::tuple<cost, cost, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-<p align="center" class="caption">Finding two consecutive minimums, plain C++.</p>
+{{% center %}}
+Finding two consecutive minimums, plain C++.
+{{% /center %}}
 
+{{% codescroll height="450" %}}
 ```C++
 template <typename idx>
 __attribute__((always_inline)) inline
@@ -719,20 +388,18 @@ std::tuple<float, float, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-<p align="center" class="caption">Finding two consecutive minimums, optimized code with AVX2 intrinsics.</p>
+{{% /codescroll %}}
 
-<style>
-code {
-  max-height: 450px;
-  overflow-y: auto;
-}
-</style>
+{{% center %}}
+Finding two consecutive minimums, optimized code with AVX2 intrinsics.
+{{% /center %}}
 
 lapjv maps 2500 MNIST samples in 5 seconds on my laptop and finally we see the
 precious result:
 
-![mapping](/post/lapjv/mapping.png)
-<p align="center" class="caption">Linear Assignment Problem solution for MNIST after t-SNE.</p>
+{{% caption src="/post/lapjv/mapping.png" title="mapping" %}}
+Linear Assignment Problem solution for MNIST after t-SNE.
+{{% /caption %}}
 
 #### Notebook
 
@@ -740,7 +407,7 @@ I used the following [Jupyter](http://jupyter.org/) notebook
 ([link](https://gist.github.com/vmarkovtsev/74e3a973b19113047fdb6b252d741b42))
 to prepare this post:
 
-<script src="https://gist.github.com/vmarkovtsev/74e3a973b19113047fdb6b252d741b42.js"></script>
+{{% gist vmarkovtsev "74e3a973b19113047fdb6b252d741b42" %}}
 
 ## Conclusion
 
@@ -749,9 +416,3 @@ It is based on solving the Linear Assignment problem using Jonker-Volgenant
 algorithm implemented in [src-d/lapjv](https://github.com/src-d/lapjv). This
 algorithm scales up to 10,000 samples.
 
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-<script async type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>

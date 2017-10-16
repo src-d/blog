@@ -1,5 +1,4 @@
-@import url('//fonts.googleapis.com/css?subset=latin,cyrillic-ext,latin-ext,cyrillic&family=Open+Sans+Condensed:300|Open+Sans:400,600,400italic,600italic|Merriweather:400,300,300italic,400italic,700,700italic|Roboto+Slab:400,300');
-@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css');
 /* === Core Styles === */
 body {
   background-color: #ffffff;
@@ -16,10 +15,6 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-tap-highlight-color: rgba(0,0,0,0); /* prevent grey link highlight in iOS */
 }
-
-
-
-
 
 body * {
   max-height: 1000000em;
@@ -75,7 +70,7 @@ pre {
   background-color: #f7f7f7;
 }
 code {
-  font-family: Menlo, "Consolas", Courier, monospace;
+  font-family: monospace;
   font-size: 0.85em;
   color: #596364;
   background-color: #f7f7f7;
@@ -102,7 +97,7 @@ h2, h3, h4, h5 {
 }
 h1 {
   color: #1e2b34 !important;
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: 400;
   line-height: 42px;
@@ -115,13 +110,14 @@ article.preview,
 a.archive-link,
 .article-nav {
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 770px;
   width: 90%;
 }
 #site-head img {
   max-width: 100%;
 }
 article.preview {
+  color: black;
   margin-bottom: 4em;
 }
 article.preview p.readmore {
@@ -132,14 +128,17 @@ article.preview p.readmore {
 p.readmore a {
   margin-top: 1em;
   text-transform: uppercase;
-  font-weight: 600 !important;
-  color: #32526A !important;
+  color: #1b78b7 !important;
+  text-decoration: underline;
 }
 
 .post-excerpt a {
-   color: #677680 !important;
+  color: #1b78b7;
   font-weight: normal !important;
+}
 
+.post-excerpt p {
+  color: black;
 }
 
 /* === Header === */
@@ -182,13 +181,13 @@ header.page-header {
   margin-bottom: 3em;
 }
 
-#nav a:link,a:visited { 
-  border-radius: 0 0 8px 8px; 
+#nav a:link,a:visited {
+  border-radius: 0 0 8px 8px;
   padding:0px 15px;
 }
 #nav ul {
   margin:0;
-  margin-left: 20px; 
+  margin-left: 20px;
   margin-right: 18%;
   padding: 0;
   color: white;
@@ -204,7 +203,7 @@ header.page-header {
 }
 
 #site-head {
-  margin-bottom: 65px;
+  margin-bottom: 45px;
 }
 
 .blog-sub-link a{
@@ -213,25 +212,50 @@ header.page-header {
 }
 
 /* === Body === */
-section.author,
-section.share {
+section.author {
   width: 100%;
   text-align: left;
   text-transform: none;
 }
-section.share {
-  margin-top: 1em;
-  border-top: 1px solid #ecf0f1;
-  border-bottom: 1px solid #ecf0f1;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  text-align: right;
-}
+
 section.author h4 {
   margin: 0;
   padding-top: 4px;
   padding-left: 99px;
 }
+
+section.author .author-details {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 18px;
+  padding: 0;
+  line-height: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section.author .author-details {
+  white-space: nowrap;
+  color: #33526c;
+}
+
+section.author .author-details a {
+  margin-left: 10px;
+}
+
+section.author .author-details:after {
+  content: " ";
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  margin-left: 70px;
+  background-color: #E7E8E8;
+}
+
 section.author p,
 section.share p {
   padding: 0;
@@ -262,13 +286,14 @@ section.author p.bio {
   margin-left: 99px;
   line-height: 1.2em;
 }
+
 blockquote {
-  font-size: 1.6em;
-  font-weight: 300;
+  font-size: .8em;
+  font-weight: normal;
   line-height: 1.2em;
   font-style: italic;
-  text-transform: uppercase;
   border-left: 0.4em solid rgba(0, 0, 0, 0.05);
+  margin-top: 2em;
   margin-left: 1em;
   padding-right: 1.5em;
   padding-left: 1em;
@@ -329,23 +354,31 @@ img.userimage {
   margin-right: 10px;
   float: left;
 }
+
 /* === Footer === */
+
 footer {
-  background: rgba(0, 0, 0, 0.05);
   margin: 4em 0 0;
   padding: 2em 0;
   text-align: center;
+  color: black;
 }
+
 footer section {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 770px;
   width: 90%;
 }
+
 footer.post-footer {
   background: none;
-  /*border-top: 1px solid #ecf0f1;*/
   margin-top: 1em;
 }
+
+footer a {
+  color: #1b78b7 !important;
+}
+
 /* === Navigation and Pagination === */
 nav {
   border-bottom: 1px solid #ecf0f1;
@@ -353,8 +386,9 @@ nav {
   margin-bottom: 2em;
   text-align: center;
   margin: 20px auto 2em auto;
-  max-width: 600px;
+  max-width: 770px;
 }
+
 nav ul {
   list-style: none;
   margin: 0 auto;
@@ -413,24 +447,27 @@ a.archive-link {
   text-align: center;
   text-transform: uppercase;
 }
+
 .pagination {
   position: relative;
   width: 100%;
-  max-width: 600px;
   color: #596364;
   text-align: center;
   padding: 0.5em 0;
 }
+
 .pagination a {
   text-transform: uppercase;
-  /*color: #33cc99;*/
 }
+
 .older-posts,
 .newer-posts {
+  color: #1b78b7 !important;
   position: absolute;
   display: inline-block;
+  text-decoration: underline;
+  font-weight: normal;
   padding: 0;
-  text-decoration: none;
   transition: color ease 0.7s;
   -webkit-transition: color ease 0.7s;
 }
@@ -442,14 +479,16 @@ a.archive-link {
   padding: 0;
   margin: 0;
 }
+
 .newer-posts {
   left: 0;
 }
-.older-posts:hover,
-.newer-posts:hover {
-  /*color: #178b6b;*/
-  text-decoration: none;
+
+.older-posts i,
+.newer-posts i {
+  color: black;
 }
+
 /* === Extras === */
 .gist {
   margin-top: 1em;
@@ -586,6 +625,7 @@ section.post-content h4 {
 
 a, a:active, a:focus {
   outline: none;
+  color: #1b78b7;
 }
 
 pre {
@@ -600,11 +640,9 @@ pre {
 }
 
 blockquote p {
-  font-family: "Merriweather", "Open Sans", "Helvetica Neue", Helvetica, Arial, "Nimbus L", sans-serif;
-  font-size: 0.65em;
-  font-weight: 300;
+  font-size: 1.2em;
   line-height: 1.55em;
-  font-style: italic;
+  font-style: normal;
   text-transform: none;
   margin-bottom: 30px;
 }
@@ -663,13 +701,37 @@ hr {
   background-color: #888;
 }
 
-.site-footer {
-  color: #899596;
-}
-
 section.footer-social {
   margin-bottom: 23px;
   font-size: 17px;
+}
+
+section.footer-social a {
+  background-color: #E7F0F7;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+section.footer-social i {
+  font-size: 24px;
+}
+
+section.footer-social a + a {
+  margin-left: 15px;
+}
+
+section.footer-social,
+section.footer-social a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 section.post-content {
@@ -687,7 +749,9 @@ section.bloginfo {
 
 section.mailchimp {
   padding-top: 15px;
-  border-top: 1px solid #ecf0f1; 
+  border-top: 1px solid #ecf0f1;
+  margin-top: 15px;
+  margin-bottom: 60px;
 }
 
 section.author .meta {
@@ -710,4 +774,424 @@ h1.posts-tagged {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 16px;
+}
+
+iframe.video {
+  frameborder: 0;
+}
+
+/**
+ * Shortcodes styles
+ */
+
+.centered {
+  text-align: center;
+}
+
+figure > figcaption {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.scroll-code {
+  margin-bottom: 20px;
+}
+
+.scroll-code pre {
+  height: 100%;
+  position: relative;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.scroll-code code {
+  position: absolute;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.grid2x {
+  display: flex;
+  width: 1000px;
+  overflow: visible;
+  margin-left: -135px;
+}
+
+.grid2x-cell {
+  width: 50%;
+}
+
+.grid2x-cell pre {
+  margin: 30px !important;
+}
+
+@media (max-width: 1000px) {
+  .grid2x {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .grid2x > div {
+    width: 50%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .grid2x {
+    flex-direction: column;
+  }
+
+  .grid2x > div {
+    width: 100%;
+  }
+
+  .grid2x-cell {
+    width: 100%;
+  }
+}
+
+/**
+ * Content styles
+ */
+
+article.post {
+  color: black;
+}
+
+article.post h1,
+article.post h2,
+article.post h3,
+article.post h4,
+article.post h5,
+article.post h6 {
+  font-weight: normal;
+  font-family: Roboto, sans-serif !important;
+}
+
+article.post h1,
+article.preview h1 a {
+  font-size: 48px !important;
+  line-height: 1.2em;
+  text-transform: lowercase;
+  position: relative;
+  color: #1b78b7 !important;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+article.post h1:before,
+article.preview h1 a:before {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-radius: 45px;
+  height: 15px;
+  width: 90px;
+  left: -105px;
+  top: calc(.6em - 7.5px);
+  background-color: #1b78b7;
+}
+
+article.post h2 {
+  font-size: 30px;
+  line-height: 1.2em;
+  text-transform: lowercase;
+  position: relative;
+  color: #33526c !important;
+  margin-top: 7.5px;
+  margin-bottom: 15px;
+}
+
+article.post h2:before {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-radius: 45px;
+  height: 15px;
+  width: 30px;
+  left: -45px;
+  top: calc(.6em - 7.5px);
+  background-color: #ADB6BF;
+}
+
+article.post * + h1,
+article.post * + h2 {
+  margin-top: 30px;
+}
+
+article.post a {
+  color: #1b78b7 !important;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+article.post a:visited {
+  color: #33526c;
+}
+
+article.post code {
+  background-color: #ecf0f1;
+  padding: 2px 5px;
+  font-family: "Hack", "monaco", monospace;
+  color: #737373;
+}
+
+article.post pre {
+  display: block;
+  font-family: "Hack", "monaco", monospace;
+  font-size: 16px;
+  color: #B7BFC7;
+  background: #2D4861;
+  padding: 0;
+  margin: 30px 0;
+  border-radius: 5px;
+}
+
+article.post pre code {
+  background-color: transparent;
+  padding: 30px;
+  color: #B7BFC7;
+  line-height: 1.4em;
+}
+
+article.post ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+article.post ul li {
+  position: relative;
+}
+
+article.post ul li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  background: #adb6bf;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
+article.post ul ul li:before {
+  background: transparent;
+  border: 1px solid #adb6bf;
+}
+
+article.post table {
+  border: 1px solid #737373;
+}
+
+article.post table tr,
+article.post table thead {
+  border-bottom: 1px solid #737373;
+}
+
+article.post table tr:last-child,
+article.post table thead:last-child {
+  border-bottom: none;
+}
+
+article.post table td,
+article.post table th {
+  padding: 10px 15px;
+  border-right: 1px solid #737373;
+}
+
+article.post table td:last-child,
+article.post table th:last-child {
+  border-right: none;
+}
+
+article.post table th {
+  background: #adb6bf;
+  font-weight: bold;
+  text-align: center;
+}
+
+article.post table tbody tr:nth-child(even) td {
+  background-color: #ecf0f1;
+}
+
+article.post table tbody tr:nth-child(even) code {
+  background-color: white;
+}
+
+article.post ol {
+  list-style: decimal;
+  padding-left: 20px;
+}
+
+article.post h3 {
+  font-style: italic;
+  color: #33526c !important;
+  font-size: 24px;
+  line-height: 3em;
+}
+
+article.post h4,
+article.post h5,
+article.post h6 {
+  font-style: italic;
+  color: #33526c !important;
+  font-size: 20px;
+  line-height: 3em;
+}
+
+/**
+ * Slack form styles
+ */
+
+.slack-form {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 770px;
+}
+
+.slack-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.slack-form * {
+  box-sizing: border-box;
+  outline: none;
+}
+
+.slack-form input {
+  background-color: white;
+  border: 2px solid #adb6bf;
+  border-radius: 30px;
+  height: 45px;
+  padding: 0 15px;
+  font-size: 20px;
+  width: 135%;
+  margin: 0 30px;
+}
+
+.slack-form button {
+  font-size: 21px;
+  padding: 0 25px;
+  width: 100%;
+  line-height: 41px;
+  display: inline-block;
+  background-color: transparent;
+
+  -webkit-transition: background-color 0.3s ease-in, color 0.3s ease-in, border-color 0.3s ease-in, fill 0.3s ease-in, -webkit-box-shadow 0.3s ease-in;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in, border-color 0.3s ease-in, fill 0.3s ease-in, -webkit-box-shadow 0.3s ease-in;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in, border-color 0.3s ease-in, box-shadow 0.3s ease-in, fill 0.3s ease-in;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in, border-color 0.3s ease-in, box-shadow 0.3s ease-in, fill 0.3s ease-in, -webkit-box-shadow 0.3s ease-in;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 22.5px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: #1b78b7;
+  border-color: #1b78b7;
+}
+
+.slack-form button:hover {
+  color: white;
+  background-color: #1b78b7;
+  border-color: #1b78b7;
+  -webkit-box-shadow: 0 0 1px 5px #c9d8e1;
+  box-shadow: 0 0 1px 5px #c9d8e1;
+}
+
+.slack-form button[disabled] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.slack-form .icon img {
+  width: 70px;
+  margin-top 10px;
+}
+
+.slack-form .error-msg,
+.slack-form .success-msg {
+  display: none;
+  color: black;
+  position: absolute;
+  text-align: center;
+  width: 36.7%;
+  right: 0;
+  bottom: -35px;
+}
+
+.slack-form .error-msg:before,
+.slack-form .success-msg:before {
+  content: '';
+  background-size: cover;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  margin-right: 10px;
+}
+
+.slack-form .error-msg:before {
+  border-color: #9e0039;
+  background: transparent url(/img/message-icon-error-face.svg) center center;
+  background-color: #ed1c24;
+}
+
+.slack-form .success-msg:before {
+  border-color: #197b30;
+  background: transparent url(/img/message-icon-success.svg) center center;
+  background-color: #64b300;
+}
+
+@media all and (max-width: 650px) {
+  .slack-form form {
+    display: block;
+    margin-bottom: 80px;
+  }
+
+  .slack-form button,
+  .slack-form input {
+    width: 100%;
+  }
+
+  .slack-form input {
+    margin: 0 0 30px 0;
+  }
+
+  .slack-form .icon {
+    text-align: center;
+  }
+
+  .slack-form .error-msg,
+  .slack-form .success-msg {
+    left: 0;
+    width: 100%;
+    bottom: -60px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }

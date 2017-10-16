@@ -1,7 +1,11 @@
 # Configuration
 PROJECT ?= blog
 
-HUGO_VERSION ?= 0.17
+HUGO_VERSION := 0.25.1
+UNAME_S := $(shell uname -s)
+OS := Linux
+HUGO_TAR_FILE_NAME = hugo_$(HUGO_VERSION)_$(OS)-64bit.tar.gz
+HUGO_URL = https://github.com/spf13/hugo/releases/download/v$(HUGO_VERSION)/$(HUGO_TAR_FILE_NAME)
 HUGO_THEME ?= https://github.com/digitalcraftsman/hugo-steam-theme
 DOCKER_ORG ?= quay.io/srcd
 
@@ -14,21 +18,12 @@ DOCKER_PASSWORD ?=
 SOURCE_BRANCH := master
 
 # System
-URL_OS = 64bit
-OS = amd64
-ifeq ($(OS),Windows_NT)
-    ARCH = windows
-    URL_ARCH = Windows
+ifneq ($(UNAME_S),Linux)
+ifeq ($(UNAME_S),Darwin)
+OS := macOS
 else
-    UNAME_S := $(shell uname -s)
-    ifeq ($(UNAME_S),Linux)
-			ARCH = linux
-			URL_ARCH = Linux
-    endif
-    ifeq ($(UNAME_S),Darwin)
-			ARCH = darwin
-			URL_ARCH = MacOS
-    endif
+$(error "error Unexpected OS; Only Linux or Darwin supported.")
+endif
 endif
 
 # Environment
@@ -40,7 +35,7 @@ STATIC_PATH := $(BASE_PATH)/static
 THEME_NAME := $(shell basename $(HUGO_THEME))
 THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
 HUGO_PATH := $(BASE_PATH)/.hugo
-HUGO_URL = github.com/spf13/hugo
+HUGO_URL = https://github.com/spf13/hugo/releases/download/v$(HUGO_VERSION)/$(HUGO_TAR_FILE_NAME)
 HUGO_NAME := hugo_$(HUGO_VERSION)_$(ARCH)_$(OS)
 HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
 
@@ -54,10 +49,11 @@ endif
 
 # Tools
 CURL = curl -L
-HUGO = $(HUGO_PATH)/$(HUGO_NAME)/$(HUGO_NAME)
+HUGO = $(HUGO_PATH)/hugo
 MKDIR = mkdir -p
 GIT = git
 DOCKER = sudo docker
+UNCOMPRESS := tar -zxf
 
 # Rules
 all: build
@@ -72,16 +68,9 @@ dependencies: init
 	@if [[ ! -f $(HUGO) ]]; then \
 		$(MKDIR) $(HUGO_PATH); \
 		cd $(HUGO_PATH); \
-		ext="zip"; \
-		if [ "$(ARCH)" == "linux" ]; then ext="tar.gz"; fi; \
-		file="hugo.$${ext}"; \
-		$(CURL) https://$(HUGO_URL)/releases/download/v$(HUGO_VERSION)/$(HUGO_URL_NAME).$${ext} -o $${file}; \
-		if [ "$(ARCH)" == "linux" ]; then tar -xvzf $${file}; else unzip $${file}; fi; \
-	fi;
-	@if [[ ! -d $(THEME_PATH) ]]; then \
-		$(MKDIR) $(THEMES_PATH); \
-		cd $(THEMES_PATH); \
-		$(GIT) clone $(HUGO_THEME) $(THEME_NAME); \
+		echo "Downloading $(HUGO_URL)"; \
+		$(CURL) $(HUGO_URL) -o $(HUGO_TAR_FILE_NAME); \
+		$(UNCOMPRESS) $(HUGO_TAR_FILE_NAME); \
 	fi;
 
 foo:
@@ -90,7 +79,7 @@ foo:
 build: dependencies
 	$(HUGO) -t $(THEME_NAME) --baseURL $(BASE_URL)
 
-server: build
+server: dependencies
 	$(HUGO) server -t $(THEME_NAME) -D -w --baseURL $(BASE_URL)
 
 docker-push: build
