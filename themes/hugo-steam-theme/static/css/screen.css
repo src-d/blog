@@ -791,6 +791,7 @@ iframe.video {
 figure > figcaption {
   text-align: center;
   margin-top: -10px;
+  font-style: italic;
 }
 
 .scroll-code {
