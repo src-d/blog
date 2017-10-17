@@ -1,7 +1,7 @@
 ---
 author: vadim
 date: 2017-10-09
-title: "Source code identifier embeddings"
+title: "Source Code Identifier Embeddings"
 draft: false
 image: /post/id2vec/intro.png
 description: "\"Embed and conquer\", they say. Everything which has a context can be embedded. word2vec, node2vec, product2vec... id2vec! We take source code identifiers, introduce the context as the scope in the Abstract Syntax Tree, and find out that \"send\" is to \"receive\" as \"push\" is to \"pop\"."
@@ -14,16 +14,11 @@ p.caption {
 }
 </style>
 
-This post is based on the research we've made as early as in February and March. It was
-top secret back then, but since we changed our course to work completely open and build the
-end-to-end platform for MLoSC (Machine Learning on Source Code), we are glad to describe it here
-in detail. The content is related to the talk Vadim had in Moscow in June:
+This post is related to a talk we gave in Moscow in June at our Machine Learning on Source Code (MLoSC) conference and research we did at the beginning of this year:
 [presentation](http://vmarkovtsev.github.io/techtalks-2017-moscow/) and
 [video](https://youtu.be/v8Jy3xbpCqw?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy).
 
-We begin with revising what are "embeddings", proceed with describing approaches to word2vec,
-then explain how this technique can be transferred from NLP to MLoSC, present some examples of the
-results and finish with the instructions how to reproduce them.
+Let's start with revising what "embeddings" are, then proceed with describing approaches to word2vec, then explain how this technique can be transferred from NLP to MLoSC, present some examples of the results and finish with instructions on how to reproduce this work.
 
 ## Embeddings
 
@@ -210,9 +205,9 @@ matrix itself. Consequently, it scales quadratically with the vocabulary size. W
 parallelize the co-occurrence matrix calculation on large datasets so this property is very attractive.
 
 Even fewer people heard about [Swivel](http://arxiv.org/abs/1602.02215), which resembles GloVe and
-has the same principal scalability properties. We like Swivel much because of it's pragmatic
-decisions and high performance Tensorflow implementation which we
-[forked](https://github.com/src-d/tensorflow-swivel) to make even better.
+has the same principal scalability properties. We are fans of Swivel because of its pragmatic
+decisions and high performance Tensorflow implementation to which we contributed and subsequently also 
+[forked](https://github.com/src-d/tensorflow-swivel) to maximize performance.
 
 Having trained the embeddings, we are able to visualize words' relationships. Here is an example
 of what you can get with embedding the words in the transcript of [the famous presentation by Steve Jobs in 2007](https://www.youtube.com/watch?v=vN4U5FqrOdQ):
@@ -220,7 +215,7 @@ of what you can get with embedding the words in the transcript of [the famous pr
 ![incredible](/post/id2vec/incredible.png)
 <p align="center" class="caption">TensorBoard - words related to "incredible" according to Steve Jobs' presentation.</p>
 
-There is another funny property of our word embeddings: we can do vector arithmetic and evaluate
+There is funny and interesting property of word embeddings: we can do vector arithmetic and evaluate
 associations. The classic one is "king" is to "queen" as "man" is to "woman":
 
 $$
@@ -248,9 +243,9 @@ That is, if you've got products which are bought in baskets, then products are i
 are contexts. Vector arithmetic allows you to sum "onion" and "potatoes" vectors and search for
 the nearest neighbors, finding the "burger" vector. So the idea is very powerful.
 
-source{d} works with huge amounts of source code. We've designed the topic modeling pipeline ([paper](https://arxiv.org/abs/1704.00135),
+source{d} works with extremely large amounts of source code. We've designed a topic modeling pipeline ([paper](https://arxiv.org/abs/1704.00135),
 [application](https://github.com/src-d/dev-similarity))
-based on the idea that source code identifiers carry much valuable information.
+based on the idea that source code identifiers carry valuable information.
 The identifiers always occur together in some context, we usually call it a scope.
 Consider [this example](https://github.com/django/django/blob/2c69824e5ab5ddf4b9964c4cf9f9e16ff3bb7929/django/apps/registry.py#L59):
 
@@ -320,16 +315,16 @@ Duplicates are discarded, that is, only unique elements are taken. The result is
 
 The biggest co-occurrence value is between "app" and "config" - 6 contexts.
 
-The described scheme can be distributed and run on top of Spark or any other solution. Our Data Retrieval engineer
+The described scheme can be distributed and run on top of Spark or any other solution. Our Data Retrieval engineer, 
 Alex has a working proof of concept [swivel-spark-prep](https://github.com/src-d/swivel-spark-prep).
-Thus our identifier embedding approach is the explicit factorization. We apply Swivel subsequently, it takes less than 6 hours to train using 4 NVIDIA 1080Ti grade GPUs on a test 1 million x 1 million matrix produced from ⪆100k most starred repositories on GitHub.
+Thus our identifier embedding approach is the explicit factorization. We apply Swivel subsequently, it takes less than 6 hours to train using 4 NVIDIA 1080Ti grade GPUs on a 1 million x 1 million matrix produced from ⪆100k most starred repositories on GitHub.
 
 ## Results
 
 #### Metasyntactic variables
 
 [Metasyntactic variables](https://en.wikipedia.org/wiki/Metasyntactic_variable) are variable names
-which are used as dummy placeholders, e.g. when you demonstrate a coding concept. Most wellknown
+which are used as dummy placeholders, e.g. when you demonstrate a coding concept. Most well known
 are probably "foo" and "bar". Here are some selected tokens nearest to "foo":
 
 ```
@@ -445,7 +440,7 @@ verifica
 estado'
 ```
 
-Conslusion: identifiers in a language different from English tend to appear near each other.
+Conclusion: identifiers in a language different from English tend to appear near each other.
 
 #### Misprints
 
@@ -565,23 +560,22 @@ managemenet? A [misprint](https://github.com/search?q=managemenet&type=Code&utf8
 
 #### Disclosure
 
-I am not writing a paper, so can be honest: these examples are not... random. Not everything that
+These examples are not chosen randomly. Not everything that
 one can imagine is magically reflected in the embeddings.
 
 ## Reproduce
-We are in the process of cloning all Git repositories in the world and building the [API](https://github.com/src-d/spark-api) to access and analyse them. We've built [ast2vec](https://github.com/src-d/ast2vec) and many other libraries and packages to do MLoSC on top.
+We are in the process of cloning all Git repositories in the world and building the [engine](https://github.com/src-d/spark-api) to access and analyse them. We've built [ast2vec](https://github.com/src-d/ast2vec) and many other libraries and packages to do MLoSC on top.
 Meanwhile, it is possible to grab the obsolete embeddings and play with them. They are the same as
 we use in [vecino-reference](https://github.com/src-d/vecino/blob/master/reference/nearest_repos.ipynb),
 the proof of concept notebook which finds similar GitHub repositories. They were built without
 the AST co-occurrence scheme, the sequential sliding window was used instead. The vocabulary
-size is 500,000. The sourse is nearly 140,000 most starred repositories on GitHub cloned
-in October 2016 - that is, one year ago.
+size is 500,000. The source code used is >100,000 most starred repositories on GitHub cloned in October 2016 - that is, one year ago.
 
 <script src="https://gist.github.com/vmarkovtsev/cc50b5c2de17e574f59dfe706a39a290.js"></script>
 
 If you really wish to train your own identifier embeddings right here, right now, contact us and we
 will figure out how to give you terabytes of data. Otherwise it is best to wait a few months
-until we launch our datasets initiative.
+until we launch our datasets initiative. Alternatively join our Slack community and we're always happy to discuss generating data sets for you. 
 
 #### Related research
 
@@ -590,9 +584,8 @@ until we launch our datasets initiative.
 ## Conclusion
 
 It is possible to construct embeddings of identifiers in source code at scale, efficiently.
-The input co-occurene matrix can be generated with the proposed algorithm based on AST traversal.
+The input co-occurence matrix can be generated with the proposed algorithm based on AST traversal.
 They capture funny relations specific to software engineering as well as some general associations.
-The legacy model built with the previous generation processing pipeline on more than 100,000 most
-starred repositories cloned in October 2016 is available to download and evaluate.
+The legacy model built with the previous generation processing pipeline on more than 100,000 most starred repositories cloned in October 2016 is available to download and evaluate.
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
