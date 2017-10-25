@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,17 +79,24 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /* eslint-env browser */
+
 
 exports.gaPromise = gaPromise;
+exports.isScrollableLink = isScrollableLink;
+exports.scrollTo = scrollTo;
 exports.sendLinkDetails = sendLinkDetails;
 exports.goToLink = goToLink;
 exports.default = setupLinkTracking;
 
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-/* eslint-env browser */
-/* global $ */
 var SEND_COMMAND = 'send';
 var EVENT_HIT_TYPE = 'event';
 var EVENT_FIELDS = ['eventCategory', 'eventAction', 'eventLabel', 'eventValue', 'transport', 'hitCallback'];
@@ -161,6 +168,8 @@ function commandArguments(link) {
   return [SEND_COMMAND, EVENT_HIT_TYPE, getData(link)];
 }
 
+// If ga is not installed, we have a fallback that both stores and logs the
+// call.
 var gaInternal = [];
 var ga = window.ga || function () {
   var _console;
@@ -170,6 +179,7 @@ var ga = window.ga || function () {
   }
 
   gaInternal.push(args);
+  // eslint-disable-next-line no-console
   (_console = console).log.apply(_console, args);
 
   var last = args.pop();
@@ -216,7 +226,7 @@ function isScrollableLink(link) {
       url = _link$href$split2[0],
       id = _link$href$split2[1];
 
-  return window.location.href.indexOf(url) > 0 && id;
+  return window.location.href.indexOf(url) >= 0 && id;
 }
 
 /**
@@ -229,9 +239,20 @@ function scrollTo(link) {
       _link$href$split4 = _slicedToArray(_link$href$split3, 2),
       id = _link$href$split4[1];
 
-  $('body, html').animate({
-    scrollTop: $('#' + id).offset().top
+  (0, _jquery2.default)('body, html').animate({
+    scrollTop: (0, _jquery2.default)('#' + id).offset().top
   }, 1000);
+}
+
+/**
+ * Same as window.setTimeout, but as a promise.
+ *
+ * @param {Number} ms
+ */
+function setTimeoutPromise(ms) {
+  return new Promise(function (resolve) {
+    return window.setTimeout(resolve, ms);
+  });
 }
 
 /**
@@ -241,7 +262,9 @@ function scrollTo(link) {
  * @return {Promise} a promise resolved whenever hitCallback is called.
  */
 function sendLinkDetails(link) {
-  return gaPromise.apply(undefined, _toConsumableArray(commandArguments(link)));
+  var ms = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+
+  return Promise.race([setTimeoutPromise(ms), gaPromise.apply(undefined, _toConsumableArray(commandArguments(link)))]);
 }
 
 /**
@@ -257,6 +280,13 @@ function goToLink(link) {
   }
 }
 
+function trackableLink(_ref) {
+  var dataset = _ref.dataset,
+      href = _ref.href;
+
+  return 'tracked' in dataset && href;
+}
+
 /**
  * Sets up the tracking of links, inbound and outbound.
  *
@@ -264,14 +294,18 @@ function goToLink(link) {
  *
  * 1. Have a `data-tracked` attribute.
  * 2. Have a non-empty `href` attribute.
+ *
+ * Or satisfy the acceptableCondition predicate.
  */
 function setupLinkTracking() {
-  var acceptableCondition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+  var acceptableCondition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {
+    return false;
+  };
 
   document.addEventListener('click', function (evt) {
     var target = evt.target;
 
-    if ((!('tracked' in target.dataset) || !target.href) && !acceptableCondition(target)) {
+    if (!(trackableLink(target) || acceptableCondition(target))) {
       return;
     }
 
@@ -280,6 +314,7 @@ function setupLinkTracking() {
     if (isScrollableLink(target)) {
       sendLinkDetails(target);
       scrollTo(target);
+      return;
     }
 
     sendLinkDetails(target).then(function () {
@@ -290,113 +325,6 @@ function setupLinkTracking() {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = setupForms;
-
-var _jquery = __webpack_require__(3);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _link_track = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var emailRegex = /^.+@.+\..+$/;
-
-function invite(url, email) {
-  return _jquery2.default.ajax({
-    url: url,
-    method: 'POST',
-    dataType: 'json',
-    data: JSON.stringify({
-      email: email
-    })
-  });
-}
-
-function setupForm() {
-  var $this = (0, _jquery2.default)(this);
-  var $form = $this.find('form');
-  var $input = $this.find('input');
-  var $btn = $this.find('button');
-  var $errorMsg = $this.find('.error-msg');
-  var $successMsg = $this.find('.success-msg');
-  var url = $form.attr('action');
-
-  $input.on('keyup', function () {
-    if (!emailRegex.test($input.val())) {
-      $btn.attr('disabled', true);
-    } else {
-      $btn.attr('disabled', false);
-    }
-  });
-
-  $form.on('submit', function (e) {
-    e.preventDefault();
-
-    $btn.attr('disabled', true);
-    if (emailRegex.test($input.val())) {
-      $input.attr('disabled', true);
-      $errorMsg.hide();
-      $successMsg.hide();
-
-      gaPromise('send', 'event', {
-        eventCategory: 'joinSlack',
-        eventAction: 'button_click',
-        eventLabel: 'slackButton'
-      });
-      invite(url, $input.val()).then(function () {
-        $input.attr('disabled', false);
-        $input.val('');
-        $successMsg.show();
-      }, function () {
-        $input.attr('disabled', false);
-        $btn.attr('disabled', false);
-        $errorMsg.show();
-      });
-    }
-  });
-}
-
-function setupForms() {
-  var $forms = (0, _jquery2.default)('.slack-form');
-  _jquery2.default.each($forms, setupForm);
-}
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _link_track = __webpack_require__(0);
-
-var _link_track2 = _interopRequireDefault(_link_track);
-
-var _slack_form = __webpack_require__(1);
-
-var _slack_form2 = _interopRequireDefault(_slack_form);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function isLinkInContent(link) {
-  return link.matches('.post-content a');
-}
-window.addEventListener('DOMContentLoaded', function () {
-  (0, _slack_form2.default)();
-  (0, _link_track2.default)(isLinkInContent);
-});
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10654,6 +10582,113 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setupForms;
+
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _link_track = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var emailRegex = /^.+@.+\..+$/;
+
+function invite(url, email) {
+  return _jquery2.default.ajax({
+    url: url,
+    method: 'POST',
+    dataType: 'json',
+    data: JSON.stringify({
+      email: email
+    })
+  });
+}
+
+function setupForm() {
+  var $this = (0, _jquery2.default)(this);
+  var $form = $this.find('form');
+  var $input = $this.find('input');
+  var $btn = $this.find('button');
+  var $errorMsg = $this.find('.error-msg');
+  var $successMsg = $this.find('.success-msg');
+  var url = $form.attr('action');
+
+  $input.on('keyup', function () {
+    if (!emailRegex.test($input.val())) {
+      $btn.attr('disabled', true);
+    } else {
+      $btn.attr('disabled', false);
+    }
+  });
+
+  $form.on('submit', function (e) {
+    e.preventDefault();
+
+    $btn.attr('disabled', true);
+    if (emailRegex.test($input.val())) {
+      $input.attr('disabled', true);
+      $errorMsg.hide();
+      $successMsg.hide();
+
+      (0, _link_track.gaPromise)('send', 'event', {
+        eventCategory: 'joinSlack',
+        eventAction: 'button_click',
+        eventLabel: 'slackButton'
+      });
+      invite(url, $input.val()).then(function () {
+        $input.attr('disabled', false);
+        $input.val('');
+        $successMsg.show();
+      }, function () {
+        $input.attr('disabled', false);
+        $btn.attr('disabled', false);
+        $errorMsg.show();
+      });
+    }
+  });
+}
+
+function setupForms() {
+  var $forms = (0, _jquery2.default)('.slack-form');
+  _jquery2.default.each($forms, setupForm);
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _link_track = __webpack_require__(0);
+
+var _link_track2 = _interopRequireDefault(_link_track);
+
+var _slack_form = __webpack_require__(2);
+
+var _slack_form2 = _interopRequireDefault(_slack_form);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function isLinkInContent(link) {
+  return link.matches('.post-content a');
+}
+window.addEventListener('DOMContentLoaded', function () {
+  (0, _slack_form2.default)();
+  (0, _link_track2.default)(isLinkInContent);
+});
 
 /***/ })
 /******/ ]);

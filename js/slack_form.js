@@ -40,7 +40,7 @@ function setupForm() {
       $errorMsg.hide();
       $successMsg.hide();
 
-      gaPromise('send', 'event', {
+      ga('send', 'event', {
         eventCategory: 'joinSlack',
         eventAction: 'button_click',
         eventLabel: 'slackButton'
