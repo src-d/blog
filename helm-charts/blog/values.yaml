@@ -1,29 +1,28 @@
 # Default values for blog.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-replicaCount: 1
+replicaCount: 2
 image:
-  repository: nginx
-  tag: stable
+  repository: quay.io/srcd/blog
+  # tag must be received as a parameter
   pullPolicy: IfNotPresent
 service:
-  name: nginx
-  type: ClusterIP
+  name: blog-service
+  type: NodePort
   externalPort: 80
   internalPort: 80
 ingress:
-  enabled: false
-  # Used to create Ingress record (should used with service.type: ClusterIP).
-  hosts:
-    - chart-example.local
+  enabled: true
+  # globalStaticIpName must be received as a parameter
+  # hostname must be received as a parameter
+  # hosts defined in templates/ingress.yml. Do not override here.
   annotations:
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  tls:
-    # Secrets must be manually created in the namespace.
-    # - secretName: chart-example-tls
-    #   hosts:
-    #     - chart-example.local
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.global-static-ip-name is defined in templates/ingress.yml. Do not override here.
+  tls: true
+    # secretName and hosts are defined in templates/ingress.yml. Do not override here.
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious 
   # choice for the user. This also increases chances charts run on environments with little 

@@ -1,0 +1,7 @@
+apiVersion: v1
+description: source{d} technical blog
+name: blog
+version: 0.1.0
+maintainers:
+  - name: Infrastructure team
+    email: infra@sourced.tech
