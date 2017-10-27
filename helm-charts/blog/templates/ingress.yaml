@@ -1,0 +1,30 @@
+{{- $serviceName := include "fullname" . -}}
+{{- $servicePort := .Values.service.externalPort -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  annotations:
+    {{- range $key, $value := .Values.ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+      kubernetes.io/ingress.global-static-ip-name: {{ required "Static IP is missing" .Values.ingress.globalStaticIpName }}
+
+spec:
+  rules:
+    - host: {{ required "Hostname is missing" .Values.ingress.hostname }}
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $servicePort }}
+  tls:
+    - secretName: {{ .Values.ingress.hostname | replace "." "-" }}-tls
+      hosts:
+        - {{ .Values.ingress.hostname }}
