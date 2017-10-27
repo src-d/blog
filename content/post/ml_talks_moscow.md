@@ -93,8 +93,8 @@ The [Moscow source{d} tech talks](http://talks.sourced.tech/machine-learning-201
 
 ## Acknowledgements
 
-source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi). If you feel interested in any of our projects, do not hesitate to join our [source{d} community slack](https://sourced-community.slack.com/messages/C5CQY9486/). You can also take a look at our [job opportunities](http://sourced.tech/careers/) ; source{d} is always looking for new talents.
+source{d} would like to thank the [speakers](http://talks.sourced.tech/machine-learning-2017/speakers/) and the attendees for sharing our passion for Machine Learning on Code and for their kind feedback on our [post event survey](https://sourced.typeform.com/report/PFqEvm/BKWi). If you feel interested in any of our projects, do not hesitate to join our [source{d} community slack](https://sourced-community.slack.com/messages/C5CQY9486/). You can also take a look at our [job opportunities](//sourced.tech/careers/) ; source{d} is always looking for new talents.
 
-To conclude on a more personal side, I want to sincerely express my gratitude to all people at [source{d}](http://sourced.tech/) who made a contribution of any kind in the success of this event in such a beautiful city.
+To conclude on a more personal side, I want to sincerely express my gratitude to all people at [source{d}](//sourced.tech/) who made a contribution of any kind in the success of this event in such a beautiful city.
 
 ![Photo of Russian basilic](/post/ml_talks_moscow/basilic.jpg)

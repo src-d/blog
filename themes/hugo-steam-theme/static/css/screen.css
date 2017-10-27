@@ -818,7 +818,7 @@ figure > figcaption {
   display: flex;
   width: 1000px;
   overflow: visible;
-  margin-left: -135px;
+  margin-left: -115px;
 }
 
 .grid2x-cell {

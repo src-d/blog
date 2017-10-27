@@ -28,7 +28,7 @@ params:
   medium: source-d
   angellist: source-d
   linkedin: 10284920
-  slack_url: http://sourced.tech/api/invite
+  slack_url: //sourced.tech/api/invite
 
   # Enable a comment system
   # You can choose between Disqus or Google Plus by setting comments

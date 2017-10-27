@@ -15,7 +15,7 @@ to emerge.
 
 We believe that for systems to be able to understand and write source code, we first need to
 understand developers through the code they have written. This is because we see 
-programming as a creative craft, similar to painting or writing (read our [manifesto](http://sourced.tech/manifesto/)).
+programming as a creative craft, similar to painting or writing (read our [manifesto](//sourced.tech/manifesto/)).
 Programming languages were created by people to have an easier and higher level abstraction
 on top of the 1s and 0s that are interpreted by the machine. Therefore we are designing 
 neural network architectures that learn from the millions of developers who combined have 
