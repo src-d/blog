@@ -89,7 +89,7 @@ Open `http://data-science-m:8123/` (again, read [the previous post](https://blog
 
 The above is prettified json but in the file it is a single line. We would like to aggregate commits by repository, then by weekday and finally by hour. For example,
 
-{{% codescroll height="400" %}}
+{{% scroll-panel height="400" %}}
 ```python
 (('apache/spark', 0, 0), 68)
 (('apache/spark', 0, 1), 22)
@@ -258,7 +258,7 @@ The above is prettified json but in the file it is a single line. We would like 
 (('apache/spark', 6, 8), 13)
 (('apache/spark', 6, 9), 39)
 ```
-{{% /codescroll %}}
+{{% /scroll-panel %}}
 
 The tricky part is, of course, dealing with time. People commit with invalid timezones quite often. Besides, we do not want to mix users living in different countries... and we've only got "t"-s like
 
