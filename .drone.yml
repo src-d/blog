@@ -26,7 +26,7 @@ pipeline:
     image: node:8.8-alpine
     environment:
       - BASE_URL="//blog-staging.srcd.run/"
-      - ALLOW_UNPUBLISHED="true"
+      - ALLOW_UNPUBLISHED=true
     commands:
       - apk add --update make bash curl
       - make build

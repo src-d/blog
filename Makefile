@@ -68,6 +68,15 @@ endif
 ## Builds project
 build: project-dependencies hugo-build
 
+## Serves the blog with Hugo and Webpack watchers
+serve: project-dependencies
+ifndef ALLOW_UNPUBLISHED
+	ALLOW_UNPUBLISHED="true" $(JS_PACKAGE_MANAGER) start
+else
+	ALLOW_UNPUBLISHED="$(ALLOW_UNPUBLISHED)" $(JS_PACKAGE_MANAGER) start
+endif
+
+
 # Runs hugo server
 hugo-server:
 ifeq ($(ALLOW_UNPUBLISHED),true)
