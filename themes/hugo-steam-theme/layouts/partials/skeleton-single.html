@@ -1,0 +1,26 @@
+{{ $ctx := $.ctx }}
+<main class="content" role="main">
+    <article class="post">
+        <header>
+            <h1 class="post-title">{{ $ctx.Title }}</h1>
+            <div class="post-meta">
+                {{ partial "post_meta" $ctx }}
+            </div>
+        </header>
+        <section class="post-content">
+            {{ $ctx.Content }}
+        </section>
+
+        <footer class="post-footer">
+            {{ partial "author" $ctx }}
+        </footer>
+
+        {{ if eq .Site.Params.comments "disqus" }}
+            {{ template "_internal/disqus.html" $ctx }}
+        {{ end }}
+
+        {{ if eq .Site.Params.comments "googleplus" }}
+            {{ partial "googleplus-comments" $ctx }}
+        {{ end }}
+    </article>
+</main>
