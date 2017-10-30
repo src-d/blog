@@ -312,7 +312,7 @@ std::tuple<cost, cost, idx, idx> find_umins(
 Finding two consecutive minimums, plain C++.
 {{% /center %}}
 
-{{% codescroll height="450" %}}
+{{% scroll-panel height="450" %}}
 ```C++
 template <typename idx>
 __attribute__((always_inline)) inline
@@ -388,7 +388,7 @@ std::tuple<float, float, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-{{% /codescroll %}}
+{{% /scroll-panel %}}
 
 {{% center %}}
 Finding two consecutive minimums, optimized code with AVX2 intrinsics.

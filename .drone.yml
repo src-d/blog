@@ -10,11 +10,17 @@ pipeline:
   # build on pull requests
 
   build:
-    image: alpine:3.6
+    image: golang:1.8
     environment:
       - BASE_URL="//blog.sourced.tech/"
     commands:
-      - apk add --update make bash curl
+      - apt-get update
+      - apt-get install -y make bash curl
+      - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
+      - . ~/.nvm/nvm.sh
+      - nvm install 8
+      - nvm use 8
+      - npm install -g yarn
       - make build
     when:
       event: [pull_request]

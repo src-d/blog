@@ -4,18 +4,20 @@
   "description": "srcd-blog",
   "main": "index.js",
   "scripts": {
-    "webpack": "node_modules/.bin/webpack --watch",
-    "hugo": "make server",
-    "start": "concurrently --kill-others \"yarn run webpack\" \"yarn run hugo\"",
+    "build": "webpack --config=webpack.config.js",
+    "start": "termax server",
+    "webpack-watcher": "webpack --config=webpack.config.js --watch --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tww/terminus-maximus": "^2.0.4",
     "babel-core": "6",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "concurrently": "^3.5.0",
+    "file-loader": "^1.1.5",
     "webpack": "^2.6.1"
   },
   "dependencies": {
