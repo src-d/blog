@@ -1,8 +1,11 @@
+<!-- jQuery -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="{{ relURL "/js/bundle.js" }}"></script>
-<script src="{{ relURL "/js/smooth-scroll.min.js" }}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 
+<!-- source{d} scripts -->
+<script src="{{ relURL "/js/bundle.js" }}"></script>
+
+<!-- SmoothScroll -->
+<script src="{{ relURL "/js/smooth-scroll.min.js" }}"></script>
 <script>
     smoothScroll.init({
         speed: 800,
@@ -11,10 +14,21 @@
         offset: 125,
     });
 </script>
+
+<!-- Mathjax -->
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script async type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+<!-- Highlight.js -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 {{ with .Site.Params.googleAnalytics }}
-{{ "<!-- Google Analytics -->" | safeHTML }}
+<!-- Google Analytics -->
 <script>
   var _gaq=[['_setAccount','{{ . }}'],['_trackPageview']];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
