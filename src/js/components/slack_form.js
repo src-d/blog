@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { gaPromise as ga } from './services/link_track.js';
+import { gaPromise as ga } from '../services/link_track.js';
 
 const emailRegex = /^.+@.+\..+$/;
 

@@ -64,6 +64,10 @@ hugo-build:
 ## Builds project
 build: project-dependencies hugo-build
 
+## Serves the blog with Hugo and Webpack watchers
+serve: project-dependencies
+	$(JS_PACKAGE_MANAGER) start
+
 # Runs hugo server
 hugo-server:
 	$(HUGO) server --port=$(PORT) -t $(HUGO_THEME_NAME) --buildDrafts --watch --baseURL $(BASE_URL)
