@@ -40,7 +40,6 @@ params:
   keepReadingStr: "Keep reading"
   backtotopStr: "Back to top"
   shareStr: "Share"
-  pageNotFoundTitle: "404 - Page not found"
 
   authors:
     mcuadros:
