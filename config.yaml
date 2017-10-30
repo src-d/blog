@@ -124,3 +124,10 @@ params:
       social:
         github: mcarmonaa
         twitter: cmanu_
+    dpordomingo:
+      name: David Pordomingo
+      thumbnail: https://avatars2.githubusercontent.com/u/2437584?s=460&v=4
+      bio: "Finding the best way to improve the way we work"
+      social:
+        github: dpordomingo
+        twitter: rizomeEs
