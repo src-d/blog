@@ -1,5 +1,5 @@
 {{ if isset .Params "author" }}
-{{ $author := index .Site.Params.authors .Params.author }}
+{{ $author := index .Site.Data.authors .Params.author }}
     <p>
       <b>By {{$author.name}}</b>
       <time datetime="{{ .Date.Format "02 January 2006" }}">{{ .Date.Format "02 January 2006" }}</time>
