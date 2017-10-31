@@ -2,7 +2,6 @@
 author: vadim
 date: 2017-05-04
 title: "Daily commit activity on GitHub"
-draft: false
 image: /post/activity_hours/intro.png
 description: "This post was inspired by <a href=\"https://stackoverflow.blog/2017/04/19/programming-languages-used-late-night/\">What programming languages are used late at night?</a> by StackOverflow. We take our <a href=\"https://data.world/vmarkovtsev/452-m-commits-on-github\">commits dataset</a>, combine it with <a href=\"\">repositories' languages dataset</a> and plot circular histograms for PST/PDT zones with Python."
 categories: ["science", "technical"]

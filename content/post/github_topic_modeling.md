@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-09-26
 title: "Topic Modeling of GitHub Repositories"
-draft: false
 image: /post/github_topic_modeling/wordcloud.png
 description: "Data mining of 18M GitHub repositories"
 categories: ["science", "technical"]

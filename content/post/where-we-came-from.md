@@ -2,7 +2,6 @@
 author: eiso
 date: 2016-12-21
 title: "Where We Came From"
-draft: false
 image: /post/where-we-came-from/back-2.jpg
 description: "This post is part of a series of posts on the past and future of source{d}."
 categories: ["culture"] 

@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-09-13
 title: "397 Languages, 18,000,000 GitHub repositories, 1.2 billion files, 20 terabytes of code: Spaces or Tabs"
-draft: false
 image: /post/tab_vs_spaces/intro.png
 description: "Comprehensive study of spaces and tabs usage in source code in GitHub repositories"
 categories: ["science", "technical"]

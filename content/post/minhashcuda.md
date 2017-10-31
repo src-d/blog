@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-11-24
 title: "Weighted MinHash on GPU helps to find duplicate GitHub repositories."
-draft: false
 image: /post/minhashcuda/benders.jpg
 description: "We describe how we filtered very similar GitHub repositories using our new open source project MinHashCuda."
 categories: ["science", "technical"]

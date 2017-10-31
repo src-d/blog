@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-10-21
 title: "Adding LZO support to Dataproc"
-draft: false
 image: /post/dataproc_lzo/intro.png
 description: "How to leverage splittable LZO compression in Dataproc"
 categories: ["science", "technical"]

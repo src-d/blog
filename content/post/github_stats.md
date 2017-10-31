@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-07-06
 title: "GitHub repositories' statistics"
-draft: false 
 image: /post/github_stats/go.png
 description: "Lots of histograms plotted on GitHub data collected by source{d}." 
 categories: ["science", "technical"]

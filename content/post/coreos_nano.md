@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-11-17
 title: "Native GNU nano text editor in CoreOS."
-draft: false
 image: /post/coreos_nano/nano_intro.png
 description: "CoreOS ships with Vim as the only text editor by default. The following is how to compile GNU nano text editor for CoreOS as a first-class citizen."
 categories: ["technical"] 

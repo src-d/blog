@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-11-23
 title: "kmcuda (K-Means on GPU) version 4 is released"
-draft: false
 image: /post/kmcuda4/nvprof.png
 description: "Our kmcuda v4 is released, featuring multi-gpu, float16, Spherical K-Means and improved precision."
 categories: ["science", "technical"]

@@ -2,7 +2,6 @@
 author: vadim
 date: 2017-03-14
 title: "Jonker-Volgenant Algorithm + t-SNE = Super Powers"
-draft: false
 image: /post/lapjv/mapping.png
 description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the \"cloud of points\" into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
 categories: ["science", "technical"]

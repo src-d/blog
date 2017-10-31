@@ -2,7 +2,6 @@
 author: waren
 date: 2017-07-12
 title: "Analyzing GitHub, how developers change programming languages over time"
-draft: false
 image: /post/language_migrations/background.png
 description: "This post is inspired by ''The eigenvector of why we moved from language X to language Y'', by Erik Bernhardsson. Based on GitHub repositories, we build our own transition matrix after solving the flow optimization problem. The results are reflecting the history of programming language competition in the open source world."
 categories: ["science", "technical"]

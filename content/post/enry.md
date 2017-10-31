@@ -1,7 +1,6 @@
 ---
 author: mcarmonaa
 date: 2017-09-28
-draft: false
 title: "enry: detecting languages"
 image: "/post/enry/henry.png"
 description: "Announcing enry, a faster implementation of github/linguist in Go for programming language detection"

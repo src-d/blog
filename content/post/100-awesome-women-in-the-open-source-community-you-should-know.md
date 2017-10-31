@@ -2,7 +2,6 @@
 author: eiso 
 date: 2016-05-25 
 title: "100 Awesome Women In The Open-Source Community You Should Know" 
-draft: false 
 description: "100 Awesome Women In The Open-Source Community You Should Know" 
 categories: ["culture"] 
 ---
