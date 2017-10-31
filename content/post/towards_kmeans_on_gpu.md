@@ -6,12 +6,6 @@ image: /post/towards_kmeans_on_gpu/intro.png
 description: "K-means is a nice and simple clustering algorithm. It can be effectively implemented using NVIDIA CUDA technology and we elaborate on how."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 The codez: [GitHub](https://github.com/src-d/kmcuda).
 
@@ -350,3 +344,10 @@ Optimizing CUDA programs is hard but fun, and
 the used techniques are common and not so complicated. Yinyang algorithm is cool,
 though seems to not perfectly fit into the GPU architecture. We hope that Yinyang
 can be further optimized to fully demonstrate it's potential.
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

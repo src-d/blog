@@ -6,6 +6,7 @@ image: /post/reactmad-redux/back.jpg
 description: "An introduction to Redux and its time traveling capabilities for debugging."
 categories: ["technical"]
 ---
+
 ![View from the back of the room](/post/reactmad-redux/back.jpg)
 
 Last month we did the first Meetup of the ReactMad, the Madrid React user group. The topic was _"Time travelling with React and Redux"_.

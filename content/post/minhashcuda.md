@@ -6,12 +6,6 @@ image: /post/minhashcuda/benders.jpg
 description: "We describe how we filtered very similar GitHub repositories using our new open source project MinHashCuda."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 The codez: [GitHub](https://github.com/src-d/minhashcuda).
 
@@ -282,3 +276,10 @@ phidang/first-django-blog
 The complete dataset is published on [data.world](https://data.world/vmarkovtsev/github-duplicate-repositories).
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

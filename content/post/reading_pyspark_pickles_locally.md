@@ -6,12 +6,6 @@ image: /post/reading_pyspark_pickles_locally/intro.jpg
 description: "How to load Hadoop SequenceFile-s with Python serialized objects without having to install Spark - using src-d/sparkpickle"
 categories: ["technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 I've recently had a task to merge all the output from Spark in the Pickle format,
 that is, obtained via `spark.rdd.RDD.saveAsPickleFile()`, in my personal environment
@@ -110,3 +104,10 @@ Saving Python objects in pickle format on Spark appeared to be not very efficien
 because of the double serialization and several copies of the same data. Nevertheless,
 it is pretty possible to read those files (fast) without having to install Spark thanks to
 [sparkpickle](https://github.com/src-d/sparkpickle).
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

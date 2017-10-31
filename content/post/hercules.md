@@ -6,12 +6,6 @@ image: /post/hercules/rbtree.png
 description: "src-d/hercules - incremental git blame on top of go-git - helps to analyse repositories. Is it hard for him?"
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 When I was drowning in the sea of new information at [NIPS 2016](https://nips.cc/),
 colleagues pointed me at the excellent blog post by Erik Bernhardsson:
@@ -202,3 +196,10 @@ like clustering directories in a repository based on the local λ value or
 finding weakly designed modules. Who knows?
 
 ![freeman](/post/hercules/freeman.jpg)
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
