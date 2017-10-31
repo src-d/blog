@@ -2,102 +2,50 @@
 [![Build Status](https://drone.srcd.host/api/badges/src-d/landing/status.svg)](https://drone.srcd.host/src-d/landing)
 [![Docker Repository on Quay](https://quay.io/repository/srcd/blog/status "Docker Repository on Quay")](https://quay.io/repository/srcd/blog)
 
-This is our [blog](https://blog.sourced.tech) source. It uses fancy technologies, such as:
-- [Hugo](http://gohugo.io/)
-- [Caddy](https://caddyserver.com/)
+This is the repository for the [source{d} blog](https://blog.sourced.tech), which generates styled static HTML from markdown files.
 
-## Available shortcodes
+If you came here to learn how to set up the blog in your computer, to write/preview/deploy a new blog post, you should check:
+- [Blog setup requirements](#requirements) and [Build](#build)
+- [How to contribute](#contributing)
 
-### Code scroll
 
-If your code is too long you can make it have a fixed height and be scrollable.
+# Requirements
 
-```
-{{% codescroll height="500" %}}
-\`\`\`js
-my fancy code
-\`\`\`
-{{% /codescroll %}}
+You need to have [Yarn installed](https://yarnpkg.com/en/docs/install) to build the js and css assets. It also lets you locally serve the blog to test and validate it while you are developing.
+
+You can ensure if it is available in your machine running:
+```shell
+yarn --version; # prints your Yarn version
 ```
 
-### Center
+The blog also uses:
+- [Hugo](http://gohugo.io): to build the static html from the markdown content files; it is automatically downloaded and installed at building time.
+- [Caddy](https://caddyserver.com): to serve the static files in production; it is provided by the caddy docker image
 
-Center the text
+# Build
 
-```
-{{% center %}}
-some text
-{{% /center %}}
-```
+You need to satisfy the [project requirements](#requirements), and then run from the project root:
 
-### Caption
-
-Renders an image with caption
-
-```
-{{% caption src="url to image" title="title of image" %}}
-caption of the image, html and md allowed
-{{% /caption %}}
+```shell
+make build;
 ```
 
-### YouTube video
+It will generate all the static files that will be served by the Caddy server from the docker image. In case you only want to preview the blog, you can read the [Preview the blog](#preview-the-blog) section
 
-Display a YouTube video
+# Preview the blog
 
+To locally serve the blog, you need to satisfy the [project requirements](#requirements), and then run from the project root:
+
+```shell
+make serve;
 ```
-{{% youtube VIDEO_ID %}}
-```
+Finally, go to [http://localhost:8484](http://localhost:8484)
 
-### Gist
+# Contributing
 
-Display a Gist (even an IPython Notebook)
+If you want to contribute to this project, or to write or edit a blog post, you will find more info in the [contribution guidelines](CONTRIBUTING.md).
 
-```
-{{% gist username gist_id %}}
-```
 
-### Grid of 2 elements
+# License
 
-```
-{{% grid %}}
-{{% grid-cell %}}
-SOMETHING LEFT
-{{% /grid-cell %}}
-
-{{% grid-cell %}}
-SOMETHING RIGHT
-{{% /grid-cell %}}
-{{% /grid %}}
-```
-
-### Tweet
-
-Renders a tweet
-
-```
-{{% tweet TWEET_ID %}}
-```
-
-### Anchor
-
-Anchor you can link to with `[foo](#anchor)`:
-
-```
-{{% anchor "anchor" %}}
-```
-
-### codepen
-
-An embedded codepen. Whenever possible, use the sourced account.
-
-```
-{{% codepen slug="aaaaaa" title="My post example" %}}
-```
-
-Available options are:
-
-- `height` (_optional_, defaults to 573) height of the codepen.
-- `slug` (_required_) the slug of the pen. Usually the last part of its URL
-  (for a sourced pen, the url looks like codepen.io/sourced/pen/slug).
-- `user` (_optional_, defaults to sourced) the user in codepen.
-- `title`(_optional_, defaults to sourced) a title for the codepen.
+Copyright (c) 2015 Máximo Cuadros, see [LICENSE](LICENSE)
