@@ -18,7 +18,7 @@ The codez: [GitHub](https://github.com/src-d/minhashcuda).
 ![benders](/post/minhashcuda/benders.jpg)
 
 While doing topic modeling of GitHub repositories, to which we dedicated the recent article
-[Topic Modeling of GitHub Repositories](http://blog.sourced.tech/post/github_topic_modeling/),
+[Topic Modeling of GitHub Repositories](/post/github_topic_modeling/),
 we gradually realized that our dataset should be filtered to achieve better results.
 Particularly, we should throw away "extreme forks", the Large Unidentified
 <span style="text-decoration: line-through;">Flying</span> Copy-Pasted

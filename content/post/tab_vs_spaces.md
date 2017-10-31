@@ -61,7 +61,7 @@ preemptible nodes if I was a Spark guru after all.
 
 The job took about 2 days (left it running for the weekend). I had to find the best cluster parameters so
 I recreated the cluster several times and this is where [source{d}'s Jupyter Cloud Storage backend](https://github.com/src-d/jgscm)
-shined. Read more about how I use Dataproc with Jupyter in the [previous article](http://blog.sourced.tech/post/dataproc_jupyter/).
+shined. Read more about how I use Dataproc with Jupyter in the [previous article](/post/dataproc_jupyter/).
 Doing everything in the same Python environment from your web browser with unlimited computing resources?
 That's why I like Jupyter+Dataproc.
 

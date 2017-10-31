@@ -24,7 +24,7 @@ Besides the data sets, we need the computing resources to digest the datasets. I
 
 ### Loading the data in Dataproc
 
-The first thing we shall do is to launch the smallest Dataproc cluster. I have a post about [how to setup a working PySpark in Jupyter](https://blog.sourced.tech/post/dataproc_jupyter/), it covers the basic stuff. The initialization script [evolved](https://storage.googleapis.com/srcd-dataproc/minimal.sh) since then.
+The first thing we shall do is to launch the smallest Dataproc cluster. I have a post about [how to setup a working PySpark in Jupyter](/post/dataproc_jupyter/), it covers the basic stuff. The initialization script [evolved](https://storage.googleapis.com/srcd-dataproc/minimal.sh) since then.
 
 {{% caption src="/post/activity_hours/dataproc1.png" %}}
 We create a 2-node, 8-core Dataproc cluster.
@@ -70,7 +70,7 @@ When this command finishes, we are ready for executing a PySpark job to analyze 
 
 ### Extracting the commits' frequency
 
-Open `http://data-science-m:8123/` (again, read [the previous post](https://blog.sourced.tech/post/dataproc_jupyter/) how), you should see the list of your buckets thanks to [src-d/jgscm](https://github.com/src-d/jgscm) Jupyter backend. Enter the one you wish to store the notebooks and start a new "PySpark 3".
+Open `http://data-science-m:8123/` (again, read [the previous post](/post/dataproc_jupyter/) how), you should see the list of your buckets thanks to [src-d/jgscm](https://github.com/src-d/jgscm) Jupyter backend. Enter the one you wish to store the notebooks and start a new "PySpark 3".
 
 [452M commits on GitHub](https://data.world/vmarkovtsev/452-m-commits-on-github) has the following format:
 

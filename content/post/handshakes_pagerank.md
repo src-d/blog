@@ -101,7 +101,7 @@ about 20% of the most highly rated ones. That is, unfortunately, there is no dat
 2. Some secondary repositories were confused with the main ones. E.g. there is no
 `golang/go` but rather some random `4ad/go`. That was a bug we're now fixing.
 3. Initially we had 18M repos, but filtered 1.5M duplicates not marked as forks;
-read [this blog post](https://blog.sourced.tech/post/minhashcuda/) how.
+read [this blog post](/post/minhashcuda/) how.
 
 Let's conduct two funny experiments with our graph:
 

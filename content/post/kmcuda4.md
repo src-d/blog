@@ -14,7 +14,7 @@ p.caption {
 </style>
 
 Some time ago, I wrote an article about [src-d/kmcuda](https://github.com/src-d/kmcuda)
-named [Towards Yinyang K-means on GPU](http://blog.sourced.tech/post/towards_kmeans_on_gpu/).
+named [Towards Yinyang K-means on GPU](/post/towards_kmeans_on_gpu/).
 Last weekend we released version 4 of that library. Here is the brief list of
 changes:
 
