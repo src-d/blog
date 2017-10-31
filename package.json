@@ -4,9 +4,8 @@
   "description": "srcd-blog",
   "main": "index.js",
   "scripts": {
-    "webpack": "node_modules/.bin/webpack --watch",
-    "hugo": "make server",
-    "start": "concurrently --kill-others \"yarn run webpack\" \"yarn run hugo\"",
+    "build": "webpack --config=webpack.config.js",
+    "webpack-watcher": "webpack --config=webpack.config.js --watch --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
