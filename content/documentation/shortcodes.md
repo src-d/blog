@@ -65,6 +65,38 @@ _example_:
 This content will be centerd
 {{% /center %}}
 
+## Text
+
+The `text` shortcode lets you choose between small and large font. To use it, wrap your content with the `text` shortcode, and specify the desired size.
+
+```
+{{%/* text size="__SIZE__" font="monospaced" */%}}
+Text to be modified
+{{%/* /text */%}}
+```
+
+**NOTES:**
+
+- The available sizes are: `large` and `small`.
+- The available font family is: `monospaced`.
+- The shortcode creates a new block, so it can not be used for _inline_ content.
+- This shortcode should not be used instead of markdown native headings.
+- A `text` shortcodes should not be nested inside other `text` shortcode.
+
+_example_:
+{{% text size="large" font="monospaced" %}}
+This text was made large and monospaced
+{{% /text %}}
+
+{{% text size="large" %}}
+This text was made large
+{{% /text %}}
+
+{{% text size="small" %}}
+This text was made small
+{{% /text %}}
+
+
 ## Caption
 
 Whenever you need to use an image in your post, you should consider the `caption` shortcode to provide valuable information to the user; think in the screen readers.
@@ -179,6 +211,89 @@ The parameters the `codepen` shortcode accepts are:
 
 _example_:
 {{% codepen slug="ayEKKj" title="lapjv" %}}
+
+## table
+
+Whenever it is neede to modify a markdown table, it must be done by the `table` shortcode. That shortcode allows only some modifications tan tan be combined or not adding some _modifiers_ to the shortcode.
+
+To use it, just wrap your table by the `table` shortcode with the desired _modifiers_
+
+```
+{{%/* table "noCellHighlighting" "noHeader" "fixedLayout" "condensed" "center" */%}}
+
+header1 | long-header-2
+--- | ---
+1 | 2
+3 | 4
+
+{{%/* /table */%}}
+```
+
+Available _modifiers_:
+
+- `noCellHighlighting`: removes the borders and backgrounds from the table
+- `noHeader`: removes the header from the table
+- `fixedLayout`: enables the table render mode "table-layout:fixed"
+- `condensed`: reduces the cells padding
+- `center`: reduces the cells padding
+
+
+_examples_:
+
+{{% grid %}}
+{{% grid-cell %}}
+no _modifiers_:
+
+header1 | long-header-2
+--- | ---
+1 | 2
+3 | 4
+
+{{% /grid-cell %}}
+{{% grid-cell %}}
+
+`{{%/* table "fixedLayout" "center" */%}}`
+
+{{% table "fixedLayout" "center" %}}
+
+header1 | long-header-2
+--- | ---
+1 | 2
+3 | 4
+
+{{% /table %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
+{{% grid %}}
+{{% grid-cell %}}
+
+`{{%/* table "noCellHighlighting" "center" */%}}`
+
+{{% table "noCellHighlighting" "center" %}}
+
+header1 | long-header-2
+--- | ---
+1 | 2
+3 | 4
+
+{{% /table %}}
+{{% /grid-cell %}}
+{{% grid-cell %}}
+
+`{{%/* table "noHeader" "condensed" "center" */%}}`
+
+{{% table "noHeader" "condensed" "center" %}}
+
+header1 | long-header-2
+--- | ---
+1 | 2
+3 | 4
+
+{{% /table %}}
+{{% /grid-cell %}}
+{{% /grid %}}
+
 
 # Provided by Hugo itself
 

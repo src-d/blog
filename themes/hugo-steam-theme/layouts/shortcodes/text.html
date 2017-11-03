@@ -1,0 +1,4 @@
+<div class="
+    {{ if in (slice "small" "large") (.Get "size") }}text-{{ .Get "size" }}{{end}}
+    {{ if in (slice "monospaced") (.Get "font") }}text-{{ .Get "font" }}{{end}}
+">{{ .Inner }}</div>

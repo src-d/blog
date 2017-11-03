@@ -1,0 +1,7 @@
+<div class="
+    {{ if in .Params "noCellHighlighting" }}table-no-cell-highlighting{{end}}
+    {{ if in .Params "noHeader" }}table-no-header{{end}}
+    {{ if in .Params "fixedLayout" }}table-fixed-layout{{end}}
+    {{ if in .Params "condensed" }}table-condensed{{end}}
+    {{ if in .Params "center" }} table-center{{end}}
+">{{ .Inner }}</div>
