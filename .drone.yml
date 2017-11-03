@@ -38,7 +38,8 @@ pipeline:
     registry: quay.io
     repo: quay.io/srcd/blog
     secrets: [ docker_username, docker_password ]
-    tag: '${DRONE_COMMIT_SHA:0:7}'
+    # workaround for bug https://github.com/kubernetes/helm/issues/1707
+    tag: 'commit-${DRONE_COMMIT_SHA:0:7}'
     file: Dockerfile
     when:
       event: push
@@ -51,7 +52,7 @@ pipeline:
     release: blog
     prefix: STG
     secrets: [ STG_API_SERVER, STG_KUBERNETES_TOKEN ]
-    values: ingress.globalStaticIpName=blog-staging,ingress.hostname=blog-staging.srcd.run,image.tag=${DRONE_COMMIT_SHA:0:7}
+    values: ingress.globalStaticIpName=blog-staging,ingress.hostname=blog-staging.srcd.run,image.tag=commit-${DRONE_COMMIT_SHA:0:7}
     tiller_ns: kube-system
     wait: true
     when:
