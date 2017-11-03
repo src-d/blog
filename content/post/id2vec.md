@@ -39,89 +39,60 @@ For example, let's take photos of cats and dogs. Given just arrays of pixels, we
 tell what is present on the images, however, imagine that we are given a black box which outputs
 the following:
 
-<style>
-table code {
-  background: none !important;
-  white-space: nowrap;
-}
-</style>
-
-<div class="table-2"></div>
+{{% text size="large" font="monospaced" %}}
+{{% table "fixedLayout" %}}
 
 | Photo                                                | Embedding |
 |:----------------------------------------------------:|:---------:|
-| ![one cat](/post/id2vec/cat_1_240.jpg)               |  `[1, 0]` |
-| ![one dog](/post/id2vec/dog_1_240.jpg)               |  `[0, 1]` |
-| ![five cats](/post/id2vec/cat_5_240.jpg)             |  `[5, 0]` |
-| ![four dogs](/post/id2vec/dog_4_240.jpg)             |  `[0, 4]` |
-| ![one cat and one dog](/post/id2vec/cat_dog_240.jpg) |  `[1, 1]` |
+| ![one cat](/post/id2vec/cat_1_240.jpg)               |   [1, 0]  |
+| ![one dog](/post/id2vec/dog_1_240.jpg)               |   [0, 1]  |
+| ![five cats](/post/id2vec/cat_5_240.jpg)             |   [5, 0]  |
+| ![four dogs](/post/id2vec/dog_4_240.jpg)             |   [0, 4]  |
+| ![one cat and one dog](/post/id2vec/cat_dog_240.jpg) |   [1, 1]  |
 
+{{% /table %}}
+{{% /text %}}
 
-<style>
-.table-2 + table th {
-  width: 50%;
-}
+Apart from the easy classification, we are now able to easily estimate the semantic difference between the images:
 
-.table-2 + table td {
-  font-size: 2em;
-}
-
-.table-blank + table {
-  margin: 1em 0;
-  border: none !important;
-}
-
-.table-blank + table thead, .table-blank + table th {
-  height: 0;
-  padding: 0 !important;
-}
-
-.table-blank + table thead, .table-blank + table th, .table-blank + table tr, .table-blank + table td {
-  background-color: rgba(0, 0, 0, 0) !important;
-  border: none !important;
-}
-</style>
-
-Apart from the easy classification, we are now able to easily estimate the semantic difference
-between the images:
-
-<style>
-.table-img-160 + table img {
-  width: 160px;
-  object-fit: contain;
-}
-.table-img-160 + table td {
-  font-size: 2em;
-}
-</style>
-
-<div class="table-blank table-img-160"></div>
+{{% text size="large" font="monospaced" %}}
+{{% table "noCellHighlighting" "noHeader" "condensed" %}}
 
 |                                          |     |                                        |     |                                        |
 |:----------------------------------------:|:---:|:--------------------------------------:|:---:|:--------------------------------------:|
-| ![one cat](/post/id2vec/cat_dog_240.jpg) | `-` | ![one dog](/post/id2vec/dog_1_240.jpg) | `=` | ![one cat](/post/id2vec/cat_1_240.jpg) |
-| `[1, 1]`                                 |     | `[0, 1]`                               |     | `[1, 0]`                               |
+| ![one cat](/post/id2vec/cat_dog_240.jpg) |  -  | ![one dog](/post/id2vec/dog_1_240.jpg) |  =  | ![one cat](/post/id2vec/cat_1_240.jpg) |
+| [1, 1]                                   |     | [0, 1]                                 |     | [1, 0]                               |
+
+{{% /table %}}
+{{% /text %}}
 
 The semantic distance is \\(||(1, 0)||_2 = 1\\). It is evident that the result of such subtraction is just a single cat.
 
-
-<div class="table-blank table-img-160"></div>
+{{% text size="large" font="monospaced" %}}
+{{% table "noCellHighlighting" "noHeader" "condensed" %}}
 
 |                                        |     |                                        |     |                                          |
 |:--------------------------------------:|:---:|:--------------------------------------:|:---:|:----------------------------------------:|
-| ![one cat](/post/id2vec/cat_1_240.jpg) | `-` | ![one dog](/post/id2vec/dog_1_240.jpg) | `=` | ![monster](/post/id2vec/monster_240.jpg) |
-| `[1, 0]`                               |     | `[0, 1]`                               |     | `[1, -1]`                                |
+| ![one cat](/post/id2vec/cat_1_240.jpg) |  -  | ![one dog](/post/id2vec/dog_1_240.jpg) |  =  | ![monster](/post/id2vec/monster_240.jpg) |
+|  [1, 0]                                |     |  [0, 1]                                |     |  [1, -1]                                 |
+
+{{% /table %}}
+{{% /text %}}
 
 The semantic distance be \\(||(1, -1)||_2 = \\sqrt{2}\\). If we had a two-way
 black box, e.g. a deep neural network trained to classify our photos, we could generate an image
 from `[1, -1]` and most likely got a terrible alien monster.
 
-<div class="table-blank table-img-160"></div>
+{{% text size="large" font="monospaced" %}}
+{{% table "noCellHighlighting" "noHeader" "condensed" %}}
 
 |                                          |     |                                        |     |                                        |
 |:----------------------------------------:|:---:|:--------------------------------------:|:---:|:--------------------------------------:|
-| ![five cats](/post/id2vec/cat_5_240.jpg) | `-` | ![one cat](/post/id2vec/cat_1_240.jpg) | `=` | ![monster](/post/id2vec/cat_4_240.jpg) |
-| `[5, 0]`                                 |     | `[1, 0]`                               |     | `[4, 0]`                               |
+| ![five cats](/post/id2vec/cat_5_240.jpg) |  -  | ![one cat](/post/id2vec/cat_1_240.jpg) |  =  | ![monster](/post/id2vec/cat_4_240.jpg) |
+|  [5, 0]                                  |     |  [1, 0]                                |     |  [4, 0]                                |
+
+{{% /table %}}
+{{% /text %}}
 
 The semantic distance is 4 which is greater than \\(\\sqrt{2}\\). Depending on the problem we solve,
 this may or may not be normal. Our result is four cats.
@@ -292,19 +263,11 @@ We extract subtokens (splitted and stemmed) from every identifier in every scope
 the corresponding elements in the co-occurrence matrix in an "all to all" fashion.
 Duplicates are discarded, that is, only unique elements are taken. The result is:
 
-<style>
-.table-small + table {
-  font-size: small;
-}
-.table-small + table th {
-  padding: 10px 5px !important;
-}
-.table-small + table td:nth-child(even), .table-small + table th:nth-child(even) {
-  background: #ecf0f1;
-}
-</style>
-
-<div class="table-small"></div>
+{{% grid %}}
+{{% scroll-panel %}}
+{{% center %}}
+{{% text size="small" %}}
+{{% table "condensed" "fixedLayout" %}}
 
 | populat | instal | apps | ready | lock | load | runtim | error | entry | app | config | create | label | improp | configur |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -323,6 +286,12 @@ Duplicates are discarded, that is, only unique elements are taken. The result is
 | 1 | 4 | 4 | 3 | 3 | 3 | 3 | 3 | 4 | 5 | 5 | 5 | 0 | 5 | 5 |
 | 1 | 4 | 4 | 3 | 3 | 3 | 3 | 3 | 4 | 5 | 5 | 5 | 5 | 0 | 5 |
 | 1 | 4 | 4 | 3 | 3 | 3 | 3 | 3 | 4 | 5 | 5 | 5 | 5 | 5 | 0 |
+
+{{% /table %}}
+{{% /text %}}
+{{% /center %}}
+{{% /scroll-panel %}}
+{{% /grid %}}
 
 The biggest co-occurrence value is between "app" and "config" - 6 contexts.
 
@@ -539,15 +508,7 @@ iogrpc'
 
 bicycling! We all know about
 
-<style>
- .img-small + p > img {
-   width: 50%;
- }
-</style>
-
-<div class="img-small"></div>
-
-![google bicycles](/post/id2vec/google_bicycle.jpg)
+{{% caption src="/post/id2vec/google_bicycle.jpg" width="half-width" /%}}
 
 but why on earth did somebody name an entity in code like this?
 
