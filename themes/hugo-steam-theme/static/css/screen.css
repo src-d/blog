@@ -854,6 +854,50 @@ figure > figcaption {
   }
 }
 
+.table-code > table code {
+  background: none !important;
+  white-space: nowrap;
+}
+.table-2 > table th {
+  width: 50%;
+}
+
+.table-2 > table td {
+  font-size: 2em;
+}
+
+.table-blank > table {
+  margin: 1em 0;
+  border: none !important;
+}
+
+.table-blank > table thead, .table-blank > table th {
+  height: 0;
+  padding: 0 !important;
+}
+
+.table-blank > table thead, .table-blank > table th, .table-blank > table tr, .table-blank > table td {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: none !important;
+}
+.table-small > table {
+  font-size: small;
+  table-layout: fixed;
+}
+.table-small > table th {
+  padding: 10px 0px !important;
+}
+.table-small > table td:nth-child(even), .table-small > table th:nth-child(even) {
+  background: #ecf0f1;
+}
+.table-img-160 > table img {
+  width: 160px;
+  object-fit: contain;
+}
+.table-img-160 > table td {
+  font-size: 2em;
+}
+
 /**
  * Content styles
  */
