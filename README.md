@@ -48,4 +48,4 @@ If you want to contribute to this project, or to write or edit a blog post, you 
 
 # License
 
-Copyright (c) 2015 Máximo Cuadros, see [LICENSE](LICENSE)
+Copyright (c) 2017 source{d}, see [LICENSE](LICENSE)
