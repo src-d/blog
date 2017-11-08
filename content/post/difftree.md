@@ -11,13 +11,6 @@ intuition of how to solve similar problems whenever they come up."
 categories: ["git", "technical"]
 ---
 
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
-
 ![Front image](/post/difftree/intro.jpg "Laurel forest, La Palma © Jasper Arends, Flickr Creative Commons") 
 
 ## Introduction
@@ -513,3 +506,10 @@ will help you solve similar problems in the future.
 **P.S.** Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
 suggestions, proper English and clean code; the broken English and the
 convoluted code is all mine.
+
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

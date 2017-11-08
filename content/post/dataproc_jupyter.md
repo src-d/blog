@@ -6,12 +6,6 @@ image: /post/dataproc_jupyter/intro.png
 description: "How-to article devoted to setting up Dataproc, Jupyter and Python 3 data science stack"
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 Modern big data world is hard to imagine without [Hadoop](http://hadoop.apache.org/).
 It made a small revolution in how analysts deal with large amount of emerging data
@@ -348,3 +342,10 @@ Summary
 Jupyter, Python 3 and Dataproc can rock together. We created the [custom
 initialization script](https://gist.github.com/vmarkovtsev/e56fe77562037460585d4de690040da8)
 and improved the integration with Google Cloud with our [JGSCM](https://github.com/src-d/jgscm).
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

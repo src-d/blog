@@ -1,18 +1,23 @@
 title: source{d} blog
 theme: hugo-steam-theme
 
+languageCode: en
+
 taxonomies:
   category: "categories"
 
+author:
+  name: source{d}
+  email: hello@sourced.tech
+
 params:
   description: Building the first AI that understands code
-  copyright: The MIT License. - Copyright (c) 2016 source{d}
+  copyright: Copyright (c)
   themeColor: custom
   RSSlink: /index.xml
 
   title: "source{d} blog"
   subtitle: "Building the technology stack for AI on code"
-  copyright: "For developers, By developers"
 
   # You can choose between green, orange, red and blue.
   # Enable Google Analytics be inserting your tracking code

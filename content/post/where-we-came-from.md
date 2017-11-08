@@ -6,6 +6,7 @@ image: /post/where-we-came-from/back-2.jpg
 description: "This post is part of a series of posts on the past and future of source{d}."
 categories: ["culture"] 
 ---
+
 This post is part of a series of posts on the where came from and [what is next](../our-master-plan/) of source{d}. 
 
 Since we started in March 2015 we have worked with more than 200 CTOs and engineering leads to help them find the right developers for their teams. We started with the mission to “fix developer recruitment”, and decided to do things differently than others:

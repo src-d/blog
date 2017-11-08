@@ -6,12 +6,6 @@ image: /post/docker_coreos_gpu_deep_learning/intro.png
 description: "A GPGPU computing environment can be set up nicely inside a Docker container using Container Linux by CoreOS. Our way to setup deep learning is efficient and brings benefits to devops and data scientists."
 categories: ["technical"]
 ---
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 Having confidence in your research and development environment is essential if you want to
 solve challenging problems. This post shows how to setup containers for deep learning,
@@ -328,3 +322,10 @@ Back in October 2016 our choice was to install custom hardware and we haven't re
 NVIDIA dockerization was bravely performed by our VP of Engineering, Maximo Cuadros. I learned
 a lot from him about containers. Next time you see Maximo on our
 [tech talks](http://talks.sourced.tech/), ask for some wisdom!
+
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>
