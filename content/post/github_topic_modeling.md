@@ -2,11 +2,11 @@
 author: vadim
 date: 2016-09-26
 title: "Topic Modeling of GitHub Repositories"
-draft: false
 image: /post/github_topic_modeling/wordcloud.png
 description: "Data mining of 18M GitHub repositories"
 categories: ["science", "technical"]
 ---
+
 [Topic modeling](https://en.wikipedia.org/wiki/Topic_model) is the machine learning
 subdomain which is devoted to extracting abstract "topics" from a collection of "documents".
 Each "document" is represented by a bag-of-words model, that is, a set of

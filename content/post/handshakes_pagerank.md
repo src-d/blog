@@ -2,17 +2,10 @@
 author: vadim
 date: 2017-01-30
 title: "GitHub Contributions Graph: Analyzing PageRank & Proving The 6 Handshakes Theory"
-draft: false
 image: /post/handshakes_pagerank/armin_ronacher_2.png
 description: "Contributions to open source projects form a graph. We prove the theory of 6 handshakes and calculate PageRank centrality measure for every node. The data is open, you can reproduce the results yourself!"
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 source{d} has recently published a dataset with metadata on 462,000,000 commits:
 [data.world](https://data.world/vmarkovtsev/452-m-commits-on-github). It allows
@@ -102,7 +95,7 @@ about 20% of the most highly rated ones. That is, unfortunately, there is no dat
 2. Some secondary repositories were confused with the main ones. E.g. there is no
 `golang/go` but rather some random `4ad/go`. That was a bug we're now fixing.
 3. Initially we had 18M repos, but filtered 1.5M duplicates not marked as forks;
-read [this blog post](https://blog.sourced.tech/post/minhashcuda/) how.
+read [this blog post](/post/minhashcuda/) how.
 
 Let's conduct two funny experiments with our graph:
 
@@ -705,3 +698,10 @@ hexbin(graph[:, 0], graph[:, 1],
 ```
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

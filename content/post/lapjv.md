@@ -2,9 +2,8 @@
 author: vadim
 date: 2017-03-14
 title: "Jonker-Volgenant Algorithm + t-SNE = Super Powers"
-draft: false
 image: /post/lapjv/mapping.png
-description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the \"cloud of points\" into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
+description: "t-SNE is an awesome tool to visualize high dimensional data in 2D or 3D. What if we want to turn the 'cloud of points' into a regular image? This issue can be formulated as a Linear Assignment problem and solved efficiently and precisely with Jonker-Volgenant algorithm. To put it short: just look at the image in the beginning of this post."
 categories: ["science", "technical"]
 ---
 
@@ -312,7 +311,7 @@ std::tuple<cost, cost, idx, idx> find_umins(
 Finding two consecutive minimums, plain C++.
 {{% /center %}}
 
-{{% codescroll height="450" %}}
+{{% scroll-panel height="450" %}}
 ```C++
 template <typename idx>
 __attribute__((always_inline)) inline
@@ -388,7 +387,7 @@ std::tuple<float, float, idx, idx> find_umins(
   return std::make_tuple(umin, usubmin, j1, j2);
 }
 ```
-{{% /codescroll %}}
+{{% /scroll-panel %}}
 
 {{% center %}}
 Finding two consecutive minimums, optimized code with AVX2 intrinsics.

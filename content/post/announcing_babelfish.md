@@ -8,16 +8,9 @@ representations of source code."
 categories: ["technical"]
 ---
 
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
-
 At source{d} we believe there's a possibility for programs to write code, and for
 new forms of automatic programming to emerge. Our
-[Roadmap](https://blog.sourced.tech/post/our-roadmap/) states the first step in this
+[Roadmap](/post/our-roadmap/) states the first step in this
 direction as: *Build representations of source code, developers and projects.*
 
 Today we are announcing [Babelfish](https://doc.bblf.sh/), the project we are
@@ -144,3 +137,10 @@ P.S. [Santiago](https://github.com/smola) is giving a talk about Babelfish both 
 [Curry On](http://curry-on.org/2017/sessions/babelfish-universal-code-parsing-server.html)
 and [Docker meetup](https://www.meetup.com/Docker-meetups/events/240565310/).
 Don't miss it if you have the chance to be there!
+
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

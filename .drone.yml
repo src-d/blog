@@ -10,7 +10,7 @@ pipeline:
   # build on pull requests
 
   build:
-    image: alpine:3.6
+    image: node:8.8-alpine
     environment:
       - BASE_URL="//blog.sourced.tech/"
     commands:
@@ -23,9 +23,10 @@ pipeline:
   # deployment to staging environment
 
   build_stg:
-    image: alpine:3.6
+    image: node:8.8-alpine
     environment:
       - BASE_URL="//blog-staging.srcd.run/"
+      - ALLOW_UNPUBLISHED=true
     commands:
       - apk add --update make bash curl
       - make build
@@ -62,9 +63,10 @@ pipeline:
   # deployment to production environment
 
   build_prod:
-    image: alpine:3.6
+    image: node:8.8-alpine
     environment:
       - BASE_URL="//blog.sourced.tech/"
+      - ALLOW_UNPUBLISHED="false"
     commands:
       - apk add --update make bash curl
       - make build

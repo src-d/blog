@@ -2,20 +2,13 @@
 author: vadim
 date: 2016-11-23
 title: "kmcuda (K-Means on GPU) version 4 is released"
-draft: false
 image: /post/kmcuda4/nvprof.png
 description: "Our kmcuda v4 is released, featuring multi-gpu, float16, Spherical K-Means and improved precision."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 Some time ago, I wrote an article about [src-d/kmcuda](https://github.com/src-d/kmcuda)
-named [Towards Yinyang K-means on GPU](http://blog.sourced.tech/post/towards_kmeans_on_gpu/).
+named [Towards Yinyang K-means on GPU](/post/towards_kmeans_on_gpu/).
 Last weekend we released version 4 of that library. Here is the brief list of
 changes:
 
@@ -501,3 +494,10 @@ you have to build it from source - please refer to
 [README.md](https://github.com/src-d/kmcuda/blob/develop/README.md).
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

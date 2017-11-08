@@ -23,10 +23,3 @@
 		<section class="copyright">&copy; {{ now.Format "2006" }} <a href="{{ relURL "/" }}">{{ .Site.Params.name }}</a>. {{ .Site.Params.copyright | markdownify }}</section>
 	</div>
 </footer>
-
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-<script async type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>

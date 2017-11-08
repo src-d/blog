@@ -1,0 +1,92 @@
+/**
+ * Shortcodes styles
+ */
+
+.centered {
+    text-align: center;
+}
+
+figure > figcaption {
+    text-align: center;
+    margin-top: -10px;
+    font-style: italic;
+}
+
+.scroll-panel {
+    margin: 20px 0;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+.scroll-panel pre,
+.scroll-panel .gist,
+.scroll-panel .gist-file {
+    margin: 0 !important;
+}
+
+.scroll-panel .gist-file + .gist-file {
+    margin-top: 20px !important;
+}
+
+.scroll-panel .gist .gist-data,
+.scroll-panel .gist .blob-wrapper  {
+    overflow: initial;
+}
+
+.grid2x {
+    display: flex;
+    width: 1000px;
+    overflow: visible;
+    margin-left: -115px;
+}
+
+.grid2x-cell {
+    width: 50%;
+}
+
+.grid2x-cell pre {
+    margin: 30px !important;
+}
+
+@media (max-width: 1000px) {
+    .grid2x {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .grid2x > div {
+        width: 50%;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .grid2x {
+        flex-direction: column;
+    }
+
+    .grid2x > div {
+        width: 100%;
+    }
+
+    .grid2x-cell {
+        width: 100%;
+    }
+}
+
+/**
+ * Highlight.JS
+ */
+
+.hljs-keyword {
+    color: #C3D31B;
+}
+
+.hljs-built_in,
+.hljs-params {
+    color: #e66cd7;
+}
+
+.hljs-string,
+.hljs-number {
+    color: #3EB1D0;
+}

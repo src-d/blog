@@ -2,12 +2,9 @@
 author: eiso 
 date: 2016-05-25 
 title: "100 Awesome Women In The Open-Source Community You Should Know" 
-draft: false 
 description: "100 Awesome Women In The Open-Source Community You Should Know" 
 categories: ["culture"] 
 ---
-<link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">
-
 
 To give you a bit of background, at source{d} we analyse every GitHub repository
 and run our own version of `git blame` ([go-git](http://github.com/src-d/go-git)) across 900 million
@@ -3501,3 +3498,5 @@ Almost certainly insane.</div>
   </div>
 </div>
 <div style="height: 5px"></div>
+
+<link rel="stylesheet" type="text/css" href="/post/100-awesome-women-in-the-open-source-community-you-should-know/post-style.css">

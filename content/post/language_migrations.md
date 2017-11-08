@@ -2,7 +2,6 @@
 author: waren
 date: 2017-07-12
 title: "Analyzing GitHub, how developers change programming languages over time"
-draft: false
 image: /post/language_migrations/background.png
 description: "This post is inspired by ''The eigenvector of why we moved from language X to language Y'', by Erik Bernhardsson. Based on GitHub repositories, we build our own transition matrix after solving the flow optimization problem. The results are reflecting the history of programming language competition in the open source world."
 categories: ["science", "technical"]
@@ -18,7 +17,7 @@ Thanks to our data retrieval pipeline, source{d} opened the dataset that contain
 * 393 different languages
 * 10 TB of source code in total
 
-I invite you to take a look at [Vadim Markovtsev](https://github.com/vmarkovtsev?tab=repositories)'s blog post : [Spaces or Tabs](https://blog.sourced.tech/post/tab_vs_spaces/), if you want details about which repositories and languages were considered.
+I invite you to take a look at [Vadim Markovtsev](https://github.com/vmarkovtsev?tab=repositories)'s blog post : [Spaces or Tabs](/post/tab_vs_spaces/), if you want details about which repositories and languages were considered.
 
 To have a better understanding of what's going on, I find it nice to visualize developer's language usage history with a kind of [Gantt diagram](https://en.wikipedia.org/wiki/Gantt_chart).
 
@@ -148,7 +147,7 @@ Compared to Erik's table we've got some elements on the main diagonal of our tra
 
 ## GitHub "LanguageRank"
 
-Since we have our flow matrix, we want to know which languages are the most and the least popular. It is possible to calculate [centrality measures](https://en.wikipedia.org/wiki/Centrality) on the represented graph, e.g. the eigenvector centrality. Indeed, these measures convey the relative popularity of languages in the sense of how likely people coding in one language would switch to another. We will take the approach of calculating the eigenvector centrality. If you need further explanations, I invite you to read Vadim's PageRank analysis in his blog post about the [GitHub Contributions Graph](https://blog.sourced.tech/post/handshakes_pagerank/).
+Since we have our flow matrix, we want to know which languages are the most and the least popular. It is possible to calculate [centrality measures](https://en.wikipedia.org/wiki/Centrality) on the represented graph, e.g. the eigenvector centrality. Indeed, these measures convey the relative popularity of languages in the sense of how likely people coding in one language would switch to another. We will take the approach of calculating the eigenvector centrality. If you need further explanations, I invite you to read Vadim's PageRank analysis in his blog post about the [GitHub Contributions Graph](/post/handshakes_pagerank/).
 
 1. Our flow matrix contains strictly positive elements, which is a sufficient condition to make it [irreducible](https://en.wikipedia.org/wiki/Irreducibility_(mathematics)) ; there is always a way to reach all other languages from any given one. Thus, according to [Perron–Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem), we are looking for the greatest eigenvalue and its corresponding eigenvector.
 

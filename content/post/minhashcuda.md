@@ -2,24 +2,17 @@
 author: vadim
 date: 2016-11-24
 title: "Weighted MinHash on GPU helps to find duplicate GitHub repositories."
-draft: false
 image: /post/minhashcuda/benders.jpg
 description: "We describe how we filtered very similar GitHub repositories using our new open source project MinHashCuda."
 categories: ["science", "technical"]
 ---
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 The codez: [GitHub](https://github.com/src-d/minhashcuda).
 
 ![benders](/post/minhashcuda/benders.jpg)
 
 While doing topic modeling of GitHub repositories, to which we dedicated the recent article
-[Topic Modeling of GitHub Repositories](http://blog.sourced.tech/post/github_topic_modeling/),
+[Topic Modeling of GitHub Repositories](/post/github_topic_modeling/),
 we gradually realized that our dataset should be filtered to achieve better results.
 Particularly, we should throw away "extreme forks", the Large Unidentified
 <span style="text-decoration: line-through;">Flying</span> Copy-Pasted
@@ -283,3 +276,10 @@ phidang/first-django-blog
 The complete dataset is published on [data.world](https://data.world/vmarkovtsev/github-duplicate-repositories).
 
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+<style>
+p.caption {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

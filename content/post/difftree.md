@@ -2,7 +2,6 @@
 author: alcortesm
 date: 2017-03-21
 title: "Comparing Git trees in Go"
-draft: false
 image: /post/difftree/intro.jpg
 description: "If you use Git, you probably compare commits on a daily basis.
 This blog post explains the data structures and algorithms involved in such
@@ -11,13 +10,6 @@ a nice understanding of how to use prefix trees and Merkle trees and a good
 intuition of how to solve similar problems whenever they come up."
 categories: ["git", "technical"]
 ---
-
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
 
 ![Front image](/post/difftree/intro.jpg "Laurel forest, La Palma © Jasper Arends, Flickr Creative Commons") 
 
@@ -514,3 +506,10 @@ will help you solve similar problems in the future.
 **P.S.** Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
 suggestions, proper English and clean code; the broken English and the
 convoluted code is all mine.
+
+<style>
+p.dt {
+  margin-top: -16px;
+  font-style: italic;
+}
+</style>

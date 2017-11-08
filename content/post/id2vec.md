@@ -2,11 +2,12 @@
 author: vadim
 date: 2017-10-09
 title: "Source Code Identifier Embeddings"
-draft: false
 image: /post/id2vec/intro.png
-description: "\"Embed and conquer\", they say. Everything which has a context can be embedded. word2vec, node2vec, product2vec... id2vec! We take source code identifiers, introduce the context as the scope in the Abstract Syntax Tree, and find out that \"send\" is to \"receive\" as \"push\" is to \"pop\"."
+description: "'Embed and conquer', they say. Everything which has a context can be embedded. word2vec, node2vec, product2vec... id2vec! We take source code identifiers, introduce the context as the scope in the Abstract Syntax Tree, and find out that 'send' is to 'receive' as 'push' is to 'pop'."
 categories: ["science", "technical"]
+draft: true
 ---
+
 This post is related to a talk we gave in Moscow in June at our Machine Learning on Source Code (MLoSC) conference and research we did at the beginning of this year:
 [presentation](http://vmarkovtsev.github.io/techtalks-2017-moscow/) and
 [video](https://youtu.be/v8Jy3xbpCqw?list=PL5Ld68ole7j3iQFUSB3fR9122dHCUWXsy).

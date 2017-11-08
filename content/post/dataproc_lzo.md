@@ -2,16 +2,16 @@
 author: vadim
 date: 2016-10-21
 title: "Adding LZO support to Dataproc"
-draft: false
 image: /post/dataproc_lzo/intro.png
 description: "How to leverage splittable LZO compression in Dataproc"
 categories: ["science", "technical"]
 ---
+
 [LZO](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Oberhumer) is a nice
 general-purpose data compression algorithm which provides blazing fast decompression.
 It is especially good because LZO archives can be indexed and become
 [splittable](http://stackoverflow.com/questions/34208051/when-are-files-splittable).
-source{d} uses LZO to store the dataset of [names occurring in the source code](http://blog.sourced.tech/post/github_topic_modeling/)
+source{d} uses LZO to store the dataset of [names occurring in the source code](/post/github_topic_modeling/)
 in GitHub repositories, reducing the amount of data by a factor of 2.
 
 Spark does not support LZO codec out of the box because its implementation

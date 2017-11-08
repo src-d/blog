@@ -1,14 +1,21 @@
-# Configuration
-PROJECT ?= blog
+# Default shell
+SHELL := /bin/bash
 
-HUGO_VERSION := 0.25.1
-UNAME_S := $(shell uname -s)
+# Configuration
+HUGO_VERSION := 0.30.2
+PORT ?= 8484
+BASE_URL ?= "//localhost:$(PORT)/"
+
+# Environment
 OS := Linux
+UNAME_S := $(shell uname -s)
+SHARED_PATH ?= $(shell pwd)
+
+HUGO_THEME_NAME := hugo-steam-theme
 HUGO_TAR_FILE_NAME = hugo_$(HUGO_VERSION)_$(OS)-64bit.tar.gz
 HUGO_URL = https://github.com/spf13/hugo/releases/download/v$(HUGO_VERSION)/$(HUGO_TAR_FILE_NAME)
-HUGO_THEME ?= https://github.com/digitalcraftsman/hugo-steam-theme
-
-BASE_URL ?= "//localhost:1313/"
+HUGO_PATH := $(SHARED_PATH)/.hugo
+HUGO_TAR_PATH := $(HUGO_PATH)/$(HUGO_TAR_FILE_NAME)
 
 # System
 ifneq ($(UNAME_S),Linux)
@@ -19,50 +26,61 @@ $(error "error Unexpected OS; Only Linux or Darwin supported.")
 endif
 endif
 
-# Environment
-SHELL := /bin/bash
-BASE_PATH := $(shell pwd)
-PUBLIC_PATH := $(BASE_PATH)/public
-THEMES_PATH := $(BASE_PATH)/themes
-STATIC_PATH := $(BASE_PATH)/static
-THEME_NAME := $(shell basename $(HUGO_THEME))
-THEME_PATH := $(THEMES_PATH)/$(THEME_NAME)
-HUGO_PATH := $(BASE_PATH)/.hugo
-HUGO_URL = https://github.com/spf13/hugo/releases/download/v$(HUGO_VERSION)/$(HUGO_TAR_FILE_NAME)
-HUGO_NAME := hugo_$(HUGO_VERSION)_$(ARCH)_$(OS)
-HUGO_URL_NAME := hugo_$(HUGO_VERSION)_$(URL_ARCH)-$(URL_OS)
-
 # Tools
-CURL = curl -L
-HUGO = $(HUGO_PATH)/hugo
-MKDIR = mkdir -p
-GIT = git
+CURL := curl -L
+HUGO := $(HUGO_PATH)/hugo
+MKDIR := mkdir -p
+JS_PACKAGE_MANAGER := yarn
 UNCOMPRESS := tar -zxf
 
 # Rules
 all: build
 
-init:
-	@if [ "$(HUGO_THEME)" == "" ]; then \
-		echo "ERROR! Please set the env variable 'HUGO_THEME' (http://mcuadros.github.io/autohugo/documentation/working-with-autohugo/)"; \
-		exit 1; \
-	fi;
+# Ensures the Hugo binary existance
+$(HUGO): $(HUGO_TAR_PATH)
+	$(UNCOMPRESS) $(HUGO_TAR_PATH) --directory=$(HUGO_PATH);
 
-dependencies: init
-	@if [[ ! -f $(HUGO) ]]; then \
-		$(MKDIR) $(HUGO_PATH); \
-		cd $(HUGO_PATH); \
-		echo "Downloading $(HUGO_URL)"; \
-		$(CURL) $(HUGO_URL) -o $(HUGO_TAR_FILE_NAME); \
-		$(UNCOMPRESS) $(HUGO_TAR_FILE_NAME); \
-	fi;
+# Downloads the hugo binary
+$(HUGO_TAR_PATH):
+	echo "Downloading $(HUGO_URL)"
+	$(MKDIR) $(HUGO_PATH)
+	$(CURL) $(HUGO_URL) -o $(HUGO_TAR_PATH)
 
-build: dependencies
-	$(HUGO) -t $(THEME_NAME) --baseURL $(BASE_URL)
+# Ensures hugo dependencies
+hugo-dependencies: $(HUGO_TAR_PATH) $(HUGO)
 
-server: dependencies
-	$(HUGO) server -t $(THEME_NAME) -D -w --baseURL $(BASE_URL)
+# Prepares yarn
+js-dependencies:
+	$(JS_PACKAGE_MANAGER) install --force
+	$(JS_PACKAGE_MANAGER) build
 
-clean:
-	rm -rf $(HUGO_PATH)
-	rm -rf $(THEME_PATH)
+# Prepares project dependencies
+project-dependencies: hugo-dependencies js-dependencies
+
+# Builds hugo
+hugo-build:
+ifeq ($(ALLOW_UNPUBLISHED),true)
+	$(HUGO) --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --buildDrafts --buildFuture
+else
+	$(HUGO) --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME)
+endif
+
+## Builds project
+build: project-dependencies hugo-build
+
+## Serves the blog with Hugo and Webpack watchers
+serve: project-dependencies
+ifndef ALLOW_UNPUBLISHED
+	ALLOW_UNPUBLISHED="true" $(JS_PACKAGE_MANAGER) start
+else
+	ALLOW_UNPUBLISHED="$(ALLOW_UNPUBLISHED)" $(JS_PACKAGE_MANAGER) start
+endif
+
+
+# Runs hugo server
+hugo-server:
+ifeq ($(ALLOW_UNPUBLISHED),true)
+	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --port=$(PORT) --buildDrafts --buildFuture
+else
+	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --port=$(PORT)
+endif

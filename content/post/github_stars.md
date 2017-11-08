@@ -2,11 +2,11 @@
 author: vadim
 date: 2016-11-14
 title: "Hands on with the most starred GitHub repositories."
-draft: false
 image: /post/github_stars/star.png
 description: "Playing with most popular repositories' metadata."
 categories: ["science", "technical"]
 ---
+
 Recently I started to collect all the available metadata (name,
 number of stars, forks, watchers, etc.) from the most popular GitHub repositories.
 I chose the "number of stargazers" as a measure of popularity. This metric
