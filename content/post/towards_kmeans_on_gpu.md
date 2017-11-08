@@ -15,7 +15,7 @@ p.caption {
 
 The codez: [GitHub](https://github.com/src-d/kmcuda).
 
-[Next article about kmcuda v4.](http://blog.sourced.tech/post/kmcuda4/)
+[Next article about kmcuda v4.](/post/kmcuda4/)
 
 We developed an efficient K-means implementation using [NVIDIA CUDA](...)
 technology and this article is devoted to the internals of that project.

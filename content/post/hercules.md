@@ -2,7 +2,6 @@
 author: vadim
 date: 2017-01-10
 title: "Hercules and his labours (source code line burn down)"
-draft: false
 image: /post/hercules/rbtree.png
 description: "src-d/hercules - incremental git blame on top of go-git - helps to analyse repositories. Is it hard for him?"
 categories: ["science", "technical"]

@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-06-03
 title: "Never mess with LD_LIBRARY_PATH to run your CUDA app again" 
-draft: false 
 image: /post/cuda_ldconfig/intro.png
 description: "Simple and easy way to install CUDA and CUDNN system-wide." 
 categories: ["science", "technical"]

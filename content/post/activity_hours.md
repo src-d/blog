@@ -2,7 +2,6 @@
 author: vadim
 date: 2017-05-04
 title: "Daily commit activity on GitHub"
-draft: false
 image: /post/activity_hours/intro.png
 description: "This post was inspired by <a href=\"https://stackoverflow.blog/2017/04/19/programming-languages-used-late-night/\">What programming languages are used late at night?</a> by StackOverflow. We take our <a href=\"https://data.world/vmarkovtsev/452-m-commits-on-github\">commits dataset</a>, combine it with <a href=\"\">repositories' languages dataset</a> and plot circular histograms for PST/PDT zones with Python."
 categories: ["science", "technical"]
@@ -25,7 +24,7 @@ Besides the data sets, we need the computing resources to digest the datasets. I
 
 ### Loading the data in Dataproc
 
-The first thing we shall do is to launch the smallest Dataproc cluster. I have a post about [how to setup a working PySpark in Jupyter](https://blog.sourced.tech/post/dataproc_jupyter/), it covers the basic stuff. The initialization script [evolved](https://storage.googleapis.com/srcd-dataproc/minimal.sh) since then.
+The first thing we shall do is to launch the smallest Dataproc cluster. I have a post about [how to setup a working PySpark in Jupyter](/post/dataproc_jupyter/), it covers the basic stuff. The initialization script [evolved](https://storage.googleapis.com/srcd-dataproc/minimal.sh) since then.
 
 {{% caption src="/post/activity_hours/dataproc1.png" %}}
 We create a 2-node, 8-core Dataproc cluster.
@@ -71,7 +70,7 @@ When this command finishes, we are ready for executing a PySpark job to analyze 
 
 ### Extracting the commits' frequency
 
-Open `http://data-science-m:8123/` (again, read [the previous post](https://blog.sourced.tech/post/dataproc_jupyter/) how), you should see the list of your buckets thanks to [src-d/jgscm](https://github.com/src-d/jgscm) Jupyter backend. Enter the one you wish to store the notebooks and start a new "PySpark 3".
+Open `http://data-science-m:8123/` (again, read [the previous post](/post/dataproc_jupyter/) how), you should see the list of your buckets thanks to [src-d/jgscm](https://github.com/src-d/jgscm) Jupyter backend. Enter the one you wish to store the notebooks and start a new "PySpark 3".
 
 [452M commits on GitHub](https://data.world/vmarkovtsev/452-m-commits-on-github) has the following format:
 
@@ -89,7 +88,7 @@ Open `http://data-science-m:8123/` (again, read [the previous post](https://blog
 
 The above is prettified json but in the file it is a single line. We would like to aggregate commits by repository, then by weekday and finally by hour. For example,
 
-{{% codescroll height="400" %}}
+{{% scroll-panel height="400" %}}
 ```python
 (('apache/spark', 0, 0), 68)
 (('apache/spark', 0, 1), 22)
@@ -258,7 +257,7 @@ The above is prettified json but in the file it is a single line. We would like 
 (('apache/spark', 6, 8), 13)
 (('apache/spark', 6, 9), 39)
 ```
-{{% /codescroll %}}
+{{% /scroll-panel %}}
 
 The tricky part is, of course, dealing with time. People commit with invalid timezones quite often. Besides, we do not want to mix users living in different countries... and we've only got "t"-s like
 

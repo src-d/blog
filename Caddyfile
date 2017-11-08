@@ -1,16 +1,24 @@
 :80 {
-	root /var/www/public
-	log stdout
-	gzip
+    root /var/www/public
+    log stdout
+    gzip
 
-        redir /post/our-master-plan/ /post/our-roadmap/
-        redir 301 {
-              if {>X-Forwarded-Proto} is http
-              /  https://{host}{uri}
-        }
+    redir 301 {
+        if {>X-Forwarded-Proto} is http
+        /  https://{host}{uri}
+    }
 
-	ext .html
-	errors stderr {
-		404 404.html
-	}
+    redir /post/our-master-plan/ /post/our-roadmap/
+
+    # TODO: remove once 'id2vec' post has been published
+    redir 301 {
+        if {hostonly} is blog.sourced.tech
+        /upcoming/id2vec/ https://blog-staging.srcd.run/post/id2vec/
+    }
+
+    ext .html
+
+    errors {
+        404 404.html
+    }
 }

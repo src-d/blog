@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-09-13
 title: "397 Languages, 18,000,000 GitHub repositories, 1.2 billion files, 20 terabytes of code: Spaces or Tabs"
-draft: false
 image: /post/tab_vs_spaces/intro.png
 description: "Comprehensive study of spaces and tabs usage in source code in GitHub repositories"
 categories: ["science", "technical"]
@@ -62,7 +61,7 @@ preemptible nodes if I was a Spark guru after all.
 
 The job took about 2 days (left it running for the weekend). I had to find the best cluster parameters so
 I recreated the cluster several times and this is where [source{d}'s Jupyter Cloud Storage backend](https://github.com/src-d/jgscm)
-shined. Read more about how I use Dataproc with Jupyter in the [previous article](http://blog.sourced.tech/post/dataproc_jupyter/).
+shined. Read more about how I use Dataproc with Jupyter in the [previous article](/post/dataproc_jupyter/).
 Doing everything in the same Python environment from your web browser with unlimited computing resources?
 That's why I like Jupyter+Dataproc.
 

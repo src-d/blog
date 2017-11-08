@@ -1,0 +1,13 @@
+{{ partial "head" $.ctx }}
+<body class="home-template">
+
+    {{ partial "header" $.ctx }}
+    {{ partial "navigation" $.ctx }}
+
+    {{ partial (printf "skeleton-%s" $.type) (dict "ctx" $.ctx "section" $.section) }}
+
+    {{ partial "footer" $.ctx }}
+    {{ partial "js" $.ctx }}
+
+</body>
+</html>

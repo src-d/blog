@@ -15,7 +15,7 @@
                 {{ $.Scratch.Set "image" "" }}
             {{ end }}
 
-            {{ $author := index .Site.Params.authors .Params.author }}
+            {{ $author := index .Site.Data.authors .Params.author }}
 
             {{ $authorName := $author.name }}
             {{ $authorAvatar := absURL $author.thumbnail }}

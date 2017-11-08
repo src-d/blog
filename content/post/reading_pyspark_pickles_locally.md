@@ -2,7 +2,6 @@
 author: vadim
 date: 2016-11-08
 title: "Reading PySpark pickles locally"
-draft: false
 image: /post/reading_pyspark_pickles_locally/intro.jpg
 description: "How to load Hadoop SequenceFile-s with Python serialized objects without having to install Spark - using src-d/sparkpickle"
 categories: ["technical"]
