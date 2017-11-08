@@ -9,7 +9,7 @@
     "webpack-watcher": "webpack --config=webpack.config.js --watch --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "source{d}",
   "license": "ISC",
   "devDependencies": {
     "@tww/terminus-maximus": "^2.0.4",
