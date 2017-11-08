@@ -958,7 +958,6 @@ article.post h3 {
   font-style: italic;
   color: #33526c !important;
   font-size: 24px;
-  line-height: 3em;
 }
 
 article.post h4,
@@ -967,8 +966,16 @@ article.post h6 {
   font-style: italic;
   color: #33526c !important;
   font-size: 20px;
-  line-height: 3em;
 }
+
+article.post h3,
+article.post h4,
+article.post h5,
+article.post h6 {
+  line-height: 1.5em;
+  padding: 15px 0;
+}
+
 
 /**
  * Slack form styles
