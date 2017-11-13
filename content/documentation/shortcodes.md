@@ -104,13 +104,15 @@ Whenever you need to use an image in your post, you should consider the `caption
 For the caption of the image, it can be used html, markdown and other shortcodes
 
 ```
-{{%/* caption src="//url-to-the-omage" title="title of image" %}}
+{{%/* caption src="//url-to-the-omage" title="title of image" width="half-width" %}}
 caption of the image
 {{% /caption */%}}
 ```
 
+The modifier `width="half-width"` is optional, and will display a 50% width image if used.
+
 _example_:
-{{% caption src="http://www.elreferente.es/source/paginas/slider/sourced-ronda-6millones.jpg" title="title of image" %}}
+{{% caption src="http://www.elreferente.es/source/paginas/slider/sourced-ronda-6millones.jpg" title="title of image"  width="half-width" %}}
 caption of the image
 {{% /caption %}}
 

@@ -13,6 +13,10 @@ figure > figcaption {
     font-style: italic;
 }
 
+.caption-half-width > img {
+    width: 50%;
+}
+
 .scroll-panel {
     overflow: auto;
     border-radius: 5px;
