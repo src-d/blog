@@ -4,6 +4,7 @@
 
 .centered {
     text-align: center;
+    width: 100%;
 }
 
 figure > figcaption {
@@ -12,10 +13,14 @@ figure > figcaption {
     font-style: italic;
 }
 
+.caption-half-width > img {
+    width: 50%;
+}
+
 .scroll-panel {
-    margin: 20px 0;
     overflow: auto;
     border-radius: 5px;
+    width: 100%;
 }
 
 .scroll-panel pre,
@@ -42,20 +47,18 @@ figure > figcaption {
 
 .grid2x-cell {
     width: 50%;
+    padding-right: 10px;
 }
 
-.grid2x-cell pre {
-    margin: 30px !important;
+.grid2x-cell + .grid2x-cell {
+    padding-left: 10px;
+    padding-right: 0;
 }
 
 @media (max-width: 1000px) {
     .grid2x {
         width: 100%;
         margin-left: 0;
-    }
-
-    .grid2x > div {
-        width: 50%;
     }
 }
 
@@ -64,13 +67,61 @@ figure > figcaption {
         flex-direction: column;
     }
 
-    .grid2x > div {
-        width: 100%;
-    }
-
     .grid2x-cell {
         width: 100%;
+        padding: 0 !important;
     }
+}
+
+.table-no-cell-highlighting table,
+.table-no-cell-highlighting thead,
+.table-no-cell-highlighting th,
+.table-no-cell-highlighting tr,
+.table-no-cell-highlighting td {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.table-no-header thead {
+    display: none;
+}
+
+.table-fixed-layout table {
+    table-layout: fixed;
+}
+
+@media all and (max-width: 1000px) {
+    .table-fixed-layout table {
+        table-layout: initial;
+    }
+}
+
+.table-condensed td,
+.table-condensed th {
+    padding: 2px !important;
+}
+
+.table-center td,
+.table-center th {
+    text-align: center;
+}
+
+.text-small {
+    font-size: .8em;
+}
+
+.text-large {
+    font-size: 1.4em;
+}
+
+@media all and (max-width: 768px) {
+    .text-large {
+        font-size: 1.3em;
+    }
+}
+
+.text-monospaced  {
+    font-family: "Hack", "monaco", monospace;
 }
 
 /**

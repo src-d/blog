@@ -566,7 +566,6 @@ a.archive-link {
 /* Tables */
 table {
   width: 100%;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, "Nimbus L", sans-serif;
   border-collapse: collapse;
   margin: 1em 0 3em;
 }
@@ -912,6 +911,7 @@ article.post ul ul li:before {
 
 article.post table {
   border: 1px solid #737373;
+  margin: 30px 0;
 }
 
 article.post table tr,
