@@ -1,11 +1,10 @@
 ---
 author: vadim
-date: 2017-10-09
+date: 2017-12-05
 title: "Source Code Identifier Embeddings"
 image: /post/id2vec/intro.png
 description: "'Embed and conquer', they say. Everything which has a context can be embedded. word2vec, node2vec, product2vec... id2vec! We take source code identifiers, introduce the context as the scope in the Abstract Syntax Tree, and find out that 'send' is to 'receive' as 'push' is to 'pop'."
 categories: ["science", "technical"]
-draft: true
 ---
 
 This post is related to a talk we gave in Moscow in June at our Machine Learning on Source Code (MLoSC) conference and research we did at the beginning of this year:
@@ -230,7 +229,7 @@ $$
 w _{king} - w _{man} + w _{woman} \\sim w _{queen}
 $$
 
-Here \\(~\\) operation means the result of finding the nearest neighbor to the calculated vector.
+Here \\(\\sim\\) operation means the result of finding the nearest neighbor to the calculated vector.
 
 ## id2vec
 
@@ -356,7 +355,7 @@ And yeah! "bar" is to "foo" as "baz" is to "qux" - we've got the proof now.
 
 * "boy" is to "king" as "girl" is to "queen".
 However, replacing "boy" with "man" and "girl" with "woman" does not prove this association.
-I explain it with the fact that "man" is a typical acronym from "manual" and lost it's specificity.
+I explain it with the fact that "man" is a typical acronym from "manual" and lost its specificity.
 
 * "bug" - "test" + "expect" = "suppress". Pretty much what we all do with `try: ... except: pass`. 
 
