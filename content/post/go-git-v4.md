@@ -4,7 +4,7 @@ date: 2017-12-07
 title: "Announcing the latest go-git!"
 image: /post/go-git-v4/go-git.png
 description: "After a year of intense work, we're happy to announce the latest and best release of go-git ever. go-git v4 includes many new features, making it the most used and feature complete git library written in Go, and in use on production at companies like source{d} and keybase."
-categories: ["git", "announcement", "OSS"]
+categories: ["git", "announcement", "OSS", "technical"]
 ---
 
 After a bit over a year of intense work, we're happy to announce the
