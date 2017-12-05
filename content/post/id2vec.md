@@ -294,7 +294,7 @@ Duplicates are discarded, that is, only unique elements are taken. The result is
 
 The biggest co-occurrence value is between "app" and "config" - 6 contexts.
 
-The described scheme can be distributed and run on top of Spark or any other solution. Our Data Retrieval engineer, 
+The described scheme can be distributed and run on top of Spark or any other solution. Our Applications team lead (formerly in Data Retrieval engineer)
 Alex has a working proof of concept [swivel-spark-prep](https://github.com/src-d/swivel-spark-prep).
 Thus our identifier embedding approach is the explicit factorization. We apply Swivel subsequently, it takes less than 6 hours to train using 4 NVIDIA 1080Ti grade GPUs on a 1 million x 1 million matrix produced from ⪆100k most starred repositories on GitHub.
 
