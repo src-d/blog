@@ -543,7 +543,7 @@ These examples are not chosen randomly. Not everything that
 one can imagine is magically reflected in the embeddings.
 
 ## Reproduce
-We are in the process of cloning all Git repositories in the world and building the [engine](https://github.com/src-d/spark-api) to access and analyse them. We've built [ast2vec](https://github.com/src-d/ast2vec) and many other libraries and packages to do MLoSC on top.
+We are in the process of cloning all Git repositories in the world and building [sourced.engine](https://github.com/src-d/engine) to access and analyse them. We've built [sourced.ml](https://github.com/src-d/ml) and many other libraries and packages to do MLoSC on top.
 Meanwhile, it is possible to grab the obsolete embeddings and play with them. They are the same as
 we use in [vecino-reference](https://github.com/src-d/vecino/blob/master/reference/nearest_repos.ipynb),
 the proof of concept notebook which finds similar GitHub repositories. They were built without
@@ -554,7 +554,7 @@ size is 500,000. The source code used is >100,000 most starred repositories on G
 
 If you really wish to train your own identifier embeddings right here, right now, contact us and we
 will figure out how to give you terabytes of data. Otherwise it is best to wait a few months
-until we launch our datasets initiative. Alternatively join our Slack community and we're always happy to discuss generating data sets for you. 
+until we launch our datasets initiative. Alternatively [join](https://sourced.tech/) our Slack community and we're always happy to discuss generating data sets for you. 
 
 #### Related research
 
