@@ -1,6 +1,4 @@
-# source{d} blog
-[![Build Status](https://drone.srcd.host/api/badges/src-d/landing/status.svg)](https://drone.srcd.host/src-d/landing)
-[![Docker Repository on Quay](https://quay.io/repository/srcd/blog/status "Docker Repository on Quay")](https://quay.io/repository/srcd/blog)
+# source{d} blog [![Build Status](https://drone.srcd.host/api/badges/src-d/blog/status.svg)](https://drone.srcd.host/src-d/blog)
 
 This is the repository for the [source{d} blog](https://blog.sourced.tech), which generates styled static HTML from markdown files.
 
