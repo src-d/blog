@@ -1,6 +1,5 @@
 # source{d} blog
-[![Build Status](https://drone.srcd.host/api/badges/src-d/landing/status.svg)](https://drone.srcd.host/src-d/landing)
-[![Docker Repository on Quay](https://quay.io/repository/srcd/blog/status "Docker Repository on Quay")](https://quay.io/repository/srcd/blog)
+[![Build Status](https://drone.srcd.host/api/badges/src-d/blog/status.svg)](https://drone.srcd.host/src-d/blog)
 
 This is the repository for the [source{d} blog](https://blog.sourced.tech), which generates styled static HTML from markdown files.
 
@@ -45,6 +44,9 @@ Finally, go to [http://localhost:8484](http://localhost:8484)
 
 If you want to contribute to this project, or to write or edit a blog post, you will find more info in the [contribution guidelines](CONTRIBUTING.md).
 
+# Deploying
+
+Automatically deployed, see [here](https://github.com/src-d/guide/pull/70).
 
 # License
 
