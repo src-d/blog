@@ -1,6 +1,6 @@
 ---
 author: campoy
-date: 2017-12-07
+date: 2017-12-26
 title: "Announcing the latest go-git!"
 image: /post/go-git-v4/go-git.png
 description: "After a year of intense work, we're happy to announce the latest and best release of go-git ever. go-git v4 includes many new features, making it the most used and feature complete git library written in Go, and in use on production at companies like source{d} and keybase."
@@ -15,15 +15,13 @@ complete git library written in Go.
 ## what's new?
 
 A year and almost 800 commits have passed since `go-git v3.2.0` was released,
-our amazing contributors have really been very busy. But all of this effort
-was worth it and the results definitely show.
+our 55 amazing contributors have really been very busy. But all of this effort
+was worth it and it definitely shows.
 
 Many (really [many](https://github.com/src-d/go-git/releases/tag/v4.0.0-rc1))
-new features have been added to `go-git`, but our favorites are:
-
-- TODO
-
-In addition to all of these new features *many* bugs were fixed and tests added.
+new features have been added to `go-git`. `go-git` has gone from providing
+just some useful features to all the common used git functionalities.
+It is now a real alternative to shelling out `git`!
 
 ### moving to Apache v2
 
@@ -54,10 +52,10 @@ Projects like [klone](https://github.com/kris-nova/klone) by the amazing
 [pachyderm](https://github.com/pachyderm/pachyderm), and even the
 [zoekt](https://github.com/google/zoekt) project by Google use `go-git`.
 
-Last by definitely not least, one of the `go-git` users I'm almost sure
+Last but definitely not least, one of the `go-git` users I'm almost sure
 you've heard about are [keybase](https://keybase.io).
 They [recently announced](https://keybase.io/blog/encrypted-git-for-everyone)
-the support for fully encrypted GitHub repositories.
+the support for fully encrypted git repositories.
 Some might have missed their shout-out to the "excellent `go-git` project" (we didn't).
 
 ### and you?
