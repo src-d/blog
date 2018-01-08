@@ -1,6 +1,6 @@
 ---
 author: campoy
-date: 2018-01-08
+date: 2018-01-09
 title: "Announcing the latest go-git!"
 image: /post/go-git-v4/go-git.png
 description: "After a year of intense work, we're happy to announce the latest and best release of go-git ever. go-git v4 includes many new features, making it the most used and feature complete git library written in Go, and in use on production at companies like source{d} and keybase."
@@ -67,5 +67,7 @@ Join the `go-git` community on Slack using the form below.
 
 ## thanks
 
-We want to take this opportunity to thank each and every single one of our contributors.
-You are the real GitHub stars of this project.
+We want to take this opportunity to thank each and every single one of our [contributors](https://github.com/src-d/go-git/graphs/contributors).
+A special shout-ot goes to [Jeremy Stribling](https://github.com/strib) and [Ori Rawlings](https://github.com/orirawlings) who made this release possible.
+
+You all are the real GitHub stars of this project.
