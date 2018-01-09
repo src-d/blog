@@ -80,3 +80,10 @@ dpordomingo:
   social:
     github: dpordomingo
     twitter: rizomeEs
+campoy:
+  name: Francesc Campoy
+  thumbnail: https://avatars2.githubusercontent.com/u/2237452?s=460&v=4
+  bio: "VP of Developer Relations and avid gopher"
+  social:
+    github: campoy
+    twitter: francesc
