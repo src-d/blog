@@ -4,7 +4,7 @@ date: 2018-01-15
 title: "Why did I join source{d}? - Francesc Campoy"
 draft: true
 description: "The first post of a series on why multiple employees joined source{d}. This one is by Francesc Campoy."
-categories: ["why-i-joined"] 
+categories: ["culture", "why-i-joined"] 
 ---
 
 On November 1st I left Google and in my
@@ -31,18 +31,17 @@ tech companies, it is essential to be able to understand their codebases.
 Critical decisions from a business and engineering perspectives are made
 based on this information.
 
-A year ago I wrote [an article](https://medium.com/google-cloud/analyzing-go-code-with-bigquery-485c70c3b451)
-on how one could use [Bigquery](https://cloud.google.com/bigquery) to analyze
-all of the Go code available on GitHub.
+A year ago I wrote an article on how one could
+[use Bigquery to analyze all of the Go code available on GitHub]((https://medium.com/google-cloud/analyzing-go-code-with-bigquery-485c70c3b451)).
 
 Later on, this kind of analysis started to become a requirement to justify
 additions to Go's standard library.
 
-For instance, the `time.Until` function was added to Go with this
-[proposal](https://github.com/golang/go/issues/14595) after an analysis of
+For instance, the
+[`time.Until` function was added to Go with this proposal](https://github.com/golang/go/issues/14595) after an analysis of
 how many times we could find an equivalent piece of code on GitHub.
 
-![screenshot from the proposal](img/hello-sourced/issue.png)
+![screenshot from the proposal](/post/why-i-joined-sourced-francesc/issue.png)
 [comment](https://github.com/golang/go/issues/14595#issuecomment-235651095) on the issue
 
 This approach is powerful, but it definitely has its limitations.
@@ -77,8 +76,8 @@ over source code: autocompletion (that doesn't require a connection to a 3rd par
 code linters, architecture analyzers, automated code reviews, and (one day) source code generation
 from unit tests or even natural language specifications.
 
-If you're curious, you should go see our [papers](https://arxiv.org/abs/1704.00135) and
-[blog posts](https://blog.sourced.tech/) on these topics.
+If you're curious, you should go see [our papers](https://arxiv.org/abs/1704.00135) and
+[our blog posts](https://blog.sourced.tech/) on these topics.
 
 What's my favorite part of the company? The incredibly incredibly talented team tackling
 problems at different layers:
@@ -88,7 +87,7 @@ problems at different layers:
 - ML: building and training models that can power complex applications.
 - applications: finding the use cases that allows us to prove the power of the platform, while providing as much benefit to the community as possible.
 
-![we want you](img/hello-sourced/wewantyou.jpg)
+![we want you](/post/why-i-joined-sourced-francesc/wewantyou.jpg)
 
 But the applications team at source{d} is not the only one building applications,
 because we're building a platform. We want to empower every developer with access
@@ -113,5 +112,3 @@ Join the [source{d} community slack channel](https://sourced.tech/), follow us o
 [twitter](https://twitter.com/srcd_), or drop me a line on francesc@sourced.tech.
 I'm incredibly excited about the new opportunities that ML on code provide. Together we
 can build better tools, for better source code, for eventually a better world.
-
-Francesc
