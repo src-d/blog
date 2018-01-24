@@ -73,7 +73,7 @@ Any suggestions or improvements for posts can be requested on [GitHub](https://g
 We would like the discussion for this post to happen at [YC HN](https://news.ycombinator.com/item?id=11771235) because we 
 believe the community is great at self-moderating (I've personally been a user since 2008).
 
-You can also follow the tweets of this incredible list of developers here: [Twitter list](https://twitter.com/srcd_/lists/awesome-women-in-oss).
+You can also follow the tweets of this incredible list of developers here: [Twitter list](https://twitter.com/sourcedtech/lists/awesome-women-in-oss).
 
 <div style="height: 45px;"><h2>1. Misty De Meo</h2></div>    
 <div id="user-card">
