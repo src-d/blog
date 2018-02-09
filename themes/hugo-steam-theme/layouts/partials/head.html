@@ -24,22 +24,16 @@
     <meta name="twitter:creator" content="@sourcedtech" />
     <meta property="og:type" content="article" />
     
-    <!-- social cards -->
-    {{ if .IsHome }}
-      <meta name="twitter:title" content="{{ .Site.Title }}"> 
-      <meta name="twitter:image" content="https:{{ .Site.BaseURL }}/image/logo/sourced_blog_logo.svg"/>
+    <meta property="og:title" content="{{ .Title }}"/>
 
-      <meta property="og:title" content="{{ .Title }}"/>
-      <meta property="og:description" content="{{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Site.Params.subtitle }}{{ end }}"/>
-      <meta property="og:image" content="https:{{ .Site.BaseURL }}/image/logo/sourced_blog_logo.svg"/>
-    {{ else }}
-      <meta name="twitter:title" content="{{ .Title }}"> 
-      <meta name="twitter:image" content="https:{{ .Site.BaseURL }}{{.Params.image}}"/>
-
-      <meta property="og:title" content="{{ .Title }}"/>
-      <meta property="og:description" content="{{ .Description | markdownify }}"/>
-      <meta property="og:image" content="https:{{ .Site.BaseURL }}{{ .Params.image }}"/>
-    {{ end }}
+    {{ $image := absURL (default .Site.Params.LogoPNG .Params.Image) }}
+    <meta name="twitter:image" content="https:{{ $image }}"/>
+    <meta property="og:image" content="{{ $image }}"/>
+    <meta property="og:url" content="{{ .Permalink }}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    {{ $description := default .Site.Params.description .Description }}
+    <meta property="og:description" content="{{ $description }}"/>
     
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.2/normalize.min.css">

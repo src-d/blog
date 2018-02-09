@@ -18,6 +18,8 @@ params:
 
   title: "source{d} blog"
   subtitle: "Building the technology stack for AI on code"
+  logoSVG: /image/logo/sourced_blog_logo.svg
+  logoPNG: /image/logo/sourced_blog_logo.png
 
   # You can choose between green, orange, red and blue.
   # Enable Google Analytics be inserting your tracking code
