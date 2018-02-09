@@ -19,17 +19,28 @@
       <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{ .Title }}"/>
-    <meta property="og:description" content="{{ .Description | markdownify }}" />
-    <meta name="og:image" content="https:{{ .Site.BaseURL }}{{.Params.image}}" />
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@sourcedtech" />
     <meta name="twitter:creator" content="@sourcedtech" />
-    <meta name="twitter:title" content="{{ .Title }}"> 
-    <meta name="twitter:image" content="https:{{ .Site.BaseURL }}{{.Params.image}}" />
+    <meta property="og:type" content="article" />
+    
+    <!-- social cards -->
+    {{ if .IsHome }}
+      <meta name="twitter:title" content="{{ .Site.Title }}"> 
+      <meta name="twitter:image" content="https:{{ .Site.BaseURL }}/image/logo/sourced_blog_logo.svg"/>
 
+      <meta property="og:title" content="{{ .Title }}"/>
+      <meta property="og:description" content="{{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Site.Params.subtitle }}{{ end }}"/>
+      <meta property="og:image" content="https:{{ .Site.BaseURL }}/image/logo/sourced_blog_logo.svg"/>
+    {{ else }}
+      <meta name="twitter:title" content="{{ .Title }}"> 
+      <meta name="twitter:image" content="https:{{ .Site.BaseURL }}{{.Params.image}}"/>
+
+      <meta property="og:title" content="{{ .Title }}"/>
+      <meta property="og:description" content="{{ .Description | markdownify }}"/>
+      <meta property="og:image" content="https:{{ .Site.BaseURL }}{{ .Params.image }}"/>
+    {{ end }}
+    
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.2/normalize.min.css">
     <link rel="stylesheet" href="{{ relURL "/css/screen.css" }}">
