@@ -48,7 +48,7 @@ We obviously use `go-git` at source{d} for projects like [borges](https://github
 and [hercules](https://github.com/src-d/hercules) but we're by far not the only ones.
 
 Projects like [klone](https://github.com/kris-nova/klone) by the amazing
-[Kris Nova](https://twitter.com/Kris__Nova), ours friends at
+[Kris Nova](https://twitter.com/Kris__Nova), our friends at
 [pachyderm](https://github.com/pachyderm/pachyderm), and even the
 [zoekt](https://github.com/google/zoekt) project by Google use `go-git`.
 
