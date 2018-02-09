@@ -166,9 +166,13 @@ export function sendLinkDetails(link, ms = 500) {
  *
  * @param {HTMLAnchorElement} link anchor to emulate
  */
-export function goToLink(link) {
-  if (link.target === '_blank') {
-    window.open(link.href);
+export function goToLink(link, evt) {
+  if (link.target === '_blank'  // link to _blank
+    || evt.metaKey              // command key
+    || evt.shiftKey             // shift key
+    || evt.ctrlKey              // control key
+    || evt.button === 1) {      // middle button click
+    window.open(link.href, '_blank');
   } else {
     window.location.href = link.href;
   }
@@ -204,6 +208,6 @@ export default function setupLinkTracking(acceptableCondition = () => false) {
     }
 
     sendLinkDetails(target)
-      .then(() => goToLink(target));
+      .then(() => goToLink(target, evt));
   });
 }
