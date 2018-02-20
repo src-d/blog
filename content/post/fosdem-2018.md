@@ -117,7 +117,7 @@ We are currently organizing events in San Francisco, Madrid, and Lisbon, let us 
 
 You can get in touch with us joining our Slack community (link below), on twitter at
 [@sourcedtech](https://twitter.com/sourcedtech), or simply by mail at events@sourced.tech.
-Are you insterested on joining source{d}? We want to also hear from you! Check out our
+Are you interested in joining source{d}? We want to also hear from you! Check out our
 [careers page](https://sourced.tech/careers)!
 
 We're looking forward to hearing from you all!
