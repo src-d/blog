@@ -85,7 +85,7 @@ two of our employees gave extra talks!
 ### Tools for large-scale collection and analysis of source code repositories
 
 [Alex Bezzubov](https://twitter.com/seoul_engineer) gave a talk at the HPC, Big Data, and Data Science
-Devroom on the tech stack we develop at [sourced{}](https://sourced.tech).
+Devroom on the tech stack we develop at [source{d}](https://sourced.tech).
 
 The title of the talk is *Tools for large-scale collection and analysis of source code repositories* and both the
 [slides](https://fosdem.org/2018/schedule/event/large_scale_repo_analysis/attachments/slides/2400/export/events/attachments/large_scale_repo_analysis/slides/2400/FOSDEM_18__Tools_for_large_scale_collection_and_analysis_of_source_code_repositories.pdf)
@@ -113,7 +113,7 @@ Let's do it all over in 2019!
 #### We want you!
 
 Are you interested on speaking at events about Go or Source Code Analysis?
-We are currently organizing events in San Francisco and Madrid, let us know!
+We are currently organizing events in San Francisco, Madrid, and Lisbon, let us know!
 
 You can get in touch with us joining our Slack community (link below), on twitter at
 [@sourcedtech](https://twitter.com/sourcedtech), or simply by mail at events@sourced.tech.
