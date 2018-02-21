@@ -7,7 +7,7 @@ description: "Almost every source{d} employee just came back from FOSDEM 2018 an
 categories: ["technical", "community"]
 ---
 
-As every year since (for the last 18 years) February is the time for
+As every year, for the last 18 years, February is the time for
 [FOSDEM](https://fosdem.org), the Free and Open Source Software Developers'
 European Meeting.
 
@@ -112,7 +112,7 @@ Let's do it all over in 2019!
 
 #### We want you!
 
-Are you interested on speaking at events about Go or Source Code Analysis?
+Are you interested in speaking at events about Go or Source Code Analysis?
 We are currently organizing events in San Francisco, Madrid, and Lisbon, let us know!
 
 You can get in touch with us joining our Slack community (link below), on twitter at
