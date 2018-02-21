@@ -1,8 +1,9 @@
 ---
 author: campoy
-date: 2018-01-15
+date: 2018-02-27
 title: "Why did I join source{d}? - Francesc Campoy"
-draft: true
+draft: false
+image: /post/why-i-joined-sourced-francesc/banner.png
 description: "The first post of a series on why multiple employees joined source{d}. This one is by Francesc Campoy."
 categories: ["culture", "why-i-joined"] 
 ---
