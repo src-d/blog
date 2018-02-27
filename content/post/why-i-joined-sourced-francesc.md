@@ -110,6 +110,6 @@ So imagine how excited I am to be right in the center of this hurricane of Devel
 ### Want to learn more?
 
 Join the [source{d} community slack channel](https://sourced.tech/), follow us on
-[twitter](https://twitter.com/srcd_), or drop me a line on francesc@sourced.tech.
+[twitter](https://twitter.com/sourcedtech), or drop me a line on francesc@sourced.tech.
 I'm incredibly excited about the new opportunities that ML on code provide. Together we
 can build better tools, for better source code, for eventually a better world.
