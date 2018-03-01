@@ -91,7 +91,7 @@ The title of the talk is *Tools for large-scale collection and analysis of sourc
 [slides](https://fosdem.org/2018/schedule/event/large_scale_repo_analysis/attachments/slides/2400/export/events/attachments/large_scale_repo_analysis/slides/2400/FOSDEM_18__Tools_for_large_scale_collection_and_analysis_of_source_code_repositories.pdf)
 and the [video](https://www.youtube.com/watch?v=2c7QSrIL02o) are already available.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2c7QSrIL02o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+{{% youtube 2c7QSrIL02o %}}
 
 ### Container Linux baremetal provisioning with Terraform, Ignition and Matchbox
 
