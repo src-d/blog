@@ -39,11 +39,7 @@ Users expect their apps to have smooth animations and have a fast response, whic
 
 Users also expect their apps to work offline and sync in the background, as well as to have a very deep system integration: push notifications, geolocation, etc. All that can be achieved using service workers.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/yo25lpqKc-E"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube yo25lpqKc-E %}}
 
 ### Web accessibility. How to make a frontend for everyone?, _Juanjo Montiel_
 
@@ -65,11 +61,7 @@ With just a few guidelines we can make our web pages accessible too:
 
 And many more that you can find out watching the full talk.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/EZ8KSgzUdb0"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube EZ8KSgzUdb0 %}}
 
 ### Animate the Web with Ember.js, _Jessica Jordan_
 
@@ -83,11 +75,7 @@ This has a few advantages like not needing DOM operations, having a good perform
 Then, as an alternative, we can use the WebAnimations API, which is still not supported in all browsers (but we can workaround that with a polyfill). It will be an easy experience for people already familiar with CSS3 keyframes since they are very similar. Besides, she explained how to put all that into an Ember component, as with the `canvas` HTML5 element.
 Even though it has worse performance compared to HTML5 canvas, the WebAnimations API makes it possible to build accessible animations and are easier for the creator.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/n-z7En2O9mQ"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube n-z7En2O9mQ %}}
 
 ### Communication is the key to a healthy relationship: the love story of Elm and JavaScript, _Miguel Molina_
 
@@ -100,11 +88,7 @@ Three methods of interoperability were discussed:
 * Ports, which are the recommended way of communicating elm and JavaScript using unidirectional inbound and outbound channels to pass messages.
 * Flags, which is a way to pass some initialization values or configuration from JavaScript to Elm.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/PjkABl96NcM"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube PjkABl96NcM %}}
 
 ## Afternoon session
 
@@ -124,11 +108,7 @@ The syntax is very conservative, that is, you cannot use any arbitrary JavaScrip
 
 Sergio explained in detail how to implement decorators and what might be their use cases.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/EUHmOoJn9SM"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube EUHmOoJn9SM %}}
 
 ### Flexible styling for highly reusable React components, _Javi Velasco_
 
@@ -146,11 +126,7 @@ To implement all these customizations in a React component, he explored the usag
 * Style customization is achieved by passing the styles you want to change for every primitive in the component and then they are interpolated in the style definition, so you can override any style the component has.
 * Render customization is achieved using factories of components that receive custom primitives to use instead of the ones used by default in the component, which is neat because we can reuse the logic while swapping React and React-Native primitives and it all just works.
 
-<iframe width="560"
-        height="315"
-        src="https://www.youtube.com/embed/8kOkyQoCYMQ"
-        frameborder="0"
-        allowfullscreen></iframe>
+{{% youtube 8kOkyQoCYMQ %}}
 
 ## After-party drinks
 
