@@ -14,7 +14,7 @@
             <section class="post-excerpt">
                 {{ if isset .Params "image" }}
                     <div class="image"
-                    style="background-image:url({{.Params.image}})" /></div>
+                    style="background-image:url({{.Params.image}})"></div>
                 {{end}}
                 <a class="excerptlink" href="{{ .Permalink }}" data-tracked>
                     <p>{{ .Description | markdownify }}</p>
