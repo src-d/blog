@@ -12,9 +12,11 @@ categories: ["science", "technical"]
 [GopherCon](https://github.com/gophercon) has happened annually in the US since 2014. Go is clearly
 gaining momentum, so this year we've got two similar conferences in Europe inspired by
 the original GopherCon: [GopherCon Iceland](https://gophercon.is/) in June and
-[GopherCon Russia](https://www.gophercon-russia.ru/en) in March. Francesc, our VP of developer relations,
-[is conducting a workshop](https://gophercon.is/#speakers) in Iceland, while Vadim, the lead of ML
-team, [spoke](https://www.gophercon-russia.ru/en#rec46832568) in Russia. Below is the edited
+[GopherCon Russia](https://www.gophercon-russia.ru/en) in March.
+[Francesc](https://twitter.com/francesc), our VP of Developer Relations,
+[is conducting a workshop](https://gophercon.is/#speakers) in Iceland, while
+[Vadim](https://twitter.com/tmarkhor), the lead of ML team,
+[spoke](https://www.gophercon-russia.ru/en#rec46832568) in Russia. Below is the edited
 Vadim's talk transcript. There are also [slides](http://vmarkovtsev.github.io/gophercon-2018-moscow/)
 available.
 
@@ -31,26 +33,28 @@ StackOverflow question about the best comments.
 
 I keep laughing every time I read the answers, it's a real pity this question is closed. So I thought
 that I could use the open source projects we've developed at source{d} to mine such comments in
-open source repositories. Most of the listed examples are sarcastic and belong to dark humour,
-and I decided to employ [sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis)
-as the NLP domain which is relatively well-studied and there exist big datasets for free download.
-This is what we are going to do:
+open source repositories. Most of the listed examples are sarcastic and could be qualified as dark humor.
+I decided to employ [sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis),
+a relatively well-studied part of [NLP](https://en.wikipedia.org/wiki/Natural-language_processing)
+for which large datasets exist and are free to download. This is what we are going to do:
 
-* Run through commits in a Git repository
-* For each changed file, find new comments
-* Classify each comment as positive, neutral or negative
-* Plot sentiment throughout the project's lifetime
-* Look at the funny discoveries
+* Go over all the commits in a Git repository.
+* For each changed file, find new comments.
+* Classify each comment as positive, neutral, or negative.
+* Plot sentiment throughout the project's lifetime.
+* Look at the funny discoveries.
 
 We are going to use the following technologies:
 
-* [src-d/go-git](https://github.com/src-d/go-git) to read Git repositories
-* [src-d/hercules](https://github.com/src-d/hercules) to analyze the commit tree
-* [Babelfish](https://doc.bblf.sh) to extract the comments
-* [vmarkovtsev/BiDiSentiment](https://github.com/vmarkovtsev/BiDiSentiment) to perform sentiment analysis (runs on Tensorflow)
+* [src-d/go-git](https://github.com/src-d/go-git) to read Git repositories.
+* [src-d/hercules](https://github.com/src-d/hercules) to analyze the commit tree.
+* [Babelfish](https://doc.bblf.sh) to extract the comments.
+* [vmarkovtsev/BiDiSentiment](https://github.com/vmarkovtsev/BiDiSentiment) to perform sentiment analysis (runs on Tensorflow).
 * Python to train the ML model and Go to apply it.
 
-I will describe each one in detail now. Let's start with go-git.
+I will describe each one in detail now.
+
+### go-git
 
 {{% caption src="/post/codesent/go-git.png" %}}
 go-git logo by Ricardo Baeta.
@@ -58,11 +62,13 @@ go-git logo by Ricardo Baeta.
 
 We started it back in 2015 as an "internal open source" project to fulfill our tasks of source code
 retrieval and analysis. This is an example of the typical software project workflow at source{d}
-today: we go open source from day 0 and see what happens next. This time go-git became a huge success
+today: we go open source from day one and see what happens next. This time go-git became a huge success
 with more than 2400 stars and several companies already using it in production. Although it lacks
 some of the [features](https://github.com/src-d/go-git/blob/master/COMPATIBILITY.md) of "big brothers",
 it is performant and highly extensible. Finally, the maintainers are experienced code maniacs and
-go-git is a good example of idiomatic and clean Go.
+go-git is a good example of clean API and extensible architecture.
+
+### Hercules
 
 Hercules [appeared](https://blog.sourced.tech/post/hercules/) in December 2016 as an attempt
 to speed up Erik Bernhardsson's [Git-of-Theseus](https://erikbern.com/2016/12/05/the-half-life-of-code.html)
@@ -79,14 +85,14 @@ Then I added code ownership...
 Line ownership in Ember.js. Notice how one of devs appeared and conquered a half of the project.
 {{% /caption %}}
 
-...line overwrite matrix...
+...line overwrite matrix which shows how much code written by each developer is changed by others...
 
 {{% caption src="/post/codesent/wireshark_churn_matrix_black.png" %}}
 "Code wars" in Wireshark: XY cell's intensity is proportional to the number of times developer X's
 lines were overwritten with developer Y's.
 {{% /caption %}}
 
-...and even structural coupling.
+...and even structural coupling - how tightly logically related the functions or classes are.
 
 {{% caption src="/post/codesent/jinja_black.png" %}}
 Structural clusters in Jinja2. Each dot is a function and each pair is closer proportionally to
@@ -96,9 +102,11 @@ the number of times those two functions appeared in the same commit.
 Under the cover, Hercules contains the DAG resolution engine which frees users from manually
 designing the analysis pipeline. It also leverages `pkg/plugin` to allow external extensions.
 
+### Babelfish
+
 We pass over to comment extraction. The most straightforward way to extract comments is to
 take a syntax highlighter with a bunch of regular expression rules. We will get into trouble once
-we want to distinguish docstrings from regular comments, so we need to parse the code fairly.
+we want to distinguish docstrings from regular comments, so we really need to parse the code.
 At the same time, we wish to be language agnostic, so a universal parser is required.
 Systems like ANTLR4 define their own grammar description metalanguage and maintain the parsers
 written in it. They should work fast - everything runs in a single process, however, the efforts
@@ -134,6 +142,8 @@ As you see, barely 3 lines of code, error handling excluded, allow you to extrac
 comments from a source code string. The cool thing is UAST pretending to be XML and running XPath
 quieries on it.
 
+### Tensorflow
+
 I need to say a few words about Tensorflow before explaining the comments classification model.
 
 {{% caption src="/post/codesent/tf_black.svg" %}}
@@ -159,11 +169,11 @@ Each ML model goes through the training phase, either supervised or not. The gra
 while the model is trained. Here is the intended way to train and use a typical neural network:
 
 1. Debug the model locally: make sure it converges and there are no implementation faults. We debug on [e-GPUs](https://egpu.io/) at source{d}.
-2. Train the model on as much data as you have on a GPU cluster
-3. Optionally apply a metaparameter optimization algorithm to reach the best metrics in (2)
-4. Export the trained graph in "GraphDef" format (Protocol Buffers)
-5. Distribute it in an embedded or a pluggable fashion - that is, inside the application binary or separately
-6. Apply it ("infer") with any programming language
+2. Train the model on as much data as you have on a GPU cluster.
+3. Optionally apply a metaparameter optimization algorithm to reach the best metrics in (2).
+4. Export the trained graph in "GraphDef" format (Protocol Buffers).
+5. Distribute it in an embedded or a pluggable fashion - that is, inside the application binary or separately.
+6. Apply it ("infer") with any programming language.
 
 In our case, I used Python API to Tensorflow on a dedicated machine with 4 GPUs running two experiments
 in parallel for training and Go API and plain CPU for inference. It is impossible to train Tensorflow
@@ -175,8 +185,8 @@ without dependencies and it just works. Everybody who deployed models in Python 
 the pain.
 
 Have you heard about [neugram](https://neugram.io/), a scripting language on top of Go runtime?
-It was created by David Crawshaw, the author of `pkg/plugin`. Neugram is still in it's early ages
-and has childhood problems, but I really like it. Who knows, maybe one day we will train Tensorflow
+It was created by David Crawshaw, the author of `pkg/plugin`. Neugram is still in its early ages
+and has youth related issues, but I really like it. Who knows, maybe one day we will train Tensorflow
 models using neugram - I anticipate this.
 
 The following Go code runs a Tensorflow graph:
@@ -199,6 +209,8 @@ discover input and output tensors. The new session is launched and we execute th
 tree to reach the output given the input. Sessions are required to allocate the hardware resources
 and manage the environment. Technically, they are bridges to the underlying Tensorflow runtime
 written in C++ as a standalone library, in case with Go this bridge is implemented with CGo.
+
+### BiDiSentiment
 
 {{% caption src="/post/codesent/gophers.png" %}}
 vmarkovtsev/BiDiSentiment logo.
@@ -265,11 +277,13 @@ echo "drunk, fix later" | $GOPATH/bin/sentiment
 
 Output: 0.08034721. Positive.
 
+### Comment sentiment analysis
+
 Let's sum everything up and describe how we run source code comment sentiment analysis:
 
-1. Install and run [bblfshd](https://doc.bblf.sh/user/getting-started.html#running-with-docker-recommended)
-2. Install [hercules](https://github.com/src-d/hercules/releases)
-3. Install [libtensorflow](https://www.tensorflow.org/install/install_go)
+1. Install and run [bblfshd](https://doc.bblf.sh/user/getting-started.html#running-with-docker-recommended).
+2. Install [hercules](https://github.com/src-d/hercules/releases).
+3. Install [libtensorflow](https://www.tensorflow.org/install/install_go).
 
 Then we analyze any Git repository like this:
 
