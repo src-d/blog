@@ -16,7 +16,7 @@ the original GopherCon: [GopherCon Iceland](https://gophercon.is/) in June and
 [Francesc](https://twitter.com/francesc), our VP of Developer Relations,
 [is conducting a workshop](https://gophercon.is/#speakers) in Iceland, while
 [Vadim](https://twitter.com/tmarkhor), the lead of ML team,
-[spoke](https://www.gophercon-russia.ru/en#rec46832568) in Russia. Below is the edited
+[spoke](https://www.gophercon-russia.ru/en#rec46832568) in Russia. Below is the edited version of
 Vadim's talk transcript. There are also [slides](http://vmarkovtsev.github.io/gophercon-2018-moscow/)
 available.
 
@@ -66,7 +66,7 @@ today: we go open source from day one and see what happens next. This time go-gi
 with more than 2400 stars and several companies already using it in production. Although it lacks
 some of the [features](https://github.com/src-d/go-git/blob/master/COMPATIBILITY.md) of "big brothers",
 it is performant and highly extensible. Finally, the maintainers are experienced code maniacs and
-go-git is a good example of clean API and extensible architecture.
+go-git is a good example of a clean API and extensible architecture.
 
 ### Hercules
 
@@ -82,7 +82,7 @@ which are not overwritten yet.
 Then I added code ownership...
 
 {{% caption src="/post/codesent/emberjs_people.png" %}}
-Line ownership in Ember.js. Notice how one of devs appeared and conquered a half of the project.
+Line ownership in Ember.js. Notice how one of devs appeared and conquered half of the project.
 {{% /caption %}}
 
 ...line overwrite matrix which shows how much code written by each developer is changed by others...
@@ -99,12 +99,13 @@ Structural clusters in Jinja2. Each dot is a function and each pair is closer pr
 the number of times those two functions appeared in the same commit.
 {{% /caption %}}
 
-Under the cover, Hercules contains the DAG resolution engine which frees users from manually
+Under the cover, Hercules contains the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+resolution engine which frees users from manually
 designing the analysis pipeline. It also leverages `pkg/plugin` to allow external extensions.
 
 ### Babelfish
 
-We pass over to comment extraction. The most straightforward way to extract comments is to
+We continue with comment extraction. The most straightforward way to extract comments is to
 take a syntax highlighter with a bunch of regular expression rules. We will get into trouble once
 we want to distinguish docstrings from regular comments, so we really need to parse the code.
 At the same time, we wish to be language agnostic, so a universal parser is required.
@@ -140,7 +141,7 @@ nodes, err := tools.Filter(resp.UAST, "//*[@roleComment]")
 
 As you see, barely 3 lines of code, error handling excluded, allow you to extract all the
 comments from a source code string. The cool thing is UAST pretending to be XML and running XPath
-quieries on it.
+queries on it.
 
 ### Tensorflow
 
@@ -170,13 +171,13 @@ while the model is trained. Here is the intended way to train and use a typical 
 
 1. Debug the model locally: make sure it converges and there are no implementation faults. We debug on [e-GPUs](https://egpu.io/) at source{d}.
 2. Train the model on as much data as you have on a GPU cluster.
-3. Optionally apply a metaparameter optimization algorithm to reach the best metrics in (2).
+3. Optionally apply a [hyperparameter optimization](https://en.wikipedia.org/wiki/Hyperparameter_optimization) algorithm to reach the best metrics in (2).
 4. Export the trained graph in "GraphDef" format (Protocol Buffers).
 5. Distribute it in an embedded or a pluggable fashion - that is, inside the application binary or separately.
 6. Apply it ("infer") with any programming language.
 
-In our case, I used Python API to Tensorflow on a dedicated machine with 4 GPUs running two experiments
-in parallel for training and Go API and plain CPU for inference. It is impossible to train Tensorflow
+In our case, I used the Python API to Tensorflow on a dedicated machine with 4 GPUs running two experiments
+in parallel for training and the Go API and plain CPU for inference. It is impossible to train Tensorflow
 models using the current Go bindings, but even if it was possible, I would still not do that. From my
 experience, scripting languages are superior for doing research where you rewrite code every now and then
 and need the full expressiveness and flexibility to achieve the result as soon as possible.
@@ -216,7 +217,7 @@ written in C++ as a standalone library, in case with Go this bridge is implement
 vmarkovtsev/BiDiSentiment logo.
 {{% /caption %}}
 
-It's left to reveal the comment sentiment classification model. I named it "BiDiSentiment" and
+What's left is to reveal the comment sentiment classification model. I named it "BiDiSentiment" and
 this is it's logo. BiDiSentiment is a general-purpose sentiment model, it is not specifically designed
 for comments.
 
@@ -248,7 +249,7 @@ BiDiSentiment accuracy on validation.
 
 We split the data into two parts: the part on which we train and the part on which we evaluate aka
 validation. This is needed to avoid overfitting - when the model adapts to the training examples
-too much and loses generalization ability. The validation accuracy is plotted here. We see that
+too much it loses generalization ability. The validation accuracy is plotted here. We see that
 our model overfits after 5 epochs - that is, runs across the whole training set. This is a typical
 situation in recurrent neural networks. I should have used overfit reduction techniques,
 e.g. dropout, but I did not have time. So we pick the graph state on epoch 5 and export it.
@@ -347,7 +348,7 @@ Source: [1](https://github.com/golang/go/blob/master/src/bytes/buffer.go#L63),
 [3](https://github.com/golang/go/blob/46e392e01c630dee41a67e01223b538aae9dc9b5/usr/austin/ogle/vars.go#L42),
 [4](https://github.com/golang/go/blob/84ef97b59c89b7d9fdc04a1a8a438cd3257bf521/src/pkg/strconv/strconv_test.go#L21).
 
-The last one is actually written by Brad who talked a few minutes ago hehe. In this case the model
+The last one is actually written by Brad who gave the Gophercon talk right before me hehe. In this case the model
 must have caught word "better".
 
 Finally, here are the positive comments in Keras, the deep learning framework I used to train
@@ -363,8 +364,8 @@ BiDiSentiment model:
 # Theano has a built-in optimization for logsumexp so we can just write the expression directly
 ```
 
-I have looked at other classification result and can conclude the following. First, the model
-was trained on data of one nature (tweets) and applied to data of different nature (comments).
+I have looked at other classification results and can conclude the following. First, the model
+was trained on data of one nature (tweets) and applied to data of a different nature (comments).
 Thus it often exaggerates comment sentiment. Second, it behaves differently on two project types.
 The first type is projects which contain many details, many conditions, many checks and
 handle many edge cases. For example, language compilers (Go) or web servers (Django). BiDiSentiment
