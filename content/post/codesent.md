@@ -218,8 +218,8 @@ vmarkovtsev/BiDiSentiment logo.
 {{% /caption %}}
 
 What's left is to reveal the comment sentiment classification model. I named it "BiDiSentiment" and
-this is it's logo. BiDiSentiment is a general-purpose sentiment model, it is not specifically designed
-for comments.
+this is its logo. [BiDiSentiment](https://github.com/vmarkovtsev/BiDiSentiment)
+is a general-purpose sentiment model, it is not specifically designed for comments.
 
 {{% caption src="/post/codesent/arch_black.png" %}}
 BiDiSentiment architecture.
@@ -247,17 +247,23 @@ size) through time.
 BiDiSentiment accuracy on validation.
 {{% /caption %}}
 
-We split the data into two parts: the part on which we train and the part on which we evaluate aka
-validation. This is needed to avoid overfitting - when the model adapts to the training examples
-too much it loses generalization ability. The validation accuracy is plotted here. We see that
-our model overfits after 5 epochs - that is, runs across the whole training set. This is a typical
-situation in recurrent neural networks. I should have used overfit reduction techniques,
+We split the data into two parts:
+
+1. The part on which we train the model, 80% of the dataset.
+2. The part on which we evaluate the model's accuracy aka validation set. It contains the remaining 20%.
+
+We evaluate on (2) instead of (1) to avoid overfitting - that is, when the model adapts
+to the training examples too much it loses generalization ability. The validation accuracy is plotted here. We see that
+our model overfits after 5 epochs. An epoch is completed after the model has seen the whole training dataset once.
+This is a typical situation in recurrent neural networks. I should have used overfit reduction techniques,
 e.g. dropout, but I did not have time. So we pick the graph state on epoch 5 and export it.
 
 Let's see how BiDiSentiment performs on some answers to that StackOverflow questions.
 
 ```
 go get -v gopkg.in/vmarkovtsev/BiDiSentiment.v1/...
+
+# source: https://stackoverflow.com/a/316233
 
 echo "When I wrote this, only God and I understood \
 what I was doing. Now, God only knows" | $GOPATH/bin/sentiment
@@ -266,6 +272,8 @@ what I was doing. Now, God only knows" | $GOPATH/bin/sentiment
 Output (negative probability): 0.8803515 - the sentiment is clearly negative.
 
 ```
+# source: https://stackoverflow.com/a/185803
+
 echo "sometimes I believe compiler ignores \
 all my comments" | $GOPATH/bin/sentiment
 ```
@@ -273,6 +281,8 @@ all my comments" | $GOPATH/bin/sentiment
 Output: 0.88705057. Again negative.
 
 ```
+# source: https://stackoverflow.com/a/185181
+
 echo "drunk, fix later" | $GOPATH/bin/sentiment
 ```
 
@@ -306,16 +316,16 @@ negativeness and exclude them from further analysis. The results are shown on th
 
 The columns represent the sum of all the positive and negative sentiments together with the final
 sentiment value. Some of the projects appeared to be negative and some positive. We'll see why
-later, and now let's look at the promised sentiment plot through time.
+later. Let's look at the promised sentiment plot through time now.
 
 {{% caption src="/post/codesent/golang-sentiment-black.png" %}}
 golang/go sentiment through time.
 {{% /caption %}}
 
 Can we conclude anything useful from this? Unfortunately, no, there are no clear trends or
-periods. It is too many different comments. Maybe we will have more luck with monorepos, that is
-those with a single main contributor. For now, it is more fun to inspect the most negative and positive
-examples of comments on Golang source code. Negative:
+periods. There are too many different comments. Maybe we will have more luck with repositories
+with a single main contributor. For now, it is more fun to inspect the most negative and positive
+examples of comments on Go source code. Negative:
 
 ```go
 // It is low-level, old, and unused by Go's current HTTP stack
@@ -371,7 +381,7 @@ The first type is projects which contain many details, many conditions, many che
 handle many edge cases. For example, language compilers (Go) or web servers (Django). BiDiSentiment
 classifies them as negative: the text tells how **not** to fail.
 The second type is projects which explain what is happening, which environment features they use
-to do better or explain much domain terminology. For example, k8s has tons of devops comments
+to do better or explain much domain terminology. For example, Kubernetes has tons of devops comments
 and Keras describes deep learning recipes. BiDiSentiment treats them as positive: they teach or
 explain why they are cool. I must say that deep learning seems to be the modern alchemy
 ([discussion](https://medium.com/@Synced/lecun-vs-rahimi-has-machine-learning-become-alchemy-21cb1557920d))
@@ -379,11 +389,11 @@ so Keras has a big positive sentiment, hehe.
 
 ## Conclusion
 
-* It is easy to analyse Git repositories with Go.
-* Go is handy for inference-in-a-box with Tensorflow.
-* We need a dedicated dataset for comment sentiment. At the same time, labelling 1 million comments
-is at least challenging.
-* Naive sentiment alignment depends on the project type.
+* It is easy to analyze Git repositories with Go.
+* Go is handy for "inference-in-a-box" with Tensorflow.
+* We need a dedicated dataset for comment sentiment. At the same time, manually labelling 1 million
+comments is at least challenging. Can we use reactions to GitHub issue comments?
+* Overall comment sentiment returned by our naïve Twitter model depends on the project type.
 
 Here is the list of papers from
 [Mining Software Repositories](http://www.msrconf.org/) conference which go deeper into the topic:
