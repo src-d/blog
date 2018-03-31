@@ -26,3 +26,9 @@ package-lock.json
 .env
 .env.local
 .DS_Store
+
+# intellij
+.idea
+
+# python - used to prepare the content sometimes
+**/.ipynb_checkpoints
