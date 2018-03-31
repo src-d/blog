@@ -120,7 +120,7 @@ figure > figcaption {
     }
 }
 
-.text-monospaced  {
+.text-monospaced {
     font-family: "Hack", "monaco", monospace;
 }
 
@@ -128,16 +128,27 @@ figure > figcaption {
  * Highlight.JS
  */
 
-.hljs-keyword {
+.hljs-keyword,
+.hljs-tag,
+.hljs-title,
+.hljs-header {
     color: #C3D31B;
 }
 
 .hljs-built_in,
-.hljs-params {
+.hljs-params,
+.hljs-attribute,
+.hljs-emphasis,
+.hljs-strong,
+.hljs-operator {
     color: #e66cd7;
 }
 
 .hljs-string,
-.hljs-number {
+.hljs-number,
+.hljs-value,
+.hljs-bullet,
+.hljs-code,
+.hljs-comment {
     color: #3EB1D0;
 }
