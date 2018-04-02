@@ -34,8 +34,8 @@ the way to many technical tricks, hacks and heuristics and enables any hardcore 
 (4) is the only way to obtain the database of 400 different licenses validated by professional
 lawyers.
 
-The following table compares the current go-license-detector with GitHub's built-in license detector
-and Google's licenseclassifier on the
+The following table compares the current go-license-detector with GitHub's built-in license detector,
+Google's licenseclassifier and Ben Boyter's `lc` on the
 [reference 1k dataset](https://github.com/src-d/go-license-detector/blob/master/licensedb/dataset.zip):
 
 |Detector|Detection rate|Time to scan, sec|
@@ -43,6 +43,7 @@ and Google's licenseclassifier on the
 |[go-license-detector](https://github.com/src-d/go-license-detector)| 99% \\(\\quad(\\frac{897}{902})\\) | 23 |
 |[benbalter/licensee](https://github.com/benbalter/licensee)| 75% \\(\\quad(\\frac{673}{902})\\) | 111 |
 |[google/licenseclassifier](https://github.com/google/licenseclassifier)| 76% \\(\\quad(\\frac{682}{902})\\) | 907 |
+|[boyter/lc](https://github.com/boyter/lc)| 88% \\(\\quad(\\frac{797}{902})\\) | 548 |
 
 The total number of repositories in the dataset is 958, however, only 902 contain any pointer to
 the license - we looked though each of them. The rest are mainly "awesome lists" and Chinese projects
@@ -68,13 +69,16 @@ $ mkdir dataset && cd dataset
 $ unzip ../dataset.zip
 $ # src-d/go-license-detector
 $ time license-detector * \
-  grep -Pzo '\n[-0-9a-zA-Z]+\n\tno license' | grep -Pa '\tno ' | wc -l
+  | grep -Pzo '\n[-0-9a-zA-Z]+\n\tno license' | grep -Pa '\tno ' | wc -l
 $ # benbalter/licensee
 $ time ls -1 | xargs -n1 -P4 licensee \
-  grep -E "^License: Other" | wc -l
+  | grep -E "^License: Other" | wc -l
 $ # google/licenseclassifier
 $ time find -type f -print | xargs -n1 -P4 identify_license \
-  cut -d/ -f2 | sort | uniq | wc -l
+  | cut -d/ -f2 | sort | uniq | wc -l
+$ # boyter/lc
+$ time lc . \
+  | grep -vE 'NOASSERTION|----|Directory' | cut -d" " -f1 | sort | uniq | wc -l
 ```
 
 ## Algorithm
