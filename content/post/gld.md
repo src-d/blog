@@ -40,7 +40,7 @@ Google's licenseclassifier and Ben Boyter's `lc` on the
 
 |Detector|Detection rate|Time to scan, sec|
 |:-------|:----------------------------------------:|:-----------------------------------------|
-|[go-license-detector](https://github.com/src-d/go-license-detector)| 99% \\(\\quad(\\frac{897}{902})\\) | 23 |
+|[go-license-detector](https://github.com/src-d/go-license-detector)| 99% \\(\\quad(\\frac{897}{902})\\) | 16 |
 |[benbalter/licensee](https://github.com/benbalter/licensee)| 75% \\(\\quad(\\frac{673}{902})\\) | 111 |
 |[google/licenseclassifier](https://github.com/google/licenseclassifier)| 76% \\(\\quad(\\frac{682}{902})\\) | 907 |
 |[boyter/lc](https://github.com/boyter/lc)| 88% \\(\\quad(\\frac{797}{902})\\) | 548 |
