@@ -1340,3 +1340,16 @@ a few funny trends.
 - Awesome lists
 
 TODO
+
+## PGA license survey
+
+We've recently released [Public Git Archive](https://github.com/src-d/datasets/PublicGitArchive) (PGA),
+182,000 Git repositories belonging to most popular projects on GitHub. It's index file contains the licenses
+detected by go-license-detector. The following pie chart summarizes the license usage in PGA:
+
+<svg id="pga-licenses"></svg>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+<script src="/post/gld/chart.js"></script>
+
+go-license-detector was able to find licenses in 66.6% of the projects (confidence threshold 0.75).
+It can be seen that the most widespread license is MIT (no surprise here), Apache is on the second place and GPL on the third.
