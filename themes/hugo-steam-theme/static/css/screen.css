@@ -69,6 +69,11 @@ pre {
   word-wrap: break-word;
   background-color: #f7f7f7;
 }
+.pre-caption {
+  display: block;
+  text-align: right;
+  margin-top: -1.5em;
+}
 code {
   font-family: monospace;
   font-size: 0.85em;
