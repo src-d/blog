@@ -2,18 +2,14 @@
 author: vadim
 date: 2018-04-10
 title: "Public Git Archive"
-image: /post/pga/logo.png
+image: /post/pga_history/logo.png
 description: "We have released a large dataset for MLonCode - Public Git Archive (PGA). It contains 182,000 top-starred repositories on GitHub and takes 3 TB of disk space. The paper which describes it was accepted
 to Mining Software Repositories conference. This post tells the PGA's story."
 categories: ["science", "technical"]
 ---
 
-[![logo](/post/pga/logo.svg#left)
-Dataset landing](https://github.com/src-d/datasets/PublicGitArchive)
-
-## Usage
-
-TODO: Francesc, you rock here, please give a gig
+[![logo](/post/pga_history/logo.svg#left)
+Dataset landing](https://github.com/src-d/datasets/tree/master/PublicGitArchive)
 
 ## Origins
 
@@ -57,6 +53,8 @@ a Gerrit review.
 
 We had to take into account the removed repositories. Over 3,000 were deleted within few months.
 We discovered a few repositories with porno while inspecting the outliers by repository size (no links here, sorry, join our community Slack and direct message).
+
+Overall, our Data Retrieval team did a fantastic job. It was great to see how the numerous open source libraries they developed played together to deliver the dataset.
 
 #### Paper
 
