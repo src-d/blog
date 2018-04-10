@@ -2,7 +2,7 @@
 author: campoy
 date: 2018-04-10
 title: "Calling C functions from BigQuery with Web Assembly"
-draft: true
+draft: false
 image: /post/c-on-bigquery/banner.png
 description: "As part of our experimentations at source{d}, we decided to try and run a C library on BigQuery. Learn this blog post to see how web assembly came to the rescue, and what other improvements we had to apply to achieve decent performance."
 categories: ["culture", "technical", "why-i-joined"] 
