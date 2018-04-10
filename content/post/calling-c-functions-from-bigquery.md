@@ -205,4 +205,4 @@ Taking that into account [Felipe Hoffa](), Developer Advocate for Google Cloud P
 a long time friend of mine, helped me make my code much *much* faster.
 
 And guess what, he wrote about it! So now it's time for you to go read
-[BigQuery beyond SQL and JS: Running C and Rust code at scale](https://medium.com/@hoffa/33021763ee1f).
+[BigQuery beyond SQL and JS: Running C and Rust code at scale](https://medium.com/@hoffa/bigquery-beyond-sql-and-js-running-c-and-rust-code-at-scale-33021763ee1f).
