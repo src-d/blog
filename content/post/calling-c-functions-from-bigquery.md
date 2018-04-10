@@ -114,7 +114,7 @@ let's talk about wasm.
 In wasm we are going to generate a shared object from `sum.c`, but one that
 rather than being destined to be read by C it is for wasm.
 
-The easiest way I've seen to use `emcc` (also known as emscripten) is with
+The easiest way I've seen to use `emcc` (also known as [emscripten](http://emscripten.org)) is with
 the Docker image docker `apiaryio/emcc`.
 If you want to learn more detail on how to use the tool I recommend this [Google Codelab on Web Assembly](https://codelabs.developers.google.com/codelabs/web-assembly-intro).
 
@@ -201,7 +201,7 @@ At this point it was time to celebrate / brag / complain!
 BigQuery is not necessarily fast when you take into account its latency, but it's incredibly
 fast when you measure its throughput!
 
-Taking that into account [Felipe Hoffa](), Developer Advocate for Google Cloud Platform and
+Taking that into account [Felipe Hoffa](https://twitter.com/felipehoffa), Developer Advocate for Google Cloud Platform and
 a long time friend of mine, helped me make my code much *much* faster.
 
 And guess what, he wrote about it! So now it's time for you to go read
