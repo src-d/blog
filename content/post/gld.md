@@ -1352,4 +1352,12 @@ detected by go-license-detector. The following pie chart summarizes the license 
 <script src="/post/gld/chart.js"></script>
 
 go-license-detector was able to find licenses in 66.6% of the projects (confidence threshold 0.75).
-It can be seen that the most widespread license is MIT (no surprise here), Apache is on the second place and GPL on the third.
+It can be seen that the most widespread license is MIT (no surprise here), Apache is on the second place and GPL on the third. There is a [CSV file with raw numbers](/post/gld/pga-licenses.csv).
+
+## Conclusion
+
+[go-license-detector](https://github.com/src-d/go-license-detector) is a powerful
+tool to detect the license of an open source project. It finds considerably
+more matches than the others including the one used by GitHub. Detecting licenses
+is much fun because of the many details and corner cases. Thanks to go-license-detector
+we were able to find licenses in 66% of the most popular 182,000 GitHub repositories.
