@@ -13,24 +13,24 @@ people could easily filter "grey" repositories without a clear license. Besides,
 curious about the licenses distribution. GitHub already detects licenses by leveraging
 [benbalter/licensee](https://github.com/benbalter/licensee) Ruby library and the easy solution was
 to query GitHub API. However, we were not satisfied with
-it's detection quality: many projects which actually contain the license file in a non-standard
+its detection quality: many projects which actually contain the license file in a non-standard
 format are missed, and some are misclassified. This is how
 [go-license-detector](https://github.com/src-d/go-license-detector) was born.
 
 The goals were defined from the very beginning:
 
-1. Favor detection rate to the classification accuracy (target data mining instead of compliance).
+1. Favor false positives over false negatives (target data mining instead of compliance).
 2. Perform fast.
 3. Detect as many licenses as possible on the [hand-collected dataset of 1,000 top-starred repositories
 on GitHub](https://github.com/src-d/go-license-detector/blob/master/licensedb/dataset.zip).
 4. Comply with SPDX [licenses list](https://github.com/spdx/license-list-data) and
 [detection guidelines](https://spdx.org/spdx-license-list/matching-guidelines).
 
-(1) means that we should rather label a project with a bit inaccurate license than miss it's
+(1) means that we should rather label a project with a bit inaccurate license than miss its
 license completely. The open source compliance departments will not be satisfied with this choice,
 as they need the opposite: the missed projects are manually studied. (2) restricts from using a
-scripting language such as Python or Ruby, and we chose Go for our implementation. (3) paves
-the way to many technical tricks, hacks and heuristics and enables any hardcore and complex code.
+scripting language such as Python or Ruby, and we chose Go for our implementation. (3) leads
+to technical tricks, hacks and heuristics which result in complex code.
 (4) is the only way to obtain the database of 400 different licenses validated by professional
 lawyers.
 
@@ -46,7 +46,7 @@ Google's licenseclassifier and Ben Boyter's `lc` on the
 |[boyter/lc](https://github.com/boyter/lc)| 88% \\(\\quad(\\frac{797}{902})\\) | 548 |
 
 The total number of repositories in the dataset is 958, however, only 902 contain any pointer to
-the license - we looked though each of them. The rest are mainly "awesome lists" and Chinese projects
+the license - we looked through each of them. The rest are mainly "awesome lists" and Chinese projects
 and translations of the western books. We filed issues for the maintainers to clarify the license
 [\[1\]](https://github.com/DrkSephy/es6-cheatsheet/issues/90)
 [\[2\]](https://github.com/kdn251/interviews/issues/63)
@@ -54,7 +54,6 @@ and translations of the western books. We filed issues for the maintainers to cl
 [\[4\]](https://github.com/CodeHubApp/CodeHub/issues/441)
 [\[5\]](https://github.com/h4cc/awesome-elixir/issues/4400)
 [\[6\]](https://github.com/fffaraz/awesome-cpp/issues/449).
-Few added the license; some maintainers even demonstrated aggression.
 We also encountered two licenses which were not included into SPDX and reported them:
 [\[1\]](https://github.com/spdx/license-list-XML/issues/611)
 [\[2\]](https://github.com/spdx/license-list-XML/issues/612).
@@ -83,8 +82,9 @@ $ time lc . \
 
 ## Algorithm
 
-We have implemented license detection based on the license and README files for now, and wish to
-add fine-grained scanning of source code files in the future (do you want to help us?). Given the
+We have implemented license detection based on the `LICENSE` and `README` files for now, and wish to
+add fine-grained scanning of source code files in the future (do you want to help us?
+work on the [issue](https://github.com/src-d/go-license-detector/issues/24)). Given the
 stated license text, we compare it to the texts in the SPDX database and record the match. The naive
 way of making the comparisons is to calculate the
 [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
@@ -97,29 +97,32 @@ the rest of the distances will be slow to calculate.
 These two reasons confidently render the naive approach unusable.
 
 The core of go-license-detector's detection mechanism is [Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing).
-We treat each license as a TF-IDF-weighted bag-of-words - that is, as a set of words where every
+We treat each license as a [TF-IDF-weighted](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+[bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words_model) - that is, as a set of words where every
 word has a weight corresponding to the frequency in the license text (term frequency) and
 throughout the whole database (document frequency). This is a proven approach for large scale
 similarity detection which we used multiple times in the past. Although 400 items is clearly
 not large scale at all, it still makes sense to employ LSH because of the O(1) complexity
-guarantee. We saw that it works reasonably well in practice and introduces the minimal overhead,
-say 20MB of memory for the hashes and the vocabulary. The hashing algorithm which we use is
+guarantee. We saw that it works reasonably well in practice and introduces a small overhead,
+say 20MB of memory for the hashes and the vocabulary.
+
+The hashing algorithm which we use is
 [Weighted MinHash](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36928.pdf)
 - again, battle-tested in the past, e.g. in [Apollo](https://github.com/src-d/apollo) or
 [bags deduplication](https://blog.sourced.tech/post/minhashcuda/).
-We set 75% Jaccard similarity threshold and hash length 154
-after careful tuning of the false positive vs. false negative vs. performance trade-off.
+After careful tuning of false positive vs. false negative. vs. performance, we decided to set the Jaccard
+similarity threshold for our algorithm to 75%, and the hash length to 154 samples.
 Since we discard the text structure by treating sequences as sets, we further calculate the Levenshtein
 distance to the matched database records in order to determine the precise confidence value.
 
-We look at the README file if the analyzed project does not contain a license file. This happens
-in more than 7% of the cases in the 1k dataset and x% in Public Git Archive (182,000 repositories).
-There is a fair chance that the license name is mentioned in the README, so we apply
+We look at the `README` file if the analyzed project does not contain a license file. This happens
+in more than 7% of the cases in the 1k dataset and 66% in Public Git Archive (182,000 repositories).
+There is a fair chance that the license name is mentioned in the `README`, so we apply
 [Named Entity Recognition](https://en.wikipedia.org/wiki/Named-entity_recognition)
 to find them using the excellent [jdkato/prose](https://github.com/jdkato/prose) NLP library for Go.
 
-Unfortunately, the devil is not in the core algorithm but rather in numerous details which cover
-the huge variance of the conditions.
+Unfortunately, the devil is in the details. There are many unexpected variations for which we had to modify
+our initially straight-forward algorithm.
 
 ## File names
 
@@ -159,10 +162,9 @@ var (
 )
 ```
 
-There may be also directories which are named like a license file, and we need to look inside.
+There may also be directories which are named like a license file, and we need to look inside.
 A few projects contained symbolic links to the actual license texts, and we need to resolve them.
-One project even has the license file name as the only content of `LICENSE` and we treat such files
-as symlink surrogates.
+One project even has a license file which consists of the path to a real `LICENSE` file with a custom file name - we treat those as symlinks.
 
 ## Rendering and normalization
 
@@ -172,14 +174,14 @@ Reading those files verbatim is harmful for our matching core and decreases the 
 dramatically. Thus we should first render markup to HTML and then extract plain text content from
 HTML. go-license-detector currently supports Markdown through
 [russross/blackfriday](https://github.com/russross/blackfriday) and ReST through
-[hhatto/gorst](https://github.com/hhatto/gorst). HTMl tags are stripped with `golang.org/x/net/html`
+[hhatto/gorst](https://github.com/hhatto/gorst). HTML tags are stripped with `golang.org/x/net/html`
 and a custom HTML entity recognizer.
 
 Having a plain text license, we need to normalize it. SPDX has a list of rules which do not affect
 accuracy, and we leverage it. However, our goal is data mining, so we can normalize aggressively.
 We designed a three-level normalization pipeline. The first one is SPDX with some other rules
 which do not affect the detection accuracy. The second one removes punctuation and lines with
-copyright information. We apparently lose some data but our detection more robust to random
+copyright information. We apparently lose some data but our detection is more robust to random
 deviations such as dots in the end of the section names or multiple copyright notices in the
 header. Finally, the third level removes letter accents (e.g. ñ becomes n, á becomes a, etc.) and
 removes all non-alphanumeric characters.
@@ -789,7 +791,7 @@ limitations under the License.
 ```
 {{% /scroll-panel %}}
 
-Normalized-1:
+Normalized-1 - SPDX guidelines:
 {{% scroll-panel height="400" %}}
 ```nohighlight
 apache license
@@ -958,7 +960,7 @@ limitations under the license
 ```
 {{% /scroll-panel %}}
 
-Normalized-2:
+Normalized-2 - dots and copyrights removed:
 {{% scroll-panel height="400" %}}
 ```nohighlight
 apache license
@@ -1125,7 +1127,7 @@ limitations under the license
 ```
 {{% /scroll-panel %}}
 
-Normalized-3:
+Normalized-3 - non-alphanumeric symbols removed:
 {{% scroll-panel height="400" %}}
 ```nohighlight
 apache license
@@ -1303,8 +1305,9 @@ sample by design, and those cases are hard for it to handle.
 digests them because it is based on ngram hashing instead, and hence we considered switching to that
 algorithm. We did not for the following reasons:
 
-1. The memory consumption is substantially higher, link to the comment, 200 MB.
-2. Algorithmically sophisticated database preprocessing and lack of documentation.
+1. The memory consumption is higher, about [200 MB](https://github.com/google/licenseclassifier/blob/master/classifier.go#L188).
+2. Non-trivial database preprocessing and lack of high-level documentation.
+3. Slower performance on single licenses.
 3. It appeared that 95% of the cases could be resolved by simple split heuristics.
 
 After all, we found that since it is very cheap to query a text, we could make a few split assumptions
@@ -1315,7 +1318,7 @@ but as was written works reasonably well.
 
 ## Pointers
 
-Sometimes, all the efforts fail and we do not discover anything in license files and in readme files.
+Sometimes, all the efforts fail and we do not discover anything in `LICENSE` files and in `README` files.
 There is still hope: we discovered that many projects contain the URL to the official license text
 in them. E.g. [awesome lists which have the CC0 badge at the bottom](https://github.com/terryum/awesome-deep-learning-papers),
 [Apache banners](https://github.com/dmlc/xgboost/blob/master/LICENSE) or numerous users of
@@ -1323,23 +1326,20 @@ in them. E.g. [awesome lists which have the CC0 badge at the bottom](https://git
 
 ## Implementation
 
-We desired to produce the single self-contained binary from the very beginning.
+go-license-detector is a library and a self-contained binary CLI tool.
 
 [Francesc](https://twitter.com/francesc), our VP of Developer Community, took a serious effort
 in making the code idiomatic. You may have experienced this: when you are focused on **what** your
-code is doing, you often miss **how** the code is looking.
-
-TODO
+code is doing, you often miss **how** the code is looking. I would like to write
+a follow-up post which describes which points were improved and what were the
+typical issues.
 
 ## Offtopic
 
 Since we had to manually look through hundreds of most-starred projects on GitHub, we noticed
-a few funny trends.
-
-- Chinese expansion
-- Awesome lists
-
-TODO
+a few funny trends. Many Chinese repositories isolated from the other communities,
+awesome list expansion and others. Again, I should devote a separate post to those,
+they are funny and also help to understand the picture of open source popularity better.
 
 ## PGA license survey
 
