@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2018-04-02
+date: 2018-04-17
 title: "go-license-detector"
 image: /post/gld/wtfpl.png
 description: "Detecting the license of an open source projects is harder than it seems. We have created go-license-detector, a Go library and command line application to solve that task."
