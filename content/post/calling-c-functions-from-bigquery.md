@@ -36,13 +36,13 @@ Let's try to write a simple function that adds two numbers is Javascript. That's
 
 This is using Legacy SQL, we'll see later why Standard SQL would make it much harder for us.
 
-{{% code "/post/c-on-bigquery/udf.js" javascript %}}
-{{% code "/post/c-on-bigquery/udf.sql" sql %}}
+{{% code src="/post/c-on-bigquery/udf.js" lang="javascript" %}}
+{{% code src="/post/c-on-bigquery/udf.sql" lang="sql" %}}
 
 This is cool, but can we do it over multiple values?
 
-{{% code "/post/c-on-bigquery/udf-mult.js" javascript %}}
-{{% code "/post/c-on-bigquery/udf-mult.sql" sql %}}
+{{% code src="/post/c-on-bigquery/udf-mult.js" lang="javascript" %}}
+{{% code src="/post/c-on-bigquery/udf-mult.sql" lang="sql" %}}
 
 Great, so we can basically write any Javascript and have it executed as part of our SQL queries.
 Unfortunately for us, the library that I would like to call (libuast) is actually written in C!
@@ -67,7 +67,7 @@ how to build them, and how to link them either statically or dynamically.
 If you already know all of this feel free to skip this part and move directly to how
 to compile C to wasm.
 
-{{% code "/post/c-on-bigquery/sum.c" c %}}
+{{% code src="/post/c-on-bigquery/sum.c" lang="c" %}}
 
 We can compile this piece file into a library.
 
@@ -79,7 +79,7 @@ sum.o: Mach-O 64-bit object x86_64
 
 In order to compile I wrote a `main` function that predeclares `sum` and calls it.
 
-{{% code "/post/c-on-bigquery/main.c" javascript %}}
+{{% code src="/post/c-on-bigquery/main.c" lang="javascript" %}}
 
 When we compile and execute this program the output is the answer to everything.
 
@@ -94,7 +94,7 @@ When we compile it in this way we are letting the C linker unify the `sum` decla
 This is static linking, but we could also do something similar with dynamic linking,
 letting the binary find and identify `sum` at runtime.
 
-{{% code "/post/c-on-bigquery/dynamic.c" c %}}
+{{% code src="/post/c-on-bigquery/dynamic.c" lang="c" %}}
 
 ```bash
 > clang sum.o -shared -o sum.so
@@ -131,7 +131,7 @@ The one we care about is `sum.wasm`.
 
 Let's now write a `main.js` that loads the `wasm` file and uses its `sum` function.
 
-{{% code "/post/c-on-bigquery/main.js" javascript %}}
+{{% code src="/post/c-on-bigquery/main.js" lang="javascript" %}}
 
 The code might seem complex, but if you ignore all the code before the call to `fs.readFile`
 you'll see that we load `sum.wasm`, extract the function `sum`, and simply call it.
@@ -144,8 +144,8 @@ But that doesn't necessarily solve our problem if `WebAssembly` can't be used on
 
 On my first try, I simply check to see if `WebAssembly` was even defined in the environment.
 
-{{% code "/post/c-on-bigquery/check.js" javascript %}}
-{{% code "/post/c-on-bigquery/check.sql" sql %}}
+{{% code src="/post/c-on-bigquery/check.js" lang="javascript" %}}
+{{% code src="/post/c-on-bigquery/check.sql" lang="sql" %}}
 
 Not sure why I need to define an input to `checkAssembly`, but if I don't I get an error.
 When I execute this query the result is `true`. Success, `WebAssembly` is available!
@@ -159,7 +159,7 @@ was to simply embed the bytes of `sum.asm` into the Javascript code.
 
 How? Well, first of all I wrote a little Go program that generates a Javascript declaration containing the bytes in `sum.wasm`.
 
-{{% code "/post/c-on-bigquery/main.go" go %}}
+{{% code src="/post/c-on-bigquery/main.go" lang="go" %}}
 
 Now I can run the program and use the result inside of our `main.js`.
 
@@ -168,7 +168,7 @@ $ go run main.go < sum.wasm
 const bytes = new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 139, 128, 128, 128, 0, 2, 96, 1, 127, ...
 ```
 
-{{% code "/post/c-on-bigquery/embed.js" javascript %}}
+{{% code src="/post/c-on-bigquery/embed.js" lang="javascript" %}}
 
 ```bash
 > node embed.js
@@ -179,11 +179,11 @@ Amazing! So ... let's run it on BigQuery!
 
 In our UDF editor we're going to adapt the program we just wrote, so it becomes a function BigQuery can call.
 
-{{% code "/post/c-on-bigquery/final.js" javascript %}}
+{{% code src="/post/c-on-bigquery/final.js" lang="javascript" %}}
 
 And our query will simply add two numbers:
 
-{{% code "/post/c-on-bigquery/final.sql" SQL %}}
+{{% code src="/post/c-on-bigquery/final.sql" lang="SQL" %}}
 
 We run it and the result is `42`!
 
