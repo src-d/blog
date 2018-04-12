@@ -1,4 +1,6 @@
-<pre><code {{ if eq (len .Params) 2 }}class="language-{{ .Get 1 }}"{{ end }}>
-        {{- printf "/static%s/" (.Get 0) | readFile -}}
+<pre><code
+        {{ with .Get "lang" }}class="language-{{ . }}"{{ end }} 
+        {{ with .Get "height" }}style="max-height:{{ . }}px"{{end}}>
+        {{- printf "/static%s/" (.Get "src") | readFile -}}
 </code></pre>
-<a class="pre-caption" href="{{ .Get 0 }}">download code</a>
+<a class="pre-caption" href="{{ .Get "src" }}">download code</a>
