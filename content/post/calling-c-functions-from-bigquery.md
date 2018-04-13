@@ -12,7 +12,7 @@ categories: ["culture", "technical", "why-i-joined"]
 
 Have you ever used [BigQuery](https://cloud.google.com/bigquery/)?
 If you have never used it you're missing out on one of my favorite products of Google Cloud Platform.
-It has the power to query terabytes of data in seconds while exposing a familar SQL API.
+It has the power to query terabytes of data in seconds while exposing a familiar SQL API.
 
 At source{d} we have terabytes of data, so wouldn't it be cool if we could simply store our datasets on BigQuery
 and let anyone easily analyze those?
