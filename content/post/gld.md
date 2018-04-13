@@ -190,34 +190,22 @@ removes all non-alphanumeric characters.
 To summarize, this is the evolution of the license file content inside go-license-detector's normalizer.
 
 Original ([home-assistant/home-assistant](https://raw.githubusercontent.com/home-assistant/home-assistant/dev/LICENSE.md)):
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/1.txt" markdown %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/1.txt" lang="markdown" height="400" %}}
 
 HTML:
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/2.txt" html %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/2.txt" lang="html" height="400" %}}
 
 Plain text:
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/3.txt" nohighlight %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/3.txt" lang="nohighlight" height="400" %}}
 
 Normalized-1 - SPDX guidelines:
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/4.txt" nohighlight %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/4.txt" lang="nohighlight" height="400" %}}
 
 Normalized-2 - dots and copyrights removed:
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/5.txt" nohighlight %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/5.txt" lang="nohighlight" height="400" %}}
 
 Normalized-3 - non-alphanumeric symbols removed:
-{{% scroll-panel height="400" %}}
-{{% code "/post/gld/norm/6.txt" nohighlight %}}
-{{% /scroll-panel %}}
+{{% code src="/post/gld/norm/6.txt" lang="nohighlight" height="400" %}}
 
 We use level 3 output for LSH and level 2 output for the Levenshtein distance refinement.
 
