@@ -275,8 +275,6 @@ phidang/first-django-blog
 
 The complete dataset is published on [data.world](https://data.world/vmarkovtsev/github-duplicate-repositories).
 
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-
 <style>
 p.caption {
   margin-top: -16px;

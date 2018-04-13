@@ -24,7 +24,7 @@ code or who is to blame for a bug }:-).
 
 For example, let's blame `src/bufio/bufio.go` from the standard Go Distribution:
 
-```text
+```nohighlight
 $ git blame src/bufio/bufio.go
 [...]
 64776da4 src/pkg/bufio/bufio.go (Rob Pike          2011-12-13 15:07:17 -0800  40) const minReadBufferSize = 16
@@ -133,7 +133,7 @@ Given two files, the `diff` command will return the _line edits_ you have to
 perform to one of them, to turn it into the other. For example: given the files
 `a.txt` and `b.txt`...
 
-```text
+```nohighlight
 $ cat a.txt
 aaa
 aaaaa
@@ -148,7 +148,7 @@ AAAAA
 
 The `diff` of both files would be:
 
-```text
+```nohighlight
 $ diff a.txt b.txt
 0a1,2
 > bb
