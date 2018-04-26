@@ -21,7 +21,7 @@ The goals were defined from the very beginning:
 
 1. Favor false positives over false negatives (target data mining instead of compliance).
 2. Perform fast.
-3. Detect as many licenses as possible on the [hand-collected dataset of 1,000 top-starred repositories
+3. Detect as many licenses as possible on the [hand-collected and hand-checked dataset of 1,000 top-starred repositories
 on GitHub](https://github.com/src-d/go-license-detector/blob/master/licensedb/dataset.zip).
 4. Comply with SPDX [licenses list](https://github.com/spdx/license-list-data) and
 [detection guidelines](https://spdx.org/spdx-license-list/matching-guidelines).
@@ -114,10 +114,10 @@ The hashing algorithm which we use is
 After careful tuning of false positives, false negatives, and performance, we decided to set the Jaccard
 similarity threshold for our algorithm to 75%, and the hash length to 154 samples.
 Since we discard the text structure by treating sequences as sets, we further calculate the Levenshtein
-distance to the matched database records in order to determine the precise confidence value.
+distance to the database records matched by Weighted MinHash in order to determine the precise confidence value.
 
 We look at the `README` file if the analyzed project does not contain a license file. This happens
-in more than 7% of the cases in the 1k dataset and 66% in Public Git Archive (182,000 repositories).
+in more than 7% of the cases in the 1k dataset and 66% in [Public Git Archive](https://github.com/src-d/datasets/PublicGitArchive) (182,000 repositories).
 There is a fair chance that the license name is mentioned in the `README`, so we apply
 [Named Entity Recognition](https://en.wikipedia.org/wiki/Named-entity_recognition)
 to find them using the excellent [jdkato/prose](https://github.com/jdkato/prose) NLP library for Go.
@@ -243,15 +243,14 @@ go-license-detector is a library and a self-contained binary CLI tool.
 
 [Francesc](https://twitter.com/francesc), our VP of Developer Community, took a serious effort
 in making the code idiomatic. You may have experienced this: when you are focused on **what** your
-code is doing, you often miss **how** the code is looking. I would like to write
-a follow-up post which describes which points were improved and what were the
-typical issues.
+code is doing, you often miss **how** the code is looking. The improved points
+and the typical issues deserve another post.
 
 ## Offtopic
 
 Since we had to manually look through hundreds of most-starred projects on GitHub, we noticed
-a few funny trends. Many Chinese repositories isolated from the other communities,
-awesome list expansion and others. Again, I should devote a separate post to those,
+a few funny trends, e.g. many Chinese repositories isolated from the other communities,
+awesome list expansion and others. I should devote a separate post to those if I find time,
 they are funny and also help to understand the picture of open source popularity better.
 
 ## PGA license survey
@@ -279,5 +278,5 @@ It can be seen that the most widespread license is MIT (no surprise here), Apach
 [go-license-detector](https://github.com/src-d/go-license-detector) is a powerful
 tool to detect the license of an open source project. It finds considerably
 more matches than the others including the one used by GitHub. Detecting licenses
-is much fun because of the many details and corner cases. Thanks to go-license-detector
+is a lot of fun because of the many details and corner cases. Thanks to go-license-detector
 we were able to find licenses in 66% of the most popular 182,000 GitHub repositories.
