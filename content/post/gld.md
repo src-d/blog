@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2018-04-17
+date: 2018-05-01
 title: "Detecting licenses in code with Go and ML"
 image: /post/gld/wthpl.png
 description: "Detecting the license of an open source projects is harder than it seems. We have created go-license-detector, a Go library and command line application to solve that task."
