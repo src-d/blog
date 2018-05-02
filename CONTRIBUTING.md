@@ -11,21 +11,43 @@ Please,
 
 <!-- TOC -->
 
-- [Contributing](#contributing)
-    - [Table of contents](#table-of-contents)
-    - [Preview the blog posts](#preview-the-blog-posts)
-    - [Creating a new post](#creating-a-new-post)
-        - [Content schema](#content-schema)
-        - [Front matter](#front-matter)
-        - [Formatting the content](#formatting-the-content)
-        - [Links to other source{d} blog posts](#links-to-other-sourced-blog-posts)
-        - [Assets](#assets)
-        - [Authors](#authors)
-    - [Peer review](#peer-review)
-    - [How to publish blog posts and deploy the blog](#how-to-publish-blog-posts-and-deploy-the-blog)
+- [Propose a new blog post](#propose-a-new-blog-post)
+- [Preview the blog posts](#preview-the-blog-posts)
+- [Creating a new post](#creating-a-new-post)
+    - [Content schema](#content-schema)
+    - [Front matter](#front-matter)
+    - [Formatting the content](#formatting-the-content)
+    - [Links to other source{d} blog posts](#links-to-other-sourced-blog-posts)
+    - [Assets](#assets)
+    - [Authors](#authors)
+- [Peer review](#peer-review)
+- [How to publish blog posts and deploy the blog](#how-to-publish-blog-posts-and-deploy-the-blog)
 
 <!-- /TOC -->
 
+## Propose a new blog post
+
+The first step on the process to release a blog post is to reach general agreement on whether the topic
+and general structure of the blog post makes sense. This will help you structure your blog post early and
+avoid wasting any time by receiving feedback too late.
+
+We use a very simila approach to [src-d/conferences](https://github.com/src-d/conferences), using issues
+and PRs as a way to track and approve proposals.
+
+Whenever you have a new idea for a blog post simply create a new issue following the
+[post issue template](.github/ISSUE_TEMPLATES/post.md), you can also simply click
+[here](https://github.com/src-d/blog/issues/new?template=bugs.md).
+
+[![propose new blog post](https://svg-badge.appspot.com/badge/PROPOSE%20NEW%20BLOG%20POST/click?color=fea)](https://github.com/src-d/blog/issues/new?template=bugs.md)
+
+Once you've created this issue make sure to add the `post` label and assign it to `@campoy`,
+he will then review the proposal and give feedback on it until the initial proposal is accepted.
+Once the proposal has been accepted, the issue will be labeled with an `accepted` label, or if it's
+been rejected or abandoned the issue will be closed.
+
+Once accepted, you can start writing your blog post, creating a new pull request that will `fix` the issue
+you created for the proposal. Make sure you add `[WIP]` at the beginning of the title in the PR until you're
+ready for review.
 
 ## Preview the blog posts
 
