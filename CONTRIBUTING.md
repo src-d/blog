@@ -31,14 +31,14 @@ The first step on the process to release a blog post is to reach general agreeme
 and general structure of the blog post makes sense. This will help you structure your blog post early and
 avoid wasting any time by receiving feedback too late.
 
-We use a very simila approach to [src-d/conferences](https://github.com/src-d/conferences), using issues
+We use a very similar approach to [src-d/conferences](https://github.com/src-d/conferences), using issues
 and PRs as a way to track and approve proposals.
 
 Whenever you have a new idea for a blog post simply create a new issue following the
 [post issue template](.github/ISSUE_TEMPLATES/post.md), you can also simply click
-[here](https://github.com/src-d/blog/issues/new?template=bugs.md).
+[here](https://github.com/src-d/blog/issues/new?template=post.md).
 
-[![propose new blog post](https://svg-badge.appspot.com/badge/PROPOSE%20NEW%20BLOG%20POST/click?color=fea)](https://github.com/src-d/blog/issues/new?template=bugs.md)
+[![propose new blog post](https://svg-badge.appspot.com/badge/PROPOSE%20NEW%20BLOG%20POST/click?color=fea)](https://github.com/src-d/blog/issues/new?template=post.md)
 
 Once you've created this issue make sure to add the `post` label and assign it to `@campoy`,
 he will then review the proposal and give feedback on it until the initial proposal is accepted.
@@ -56,7 +56,7 @@ While you are developing or creating new contents for the blog, and always befor
 To locally serve the blog, you need to satisfy the [project requirements](README.md#requirements), and then run from the project root:
 
 ```shell
-make serve;
+make serve
 ```
 Finally, go to [http://localhost:8484](http://localhost:8484)
 
@@ -157,9 +157,7 @@ If you are writing a blog post and your author entry is not defined under `data/
 
 ## Peer review
 
-New content must be validated via [a PR](https://github.com/src-d/blog/pulls), by *at least both*:
-- [vmarkovtsev](//github.com/vmarkovtsev) on the content;
-- [platform](https://github.com/orgs/src-d/teams/platform/members) on the layout.
+New content must be validated via [a PR](https://github.com/src-d/blog/pulls) by [campoy](//github.com/campoy).
 
 To let your peers review any new blog post, it needs to be published as a **"draft"**. Drafts are only accessible at staging environment http://blog-staging.srcd.run
 
