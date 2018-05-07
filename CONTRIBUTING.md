@@ -206,7 +206,7 @@ For any blog post to be published, it must follow the conventions given by this 
 ## Publishing and promoting a blog post
 
 Once the blog post is ready for publication we'll schedule the publication for a specific time.
-This will probably be on a Tuesday at 8am, but different options can be negotiated too.
+This will probably be on a Tuesday at 8am PST, but different options can be negotiated too.
 
 Once the post has been scheduled we use [buffer](https://bufferapp.com) to schedule posts on
 Twitter and Linkedin, as well as [Later for Reddit](https://laterforreddit.com/) to post on
