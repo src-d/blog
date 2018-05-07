@@ -22,6 +22,7 @@ Please,
     - [Authors](#authors)
 - [Peer review](#peer-review)
 - [How to publish blog posts and deploy the blog](#how-to-publish-blog-posts-and-deploy-the-blog)
+- [Publishing and promoting a blog post](#publishing-and-promoting-a-blog-post)
 
 <!-- /TOC -->
 
@@ -39,6 +40,36 @@ Whenever you have a new idea for a blog post simply create a new issue following
 [here](https://github.com/src-d/blog/issues/new?template=post.md).
 
 [![propose new blog post](https://svg-badge.appspot.com/badge/PROPOSE%20NEW%20BLOG%20POST/click?color=fea)](https://github.com/src-d/blog/issues/new?template=post.md)
+
+If you'd rather copy paste the content, you can use the content below:
+
+```markdown
+Issue Title: [PROPOSAL] Blog post title
+
+* Title:
+* Author(s):
+* Short description: What is the topic? Any main takeaways?
+* Categories:
+* Deadlines: are there any deadlines for this? do we need to wait for any other event?
+
+## Table of contents
+
+What are the main sections of the blog post? What will each one explain?
+
+## Management
+
+This section will be filled by @campoy.
+
+* State: (proposed | writing | written | published)
+* Scheduled:
+* Link to post:
+
+## Social Media
+
+* Wording for tweet:
+* Hashtags:
+* Subreddits:
+```
 
 Once you've created this issue make sure to add the `post` label and assign it to `@campoy`,
 he will then review the proposal and give feedback on it until the initial proposal is accepted.
@@ -171,3 +202,18 @@ The blog is published automatically following the source{d} [Continous Delivery 
 For any blog post to be published, it must follow the conventions given by this guide, and the following technical ones regarding the post [front matter](#front-matter):
 - `draft` key must be unset (or at least it must be `false`),
 - `date` key must be set to before &ndash;or equals to&ndash; the deploy date
+
+## Publishing and promoting a blog post
+
+Once the blog post is ready for publication we'll schedule the publication for a specific time.
+This will probably be on a Tuesday at 8am, but different options can be negotiated too.
+
+Once the post has been scheduled we use [buffer](https://bufferapp.com) to schedule posts on
+Twitter and Linkedin, as well as [Later for Reddit](https://laterforreddit.com/) to post on
+Reddit. Once the posts have been published we will use the #devrel and #twitter channels on our
+Slack to let all employees know about the posts.
+
+You're always welcome to provide the wording for the social media posts, as well as possible
+hashtags and subreddits where you'd like the blog post to appear.
+
+Simply include these in the issue.
