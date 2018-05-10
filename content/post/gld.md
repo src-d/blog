@@ -35,7 +35,7 @@ to technical tricks, hacks and heuristics which result in complex code.
 lawyers.
 
 The following table compares the current go-license-detector with GitHub's built-in license detector,
-Google's licenseclassifier and Ben Boyter's `lc` on the
+Google's *licenseclassifier*, Ben Boyter's *lc*, Amazon's *askalono* and Linux Foundation's *LiD* on the
 [reference 1k dataset](https://github.com/src-d/go-license-detector/blob/master/licensedb/dataset.zip):
 
 |Detector|Detection rate|Time to scan, sec|
@@ -44,6 +44,8 @@ Google's licenseclassifier and Ben Boyter's `lc` on the
 |[benbalter/licensee](https://github.com/benbalter/licensee)| 75% \\(\\quad(\\frac{673}{902})\\) | 111 |
 |[google/licenseclassifier](https://github.com/google/licenseclassifier)| 76% \\(\\quad(\\frac{682}{902})\\) | 907 |
 |[boyter/lc](https://github.com/boyter/lc)| 88% \\(\\quad(\\frac{797}{902})\\) | 548 |
+|[amzn/askalono](https://github.com/amzn/askalono)| 87%  \\(\\quad(\\frac{785}{902})\\) | 165 |
+|[LiD](https://source.codeaurora.org/external/qostg/lid)| 94%  \\(\\quad(\\frac{847}{902})\\) | 3660 |
 
 The total number of repositories in the dataset is 958, however, only 902 contain any pointer to
 the license - we looked through each of them. The rest are mainly "awesome lists" and Chinese projects
