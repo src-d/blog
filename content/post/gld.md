@@ -7,7 +7,7 @@ description: "Detecting the license of an open source projects is harder than it
 categories: ["science", "technical"]
 ---
 
-While working on [Public Git Archive](https://github.com/src-d/datasets/PublicGitArchive), we
+While working on [Public Git Archive](https://github.com/src-d/datasets/tree/master/PublicGitArchive), we
 thought that it would be handy to include the license of each project in the index file, so that
 people could easily filter "grey" repositories without a clear license. Besides, we were
 curious about the licenses distribution. GitHub already detects licenses by leveraging
