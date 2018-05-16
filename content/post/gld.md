@@ -7,7 +7,7 @@ description: "Detecting the license of an open source projects is harder than it
 categories: ["science", "technical"]
 ---
 
-While working on [Public Git Archive](https://github.com/src-d/datasets/PublicGitArchive), we
+While working on [Public Git Archive](https://github.com/src-d/datasets/tree/master/PublicGitArchive), we
 thought that it would be handy to include the license of each project in the index file, so that
 people could easily filter "grey" repositories without a clear license. Besides, we were
 curious about the licenses distribution. GitHub already detects licenses by leveraging
@@ -117,8 +117,15 @@ After careful tuning of false positives, false negatives, and performance, we de
 similarity threshold for our algorithm to 75%, and the hash length to 154 samples.
 Since we discard the text structure by treating sequences as sets, we further calculate the Levenshtein
 distance to the database records matched by Weighted MinHash in order to determine the precise confidence value.
-Note: this does not take into account the linguistic tricks, e.g. negations. Fortunately,
-few open source projects play those gotcha license games up to date.  
+Note: this does not take into account the linguistic tricks, e.g. negations:
+
+> You may reproduce and distribute copies of the Work or Derivative Works
+
+is considered *almost* the same as
+
+> You may not reproduce and distribute copies of the Work or Derivative Works
+
+Fortunately, few open source projects play those gotcha license games to date.  
 
 We look at the `README` file if the analyzed project does not contain a license file. This happens
 in more than 7% of the cases in the 1k dataset and 66% in [Public Git Archive](https://github.com/src-d/datasets/PublicGitArchive) (182,000 repositories).
