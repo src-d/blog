@@ -21,8 +21,8 @@ training Machine Learning on Source Code (aka MLonCode) models.
 The dataset contains 3TB of repositories from GitHub ready to download.
 This includes all of the contents (git metadata and file contents) for all of the repositories
 on GitHub with 50 or more stars.
-The list of repositories was obtained from [the GHTorrent project](http://ghtorrent.org/),
-which provides information about GitHub repositories but unfortunately doesn't include the file contents.
+The list of repositories was obtained from [the GHTorrent project](http://ghtorrent.org/), specifically from the snapshot of January 1st 2018.
+GHTorrent provides information about GitHub repositories but unfortunately doesn't include the file contents.
 
 ### Rooted Repositories
 
@@ -123,7 +123,18 @@ then use [jq](https://stedolan.github.io/jq/) to extract the corresponding filen
 
 ## License
 
-`Public Git Dataset` is available under the
-[Open Database License (ODBL)](https://opendatacommons.org/licenses/odbl/),
-but we'd love to hear if you decide to use it. You can get in touch with us via email to
-devrel@sourced.tech or joining our Slack community following the instructions below.
+The `Public Git Dataset` index is available only for research purposes
+and under a dual license
+[Open Database License (ODBL)](https://opendatacommons.org/licenses/odbl/) and
+[CC-BY-SA-NC 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+We'd love to hear if you decide to use it. You can get in touch with us via email to
+[datasets@sourced.tech](mailto:datasets@sourced.tech) or joining our Slack community following the instructions below.
+
+## Blacklist
+
+We understand that some GitHub projects may become private or deleted
+with time. Previous dataset snapshots will continue to include such
+dead code. If you are the author and want to remove your project from
+all present and future public snapshots, please send a request to
+[datasets@sourced.tech](mailto:datasets@sourced.tech).
