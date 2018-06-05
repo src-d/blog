@@ -3,7 +3,7 @@ author: campoy
 date: 2018-06-05
 title: "Announcing Public Git Archive"
 image: /post/announcing-pga/pga.png
-description: "Announcing Public Git Archive, the largest git repositories dataset in the world."
+description: "Announcing Public Git Archive, the largest dataset of git repositories in the world."
 categories: ["technical", "MLonCode"]
 ---
 
@@ -57,6 +57,22 @@ Similarly, the number of lines of code show the size of Public Git Archive.
 
 ![lines of code of datasets](/post/announcing-pga/loc.png)
 
+## Comparing PGA to GHTorrent and the BigQuery GitHub dataset
+
+Many people asked us already how this dataset compares to two related
+projects: GHTorrent and BigQuery.
+
+The main difference with [GHTorrent](http://ghtorrent.org/) is that
+while GHTorrent only provides metadata about the repositories,
+Public Git Archive also includes the contents and metadata of the git
+repository. This means you can actually analyze source code, rather
+than just metadata about it.
+
+On the other hand, the [GitHub Data](https://cloud.google.com/bigquery/public-data/github) on BigQuery 
+does contain source code, but only the latest release for each file.
+While incredibly useful, this is not enough for some analyses where
+the full history of a repository is needed.
+
 ## Public Git Archive Schema
 
 Public Git Archive provides an index file with information that can be used to select which parts
@@ -70,6 +86,12 @@ of the dataset one might want to download. This includes:
 - license detected in the repository with [go-license-detector](https://github.com/src-d/go-license-detector).
 
 You can find the [documented schema](https://pga.sourced.tech/) of the dataset on GitHub.
+
+Each [siva](https://github.com/src-d/go-siva) file contains one or more
+GitHub repositories, compressed in an append-friendly format.
+The repositories contain all the commits, references, branches, *and*
+file contents of each repository, similarly to what one would obtain by
+cloning the repository directly.
 
 ## Download it now!
 
