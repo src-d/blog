@@ -66,7 +66,7 @@ of the dataset one might want to download. This includes:
 - name of the [siva](https://github.com/src-d/siva) with the repository contents
 - number of total files, lines of code, and bytes,
 - number of total commits and commits in the HEAD path to the root,
-- list of languages detect in the repository with [enry](https://github.com/src-d/enry),
+- list of languages detected in the repository with [enry](https://github.com/src-d/enry),
 - license detected in the repository with [go-license-detector](https://github.com/src-d/go-license-detector).
 
 You can find the [documented schema](https://pga.sourced.tech/) of the dataset on GitHub.
@@ -74,7 +74,7 @@ You can find the [documented schema](https://pga.sourced.tech/) of the dataset o
 ## Download it now!
 
 You can download [the index file](http://pga.sourced.tech/csv/latest.csv.gz), find the `siva`
-files corresponding to the repositories of your interested, and download one by one.
+files corresponding to the repositories of your interest, and download one by one.
 
 To make this task easier we've also released a tool that we call `pga`. `pga` is able to filter
 and download sections of the datasets with an easy command line interface.
@@ -123,7 +123,7 @@ then use [jq](https://stedolan.github.io/jq/) to extract the corresponding filen
 
 ## License
 
-The `Public Git Dataset` index is available only for research purposes
+The `Public Git Archive` index is available only for research purposes
 and under a dual license
 [Open Database License (ODBL)](https://opendatacommons.org/licenses/odbl/) and
 [CC-BY-SA-NC 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
