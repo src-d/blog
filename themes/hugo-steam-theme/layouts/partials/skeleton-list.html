@@ -8,7 +8,7 @@
                     <a href="{{ .Permalink }}" data-tracked>{{ .Title }}</a>
                 </h1>
                 <div class="post-meta">
-                    {{ partial "post_meta" $ctx }}
+                    {{ partial "post_meta" . }}
                 </div>
             </header>
             <section class="post-excerpt">
