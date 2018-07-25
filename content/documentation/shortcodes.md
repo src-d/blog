@@ -19,7 +19,7 @@ You can combine most of the shortcodes to mix their effects.
 
 If after reading this full document you believe your content *really* needs a new layout or style—because none of the existent shortcodes, nor their combinations suit you—please check the [src-d/blog issues](https://github.com/src-d/blog/issues) to check if someone has request the same and, if it is unique, create a new issue describing what are you trying to accomplish with as much information as possible.
 
-[Platform](https://github.com/orgs/src-d/teams/platform) and [Product](https://github.com/orgs/src-d/teams/product) teams will analyze each case individually and suggest workarounds using the current features if possible, or otherwise consider it a feature request and analyze its feasibility and benefits to all users. There is no guarantee every feature request will be accepted.
+[Applications](https://github.com/orgs/src-d/teams/applications) and [Product](https://github.com/orgs/src-d/teams/product) teams will analyze each case individually and suggest workarounds using the current features if possible, or otherwise consider it a feature request and analyze its feasibility and benefits to all users. There is no guarantee every feature request will be accepted.
 
 
 # source{d} custom shortcodes
