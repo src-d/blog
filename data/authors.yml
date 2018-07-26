@@ -87,3 +87,10 @@ campoy:
   social:
     github: campoy
     twitter: francesc
+alex:
+  name: Alexander Bezzubov
+  thumbnail: https://avatars1.githubusercontent.com/u/5582506?s=460&v=4
+  bio: "Data engineer"
+  social:
+    github: bzz
+    twitter: seoul_engineer
