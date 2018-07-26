@@ -20,6 +20,7 @@ Please,
     - [Assets](#assets)
     - [Authors](#authors)
 - [Preview the blog posts](#preview-the-blog-posts)
+    - [Troubleshoot](#troubleshoot)
 - [Peer review](#peer-review)
 - [How to publish blog posts and deploy the blog](#how-to-publish-blog-posts-and-deploy-the-blog)
 - [Publishing and promoting a blog post](#publishing-and-promoting-a-blog-post)
@@ -84,10 +85,10 @@ ready for review.
 
 Posts are stored under [`post` content directory](content/post) as plain text `.md` files.
 
-To create a new blog post, create a new `.md` file with under:<br />
-`content/post/__POST_FILE_NAME__.md`<br />
-it will be accessible in the the URL:<br />
-`//__BLOG_HOST_NAME__/post/__POST_FILE_NAME__`
+To create a new blog post:
+ 1. create a new `.md` file with under `content/post/__POST_FILE_NAME__.md`
+    it will be accessible in the the URL `//__BLOG_HOST_NAME__/post/__POST_FILE_NAME__`
+ 2. for a first time authors, add your name to [authors list](#authors)
 
 The post `.md` files must have the following [schema](#content-schema):
 
@@ -110,7 +111,7 @@ draft: true
 Whatever content in `markdown` format.
 
 ```
-
+IMPORTANT: `authorKeyName` must exist in [data/authors.yml](data/authors.yml)
 
 ### Front matter
 
@@ -158,7 +159,7 @@ When demos or runnable stuff need resources, these must not be hosted in the blo
 
 Every post entry must define its authorship; to do so, in the content [Front Matter section](#front-matter) it is needed to define the `author` key. 
 
-The `author` key will be one of the authors defined by [the data/authors.yml](data/authors.yml).
+The `author` key will be one of the authors defined by the [data/authors.yml](data/authors.yml).
 
 The authors entries follow this schema:
 ```yaml
@@ -183,6 +184,21 @@ To locally serve the blog, you need to satisfy the [project requirements](README
 make serve
 ```
 Finally, go to [http://localhost:8484](http://localhost:8484)
+
+### Troubleshoot
+
+In case you have any troubles seeing the preview of the post locally i.e an empty page insted of content, one think you can try is to manually run backend and frontend parts in different terminal session and check more detaild logs:
+
+```
+$ make hugo-server
+$ yarn run webpack-watcher
+```
+
+One common issue is an empty page, if a new author is not yet part of the [authors list](#authors) in [data/authors.yml](data/authors.yml) that results in hugo logs like
+
+```
+ERROR 2018/07/25 13:07:10 Error while rendering "page": template: theme/_default/single.html:1:3: executing "theme/_default/single.html" at <partial "skeleton" (...>: error calling partial: template: theme/partials/skeleton.html:7:7: executing "theme/partials/skeleton.html" at <partial (printf "ske...>: error calling partial: template: theme/partials/skeleton-single.html:15:15: executing "theme/partials/skeleton-single.html" at <partial "author" $ct...>: error calling partial: template: theme/partials/author.html:24:36: executing "theme/partials/author.html" at <markdownify>: wrong number of args for markdownify: want 1 got 0
+```
 
 ## Peer review
 
