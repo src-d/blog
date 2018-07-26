@@ -12,7 +12,6 @@ Please,
 <!-- TOC -->
 
 - [Propose a new blog post](#propose-a-new-blog-post)
-- [Preview the blog posts](#preview-the-blog-posts)
 - [Creating a new post](#creating-a-new-post)
     - [Content schema](#content-schema)
     - [Front matter](#front-matter)
@@ -20,6 +19,7 @@ Please,
     - [Links to other source{d} blog posts](#links-to-other-sourced-blog-posts)
     - [Assets](#assets)
     - [Authors](#authors)
+- [Preview the blog posts](#preview-the-blog-posts)
 - [Peer review](#peer-review)
 - [How to publish blog posts and deploy the blog](#how-to-publish-blog-posts-and-deploy-the-blog)
 - [Publishing and promoting a blog post](#publishing-and-promoting-a-blog-post)
@@ -79,18 +79,6 @@ been rejected or abandoned the issue will be closed.
 Once accepted, you can start writing your blog post, creating a new pull request that will `fix` the issue
 you created for the proposal. Make sure you add `[WIP]` at the beginning of the title in the PR until you're
 ready for review.
-
-## Preview the blog posts
-
-While you are developing or creating new contents for the blog, and always before publishing a PR, you should validate your changes locally, specially if you're modifying common features or you're using shortcodes.
-
-To locally serve the blog, you need to satisfy the [project requirements](README.md#requirements), and then run from the project root:
-
-```shell
-make serve
-```
-Finally, go to [http://localhost:8484](http://localhost:8484)
-
 
 ## Creating a new post
 
@@ -185,6 +173,16 @@ authorKeyName:
 
 If you are writing a blog post and your author entry is not defined under `data/authors.yml`, you should add yourself to that authors data file.
 
+## Preview the blog posts
+
+While you are developing or creating new contents for the blog, and always before publishing a PR, you should validate your changes locally, specially if you're modifying common features or you're using shortcodes.
+
+To locally serve the blog, you need to satisfy the [project requirements](README.md#requirements), and then run from the project root:
+
+```shell
+make serve
+```
+Finally, go to [http://localhost:8484](http://localhost:8484)
 
 ## Peer review
 
