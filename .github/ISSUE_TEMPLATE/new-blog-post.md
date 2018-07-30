@@ -29,3 +29,5 @@ This section will be filled by @campoy.
 * Wording for tweet:
 * Hashtags:
 * Subreddits:
+
+*NOTE* Please write in short lines so the review is easier to do.
