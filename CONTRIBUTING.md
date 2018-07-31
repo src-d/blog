@@ -110,6 +110,9 @@ draft: true
 
 Whatever content in `markdown` format.
 
+_NOTE_: Write in short lines, soft limit on 80 characters, to facilitate
+line comments on GitHub.
+
 ```
 IMPORTANT: `authorKeyName` must exist in [data/authors.yml](data/authors.yml)
 
