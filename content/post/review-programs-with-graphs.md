@@ -8,13 +8,23 @@ categories: ["science", "technical"]
 draft: true
 ---
 
-ML-on-Code is a rapidly developing field in both, academia and industry that [source{d}](http://sourced.tech/) was set out to systematically explore though the last year. So far the results that have already been published, courtesy of the hard work of Data Retrieval, Machine Learning , and Infrastructure teams who collect and store [millions of Git repositories](/post/github_stats), were based on large-scale applications of advanced NLP techniques such as [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/) or [Topic Modeling](https://arxiv.org/abs/1704.00135) or sequence model for [Identifier Splitting](https://arxiv.org/abs/1805.11651). Current research avenues, driven by the applications for augmented code review, include models using more structured representations of the source code, based on [Abstract Syntax Trees](https://doc.bblf.sh/uast/uast-specification.html) and graphs.
+ML-on-Code is a rapidly developing field in both, academia and industry that [source{d}](http://sourced.tech/)
+was set out to systematically explore through the last year. So far the results that have already been published,
+courtesy of the hard work of Data Retrieval, Machine Learning , and Infrastructure teams who collect and store
+[millions of Git repositories](/post/github_stats), were based on large-scale applications of advanced NLP
+techniques such as [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/) or [Topic Modeling](https://arxiv.org/abs/1704.00135)
+or sequence model for [Identifier Splitting](https://arxiv.org/abs/1805.11651). Current research avenues,
+driven by the applications for augmented code review, include models using more structured representations of
+the source code, based on [Abstract Syntax Trees](https://doc.bblf.sh/uast/uast-specification.html) and graphs.
 
-That is why the second paper that is covered here will be on recent advances in program representations suitable for Machine Learning that go beyond syntax and traditional NLP techniques.
+That is why the second paper that is covered here will be on recent advances in program representations suitable
+for Machine Learning that go beyond syntax and traditional NLP techniques.
 
 ## Source Code as a Graph
 
-[“Learning to Represent Programs with Graphs”](https://arxiv.org/abs/1711.00740) — a paper from [“Deep Program Understanding” group](https://www.microsoft.com/en-us/research/project/program/) at Microsoft Research was presented at ICLR 2018 earlier this year.
+[“Learning to Represent Programs with Graphs”](https://arxiv.org/abs/1711.00740) — a paper from
+[“Deep Program Understanding” group](https://www.microsoft.com/en-us/research/project/program/)
+at Microsoft Research was presented at ICLR 2018 earlier this year.
 
 {{% tweet 958128393027047424 %}}
 
@@ -26,13 +36,16 @@ That is why the second paper that is covered here will be on recent advances in 
 * model has official open source implementation (open science!)
 * and this knowledge was actually applied in industry, to build a real product
 
-We’ll summarize briefly the paper itself in the next sections, but first some background on the main Machine Learning model used in the paper — **“Gated Graph Neural Networks”**. 🕵
+We’ll summarize briefly the paper itself in the next sections, but first some background on the main Machine
+Learning model used in the paper — **“Gated Graph Neural Networks”**. 🕵
 
 ### History: chemistry -> message passing -> ML on Code
 
-In the official [mode's source repository REAMDE](https://github.com/Microsoft/gated-graph-neural-network-samples#gated-graph-neural-networks) authors share that the inspiration for this work comes from another field of ML research: Quantum Chemistry.
+In the official [mode's source repository REAMDE](https://github.com/Microsoft/gated-graph-neural-network-samples#gated-graph-neural-networks)
+authors share that the inspiration for this work comes from another field of ML research: Quantum Chemistry.
 
-Interesting enough, in few recent talks, Jeff Dean while talking about most exciting advances in ML applications mentions Quantum Chemistry as well:
+Interesting enough, in few recent talks, Jeff Dean while talking about most exciting advances in ML applications
+mentions Quantum Chemistry as well:
 
 * [TWiML & AI](https://medium.com/@twimlai) podcast episode [“Systems and Software for Machine Learning at Scale”](https://twimlai.com/twiml-talk-124-systems-software-machine-learning-scale-jeff-dean/)
 
@@ -42,43 +55,63 @@ Interesting enough, in few recent talks, Jeff Dean while talking about most exci
 ML application in quantum physics. Source: Jeff Dean slides
 {{% /caption %}}
 
-The fundamental idea is well-understood — given a [Schrödinger equation](https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation), one can get information about the state of a single particle, thus solving it for composition would allow to model properties of more complex structures, including molecules and in general, a solid state matter. But solving many-body Schrödinger equation requires huge computational efforts.
+The fundamental idea is well-understood — given a [Schrödinger equation](https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation),
+one can get information about the state of a single particle, thus solving it for composition would allow to
+model properties of more complex structures, including molecules and in general, a solid state matter. But
+solving many-body Schrödinger equation requires huge computational efforts.
 
-Instead, a [Nobel prize winning](https://www.nobelprize.org/nobel_prizes/chemistry/laureates/1998/) modeling approach called [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory) can be applied, reducing problem of many-body interacting system to a series of single-body problems and although still slow, it is highly valuable for many tasks in physics, chemistry and material science. Many approximate methods has been developed to make it more feasible, to get estimates instead of exact answers.
+Instead, a [Nobel prize winning](https://www.nobelprize.org/nobel_prizes/chemistry/laureates/1998/) modeling
+approach called [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory) can be
+applied, reducing problem of many-body interacting system to a series of single-body problems and although still
+slow, it is highly valuable for many tasks in physics, chemistry and material science. Many approximate methods
+has been developed to make it more feasible, to get estimates instead of exact answers.
 
 ### Neural Networks for predicting properties of molecule
 
-So in 2017, few researches at Google Brain Residence program spent time applying recent ML optimization methods for predicting properties of molecules:
+So in 2017, few researches at Google Brain Residence program spent time applying recent ML optimization methods
+for predicting properties of molecules:
 
-* many [software simulators](https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software) already exist for DFT,
-but are slow and still computationally intensive
+* many [software simulators](https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software)
+already exist for DFT, but are slow and still computationally intensive
 
-* in 2014 those simulators were used to build a [reference dataset — QM9](http://quantum-machine.org/datasets/), suitable for supervised learning
+* in 2014 those simulators were used to build a [reference dataset — QM9](http://quantum-machine.org/datasets/),
+  suitable for supervised learning
 
 * a new “featurization” method was proposed, for looking at molecular structure as a graph: atoms as nodes and bonds as edges
 
-* a new variation of Gated Graph Neural Network architecture was proposed, particularly suited for summarizing properties of such graphs
+* a new variation of Gated Graph Neural Network architecture was proposed, particularly suited for summarizing
+  properties of such graphs
 
-Every such graph representing a molecule could be treated as a “computational graph”, thus usual Neural Network training technique can be applied for build node embeddings and given such model, desired properties of the molecule could be learned in supervised fashion, as a function of the whole graph.
+Every such graph representing a molecule could be treated as a “computational graph”, thus usual Neural Network
+training technique can be applied for build node embeddings and given such model, desired properties of the
+molecule could be learned in supervised fashion, as a function of the whole graph.
 
 {{% caption src="https://cdn-images-1.medium.com/max/2000/1*NGX58AUORTa-cosWIGKntg.png" title="MPNN illustration from paper Neural 'Message Passing for Quantum Chemistry'" %}}
 MPNN illustration from [https://arxiv.org/abs/1704.01212](https://arxiv.org/abs/1704.01212)
 {{% /caption %}}
 
-[“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html) dives deeper into details, but in particular this work has few valuable meta-lessons to teach on conducting a novel research in applied Machine Learning:
+[“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html) dives deeper into details,
+but in particular this work has few valuable meta-lessons to teach on conducting a novel research in applied
+Machine Learning:
 
 * a single, shared benchmark QM9 was used (based on DFT, previous simulation approach)
 
 * paper#1 [“Machine learning prediction errors better than DFT accuracy”](http://"https://arxiv.org/abs/1702.05532)
- a systematic assessment of machine learning methods on the QM9 benchmark was conducted, and a new featurization method proposed
+ a systematic assessment of machine learning methods on the QM9 benchmark was conducted, and a new featurization
+ method proposed
 
-* paper#2  [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212) a general model family “Message Passing Neural Networks” (MPNNs) was proposed, that that reformulate previous NN models invariant to graph symmetries into a single common framework. Novel model in MPNN family developed, that improve results ~factor of 4. High-level interpretation of result: models that can leverage inherent symmetries in data will tend to generalize better
+* paper#2  [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212) a general model family
+ “Message Passing Neural Networks” (MPNNs) was proposed, that that reformulate previous NN models invariant
+ to graph symmetries into a single common framework. Novel model in MPNN family developed, that improve results
+ ~factor of 4. High-level interpretation of result: models that can leverage inherent symmetries in data will tend
+ to generalize better
 
 ## Paper highlights
 
-Now back to [“Learning to Represent Programs with Graphs”](https://arxiv.org/abs/1711.00740) 
+Now back to [“Learning to Represent Programs with Graphs”](https://arxiv.org/abs/1711.00740)
 
-A new “featurization” of code was proposed: a “program graph”, or a single unified graph containing AST + data flow + types information.
+A new “featurization” of code was proposed: a “program graph”, or a single unified graph containing AST + data
+flow + types information.
 
 **model architecture**: GG-NN ([code](https://github.com/Microsoft/gated-graph-neural-network-samples))
 
@@ -107,7 +140,8 @@ A “program graph” with syntax information, data-flow information, type infor
 Graph structure illustration from [https://arxiv.org/abs/1711.00740](https://arxiv.org/abs/1711.00740)
 {{% /caption %}}
 
-It consists of AST graph with a data-flow information added all together using 10 types of edges (contributes “proportionally” to runtime complexity):
+It consists of AST graph with a data-flow information added all together using 10 types of edges (contributes
+proportionally to runtime complexity):
 
 * *Child/NextToken* — edges to model AST on tokens
 
@@ -120,7 +154,7 @@ It consists of AST graph with a data-flow information added all together using 1
 * *FormalArgName* — connect method call arguments to it’s name/type declaration
 
 * *ReturnsTo* — links *return* tokens to name/type in method declaration
- 
+
 
 ### **Model details: GG-NN**
 
@@ -130,9 +164,10 @@ The concrete architecture used was *Gated Graph Neural Networks* or *GG-NN*
 
 * official implementation in Torch [https://github.com/yujiali/ggnn](https://github.com/yujiali/ggnn)
 
-A very brief on of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”. 
+A very brief on of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
 
-Input: graph, Output: sequence. Uses GRU, unrolls the recurrence for a fixed number of steps and use backpropagation through time in order to compute gradients.
+Input: graph, Output: sequence. Uses GRU, unrolls the recurrence for a fixed number of steps and use
+backpropagation through time in order to compute gradients.
 
 The idea is:
 
@@ -146,10 +181,11 @@ source: representation Learning on Networks, WWW 2018, [http://snap.stanford.edu
 
 * node embeddings thus can be learned, by propagating messages between connected nodes
 
-* propagation happens step by step: first step propagate information from direct neighbors, second step from nodes 2 steps away, etc
+* propagation happens step by step: first step propagate information from direct neighbors, second step from
+  nodes 2 steps away, etc
 
 * as NNs can be deep, to make training stable and avoid exploding/vanishing gradients use same ideas as in RNN:
- at every step, combine previous state + new input. Initial step concatenated embeddings of “node label” + “node type”.
+  at every step, combine previous state + new input. Initial step concatenated embeddings of “node label” + “node type”.
 
 
 Initial node state: *node name embedding*
@@ -168,7 +204,8 @@ Authors has also published a reference implementation of GG-NN model in TensorFl
 
 [**Microsoft/gated-graph-neural-network-samples** - Sample Code for Gated Graph Neural Networks](https://github.com/Microsoft/gated-graph-neural-network-samples)
 
-For deeper overview of this and other graph-based learning methods, we recommend checking Stanford’s [SNAP tutorial on Representation learning on graphs](http://snap.stanford.edu/proj/embeddings-www/).
+For deeper overview of this and other graph-based learning methods, we recommend checking Stanford’s
+[SNAP tutorial on Representation learning on graphs](http://snap.stanford.edu/proj/embeddings-www/).
 
 ## Tasks
 
@@ -186,7 +223,8 @@ That is what authors call an example of “graph2seq architecture”:
 
 * 8 time steps propagating GG-NN for each var occurrence, starting from the “initial state” described above
 
-* average of all variable occurrences is input to on-layer GRU, trained with max likelihood, that outputs final name as a sequence of sub-tokens
+* average of all variable occurrences is input to on-layer GRU, trained with max likelihood, that outputs final
+name as a sequence of sub-tokens
 
 Accuracy for predicting the exact name and the F1 score for predicting its subtokens is reported.
 
@@ -196,17 +234,24 @@ Accuracy for predicting the exact name and the F1 score for predicting its subto
 source: poster of the paper at ICLR 2018
 {{% /caption %}}
 
-*VarMisuse* is “fill-in the box” for variable name: predict if one of the existing variables can be used in a given slot.
+*VarMisuse* is “fill-in the box” for variable name: predict if one of the existing variables can be used in a
+given slot.
 
-Single variable is “blanked out” from the graph by adding a *synthetic node.* The model is asked to predict the originally used variable, out of the all known vars used. 
+Single variable is “blanked out” from the graph by adding a *synthetic node.* The model is asked to predict the
+originally used variable, out of the all known vars used.
 
-This task is different from seemingly close “code completion” task, as it deals only with variables and in “mostly complete” programs.
+This task is different from seemingly close “code completion” task, as it deals only with variables and in
+“mostly complete” programs.
 
 Training for this task is a bit more involved:
 
-* compute *context representation* for each slot, where we want to predict the used variable: insert a new node corresponding to a “hole”, connect it to the remaining graph using all applicable edges that do not depend on the chosen variable at the slot (everything but *LastUse*, *LastWrite*, *LastLexicalUse*, and *GuardedBy*)
+* compute *context representation* for each slot, where we want to predict the used variable: insert a new node
+corresponding to a “hole”, connect it to the remaining graph using all applicable edges that do not depend on the
+chosen variable at the slot (everything but *LastUse*, *LastWrite*, *LastLexicalUse*, and *GuardedBy*)
 
-* then compute *usage representation* of each candidate variable at the target slot: insert a *candidate node* and connect it by inserting the *LastUse*, *LastWrite* and *LastLexicalUse* edges that would be used if the variable were to be used at this slot
+* then compute *usage representation* of each candidate variable at the target slot: insert a *candidate node*
+and connect it by inserting the *LastUse*, *LastWrite* and *LastLexicalUse* edges that would be used if the
+variable were to be used at this slot
 
 * use initial node representations, concatenated with an extra bit that is set to one for the candidate nodes
 
@@ -221,42 +266,57 @@ Training for this task is a bit more involved:
 Few practical insides that were discovered, while building a model in TensorFlow include:
 
 * use of SparseTensors for representing adjacency list, in order to batch efficiently
-* represent batch-of-graphs as a one single graph \w disconnected components, in order to benefit from GPU parallelization
+* represent batch-of-graphs as a one single graph \w disconnected components, in order to benefit from GPU
+  parallelization
 
 Summary, as poster on ICLR 2018 conference by paper authors
 
 {{% tweet 990717350197444609 %}}
 
-**CODE**: MSR open sourced [a generic GG-NN implementation on TensorFlow](https://github.com/Microsoft/gated-graph-neural-network-samples) with example usage “on a simpler task”, so it does not include functions for building the “program graphs” for any of the two tasks above.
+**CODE**: MSR open sourced [a generic GG-NN implementation on TensorFlow](https://github.com/Microsoft/gated-graph-neural-network-samples)
+with example usage “on a simpler task”, so it does not include functions for building the “program graphs” for
+any of the two tasks above.
 
-**DATA**: MSR has recently also published [a dataset of graphs](https://msropendata.com/datasets/a8a6aa9d-521b-420b-a281-9807000d2b92) from the parsed source code used for this paper.
+**DATA**: MSR has recently also published [a dataset of graphs](https://msropendata.com/datasets/a8a6aa9d-521b-420b-a281-9807000d2b92)
+from the parsed source code used for this paper.
 
-**EXPOSITION**: MSR members and original paper authors also did really nice explanatory blogpost, in particular on a graph construction part at [Microsoft Research Blog](https://www.microsoft.com/en-us/research/blog/learning-source-code).
+**EXPOSITION**: MSR members and original paper authors also did really nice explanatory blogpost, in particular
+on a graph construction part at [Microsoft Research Blog](https://www.microsoft.com/en-us/research/blog/learning-source-code).
 
 ## Results
 
-One thing that makes this research particularly interesting, is to see how a new, revamped [Microsoft + Open Source](https://open.microsoft.com/) as a company managed to:
+One thing that makes this research particularly interesting, is to see how a new, revamped
+[Microsoft + Open Source](https://open.microsoft.com/) as a company managed to:
 
 * conduct, publish and share the data and some code for an interesting research
 
 * “productionaize” it as [InteliCode plugin](https://go.microsoft.com/fwlink/?linkid=872707) for Visual Studio
 
-* [announce resulting product](https://blogs.msdn.microsoft.com/visualstudio/2018/05/07/introducing-visual-studio-intellicode/), as a part of it’s [Build conference](https://www.microsoft.com/en-us/build), which seems to be getting lots of interesting talks in recent years 
+* [announce resulting product](https://blogs.msdn.microsoft.com/visualstudio/2018/05/07/introducing-visual-studio-intellicode/),
+as a part of it’s [Build conference](https://www.microsoft.com/en-us/build), which seems to be getting lots of
+interesting talks in recent years
 
 Here is an example of one of the gems from previous Build conference
-- [**Thinking for Programmers**](https://channel9.msdn.com/Events/Build/2014/3-642) where Leslie Lamport, inventor of Paxos and developer of LaTeX, introduces techniques and tools that help programmers think.
+* [**Thinking for Programmers**](https://channel9.msdn.com/Events/Build/2014/3-642) where Leslie Lamport,
+inventor of Paxos and developer of LaTeX, introduces techniques and tools that help programmers think.
 
 {{% tweet 993874082193203200 %}}
 
-For Microsoft, this is not the first attempt to add AI features to it’s market leading code editor product: i.e there is another VS extension called [Developer Assistant](https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.DeveloperAssistant) from 2016. But this work, to the best of our knowledge, looks like a first one when such features are grounded in a published scientific research.
+For Microsoft, this is not the first attempt to add AI features to it’s market leading code editor product: i.e
+there is another VS extension called [Developer Assistant](https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.DeveloperAssistant)
+from 2016. But this work, to the best of our knowledge, looks like a first one when such features are grounded
+in a published scientific research.
 
 Here it is 🍾🍾🍾 for the more companies to follow this path of building products!
 
 ------------
 
- By the way, a good work does not need to happen only at the big companies: [source{d}](https://twitter.com/sourcedtech) is a startup that has also published 3 academic papers over the last year in ML-on-Code field:
+By the way, a good work does not need to happen only at the big companies:
+[source{d}](https://twitter.com/sourcedtech) is a startup that has also published 3 academic papers over the
+last year in ML-on-Code field:
  — [Topic modeling of public repositories at scale using names in source code](https://arxiv.org/abs/1704.00135)
  — [Public Git Archive: a Big Code dataset for all](https://arxiv.org/abs/1803.10144)
  — [Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network](https://arxiv.org/abs/1805.11651)
- 
-If interested in working on cutting edge ML research and putting it’s results to production as an application for assisted code reviews — please come join us, [source{d} is hiring](https://sourced.tech/careers/)!
+
+If interested in working on cutting edge ML research and putting it’s results to production as an application
+for assisted code reviews — please come join us, [source{d} is hiring](https://sourced.tech/careers/)!
