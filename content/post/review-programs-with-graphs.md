@@ -9,7 +9,7 @@ draft: true
 ---
 
 ML-on-Code is a rapidly developing field in both, academia and industry that [source{d}](http://sourced.tech/)
-was set out to systematically explore through out the last years. So far the results that have already been published,
+was set out to systematically explore throughout the last years. So far the results that have already been published,
 courtesy of the hard work of Data Retrieval, Machine Learning, and Infrastructure teams who collect and store
 [millions of Git repositories](/post/github_stats), were based on large-scale applications of advanced NLP
 techniques such as [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/) or [Topic Modeling](https://arxiv.org/abs/1704.00135)
@@ -91,7 +91,7 @@ MPNN illustration from [https://arxiv.org/abs/1704.01212](https://arxiv.org/abs/
 {{% /caption %}}
 
 [“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html)
-dives deeper into details, but this work in particular has several valuable meta-lessons to teach on conducting a
+dives deeper into details, but this work, in particular, has several valuable meta-lessons to teach on conducting a
 novel research in applied Machine Learning:
 
 * a single, shared benchmark QM9 was used (based on DFT, previous simulation approach)
@@ -134,7 +134,7 @@ flow + types information.
 
 ### **Graph construction**
 
-A “program graph” with syntax information, data-flow information and type information was introduced.
+A “program graph” with syntax information, data-flow information, and type information was introduced.
 
 {{% caption src="https://cdn-images-1.medium.com/max/2944/1*2gOmyeUX2dWVM8mBSR9Snw.png" title="Graph structure illustration from paper 'Learning to Represent Programs with Graphs' " %}}
 Graph structure illustration from [https://arxiv.org/abs/1711.00740](https://arxiv.org/abs/1711.00740)
@@ -149,7 +149,7 @@ proportionally to runtime complexity):
 
 * *LastLexicalUse* — chain uses of the same variable
 
-* *GuardedBy/GuardedByNegation* — enclosing guard expression that use this variable
+* *GuardedBy/GuardedByNegation* — enclosing guard expression that uses this variable
 
 * *FormalArgName* — connect method call arguments to it’s name/type declaration
 
@@ -166,7 +166,7 @@ The concrete architecture used was *Gated Graph Neural Networks* or *GG-NN*
 
 A very brief recap of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
 
-*Input*: a graph, *Output*: a sequence. Proposed implementaion uses GRU, unrolls the recurrence for a fixed number
+*Input*: a graph, *Output*: a sequence. Proposed implementation uses GRU, unrolls the recurrence for a fixed number
 of steps and use truncated backpropagation through time in order to compute gradients.
 
 The idea is:
@@ -181,7 +181,7 @@ source: representation Learning on Networks, WWW 2018, [http://snap.stanford.edu
 
 * node embeddings thus can be learned, by propagating messages between connected nodes
 
-* propagation happens step by step: first step propagate information from direct neighbors, second step from
+* propagation happens step by step: the first step propagate information from direct neighbors, the second step from
   nodes 2 steps away, etc
 
 * as NNs can be deep, to make training stable and avoid exploding/vanishing gradients use same ideas as in RNN:
@@ -209,7 +209,7 @@ To dive deeper into this method as well as other graph-based learning methods, w
 
 ## Tasks
 
-For each of 2 tasks used in this  paper a slightly different “program graph” and GG-NN model architecture was proposed.
+For each of 2 tasks used in this paper a slightly different “program graph” and GG-NN model architecture was proposed.
 
 ### *VarNaming*
 
@@ -217,13 +217,13 @@ For each of 2 tasks used in this  paper a slightly different “program graph”
 source: poster of the paper at ICLR 2018
 {{% /caption %}}
 
-*VarNaming* generate sequence of identifier sub-tokens, as a function of the whole graph.
+*VarNaming* generates a sequence of identifier sub-tokens, as a function of the whole graph.
 
 That is what authors call an example of “graph2seq architecture”:
 
 * 8 time steps propagating GG-NN for each var occurrence, starting from the “initial state” described above
 
-* average of all variable occurrences is input to on-layer GRU, trained with max likelihood, that outputs final
+* average of all variable occurrences is input to one-layer GRU, trained with max likelihood, that outputs final
 name as a sequence of sub-tokens
 
 Accuracy for predicting the exact name and the F1 score for predicting its subtokens is reported.
@@ -234,13 +234,13 @@ Accuracy for predicting the exact name and the F1 score for predicting its subto
 source: poster of the paper at ICLR 2018
 {{% /caption %}}
 
-*VarMisuse* is “fill-in the box” for variable name: predict if one of the existing variables can be used in a
+*VarMisuse* is “fill-in box” for variable name: predict if one of the existing variables can be used in a
 given slot.
 
-Single variable is “blanked out” from the graph by adding a *synthetic node.* The model is asked to predict the
+A single variable is “blanked out” from the graph by adding a *synthetic node.* The model is asked to predict the
 originally used variable, out of the all known vars used.
 
-This task is different from seemingly close “code completion” task, as it deals only with variables and in
+This task is different from the seemingly close “code completion” task, as it deals only with variables and in
 “mostly complete” programs.
 
 Training for this task is a bit more involved:
@@ -255,7 +255,7 @@ variable were to be used at this slot
 
 * use initial node representations, concatenated with an extra bit that is set to one for the candidate nodes
 
-* 8 time steps propagating GG-NN, to get *context* and usage *representation* as the final states of those nodes
+* 8 time-steps propagating GG-NN, to get *context* and usage *representation* as the final states of those nodes
 
 * a linear layer that uses the concatenation of *context* and *usage* representations
 
@@ -269,7 +269,7 @@ Few practical insides that were discovered, while building a model in TensorFlow
 * represent batch-of-graphs as a one single graph \w disconnected components, in order to benefit from GPU
   parallelization
 
-Summary, as poster on ICLR 2018 conference by paper authors
+Summary, as a poster on ICLR 2018 conference by paper authors
 
 {{% tweet 990717350197444609 %}}
 
@@ -280,7 +280,7 @@ any of the two tasks above.
 **DATA**: MSR has recently also published [a dataset of graphs](https://msropendata.com/datasets/a8a6aa9d-521b-420b-a281-9807000d2b92)
 from the parsed source code used for this paper.
 
-**EXPOSITION**: MSR members and original paper authors also did really nice explanatory blogpost, in particular
+**EXPOSITION**: MSR members and original paper authors also did a really nice explanatory blog post, in particular
 on a graph construction part at [Microsoft Research Blog](https://www.microsoft.com/en-us/research/blog/learning-source-code).
 
 ## Results
@@ -298,11 +298,11 @@ interesting talks in recent years
 
 Here is an example of one of the gems from previous Build conference
 * [**Thinking for Programmers**](https://channel9.msdn.com/Events/Build/2014/3-642) where Leslie Lamport,
-inventor of Paxos and developer of LaTeX, introduces techniques and tools that help programmers think.
+inventor of Paxos and developer of LaTeX introduces techniques and tools that help programmers think.
 
 {{% tweet 993874082193203200 %}}
 
-For Microsoft, this is not the first attempt to add AI features to it’s market leading code editor product: i.e
+For Microsoft, this is not the first attempt to add AI features to its market-leading code editor product: i.e
 there is another VS extension called [Developer Assistant](https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.DeveloperAssistant)
 from 2016. But this work, to the best of our knowledge, looks like a first one when such features are grounded
 in a published scientific research.
@@ -318,5 +318,5 @@ last year in ML-on-Code field:
  — [Public Git Archive: a Big Code dataset for all](https://arxiv.org/abs/1803.10144)
  — [Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network](https://arxiv.org/abs/1805.11651)
 
-If interested in working on cutting edge ML research and putting it’s results to production as an application
+If interested in working on cutting-edge ML research and putting its results to production as an application
 for assisted code reviews — please come join us, [source{d} is hiring](https://sourced.tech/careers/)!
