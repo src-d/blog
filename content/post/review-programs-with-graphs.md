@@ -9,8 +9,8 @@ draft: true
 ---
 
 ML-on-Code is a rapidly developing field in both, academia and industry that [source{d}](http://sourced.tech/)
-was set out to systematically explore through the last year. So far the results that have already been published,
-courtesy of the hard work of Data Retrieval, Machine Learning , and Infrastructure teams who collect and store
+was set out to systematically explore through out the last years. So far the results that have already been published,
+courtesy of the hard work of Data Retrieval, Machine Learning, and Infrastructure teams who collect and store
 [millions of Git repositories](/post/github_stats), were based on large-scale applications of advanced NLP
 techniques such as [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/) or [Topic Modeling](https://arxiv.org/abs/1704.00135)
 or sequence model for [Identifier Splitting](https://arxiv.org/abs/1805.11651). Current research avenues,
@@ -30,7 +30,7 @@ at Microsoft Research was presented at ICLR 2018 earlier this year.
 
  This work is particularly interesting example of research for a few reasons:
 
-* has interesting background —  rooted in  research in physics
+* has an interesting background, rooted in physics research
 * explores structured, graph-based representations
 * includes but goes beyond purely syntactic features
 * model has official open source implementation (open science!)
@@ -41,10 +41,10 @@ Learning model used in the paper — **“Gated Graph Neural Networks”**. 🕵
 
 ### History: chemistry -> message passing -> ML on Code
 
-In the official [mode's source repository REAMDE](https://github.com/Microsoft/gated-graph-neural-network-samples#gated-graph-neural-networks)
-authors share that the inspiration for this work comes from another field of ML research: Quantum Chemistry.
+In the official [model's repository README](https://github.com/Microsoft/gated-graph-neural-network-samples#gated-graph-neural-networks)
+ the authors share that the inspiration for this work comes from another field of ML research: Quantum Chemistry.
 
-Interesting enough, in few recent talks, Jeff Dean while talking about most exciting advances in ML applications
+Interestingly enough, in a few recent talks, Jeff Dean while talking about most exciting advances in ML applications
 mentions Quantum Chemistry as well:
 
 * [TWiML & AI](https://medium.com/@twimlai) podcast episode [“Systems and Software for Machine Learning at Scale”](https://twimlai.com/twiml-talk-124-systems-software-machine-learning-scale-jeff-dean/)
@@ -62,13 +62,13 @@ solving many-body Schrödinger equation requires huge computational efforts.
 
 Instead, a [Nobel prize winning](https://www.nobelprize.org/nobel_prizes/chemistry/laureates/1998/) modeling
 approach called [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory) can be
-applied, reducing problem of many-body interacting system to a series of single-body problems and although still
-slow, it is highly valuable for many tasks in physics, chemistry and material science. Many approximate methods
-has been developed to make it more feasible, to get estimates instead of exact answers.
+applied, reducing the problem of many-body interacting system to a series of single-body problems and although still
+slow, it is highly valuable for many tasks in physics, chemistry and material science. Many approximation methods
+have been developed to make this more feasible by getting estimates instead of exact answers.
 
-### Neural Networks for predicting properties of molecule
+### Neural Networks for predicting properties of molecules
 
-So in 2017, few researches at Google Brain Residence program spent time applying recent ML optimization methods
+So in 2017, several researchers at Google Brain Residence program spent time applying recent ML optimization methods
 for predicting properties of molecules:
 
 * many [software simulators](https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software)
@@ -79,20 +79,20 @@ already exist for DFT, but are slow and still computationally intensive
 
 * a new “featurization” method was proposed, for looking at molecular structure as a graph: atoms as nodes and bonds as edges
 
-* a new variation of Gated Graph Neural Network architecture was proposed, particularly suited for summarizing
+* a new variation of the Gated Graph Neural Network architecture was proposed, particularly suited for summarizing
   properties of such graphs
 
-Every such graph representing a molecule could be treated as a “computational graph”, thus usual Neural Network
-training technique can be applied for build node embeddings and given such model, desired properties of the
-molecule could be learned in supervised fashion, as a function of the whole graph.
+Every such graph representing a molecule could be treated as a “computational graph”, thus the usual Neural Network
+training techniques could be applied to build node embeddings and given such a model the desired properties of
+the molecule could be learned in a supervised fashion, as a function of the whole graph.
 
 {{% caption src="https://cdn-images-1.medium.com/max/2000/1*NGX58AUORTa-cosWIGKntg.png" title="MPNN illustration from paper Neural 'Message Passing for Quantum Chemistry'" %}}
 MPNN illustration from [https://arxiv.org/abs/1704.01212](https://arxiv.org/abs/1704.01212)
 {{% /caption %}}
 
-[“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html) dives deeper into details,
-but in particular this work has few valuable meta-lessons to teach on conducting a novel research in applied
-Machine Learning:
+[“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html)
+dives deeper into details, but this work in particular has several valuable meta-lessons to teach on conducting a
+novel research in applied Machine Learning:
 
 * a single, shared benchmark QM9 was used (based on DFT, previous simulation approach)
 
@@ -101,7 +101,7 @@ Machine Learning:
  method proposed
 
 * paper#2  [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212) a general model family
- “Message Passing Neural Networks” (MPNNs) was proposed, that that reformulate previous NN models invariant
+ “Message Passing Neural Networks” (MPNNs) was proposed, that reformulate previous NN models invariant
  to graph symmetries into a single common framework. Novel model in MPNN family developed, that improve results
  ~factor of 4. High-level interpretation of result: models that can leverage inherent symmetries in data will tend
  to generalize better
@@ -134,13 +134,13 @@ flow + types information.
 
 ### **Graph construction**
 
-A “program graph” with syntax information, data-flow information, type information was introduced
+A “program graph” with syntax information, data-flow information and type information was introduced.
 
 {{% caption src="https://cdn-images-1.medium.com/max/2944/1*2gOmyeUX2dWVM8mBSR9Snw.png" title="Graph structure illustration from paper 'Learning to Represent Programs with Graphs' " %}}
 Graph structure illustration from [https://arxiv.org/abs/1711.00740](https://arxiv.org/abs/1711.00740)
 {{% /caption %}}
 
-It consists of AST graph with a data-flow information added all together using 10 types of edges (contributes
+It consists of an AST graph that includes data-flow information, using 10 types of edges (contributes
 proportionally to runtime complexity):
 
 * *Child/NextToken* — edges to model AST on tokens
@@ -164,14 +164,14 @@ The concrete architecture used was *Gated Graph Neural Networks* or *GG-NN*
 
 * official implementation in Torch [https://github.com/yujiali/ggnn](https://github.com/yujiali/ggnn)
 
-A very brief on of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
+A very brief recap of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
 
-Input: graph, Output: sequence. Uses GRU, unrolls the recurrence for a fixed number of steps and use
-backpropagation through time in order to compute gradients.
+*Input*: a graph, *Output*: a sequence. Proposed implementaion uses GRU, unrolls the recurrence for a fixed number
+of steps and use truncated backpropagation through time in order to compute gradients.
 
 The idea is:
 
-* a graph can be treated as “computation graph”
+* an input graph can be treated as “computation graph”
 
 {{% caption src="https://cdn-images-1.medium.com/max/2780/1*fPzRm3Flq3dQErn7LEG_Ig.png" title="Graph structure illustration from tutorial 'Representation Learning on Networks', WWW 2018" %}}
 source: representation Learning on Networks, WWW 2018, [http://snap.stanford.edu/proj/embeddings-www](http://snap.stanford.edu/proj/embeddings-www)
@@ -200,11 +200,11 @@ source: ICLR 2018 posted by MSR
 
 
 
-Authors has also published a reference implementation of GG-NN model in TensorFlow.
+The authors have also published a reference implementation of the GG-NN model in TensorFlow.
 
 [**Microsoft/gated-graph-neural-network-samples** - Sample Code for Gated Graph Neural Networks](https://github.com/Microsoft/gated-graph-neural-network-samples)
 
-For deeper overview of this and other graph-based learning methods, we recommend checking Stanford’s
+To dive deeper into this method as well as other graph-based learning methods, we recommend checking Stanford’s
 [SNAP tutorial on Representation learning on graphs](http://snap.stanford.edu/proj/embeddings-www/).
 
 ## Tasks
