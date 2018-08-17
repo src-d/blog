@@ -22,7 +22,7 @@ internally. The main benefit is re-using the Git objects between branches and th
 So when our next-gen retrieval pipeline emerged, we realized that the dataset time has come. It is surely
 difficult to open access to the whole Git world (we clone from BitBucket, Savannah, servers in the wild, etc.)
 because the size is too big, so we started from putting a threshold to the number of stargazers on GitHub
-and picking the most popular projects. This threshold was set to **50** from Vadim's historical default limit in [GitHubStars](https://github.com/vmarkovtsev/githubstars). The plan was to distribute the Siva files
+and picking the most popular projects. This threshold was set to **50** from Vadim's historical default limit in                                                                                                [GitHubStars](https://github.com/vmarkovtsev/githubstars). The plan was to distribute the Siva files
 generated from those popular repositories.
 Later we realized that having only the Siva files is not enough - people wanted to tighten the stars limit,
 filter by main programming language or by license. The idea of an index file appeared where we would place
@@ -78,6 +78,10 @@ It was hard to squeeze the content into 4 pages. The layout constantly broke, we
 `\vspace`. Figures tended to appear on a different page from the related text so we forced the placement
 and got the "jumping" problem instead. The bibliography was very verbose and we had to "optimize" the records
 to make them shorter and consequently fit into one column.
+
+{{% caption src="/post/pga_history/presentation.jpg" %}}
+Vadim presented Public Git Archive on MSR'18/ICSE'18.
+{{% /caption %}}
 
 #### Poster
 
