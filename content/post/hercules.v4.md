@@ -15,7 +15,7 @@ everything started.
 
 The main features of the recent release:
 
-1. Hercules ia now aware of forks and merges and thus visits all the commits in the history, not just the main linear sequence as before.
+1. Hercules is now aware of forks and merges and thus visits all the commits in the history, not just the main linear sequence as before.
 2. External plugins.
 3. Merging results from multiple repositories together.
 4. More "batteries" included: ownership, files, people, structure embeddings, comment sentiment.
@@ -128,7 +128,7 @@ The corresponding analysis in Hercules goes a bit further and puts all the files
 into the 3D space with the property that the distance between coupled files is small.
 
 {{% caption src="/post/hercules.v4/couples.png" %}}
-Files coupling in [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow).
+Files coupling in [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow). [Click here for an interactive experience.](http://projector.tensorflow.org/?config=http://vmarkovtsev.github.io/projector/tf_files.json)
 {{% /caption %}}
 
 Reproduce:
@@ -137,7 +137,7 @@ hercules --couples --pb https://github.com/tensorflow/tensorflow | labours.py -m
 ```
 
 We can repeat the same trick with the developers: they are couples if they commit
-to the same files.
+to the same files. [Interactive example on Tensorflow developers.](http://projector.tensorflow.org/?config=http://vmarkovtsev.github.io/projector/tf_people.json)
 
 Finally, the trick works once again with structural units in the source code. We parse
 each file with [Babelfish](https://doc.bblf.sh) and extract anything we wish: functions,
