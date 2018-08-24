@@ -188,7 +188,7 @@ Once the pipeline is built, each item changes its state in certain ways.
 Here is the most full example of the "leaf" item which does not provide any
 intermediate results but rather a final result:
 
-{{% caption src="/post/hercules.v4/item.png" %}}
+{{% caption src="/post/hercules.v4/item.png" width="half-width" %}}
 Item lifecycle.
 {{% /caption %}}
 
@@ -232,7 +232,7 @@ Regarding (2), it was needed to write the code to merge multiple line interval-m
 files together and organize the work with a partially shared, partially copied state.
 Git merge does not necessarily contain two branches: it can be three, four, etc.
 
-{{% caption src="/post/hercules.v4/gitgit.png" %}}
+{{% caption src="/post/hercules.v4/git_abstract.png" %}}
 Abstract from [git/git](https://github.com/git/git) history.
 {{% /caption %}}
 
