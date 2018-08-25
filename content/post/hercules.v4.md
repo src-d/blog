@@ -290,5 +290,6 @@ Hercules can do so many things better! Here is a list of cool features you can w
 * Detect minor commits using machine learning.
 * Plot with Go, not with Python.
 * Integrate into [GitBase](https://github.com/src-d/gitbase) as a set of User Defined Functions.
+* Do something with the awful plot design. [My colleague Maxim has attempted already.](https://github.com/smacker/hercules-web)
 
 > The most exciting time is still ahead.
