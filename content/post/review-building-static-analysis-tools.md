@@ -8,7 +8,7 @@ categories: ["science", "technical"]
 draft: true
 ---
 
-A recent paper with empirical research on the application of static code analysis tool caught my attention:
+A recent paper with empirical research on the application of static code analysis tools caught my attention:
 
 {{% tweet 988527557300568065 %}}
 
@@ -19,7 +19,7 @@ This will be the first attempt.
 {{% center %}} … {{% /center %}}
 
 [“Lessons from Building Static Analysis Tools at Google](https://cacm.acm.org/magazines/2018/4/226371-lessons-from-building-static-analysis-tools-at-google/fulltext)”
-by Caitlin Sadowski, Edward Aftandilian, [Alex Eagle](undefined), Liam Miller-Cushon, Ciera Jaspan
+by Caitlin Sadowski, Edward Aftandilian, [Alex Eagle](https://twitter.com/jakeherringbone), Liam Miller-Cushon, Ciera Jaspan
 presents 2 stories: the history of failed attempts at integrating  [FindBugs](https://github.com/findbugsproject/findbugs),
 a static analysis tool for Java at [Google](http://twitter.com/Google), and lessons learned from the success
 story of incorporating extensible analysis framework, [Tricorder](https://research.google.com/pubs/pub43322.html),
@@ -30,8 +30,8 @@ to development workflow at Google.
 Before digging deeper into the paper, a bit of the context on what kind of analysis, in general, is applicable
 to programs. There are two main types of program analysis:
 
-* *Static code analysis*, collects all information only from the source code, without running a program
-* *Dynamic code analysis*, is based on execution of (potentially customized) program over time
+* *static code analysis*, collects all information only from the source code, without running a program
+* *dynamic code analysis*, is based on execution of (potentially customized) program over time
 
 This paper talks only about *static code analysis*, which is traditionally further subdivided into two main
 flavors:
@@ -43,7 +43,7 @@ flavors:
 According to the paper, Google only runs simpler, *intra-procedural* type of analysis — the only one feasible
 to run at the scale of 2 billion lines of code.
 
-Interesting enough, this is somehow different from the approach taken by Facebook’s project
+Interestingly enough, this is somehow different from the approach taken by Facebook’s project
 [Infer](http://fbinfer.com/), which developed a way to scale the particular type of
 [more complex](https://code.facebook.com/posts/1537144479682247/finding-inter-procedural-bugs-at-scale-with-infer-static-analyzer/),
 *inter-procedural* [separation logic-based](https://en.wikipedia.org/wiki/Separation_logic) compositional
@@ -81,10 +81,10 @@ relevant to the recipients of analysis.
 Traditionally, in the software industry two main types of “analyzers” could be vaguely distinguished and
 have proven to be useful:
 
- * *Style checkers* or [Linters](https://en.wikipedia.org/wiki/Lint_(software))
+ * *style checkers* or [Linters](https://en.wikipedia.org/wiki/Lint_(software))
    (e.g. [CheckStyle](https://github.com/checkstyle/checkstyle), [Pylint](https://www.pylint.org/),
    [Golint](https://github.com/golang/lint), ets)
- * *Bug-finding tools*, that may extend a compiler ([FindBugs](https://github.com/findbugsproject/findbugs),
+ * *bug-finding tools*, that may extend a compiler ([FindBugs](https://github.com/findbugsproject/findbugs),
    [Error-Prone](http://errorprone.info/), [Clang-Tidy](http://clang.llvm.org/extra/clang-tidy),
    [ClangThreadSafety Analysis](https://clang.llvm.org/docs/ThreadSafetyAnalysis.html),
    [Govet](https://golang.org/cmd/vet/), [CheckerFramework](https://checkerframework.org), etc)
@@ -111,8 +111,8 @@ neural-network-based models [https://github.com/src-d/code-completion](https://g
 a while ago and came to the very same conclusions.
 
 Personally, I believe there is a huge room for improvement of code reading/writing experience though,
-enhancing or better augmenting developer’s abilities to both [navigate](http://kythe.io/),
-[understand](http://moosetechnology.org/) and [create](http://witheve.com/) programs. But indeed, existing
+enhancing or better augmenting developers' abilities to both navigate ([kythe](http://kythe.io/)),
+understand ([Moose](http://moosetechnology.org/)) and create ([Eve]](http://witheve.com/)) programs. But indeed, existing
 static analysis tools which target defect detection are hardly the right tools for any of these jobs.
 
 ### 1. 2006 Bug Dashboard
@@ -139,14 +139,14 @@ codebase using “git blame” and “assigned” to a particular engineer who i
 
 Adoption of this internal dashboard service, although driven top-down by the management decision, was *very low*
 which is aligned with the paper — needless to say, that not many engineers were motivated enough to go to the
-separate [http://code-quality.company.com](http://code-quality.company.com) every day only to find that they
+separate `(https://code-quality.company.com)` every day only to find that they
 are ranked Nth by the number of potential defects introduced to the codebase.
 
 Curiously enough, one can see some open source projects like Git going through the similar stage right now e.g.
 [https://larsxschneider.github.io/git-scan](https://larsxschneider.github.io/git-scan/) with contributors
 introducing language-specific analysis tools to the build profiles and publishing dashboards with the results.
 
-Despite the challenges in adopting such solutions one can also see companies e.g.
+Despite the challenges in adopting such solutions one can also see companies such as
 [https://scan.coverity.com](https://scan.coverity.com) — a closed-sourced static analysis
 solution for Java, C/C++, C#, JavaScript, Ruby and Python [founded in 2006](https://scan.coverity.com/about)
 jointly with U.S. Department of Homeland Security, being gradually adopted by some OSS projects.
@@ -158,7 +158,7 @@ languages like [C++](https://lgtm.com/blog/how_lgtm_builds_cplusplus).
 
 ### 2. 2009 Filing bugs/Fixit
 
-Next attempt of integration of static analysis tools for Java which is documented in the paper was filing
+The next attempt at integrating a static analysis tool for Java documented in the paper was filing
 the results of the analysis as bugs in the project bug-tracking system. Then a company-wide dedicated effort was made
 in a format of a “Fixit” week so that all engineers would have time to clean up those issues.
 
@@ -168,7 +168,7 @@ This approach has some advantages:
 issues were actually fixed by developers
 
 * other researchers use similar approach i.e in early “[Learning Natural Coding Conventions](https://arxiv.org/abs/1402.4182)”
-paper by [Miltos Allamanis](undefined) and [https://ml4code.github.io](https://ml4code.github.io/) group
+paper by [Miltos Allamanis](https://miltos.allamanis.com/) and [https://ml4code.github.io](https://ml4code.github.io/) group
 
 > We demonstrate that coding conventions are important to software teams, by showing that
 > 1) empirically, programmers enforce conventions heavily through code review feedback and corrective commits, and
@@ -176,12 +176,12 @@ paper by [Miltos Allamanis](undefined) and [https://ml4code.github.io](https://m
 > open source Java projects on GitHub — of the 18 patches that we submitted, 14 were accepted
 
 However for an organization, it has a huge disadvantage — it’s laborious and hard to scale. If conducted without
-a proper care, results will not only be ignored by developers but can also contribute to an overall
+proper care, results will not only be ignored by developers but can also contribute to an overall
 issue-tracker value depreciation of the project.
 
-Despite that, one can see this approach been used by companies in this field e.g.
+Despite that, one can see this approach being used by companies in this field e.g.
 [American Software Safety Reliability Company](http://www.assrc.us), an Atlanta-based enterprise that seems to
-have deep roots in software verifications and is somehow [supported by DARPA](http://www.qbitlogic.com/darpa-bigcode/),
+have deep roots in software verifications and is [supported by DARPA](http://www.qbitlogic.com/darpa-bigcode/),
 to achieve the same — test some of their products like [https://www.mycode.ai](https://www.mycode.ai/) solution,
 that is planned to deploy across all of the U.S. Department of Defense software development divisions, i.e on
 [Git, popular OSS project](https://public-inbox.org/git/CAGm8dMApDdLEzeKU-h16G0NSpnuk9LMTWA29t4MxO1qcNpUvhA@mail.gmail.com/).
@@ -191,9 +191,9 @@ that is planned to deploy across all of the U.S. Department of Defense software 
 Here the intuition was that at the code review stage developers are preparing their code to be seen, so they
 are more receptive to suggestions and readability and stylistic comments.
 
-This is aligned with the direction that few people at [source{d}](https://medium.com/@sourcedtech) are
+This is aligned with the direction that a few people at [source{d}](https://medium.com/sourcedtech) are
 [exploring now](https://github.com/campoy/goodgopher/blob/d15a7eccc3bcb2484234732e538fc425d728e972/README.md).
-There is also some number of existing solutions in the same field:
+There is also a number of existing solutions in the same field:
 
 * [https://codeclimate.com](https://codeclimate.com/)
 * [https://www.codacy.com](https://www.codacy.com/)
@@ -207,17 +207,17 @@ but this attempt did not take off either. Their integration included a few notab
 * an individual developer could suppress false positives and filter the comments by confidence levels
 * it was meant to show only new FindBugs warnings, but sometimes those issues were miscategorized as new
 
-Although code review still seems to be the best time for surfacing analysis results, this attempt failure was
+Although code review still seems to be the best time for surfacing analysis results, this attempt's failure was
 attributed to:
 
-* presence of false positives in FindBugs results made developers lose confidence in the tool as a whole
-* customization of the results view per-developer led to an inconsistent view of the analysis outcome
+* the presence of false positives in FindBugs results, that made developers lose confidence in the tool as a whole
+* the ability to customize of the results view per-developer, that led to an inconsistent view of the analysis outcome
 
 ## What worked & lessons learned
 
 As opposed to integrating each particular analysis tool in a different way, an internal “platform” — easily
 extensible and with support for many different kinds of program-analysis tools, including static and dynamic
-analyses was built, known as a [Tricorder project](https://research.google.com/pubs/pub43322.html).
+analyses was built, known as the [Tricorder project](https://research.google.com/pubs/pub43322.html).
 
 As it was taking into account all the lessons learned from the history above, it managed to regain the trust of
 the users and proved to be a success inside Google.
@@ -233,10 +233,10 @@ There are two main takeaways that drove the overall tooling design:
 
 This way of measuring a success has several notable implications:
 
-* If the tool that finds a bug also suggests a fix - it will be much more successful by this metric.
-  This by necessity constraints the scope of a possible analysis and a tooling required
+* if the tool that finds a bug also suggests a fix - it will be much more successful by this metric.
+  This by necessity constraints the scope of any possible analysis and the tooling required.
 
-* It also means that repairing programs is important. For the discussion on tooling available for code
+* it also means that repairing programs is important. For the discussion on tooling available for code
   transformations see **Technical Details** section below.
 
 Learning such modifications from examples, instead of manual coding by engineers is also a bleeding edge
@@ -268,90 +268,10 @@ Criteria that must hold for ***code review time*** checks:
 
 * have the potential for significant impact on code quality
 
-Last but not least, enabling any new *compile time* check can suddenly brake a developer working on existing
+Last but not least, enabling any new *compile time* check can suddenly interrupt a developer working on existing
 code, which is clearly unacceptable. In order to avoid that, first **a tooling for large-scale code modifications**
 must be run over the whole codebase, before moving those checks to compile time for the rest of the company.
 
 And those are ClangMR and JavacFlume — projects that are only briefly mentioned in this insightful paper.
 
 *That is it, thank you for reading. We will post more on papers in this field soon.*
-
-{{% center %}} … {{% /center %}}
-
-Now I will take a liberty and cover a few technical details that were not in the scope of the original paper
-but are very related, in order to help us see a bigger picture. Those were described in other places by other
-employees of the same company.
-
-## Technical details
-
-Based on the internal success-story of C++ with [ClangMR tool](https://research.google.com/pubs/pub41342.html)
-for matching/traversing/transforming Abstract Syntax Tree (AST) at scale, a similar tooling was built for Java.
-
-{{% youtube ZpvvmvITOrk %}}
-
-Project [Error-Prone](https://github.com/google/error-prone) is a compiler extension that is able to perform
-arbitrary analysis on the *fully typed AST*. One thing to notice is that one can not get such input by using
-only a parser even as advanced as [https://doc.bblf.sh](https://doc.bblf.sh/). Running a full build would be
-required in order to do things like symbol resolution. In the end, after running a number of checker plugins
-Error-Prone outputs simple text replacements with suggested code fixes.
-
-The project is open source and is well documented in a [number](https://research.google.com/pubs/pub38275.html)
-of [papers](https://research.google.com/pubs/pub41876.html). Another closed source tool was built to scale
-application of those fixes to the whole codebase, called JavacFlume — which I would guess looks something like
-an Apache Spark job that applies patches in some generic format.
-
-Here is an example of how a full pipeline looks for C++
-
-{{% grid %}}
-{{% caption src="https://cdn-images-1.medium.com/max/4224/1*KpJ5fj4njR1HTDfzhLCQkg.png" title="ClangMR processing pipeline ilustration"%}}
-“Large-Scale Automated Refactoring Using ClangMR” by
-[Hyrum Wright](https://research.google.com/pubs/HyrumWright.html), Daniel Jasper, Manuel Klimek, [Chandler Carruth](https://research.google.com/pubs/ChandlerCarruth.html), Zhanyong Wan
-{{% /caption %}}
-{{% /grid %}}
-
-Although it is not disclosed, an attentive reader might have noticed that **Compilation Index** part of the
-pipeline is very similar to a [Compilation Database](https://kythe.io/docs/kythe-compilation-database.html)
-in the open source Kythe project.
-
-It might be interesting to take a closer look at the example of an API for AST query and transformation for C++.
-
-### C++ Example
-> *rename all calls to Foo::Bar with 1 argument to Foo::Baz, independent of the name of the instance variable,
-> or whether it is called directly or by pointer or reference*
-
-{{% grid %}}
-{{% grid-cell %}}
-![API example: invoke a callback function on call to Foo:Bar](https://cdn-images-1.medium.com/max/2000/1*vOYemTlJ2QZyzXvizSy5Og.png)
-{{% /grid-cell %}}
-{{% grid-cell %}}
-This fragment will invoke a callback function on any occurrence of the call to *Foo:Bar* with single argument.
-{{% /grid-cell %}}
-{{% /grid %}}
-
-{{% grid %}}
-{{% grid-cell %}}
-![API example: replace matching text of the function name with the "Baz"](https://cdn-images-1.medium.com/max/2116/1*JiUgO-gimsIi2JpRB9LYeg.png)
-{{% /grid-cell %}}
-{{% grid-cell %}}
-This callback will generate a code transformation: for the matched nodes it will replace the matching text of
-the function name with the “Baz”.
-
-Regarding code transformations in Java, **Error-Prone** has a similar low-level [patching API](http://errorprone.info/docs/patching)
-that is very close to native AST manipulation API. It was found to have a steep learning curve similar to the
-Clang, and thus pose a high entry barrier — even an experienced engineer would need few weeks before one can be
-productive creating fix suggestions or refactorings.
-{{% /grid-cell %}}
-{{% /grid %}}
-
-That is why a higher level API was built for Java: first as the separate [Refaster](https://research.google.com/pubs/pub41876.html)
-project and then [integrated into Error-Prone](http://errorprone.info/docs/refaster) later.
-
-So a usual workflow would look like — after running all the checks and emitting a collection of suggested
-fixes, shard diffs to smaller patches, run all the tests over the changes and if they have passed, submit
-patches for code review.
-
-{{% center %}} … {{% /center %}}
-
-{{% center %}}
-##### Thank you for reading, stay tuned and keep you codebase healthy!
-{{% /center %}}
