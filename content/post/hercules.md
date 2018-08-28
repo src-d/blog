@@ -91,11 +91,13 @@ RB tree is the algorithm to maintain a balanced binary tree so that the
 height variance is lower than 2x. Let's store our changed line intervals in
 an RB tree with line numbers as keys:
 
-![blame](/post/hercules/blame.png)
-<p align="center" class="caption">Random go-git blame...</p>
+{{% caption src="/post/hercules/blame.png" %}}
+Random go-git blame.
+{{% /caption %}}
 
-![rbtree](/post/hercules/rbtree.png)
-<p align="center" class="caption">...and the corresponding interval tree</p>
+{{% caption src="/post/hercules/rbtree.png" %}}
+The corresponding interval tree.
+{{% /caption %}}
 
 As can be seen, each line interval corresponding to the same commit is encoded by two
 nodes, the beginning and the end, and the end node is in turn the beginning of
@@ -127,8 +129,8 @@ The complexity is O(N).
 Thus we've got the linear complexity for both operations. Still, let's look
 at a typical commit on GitHub:
 
-![commit](/post/hercules/commit.png)
-<p align="center" class="caption">[apache/spark@7026ee23](https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499)</p>
+{{% caption src="/post/hercules/commit.png" %}}
+[apache/spark@7026ee23](https://github.com/apache/spark/commit/7026ee23e0a684e13f9d7dfbb8f85e810106d022#diff-916ca56b663f178f302c265b7ef38499){{% /caption %}}
 
 Insertions and deletions are often coupled, and often their lengths are equal,
 thus deltas neutralize and we do not have to update the subsequent keys at all,
@@ -137,8 +139,9 @@ getting O(log(N)), which is really O(1) amortized.
 An alternative implementation would be using single-linked lists, where
 each node carries the corresponding line interval length:
 
-![list](/post/hercules/list.png)
-<p align="center" class="caption">Single-linked list, folded into a circle to fit</p>
+{{% caption src="/post/hercules/list.png" %}}
+Single-linked list, folded into a circle to fit.
+{{% /caption %}}
 
 That structure makes insertions and deletions constant time but seeking for
 the right line number is always linear. In other words, disregarding our luck,
@@ -196,10 +199,3 @@ like clustering directories in a repository based on the local λ value or
 finding weakly designed modules. Who knows?
 
 ![freeman](/post/hercules/freeman.jpg)
-
-<style>
-p.caption {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
