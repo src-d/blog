@@ -3,7 +3,7 @@ author: vadim
 date: 2018-08-29
 title: "MLonGit: Hercules v4 released"
 image: /post/hercules.v4/intro.png
-description: "src-d/hercules is an open source project started in late 2016 with the goal to speed up collecting line burndown statistics from Git repositories. It has transformed into a general purpose Git repository mining framework with several cool use cases: ownership through time, file and people embeddings, structural hotness and even comment sentiment estimation. The post presents the latest 'v4' release of Hercules and gives some insights about how Git works."
+description: "src-d/hercules is an open source project started in late 2016 with the goal to speed up collecting line burndown statistics from Git repositories. It has transformed into a general purpose Git repository mining framework with several cool use cases: ownership through time, file and people embeddings, structural hotness and even comment sentiment estimation. The post presents the latest 'v4' release of Hercules and gives some insights into how Git works."
 categories: ["MLonCode", "technical"]
 ---
 
@@ -29,7 +29,7 @@ Prior to v4, Hercules did not process the full commit history and worked with it
 {{% /caption %}}
 
 This feature yields an improvement of the analysis accuracy. However, nothing
-is free unfortunately: processing all the commits can considerably slow down the analysis.
+is free, unfortunately: processing all the commits can considerably slow down the analysis.
 git/git used to be analyzed in less than 4 minutes - now it is 2 hours 45 minutes.
 Of course, git/git is clearly an outlier since it uses branching **a lot**, yet still
 it can be reasonable to follow the old behavior sometimes. Therefore `hercules --first-parent` flag exists.
@@ -121,7 +121,7 @@ hercules --burndown --burndown-people --pb https://github.com/tensorflow/tensorf
 
 #### Files, developers, functions and classes in 3D
 
-If haven't read [Your Code as a Crime Scene](https://pragprog.com/book/atcrime/your-code-as-a-crime-scene)
+If you haven't read [Your Code as a Crime Scene](https://pragprog.com/book/atcrime/your-code-as-a-crime-scene)
 by Adam Tornhill, stop reading this post, allocate a few hours and look it through - the book is awesome.
 One of the ideas from the book is to investigate which files are _coupled_ - often appear together.
 The corresponding analysis in Hercules goes a bit further and puts all the files
@@ -144,7 +144,7 @@ each file with [Babelfish](https://doc.bblf.sh) and extract anything we wish: fu
 classes, etc. Then we apply the same coupling analysis to them: we know which are changed
 in each commit.
 
-By default the functions are extracted.
+By default, the functions are extracted.
 ```
 hercules --shotness --pb https://github.com/tensorflow/tensorflow | labours.py -m shotness -o tensorflow
 ```
@@ -153,7 +153,7 @@ hercules --shotness --pb https://github.com/tensorflow/tensorflow | labours.py -
 
 This is a proof-of-concept for running a Tensorflow model over the source code.
 We take [BiDiSentiment](https://github.com/vmarkovtsev/BiDiSentiment) and apply it to comments.
-That model is general purpose and the result is often weird, but it works.
+That model is general-purpose and the result is often weird, but it works.
 I wrote about it in [the other blog post](../codesent).
 
 Your binary must be compiled with Tensorflow support (the released one is **not**).
@@ -217,7 +217,7 @@ new analysis types.
 
 # v4 challenges
 
-There were three most difficult technical challenges which had to solved in v3 and v4:
+There were three most difficult technical challenges which had to be solved in v3 and v4:
 
 1. Merging results together.
 2. Forks and merges behavior of `PipelineItem`-s.
@@ -247,7 +247,7 @@ them. I also had to rewrite the statistics storage logic which used to be too
 "sequential". Overall, fulfilling (2) was a technical nightmare.
 
 Surprisingly, however, most of the efforts went to (3). The first problem was
-related to minimizing the amount of forks and merges, in particular removing
+related to minimizing the number of forks and merges, in particular removing
 the no-op fast-forward-like back edges of the DAG.
 
 {{% caption src="/post/hercules.v4/ff.gif" %}}
@@ -256,7 +256,7 @@ Example of the removal of a fast-forward DAG edge.
 
 We [topologically sort](https://en.wikipedia.org/wiki/Topological_sorting)
 the nodes of our DAG and traverse it starting from the root.
-Each time we suspect that an edge can be removed we traverse backwards from the children
+Each time we suspect that an edge can be removed we traverse backward from the children
 until we reach the node we have already visited. If that node is the same as the parent
 then indeed we can remove the edge.
 
@@ -269,11 +269,11 @@ Example of multiple DAG roots: [5569bf9](https://github.com/git/git/commit/5569b
 {{% /caption %}}
 
 The third problem was related to how Hercules works: it is able to analyze any
-set of commits, not just the whole master. There is not guarantee that the commits
+set of commits, not just the whole master. There is no guarantee that the commits
 are connected at all, so we have to run the [connected components analysis](https://en.wikipedia.org/wiki/Connected-component_labeling)
 first to throw away everything but the main component (which has the biggest number of nodes).
 
-Thr fourth problem was to schedule the garbage collection - remove the
+The fourth problem was to schedule the garbage collection - remove the
 clones which are no longer needed. We do a DAG traversal and mark the places
 where branches were last used, then we insert branch disposals after the resulting
 marks.
