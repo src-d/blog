@@ -107,12 +107,12 @@ Cons:
 * wrong time — distracting a developer who may not be open to the feedback
 
 Interestingly enough, [source{d}](http://sourced.tech/) experimented with this approach as well using some
-neural-network-based models [https://github.com/src-d/code-completion](https://github.com/src-d/code-completion)
+neural-network-based models [src-d/code-completion](https://github.com/src-d/code-completion)
 a while ago and came to the very same conclusions.
 
 Personally, I believe there is a huge room for improvement of code reading/writing experience though,
 enhancing or better augmenting developers' abilities to both navigate ([kythe](http://kythe.io/)),
-understand ([Moose](http://moosetechnology.org/)) and create ([Eve]](http://witheve.com/)) programs. But indeed, existing
+understand ([Moose](http://moosetechnology.org/)) and create ([Eve](http://witheve.com/)) programs. But indeed, existing
 static analysis tools which target defect detection are hardly the right tools for any of these jobs.
 
 ### 1. 2006 Bug Dashboard
@@ -139,7 +139,7 @@ codebase using “git blame” and “assigned” to a particular engineer who i
 
 Adoption of this internal dashboard service, although driven top-down by the management decision, was *very low*
 which is aligned with the paper — needless to say, that not many engineers were motivated enough to go to the
-separate `(https://code-quality.company.com)` every day only to find that they
+separate `https://code-quality.company.com` every day only to find that they
 are ranked Nth by the number of potential defects introduced to the codebase.
 
 Curiously enough, one can see some open source projects like Git going through the similar stage right now e.g.
@@ -147,12 +147,12 @@ Curiously enough, one can see some open source projects like Git going through t
 introducing language-specific analysis tools to the build profiles and publishing dashboards with the results.
 
 Despite the challenges in adopting such solutions one can also see companies such as
-[https://scan.coverity.com](https://scan.coverity.com) — a closed-sourced static analysis
+[Synopsys "Coverity Scan"](https://scan.coverity.com) — a closed-sourced static analysis
 solution for Java, C/C++, C#, JavaScript, Ruby and Python [founded in 2006](https://scan.coverity.com/about)
 jointly with U.S. Department of Homeland Security, being gradually adopted by some OSS projects.
 
-Companies building rule-based analysis platforms like [https://lgtm.com](https://lgtm.com) - an offspring of
-University of Oxford-based [https://semmle.com](https://semmle.com/) founded in 2007, are following this
+Companies building rule-based analysis platforms like [lgtm.com](https://lgtm.com) - an offspring of
+University of Oxford-based [Semmle](https://semmle.com/) founded in 2007, are following this
 adoption path. Their success, in my opinion, can be attributed to the fact that both support “hard” native
 languages like [C++](https://lgtm.com/blog/how_lgtm_builds_cplusplus).
 
@@ -182,7 +182,7 @@ issue-tracker value depreciation of the project.
 Despite that, one can see this approach being used by companies in this field e.g.
 [American Software Safety Reliability Company](http://www.assrc.us), an Atlanta-based enterprise that seems to
 have deep roots in software verifications and is [supported by DARPA](http://www.qbitlogic.com/darpa-bigcode/),
-to achieve the same — test some of their products like [https://www.mycode.ai](https://www.mycode.ai/) solution,
+to achieve the same — test some of their products like [CodeAI](https://www.mycode.ai/) solution,
 that is planned to deploy across all of the U.S. Department of Defense software development divisions, i.e on
 [Git, popular OSS project](https://public-inbox.org/git/CAGm8dMApDdLEzeKU-h16G0NSpnuk9LMTWA29t4MxO1qcNpUvhA@mail.gmail.com/).
 
@@ -228,7 +228,8 @@ the technical decisions, responsible for the success of a new analysis platform.
 
 There are two main takeaways that drove the overall tooling design:
 
-### 1. Best way to **measure a success of analysis**
+### Measuring the success of an analysis
+
 > by number of bugs fixed (or prevented), not the number of issues identified
 
 This way of measuring a success has several notable implications:
@@ -242,7 +243,7 @@ This way of measuring a success has several notable implications:
 Learning such modifications from examples, instead of manual coding by engineers is also a bleeding edge
 research topic [https://github.com/KTH/learning4repair](https://github.com/KTH/learning4repair).
 
-### 2. Best way to **present the results of analysis**
+### Presenting the results of an analysis
 > Developers were more likely to fix bugs if presented with analysis results early and as part of their normal workflow
 
 This immediately implies that **reporting issues sooner is better.**
@@ -272,6 +273,7 @@ Last but not least, enabling any new *compile time* check can suddenly interrupt
 code, which is clearly unacceptable. In order to avoid that, first **a tooling for large-scale code modifications**
 must be run over the whole codebase, before moving those checks to compile time for the rest of the company.
 
-And those are ClangMR and JavacFlume — projects that are only briefly mentioned in this insightful paper.
+And those are ClangMR and JavacFlume — very interesting projects that are only briefly mentioned in this insightful
+paper and are going to be the subject of a separatee blog post soon.
 
-*That is it, thank you for reading. We will post more on papers in this field soon.*
+*That is it, thank you for reading. Stay tuned, we will post more on papers in this field soon.*
