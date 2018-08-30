@@ -87,3 +87,9 @@ campoy:
   social:
     github: campoy
     twitter: francesc
+romain:
+  name: Romain Keramitas
+  thumbnail: https://avatars3.githubusercontent.com/u/32878976?s=460&v=4
+  bio: "Former ML intern"
+  social:
+    github: r0mainK
