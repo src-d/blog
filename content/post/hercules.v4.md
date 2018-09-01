@@ -1,9 +1,9 @@
 ---
 author: vadim
-date: 2018-08-29
-title: "MLonGit: Hercules v4 released"
+date: 2018-09-04
+title: "Machine Learning on Git: introducing Hercules v4"
 image: /post/hercules.v4/intro.png
-description: "src-d/hercules is an open source project started in late 2016 with the goal to speed up collecting line burndown statistics from Git repositories. It has transformed into a general purpose Git repository mining framework with several cool use cases: ownership through time, file and people embeddings, structural hotness and even comment sentiment estimation. The post presents the latest 'v4' release of Hercules and gives some insights into how Git works."
+description: "<a href=\"https://github.com/src-d/hercules\">Hercules</a> is an open source project started in late 2016 with the goal to speed up collecting line burndown statistics from Git repositories. It has transformed into a general purpose Git repository mining framework with several cool use cases: ownership through time, file and people embeddings, structural hotness and even comment sentiment estimation. This post presents the latest 'v4' release of Hercules and gives some insights into how Git works."
 categories: ["MLonCode", "technical"]
 ---
 
@@ -22,15 +22,22 @@ The main features of the recent release:
 
 ### Forks and merges
 
-The difference is the best to show rather than explain:
+The new version is able to process the full history of revisions, while
+the previous versions ignored everything but `git log --first-parent`.
+And since an image is worth a thousand words:
 
-{{% caption src="/post/hercules.v4/forks_merges.gif" %}}
+{{% caption src="/post/hercules.v4/forks_merges1.png" %}}
 Prior to v4, Hercules did not process the full commit history and worked with it as a linear sequence.
+{{% /caption %}}
+
+{{% caption src="/post/hercules.v4/forks_merges2.png" %}}
+Hercules v4 processes all the commits.
 {{% /caption %}}
 
 This feature yields an improvement of the analysis accuracy. However, nothing
 is free, unfortunately: processing all the commits can considerably slow down the analysis.
-git/git used to be analyzed in less than 4 minutes - now it is 2 hours 45 minutes.
+[`github.com/git/git`](https://github.com/git/git) repository used to be analyzed
+in less than 4 minutes - now it is 2 hours 45 minutes.
 Of course, git/git is clearly an outlier since it uses branching **a lot**, yet still
 it can be reasonable to follow the old behavior sometimes. Therefore `hercules --first-parent` flag exists.
 
@@ -42,12 +49,16 @@ Forks and merges result in more alive lines due to side branches.
 
 ### Plugins
 
-It is possible to load and run a plugin on Linux:
+A Go plugin is a separate binary file - a [shared library](https://en.wikipedia.org/wiki/Library_(computing)#Shared_libraries) - which allows to extend the functions of the main program.
+Hercules plugins specifically allow to plug a custom analysis without having
+to rebuild `hercules`. [Go plugins are supported only on Linux and macOS.](https://golang.org/pkg/plugin/)
+This is how to load and run a plugin:
 
 ```
 hercules --plugin /path/to/plugin.so --whatever-analysis-it-defines https://github.com/git/git > result.yml
 ```
 
+`--plugin` can be written several times.
 Plugins are loaded before generating the help message, so it is possible to
 inspect a plugin:
 
@@ -74,7 +85,7 @@ The last two are related to the optimized binary result serialization using Prot
 
 ### Merging results
 
-This feature is useful for those who want to join the analysis several Git repositories together.
+This feature is useful for those who want to join the analyses of several Git repositories together.
 It works only with the binary result format (Protocol Buffers).
 
 ```
@@ -82,6 +93,10 @@ hercules combine one.pb two.pb three.pb > joined.pb
 ```
 
 ### Batteries
+
+Hercules provides a nice and compact Go framework to analyze single Git repositories.
+Besides, it ships several ready to run built-in analyses. Line burndown is one
+example; descriptions of the others follow.
 
 #### Code ownership
 
@@ -154,16 +169,17 @@ hercules --shotness --pb https://github.com/tensorflow/tensorflow | labours.py -
 This is a proof-of-concept for running a Tensorflow model over the source code.
 We take [BiDiSentiment](https://github.com/vmarkovtsev/BiDiSentiment) and apply it to comments.
 That model is general-purpose and the result is often weird, but it works.
-I wrote about it in [the other blog post](../codesent).
+We wrote about it in [the other blog post](../codesent).
 
-Your binary must be compiled with Tensorflow support (the released one is **not**).
+Your binary must be [compiled with Tensorflow support](https://www.tensorflow.org/install/install_go)
+(the released one is **not**).
 ```
 hercules --sentiment --pb https://github.com/tensorflow/tensorflow | labours.py -m sentiment
 ```
 
 # v4 architecture
 
-Hercules is built on top of the `Pipeline` which is a Directed Acyclic Graph (DAG) of `PipelineItem`-s.
+Hercules is built on top of the concept of a `Pipeline`, a Directed Acyclic Graph (DAG) of `PipelineItem`s.
 Each pipeline item has a name and specifies its dependencies and what it provides in return.
 For example, a `RenameAnalysis` item detects the renamed and slightly changed files between two commits.
 It consumes the list of changes and the list of corresponding blobs. It calculates
@@ -172,24 +188,24 @@ single "edit under new name" elements. Yep, Git packfiles do not store this kind
 of information (intentionally) and `git` detects renames using heuristics every
 time you execute it.
 
-Hercules builds the DAG of pipeline items automatically based on their dependencies
-and provided intermediate results. Some items try to improve on the others -
-`RenameAnalysis` for example, and Hercules understands that and correctly resolves
-the structure: all the rest of the items which depend on that type of analysis are
-pointed from the "improved" ones, and the "improved" ones in turn depend on the
-"basic" ones. Here is an example of the built pipeline to calculate the burndown
-stats:
+Each item on a pipeline transforms the result of its dependencies to generate its own result,
+as `RenameAnalysis` mentioned above.
+Hercules understands these dependencies and automatically sets up the corresponding computation graph.
+Here is an example of the built pipeline to calculate the burndown chart:
 
 {{% caption src="/post/hercules.v4/pipeline.png" %}}
 Pipeline DAG example.
 {{% /caption %}}
 
-Once the pipeline is built, each item changes its state in certain ways.
-Here is the most full example of the "leaf" item which does not provide any
+Once the pipeline is built, each item changes its state in certain ways - like
+a finite automata.
+Here is a complete example of the "leaf" item which does not provide any
 intermediate results but rather a final result:
 
 {{% caption src="/post/hercules.v4/item.png" width="half-width" %}}
-Item lifecycle.
+`LeafItem` lifecycle. We start with configuration and initialization,
+proceed with the main iteration over the commits and forking and end up
+with result serialization.
 {{% /caption %}}
 
 Each item is configured - its parameters are adjusted as needed. Returning
@@ -220,14 +236,14 @@ new analysis types.
 There were three most difficult technical challenges which had to be solved in v3 and v4:
 
 1. Merging results together.
-2. Forks and merges behavior of `PipelineItem`-s.
-3. Determine the order in which to process commits, forks, merges and garbage collect branches.
+2. Forks and merges behavior of `PipelineItem`s.
+3. Determine the order in which to process commits, forks, merges and perform garbage collection on the branches.
 
 The first two were especially hard to solve for the line burndown analysis. Regarding (1),
 the results can be sampled and band-split with different frequencies, so it was
 required to resample and interpolate the matrices by day, sum them and then
 sample and split into bands again.
-[One of the scariest functions I have ever written.](https://github.com/src-d/hercules/blob/99abfb229a880d55462eecd2373433df686f8fcc/leaves/burndown.go#L441).
+[One of the scariest functions Vadim has ever written.](https://github.com/src-d/hercules/blob/99abfb229a880d55462eecd2373433df686f8fcc/leaves/burndown.go#L441).
 Regarding (2), it was needed to write the code to merge multiple line interval-marked
 files together and organize the work with a partially shared, partially copied state.
 Git merge does not necessarily contain two branches: it can be three, four, etc.
@@ -236,14 +252,13 @@ Git merge does not necessarily contain two branches: it can be three, four, etc.
 Abstract from [git/git](https://github.com/git/git) history.
 {{% /caption %}}
 
-I did not come up with a solution better than mark the changed line intervals in files
+We did not come up with a better solution than marking the changed line intervals in files
 while consuming a merge commit with a special outlier value, then
 annotate each line of the each merged file, and copy the only real last edit date
-over those marked as outliers. In places of same edits but conflicting dates we
-choose the oldest date. In places of merge conflicts we automatically get the date
-of the merge commit without special tricks. We should not compare the files
+over those marked as outliers. We avoid conflicting edits by choosing the one with the latest date.
+We should not compare the files
 which are not involved in the merge, so we keep track of their hashes, we maintain
-them. I also had to rewrite the statistics storage logic which used to be too
+them. We also had to rewrite the statistics storage logic which used to be too
 "sequential". Overall, fulfilling (2) was a technical nightmare.
 
 Surprisingly, however, most of the efforts went to (3). The first problem was
@@ -256,7 +271,7 @@ Example of the removal of a fast-forward DAG edge.
 
 We [topologically sort](https://en.wikipedia.org/wiki/Topological_sorting)
 the nodes of our DAG and traverse it starting from the root.
-Each time we suspect that an edge can be removed we traverse backward from the children
+Each time we suspect that an edge can be removed we traverse backwards from the children
 until we reach the node we have already visited. If that node is the same as the parent
 then indeed we can remove the edge.
 
@@ -279,17 +294,18 @@ where branches were last used, then we insert branch disposals after the resulti
 marks.
 
 It was very helpful to debug with [`git bisect`](https://git-scm.com/docs/git-bisect).
-Normally people bisect to find regressions; I bisected to find offending commits which broke Hercules.
+Normally people bisect to find regressions; we bisected to find offending commits
+which broke Hercules.
 
-# You can help!
+# We want your help!
 
 Hercules can do so many things better! Here is a list of cool features you can work on:
 
-* Count lines with [enry](https://github.com/src-d/enry) and plot charts by language.
-* Apply PageRank to the structural edits and find the most impactful developers (aka [Sourcecred](https://github.com/sourcecred/sourcecred)).
-* Detect minor commits using machine learning.
-* Plot with Go, not with Python.
-* Integrate into [GitBase](https://github.com/src-d/gitbase) as a set of User Defined Functions.
-* Do something with the awful plot design. [My colleague Maxim has attempted already.](https://github.com/smacker/hercules-web)
+* Counting lines with [enry](https://github.com/src-d/enry) and plot charts by language.
+* Applying PageRank to the structural edits and find the most impactful developers (aka [Sourcecred](https://github.com/sourcecred/sourcecred)).
+* Detecting minor, not important commits using machine learning.
+* Plotting with Go, not with Python.
+* Integration into [GitBase](https://github.com/src-d/gitbase) as a set of User Defined Functions.
+* Improving the look of the generated plots. [My colleague Maxim has attempted already.](https://github.com/smacker/hercules-web)
 
 > The most exciting time is still ahead.
