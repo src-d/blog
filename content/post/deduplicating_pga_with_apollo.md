@@ -2,7 +2,7 @@
 author: romain
 date: 2018-09-15
 title: "Deduplicating files in Public Git Archive"
-image: /post/deduplicating_pga_with_apollo/smile2.png
+image: /post/deduplicating_pga_with_apollo/smile.png
 description: "We describe how we ran Apollo on PGA, in order to find communities of duplicate files."
 categories: ["science", "technical"]
 draft: true
@@ -34,7 +34,7 @@ analysis on each component. At the time we started working on this project, the
 head commits of `PGA` consisted of 67.8 million files, spread across 181,481 projects. 
 In order for us to be able to extract semantic features from the files, we had 
 to limit ourselves to those written in a language with a functioning [bblfsh driver](https://docs.sourced.tech/babelfish/languages)
-in oerder to parse the AST of the files and convert them in UASTs. This meant restricting
+in order to parse the AST of the files and convert them in UASTs. This meant restricting
 ourselves to ~21% of files, those written in `Python`, `Java`, `JavaScript`, `Ruby`
 or `Go`. Nevertheless this still meant using 14.1 million files of our corpus, 
 from which we'd extract the following features:
@@ -84,7 +84,7 @@ Processed files count|1,021,687|1,848,084|3,066,721|628,081|1,305,344|
 % of processable files|61.06 %|45.95 %|55.26 %|69.02 %|66.51 %|
 
 
-![image](/post/deduplicating_pga_with_apollo/languages.jpg)
+![image](/post/deduplicating_pga_with_apollo/languages.png)
 
 
 Looking more into the feature side, we found over 65% of distinct features were 
@@ -140,7 +140,7 @@ both thresholds most of the connected components have a small number of file, as
 their number decreases exponentially with the number of files, the amount of 
 duplication this entails in GitHub's most starred repositories is astonishing.
 
-![nb of files per cc](/post/deduplicating_pga_with_apollo/hist.jpg)
+![nb of files per cc](/post/deduplicating_pga_with_apollo/hist.png)
 
 Even though we'd applied all our pipeline on all files, without separating by language,
 it turned out virtually no CC had files of more then one language, exceptions being
@@ -154,7 +154,7 @@ of `JavaScript` files relative to the others, and also the kind of language it w
 we expected it to dominate as it did, however the amount of duplication we found 
 for `Go` was incredibly high, especially for the 95% threshold. 
 
-![cc_per_languages](/post/deduplicating_pga_with_apollo/cc_per_languages.jpg)
+![cc_per_languages](/post/deduplicating_pga_with_apollo/cc_per_languages.png)
 
 
    | Java | Ruby | Python | Javascript | Go |
@@ -181,7 +181,7 @@ average ratio of distinct filenames per file stagnated below 0.1, given us a cle
 indication that the connected components indeed contained files with similar filenames, 
 without having been able to infer it from anything else but their features.
 
-![drop](/post/deduplicating_pga_with_apollo/drop.jpg)
+![drop](/post/deduplicating_pga_with_apollo/drop.png)
 
 The final step of Apollo was [community detection](https://arxiv.org/abs/1608.00163),
 which would give us a sense of the number of non-similar files in our corpus. We 
@@ -256,7 +256,7 @@ there seems to be a lot of ... borrowing in the Go community - and this is just
 one of the 79k connected component with only **one** distinct Go filename (*without* 
 filename deduplication).
 
-### Similar files
+### Versioning
 
 ![jq](/post/deduplicating_pga_with_apollo/jquery.png)
 
@@ -266,12 +266,35 @@ file count | buckets count | edges count | distinct filenames count | projects c
 1532 | 644 | 4596 | 238  | 796 | 37|  95 % | 
 
 
-Now, not only did we notice that CCs tended to group up files with similar feilenames,
-we also noticed that for some specific filenames there were multiple CCs grouping files
+Now, not only did we notice that CCs tended to group up files with nearly the exact same 
+filename, we also noticed that for some specific filenames there were multiple CCs grouping files
 with a variation of that filename. For example, we found 14 CCs were the most common
-filename was some variation of `jquery.js`, or some variation like `jquery-1.7.1.min.js`.
-These CCs usually had some of the smaller number of communities for their size, as could
+filename was some variation of `jquery.js`, like `jquery-1.7.1.min.js`. These CCs 
+usually had some of the smaller number of communities for their size, as could 
 be predicted - however they only clustered by filename to a limited extent.
+
+### Grouping by filename ?
+
+![filename_1](/post/deduplicating_pga_with_apollo/filename_1.png)
+![filename_2](/post/deduplicating_pga_with_apollo/filename_2.png)
+
+file count | edges count | distinct filenames count | projects count | communities count | threshold |
+-----------|-------------|--------------------------|----------------|-------------------|-----------|
+2344 | 869,611 | 584  | 1058 | 4 |  80 % | 
+
+This CC is the first obtained for the second threshold, thus plotted without artificial
+vertices - and as you can see the number of edges relative to the number
+of vertices has exploded. In order to show that `Apollo` didn't only group seeminlgy
+copy-paste files, we not only plotted the communities, but also the groups of vertices 
+sharing a filename (in grey are vertices which have a filename accounting for less 
+then 1% of all files). As you can see, while vertices sharing a name seem to have
+hashed more often to the same buckets, that was not necessarily the case, and
+for some they didn't even end up in the same community. Furthermore, communities
+tend to group up files with distinct filename ore often then not, e.g. the two 
+largest communities in the graph.
+ 
+*To see the fourth community, squint hard at the last node on the right, you'll see it's
+green not blue ...* 
 
 ### Large projects 
 
@@ -283,15 +306,12 @@ file count | edges count | distinct filenames count | projects count | communiti
 4803 | 468,180 | 2954  | 3 | 96|  80 % | 
 
 
-This CC is the first obtained for the second threshold, hence the first plotted 
-with the second method - and as you can see the number of edges relative to the number
-of vertices has exploded. The reason we chose this CC is because it represents 
-another trend we saw appear, namely CCs with many files from a very restrained number of 
-projects. In this case, the CC is composed of `Python` files almost exclusively 
-stemming from `WindowsAzure`'s SDK for Python, with 23 files located in 2 other 
-Azure projects (the CLI and the IoT SDK). To be fair, we went take a look at the main
-project, and given it's structure we were not surprised there would be al lot of 
-duplication ...
+This next CC representss another trend we saw appear, namely CCs with many files 
+from a very restrained number of projects. In this case, it is composed of 
+`Python` files almost exclusively stemming from `WindowsAzure`'s SDK for Python, 
+with 23 files located in 2 other Azure projects (the CLI and the IoT SDK). To be fair, 
+we went take a look at the main project, and given it's structure we were not surprised 
+there would be al lot of duplication ...
 
 ### Coding conventions
 
