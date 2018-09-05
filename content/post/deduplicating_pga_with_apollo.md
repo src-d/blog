@@ -1,7 +1,7 @@
 ---
 author: romain
 date: 2018-09-15
-title: "Deduplicating PGA with Apollo"
+title: "Deduplicating files in Public Git Archive"
 image: /post/deduplicating_pga_with_apollo/smile2.png
 description: "We describe how we ran Apollo on PGA, in order to find communities of duplicate files."
 categories: ["science", "technical"]
@@ -9,30 +9,30 @@ draft: true
 ---
 
 
-We [announced](announcing-pga.md) at the beginning of this summer the release of
+We [announced](../announcing-pga) at the beginning of this summer the release of
 `Public Git Archive`, a dataset containing 3TB of files from GitHub's most 
 starred repositories. Now, we'll describe how we tried to deduplicate 
-part of it using our advanced code deduplicator from hell, [src-d/apollo](https://github.com/src-d/apollo).
+it using our research project for code deduplication, [src-d/apollo](https://github.com/src-d/apollo).
 Before diving into how we did it, let's quickly look at why. To the best of our 
-knowledge, the only efforts to detect code clones on a massive scale have been 
-from the authors of [DéjàVu](http://mondego.ics.uci.edu/projects/dejavu/), which 
-leveraged a huge corpus of over 428 million files from 4 languages to create a 
-map of code clones in GitHub. To do so, they relied on syntactical features 
+knowledge, the only efforts to detect code clones at massive scale have been 
+from the authors of [DéjàVu](http://mondego.ics.uci.edu/projects/dejavu/), who 
+leveraged a huge corpus of over 428 million files in 4 languages to create a 
+map of code clones on GitHub. To do so, they relied on syntactical features 
 i.e. identifiers (`my_list`, `your_list`, ...) and literals (`if`, `for`, ...), 
-to compute file similarity. Unfortunately PGA is not as big a corpus, and we did 
-not want to give our readers a *DéjàVu* by repeating the same analysis. so, we aimed 
-at something  different: in order detect not only copy-pasting between files, but also 
-involuntary rewriting of the same abstractions, we also extracted semantical features 
-from [UAST's](https://docs.sourced.tech/babelfish/uast/uast-specification).
+to compute file similarity. PGA has fewer files in the HEAD revision, and we did 
+not want to give our readers a *DéjàVu* by repeating the same analysis. So we aimed 
+at something  different: not only the detection of copy-paste between files, but also 
+involuntary rewriting of the same abstractions. Thus we extracted and used semantic features 
+from [UASTs](https://docs.sourced.tech/babelfish/uast/uast-specification).
 
-## shoot fo the stars 
+## Moon shot 
  
 Apollo's pipeline is a 4 step process: extract from each file [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf)
 and apply TFIDF to keep only the most relevant, hash them to get a pairwise similarity 
 graph of all the files, detect it's connected components, and then do community 
 analysis on each component. At the time we started working on this project, the 
 head commits of `PGA` consisted of 67.8 million files, spread across 181,481 projects. 
-In order for us to be able to extract semantical features from the files, we had 
+In order for us to be able to extract semantic features from the files, we had 
 to limit ourselves to those written in a language with a functioning [bblfsh driver](https://docs.sourced.tech/babelfish/languages)
 in oerder to parse the AST of the files and convert them in UASTs. This meant restricting
 ourselves to ~21% of files, those written in `Python`, `Java`, `JavaScript`, `Ruby`
@@ -47,7 +47,7 @@ number of children nodes;
 - **uast2seq**, a feature being a sequence of UAST nodes extracted using DFS;
 - **node2vec**, a feature being a sequence of UAST nodes produced through random walks.
 
-## houston, we've got a problem
+## Houston, we've got a problem
 
 Sadly, it turned out that trying to do this made our cluster crash many, *many* 
 times. We faced a number of issues:
@@ -93,7 +93,7 @@ apparently were relevant enough for most of them to be retained. Similarly,
 due to the quantization the number of distinct `children` features turned out 
 minuscule compared to the rest. As can be seen below these variations did not impact
 much the average number of features per file, which seemed relatively stable for 
-all languages. Interestingly, the features holding in our view the most semantical 
+all languages. Interestingly, the features holding in our view the most semantic 
 information, `uast2seq` and `node2vec`, were on average the ones with the highest 
 count of the 6 features:
 
@@ -109,7 +109,7 @@ Average count for Ruby files|37.78|13.97|48.80|23.36|151.13|193.24|
 Average count for Go files|80.89|49.41|110.96|41.23|326.09|467.81|
 
 
-## landing
+## Landing
 
 We then went one to run the rest of the apollo pipeline, with much less difficulties
 then we'd encountered previously. Thanks to [MinhashCuda](https://github.com/src-d/minhashcuda)
