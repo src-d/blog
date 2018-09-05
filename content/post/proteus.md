@@ -65,6 +65,7 @@ This code corresponds to the following protobuf file:
 syntax = "proto3";
 package models;
 
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "models";
