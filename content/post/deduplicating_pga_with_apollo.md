@@ -9,101 +9,94 @@ draft: true
 ---
 
 
-We [announced](../announcing-pga) at the beginning of this summer the release of
-`Public Git Archive`, a dataset containing 3TB of files from GitHub's most 
-starred repositories. Now, we'll describe how we tried to deduplicate 
-it using our research project for code deduplication, [src-d/apollo](https://github.com/src-d/apollo).
-Before diving into how we did it, let's quickly look at why. To the best of our 
-knowledge, the only efforts to detect code clones at massive scale have been 
-from the authors of [DéjàVu](http://mondego.ics.uci.edu/projects/dejavu/), who 
-leveraged a huge corpus of over 428 million files in 4 languages to create a 
-map of code clones on GitHub. To do so, they relied on syntactical features 
-i.e. identifiers (`my_list`, `your_list`, ...) and literals (`if`, `for`, ...), 
-to compute file similarity. PGA has fewer files in the HEAD revision, and we did 
-not want to give our readers a *DéjàVu* by repeating the same analysis. So we aimed 
-at something  different: not only the detection of copy-paste between files, but also 
-involuntary rewriting of the same abstractions. Thus we extracted and used semantic features 
-from [UASTs](https://docs.sourced.tech/babelfish/uast/uast-specification).
+We [announced](../announcing-pga) the release of `Public Git Archive`,
+a dataset with 3TB of Git data from the most starred repositories on GitHub, this summer.
+Now it's time to tell how we tried to deduplicate files in the latest revision
+of the repositories in PGA using our research project for code deduplication, [src-d/apollo](https://github.com/src-d/apollo). Before diving deep, let's quickly see why we created it.
+To the best of our knowledge, the only efforts to detect code clones at massive scale have been 
+by the authors of [DéjàVu project](http://mondego.ics.uci.edu/projects/dejavu/) by Lopes et.al., who 
+leveraged a huge corpus of over 428 million files in 4 languages to map code clones on GitHub. They relied on syntactic features, i.e. identifiers (`my_list`, `your_list`, ...) and literals (`if`, `for`, ...), 
+to compute the similarity between a pair of files. PGA has fewer files in the latest (HEAD) revision - 54 million, and we did not want to give our readers a *DéjàVu* by repeating the same analysis. So we aimed 
+at something  different: not only copy-paste between files, but also 
+the involuntary rewrites of the same abstractions. Thus we extracted and used semantic features 
+from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/uast-specification).
 
 ## Moon shot 
  
-Apollo's pipeline is a 4 step process: extract from each file [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf)
-and apply TFIDF to keep only the most relevant, hash them to get a pairwise similarity 
-graph of all the files, detect it's connected components, and then do community 
-analysis on each component. At the time we started working on this project, the 
-head commits of `PGA` consisted of 67.8 million files, spread across 181,481 projects. 
-In order for us to be able to extract semantic features from the files, we had 
-to limit ourselves to those written in a language with a functioning [bblfsh driver](https://docs.sourced.tech/babelfish/languages)
-in order to parse the AST of the files and convert them in UASTs. This meant restricting
-ourselves to ~21% of files, those written in `Python`, `Java`, `JavaScript`, `Ruby`
-or `Go`. Nevertheless this still meant using 14.1 million files of our corpus, 
-from which we'd extract the following features:
+Apollo's deduplication pipeline is a 3-step process:
 
-- **identifiers**, a feature being a variable or function name;
-- **literals**, a feature being a syntactical element of the language;
-- **graphlets**, a feature being composed of a UAST node and it's children;
+1. Extract [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf) from each file and apply [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) to keep only the most relevant items (feature extraction step).
+2. Hash those bags and produce the global pairwise similarity graph of the files
+(Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) step).
+3. Detect the connected components in that graph and run community detection analysis on each component
+(community detection step).
+
+HEAD commits in `PGA` contain 54.5 million files spread across 181,481 projects. 
+In order to extract semantic features from the files, we had 
+to limit ourselves to the programming languages with a functional [Babelfish driver](https://docs.sourced.tech/babelfish/languages). This meant ≈26% of files,
+those written in `Python`, `Java`, `JavaScript`, `Ruby` or `Go`.
+Nevertheless, there were still 14.1 million files in our corpus. We extracted
+the following features:
+
+- **identifiers**, such as variable or function names.
+- **literals**, e.g. integer or string constant values.
+- **graphlets**, a feature being composed of the types of UAST node and it's children.
 - **children**, a feature being composed of the node's type and it's [quantized](https://en.wikipedia.org/wiki/Quantization_(signal_processing)) 
-number of children nodes;
-- **uast2seq**, a feature being a sequence of UAST nodes extracted using DFS;
-- **node2vec**, a feature being a sequence of UAST nodes produced through random walks.
+number of children nodes.
+- **uast2seq** - a sequence of UAST node types extracted with depth-first tree traversal of limited length.
+- **node2vec** - a sequence of UAST node types produced from random walks in the tree.
 
 ## Houston, we've got a problem
 
-Sadly, it turned out that trying to do this made our cluster crash many, *many* 
-times. We faced a number of issues:
+Sadly, it turned out that extracting those features crashed our cluster many, *many* 
+times. We faced several issues:
 
-- using Spark with data that was stored in [Siva files](https://github.com/src-d/go-siva)
-led to massive amount of temporary data when extracting features on the worker 
-pods, which were then killed without notice by the kubernetes cluster manager,
-- while converting the data to the distributable Parquet format to avoid this, 
-data skew in the corpus due to [fun repos](https://github.com/Katee/git-bomb) made
-individual tasks insanely long,
-- once the conversion was done, our cluster crashed *again*, because applying 
-TFIDF on 1TB of data cached on disk made Spark spend more time on garbage collection 
-then actual work,
-- and finally, after we found a way to apply TFIDF on smaller loads, bblfsh turned 
-out to not being able to parse am important amount of the files,
+- Running Spark on [Siva files](https://github.com/src-d/go-siva)
+through [jgit-spark-connector](https://github.com/src-d/jgit-spark-connector)
+led to massive amount of temporary data during feature extraction on the worker 
+pods of Kubernetes, which were further killed without notice by the cluster manager,
+- While converting the data to [Parquet](http://parquet.apache.org/) format to avoid this, 
+the workload imbalance due to [funny repos](https://github.com/Katee/git-bomb) made
+individual tasks last insanely long.
+- Once the conversion was done, applying TF-IDF to 1TB of cached data on disk
+led Spark to spend more time on garbage collection then on the actual work.
+- Finally, after we found a way to apply TF-IDF with manual batching (sic!),
+Babelfish failed to parse a considerable amount of the files.
 
-And that's not even taking into account the continuous refactoring and bug detection
-in `src-d/ml`, `src-d/engine`, `src-d/apollo` that any growing repository must face
-and to which we had to adapt.
+And that does not even take into account the continuous refactoring and bug detection
+in `src-d/ml`, `src-d/jgit-spark-connector`, `src-d/apollo` that any young project
+faces. We had to adapt rapidly to changes upstream.
 
-Nevertheless, after months of effort, we finally were able to overcome this first step
-and extract 6,194,874 distinct features from 7,869,917 millions files, out of 102,114
-projects. Now, the sparsity of this huge matrix being .00017, the average number
-of features per file turned out to be 1102. Unsurprisingly, over half of our corpus 
-ended up consisting of JavaScript and Java files, more or less keeping the same 
-proportions that can be found in the whole of `PGA`, as we were able to get 45 % 
-to 67 % of files for each language.
+Nevertheless, after months of big data war, we managed to overcome the challenges
+and extract 6,194,874 distinct features from 7,869,917 million files, out of 102,114
+projects. The sparsity of that huge matrix was 0.00017, the average number
+of features per file was 1102. Not surprisingly, more than half of the processed files 
+consisted of JavaScript and Java, roughly the same 
+proportion as in the whole PGA. Overall, we were able to parse 45% to 67%
+of files in each language.
 
    | Python | Java | Javascript | Ruby | Go |
 ---|--------|------|------------|------|----|
-File count in PGA|1,673,172|4,021,258|5,549,381|909,935|1,962,502|
-% of PGA files|2.47 %|5.93 %|8.18 %|1.34 %|2.89 %|
-Processed files count|1,021,687|1,848,084|3,066,721|628,081|1,305,344|
-% of processable files|61.06 %|45.95 %|55.26 %|69.02 %|66.51 %|
-
+PGA files number|1,673,172|4,021,258|5,549,381|909,935|1,962,502|
+% of PGA files|2.47|5.93|8.18|1.34|2.89|
+processed files number|1,021,687|1,848,084|3,066,721|628,081|1,305,344|
+processed %|61.06|45.95|55.26|69.02|66.51|
 
 {{% caption src="/post/deduplicating_pga_with_apollo/languages.png" %}}
 Percentage of files in each language in our corpus.
 {{% /caption %}}
 
-
-
-Looking more into the feature side, we found over 65% of distinct features were 
-`literals`, due the fact that these features were distinct for each language, and 
-apparently were relevant enough for most of them to be retained. Similarly, 
-due to the quantization the number of distinct `children` features turned out 
-minuscule compared to the rest. As can be seen below these variations did not impact
-much the average number of features per file, which seemed relatively stable for 
-all languages. Interestingly, the features holding in our view the most semantic 
-information, `uast2seq` and `node2vec`, were on average the ones with the highest 
-count of the 6 features:
+We discovered that over 65% of distinct features were **literals** due high variance,
+and apparently were relevant enough for most of the files to be retained. Similarly, 
+due to the quantization, the number of distinct **children** features was 
+minuscule compared to the rest. The average number of features per file seemed
+roughly stable for all the considered languages. The features with the most semantic 
+information, `uast2seq` and `node2vec`, had the highest count on average:
 
 
    | identifiers | literals | graphlets | children | uast2seq | node2vec |
 ---|-------------|----------|-----------|----------|----------|----------|
-Percentage of all features|9.93 %|65.7 %|11.84 %|0.02 %|10.49 %|2.02 %|
+Percentage of all features|9.93|65.7|11.84|0.02|10.49|2.02|
 Average count cross-language|60.41|37.59|116.23|37.37|336.30|459.77|
 Average count for Python files| 60.71|36.20|134.55|51.90|432.73|591.61|
 Average count for Java files|56.94|5.17|94.11|39.02|266.93|489.04|
@@ -111,43 +104,42 @@ Average count for Javascript files|58.21|57.11|139.24|32.77|387.57|449.16|
 Average count for Ruby files|37.78|13.97|48.80|23.36|151.13|193.24|
 Average count for Go files|80.89|49.41|110.96|41.23|326.09|467.81|
 
-
 ## Landing
 
-We then went one to run the rest of the apollo pipeline, with much less difficulties
-then we'd encountered previously. Thanks to [MinhashCuda](https://github.com/src-d/minhashcuda)
-the hashing took less then a day to run. For more details on why that was the case 
-we highly recommend the read of this previously released [article](minhashcuda.md),
-as it also describes in depth the rest of the `apollo` deduplication process.
+The rest of the apollo pipeline ran much smoother. Thanks to [MinhashCuda](https://github.com/src-d/minhashcuda)
+the hashing took less then a day to finish. More details about MinhashCuda
+are in our previous [blog post](../minhashcuda). That post describes the
+Locality Sensitive Hashing procedure in depth - the same as in our deduplication
+process. We basically scan the buckets of the hash tables and treat the files
+in the same bucket as similar and those files form a clique.
+Hence the computational complexity is linear.
+See also [ekzhu/datasketch](https://ekzhu.github.io/datasketch/lsh.html).
 
-We decided to use two similarity thresholds for the hashing process, a stricter 95 % 
-and 80 %, the same the *DéjàVu* authors had used with `SourcersCC`. This gave us 
-the following results after the pairwise similarity graph was split in connected
+We decided to use two similarity thresholds for the hashing process, a stricter 95% 
+and looser 80%, the same the *DéjàVu* authors had used in `SourcersCC`. They yielded
+the following results after the pairwise similarity graph was split into connected
 components (CCs):
 
-|   | 80 % threshold | 95 % threshold |
+|   | 80% threshold | 95% threshold |
 |---|----------------|----------------|
 |Cliques count|7,482,339|7,732,877|
 |CCs count|3,473,933|6,483,934|
-|Count for CCs of 1 file|3,000,759 (38.13 % of files)|6,211,433 (78.93 %  of files)|
-|Count for CCs of over 1 file|473,174 (61.87 % of files)|1,496,749 (21.07 % of files)|
+|Count for CCs of 1 file|3,000,759 (38.13% of files)|6,211,433 (78.93%  of files)|
+|Count for CCs of over 1 file|473,174 (61.87% of files)|1,496,749 (21.07% of files)|
 |Average file count per CC of over 1 file |10.29|6.09|
 |Maximum file count across all CCs |223,309|6,839|
 
-Now, *how do we interpret these results* ? Well, it seems that in the subset of 
-PGA we analyzed, it is probable that there are very few exact clones. If that 
-had been the case, the number of cliques, i.e. of groups of files hashing to the 
-exact same hashes, would have been much lower - and the decrease much more then 
-350k between the two thresholds. Even though the histograms below show that for 
-both thresholds most of the connected components have a small number of file, as 
-their number decreases exponentially with the number of files, the amount of 
-duplication this entails in GitHub's most starred repositories is astonishing.
+How do we interpret these results? If there were few exact clones, the number
+of cliques would have been much lower, and the difference in those numbers
+for the two thresholds would have been more than 3%.
+Even though the histograms below show that the majority of the connected components
+have a small number of files (distributed exponentially), the amount of 
+duplication that entails in GitHub's most starred repositories is astonishing.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/hist.png" %}}
 Log-log histograms of the number of distinct filename in CCs, for the 80% threshold (left)
-and the 95% threshold (right) 
+and the 95% threshold (right).
 {{% /caption %}}
-
 
 Even though we'd applied all our pipeline on all files, without separating by language,
 it turned out virtually no CC had files of more then one language, exceptions being
@@ -170,10 +162,10 @@ and the 95% threshold (right)
 
    | Java | Ruby | Python | Javascript | Go |
 ---|--------|------|------------|------|----|
-% of files in CCs of over 1 file (80 %) |40.5%|47.4%|53.7%|70.1%|88%|
-% of files in CCs of over 1 file  (95 %) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
-Average file count per CC of over 1 file (80 %) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
-Average file count per CC of over 1 file (95 %) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
+% of files in CCs of over 1 file (80%) |40.5%|47.4%|53.7%|70.1%|88%|
+% of files in CCs of over 1 file  (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
+Average file count per CC of over 1 file (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
+Average file count per CC of over 1 file (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
 
 
 Of course, to check that the CCs truly consisted of similar files we would have 
@@ -225,7 +217,7 @@ pipeline on separate languages instead of mixing them up ... Nevertheless, we do
 think it is close to representing the reality, at least for our dataset, which is 
 why we included it. 
 
-**For the 80 % threshold, we don't have communities for the 4 largest CCs - none
+**For the 80% threshold, we don't have communities for the 4 largest CCs - none
 of the community detection we tried have ended:** 
 
 - First CC: 261,643 files, of all 5 languages  
@@ -233,18 +225,18 @@ of the community detection we tried have ended:**
 - Third CC: 174,916 files, all Java
 - Fourth CC: 233,095 files, all Go
 
-This means percentage of non duplicate files should be higher, depending how much 
+This means the percentage of non duplicate files should be higher, depending how much 
 communities there are, especially for Go, Java, and JavaScript.
 
-   | 80 % threshold | 95 % threshold |
+   | 80% threshold | 95% threshold |
 ---|----------------|----------------|
 Number of communities|1,270,529|671,936|
-% of non-duplicate files cross-language|54%|87 %|
-% of non-duplicate Java files | 76 %|99 %|
-% of non-duplicate Ruby files |73 %|97 %|
-% of non-duplicate Python files |63 %|96 %|
-% of non-duplicate JavaScript files |47 %|85 %|
-% of non-duplicate Go files |24 %|65 %|
+% of non-duplicate files cross-language|54%|87%|
+% of non-duplicate Java files | 76%|99%|
+% of non-duplicate Ruby files |73%|97%|
+% of non-duplicate Python files |63%|96%|
+% of non-duplicate JavaScript files |47%|85%|
+% of non-duplicate Go files |24%|65%|
 
 Finally, we used [Gephy](https://gephi.org/) to visualize some of the connected 
 components and detected communities. It turns out the first method was more 
@@ -266,7 +258,7 @@ their size depends of their edge count.
 
 file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
-422 | 371 | 1266 | 1 (`text_parser.go`) | 327 | 4 |  95 % | 
+422 | 371 | 1266 | 1 (`text_parser.go`) | 327 | 4 |  95% | 
 
 We thought we'd start off with a relatively small graph. As we mentioned earlier, 
 there seems to be a lot of ... borrowing in the Go community - and this is just 
@@ -282,7 +274,7 @@ their size depends of their edge count.
 
 file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
-1532 | 644 | 4596 | 238  | 796 | 37|  95 % | 
+1532 | 644 | 4596 | 238  | 796 | 37|  95% | 
 
 
 Now, not only did we notice that CCs tended to group up files with nearly the exact same 
@@ -306,7 +298,7 @@ colored as above.
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
-2344 | 869,611 | 584  | 1058 | 4 |  80 % | 
+2344 | 869,611 | 584  | 1058 | 4 |  80% | 
 
 This CC is the first obtained for the second threshold, thus plotted without artificial
 vertices - and as you can see the number of edges relative to the number
@@ -330,7 +322,7 @@ colored depending on the vertices they link, possibly a mix of two.
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
-4803 | 468,180 | 2954  | 3 | 96|  80 % | 
+4803 | 468,180 | 2954  | 3 | 96|  80% | 
 
 
 This next CC represents another trend we saw appear, namely CCs with many files 
@@ -349,7 +341,7 @@ colored depending on the vertices they link, possibly a mix of two.
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
-6116 | 272,016 | 3964  | 563 | 251|  80 % | 
+6116 | 272,016 | 3964  | 563 | 251|  80% | 
 
 
 Perhaps another answer might be that coding conventions used in big projects, i.e. by 
@@ -363,9 +355,9 @@ was much more diverse. *However*, it turned out that files still clustered by pr
 the light blue files are from AWS's [Java SDK project](https://github.com/aws/aws-sdk-java), 
 and right above in yellow files from their [Android SDK project](https://github.com/aws/aws-sdk-java) 
 (together 23% of files). In green there are files from Plutext's [docx4j project](https://github.com/plutext/docx4j) 
-(6 % of files), grouped up with one of eBay's [developer program projects](https://github.com/eBayDeveloper/eBay_APICall_CodeSamples)
-(also 6 %). Finally, the orange community is mostly made up of files from [YaviJava](https://github.com/yavijava/yavijava)
-(4.5 % of files), the other communities being of a wide range of projects (among 
+(6% of files), grouped up with one of eBay's [developer program projects](https://github.com/eBayDeveloper/eBay_APICall_CodeSamples)
+(also 6%). Finally, the orange community is mostly made up of files from [YaviJava](https://github.com/yavijava/yavijava)
+(4.5% of files), the other communities being of a wide range of projects (among 
 which we spotted Facebook, Paypal, Apache ...). Could it be that the amount developers
 hopping from one big tech firm to another cause some sort of convergence of coding
 conventions ?  
