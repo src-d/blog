@@ -84,7 +84,10 @@ Processed files count|1,021,687|1,848,084|3,066,721|628,081|1,305,344|
 % of processable files|61.06 %|45.95 %|55.26 %|69.02 %|66.51 %|
 
 
-![image](/post/deduplicating_pga_with_apollo/languages.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/languages.png" %}}
+Percentage of files in each language in our corpus.
+{{% /caption %}}
+
 
 
 Looking more into the feature side, we found over 65% of distinct features were 
@@ -140,7 +143,11 @@ both thresholds most of the connected components have a small number of file, as
 their number decreases exponentially with the number of files, the amount of 
 duplication this entails in GitHub's most starred repositories is astonishing.
 
-![nb of files per cc](/post/deduplicating_pga_with_apollo/hist.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/hist.png" %}}
+Log-log histograms of the number of distinct filename in CCs, for the 80% threshold (left)
+and the 95% threshold (right) 
+{{% /caption %}}
+
 
 Even though we'd applied all our pipeline on all files, without separating by language,
 it turned out virtually no CC had files of more then one language, exceptions being
@@ -154,7 +161,11 @@ of `JavaScript` files relative to the others, and also the kind of language it w
 we expected it to dominate as it did, however the amount of duplication we found 
 for `Go` was incredibly high, especially for the 95% threshold. 
 
-![cc_per_languages](/post/deduplicating_pga_with_apollo/cc_per_languages.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/cc_per_languages.png" %}}
+Percentages of CCs (of over 1 file) in each language, for the 80% threshold (left)
+and the 95% threshold (right) 
+{{% /caption %}}
+
 
 
    | Java | Ruby | Python | Javascript | Go |
@@ -181,7 +192,11 @@ average ratio of distinct filenames per file stagnated below 0.1, given us a cle
 indication that the connected components indeed contained files with similar filenames, 
 without having been able to infer it from anything else but their features.
 
-![drop](/post/deduplicating_pga_with_apollo/drop.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/drop.png" %}}
+Average ratio of distinct filenames per file in CCs (of over 1 files) depending on 
+the minimum number of files, for the 80% threshold (left) and the 95% threshold (right)  
+{{% /caption %}}
+
 
 The final step of Apollo was [community detection](https://arxiv.org/abs/1608.00163),
 which would give us a sense of the number of non-similar files in our corpus. We 
@@ -211,14 +226,15 @@ think it is close to representing the reality, at least for our dataset, which i
 why we included it. 
 
 **For the 80 % threshold, we don't have communities for the 4 largest CCs - none
-of the community detection we tried have ended: ** 
+of the community detection we tried have ended:** 
 
-First CC: 261643 files, of all 5 languages  
-Second CC: 123807 files, all JS
-Third CC: 174916 files, all Java
-Fourth CC: 233095 files, all Go
+- First CC: 261,643 files, of all 5 languages  
+- Second CC: 123,807 files, all JS
+- Third CC: 174,916 files, all Java
+- Fourth CC: 233,095 files, all Go
 
-This means % should be higher, depending how much communities there are.
+This means percentage of non duplicate files should be higher, depending how much 
+communities there are, especially for Go, Java, and JavaScript.
 
    | 80 % threshold | 95 % threshold |
 ---|----------------|----------------|
@@ -241,11 +257,12 @@ time on the CCs we chose). Given the number of connected components we could not
 showcase them all, so we decided to select a few we felt were representative of
  our results... 
 
-*We systematically colored the buckets in black for the first method.*
-
 ### D.R.Y. Gophers
 
-![drop](/post/deduplicating_pga_with_apollo/text_parser_go.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/text_parser_go.png" %}}
+Graph of the CC of Go files described below, colored by community. Buckets are colored in black,
+their size depends of their edge count.
+{{% /caption %}}
 
 file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
@@ -258,8 +275,10 @@ filename deduplication).
 
 ### Versioning
 
-![jq](/post/deduplicating_pga_with_apollo/jquery.png)
-
+{{% caption src="/post/deduplicating_pga_with_apollo/jquery.png" %}}
+Graph of the CC of JavaScript files described below, colored by community. Buckets are colored in black,
+their size depends of their edge count.
+{{% /caption %}}
 
 file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
@@ -275,8 +294,15 @@ be predicted - however they only clustered by filename to a limited extent.
 
 ### Grouping by filename ?
 
-![filename_1](/post/deduplicating_pga_with_apollo/filename_1.png)
-![filename_2](/post/deduplicating_pga_with_apollo/filename_2.png)
+{{% caption src="/post/deduplicating_pga_with_apollo/filename_1.png" %}}
+Graph of the CC of Ruby files described below, colored by community. Edges are 
+colored depending on the vertices they link, possibly a mix of two.
+{{% /caption %}}
+{{% caption src="/post/deduplicating_pga_with_apollo/filename_2.png" %}}
+Graph of the CC of Ruby files described below, colored by filename (see legend). 
+Files with names appearing in less then 1% of vertices are colored in grey. Edges are 
+colored as above.
+{{% /caption %}}
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
@@ -284,10 +310,9 @@ file count | edges count | distinct filenames count | projects count | communiti
 
 This CC is the first obtained for the second threshold, thus plotted without artificial
 vertices - and as you can see the number of edges relative to the number
-of vertices has exploded. In order to show that `Apollo` didn't only group seeminlgy
+of vertices has exploded. In order to show that `Apollo` didn't only group seemingly
 copy-paste files, we not only plotted the communities, but also the groups of vertices 
-sharing a filename (in grey are vertices which have a filename accounting for less 
-then 1% of all files). As you can see, while vertices sharing a name seem to have
+sharing a filename. As you can see, while vertices sharing a name seem to have
 hashed more often to the same buckets, that was not necessarily the case, and
 for some they didn't even end up in the same community. Furthermore, communities
 tend to group up files with distinct filename ore often then not, e.g. the two 
@@ -298,15 +323,17 @@ green not blue ...*
 
 ### Large projects 
 
-![azure](/post/deduplicating_pga_with_apollo/azure.png)
-
+{{% caption src="/post/deduplicating_pga_with_apollo/azure.png" %}}
+Graph of the CC of Python files described below, colored by community. Edges are 
+colored depending on the vertices they link, possibly a mix of two.
+{{% /caption %}}
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
 4803 | 468,180 | 2954  | 3 | 96|  80 % | 
 
 
-This next CC representss another trend we saw appear, namely CCs with many files 
+This next CC represents another trend we saw appear, namely CCs with many files 
 from a very restrained number of projects. In this case, it is composed of 
 `Python` files almost exclusively stemming from `WindowsAzure`'s SDK for Python, 
 with 23 files located in 2 other Azure projects (the CLI and the IoT SDK). To be fair, 
@@ -315,8 +342,10 @@ there would be al lot of duplication ...
 
 ### Coding conventions
 
-![ads](/post/deduplicating_pga_with_apollo/googleads.png)
-
+{{% caption src="/post/deduplicating_pga_with_apollo/googleads.png" %}}
+Graph of the CC of Java files described below, colored by community. Edges are 
+colored depending on the vertices they link, possibly a mix of two.
+{{% /caption %}}
 
 file count | edges count | distinct filenames count | projects count | communities count | threshold |
 -----------|-------------|--------------------------|----------------|-------------------|-----------|
