@@ -21,6 +21,8 @@ at something  different: not only copy-paste between files, but also
 the involuntary rewrites of the same abstractions. Thus we extracted and used semantic features 
 from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/uast-specification).
 
+[Take me directly to the cool pics, screw the math.](#embedded-dependencies)
+
 ## Moon shot 
  
 apollo's deduplication pipeline is a 3-step process:
