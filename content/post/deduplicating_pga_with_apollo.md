@@ -34,7 +34,7 @@ apollo's deduplication pipeline is a 3-step process:
 HEAD commits in `PGA` contain 54.5 million files spread across 181,481 projects. 
 In order to extract semantic features from the files, we had 
 to limit ourselves to the programming languages with a functional [Babelfish driver](https://docs.sourced.tech/babelfish/languages). This meant ≈26% of files,
-those written in `Python`, `Java`, `JavaScript`, `Ruby` or `Go`.
+those written in Python, Java, JavaScript, Ruby or Go.
 Nevertheless, there were still 14.1 million files in our corpus. We extracted
 the following features:
 
@@ -155,11 +155,13 @@ and the 95% threshold (right).
 
 Even though we did not differentiate files by programming language,
 almost no CCs had multi-language files. The only exception is
-very large CCs at 95% threshold. `Java`, `Ruby` and `Python` had similar 
-levels of duplication. `JavaScript` duplication
-dominated over the others, however, `Go` was also incredibly high. 
+very large CCs at 95% threshold. Java, Ruby and Python had similar 
+levels of duplication. JavaScript duplication
+dominated over the others, however, Go was also incredibly high. 
 The latter two were definitely in the higher league, responsible together for 50%
-of the CCs at 80% threshold and 80% CCs at 95% threshold.
+of the CCs at 80% threshold and 80% CCs at 95% threshold. The likely
+explanation to this is the established practice of embedding third-party
+dependencies into the source tree.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/cc_per_languages.png" %}}
 Percent of CCs of size bigger than 1 for each programming language, at 80%
@@ -263,126 +265,118 @@ Average ratio of distinct file names per file in communities depending on
 the minimum number of files, at the 80% (left)and the 95% (right) thresholds.  
 {{% /caption %}}
 
-### D.R.Y. Gophers
+### Embedded dependencies
 
 {{% caption src="/post/deduplicating_pga_with_apollo/text_parser_go.png" %}}
-Graph of the CC of Go files described below, colored by community. Buckets are colored in black,
-their size depends of their edge count.
+Graph of the connected component with `text_parser.go` files described below, colored by community.
+Buckets are colored in black, their size depends of the number of edges.
 {{% /caption %}}
 
-file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
------------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
-422 | 371 | 1266 | 1 (`text_parser.go`) | 327 | 4 |  95% | 
+| files count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
+|-----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
+| 422 | 371 | 1266 | 1 | 327 | 4 |  95% | 
 
-We thought we'd start off with a relatively small graph. As we mentioned earlier, 
-there seems to be a lot of ... borrowing in the Go community - and this is just 
-one of the 79k connected component with only **one** distinct Go filename (*without* 
-filename deduplication).
+This is just one of the 79,000 connected components with a single distinct Go file name
+even without FuzzyWuzzy reduction. Quick investigation revealed that they probably
+come from vendoring different versions of [protobuf](https://github.com/golang/protobuf).
+
+**I see only two communities!!! - Vadim.**
 
 ### Versioning
 
 {{% caption src="/post/deduplicating_pga_with_apollo/jquery.png" %}}
-Graph of the CC of JavaScript files described below, colored by community. Buckets are colored in black,
-their size depends of their edge count.
+Graph of the connected component with jQuery files described below, colored by community.
+Buckets are colored in black, their size depends of the number of edges.
 {{% /caption %}}
 
-file count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
------------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
-1532 | 644 | 4596 | 238  | 796 | 37|  95% | 
+| files count | buckets count | edges count | distinct filenames count | projects count | communities count | threshold |
+|-----------|---------------|-------------|--------------------------|----------------|-------------------|-----------|
+| 1532 | 644 | 4596 | 238  | 796 | 37|  95% | 
 
 
-Now, not only did we notice that CCs tended to group up files with nearly the exact same 
-filename, we also noticed that for some specific filenames there were multiple CCs grouping files
-with a variation of that filename. For example, we found 14 CCs were the most common
-filename was some variation of `jquery.js`, like `jquery-1.7.1.min.js`. These CCs 
-usually had some of the smaller number of communities for their size, as could 
-be predicted - however they only clustered by filename to a limited extent.
+Not only did we notice that CCs tended to group files with matching names,
+we also noticed that there were multiple CCs with variations of the same file name.
+For example, we found 14 CCs with different blends of `jquery.js`, e.g. `jquery-1.7.1.min.js`.
+Those CCs typically had a small number of communities for their size, however,
+they clustered by file name to very limited extent.
 
-### Grouping by filename ?
+### Are file names so important?
 
 {{% caption src="/post/deduplicating_pga_with_apollo/filename_1.png" %}}
-Graph of the CC of Ruby files described below, colored by community. Edges are 
-colored depending on the vertices they link, possibly a mix of two.
+Graph of the connected component with Ruby files described below, colored by community.
+Edges are colored depending on the vertices they link to.
 {{% /caption %}}
 {{% caption src="/post/deduplicating_pga_with_apollo/filename_2.png" %}}
-Graph of the CC of Ruby files described below, colored by filename (see legend). 
-Files with names appearing in less then 1% of vertices are colored in grey. Edges are 
-colored as above.
+Graph of the connected component with Ruby files described below,
+colored by file name (see the legend). 
+Files with rare (less than 1%) names are colored with grey.
 {{% /caption %}}
 
-file count | edges count | distinct filenames count | projects count | communities count | threshold |
------------|-------------|--------------------------|----------------|-------------------|-----------|
-2344 | 869,611 | 584  | 1058 | 4 |  80% | 
+| files count | edges count | distinct filenames count | projects count | communities count | threshold |
+|-------------|-------------|--------------------------|----------------|-------------------|-----------|
+| 2344        | 869,611     | 584                      | 1058           | 4                 |  80%      | 
 
-This CC is the first obtained for the second threshold, thus plotted without artificial
-vertices - and as you can see the number of edges relative to the number
-of vertices has exploded. In order to show that `apollo` didn't only group seemingly
-copy-paste files, we not only plotted the communities, but also the groups of vertices 
-sharing a filename. As you can see, while vertices sharing a name seem to have
-hashed more often to the same buckets, that was not necessarily the case, and
-for some they didn't even end up in the same community. Furthermore, communities
-tend to group up files with distinct filename ore often then not, e.g. the two 
-largest communities in the graph.
- 
-*To see the fourth community, squint hard at the last node on the right, you'll see it's
-green not blue ...* 
+This CC does not contain artificial vertices - buckets - because as we wrote in section "Landing"
+the "all to all" graph builder method is used for the 80% threshold. The number of edges
+relative to the number of vertices has exploded. In order to show that apollo didn't group
+only identical files, the groups of vertices which share the same FuzzyWuzzy
+file name are indicated on the graph. While vertices with the same name
+often hashed to the same buckets, some didn't even end up in the same community.
+Furthermore, communities tend to group files with distinct names, e.g. look at
+the two largest communities in the graph.
 
 ### Large projects 
 
 {{% caption src="/post/deduplicating_pga_with_apollo/azure.png" %}}
-Graph of the CC of Python files described below, colored by community. Edges are 
-colored depending on the vertices they link, possibly a mix of two.
+Graph of the connected component with Python files described below, colored by community.
+Edges are colored depending on the vertices they link to.
 {{% /caption %}}
 
-file count | edges count | distinct filenames count | projects count | communities count | threshold |
------------|-------------|--------------------------|----------------|-------------------|-----------|
-4803 | 468,180 | 2954  | 3 | 96|  80% | 
+| files count | edges count | distinct filenames count | projects count | communities count | threshold |
+|-------------|-------------|--------------------------|----------------|-------------------|-----------|
+| 4803        | 468,180     | 2954                     | 3              | 96                |  80%      | 
 
-
-This next CC represents another trend we saw appear, namely CCs with many files 
-from a very restrained number of projects. In this case, it is composed of 
-`Python` files almost exclusively stemming from `WindowsAzure`'s SDK for Python, 
-with 23 files located in 2 other Azure projects (the CLI and the IoT SDK). To be fair, 
-we went take a look at the main project, and given it's structure we were not surprised 
-there would be al lot of duplication ...
+This illustrates another feature - CCs with many files from few projects.
+Here the CC is composed of Python files stemming from
+[Microsoft Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python), 
+with 23 files located in 2 other Azure projects (the CLI and the IoT SDK). 
+Given the repetitive structure of the SDK, no surprise.
 
 ### Coding conventions
 
-{{% caption src="/post/deduplicating_pga_with_apollo/googleads.png" %}}
-Graph of the CC of Java files described below, colored by community. Edges are 
-colored depending on the vertices they link, possibly a mix of two.
+{{% caption src="/post/deduplicating_pga_with_apollo/google.png" %}}
+Graph of the connected component with Java files described below, colored by community.
+Edges are  colored depending on the vertices they link to.
 {{% /caption %}}
 
-file count | edges count | distinct filenames count | projects count | communities count | threshold |
------------|-------------|--------------------------|----------------|-------------------|-----------|
-6116 | 272,016 | 3964  | 563 | 251|  80% | 
+| files count | edges count | distinct filenames count | projects count | communities count | threshold |
+|-------------|-------------|--------------------------|----------------|-------------------|-----------|
+| 6116        | 272,016     | 3964                     | 563            | 251               |  80%      | 
 
 
-Perhaps another answer might be that coding conventions used in big projects, i.e. by 
-important tech firms, might have prompted these levels of duplication.
-Case and point, this CC, one of 4 which put together grouped about 42% of all of the 
-Java files in GoogleAds' [java-lib project](https://github.com/googleads/googleads-java-lib).
-Now, while in 2 of the CCs we had a situation like the previous one, and in the third
-about 60% of files were also from this project, this CC was a bit different as it 
-was much more diverse. *However*, it turned out that files still clustered by projects
-- and companies. The red community is made of the GoogleAds files (32% of this CC's files),  
-the light blue files are from AWS's [Java SDK project](https://github.com/aws/aws-sdk-java), 
-and right above in yellow files from their [Android SDK project](https://github.com/aws/aws-sdk-java) 
-(together 23% of files). In green there are files from Plutext's [docx4j project](https://github.com/plutext/docx4j) 
-(6% of files), grouped up with one of eBay's [developer program projects](https://github.com/eBayDeveloper/eBay_APICall_CodeSamples)
-(also 6%). Finally, the orange community is mostly made up of files from [YaviJava](https://github.com/yavijava/yavijava)
-(4.5% of files), the other communities being of a wide range of projects (among 
-which we spotted Facebook, Paypal, Apache ...). Could it be that the amount developers
-hopping from one big tech firm to another cause some sort of convergence of coding
-conventions ?  
+This is one of the 4 CCs which count together for 42% of all of the 
+Java files in [GoogleAds java-lib](https://github.com/googleads/googleads-java-lib).
+While the other three CCs generally correspond to the single project, our is more
+diverse. However, the files are still clustered by project and by company.
+The red community is made of the GoogleAds files (32% of all files),  
+the light blue is from [AWS Java SDK](https://github.com/aws/aws-sdk-java)
+and the yellow to the upper right is [AWS Android SDK](https://github.com/aws/aws-sdk-java) 
+(the latter two are 23% of all files).
+Green files are from [Plutext docx4j](https://github.com/plutext/docx4j) 
+(6% of all files), mixed with [eBay's developer program projects](https://github.com/eBayDeveloper/eBay_APICall_CodeSamples)
+(also 6%). The orange community is devoted to [YaviJava](https://github.com/yavijava/yavijava)
+(4.5%), and the others represent a wide range of projects from Facebook, Paypal, Apache, etc.
+There must be something deep in common for those codebases and   
 
+## Data
 
-We published the our data using [modelforge](https://github.com/src-d/modelforge/)
-`Models`, for those wishing to experiment with apollo - or just use them as features
-for some other project:
+All the data used to prepare this blog post is open and available for download.
+Depending on whether you wish to repeat all the steps or run different
+hashing or just look at the groups of similar files, you should download the
+corresponding parts.
 
 - the bags of features (~60GB), due to Scipy limitations on sparse matrices we had 
-to split the bags in 3 separate parts: 1, 2 ,3 [add links]
+to split the bags into 3 separate parts: 1, 2, 3 [add links]
 - the [connected components](https://github.com/src-d/apollo/blob/master/doc/model/cc.md)
 (511MB at the 95% threshold and 627MB at the 80% threshold):
 95% , 80% [add links]
