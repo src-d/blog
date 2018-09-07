@@ -143,7 +143,7 @@ The corresponding analysis in Hercules goes a bit further and puts all the files
 into the 3D space with the property that the distance between coupled files is small.
 
 {{% caption src="/post/hercules.v4/couples.png" %}}
-Files coupling in [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow). [Click here for an interactive experience.](http://projector.tensorflow.org/?config=http://vmarkovtsev.github.io/projector/tf_files.json)
+Files coupling in [tensorflow/tensorflow](https://github.com/tensorflow/tensorflow). [Click here for an interactive experience.](http://projector.tensorflow.org/?config=https://blog.sourced.tech/post/hercules.v4/tf_files.json)
 {{% /caption %}}
 
 Reproduce:
@@ -152,7 +152,7 @@ hercules --couples --pb https://github.com/tensorflow/tensorflow | labours.py -m
 ```
 
 We can repeat the same trick with the developers: they are couples if they commit
-to the same files. [Interactive example on Tensorflow developers.](http://projector.tensorflow.org/?config=http://vmarkovtsev.github.io/projector/tf_people.json)
+to the same files. [Interactive example on Tensorflow developers.](http://projector.tensorflow.org/?config=https://blog.sourced.tech/post/hercules.v4/tf_people.json)
 
 Finally, the trick works once again with structural units in the source code. We parse
 each file with [Babelfish](https://doc.bblf.sh) and extract anything we wish: functions,
