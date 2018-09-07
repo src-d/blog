@@ -46,6 +46,13 @@ number of children nodes.
 - **uast2seq** - a sequence of UAST node types extracted with depth-first tree traversal of limited length.
 - **node2vec** - a sequence of UAST node types produced from random walks in the tree.
 
+The latter two features are not explicitly defined since they depend on several
+hyperparameters: maximum length of a feature, maximum number of random walks, etc.
+We used the maximum length to 3 and 4 for tree traversals and
+to 2 and 3 for random walks (the output is combined).
+The maximum number of random walks was 2 and the number of random steps was 10.
+Those values hold a trade-off between the vocabulary size and the representativeness.
+
 ## Houston, we have a problem
 
 Sadly, it turned out that extracting those features crashed our cluster many, *many* 
@@ -75,42 +82,47 @@ consisted of JavaScript and Java, roughly the same
 proportion as in the whole PGA. Overall, we were able to parse 45% to 67%
 of files in each language.
 
-   | Python | Java | Javascript | Ruby | Go |
----|--------|------|------------|------|----|
-PGA files number|1,673,172|4,021,258|5,549,381|909,935|1,962,502|
-% of PGA files|2.47|5.93|8.18|1.34|2.89|
-processed files number|1,021,687|1,848,084|3,066,721|628,081|1,305,344|
-processed %|61.06|45.95|55.26|69.02|66.51|
+                      |  Python   |    Java   | Javascript |  Ruby   |    Go     |
+----------------------|-----------|-----------|------------|---------|-----------|
+Files in PGA          | 1,673,172 | 4,021,258 | 5,549,381  | 909,935 | 1,962,502 |
+% of all PGA          | 2.47      | 5.93      | 8.18       | 1.34    | 2.89      |
+Processed             | 1,021,687 | 1,848,084 | 3,066,721  | 628,081 | 1,305,344 |
+Ratio processed/PGA, %| 61.06     | 45.95     | 55.26      | 69.02   | 66.51     |
 
 {{% caption src="/post/deduplicating_pga_with_apollo/languages.png" %}}
-Percentage of files in each language in our corpus.
+Percent of files in each language in our corpus.
 {{% /caption %}}
 
-We discovered that over 65% of distinct features were **literals** due high variance,
+We observed that over 65% of distinct features were **literals** due high variance,
 and apparently were relevant enough for most of the files to be retained. Similarly, 
 due to the quantization, the number of distinct **children** features was 
-minuscule compared to the rest. The average number of features per file seemed
-roughly stable for all the considered languages. The features with the most semantic 
-information, `uast2seq` and `node2vec`, had the highest count on average:
+minuscule compared to the rest.
 
+                | identifiers | literals | graphlets | children | uast2seq | node2vec |
+----------------|-------------|----------|-----------|----------|----------|----------|
+Ratio to all, % | 9.93        | 65.70    | 11.84     | 0.02     | 10.49    | 2.02     |
 
-   | identifiers | literals | graphlets | children | uast2seq | node2vec |
----|-------------|----------|-----------|----------|----------|----------|
-Percentage of all features|9.93|65.7|11.84|0.02|10.49|2.02|
-Average count cross-language|60.41|37.59|116.23|37.37|336.30|459.77|
-Average count for Python files| 60.71|36.20|134.55|51.90|432.73|591.61|
-Average count for Java files|56.94|5.17|94.11|39.02|266.93|489.04|
-Average count for Javascript files|58.21|57.11|139.24|32.77|387.57|449.16|
-Average count for Ruby files|37.78|13.97|48.80|23.36|151.13|193.24|
-Average count for Go files|80.89|49.41|110.96|41.23|326.09|467.81|
+The average number of features per file seemed
+roughly stable for all the considered languages. Features with the most semantic 
+information, `uast2seq` and `node2vec`, had the highest count on average.
+Note: their numbers depend on the chosen hyperparameters, see the previous section.
+
+             | identifiers | literals | graphlets | children | uast2seq | node2vec |
+-------------|-------------|----------|-----------|----------|----------|----------|
+Python       | 60.71       | 36.20    | 134.55    | 51.90    | 432.73   | 591.61   |
+Java         | 56.94       |  5.17    |  94.11    | 39.02    | 266.93   | 489.04   |
+Javascript   | 58.21       | 57.11    | 139.24    | 32.77    | 387.57   | 449.16   |
+Ruby         | 37.78       | 13.97    |  48.80    | 23.36    | 151.13   | 193.24   |
+Go           | 80.89       | 49.41    | 110.96    | 41.23    | 326.09   | 467.81   |
+All languages| 60.41       | 37.59    | 116.23    | 37.37    | 336.30   | 459.77   |
 
 ## Maneuvering
 
 The rest of the apollo pipeline ran much smoother. Thanks to [MinhashCuda](https://github.com/src-d/minhashcuda)
-the hashing took less then a day to finish. More details about MinhashCuda
-are in our previous [blog post](../minhashcuda). That post describes the
-Locality Sensitive Hashing procedure in depth - the same as in our deduplication
-process. We basically scan the buckets of the hash tables and treat the files
+the hashing stage took less then a day to finish. Our previous [blog post](../minhashcuda)
+can provide more details about MinhashCuda. It particularly describes the
+Locality Sensitive Hashing procedure in depth - the same that we employ for the deduplication.
+In a few words, we scan the buckets of the hash tables and treat the files
 in the same bucket as similar and those files form a clique.
 Hence the computational complexity is linear.
 See also [ekzhu/datasketch](https://ekzhu.github.io/datasketch/lsh.html).
@@ -137,7 +149,7 @@ have a small number of files (distributed exponentially), the amount of
 duplication that entails in GitHub's most starred repositories is astonishing.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/hist.png" %}}
-Log-log histograms of the number of distinct file names in CCs, for the 80% threshold (left)
+Log-log histograms of the number of distinct file names in CCs, at the 80% threshold (left)
 and the 95% threshold (right).
 {{% /caption %}}
 
@@ -150,7 +162,7 @@ The latter two were definitely in the higher league, responsible together for 50
 of the CCs at 80% threshold and 80% CCs at 95% threshold.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/cc_per_languages.png" %}}
-Percentage of CCs of size bigger than 1 for each programming language, at 80%
+Percent of CCs of size bigger than 1 for each programming language, at 80%
 (left) and 95% (right) thresholds.
 {{% /caption %}}
 
@@ -161,19 +173,19 @@ Percentage of CCs of size bigger than 1 for each programming language, at 80%
 Average file count per CC of size bigger than 1 (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
 Average file count per CC of size bigger than 1 (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
 
-We decided to calculate the ratio of the sum of sizes of CCs and of the total
-number of files. That's our very rough estimation of the duplication in PGA.
+We decided to calculate the ratio of the number of unique files and the total
+number of files. The unique number is calculated by subtracting the sum of the
+sizes of the connected components from the total.
+That's our very rough estimation of the uniqueness in PGA.
 
->>> TODO: turn this into what we have just written: non-duplicate -> duplicate by subtracting from 100%
-
-   | 80% threshold | 95% threshold |
----|----------------|----------------|
-% of non-duplicate files, all languages|54%|87%|
-% of non-duplicate Java files | 76%|99%|
-% of non-duplicate Ruby files |73%|97%|
-% of non-duplicate Python files |63%|96%|
-% of non-duplicate JavaScript files |47%|85%|
-% of non-duplicate Go files |24%|65%|
+             | unique at 80%, %  |  unique at 95%, %  |
+-------------|-------------------|--------------------|
+Java         | 76                | 99                 |
+Ruby         | 73                | 97                 |
+Python       | 63                | 96                 |
+JavaScript   | 47                | 85                 |
+Go           | 24                | 65                 |
+All languages| 54                | 87                 |
 
 ## Landing
 
@@ -199,58 +211,56 @@ star-connected to the buckets they were hashed to.
 - Directly connect each pair of files if they were hashed to the same bucket.
 
 While the second method is ideal, it scales quadratically with the number 
-of files in a bucket, whereas the first scales linearly. We chose the first
-method because some buckets contained thousands of files.
+of files in a bucket, whereas the first one scales linearly. Depending
+on the chosen similarity threshold, the first method produces graphs with more
+artificial nodes then the real ones. Therefore we go with
+the first method at the 95% threshold (3 LSH tables) and with the second 
+method at the 80% threshold (9 LSH tables, 3x more buckets).
 
-At 80% threshold, we could not detect communities in the following large CCs
-because none of the algorithms which we tried have ended:
+At the 80% threshold, we could not detect communities in the following large CCs
+because none of the algorithms which we tried ended within one day:
 
 - 261,643 files, of all 5 languages  
 - 123,807 files, all JavaScript
 - 174,916 files, all Java
 - 233,095 files, all Go
 
-There appeared to be 1,270,529 communities at 80% threshold and 671,936 at
-95% threshold.
+We detected 1,270,529 communities at 80% threshold and 671,936 at 95% threshold.
 
-We used [Gephy](https://gephi.org/) to visualize some of the connected 
-components and the detected communities. It turns out the
-**first method - what first method? - Vadim** was more 
-representative of the similarities apollo detected between two files, however depending 
-on the number of hashtables, i.e. of the chosen similarity threshold, it could result 
-in graphs with more artificial nodes then real ones. Consequently we decided to use 
-the first method for the 95% threshold, which had only 3 hashtables, and the second 
-method for the 80% threshold, *which had 9* (we ran the community detection a second 
-time on the CCs we chose). Given the number of connected components we could not 
-showcase them all, so we decided to select a few we felt were representative of
- our results... 
+This post continues with the visualizations of some of the connected
+components and the detected communities using [Gephy](https://gephi.org/).
 
 ## Soil probes
 
-Of course, we would have to review each of the groups of similar files we found
+Of course, we would have to review each of the found groups of similar files
 to ensure that they make sense, which we cannot do for two reasons:
 there are too many files and the duplication criteria are subjective.
 
->>> Notice about labelling the pairs of files and that we will write another
->>> post about hyperoptimization. Also that it is time consuming for each language
->>> and we used the weights from optimization for Java (or not).
+We manually labelled 2,000 pairs of Java files as almost the same, similar or
+different using [🐈 src-d/code-annotation](https://github.com/src-d/code-annotation)
+tool kindly developed by our Applications team. We sampled them in a special way
+to cover all possible labels, the labeling process was tricky and funny and we will
+certainly describe it in our next blog post. We further ran hyperparameter
+optimization with [hyperopt](https://github.com/hyperopt/hyperopt) to determine
+the feature weights, the optimal threshold and the rest of the variables.
+But the found hyperparameters emulate the similarity criteria of our Machine Learning team
+and are not necessary the best for everybody. They are also specific to 
+~verbose and boring~ Java.
 
-There is one metric however which is correlated: the average ratio of distinct filenames 
-in CCs. One could imagine that files named the same way would likely 
-aim at doing the same thing, and be similar. At first however, that seemed to not 
-be the case as we saw a lot of noise when looking at the ratio of distinct filenames 
-per files in CCs. We quickly understood why: filenames like `concatstring.js` and 
-`concatstrings.js`, or `syntax-update-20.ru` and `syntax-update-10.ru` were considered 
-distinct, even though the files were most likely similar. To circumvent this, we 
-used [FuzzyWuzzy](https://github.com/seatgeek/fuzzywuzzy) to deduplicate the sets 
-of filenames, using a minimum ratio of 80. We found that past a certain size, the 
-average ratio of distinct filenames per file stagnated below 0.1, given us a clear 
-indication that the connected components indeed contained files with similar filenames, 
-without having been able to infer it from anything else but their features.
+There is one metric however which is likely to be correlated with the similarity:
+the average ratio of distinct filenames in the detected communities.
+We believe that files named the same way probably do the same thing.
+If you measure that ratio with brute force, you are going to face much noise which
+ruins the whole idea. File names like `concatstring.js` and 
+`concatstrings.js` or `syntax-update-20.rb` and `syntax-update-10.rb` should
+not be considered distinct. So we applied [FuzzyWuzzy](https://github.com/seatgeek/fuzzywuzzy)
+to the sets of file names per community using the minimum ratio parameter equal to 80.
+The average ratio of distinct file names per group appeared to be below 0.1,
+which is a clear indicator that our pipeline is indeed sensible.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/drop.png" %}}
-Average ratio of distinct filenames per file in CCs (of over 1 files) depending on 
-the minimum number of files, for the 80% threshold (left) and the 95% threshold (right)  
+Average ratio of distinct file names per file in communities depending on 
+the minimum number of files, at the 80% (left)and the 95% (right) thresholds.  
 {{% /caption %}}
 
 ### D.R.Y. Gophers
@@ -374,8 +384,8 @@ for some other project:
 - the bags of features (~60GB), due to Scipy limitations on sparse matrices we had 
 to split the bags in 3 separate parts: 1, 2 ,3 [add links]
 - the [connected components](https://github.com/src-d/apollo/blob/master/doc/model/cc.md)
-(511MB for the 95% threshold and 627MB for the 80% threshold):
+(511MB at the 95% threshold and 627MB at the 80% threshold):
 95% , 80% [add links]
 - the [communities](https://github.com/src-d/apollo/blob/master/doc/model/cmd.md)
-obtained with the walktrap algorithm (390MB for the 95% threshold and ?MB for the 
+obtained with the walktrap algorithm (390MB at the 95% threshold and ?MB for the 
 80% threshold): 95% , 80% [add links]
