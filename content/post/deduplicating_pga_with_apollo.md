@@ -3,7 +3,7 @@ author: romain
 date: 2018-09-15
 title: "Deduplicating files in Public Git Archive"
 image: /post/deduplicating_pga_with_apollo/smile.png
-description: "We describe how we ran Apollo on PGA, in order to find communities of duplicate files."
+description: "We describe how we ran apollo on PGA, in order to find communities of duplicate files."
 categories: ["science", "technical"]
 draft: true
 ---
@@ -23,7 +23,7 @@ from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/ua
 
 ## Moon shot 
  
-Apollo's deduplication pipeline is a 3-step process:
+apollo's deduplication pipeline is a 3-step process:
 
 1. Extract [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf) from each file and apply [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) to keep only the most relevant items (feature extraction step).
 2. Hash those bags and produce the global pairwise similarity graph of the files
@@ -141,73 +141,51 @@ Log-log histograms of the number of distinct filename in CCs, for the 80% thresh
 and the 95% threshold (right).
 {{% /caption %}}
 
-Even though we'd applied all our pipeline on all files, without separating by language,
-it turned out virtually no CC had files of more then one language, exceptions being
-very large CCs for the second threshold. Consequently we thought it would make sense
-to look at each language separately, as we expected to see some variations, depending
-on the kind of language. While `Java`,  `Ruby` and `Python` seemingly had similar 
-levels of duplication, the results for `JavaScript` and especially `Go` were in
-a whole other league, as together they made up for 50% of CCs of non single files 
-for the 80% threshold, and 80% for the 95% threshold. Considering the corpus size 
-of `JavaScript` files relative to the others, and also the kind of language it was, 
-we expected it to dominate as it did, however the amount of duplication we found 
-for `Go` was incredibly high, especially for the 95% threshold. 
+Even though we did not differentiate files by programming language,
+almost no CCs had multi-language files. The only exception is
+very large CCs at 95% threshold. `Java`, `Ruby` and `Python` had similar 
+levels of duplication. `JavaScript` duplication
+dominated over the others, however, `Go` was also incredibly high. 
+The latter two were definitely in the higher league, responsible together for 50%
+of the CCs at 80% threshold and 80% CCs at 95% threshold.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/cc_per_languages.png" %}}
-Percentages of CCs (of over 1 file) in each language, for the 80% threshold (left)
-and the 95% threshold (right) 
+Percentage of CCs of size bigger than 1 for each programming language, at 80%
+(left) and 95% (right) thresholds.
 {{% /caption %}}
-
-
 
    | Java | Ruby | Python | Javascript | Go |
 ---|--------|------|------------|------|----|
-% of files in CCs of over 1 file (80%) |40.5%|47.4%|53.7%|70.1%|88%|
-% of files in CCs of over 1 file  (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
-Average file count per CC of over 1 file (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
-Average file count per CC of over 1 file (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
+% of files in CCs of size bigger than 1 (80%) |40.5%|47.4%|53.7%|70.1%|88%|
+% of files in CCs of size bigger than 1 (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
+Average file count per CC of size bigger than 1 (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
+Average file count per CC of size bigger than 1 (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
 
+The final step of the apollo pipeline is the [community detection](https://arxiv.org/abs/1608.00163),
+which gives us the sense of the number of non-similar files in our corpus.
+Consider the [word ladder game](https://en.wikipedia.org/wiki/Word_ladder)
+invented by Lewis Carroll which justifies coding for food:
 
-Of course, to check that the CCs truly consisted of similar files we would have 
-to review each of them, a daunting task, as we currently have no accurate way of 
-estimating their quality. However one metric that we thought would give us some 
-sense of the validity of our results was the average ratio of distinct filenames 
-per files in CCs, as one could imagine that files named the same way would likely 
-aim at doing the same thing, and be similar. At first however, that seemed to not 
-be the case as we saw a lot of noise when looking at the ratio of distinct filenames 
-per files in CCs. We quickly understood why: filenames like `concatstring.js` and 
-`concatstrings.js`, or `syntax-update-20.ru` and `syntax-update-10.ru` were considered 
-distinct, even though the files were most likely similar. To circumvent this, we 
-used [FuzzyWuzzy](https://github.com/seatgeek/fuzzywuzzy) to deduplicate the sets 
-of filenames, using a minimum ratio of 80. We found that past a certain size, the 
-average ratio of distinct filenames per file stagnated below 0.1, given us a clear 
-indication that the connected components indeed contained files with similar filenames, 
-without having been able to infer it from anything else but their features.
+```
+CODE -> COLE -> COLD -> FOLD -> FOOD
+```
 
-{{% caption src="/post/deduplicating_pga_with_apollo/drop.png" %}}
-Average ratio of distinct filenames per file in CCs (of over 1 files) depending on 
-the minimum number of files, for the 80% threshold (left) and the 95% threshold (right)  
-{{% /caption %}}
+The same way CCs with many files suffer from the "bridges" between densely
+connected clusters of files. Community detection solves this problem nicely
+assigning files to several clusters with different degree of confidence.
+We decided to use the [igraph](http://igraph.org/python/)'s implementation of
+the [Walktrap algorithm](https://www.nature.com/articles/srep30750)
+since it runs reasonably fast and the quality is reasonably good on our data.
+We had two ways to build the graphs on which to run the community detection:
 
+- Include the artificial vertices which represent the buckets, files are
+star-connected to the buckets they were hashed to.
+- Directly connect each pair of files if they were hashed to the same bucket.
 
-The final step of Apollo was [community detection](https://arxiv.org/abs/1608.00163),
-which would give us a sense of the number of non-similar files in our corpus. We 
-decided to use igraph's implementation of the Walktrap algorithm to detect communities 
-in the CCs. While this might not be the most suitable, as said previously we do
-not have a way to know which would be, and according to the [literature](https://www.nature.com/articles/srep30750) 
-it seemed to be a good compromise between speed and efficiency. We had two possibilities 
-to create the graphs on which to community detection would be applied:
-
-
-- include artificial vertices representing the buckets, in which case files would
-only be connected to the buckets they hashed to, and similar buckets would be connected 
-to each other;
-- or replace those buckets with edges, directly connecting files if they hashed 
-to the same bucket.
-
-While the second method would have been ideal, it scaled quadratically with the number 
-of buckets, whereas the first scaled linearly, hence we chose the first. This meant
-we took the risk of creating communities of only artificial vertices, which we had 
+While the second method is ideal, it scales quadratically with the number 
+of files in a bucket, whereas the first scales linearly. We chose the first
+as some buckets contained thousands of files. This means
+taking the risk of creating communities of artificial vertices, which we have 
 to weed out. We then decided to calculate a pseudo *percentage of non-duplicate files*, 
 the ratio of the sum of individual CCs and communities, and of the total number of files.
 Of course, taking this at face value would be awesome if correct, but in practise 
@@ -240,7 +218,7 @@ Number of communities|1,270,529|671,936|
 
 Finally, we used [Gephy](https://gephi.org/) to visualize some of the connected 
 components and detected communities. It turns out the first method was more 
-representative of the similarities Apollo detected between two files, however depending 
+representative of the similarities apollo detected between two files, however depending 
 on the number of hashtables, i.e. of the chosen similarity threshold, it could result 
 in graphs with more artificial nodes then real ones. Consequently we decided to use 
 the first method for the 95% threshold, which had only 3 hashtables, and the second 
@@ -248,6 +226,34 @@ method for the 80% threshold, *which had 9* (we ran the community detection a se
 time on the CCs we chose). Given the number of connected components we could not 
 showcase them all, so we decided to select a few we felt were representative of
  our results... 
+
+## Soil probes
+
+Of course, we would have to review each of the groups of similar files we found
+to ensure that they make sense, which we cannot do for two reasons:
+there are too many files and the duplication criteria are subjective.
+
+>>> Notice about labelling the pairs of files and that we will write another
+>>> post about hyperoptimization. Also that it is time consuming for each language
+>>> and we used the weights from optimization for Java (or not).
+
+There is one metric however which is correlated: the average ratio of distinct filenames 
+in CCs. One could imagine that files named the same way would likely 
+aim at doing the same thing, and be similar. At first however, that seemed to not 
+be the case as we saw a lot of noise when looking at the ratio of distinct filenames 
+per files in CCs. We quickly understood why: filenames like `concatstring.js` and 
+`concatstrings.js`, or `syntax-update-20.ru` and `syntax-update-10.ru` were considered 
+distinct, even though the files were most likely similar. To circumvent this, we 
+used [FuzzyWuzzy](https://github.com/seatgeek/fuzzywuzzy) to deduplicate the sets 
+of filenames, using a minimum ratio of 80. We found that past a certain size, the 
+average ratio of distinct filenames per file stagnated below 0.1, given us a clear 
+indication that the connected components indeed contained files with similar filenames, 
+without having been able to infer it from anything else but their features.
+
+{{% caption src="/post/deduplicating_pga_with_apollo/drop.png" %}}
+Average ratio of distinct filenames per file in CCs (of over 1 files) depending on 
+the minimum number of files, for the 80% threshold (left) and the 95% threshold (right)  
+{{% /caption %}}
 
 ### D.R.Y. Gophers
 
@@ -302,7 +308,7 @@ file count | edges count | distinct filenames count | projects count | communiti
 
 This CC is the first obtained for the second threshold, thus plotted without artificial
 vertices - and as you can see the number of edges relative to the number
-of vertices has exploded. In order to show that `Apollo` didn't only group seemingly
+of vertices has exploded. In order to show that `apollo` didn't only group seemingly
 copy-paste files, we not only plotted the communities, but also the groups of vertices 
 sharing a filename. As you can see, while vertices sharing a name seem to have
 hashed more often to the same buckets, that was not necessarily the case, and
