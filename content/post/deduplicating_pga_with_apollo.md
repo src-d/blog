@@ -82,12 +82,12 @@ consisted of JavaScript and Java, roughly the same
 proportion as in the whole PGA. Overall, we were able to parse 45% to 67%
 of files in each language.
 
-                      |  Python   |    Java   | Javascript |  Ruby   |    Go     |
-----------------------|-----------|-----------|------------|---------|-----------|
-Files in PGA          | 1,673,172 | 4,021,258 | 5,549,381  | 909,935 | 1,962,502 |
-% of all PGA          | 2.47      | 5.93      | 8.18       | 1.34    | 2.89      |
-Processed             | 1,021,687 | 1,848,084 | 3,066,721  | 628,081 | 1,305,344 |
-Ratio processed/PGA, %| 61.06     | 45.95     | 55.26      | 69.02   | 66.51     |
+|                       |  Python   |    Java   | Javascript |  Ruby   |    Go     |
+|-----------------------|-----------|-----------|------------|---------|-----------|
+| Files in PGA          | 1,673,172 | 4,021,258 | 5,549,381  | 909,935 | 1,962,502 |
+| % of all PGA          | 2.47      | 5.93      | 8.18       | 1.34    | 2.89      |
+| Processed             | 1,021,687 | 1,848,084 | 3,066,721  | 628,081 | 1,305,344 |
+| Ratio processed/PGA, %| 61.06     | 45.95     | 55.26      | 69.02   | 66.51     |
 
 {{% caption src="/post/deduplicating_pga_with_apollo/languages.png" %}}
 Percent of files in each language in our corpus.
@@ -98,23 +98,23 @@ and apparently were relevant enough for most of the files to be retained. Simila
 due to the quantization, the number of distinct **children** features was 
 minuscule compared to the rest.
 
-                | identifiers | literals | graphlets | children | uast2seq | node2vec |
-----------------|-------------|----------|-----------|----------|----------|----------|
-Ratio to all, % | 9.93        | 65.70    | 11.84     | 0.02     | 10.49    | 2.02     |
+|                 | identifiers | literals | graphlets | children | uast2seq | node2vec |
+|-----------------|-------------|----------|-----------|----------|----------|----------|
+| Ratio to all, % | 9.93        | 65.70    | 11.84     | 0.02     | 10.49    | 2.02     |
 
 The average number of features per file seemed
 roughly stable for all the considered languages. Features with the most semantic 
 information, `uast2seq` and `node2vec`, had the highest count on average.
 Note: their numbers depend on the chosen hyperparameters, see the previous section.
 
-             | identifiers | literals | graphlets | children | uast2seq | node2vec |
--------------|-------------|----------|-----------|----------|----------|----------|
-Python       | 60.71       | 36.20    | 134.55    | 51.90    | 432.73   | 591.61   |
-Java         | 56.94       |  5.17    |  94.11    | 39.02    | 266.93   | 489.04   |
-Javascript   | 58.21       | 57.11    | 139.24    | 32.77    | 387.57   | 449.16   |
-Ruby         | 37.78       | 13.97    |  48.80    | 23.36    | 151.13   | 193.24   |
-Go           | 80.89       | 49.41    | 110.96    | 41.23    | 326.09   | 467.81   |
-All languages| 60.41       | 37.59    | 116.23    | 37.37    | 336.30   | 459.77   |
+|              | identifiers | literals | graphlets | children | uast2seq | node2vec |
+|--------------|-------------|----------|-----------|----------|----------|----------|
+| Python       | 60.71       | 36.20    | 134.55    | 51.90    | 432.73   | 591.61   |
+| Java         | 56.94       |  5.17    |  94.11    | 39.02    | 266.93   | 489.04   |
+| Javascript   | 58.21       | 57.11    | 139.24    | 32.77    | 387.57   | 449.16   |
+| Ruby         | 37.78       | 13.97    |  48.80    | 23.36    | 151.13   | 193.24   |
+| Go           | 80.89       | 49.41    | 110.96    | 41.23    | 326.09   | 467.81   |
+| All languages| 60.41       | 37.59    | 116.23    | 37.37    | 336.30   | 459.77   |
 
 ## Maneuvering
 
@@ -132,14 +132,14 @@ and looser 80%, the same the *DéjàVu* authors had used in `SourcersCC`. They y
 the following results after the pairwise similarity graph was split into connected
 components (CCs):
 
-|   | 80% threshold | 95% threshold |
-|---|----------------|----------------|
-|Cliques count|7,482,339|7,732,877|
-|CCs count|3,473,933|6,483,934|
-|Count for CCs of 1 file|3,000,759 (38.13% of files)|6,211,433 (78.93%  of files)|
-|Count for CCs of over 1 file|473,174 (61.87% of files)|1,496,749 (21.07% of files)|
-|Average file count per CC of over 1 file |10.29|6.09|
-|Maximum file count across all CCs |223,309|6,839|
+|                                      |       80% threshold        |         95% threshold        |
+|--------------------------------------|----------------------------|------------------------------|
+|Cliques count                         | 7,482,339                  | 7,732,877                    |
+|CCs count                             | 3,473,933                  | 6,483,934                    |
+|Count for CCs with 1 file             | 3,000,759 (38.13% of files)| 6,211,433 (78.93%  of files) |
+|Count for CCs with >1 file            | 473,174 (61.87% of files)  | 1,496,749 (21.07% of files)  |
+|Avg. files number per CC with >1 file | 10.29                      | 6.09                         |
+|Maximum files number across all CCs   | 223,309                    | 6,839                        |
 
 How do we interpret these results? If there were few exact clones, the number
 of cliques would have been much lower, and the difference in those numbers
@@ -166,26 +166,26 @@ Percent of CCs of size bigger than 1 for each programming language, at 80%
 (left) and 95% (right) thresholds.
 {{% /caption %}}
 
-   | Java | Ruby | Python | Javascript | Go |
----|--------|------|------------|------|----|
-% of files in CCs of size bigger than 1 (80%) |40.5%|47.4%|53.7%|70.1%|88%|
-% of files in CCs of size bigger than 1 (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
-Average file count per CC of size bigger than 1 (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
-Average file count per CC of size bigger than 1 (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
+|   | Java | Ruby | Python | Javascript | Go |
+|---|--------|------|------------|------|----|
+| % of files in CCs of size bigger than 1 (80%) |40.5%|47.4%|53.7%|70.1%|88%|
+| % of files in CCs of size bigger than 1 (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
+| Average file count per CC of size bigger than 1 (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
+| Average file count per CC of size bigger than 1 (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
 
 We decided to calculate the ratio of the number of unique files and the total
 number of files. The unique number is calculated by subtracting the sum of the
 sizes of the connected components from the total.
 That's our very rough estimation of the uniqueness in PGA.
 
-             | unique at 80%, %  |  unique at 95%, %  |
--------------|-------------------|--------------------|
-Java         | 76                | 99                 |
-Ruby         | 73                | 97                 |
-Python       | 63                | 96                 |
-JavaScript   | 47                | 85                 |
-Go           | 24                | 65                 |
-All languages| 54                | 87                 |
+|              | unique at 80%, %  |  unique at 95%, %  |
+|--------------|-------------------|--------------------|
+| Java         | 76                | 99                 |
+| Ruby         | 73                | 97                 |
+| Python       | 63                | 96                 |
+| JavaScript   | 47                | 85                 |
+| Go           | 24                | 65                 |
+| All languages| 54                | 87                 |
 
 ## Landing
 
