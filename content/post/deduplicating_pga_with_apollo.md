@@ -46,7 +46,7 @@ number of children nodes.
 - **uast2seq** - a sequence of UAST node types extracted with depth-first tree traversal of limited length.
 - **node2vec** - a sequence of UAST node types produced from random walks in the tree.
 
-## Houston, we've got a problem
+## Houston, we have a problem
 
 Sadly, it turned out that extracting those features crashed our cluster many, *many* 
 times. We faced several issues:
@@ -104,7 +104,7 @@ Average count for Javascript files|58.21|57.11|139.24|32.77|387.57|449.16|
 Average count for Ruby files|37.78|13.97|48.80|23.36|151.13|193.24|
 Average count for Go files|80.89|49.41|110.96|41.23|326.09|467.81|
 
-## Landing
+## Maneuvering
 
 The rest of the apollo pipeline ran much smoother. Thanks to [MinhashCuda](https://github.com/src-d/minhashcuda)
 the hashing took less then a day to finish. More details about MinhashCuda
@@ -137,7 +137,7 @@ have a small number of files (distributed exponentially), the amount of
 duplication that entails in GitHub's most starred repositories is astonishing.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/hist.png" %}}
-Log-log histograms of the number of distinct filename in CCs, for the 80% threshold (left)
+Log-log histograms of the number of distinct file names in CCs, for the 80% threshold (left)
 and the 95% threshold (right).
 {{% /caption %}}
 
@@ -160,6 +160,22 @@ Percentage of CCs of size bigger than 1 for each programming language, at 80%
 % of files in CCs of size bigger than 1 (95%) | 2.3% | 7.1%| 8.9% | 25.5% | 53.4% |
 Average file count per CC of size bigger than 1 (80%) | 5.56 | 6.78 | 9.66 | 12.11 | 18.85 |
 Average file count per CC of size bigger than 1 (95%) | 2.85 | 3.63 | 4.21 | 5.61 | 8.33 |
+
+We decided to calculate the ratio of the sum of sizes of CCs and of the total
+number of files. That's our very rough estimation of the duplication in PGA.
+
+>>> TODO: turn this into what we have just written: non-duplicate -> duplicate by subtracting from 100%
+
+   | 80% threshold | 95% threshold |
+---|----------------|----------------|
+% of non-duplicate files, all languages|54%|87%|
+% of non-duplicate Java files | 76%|99%|
+% of non-duplicate Ruby files |73%|97%|
+% of non-duplicate Python files |63%|96%|
+% of non-duplicate JavaScript files |47%|85%|
+% of non-duplicate Go files |24%|65%|
+
+## Landing
 
 The final step of the apollo pipeline is the [community detection](https://arxiv.org/abs/1608.00163),
 which gives us the sense of the number of non-similar files in our corpus.
@@ -184,40 +200,22 @@ star-connected to the buckets they were hashed to.
 
 While the second method is ideal, it scales quadratically with the number 
 of files in a bucket, whereas the first scales linearly. We chose the first
-as some buckets contained thousands of files. This means
-taking the risk of creating communities of artificial vertices, which we have 
-to weed out. We then decided to calculate a pseudo *percentage of non-duplicate files*, 
-the ratio of the sum of individual CCs and communities, and of the total number of files.
-Of course, taking this at face value would be awesome if correct, but in practise 
-very unreasonable. One can easily find flaws in our work, as we indicated earlier
-we have close to no way to evaluate it, let alone optimise it, should have eran the
-pipeline on separate languages instead of mixing them up ... Nevertheless, we do 
-think it is close to representing the reality, at least for our dataset, which is 
-why we included it. 
+method because some buckets contained thousands of files.
 
-**For the 80% threshold, we don't have communities for the 4 largest CCs - none
-of the community detection we tried have ended:** 
+At 80% threshold, we could not detect communities in the following large CCs
+because none of the algorithms which we tried have ended:
 
-- First CC: 261,643 files, of all 5 languages  
-- Second CC: 123,807 files, all JS
-- Third CC: 174,916 files, all Java
-- Fourth CC: 233,095 files, all Go
+- 261,643 files, of all 5 languages  
+- 123,807 files, all JavaScript
+- 174,916 files, all Java
+- 233,095 files, all Go
 
-This means the percentage of non duplicate files should be higher, depending how much 
-communities there are, especially for Go, Java, and JavaScript.
+There appeared to be 1,270,529 communities at 80% threshold and 671,936 at
+95% threshold.
 
-   | 80% threshold | 95% threshold |
----|----------------|----------------|
-Number of communities|1,270,529|671,936|
-% of non-duplicate files cross-language|54%|87%|
-% of non-duplicate Java files | 76%|99%|
-% of non-duplicate Ruby files |73%|97%|
-% of non-duplicate Python files |63%|96%|
-% of non-duplicate JavaScript files |47%|85%|
-% of non-duplicate Go files |24%|65%|
-
-Finally, we used [Gephy](https://gephi.org/) to visualize some of the connected 
-components and detected communities. It turns out the first method was more 
+We used [Gephy](https://gephi.org/) to visualize some of the connected 
+components and the detected communities. It turns out the
+**first method - what first method? - Vadim** was more 
 representative of the similarities apollo detected between two files, however depending 
 on the number of hashtables, i.e. of the chosen similarity threshold, it could result 
 in graphs with more artificial nodes then real ones. Consequently we decided to use 
