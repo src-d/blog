@@ -1,0 +1,10 @@
+{
+  "embeddings": [
+    {
+      "tensorName": "tf people coupling",
+      "tensorShape": [1727, 50],
+      "tensorPath": "https://blog.sourced.tech/post/hercules.v4/tf_people_data.tsv",
+      "metadataPath": "https://blog.sourced.tech/post/hercules.v4/tf_people_meta.tsv"
+    }
+  ]
+}

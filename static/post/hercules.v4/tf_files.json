@@ -1,0 +1,10 @@
+{
+  "embeddings": [
+    {
+      "tensorName": "tf files coupling",
+      "tensorShape": [12864, 70],
+      "tensorPath": "https://blog.sourced.tech/post/hercules.v4/tf_files_data.tsv",
+      "metadataPath": "https://blog.sourced.tech/post/hercules.v4/tf_files_meta.tsv"
+    }
+  ]
+}
