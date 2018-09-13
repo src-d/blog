@@ -9,7 +9,7 @@ categories: ["MLonCode", "technical"]
 
 This post follows up [the first one from January 2017](../hercules). Please read it
 if you wonder why Hercules was named Hercules, what is a line burndown plot and how
-everything started.
+everything started. In short: Hercules is a Go command line application and a framework to mine and analyze Git repositories. It is based on [go-git](https://github.com/src-d/go-git), the implementation of Git client and server in pure Go. Hercules outputs it's results in YAML and protobuf formats which can be further visualized or aggregated by custom user scripts or applications. The standard distribution includes the `labours.py` Python script which plots cool pics. See also: [code-maat](https://github.com/adamtornhill/code-maat) and [git-of-theseus](https://erikbern.com/2018/01/03/plotting-author-statistics-for-git-repos-using-git-of-theseus.html).
 
 # v4 features
 
