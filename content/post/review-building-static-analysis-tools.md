@@ -278,4 +278,5 @@ must be run over the whole codebase, before moving those checks to compile time 
 And those are ClangMR and JavacFlume — very interesting projects that are only briefly mentioned in this insightful
 paper and are going to be the subject of a separatee blog post soon.
 
-*That is it, thank you for reading. Stay tuned, we will post more on papers in this field soon.*
+*That is it, thank you for reading. Stay tuned, we will post more on papers in this field soon.
+Meanwihile, check out our [awesome ML on Code papers list](https://github.com/src-d/awesome-machine-learning-on-source-code/)*
