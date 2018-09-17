@@ -8,14 +8,13 @@ categories: ["science", "technical"]
 draft: true
 ---
 
-ML-on-Code is a rapidly developing field in both, academia and industry that [source{d}](http://sourced.tech/)
-was set out to systematically explore throughout the last years. So far the results that have already been published,
-courtesy of the hard work of Data Retrieval, Machine Learning, and Infrastructure teams who collect and store
-[millions of Git repositories](/post/github_stats), were based on large-scale applications of advanced NLP
-techniques such as [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/) or [Topic Modeling](https://arxiv.org/abs/1704.00135)
-or sequence model for [Identifier Splitting](https://arxiv.org/abs/1805.11651). Current research avenues,
-driven by the applications for augmented code review, include models using more structured representations of
-the source code, based on [Abstract Syntax Trees](https://doc.bblf.sh/uast/uast-specification.html) and graphs.
+ML on Code is a rapidly developing field, both in academia and industry, that [source{d}](http://sourced.tech/)
+was set out to systematically explore throughout the last years. So far the results published by our
+Data Retrieval, Machine Learning, and Infrastructure teams who collect and store [millions of Git repositories](/post/github_stats)
+were based on large-scale applications of advanced NLP techniques such as: [Identifiers Embedding](https://blog.sourced.tech/post/id2vec/),
+[Topic Modeling](https://arxiv.org/abs/1704.00135) and sequence model for [Identifier Splitting](https://arxiv.org/abs/1805.11651).
+Current research avenues, driven by the applications for assisted code review, include models using
+more structured representations of the source code, based on [Universal Abstract Syntax Trees](https://doc.bblf.sh/uast/uast-specification.html) and graphs.
 
 That is why the second paper that is covered here will be on recent advances in program representations suitable
 for Machine Learning that go beyond syntax and traditional NLP techniques.
