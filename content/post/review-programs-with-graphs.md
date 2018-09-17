@@ -23,16 +23,16 @@ for Machine Learning that go beyond syntax and traditional NLP techniques.
 
 [“Learning to Represent Programs with Graphs”](https://arxiv.org/abs/1711.00740) — a paper from
 [“Deep Program Understanding” group](https://www.microsoft.com/en-us/research/project/program/)
-at Microsoft Research was presented at ICLR 2018 earlier this year.
+at Microsoft Research was presented at [ICLR 2018](https://iclr.cc/archive/www/doku.php%3Fid=iclr2018:main.html) earlier this year.
 
 {{% tweet 958128393027047424 %}}
 
  This work is particularly interesting example of research for a few reasons:
 
-* has an interesting background, rooted in physics research
-* explores structured, graph-based representations
-* includes but goes beyond purely syntactic features
-* model has official open source implementation (open science!)
+* has an interesting background, rooted in physics research,
+* explores structured, graph-based representations,
+* includes but goes beyond purely syntactic features,
+* model has official open source implementation (open science!),
 * and this knowledge was actually applied in industry, to build a real product
 
 We’ll summarize briefly the paper itself in the next sections, but first some background on the main Machine
@@ -51,59 +51,53 @@ mentions Quantum Chemistry as well:
 * [Matroid](https://www.matroid.com/) conference [Scaled Machine Learning](http://scaledml.org/) talk [“Systems and Machine Learning”](https://www.matroid.com/scaledml/2018/jeff.pdf)
 
 {{% caption src="https://cdn-images-1.medium.com/max/3804/1*RHbRW58oHZOp4vFqwDTNKg.png" title="ML application in quantum physics" %}}
-ML application in quantum physics. Source: Jeff Dean slides
+ML application in quantum physics. Source: Jeff Dean [slides](https://www.matroid.com/scaledml/2018/jeff.pdf)
 {{% /caption %}}
 
 The fundamental idea is well-understood — given a [Schrödinger equation](https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation),
 one can get information about the state of a single particle, thus solving it for composition would allow to
-model properties of more complex structures, including molecules and in general, a solid state matter. But
-solving many-body Schrödinger equation requires huge computational efforts.
+model properties of more complex structures, including molecules and in general, solid state matter. But
+solving the many-body Schrödinger equation requires huge computational efforts.
 
 Instead, a [Nobel prize winning](https://www.nobelprize.org/nobel_prizes/chemistry/laureates/1998/) modeling
-approach called [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory) can be
+approach called [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory) or DFT can be
 applied, reducing the problem of many-body interacting system to a series of single-body problems and although still
 slow, it is highly valuable for many tasks in physics, chemistry and material science. Many approximation methods
 have been developed to make this more feasible by getting estimates instead of exact answers.
 
 ### Neural Networks for predicting properties of molecules
 
-So in 2017, several researchers at Google Brain Residence program spent time applying recent ML optimization methods
-for predicting properties of molecules:
+Many DFT calculation [software simulators](https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software) already exist, but are slow and still computationally intensive.
+In 2014 those simulators were used to build a [reference dataset — QM9](http://quantum-machine.org/datasets/), suitable for appling supervised learning algorithms.
 
-* many [software simulators](https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software)
-already exist for DFT, but are slow and still computationally intensive
-
-* in 2014 those simulators were used to build a [reference dataset — QM9](http://quantum-machine.org/datasets/),
-  suitable for supervised learning
+So in 2017, several researchers at the Google Brain Residence program spent time applying Neural Networks for predicting properties of molecules on that dataset:
 
 * a new “featurization” method was proposed, for looking at molecular structure as a graph: atoms as nodes and bonds as edges
 
-* a new variation of the Gated Graph Neural Network architecture was proposed, particularly suited for summarizing
-  properties of such graphs
+* a new variation of the [Gated Graph Neural Network](https://arxiv.org/abs/1511.05493) architecture was proposed, particularly suited for summarizing properties of such graphs
 
 Every such graph representing a molecule could be treated as a “computational graph”, thus the usual Neural Network
 training techniques could be applied to build node embeddings and given such a model the desired properties of
 the molecule could be learned in a supervised fashion, as a function of the whole graph.
 
-{{% caption src="https://cdn-images-1.medium.com/max/2000/1*NGX58AUORTa-cosWIGKntg.png" title="MPNN illustration from paper Neural 'Message Passing for Quantum Chemistry'" %}}
-MPNN illustration from [https://arxiv.org/abs/1704.01212](https://arxiv.org/abs/1704.01212)
+{{% caption src="https://cdn-images-1.medium.com/max/2000/1*NGX58AUORTa-cosWIGKntg.png" title="MPNN illustration from the paper 'Neural Message Passing for Quantum Chemistry'" %}}
+MPNN illustration from ["Neural Message Passing for Quantum Chemistry"](https://arxiv.org/abs/1704.01212)
 {{% /caption %}}
 
-[“Predicting properties of molecules” blog post by Google Research](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html)
+The blog post titled  [“Predicting properties of molecules”](https://research.googleblog.com/2017/04/predicting-properties-of-molecules-with.html) by Google Research
 dives deeper into details, but this work, in particular, has several valuable meta-lessons to teach on conducting a
 novel research in applied Machine Learning:
 
-* a single, shared benchmark QM9 was used (based on DFT, previous simulation approach)
+* a single, shared benchmark QM9 was used (based on DFT, previous simulation approach),
 
-* paper#1 [“Machine learning prediction errors better than DFT accuracy”](http://"https://arxiv.org/abs/1702.05532)
- a systematic assessment of machine learning methods on the QM9 benchmark was conducted, and a new featurization
- method proposed
+* a systematic assessment of existing machine learning methods on the QM9 benchmark was conducted, and a new featurization
+ method was proposed in the first paper [“Machine learning prediction errors better than DFT accuracy”](http://"https://arxiv.org/abs/1702.05532),
 
-* paper#2  [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212) a general model family
- “Message Passing Neural Networks” (MPNNs) was proposed, that reformulate previous NN models invariant
- to graph symmetries into a single common framework. Novel model in MPNN family developed, that improve results
- ~factor of 4. High-level interpretation of result: models that can leverage inherent symmetries in data will tend
- to generalize better
+* a general model family of “Message Passing Neural Networks” (MPNNs), with a particular model that improves results
+ by the factor of ~4 was proposed in the second paper on [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212),
+
+* research was not only a leaderboard-driven - a high-level interpretation/hypothesis was also provided: models that can leverage inherent symmetries in data will tend to generalize better
+
 
 ## Paper highlights
 
@@ -136,11 +130,10 @@ flow + types information.
 A “program graph” with syntax information, data-flow information, and type information was introduced.
 
 {{% caption src="https://cdn-images-1.medium.com/max/2944/1*2gOmyeUX2dWVM8mBSR9Snw.png" title="Graph structure illustration from paper 'Learning to Represent Programs with Graphs' " %}}
-Graph structure illustration from [https://arxiv.org/abs/1711.00740](https://arxiv.org/abs/1711.00740)
+Graph structure illustration from ['Learning to Represent Programs with Graphs'](https://arxiv.org/abs/1711.00740)
 {{% /caption %}}
 
-It consists of an AST graph that includes data-flow information, using 10 types of edges (contributes
-proportionally to runtime complexity):
+The program graph consists of an syntactic information from AST plus semantic information about data and control flows, using 10 different types of edges (contributes proportionally to runtime complexity):
 
 * *Child/NextToken* — edges to model AST on tokens
 
@@ -157,13 +150,13 @@ proportionally to runtime complexity):
 
 ### **Model details: GG-NN**
 
-The concrete architecture used was *Gated Graph Neural Networks* or *GG-NN*
+The concrete architecture used was *[Gated Graph Sequence Neural Networks* or *GG-NN*:
 
-* original paper, introducing this model [https://arxiv.org/abs/1511.05493](https://arxiv.org/abs/1511.05493)
+* original paper, introducing this model ["Gated Graph Sequence Neural Networks"](https://arxiv.org/abs/1511.05493)
 
-* official implementation in Torch [https://github.com/yujiali/ggnn](https://github.com/yujiali/ggnn)
+* official implementation in Torch [github.com/yujiali/ggnn](https://github.com/yujiali/ggnn)
 
-A very brief recap of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
+Below is a very brief recap of GG-NN, a recurrent network from a family of “Message Passing Neural Networks”.
 
 *Input*: a graph, *Output*: a sequence. Proposed implementation uses GRU, unrolls the recurrence for a fixed number
 of steps and use truncated backpropagation through time in order to compute gradients.
@@ -173,7 +166,7 @@ The idea is:
 * an input graph can be treated as “computation graph”
 
 {{% caption src="https://cdn-images-1.medium.com/max/2780/1*fPzRm3Flq3dQErn7LEG_Ig.png" title="Graph structure illustration from tutorial 'Representation Learning on Networks', WWW 2018" %}}
-source: representation Learning on Networks, WWW 2018, [http://snap.stanford.edu/proj/embeddings-www](http://snap.stanford.edu/proj/embeddings-www)
+source: tutorial ['Representation Learning on Networks'](http://snap.stanford.edu/proj/embeddings-www), WWW 2018.
 {{% /caption %}}
 
 * messages between nodes, as a way of “summarizing” the neighborhood for every node
@@ -190,7 +183,7 @@ source: representation Learning on Networks, WWW 2018, [http://snap.stanford.edu
 Initial node state: *node name embedding*
 
 {{% caption src="https://cdn-images-1.medium.com/max/2000/1*4_T3gHVp7IMXqjZwjpu1vg.png" title="Node representation illustration" %}}
-source: ICLR 2018 posted by MSR
+source: [ICLR 2018 posted](https://twitter.com/mmjb86/status/990717350197444609) by MSR
 {{% /caption %}}
 
 * average embeddings of the sub-tokens, split by *CamelCase* and *snake_case*
@@ -295,16 +288,16 @@ One thing that makes this research particularly interesting, is to see how a new
 as a part of it’s [Build conference](https://www.microsoft.com/en-us/build), which seems to be getting lots of
 interesting talks in recent years
 
-Here is an example of one of the gems from previous Build conference
-* [**Thinking for Programmers**](https://channel9.msdn.com/Events/Build/2014/3-642) where Leslie Lamport,
-inventor of Paxos and developer of LaTeX introduces techniques and tools that help programmers think.
+Here is an example of one of the gems from previous Build conference: [**Thinking for Programmers**](https://channel9.msdn.com/Events/Build/2014/3-642) where Leslie Lamport, inventor of Paxos and developer of LaTeX introduces techniques and tools that help programmers think.
 
-{{% tweet 993874082193203200 %}}
+{{% center %}} … {{% /center %}}
 
 For Microsoft, this is not the first attempt to add AI features to its market-leading code editor product: i.e
 there is another VS extension called [Developer Assistant](https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.DeveloperAssistant)
 from 2016. But this work, to the best of our knowledge, looks like a first one when such features are grounded
 in a published scientific research.
+
+{{% tweet 993874082193203200 %}}
 
 Here it is 🍾🍾🍾 for the more companies to follow this path of building products!
 
@@ -313,9 +306,10 @@ Here it is 🍾🍾🍾 for the more companies to follow this path of building p
 By the way, a good work does not need to happen only at the big companies:
 [source{d}](https://twitter.com/sourcedtech) is a startup that has also published 3 academic papers over the
 last year in ML-on-Code field:
- — [Topic modeling of public repositories at scale using names in source code](https://arxiv.org/abs/1704.00135)
- — [Public Git Archive: a Big Code dataset for all](https://arxiv.org/abs/1803.10144)
- — [Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network](https://arxiv.org/abs/1805.11651)
 
-If interested in working on cutting-edge ML research and putting its results to production as an application
+ * [Topic modeling of public repositories at scale using names in source code](https://arxiv.org/abs/1704.00135)
+ * [Public Git Archive: a Big Code dataset for all](https://arxiv.org/abs/1803.10144)
+ * [Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network](https://arxiv.org/abs/1805.11651)
+
+If you are interested in working on cutting-edge ML research and putting its results to production as an application
 for assisted code reviews — please come join us, [source{d} is hiring](https://sourced.tech/careers/)!
