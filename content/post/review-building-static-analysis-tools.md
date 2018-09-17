@@ -96,6 +96,8 @@ Java — [FindBugs](https://github.com/findbugsproject/findbugs) into the Google
 
 ## History of integrating FindBugs at Google
 
+The paper describes several attempts of such integration and we are going to go though each of them highlighting pros and cons.
+
 ### 0. IDE/Editor
 
 Using an editor as a place to show results of analysis was discarded from scratch.
