@@ -394,11 +394,13 @@ Depending on whether you wish to repeat all the steps or run different
 hashing or just look at the groups of similar files, you should download the
 corresponding parts.
 
+- [complete list of analyzed files](https://drive.google.com/open?id=1r8wPnY87pDh8K6bViTEEWFyWD78XwvUa)
 - the bags of features (~60GB), due to Scipy limitations on sparse matrices we had 
 to split the bags into 3 separate parts: 1, 2, 3 [add links]
-- the [connected components](https://github.com/src-d/apollo/blob/master/doc/model/cc.md)
-(476MB at the 95% threshold and 569MB at the 80% threshold):
-95% , 80% [add links]
-- the [communities](https://github.com/src-d/apollo/blob/master/doc/model/cmd.md)
-obtained with the walktrap algorithm (396MB at the 95% threshold and 422MB for the 
-80% threshold): 95% , 80% [add links]
+- [connected components](https://github.com/src-d/apollo/blob/master/doc/model/cc.md):
+[95% threshold - 476MB](https://drive.google.com/open?id=1R626UylqPSpbos-d66K2NXEDj_Y2I4ge)
+and [80% threshold - 568MB](https://drive.google.com/open?id=1l72q644mgz0lX2qe6l69-b_hM0S8_KSj)
+- [communities](https://github.com/src-d/apollo/blob/master/doc/model/cmd.md)
+detected with Walktrap algorithm:
+[95% threshold - 395MB](https://drive.google.com/open?id=1G6g7DyyN0w-BkBMDDGB2aFI_DLoaQcy7)
+and [80% threshold - 422MB](https://drive.google.com/open?id=1JXLIUYLQZ7I5ScYZ9Kh6ltGaPDHEpVAJ)
