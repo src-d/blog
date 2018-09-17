@@ -53,23 +53,23 @@ The reasons why Google is not interested in more complex analysis at this point 
 the paper:
 
 * *Large investment.* Although theoretically better and more complex analysis exists, it will require
-  the non-trivial engineering effort to scale
+  the non-trivial engineering effort to scale.
 
 * *High upfront cost.* It’s very hard to get the data, even to just estimate the cost-benefit ratio for
-  such improvements, to justify research/implementation efforts
+  such improvements, to justify research/implementation efforts.
 
-* *Work still would be needed to reduce false-positive rates*
+* *Work still would be needed to reduce false-positive rates*.
 
 * *Finding bugs is easy.* When a codebase is large enough, it will contain practically any imaginable
-  code pattern. Many more low-hanging fruits exist using simpler approaches
+  code pattern. Many more low-hanging fruits exist using simpler approaches.
 
 I find it to be particularly curious, as none of these conditions are set in stone:
 
 * data is hard to get without a decrease in productivity of engineers inside the company, due to the way
-  false-positives are measured (more on it in the next section)
+  false-positives are measured (more on it in the next section),
 
 * what seems not feasible now, may become feasible later with more computation power and e.g.
-  in cases when some analyses can be cast as some kind of optimization problems
+  in cases when some analyses can be cast as some kind of optimization problems,
 
 * and many other projects and companies could benefit from a more advanced analysis, where it actually
   is feasible to conduct it due to codebases of smaller sizes
