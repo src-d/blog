@@ -14,13 +14,12 @@ a dataset with 3TB of Git data from the most starred repositories on GitHub.
 Now it's time to tell how we tried to deduplicate files in the latest revision
 of the repositories in PGA using our research project for code deduplication, [src-d/apollo](https://github.com/src-d/apollo). Before diving deep, let's quickly see why we created it.
 To the best of our knowledge, the only efforts to detect code clones at massive scale have been 
-made by Lopes et. al., the authors of of [DéjàVu project](http://mondego.ics.uci.edu/projects/dejavu/), who 
-leveraged a huge corpus of over 428 million files in 4 languages to map code clones on GitHub.
+made by Lopes et. al., who  leveraged a huge corpus of over 428 million files in 4 languages to map code clones on GitHub ([DéjàVu project](http://mondego.ics.uci.edu/projects/dejavu/)).
 They relied on syntactic features, i.e. identifiers (`my_list`, `your_list`, ...) and literals (`if`, `for`, ...), 
 to compute the similarity between a pair of files. PGA has fewer files in the latest (HEAD) revision 
 - 54 million, and we did not want to give our readers a *DéjàVu* by repeating the same analysis. 
 So we aimed at something  different: not only copy-paste between files, but also 
-the involuntary rewrites of the same abstractions. Thus we extracted and used semantic features 
+involuntary rewrites of the same abstractions. Thus we extracted and used semantic features 
 from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/uast-specification).
 
 [Take me directly to the cool pics, screw the math.](#embedded-dependencies)
@@ -30,7 +29,7 @@ from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/ua
 apollo's deduplication pipeline is a 3-step process:
 
 1. Extract [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf) from each file and apply [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) to keep only the most relevant items (feature extraction step).
-2. Produce the global pairwise similarity graph (using [Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing)) (hashing step).
+2. Produce the global pairwise similarity graph using [Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) (hashing step).
 3. Detect the connected components in that graph and run community detection analysis on each component
 (community detection step).
 
@@ -77,7 +76,7 @@ And that does not even take into account the continuous refactoring and bug dete
 in `src-d/ml`, `src-d/jgit-spark-connector`, `src-d/apollo` that any young project
 faces. We had to adapt rapidly to changes upstream.
 
-Nevertheless, after months of back and forth big data battles, we managed to win the war
+Nevertheless, after months of back and forth battles with big data, we managed to win the war
 and extract 6,194,874 distinct features from 7,869,917 million files, out of 102,114
 projects. The density of that huge matrix was 0.00017, the average number
 of features per file was 1102. Not surprisingly, more than half of the processed files 
@@ -126,12 +125,11 @@ the hashing stage took less then a day to finish. Our previous [blog post](../mi
 can provide more details about MinhashCuda. It particularly describes the
 Locality Sensitive Hashing procedure in depth - the same that we employ for the deduplication.
 See also [ekzhu/datasketch](https://ekzhu.github.io/datasketch/lsh.html).
-In a few words, we scan the buckets of the hash tables and treat the files
-that hash in at least one bucket as similar. We can thus easily create
-the connected components of the similarity matrix, once we have the list of files
-in each bucket. Then, we can find the less interesting but still relevant [clique](https://en.wikipedia.org/wiki/Clique_(graph_theory)), 
-of files, in linear time, since they simply consist of groups of files hashing to all the same buckets.
-
+In a few words, we scan the buckets of several hash tables and treat the files
+that hash to at least one bucket as similar. We can thus easily find
+the connected components of the similarity graph once we gather the lists of files
+per bucket. Groups of files which hash to all the same buckets form
+[cliques](https://en.wikipedia.org/wiki/Clique_(graph_theory)).
 
 We decided to use two similarity thresholds for the hashing process, a stricter 95% 
 and looser 80%, the same the *DéjàVu* authors had used in `SourcersCC`. They yielded
@@ -142,27 +140,28 @@ components (CCs):
 |--------------------------------------|----------------------------|------------------------------|
 |Cliques count                         | 4,693,341                  | 4,919,105                    |
 |CCs count                             | 3,551,648                  | 4,270,967                    |
-|Count of CCs with 1 file              | 2,997,651 (38.09% of files)| 3,744,252 (47.58% of files)  |
-|Count of CCs with >1 file             | 553,997 (61.91% of files)  | 526,715 (52.42% of files)    |
+|Count of CCs with 1 file              | 2,997,651 (38.1%)          | 3,744,252 (47.6%)            |
+|Count of CCs with >1 file             | 553,997 (61.9%)            | 526,715 (52.4%)              |
 |Avg. files number per CC with >1 file | 8.79                       | 7.83                         |
-|Maximum files number across all CCs   | 878,186 (second: 17,628)   | 878,186 (second: 4,873)      |
+|Maximum files number across all CCs   | 878,186                    | 878,186                      |
+|Second maximum files number across all CCs | 17,628                | 4,873                        |
 
-How do we interpret these results? Well from the number of cliques, especially
-relevant for the stricter threshold, it seems there is about 40% of files that are
+How do we interpret these results? Given the number of cliques, especially
+at the stricter threshold, there are about 40% of files that are
 nearly exact clones of other files in the corpus. Even though the histograms 
-below show that the majority of the connected components have a small number of 
+show below that the majority of the connected components have a small number of 
 files (distributed exponentially), the amount of duplication that entails in 
-GitHub's most starred repositories is astonishing.
+GitHub's most starred repositories is impressive.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/hist_opt.png" %}}
-Log-log histograms of the number of files in CCs, at the 80% threshold (left)
-and the 95% threshold (right) for CCs of over 1 file, abnormal one excluded.
+Log-log histograms of the number of files in CCs, at 80% threshold (left)
+and 95% threshold (right) for CCs with >1 file, anomalies excluded.
 {{% /caption %}}
  
 While we did not differentiate files by programming language,
-almost no CCs had multi-language files. The only exception is a very large CC 
-that appeared for both thresholds, which we will describe at the end of this section
-due to it's abnormality. Java, Ruby and Python had similar levels of duplication. 
+almost no CCs had multi-language files. The only exception was the very large CC 
+that appeared at both thresholds, which we will describe in the end of this section.
+Java, Ruby and Python had similar levels of duplication. 
 JavaScript duplication dominated over the others, however, Go was also incredibly high. 
 The latter two were definitely in the higher league, responsible together for 68.7%
 of the CCs at 80% threshold and 74.2% CCs at 95% threshold. The likely
@@ -175,10 +174,10 @@ Percent of files in CCs of size bigger than 1 per programming language, at 80%
 {{% /caption %}}
 
 |   | Java | Ruby | Python | Javascript | Go |
-|---|--------|------|------------|------|----|
-| % of files in CCs of size bigger than 1 (80%)         | 40.8%| 46.8%| 46.1%| 71.9%| 86.6%|
-| % of files in CCs of size bigger than 1 (95%)         | 26.0%| 33.7%| 36.2%| 64.0%| 83.0%|
-| Average file count per CC of size bigger than 1 (80%) | 5.23 | 5.85 | 6.24 |10.70 | 14.81|
+|---|------|------|--------|------------|----|
+| % of files in CCs of size bigger than 1 (80%)         | 40.8 | 46.8 | 46.1 | 71.9 | 86.6 |
+| % of files in CCs of size bigger than 1 (95%)         | 26.0 | 33.7 | 36.2 | 64.0 | 83.0 |
+| Average file count per CC of size bigger than 1 (80%) | 5.23 | 5.85 | 6.24 | 10.70| 14.81|
 | Average file count per CC of size bigger than 1 (95%) | 4.86 | 5.24 | 5.73 | 8.82 | 11.06|
 
 We decided to calculate the ratio of the number of unique files and the total
@@ -195,22 +194,17 @@ That's our **very** rough estimation of the uniqueness in PGA.
 | Go           | 19                | 24                 |
 | All languages| 45                | 54                 |
 
-### Abnormal community
+### 👽 Anomalous connected component 👽
 
-As said previously, we saw appear for both thresholds an abnormal CC
-of 878,186 files from all 5  languages. The fact that this same CC appeared 
-for both thresholds seemed at first troubling. After further investigation, it 
-turned out that for both thresholds, each and every file hashed to the same n - 1 buckets 
-(n being the corresponding number of hash tables for each threshold), the last bucket 
-being one of 161,234 buckets for the 80% threshold and 381,722 buckets for the 95% 
-threshold. This meant that this CC was actually not only made up of similar files, 
-but of similar cliques of files. We saw when checking the language diversity for
-these cliques that only  0.1% of them had files of more then language for the 80% threshold, 
-and 0.03% for the 95% threshold. We also observed that this CC's size diminished for 
-hyperparameters less biased towards syntactical features, creating at the same time 
-large monolingual communities. We concluded that the files must have been of relatively 
-small length, and all using very similar identifiers.
-
+As mentioned previously, we hit one huge CC with 878,186 files from all the 5 languages
+at both thresholds. We looked inside and saw that this CC did not only have
+similar files, but also was built from cliques of similar files. Only 0.1% of them
+had files in more than one language at 80% threshold (0.03% at 95% threshold).
+The files were small and contained very similar identifiers.
+We also observed that this CC's size imploded with other hyperparameters which were
+less biased towards syntactic features. It divided into large monolingual communities
+then. So our conclusion on the cause was the "hashing noise" and the
+"butterfly effect" of the "bridges" between the cliques.
 
 ## Landing
 
@@ -239,15 +233,13 @@ While the second method is ideal, it scales quadratically with the number
 of files in a bucket, whereas the first one scales linearly. Depending
 on the chosen similarity threshold, the first method produces graphs with more
 artificial nodes then the real ones. Therefore we go with
-the first method at the 95% threshold (3 LSH tables) and with the second 
-method at the 80% threshold (9 LSH tables, 3x more buckets).
+the first method at 95% threshold (3 LSH tables) and with the second 
+method at 80% threshold (9 LSH tables, 3x more buckets).
 
-For both thresholds we could not detect communities in the abnormally large
-CC of 878,186 files that appeared in both, because none of the algorithms which 
+We could not detect communities in the anomalously large
+CC of 878,186 files at both thresholds because none of the algorithms which 
 we tried ended within one day.
-
-
-We detected 918,333 communities at 80% threshold and 666,692 at 95% threshold.
+Overall, we detected 918,333 communities at 80% threshold and 666,692 at 95% threshold.
 
 This post continues with the visualizations of some of the connected
 components and the detected communities using [Gephy](https://gephi.org/).
@@ -264,9 +256,9 @@ to cover all possible labels, the labeling process was tricky and funny and we w
 certainly describe it in a future blog post. We further ran hyperparameter
 optimization with [hyperopt](https://github.com/hyperopt/hyperopt) to determine
 the feature weights, the optimal threshold and the rest of the variables.
-But the found hyperparameters emulate the similarity criteria of our Machine Learning team
+But the found hyperparameters are biased by our ML team's opinions
 and are not necessary the best for everybody. They are also specific to 
-~verbose and boring~ Java.
+relatively verbose Java code.
 
 There is one metric however which is likely to be correlated with the similarity:
 the average ratio of distinct filenames in the detected communities.
@@ -281,7 +273,7 @@ which is a clear indicator that our pipeline is indeed sensible.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/drop_opt.png" %}}
 Average ratio of distinct file names per file in communities depending on 
-the minimum number of files, at the 80% (left)and the 95% (right) thresholds.  
+the minimum number of files, at 80% (left)and 95% (right) thresholds.  
 {{% /caption %}}
 
 ### Embedded dependencies
