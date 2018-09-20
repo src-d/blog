@@ -257,7 +257,7 @@ certainly describe it in a future blog post. We further ran hyperparameter
 optimization with [hyperopt](https://github.com/hyperopt/hyperopt) to determine
 the feature weights, the optimal threshold and the rest of the variables.
 But the found hyperparameters are biased by our ML team's opinions
-and are not necessary the best for everybody. They are also specific to 
+and are not necessarily the best for everybody. They are also specific to 
 relatively verbose Java code.
 
 There is one metric however which is likely to be correlated with the similarity:
