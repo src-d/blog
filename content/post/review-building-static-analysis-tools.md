@@ -1,6 +1,6 @@
 ---
 author: alex
-date: 2018-07-26
+date: 2018-09-27
 title: "Paper review: “Lessons from Building Static Analysis Tools at Google”."
 image: /post/review-building-static-analysis-tools/lessons.png
 description: "Review of a recent scientific paper by Google on the experience of building large-scale static analysis tools."
