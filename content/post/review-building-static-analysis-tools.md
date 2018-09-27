@@ -5,7 +5,6 @@ title: "Paper review: â€œLessons from Building Static Analysis Tools at Googleâ€
 image: /post/review-building-static-analysis-tools/lessons.png
 description: "Review of a recent scientific paper by Google on the experience of building large-scale static analysis tools."
 categories: ["science", "technical"]
-draft: true
 ---
 
 A recent paper with empirical research on the application of static code analysis tools caught my attention:
