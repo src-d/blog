@@ -49,7 +49,7 @@ mentions Quantum Chemistry as well:
 
 * [Matroid](https://www.matroid.com/) conference [Scaled Machine Learning](http://scaledml.org/) talk [“Systems and Machine Learning”](https://www.matroid.com/scaledml/2018/jeff.pdf)
 
-{{% caption src="https://cdn-images-1.medium.com/max/3804/1*RHbRW58oHZOp4vFqwDTNKg.png" title="ML application in quantum physics" %}}
+{{% caption src="/post/review-programs-with-graphs/model-properies-prediction.png" title="ML application in quantum physics" %}}
 ML application in quantum physics. Source: Jeff Dean [slides](https://www.matroid.com/scaledml/2018/jeff.pdf)
 {{% /caption %}}
 
@@ -79,7 +79,7 @@ Every such graph representing a molecule could be treated as a “computational 
 training techniques could be applied to build node embeddings and given such a model the desired properties of
 the molecule could be learned in a supervised fashion, as a function of the whole graph.
 
-{{% caption src="https://cdn-images-1.medium.com/max/2000/1*NGX58AUORTa-cosWIGKntg.png" title="MPNN illustration from the paper 'Neural Message Passing for Quantum Chemistry'" %}}
+{{% caption src="/post/review-programs-with-graphs/mpnn-aprox-dft.png" title="MPNN illustration from the paper 'Neural Message Passing for Quantum Chemistry'" %}}
 MPNN illustration from ["Neural Message Passing for Quantum Chemistry"](https://arxiv.org/abs/1704.01212)
 {{% /caption %}}
 
@@ -90,7 +90,7 @@ novel research in applied Machine Learning:
 * a single, shared benchmark QM9 was used (based on DFT, previous simulation approach),
 
 * a systematic assessment of existing machine learning methods on the QM9 benchmark was conducted, and a new featurization
- method was proposed in the first paper [“Machine learning prediction errors better than DFT accuracy”](http://"https://arxiv.org/abs/1702.05532),
+ method was proposed in the first paper [“Machine learning prediction errors better than DFT accuracy”](https://arxiv.org/abs/1702.05532),
 
 * a general model family of “Message Passing Neural Networks” (MPNNs), with a particular model that improves results
  by the factor of ~4 was proposed in the second paper on [“Neural Message Passing for Quantum Chemistry”](https://arxiv.org/abs/1704.01212),
@@ -128,7 +128,7 @@ flow + types information.
 
 A “program graph” with syntax information, data-flow information, and type information was introduced.
 
-{{% caption src="https://cdn-images-1.medium.com/max/2944/1*2gOmyeUX2dWVM8mBSR9Snw.png" title="Graph structure illustration from paper 'Learning to Represent Programs with Graphs' " %}}
+{{% caption src="/post/review-programs-with-graphs/graph-edges-construction.png" title="Graph structure illustration from paper 'Learning to Represent Programs with Graphs' " %}}
 Graph structure illustration from ['Learning to Represent Programs with Graphs'](https://arxiv.org/abs/1711.00740)
 {{% /caption %}}
 
@@ -164,7 +164,7 @@ The idea is:
 
 * an input graph can be treated as “computation graph”
 
-{{% caption src="https://cdn-images-1.medium.com/max/2780/1*fPzRm3Flq3dQErn7LEG_Ig.png" title="Graph structure illustration from tutorial 'Representation Learning on Networks', WWW 2018" %}}
+{{% caption src="/post/review-programs-with-graphs/gg-nn.png" title="Graph structure illustration from tutorial 'Representation Learning on Networks', WWW 2018" %}}
 source: tutorial ['Representation Learning on Networks'](http://snap.stanford.edu/proj/embeddings-www), WWW 2018.
 {{% /caption %}}
 
@@ -181,7 +181,7 @@ source: tutorial ['Representation Learning on Networks'](http://snap.stanford.ed
 
 Initial node state: *node name embedding*
 
-{{% caption src="https://cdn-images-1.medium.com/max/2000/1*4_T3gHVp7IMXqjZwjpu1vg.png" title="Node representation illustration" %}}
+{{% caption src="/post/review-programs-with-graphs/iclr-2018-post-node-embeddings.png" title="Node representation illustration" %}}
 source: [ICLR 2018 poster](https://twitter.com/mmjb86/status/990717350197444609) by MSR
 {{% /caption %}}
 
@@ -204,8 +204,8 @@ For each of 2 tasks used in this paper a slightly different “program graph” 
 
 ### *VarNaming*
 
-{{% caption src="https://cdn-images-1.medium.com/max/2000/1*EeR9bZPHfb0IoXTJ1kRKxg.png" title="Screenshot of the code, ilustrating VarNaming task" %}}
-source: poster of the paper at ICLR 2018
+{{% caption src="/post/review-programs-with-graphs/varnaming-task-iclr-2018-poster.png" title="Code, ilustrating VarNaming task" %}}
+source: poster at ICLR 2018
 {{% /caption %}}
 
 *VarNaming* generates a sequence of identifier sub-tokens, as a function of the whole graph.
@@ -221,8 +221,8 @@ Accuracy for predicting the exact name and the F1 score for predicting its subto
 
 ### *VarMisuse*
 
-{{% caption src="https://cdn-images-1.medium.com/max/2000/1*itf42uneR5RA_I8GYGAxQA.png" title="Screenshot of the code, ilustrating VarMisuse task" %}}
-source: poster of the paper at ICLR 2018
+{{% caption src="/post/review-programs-with-graphs/varnaming-task-iclr-2018-poster.png" title="Code, ilustrating VarMisuse task" %}}
+source: poster at ICLR 2018
 {{% /caption %}}
 
 *VarMisuse* is “fill-in box” for variable name: predict which one of the existing variables can be used in a
