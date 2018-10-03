@@ -5,7 +5,6 @@ title: "Paper review: “Learning to Represent Programs with Graphs”"
 image: /post/review-programs-with-graphs/paper-figure-2.jpg
 description: "A review of the recent ML-on-Code paper from Microsoft Research."
 categories: ["science", "technical"]
-draft: true
 ---
 
 ML on Code is a rapidly developing field, both in academia and industry, that [source{d}](http://sourced.tech/)
@@ -119,7 +118,7 @@ flow + types information.
 
   * 32.9% accuracy on the *VarNaming*
   * 85.5% accuracy on the *VarMisuse* task
-  * [real bugs](https://github.com/dotnet/roslyn/pull/23437) in OSS projects fixed
+  * [real](https://github.com/dotnet/roslyn/pull/23437) [bugs](https://github.com/ravendb/ravendb/pull/4138) in OSS projects fixed
 
 **constraints:** statically typed languages, C# (only a subset, buildable with [dotnet/roslyn](https://github.com/dotnet/roslyn))
 
@@ -183,7 +182,7 @@ source: tutorial ['Representation Learning on Networks'](http://snap.stanford.ed
 Initial node state: *node name embedding*
 
 {{% caption src="https://cdn-images-1.medium.com/max/2000/1*4_T3gHVp7IMXqjZwjpu1vg.png" title="Node representation illustration" %}}
-source: [ICLR 2018 posted](https://twitter.com/mmjb86/status/990717350197444609) by MSR
+source: [ICLR 2018 poster](https://twitter.com/mmjb86/status/990717350197444609) by MSR
 {{% /caption %}}
 
 * average embeddings of the sub-tokens, split by *CamelCase* and *snake_case*
@@ -226,7 +225,7 @@ Accuracy for predicting the exact name and the F1 score for predicting its subto
 source: poster of the paper at ICLR 2018
 {{% /caption %}}
 
-*VarMisuse* is “fill-in box” for variable name: predict if one of the existing variables can be used in a
+*VarMisuse* is “fill-in box” for variable name: predict which one of the existing variables can be used in a
 given slot.
 
 A single variable is “blanked out” from the graph by adding a *synthetic node.* The model is asked to predict the
