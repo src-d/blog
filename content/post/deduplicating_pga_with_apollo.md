@@ -1,11 +1,11 @@
 ---
 author: romain
-date: 2018-09-15
+date: 2018-10-04
 title: "Deduplicating files in Public Git Archive"
 image: /post/deduplicating_pga_with_apollo/smile.png
 description: "We describe how we ran apollo on PGA, in order to find communities of duplicate files."
 categories: ["science", "technical"]
-draft: true
+draft: false
 ---
 
 
