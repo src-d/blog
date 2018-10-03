@@ -1,7 +1,7 @@
 ---
 author: alex
 date: 2018-09-27
-title: "Paper review: “Lessons from Building Static Analysis Tools at Google”."
+title: "Paper review: “Lessons from Building Static Analysis Tools at Google”"
 image: /post/review-building-static-analysis-tools/lessons.png
 description: "Review of a recent scientific paper by Google on the experience of building large-scale static analysis tools."
 categories: ["science", "technical"]
@@ -278,4 +278,4 @@ And those are ClangMR and JavacFlume — very interesting projects that are only
 paper and are going to be the subject of a separatee blog post soon.
 
 *That is it, thank you for reading. Stay tuned, we will post more on papers in this field soon.
-Meanwihile, check out our [awesome ML on Code papers list](https://github.com/src-d/awesome-machine-learning-on-source-code/)*
+Meanwihile, check out our [awesome ML on Code papers list](https://github.com/src-d/awesome-machine-learning-on-source-code/)*.
