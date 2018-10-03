@@ -388,7 +388,7 @@ corresponding parts.
 
 - [complete list of analyzed files](https://drive.google.com/open?id=1r8wPnY87pDh8K6bViTEEWFyWD78XwvUa)
 - the bags of features (~60GB), due to Scipy limitations on sparse matrices we had 
-to split the bags into 3 separate parts: 1, 2, 3 [add links]
+to split the bags into 3 separate parts: [modelforge](https://github.com/src-d/models/blob/master/bow/694c20a0-9b96-4444-80ae-f2fa5bd1395b.md)
 - [connected components](https://github.com/src-d/apollo/blob/master/doc/model/cc.md):
 [95% threshold - 476MB](https://drive.google.com/open?id=1R626UylqPSpbos-d66K2NXEDj_Y2I4ge)
 and [80% threshold - 568MB](https://drive.google.com/open?id=1l72q644mgz0lX2qe6l69-b_hM0S8_KSj)
