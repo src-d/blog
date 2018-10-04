@@ -20,7 +20,7 @@ to compute the similarity between a pair of files. PGA has fewer files in the la
 - 54 million, and we did not want to give our readers a *DéjàVu* by repeating the same analysis. 
 So we aimed at something  different: not only copy-paste between files, but also 
 involuntary rewrites of the same abstractions. Thus we extracted and used semantic features 
-from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/uast-specification).
+from [Universal Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/uast-specification).
 
 [Take me directly to the cool pics, screw the math.](#embedded-dependencies)
 
@@ -28,22 +28,22 @@ from [Unified Abstract Syntax Trees](https://docs.sourced.tech/babelfish/uast/ua
  
 apollo's deduplication pipeline is a 3-step process:
 
-1. Extract [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf) from each file and apply [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) to keep only the most relevant items (feature extraction step).
+1. Extract [bags of features](http://www.cs.unc.edu/~lazebnik/spring09/lec18_bag_of_features.pdf) from each file and apply term frequency–inverse document frequency ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) to keep only the most relevant items (feature extraction step).
 2. Produce the global pairwise similarity graph using [Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing) (hashing step).
 3. Detect the connected components in that graph and run community detection analysis on each component
 (community detection step).
 
 HEAD commits in `PGA` contain 54.5 million files spread across 181,481 projects. 
 In order to extract semantic features from the files, we had 
-to limit ourselves to the programming languages with a functional [Babelfish driver](https://docs.sourced.tech/babelfish/languages). This meant ≈26% of files,
+to limit ourselves to the programming languages with a functional [Babelfish driver](https://docs.sourced.tech/babelfish/languages) in late spring 2018. That meant ≈26% of files,
 those written in Python, Java, JavaScript, Ruby or Go.
 Nevertheless, there were still 14.1 million files in our corpus. We extracted
 the following features:
 
 - **identifiers**, such as variable or function names.
 - **literals**, e.g. integer or string constant values.
-- **graphlets**, a feature being composed of the types of UAST node and it's children.
-- **children**, a feature being composed of the node's type and it's [quantized](https://en.wikipedia.org/wiki/Quantization_(signal_processing)) 
+- **graphlets**, a feature being composed of the [internal types](https://doc.bblf.sh/uast/uast-specification.html#overview) of UAST nodes and their children.
+- **children**, a feature being composed of the node's type and its [quantized](https://en.wikipedia.org/wiki/Quantization_(signal_processing)) 
 number of children nodes.
 - **uast2seq** - a sequence of UAST node types extracted with depth-first tree traversal of limited length.
 - **node2vec** - a sequence of UAST node types produced from random walks in the tree.
@@ -62,11 +62,11 @@ times. We faced several issues:
 
 - Running Spark on [Siva files](https://github.com/src-d/go-siva)
 through [jgit-spark-connector](https://github.com/src-d/jgit-spark-connector)
-led to massive amount of temporary data during feature extraction on the worker 
-pods of Kubernetes, which were further killed without notice by the cluster manager,
+led to a massive amount of temporary data during feature extraction on the worker 
+pods of Kubernetes, which were further killed without notice by the cluster manager.
 - While converting the data to [Parquet](http://parquet.apache.org/) format to avoid this, 
 the workload imbalance due to [funny repos](https://github.com/Katee/git-bomb) made
-individual tasks last insanely long.
+individual tasks last incredibly long.
 - Once the conversion was done, applying TF-IDF to 1TB of cached data on disk
 led Spark to spend more time on garbage collection then on the actual work.
 - Finally, after we found a way to apply TF-IDF with manual batching (sic!),
@@ -166,7 +166,7 @@ JavaScript duplication dominated over the others, however, Go was also incredibl
 The latter two were definitely in the higher league, responsible together for 68.7%
 of the CCs at 80% threshold and 74.2% CCs at 95% threshold. The likely
 explanation to this is the established practice of embedding third-party
-dependencies into the source tree.
+dependencies into the source tree aka vendoring.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/cc_per_languages_opt.png" %}}
 Percent of files in CCs of size bigger than 1 per programming language, at 80%
@@ -273,7 +273,7 @@ which is a clear indicator that our pipeline is indeed sensible.
 
 {{% caption src="/post/deduplicating_pga_with_apollo/drop_opt.png" %}}
 Average ratio of distinct file names per file in communities depending on 
-the minimum number of files, at 80% (left)and 95% (right) thresholds.  
+the minimum number of files, at 80% (left) and 95% (right) thresholds.  
 {{% /caption %}}
 
 ### Embedded dependencies
@@ -326,7 +326,7 @@ Files with rare (less than 1%) names are colored with grey.
 |-------------|-------------|--------------------------|----------------|-------------------|-----------|
 | 2344        | 869,611     | 584                      | 1058           | 3                 |  80%      | 
 
-This CC does not contain artificial vertices - buckets - because as we wrote in section "Landing"
+This CC does not contain artificial vertices - buckets - because as we wrote in [section "Landing"](#Landing)
 the "all to all" graph builder method is used for the 80% threshold. The number of edges
 relative to the number of vertices has exploded. In order to show that apollo didn't group
 only identical files, the groups of vertices which share the same FuzzyWuzzy
@@ -366,7 +366,7 @@ Edges are  colored depending on the vertices they link to.
 
 This is one of the 4 CCs which count together for 42% of all of the 
 Java files in [GoogleAds java-lib](https://github.com/googleads/googleads-java-lib).
-While the other three CCs generally correspond to the single project, our is more
+While the other three CCs generally correspond to the single project, ours is more
 diverse. However, the files are still clustered by project and by company.
 The red community is made of the GoogleAds files (32% of all files),  
 the light blue is from [AWS Java SDK](https://github.com/aws/aws-sdk-java)
@@ -376,7 +376,8 @@ Green files are from [Plutext docx4j](https://github.com/plutext/docx4j)
 (6% of all files), mixed with [eBay's developer program projects](https://github.com/eBayDeveloper/eBay_APICall_CodeSamples)
 (also 6%). The orange community is devoted to [YaviJava](https://github.com/yavijava/yavijava)
 (4.5%), and the others represent a wide range of projects from Facebook, Paypal, Apache, etc.
-There must be something deep in common for those codebases and   
+Those codebases have much in common, e.g. coding conventions on the structure
+or the vocabulary of identifiers.
 
 
 ## Data
