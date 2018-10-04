@@ -12,6 +12,11 @@
 
     ext .html
 
+    cors / {
+        origin            http://projector.tensorflow.org
+        methods           GET
+    }
+
     errors {
         404 404.html
     }

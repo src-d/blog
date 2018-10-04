@@ -48,8 +48,9 @@ both prefix trees (tries) and Merkle trees, let us get into the details!
 In a Git tree every node has a **name**, which is the filename portion of the
 path to the file or directory it represents, as in the figure below:
 
-!["An example of a Git tree with some names in their nodes."](/post/difftree/names.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes.")
-<p align="center" class="dt">An example of a Git tree with some names in their nodes.</p>
+{{% caption src="/post/difftree/names.png" %}}
+An example of a Git tree with some names in their nodes. The names of the nodes are shown between double quotes.
+{{% /caption %}}
 
 The practical implications of this are:
 
@@ -92,10 +93,10 @@ Every node has a SHA-1 hash in a Git tree:
 If we add the hash information belonging to each node, in blue, to the previous figure, we
 get a more detailed view of the tree:
 
-!["An example of a Git tree with some names and hashes in their
-nodes."](/post/difftree/hashes.png "A typical Git tree, with some files and directories. The names of the nodes are shown between double quotes, the first bytes of their hashes are shown in blue.")
-<p align="center" class="dt">An example of a Git tree with some names and hashes in their
-nodes.</p>
+{{% caption src="/post/difftree/hashes.png" %}}
+An example of a Git tree with some names and hashes in their
+nodes. The names of the nodes are shown between double quotes, the first bytes of their hashes are shown in blue.
+{{% /caption %}}
 
 This means Git trees are [Merkle
 trees](https://en.wikipedia.org/wiki/Merkle_tree), the practical implications
@@ -306,8 +307,9 @@ animation that shows how to detect the insertion of `lib/foo.go`.
 
 <!-- convert -size 238x98 -background white -antialias -density 192 -delay 250 -loop 0 -dispose previous walk1-*.svg walk1.gif -->
 
-![Simultaneously walking both trees.](/post/difftree/walk1.gif "Simultaneously walking both trees, looking for insertions or deletions.")
-<p align="center" class="dt">Simultaneously walking both trees.</p>
+{{% caption src="/post/difftree/walk1.gif" %}}
+Simultaneously walking both trees.
+{{% /caption %}}
 
 If both walkers are on the same path, the element is neither inserted nor
 deleted and we can advance both walkers to their respective next nodes. We
@@ -445,14 +447,16 @@ The following animation shows a series of `Next` and `Step` method calls over
 a tree along with the states of the main stack and its frames:
 
 <!-- convert -size 294x240 -antialias -density 192 -delay 250 -loop 0 -dispose previous iter-0[1-4].svg iter-06.svg iter-08.svg iter-09.svg iter-10.svg -delay 400 iter-11.svg iter-12.svg -delay 300 iter-1[3-9].svg iter.gif -->
-![Iteration demonstration](/post/difftree/iter.gif "Iteration demostration")
-<p align="center" class="dt">Git tree traversal demonstration.</p>
 
+{{% caption src="/post/difftree/iter.gif" %}}
+Iteration demonstration.
+{{% /caption %}}
 
 # The path comparator
 
-![An unmodified file.](/post/difftree/walk1-02.png "Both paths point to the same unmodified file.")
-<p align="center" class="dt">An unmodified file.</p>
+{{% caption src="/post/difftree/walk1-02.png" %}}
+An unmodified file. Both paths point to the same unmodified file.
+{{% /caption %}}
 
 The path in both trees have the same name and hash in the figure above, because
 they represent the same unchanged file. No change has to be issued and we
@@ -461,8 +465,9 @@ can proceed with both iterators to the next comparison.
 If they were directories instead of files, we would still want to advance both
 iterators but skip their contents to save some time.
 
-![An inserted file.](/post/difftree/walk1-05.png "A's path is "bigger" than B's path.")
-<p align="center" class="dt">An inserted file.</p>
+{{% caption src="/post/difftree/walk1-05.png" %}}
+An inserted file. A's path is "bigger" than B's path.
+{{% /caption %}}
 
 In the case of an inserted file like the one in the figure above, the name of
 the paths will be different. The path of the A tree iterator points
@@ -506,10 +511,3 @@ will help you solve similar problems in the future.
 **P.S.** Thanks to my reviewers, Miguel Molina and Vadim Markovtsev for their
 suggestions, proper English and clean code; the broken English and the
 convoluted code is all mine.
-
-<style>
-p.dt {
-  margin-top: -16px;
-  font-style: italic;
-}
-</style>
