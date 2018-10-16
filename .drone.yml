@@ -53,7 +53,8 @@ pipeline:
     release: blog
     prefix: STG
     secrets: [ STG_API_SERVER, STG_KUBERNETES_TOKEN ]
-    values: ingress.globalStaticIpName=blog-staging,ingress.hostname=blog-staging.srcd.run,image.tag=commit-${DRONE_COMMIT_SHA:0:7},nodeSelector."cloud\.google\.com/gke-nodepool"=default-pool
+    values_files: [ .helm-staging.yml ]
+    values: image.tag=commit-${DRONE_COMMIT_SHA:0:7}
     tiller_ns: kube-system
     wait: true
     when:
@@ -91,7 +92,8 @@ pipeline:
     release: blog
     prefix: PROD
     secrets: [ PROD_API_SERVER, PROD_KUBERNETES_TOKEN ]
-    values: ingress.globalStaticIpName=blog-production,ingress.hostname=blog.sourced.tech,image.tag=${DRONE_TAG},nodeSelector."cloud\.google\.com/gke-nodepool"=default-pool
+    values_files: [ .helm-production.yml ]
+    values: image.tag=${DRONE_TAG}
     tiller_ns: kube-system
     wait: true
     when:
