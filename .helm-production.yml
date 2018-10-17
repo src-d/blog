@@ -1,0 +1,5 @@
+ingress:
+  globalStaticIpName: blog-production
+  hostname: blog.sourced.tech
+nodeSelector:
+  cloud.google.com/gke-nodepool: default-pool
