@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, 'static'),
     filename: 'js/bundle.js'
   },
+  mode: 'production',
   module: {
     rules: [
       {
