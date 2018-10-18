@@ -16,6 +16,7 @@ HUGO_TAR_FILE_NAME = hugo_$(HUGO_VERSION)_$(OS)-64bit.tar.gz
 HUGO_URL = https://github.com/spf13/hugo/releases/download/v$(HUGO_VERSION)/$(HUGO_TAR_FILE_NAME)
 HUGO_PATH := $(SHARED_PATH)/.hugo
 HUGO_TAR_PATH := $(HUGO_PATH)/$(HUGO_TAR_FILE_NAME)
+HUGO_BIND_INTERFACE := 0.0.0.0
 
 # System
 ifneq ($(UNAME_S),Linux)
@@ -38,7 +39,8 @@ all: build
 
 # Ensures the Hugo binary existance
 $(HUGO): $(HUGO_TAR_PATH)
-	$(UNCOMPRESS) $(HUGO_TAR_PATH) --directory=$(HUGO_PATH);
+	$(UNCOMPRESS) $(HUGO_TAR_PATH) --directory=$(HUGO_PATH)
+	touch $(HUGO) # set mtime to current date
 
 # Downloads the hugo binary
 $(HUGO_TAR_PATH):
@@ -47,18 +49,18 @@ $(HUGO_TAR_PATH):
 	$(CURL) $(HUGO_URL) -o $(HUGO_TAR_PATH)
 
 # Ensures hugo dependencies
-hugo-dependencies: $(HUGO_TAR_PATH) $(HUGO)
+hugo-dependencies: $(HUGO)
 
 # Prepares yarn
 js-dependencies:
-	$(JS_PACKAGE_MANAGER) install --force
+	$(JS_PACKAGE_MANAGER) install --pure-lockfile
 	$(JS_PACKAGE_MANAGER) build
 
 # Prepares project dependencies
 project-dependencies: hugo-dependencies js-dependencies
 
 # Builds hugo
-hugo-build:
+hugo-build: $(HUGO)
 ifeq ($(ALLOW_UNPUBLISHED),true)
 	$(HUGO) --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --buildDrafts --buildFuture
 else
@@ -78,9 +80,9 @@ endif
 
 
 # Runs hugo server
-hugo-server:
+hugo-server: $(HUGO)
 ifeq ($(ALLOW_UNPUBLISHED),true)
-	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --port=$(PORT) --buildDrafts --buildFuture
+	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --bind=$(HUGO_BIND_INTERFACE) --port=$(PORT) --buildDrafts --buildFuture
 else
-	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --port=$(PORT)
+	$(HUGO) server --baseURL=$(BASE_URL) --theme=$(HUGO_THEME_NAME) --watch --bind=$(HUGO_BIND_INTERFACE) --port=$(PORT)
 endif
