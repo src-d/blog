@@ -38,8 +38,19 @@ CMD ["make", "hugo-server"]
 
 # STAGE runtime: Production environment
 
-FROM abiosoft/caddy@sha256:918431577452be0f3117fa056b1280f0ef0cd2f002473f405f375495eed168f4 \
+FROM alpine:3.8@sha256:621c2f39f8133acb8e64023a94dbdf0d5ca81896102b9e57c0dc184cadaf5528 \
     AS runtime
+
+ARG CADDY_PLUGINS="http.cors"
+
+RUN set -x \
+    && apk add --no-cache --virtual .caddydeps tar curl \
+    && curl -sL "https://caddyserver.com/download/linux/amd64?plugins=${CADDY_PLUGINS}&license=personal&telemetry=off" \
+    | tar --no-same-owner -C /usr/bin/ -xz caddy \
+    && chmod +x /usr/bin/caddy \
+    && apk del .caddydeps
 
 COPY Caddyfile /etc/Caddyfile
 COPY --from=build /src-d/blog/public /var/www/public
+
+CMD ["caddy", "--conf", "/etc/Caddyfile"]
