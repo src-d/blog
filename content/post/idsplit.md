@@ -65,7 +65,7 @@ Here are the models which we evaluated.
 
 #### Maximum likelihood character-level, unsmoothed
 
-This is a quick and dirty baseline implemented in
+This is a quick and dirty baseline implemented in the
 [CharStatModel](https://github.com/vmarkovtsev/CharStatModel) repository. We
 record all possible sequences of characters in form of a tree
 and decide whether to split based on the tree branch with the dominating weight
