@@ -25,7 +25,7 @@ the initial concatentations. The result was 64% ⚛ vocabulary reduction.
 
 [Link to the PDF of the paper.](https://arxiv.org/pdf/1805.11651)
 
-> Funny fact. After the paper was presented on [ML4P](https://ml4p.org/),
+> Fun fact. After the paper was presented on [ML4P](https://ml4p.org/),
 there was a suggestion to eliminate our problem by reducing the dataset size. 👍
 
 The task is not so simple as it seems. For sure, the underscore and case change
