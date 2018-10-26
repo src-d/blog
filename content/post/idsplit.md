@@ -28,7 +28,7 @@ the initial concatentations. The result was 64% ⚛ vocabulary reduction.
 > Fun fact. After the paper was presented on [ML4P](https://ml4p.org/),
 there was a suggestion to eliminate our problem by reducing the dataset size. 👍
 
-The task is not so simple as it seems. For sure, the underscore and case change
+The task is not as simple as it seems. For sure, the underscore and case change
 heuristics work, however, they are not enough. "Progressbar" should be split into
 "progress" and "bar" while "ProgressbarControl" should split into
 "progressbar" and "control", because the usage contexts are quite different.
