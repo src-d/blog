@@ -78,7 +78,7 @@ and it is quite short-sighted.
 Accepting the hypothesis that the atoms of the string are independent from one
 another, we can model the probability of a sequence of words using frequencies
 computed on a corpus. That corpus can be our training dataset or anything else.
-We explored the former and additionally the Wikipedia corpus. There can be also
+We explored the former and additionally the Wikipedia corpus. There can also be
 different assumptions about the probability distribution (prior), e.g.
 training posterior or [Ziph](https://en.wikipedia.org/wiki/Zipf%27s_law).
 We tried three models with those combinations.
