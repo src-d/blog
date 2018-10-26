@@ -38,7 +38,7 @@ That is more than 10 million affected strings.
 
 ## Solution
 
-Machine Learning team is going to make machines learn, so we studied several
+The Machine Learning team is going to make machines learn, so we studied several
 ML models to solve the splitting task. Before jumping to the juicy ML stuff,
 we need to define our training dataset, which seems to be absent at first glance.
 However, it is possible to turn our dataset of extracted identifiers into
