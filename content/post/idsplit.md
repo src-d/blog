@@ -71,7 +71,7 @@ record all possible sequences of characters in the form of a tree
 and decide whether to split based on the tree branch with the dominating weight
 for a given prefix or suffix. There are several weak points of that approach:
 it consumes much memory, it is always biased towards good precision or good recall,
-it is quite short-sighted.
+and it is quite short-sighted.
 
 #### Dynamic programming
 
