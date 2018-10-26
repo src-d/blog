@@ -120,3 +120,8 @@ been also used in the upcoming identifier typo corrector which we are actively
 building.
 
 [Link to the PDF of the paper.](https://arxiv.org/pdf/1805.11651)
+
+Never miss MLonCode news from source{d}! Attend our
+[Paper Reading Club](https://github.com/src-d/reading-club)
+on Fridays, [follow our Twitter](https://twitter.com/sourcedtech)
+and [sign up for our newsletter](http://go.sourced.tech/newsletter).
