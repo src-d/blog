@@ -13,7 +13,7 @@ If you grab our [Public Git Archive](../announcing-pga) dataset with almost
 180,000 Git repositories, take the latest revision of each and extract all
 the identifiers from them (e.g. variable, function, class names),
 you will end up with something close to 60 million unique strings. They
-include "FooBar", "foo_bar", and "foobar"-like concatentations of the integral
+include "FooBar", "foo_bar", and "foobar"-like concatenations of the integral
 identifiers or "atoms" as we sometimes call them. We've solved some problems
 which require the number of distinct atoms to be as small as possible for 
 performance and quality considerations; those problems include
