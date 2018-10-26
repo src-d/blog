@@ -44,7 +44,7 @@ we need to define our training dataset, which seems to be absent at first glance
 However, it is possible to turn our dataset of extracted identifiers into
 (X, Y) by trusting the heuristics. Indeed, we can take the identifiers
 that are splittable by case change, underscore, etc. and pretend that the
-outcome is the ground truth split points. That gives us about 50 million traning
+outcome is the ground truth split points. That gives us about 50 million training
 examples for free.
 
 Of course, as was already said above, some of the heuritical splits are not enough,
