@@ -47,7 +47,7 @@ that are splittable by case change, underscore, etc. and pretend that the
 outcome is the ground truth split points. That gives us about 50 million training
 examples for free.
 
-Of course, as was already said above, some of the heuritical splits are not enough,
+Of course, as was already said above, some of the heuristical splits are not enough,
 so our ML models are going to be trained on noisy labels. However, we can overcome
 this limitation by bootstrapping the dataset and training several generations
 of the same model - in other words, refining the training examples at each iteration
