@@ -14,14 +14,14 @@ If you grab our [Public Git Archive](../announcing-pga) dataset with almost
 the identifiers from them (e.g. variable, function, class names),
 you will end up with something close to 60 million unique strings. They
 include "FooBar", "foo_bar", and "foobar"-like concatenations of the integral
-identifiers or "atoms" as we sometimes call them. We've solved some problems
+identifiers or "⚛ atoms" as we sometimes call them. We've solved some problems
 which require the number of distinct atoms to be as small as possible for 
 performance and quality considerations; those problems include
 [topic modeling of GitHub repositories](../github_topic_modeling),
 [identifier embeddings](../id2vec) and even the recent
 [study of files duplication on GitHub](../deduplicating_pga_with_apollo).
 Thus we decided to focus on reducing that number through careful splitting of
-the initial concatentations. The result was 64% ⚛ vocabulary reduction.
+the initial concatenations. The result was 64% atom vocabulary reduction.
 
 [Link to the PDF of the paper.](https://arxiv.org/pdf/1805.11651)
 
