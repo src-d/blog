@@ -111,7 +111,7 @@ flow + types information.
 
 **evaluation on tasks**:
 
-  * new task proposed: *VarMissuse*, benchmarked agains BiRNN baseline
+  * new task proposed: *VarMissuse*, benchmarked against BiRNN baseline
   * old task used *VarName*, benchmarked against [previous models](https://miltos.allamanis.com/publications/2015suggesting/)
 
 **results**:
