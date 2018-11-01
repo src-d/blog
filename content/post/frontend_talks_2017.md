@@ -11,7 +11,7 @@ categories: ["technical", "frontend"]
 
 Once every few months, source{d} organizes small conferences around a very specific topics. On June 24th, the topic was frontend and the talks were hosted in our Madrid office. Almost 50 people joined us for a day full of things to learn about frontend technologies.
 
-The topics of the talks were very diverse, from animations with Ember to multi-threaded web to React styling to accessibility. Since frontend is such a wide area in programming, we aimed to provide talks belonging to many different topics, and it seems that we suceeded.
+The topics of the talks were very diverse, from animations with Ember to multi-threaded web to React styling to accessibility. Since frontend is such a wide area in programming, we aimed to provide talks belonging to many different topics, and it seems that we succeeded.
 
 ## Conferences are no fun on an empty stomach
 

@@ -321,7 +321,7 @@ and the Python API adds `metric` string parameters.
 
 K-Means (Lloyd) algorithm includes the calculation of the distances
 between two points. Whichever metric is used, it includes the summation
-of some values across all the dimensions. While the number of dimenions
+of some values across all the dimensions. While the number of dimensions
 is low, everything's fine, however, the precision of the summation
 quickly drops as it increases. The cause is the classical loss of
 floating point precision in the addition operation: if you try
