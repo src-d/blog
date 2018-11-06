@@ -41,7 +41,7 @@ Finally, go to [http://localhost:8484](http://localhost:8484)
 
 # Contributing
 
-If you want to contribute to this project, or to write or edit a blog post, you will find more info in the [contribution guidelines](CONTRIBUTING.md).
+If you want to contribute to this project, write a new blog post, or edit an existing one, you can follow the [contribution guidelines](CONTRIBUTING.md).
 
 # Deploying
 
@@ -49,4 +49,6 @@ Automatically deployed, see [here](https://github.com/src-d/guide/pull/70).
 
 # License
 
-Copyright (c) 2017 source{d}, see [LICENSE](LICENSE)
+GPL v3.0, see [LICENSE](LICENSE).
+
+The [editorial content](content) itself is licensed under Creative Commons BY-SA 4.0, see [LICENSE](content/LICENSE).
