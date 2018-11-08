@@ -247,5 +247,4 @@ Subscribe to [our newsletter](http://go.sourced.tech/newsletter), follow
 [@sourcedtech](https://twitter.com/sourcedtech) on Twitter and don't forget
 about our [Paper Reading Club](https://github.com/src-d/reading-club).
 Oh, and we are organizing the
-[MLonCode developer room at FOSDEM'2019](https://medium.com/sourcedtech/ml-on-code-devroom-cfp-fosdem-2019-4f867f128e21#a948)
-- the call for proposals is open!
+[MLonCode developer room at FOSDEM'2019](https://medium.com/sourcedtech/ml-on-code-devroom-cfp-fosdem-2019-4f867f128e21#a948) - the call for proposals is open!
