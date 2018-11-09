@@ -1,8 +1,17 @@
-{{ $pages := index .Site.Taxonomies.categories .Title }}
+{{ if eq .Title "all" }}
+    {{ $pages :=  dict "Pages" .Site.RegularPages }}
+    {{ $.Scratch.Set "pages" $pages }}
+{{else}}
+    {{ $pages := index .Site.Taxonomies.categories .Title }}
+    {{ $.Scratch.Set "pages" $pages }}
+{{end}}
+
+{{ $pages := $.Scratch.Get "pages" }}
+
 {{ $.Scratch.Set "first" true }}
 {"Posts": [
     {{ range $k, $post := sort $pages.Pages "Date" "desc" }}
-        {{if eq $post.Type "post"}}
+        {{if and (eq $post.Type "post") (ne .Params.author nil) }}
             {{if $.Scratch.Get "first"}}
                 {{ $.Scratch.Set "first" false }}
             {{ else }}
