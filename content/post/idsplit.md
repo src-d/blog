@@ -2,7 +2,7 @@
 author: vadim
 date: 2018-11-08
 title: "Splitting Millions of Source Code Identifiers with Deep Learning"
-image: /post/id2vec/intro.png
+image: /post/idsplit/bilstm.png
 description: "Machine Learning team at source{d} wrote another paper this spring which was presented on ML4P workshop in Oxford. It compares different ML models to split source code identifiers into integral parts, e.g. 'foobar' is split into 'foo' and 'bar'. This post summarizes our paper."
 categories: ["science", "technical"]
 ---
