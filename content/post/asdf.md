@@ -54,8 +54,8 @@ Our best-shot requirements were:
 
 1. Binary format. It is impossible to efficiently save a huge dense tensor in JSON or YAML.
 2. At the same time, it would be nice to be able to save any JSON-like metadata without pain.
-3. The schema should be optional. Formats that require an extra schema file in
-a separate file make introspection harder while requiring ML researchers to
+3. The schema should be optional. Formats that demand an extra schema file
+make introspection harder while requiring ML researchers to
 maintain an extra piece of code. Pythonistas expect introspection, so for
 an idiomatic Python library this is essential.
 4. The typical data size may span over tens of gigabytes. Compared to gigabytes,
@@ -98,10 +98,15 @@ No more intrigue: we discovered ASDF.
 [Advanced Scientific Data Format](https://github.com/spacetelescope/asdf) (ASDF)
 is a next generation serialization format for scientific data. This means that
 it focuses on storing sparse and dense tensors in an efficient way.
-The ASDF project started by [Michael Droettboom](https://github.com/mdboom) (Matplotlib; astropy)
-at SpaceTelescope Institute in 2014. ASDF is not implementation-driven, and it is based on
+The ASDF project was started by [Perry Greenfield](https://github.com/perrygreenfield) (astropy),
+[Michael Droettboom](https://github.com/mdboom) (matplotlib; astropy)
+and [Erik M. Bray](https://github.com/embray) (astropy) at SpaceTelescope Institute in 2014
+([introductory paper](https://www.sciencedirect.com/science/article/pii/S2213133715000645)).
+ASDF is not implementation-driven, and it is based on
 the well-defined [standard](https://asdf-standard.readthedocs.io/en/latest/).
-However, there is only one maintained software library written in Python.
+There is a reference Python package, and there are attempts to port it to
+[C++](https://github.com/spacetelescope/asdf-cpp) (maintained, developing]) and
+[Go](https://github.com/astrogo/asdf) (unmaintained).
 While historically ASDF targeted astronomers, it is actually abstracted away
 from any scientific domain and is completely versatile. ASDF features:
 
