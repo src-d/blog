@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2018-10-30
+date: 2018-11-20
 title: "The Public Git Archive Story"
 image: /post/pga_history/logo.png
 description: "We have recently released a large dataset for MLonCode - Public Git Archive (PGA). It contains 182,000 top-starred repositories on GitHub and takes 3 TB on disk.  This post tells the story how PGA emerged: why, how, and what's next."
