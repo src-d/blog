@@ -5,7 +5,6 @@ title: "Cheers to small beginnings!"
 image: /post/cheers-to-small-beginnings/dali-banner.png
 description: "A closer look at source{d}'s rebranding."
 categories: ["culture", "design"]
-draft: true
 ---
 
 ## A closer look at source{d}’s rebranding
