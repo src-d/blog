@@ -1,6 +1,6 @@
 ---
 author: ricardobaeta
-date: 2018-11-15
+date: 2018-11-26
 title: "Cheers to small beginnings!"
 image: /post/cheers-to-small-beginnings/dali-banner.png
 description: "A closer look at source{d}'s rebranding."
