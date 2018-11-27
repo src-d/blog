@@ -57,7 +57,7 @@ We deeply believe in co-creation. Our pathway towards innovation is not to simpl
 
 We have the honest attention to the group, along with an extreme care of the individual. Like in good typography, we care about our community not being as a group of important people, but an important group of people - by choice.
 
-So please, feel encouraged to check the results from the Brand Persona: [source{d}'s Brand Persona](https://github.com/src-d/artwork/files/sourced-brand-persona.pdf) and [{d}ali's Lexicon](https://github.com/src-d/artwork/files/dali-lexicon.pdf). Share your thoughts on our [Slack Community](https://sourced-community.slack.com/join/shared_invite/enQtMjc4Njk5MzEyNzM2LTFjNzY4NjEwZGEwMzRiNTM4MzRlMzQ4MmIzZjkwZmZlM2NjODUxZmJjNDI1OTcxNDAyMmZlNmFjODZlNTg0YWM)
+So please, feel encouraged to check the results from the Brand Persona: [source{d}'s Brand Persona](https://github.com/src-d/artwork/blob/master/files/sourced-brand-persona.pdf) and [{d}ali's Lexicon](https://github.com/src-d/artwork/blob/master/files/dali-lexicon.pdf). Share your thoughts on our [Slack Community](https://sourced-community.slack.com/join/shared_invite/enQtMjc4Njk5MzEyNzM2LTFjNzY4NjEwZGEwMzRiNTM4MzRlMzQ4MmIzZjkwZmZlM2NjODUxZmJjNDI1OTcxNDAyMmZlNmFjODZlNTg0YWM)
 
 ### One, two, buckle my shoe
 
