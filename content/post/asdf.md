@@ -1,6 +1,6 @@
 ---
 author: vadim
-date: 2018-11-26
+date: 2018-11-28
 title: "Why we chose Advanced Scientific Data Format for ML models"
 image: /post/asdf/logo.png
 description: "What ASDF is, why it is awesome, why you should probably use it, and how. Why we adopted ASDF in source{d} ML projects."
