@@ -23,20 +23,21 @@ To help new or current team members to code in a consistent way, we
 need to model existing style and use it to lint new code. At
 source{d}, we call that breakfast. Let's go!
 
-## Lookout
+## source{d} Lookout
 
 This problem is one of the many pain points we are currently tackling
-with [Lookout](https://github.com/src-d/lookout), our brand new and
-awesome assisted code review framework.
+with [source{d} Lookout](https://github.com/src-d/lookout), our brand
+new and awesome assisted code review framework.
 
-The purpose of Lookout is to bring assisted code review to anyone in
-an easy-to-setup, easy-to-use, easy-to-extend fashion. To achieve
-that, Lookout watches Github repos and triggers a set of analyzers
-when new code is sent for review or pushed. Those analyzers are very
-easy to define (they are based on the gRPC tool suite).
+The purpose of source{d} Lookout is to bring assisted code review to
+anyone in an easy-to-setup, easy-to-use, easy-to-extend fashion. To
+achieve that, source{d} Lookout watches Github repos and triggers a
+set of analyzers when new code is sent for review or pushed. Those
+analyzers are very easy to define (they are based on the gRPC tool
+suite).
 
 {{% caption src="/post/formatting-with-style/lookout-arch.png" %}}
-Lookout architecture.
+source{d} Lookout architecture.
 {{% /caption %}}
 
 In our case, when new code is pushed, we want to learn from the
