@@ -1,11 +1,10 @@
 ---
 author: m09
-date: 2019-01-30
+date: 2019-01-31
 title: "Formatting. With Style."
 image: /post/formatting-with-style/handwriting.jpg
 description: "Formatting code using existing styles."
 categories: ["technical", "MLonCode"]
-draft: true
 ---
 
 Ensuring that a codebase is consistent in style is both hard and
