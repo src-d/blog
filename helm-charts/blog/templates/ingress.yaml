@@ -17,14 +17,18 @@ metadata:
 
 spec:
   rules:
-    - host: {{ required "Hostname is missing" .Values.ingress.hostname }}
+    {{- range $host :=  required "Missing .Values.ingress.hosts" .Values.ingress.hosts }}
+    - host: {{ $host }}
       http:
         paths:
           - path: /*
             backend:
               serviceName: {{ $serviceName }}
               servicePort: {{ $servicePort }}
+    {{- end }}
   tls:
-    - secretName: {{ .Values.ingress.hostname | replace "." "-" }}-tls
+    - secretName: "{{ template "fullname" . }}-tls"
       hosts:
-        - {{ .Values.ingress.hostname }}
+      {{- range $host :=  required "Missing .Values.ingress.hosts" .Values.ingress.hosts }}
+        - {{ $host }}
+      {{- end }}
