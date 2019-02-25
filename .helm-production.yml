@@ -1,6 +1,8 @@
 ingress:
   globalStaticIpName: blog-production
-  hostname: blog.sourced.tech
+  hosts:
+    - blog.sourced.tech
+    - blog-archive.sourced.tech
 nodeSelector:
   cloud.google.com/gke-nodepool: default-pool
 affinity:

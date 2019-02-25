@@ -1,6 +1,8 @@
 ingress:
   globalStaticIpName: blog-staging
-  hostname: blog-staging.srcd.run
+  hosts:
+    - blog-staging.srcd.run
+    - blog-archive-staging.srcd.run
 nodeSelector:
   cloud.google.com/gke-nodepool: default-pool
 affinity:
