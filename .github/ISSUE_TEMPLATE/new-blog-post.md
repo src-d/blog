@@ -12,6 +12,15 @@ Issue Title: [PROPOSAL] Blog post title
 * Categories:
 * Deadlines: are there any deadlines for this? do we need to wait for any other event?
 
+## Blog process
+
+- Create a proposal on this blog repo
+- Get proposal accepted by DevRel
+- Create a copy of [this gdoc](https://docs.google.com/document/d/1BxhHlkxytm-xCDVy4vRkdyjqwe9w7pIWoauaLpMMreE/edit#heading=h.rujpt9lvqbj8) & update the template header 
+- Add the draft of you blog post directly in gdoc with grammarly enabled
+- Get reviewers to add LGTM as a comment in the draft
+- Submit to DevRel for final review & scheduling
+
 ## Table of contents
 
 What are the main sections of the blog post? What will each one explain?
