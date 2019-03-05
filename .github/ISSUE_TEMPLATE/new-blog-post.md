@@ -14,7 +14,6 @@ Issue Title: [PROPOSAL] Blog post title
 
 ## Blog process
 
-- Create a proposal on this blog repo [as a new issue](https://github.com/src-d/blog/issues)
 - Get proposal accepted by DevRel
 - Create a copy of [this gdoc](https://docs.google.com/document/d/1BxhHlkxytm-xCDVy4vRkdyjqwe9w7pIWoauaLpMMreE/edit#heading=h.rujpt9lvqbj8) & update the template header 
 - Add the draft of you blog post directly in gdoc with grammarly enabled
