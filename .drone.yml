@@ -12,7 +12,7 @@ pipeline:
   build:
     image: node:8.8-alpine
     environment:
-      - BASE_URL="//blog.sourced.tech/"
+      - BASE_URL="//blog-archive.sourced.tech/"
     commands:
       - apk add --update make bash curl
       - make build
@@ -25,7 +25,7 @@ pipeline:
   build_stg:
     image: node:8.8-alpine
     environment:
-      - BASE_URL="//blog-staging.srcd.run/"
+      - BASE_URL="//blog-archive-staging.srcd.run/"
       - ALLOW_UNPUBLISHED=true
     commands:
       - apk add --update make bash curl
