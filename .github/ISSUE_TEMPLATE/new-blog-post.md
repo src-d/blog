@@ -18,7 +18,7 @@ What are the main sections of the blog post? What will each one explain?
 
 ## Management
 
-This section will be filled by @campoy.
+This section will be filled by @vcoisne
 
 * State: (proposed | writing | written | published)
 * Scheduled:
