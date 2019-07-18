@@ -1,7 +1,6 @@
 ---
 name: New Blog Post
 about: Use this template to propose a new blog post
-
 ---
 
 Issue Title: [PROPOSAL] Blog post title
@@ -11,23 +10,11 @@ Issue Title: [PROPOSAL] Blog post title
 * Short description: What is the topic? Any main takeaways?
 * Categories:
 * Deadlines: are there any deadlines for this? do we need to wait for any other event?
-
-## Table of contents
-
-What are the main sections of the blog post? What will each one explain?
+* Link to draft in google doc: 
 
 ## Management
 
 This section will be filled by @vcoisne
 
 * State: (proposed | writing | written | published)
-* Scheduled:
-* Link to post:
-
-## Social Media
-
-* Wording for tweet:
-* Hashtags:
-* Subreddits:
-
-*NOTE* Please write in short lines so the review is easier to do.
+* Check Blog calendar to see when it's scheduled
