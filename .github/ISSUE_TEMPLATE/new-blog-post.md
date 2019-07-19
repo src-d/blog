@@ -11,10 +11,3 @@ Issue Title: [PROPOSAL] Blog post title
 * Categories:
 * Deadlines: are there any deadlines for this? do we need to wait for any other event?
 * Link to draft in google doc: 
-
-## Management
-
-This section will be filled by @vcoisne
-
-* State: (proposed | writing | written | published)
-* Check Blog calendar to see when it's scheduled
