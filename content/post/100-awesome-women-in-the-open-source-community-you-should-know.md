@@ -488,7 +488,7 @@ work for npm on the cli</div>
       <li><strong>2838</strong><span> Total Commits</span></li>
       <li><strong>156.3</strong><span> PageRank</span></li>
     </ul>
-    <div class="footer">My current research focuses on the design and implementation of domain-specific languages, mostly targetting problems in operating systems. I have also worked on partial evaluation, optimal reduction of the lambda calculus and continuations.</div>
+    <div class="footer">My current research focuses on the design and implementation of domain-specific languages, mostly targeting problems in operating systems. I have also worked on partial evaluation, optimal reduction of the lambda calculus and continuations.</div>
     <div class="repo_header"><a href="https://github.com/coccinelle/coccinelle">coccinelle</a> <span class="language">OCaml</span> <span class="featured_repo">Featured Repo</span></div>
     <ul class="repo_stats">
       <li><strong>2838</strong><span> Commits by @JuliaLawall</span></li>

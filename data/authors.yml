@@ -100,3 +100,16 @@ romain:
   bio: "Former ML intern"
   social:
     github: r0mainK
+ricardobaeta:
+  name: Ricardo Baeta
+  thumbnail: https://avatars2.githubusercontent.com/u/1746146?s=460&v=4
+  bio: "Product Design Lead"
+  social:
+    github: ricardobaeta
+    twitter: ricardobaeta
+m09:
+  name: Hugo Mougard
+  thumbnail: https://avatars3.githubusercontent.com/u/142691?s=460&v=4
+  bio: "Senior Machine Learning Engineer"
+  social:
+    github: m09

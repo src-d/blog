@@ -12,4 +12,6 @@ Automatically deployed, see [here](https://github.com/src-d/guide/pull/70).
 
 # License
 
-Copyright (c) 2017 source{d}, see [LICENSE](LICENSE)
+GPL v3.0, see [LICENSE](LICENSE).
+
+The [editorial content](content) itself is licensed under Creative Commons BY-SA 4.0, see [LICENSE](content/LICENSE).

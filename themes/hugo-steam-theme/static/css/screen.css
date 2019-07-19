@@ -914,6 +914,10 @@ article.post ul ul li:before {
   border: 1px solid #adb6bf;
 }
 
+article.post ol > li:before {
+  content: none;
+}
+
 article.post table {
   border: 1px solid #737373;
   margin: 30px 0;

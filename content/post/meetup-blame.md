@@ -181,7 +181,7 @@ This problem is usually solved by creating a graph where:
 
 - vertexes represent each line of a file, for all revisions of the file
 
-- edges represent the same line across diferent revisions of the file
+- edges represent the same line across different revisions of the file
 
 In the [slides from the talk](https://drive.google.com/file/d/0B05KyBUlYY2TV2N6X2x6ZWhBXzQ/view?usp=sharing) you can find examples of
 forward and backward versions of a graph traversal algorithm to solve the
