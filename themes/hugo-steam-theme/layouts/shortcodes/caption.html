@@ -1,4 +1,0 @@
-<figure {{ if in (slice "half-width") (.Get "width") }}class="caption-{{.Get "width"}}"{{ end }}>
-    <img src="{{ .Get "src" }}" {{ with .Get "title" }}alt="{{.}}"{{ end }} />
-    {{ with .Inner }}<figcaption>{{- . | safeHTML -}}</figcaption>{{ end }}
-</figure>

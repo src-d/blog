@@ -1,35 +1,6 @@
-# builds
-/public
-/static/css
-/static/js
-/dist
-/build
-/bin
-
-# dependencies
-.ci
-.hugo
-.build
-Makefile.main
-/node_modules
-/bower_components
-jspm_packages/
-.grunt
-.npm
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.yarn-integrity
-package-lock.json
-
 # environment config
-.env
-.env.local
 .DS_Store
 
 # code editors
 .idea
 .vscode
-
-# python - used to prepare the content sometimes
-**/.ipynb_checkpoints

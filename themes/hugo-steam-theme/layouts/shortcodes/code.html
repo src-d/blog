@@ -1,6 +1,0 @@
-<pre><code
-        {{ with .Get "lang" }}class="language-{{ . }}"{{ end }} 
-        {{ with .Get "height" }}style="max-height:{{ . }}px"{{end}}>
-        {{- printf "/static%s/" (.Get "src") | readFile -}}
-</code></pre>
-<a class="pre-caption" href="{{ .Get "src" }}">download code</a>
