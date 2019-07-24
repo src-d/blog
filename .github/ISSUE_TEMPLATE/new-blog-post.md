@@ -10,4 +10,3 @@ Issue Title: [PROPOSAL] Blog post title
 * Short description: What is the topic? Any main takeaways?
 * Categories:
 * Deadlines: are there any deadlines for this? do we need to wait for any other event?
-* Link to draft in google doc: 
