@@ -1,11 +1,9 @@
 ---
 name: New Blog Post
 about: Use this template to propose a new blog post
+title: "[PROPOSAL] Blog post title"
 ---
 
-Issue Title: [PROPOSAL] Blog post title
-
-* Title:
 * Author(s):
 * Short description: What is the topic? Any main takeaways?
 * Categories:
